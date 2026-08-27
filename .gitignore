@@ -1,0 +1,40 @@
+﻿# OS & IDE Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Backend (Java & Gradle)
+backend/.gradle/
+backend/build/
+backend/out/
+backend/.project
+backend/.classpath
+backend/.settings/
+backend/bin/
+backend/*.log
+backend/src/main/resources/application-local.yml
+.gradle/
+build/
+
+# Frontend (Node & React / Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# Docker & Database local data
+postgres_data/
+*.h2.db

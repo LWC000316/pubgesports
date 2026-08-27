@@ -1,0 +1,17 @@
+services:
+  pubg-postgres:
+    image: postgres:16-alpine
+    container_name: pubg-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: pubg_esports
+      POSTGRES_USER: pubg_user
+      POSTGRES_PASSWORD: pubg_password123!
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
