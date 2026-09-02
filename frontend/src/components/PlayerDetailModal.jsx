@@ -162,17 +162,62 @@ export default function PlayerDetailModal({ player, onClose }) {
               </div>
             </div>
 
-            {/* eDPI Calculation Meter */}
-            <div style={{ background: 'rgba(243, 166, 31, 0.08)', border: '1px solid var(--border-active)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700' }}>CALCULATED eDPI</span>
-                <span style={{ fontSize: '0.9rem', color: 'var(--accent-gold)', fontWeight: '800' }}>
-                  {setting.mouseDpi && setting.generalSens ? (setting.mouseDpi * setting.generalSens).toLocaleString() : '24,000'}
+            {/* PUBG 15-Step Equivalent Sens Banner */}
+            <div style={{ background: 'rgba(243, 166, 31, 0.08)', border: '1px solid var(--border-active)', padding: '14px', borderRadius: 'var(--radius-sm)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--accent-gold)', fontWeight: '800' }}>
+                  PUBG 15스텝 동등 감도 환산
+                </span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                  DPI 2배 증가 시 감도 15 감소
                 </span>
               </div>
-              <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
-                <div style={{ width: '55%', height: '100%', background: 'linear-gradient(90deg, #00e5ff, #f3a61f)' }} />
-              </div>
+
+              {/* 400 / 800 / 1600 DPI 기준 감도 계산 */}
+              {(() => {
+                const currentDpi = setting.mouseDpi || 800;
+                const gen = setting.generalSens || 30.0;
+                
+                let sens400 = gen;
+                let sens800 = gen;
+                let sens1600 = gen;
+
+                if (currentDpi === 400) {
+                  sens400 = gen;
+                  sens800 = Math.max(0, gen - 15);
+                  sens1600 = Math.max(0, gen - 30);
+                } else if (currentDpi === 800) {
+                  sens400 = gen + 15;
+                  sens800 = gen;
+                  sens1600 = Math.max(0, gen - 15);
+                } else if (currentDpi === 1600) {
+                  sens400 = gen + 30;
+                  sens800 = gen + 15;
+                  sens1600 = gen;
+                } else {
+                  // 임의 DPI일 때 800 기준 근사치
+                  sens400 = Math.round(gen * (currentDpi / 400));
+                  sens800 = Math.round(gen * (currentDpi / 800));
+                  sens1600 = Math.round(gen * (currentDpi / 1600));
+                }
+
+                return (
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', textAlign: 'center' }}>
+                    <div style={{ background: currentDpi === 400 ? 'rgba(243, 166, 31, 0.2)' : 'rgba(255,255,255,0.03)', padding: '6px', borderRadius: '4px' }}>
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>400 DPI</span>
+                      <strong style={{ display: 'block', color: '#fff', fontSize: '0.95rem' }}>{sens400}</strong>
+                    </div>
+                    <div style={{ background: currentDpi === 800 ? 'rgba(243, 166, 31, 0.2)' : 'rgba(255,255,255,0.03)', padding: '6px', borderRadius: '4px' }}>
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>800 DPI</span>
+                      <strong style={{ display: 'block', color: 'var(--accent-gold)', fontSize: '0.95rem' }}>{sens800}</strong>
+                    </div>
+                    <div style={{ background: currentDpi === 1600 ? 'rgba(243, 166, 31, 0.2)' : 'rgba(255,255,255,0.03)', padding: '6px', borderRadius: '4px' }}>
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>1600 DPI</span>
+                      <strong style={{ display: 'block', color: '#fff', fontSize: '0.95rem' }}>{sens1600}</strong>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </div>
 

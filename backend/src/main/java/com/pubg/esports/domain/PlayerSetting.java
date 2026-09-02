@@ -53,4 +53,15 @@ public class PlayerSetting {
         this.screenMode = screenMode;
         this.renderScale = renderScale;
     }
+
+    public void updateSetting(Integer mouseDpi, Double generalSens, Double aimingSens, Double adsSens,
+                              Double verticalMultiplier, Integer fov, String resolution) {
+        this.mouseDpi = mouseDpi;
+        this.generalSens = generalSens;
+        this.aimingSens = aimingSens;
+        this.adsSens = adsSens;
+        this.verticalMultiplier = verticalMultiplier;
+        this.fov = fov;
+        this.resolution = resolution;
+    }
 }

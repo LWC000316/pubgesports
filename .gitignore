@@ -1,16 +1,24 @@
-﻿# OS & IDE Files
+# OS and Local System Files
 .DS_Store
 Thumbs.db
+Desktop.ini
+ehthumbs.db
 *.swp
 *.swo
 *~
+
+# IDE and Editor Files
 .idea/
 .vscode/
 *.iml
 *.ipr
 *.iws
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Backend (Java & Gradle)
+# Backend Java and Gradle
 backend/.gradle/
 backend/build/
 backend/out/
@@ -19,22 +27,38 @@ backend/.classpath
 backend/.settings/
 backend/bin/
 backend/*.log
-backend/src/main/resources/application-local.yml
+backend/src/main/resources/application_local.yml
 .gradle/
 build/
 
-# Frontend (Node & React / Vite)
+# Frontend Node and React
 frontend/node_modules/
 frontend/dist/
-frontend/dist-ssr/
+frontend/dist_ssr/
 frontend/*.local
 frontend/.env.local
 frontend/.env.*.local
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
-frontend/pnpm-debug.log*
+frontend/npm_debug.log*
+frontend/yarn_debug.log*
+frontend/yarn_error.log*
+frontend/pnpm_debug.log*
 
-# Docker & Database local data
+# Python Cache and Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+ENV/
+
+# Logs and Temporary Files
+*.log
+logs/
+temp/
+tmp/
+
+# Docker and Local Database
 postgres_data/
 *.h2.db

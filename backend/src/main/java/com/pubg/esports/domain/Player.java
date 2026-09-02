@@ -23,7 +23,7 @@ public class Player {
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nickname;
 
     private String realName;
@@ -74,6 +74,26 @@ public class Player {
 
     public void setLastCrawledAt(java.time.LocalDateTime lastCrawledAt) {
         this.lastCrawledAt = lastCrawledAt;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public void updateProfile(String nickname, String realName, String role, String country,
+                              String profileImageUrl, String chzzkUrl, String youtubeUrl, String soopUrl) {
+        this.nickname = nickname;
+        this.realName = realName;
+        this.role = role;
+        this.country = country;
+        this.profileImageUrl = profileImageUrl;
+        this.chzzkUrl = chzzkUrl;
+        this.youtubeUrl = youtubeUrl;
+        this.soopUrl = soopUrl;
+    }
+
+    public void clearGears() {
+        this.gears.clear();
     }
 
     public void addGear(PlayerGear gear) {

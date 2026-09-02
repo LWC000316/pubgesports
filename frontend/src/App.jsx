@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import PlayerView from './components/PlayerView';
+import TeamRosterView from './components/TeamRosterView';
 import PlayerDetailModal from './components/PlayerDetailModal';
 import TournamentView from './components/TournamentView';
 import StatsView from './components/StatsView';
+import SensCalculator from './components/SensCalculator';
+import AdminModal from './components/AdminModal';
 import CrawlerPanel from './components/CrawlerPanel';
 
 import {
+  MOCK_TEAMS,
   MOCK_PLAYERS,
   MOCK_PLAYER_DETAILS,
   MOCK_TOURNAMENTS,
@@ -15,22 +18,37 @@ import {
 } from './data/mockData';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('players');
+  const [activeTab, setActiveTab] = useState('teams');
+  const [teams, setTeams] = useState(MOCK_TEAMS);
   const [players, setPlayers] = useState(MOCK_PLAYERS);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [tournaments, setTournaments] = useState(MOCK_TOURNAMENTS);
   const [leaderboards, setLeaderboards] = useState(MOCK_PGS4_LEADERBOARD);
   const [playerStats, setPlayerStats] = useState(MOCK_PGS4_STATS);
-  const [isCrawlerOpen, setIsCrawlerOpen] = useState(false);
 
-  // 백엔드 API에서 실제 데이터 가져오기 시도
+  const [isCrawlerOpen, setIsCrawlerOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  // 백엔드 API에서 데이터 불러오기 시도
   const fetchData = async () => {
     try {
-      // 1. Players
-      const resPlayers = await fetch('/api/players');
-      if (resPlayers.ok) {
-        const data = await resPlayers.json();
-        if (data && data.length > 0) setPlayers(data);
+      // 1. Teams & Players
+      const resTeams = await fetch('/api/teams');
+      if (resTeams.ok) {
+        const data = await resTeams.json();
+        if (data && data.length > 0) {
+          setTeams(data);
+          const extractedPlayers = data.flatMap(t =>
+            (t.players || []).map(p => ({
+              ...p,
+              teamName: t.name,
+              teamLeague: t.league,
+              teamLogoUrl: t.logoUrl,
+              country: t.region === 'KR' ? 'KR' : t.region === 'CN' ? 'CN' : t.region === 'AMER' ? 'US' : 'EU'
+            }))
+          );
+          if (extractedPlayers.length > 0) setPlayers(extractedPlayers);
+        }
       }
 
       // 2. Tournaments
@@ -62,7 +80,7 @@ export default function App() {
     fetchData();
   }, []);
 
-  // 선수 클릭 시 상세 모달 열기
+  // 선수 선택 시 상세 모달 열기
   const handleSelectPlayer = async (playerId) => {
     try {
       const res = await fetch(`/api/players/${playerId}`);
@@ -76,6 +94,7 @@ export default function App() {
     // Fallback Mock Detail
     const fallback = MOCK_PLAYER_DETAILS[playerId] || {
       ...players.find(p => p.id === playerId),
+      nickname: players.find(p => p.id === playerId)?.nickname || 'Pro Player',
       setting: {
         mouseDpi: 800,
         generalSens: 30.0,
@@ -108,13 +127,14 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenCrawler={() => setIsCrawlerOpen(true)}
+        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {/* Main Content Area based on Tab */}
       <main style={{ flex: 1 }}>
-        {activeTab === 'players' && (
-          <PlayerView
-            players={players}
+        {activeTab === 'teams' && (
+          <TeamRosterView
+            teams={teams}
             onSelectPlayer={handleSelectPlayer}
           />
         )}
@@ -131,6 +151,10 @@ export default function App() {
             stats={playerStats}
           />
         )}
+
+        {activeTab === 'sens' && (
+          <SensCalculator />
+        )}
       </main>
 
       {/* Footer */}
@@ -142,7 +166,7 @@ export default function App() {
         fontSize: '0.8rem',
         marginTop: 'auto'
       }}>
-        <p>PUBG PRO VAULT • eSports Analytics & Player Gear Archive • Inspired by Twire.gg</p>
+        <p>PUBG PRO VAULT • eSports Regional Teams & 15-Step Sensitivity Archive • Inspired by Twire.gg</p>
         <p style={{ marginTop: '4px', fontSize: '0.75rem' }}>PLAYERUNKNOWN'S BATTLEGROUNDS is a registered trademark of KRAFTON, Inc.</p>
       </footer>
 
@@ -153,6 +177,14 @@ export default function App() {
           onClose={() => setSelectedPlayer(null)}
         />
       )}
+
+      {/* Admin Management Modal */}
+      <AdminModal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        teams={teams}
+        onDataUpdated={fetchData}
+      />
 
       {/* Live Crawler Panel */}
       <CrawlerPanel

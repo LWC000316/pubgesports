@@ -1,11 +1,10 @@
 import React from 'react';
-import { Crosshair, Trophy, BarChart3, RefreshCw, Flame } from 'lucide-react';
+import { Shield, Trophy, RefreshCw, Flame, ShieldPlus } from 'lucide-react';
 
-export default function Header({ activeTab, setActiveTab, onOpenCrawler }) {
+export default function Header({ activeTab, setActiveTab, onOpenCrawler, onOpenAdmin }) {
   const tabs = [
-    { id: 'players', label: 'PRO PLAYERS', icon: Crosshair, desc: '선수 세팅 & 장비' },
-    { id: 'tournaments', label: 'TOURNAMENTS', icon: Trophy, desc: 'Twire 스타일 순위표' },
-    { id: 'stats', label: 'LEADERBOARD', icon: BarChart3, desc: '선수 킬/딜 랭킹' },
+    { id: 'teams', label: 'PUBG ESPORTS', icon: Shield, desc: '권역별 프로팀 & 선수 로스터' },
+    { id: 'tournaments', label: 'TOURNAMENTS', icon: Trophy, desc: '공식 세계 대회 및 권역 리그' }
   ];
 
   return (
@@ -21,7 +20,7 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler }) {
       zIndex: 100
     }}>
       {/* Brand Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer' }} onClick={() => setActiveTab('players')}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer' }} onClick={() => setActiveTab('teams')}>
         <div style={{
           width: '42px',
           height: '42px',
@@ -38,10 +37,10 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#fff', letterSpacing: '1px' }}>PUBG PRO</span>
             <span style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--accent-gold)' }}>VAULT</span>
-            <span className="badge badge-gold">v1.0 eSports</span>
+            <span className="badge badge-gold">Official API</span>
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0, fontWeight: '500' }}>
-            Pro Players Gear, In-Game Sens & Twire.gg Match Stats
+            Official Tournaments, Regional Rosters & 15-Step Sensitivity System
           </p>
         </div>
       </div>
@@ -59,12 +58,12 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '10px 18px',
+                padding: '10px 20px',
                 borderRadius: 'var(--radius-sm)',
-                background: isActive ? 'rgba(243, 166, 31, 0.15)' : 'transparent',
+                background: isActive ? 'rgba(243, 166, 31, 0.18)' : 'transparent',
                 border: isActive ? '1px solid var(--border-active)' : '1px solid transparent',
                 color: isActive ? 'var(--accent-gold)' : 'var(--text-muted)',
-                fontWeight: '700',
+                fontWeight: '800',
                 fontFamily: 'var(--font-display)',
                 fontSize: '0.95rem',
                 cursor: 'pointer',
@@ -78,16 +77,26 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler }) {
         })}
       </nav>
 
-      {/* Crawler & Sync Action Button */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      {/* Action Buttons (Admin & Sync) */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <button
+          onClick={onOpenAdmin}
+          className="btn-primary"
+          style={{ fontSize: '0.8rem', padding: '7px 12px' }}
+          title="관리자: 팀/선수 데이터 등록 및 편집"
+        >
+          <ShieldPlus size={15} />
+          <span>ADMIN MANAGE</span>
+        </button>
+
         <button
           onClick={onOpenCrawler}
           className="btn-secondary"
-          style={{ fontSize: '0.85rem', padding: '8px 14px' }}
-          title="웹 크롤링 데이터 최신화 패널 열기"
+          style={{ fontSize: '0.8rem', padding: '7px 12px' }}
+          title="공식 데이터 동기화 패널"
         >
-          <RefreshCw size={15} color="var(--accent-cyan)" />
-          <span>DATA CRAWLER</span>
+          <RefreshCw size={14} color="var(--accent-cyan)" />
+          <span>API SYNC</span>
         </button>
       </div>
     </header>

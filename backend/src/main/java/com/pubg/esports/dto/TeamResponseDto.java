@@ -13,7 +13,12 @@ public class TeamResponseDto {
     private Long id;
     private String name;
     private String region;
+    private String league;
     private String logoUrl;
+    private String description;
+    private Integer foundedYear;
+    private String coach;
+    private String achievements;
     private List<PlayerListResponseDto> players;
 
     public static TeamResponseDto from(Team team) {
@@ -25,7 +30,12 @@ public class TeamResponseDto {
                 .id(team.getId())
                 .name(team.getName())
                 .region(team.getRegion())
+                .league(team.getLeague())
                 .logoUrl(team.getLogoUrl())
+                .description(team.getDescription())
+                .foundedYear(team.getFoundedYear())
+                .coach(team.getCoach())
+                .achievements(team.getAchievements())
                 .players(playerDtos)
                 .build();
     }

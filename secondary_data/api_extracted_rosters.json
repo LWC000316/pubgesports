@@ -1,0 +1,162 @@
+{
+  "6": {
+    "teamId": 6,
+    "rank": 10,
+    "players": [
+      "GTE_Clories",
+      "GTE_DuCkHjeUz",
+      "GTE_Hoangf",
+      "GTE_TanVuu"
+    ]
+  },
+  "5": {
+    "teamId": 5,
+    "rank": 9,
+    "players": [
+      "17_xwudd",
+      "17_tiantian",
+      "17_WenBo",
+      "17_Lilghost"
+    ]
+  },
+  "10": {
+    "teamId": 10,
+    "rank": 6,
+    "players": [
+      "TWIS_Perfect1ks",
+      "TWIS_BatulinS",
+      "TWIS_xmpl",
+      "TWIS_Lu"
+    ]
+  },
+  "1": {
+    "teamId": 1,
+    "rank": 5,
+    "players": [
+      "T1_Rain1ng",
+      "T1_Heather",
+      "T1_Type",
+      "T1_EEND"
+    ]
+  },
+  "15": {
+    "teamId": 15,
+    "rank": 7,
+    "players": [
+      "GK_Seongjang",
+      "GK_AKaN",
+      "GK_EJ01",
+      "GK_Parkpro"
+    ]
+  },
+  "16": {
+    "teamId": 16,
+    "rank": 12,
+    "players": [
+      "APG_SimonT",
+      "APG_YmCud",
+      "APG_Taikonn",
+      "APG_pauu"
+    ]
+  },
+  "4": {
+    "teamId": 4,
+    "rank": 13,
+    "players": [
+      "MiTH_Baren",
+      "MiTH_KISS",
+      "MiTH_Scappy",
+      "MiTH_Jacob"
+    ]
+  },
+  "12": {
+    "teamId": 12,
+    "rank": 14,
+    "players": [
+      "PeRo_MMing",
+      "PeRo_i26v6",
+      "PeRo_Cui71",
+      "PeRo_04NB"
+    ]
+  },
+  "7": {
+    "teamId": 7,
+    "rank": 8,
+    "players": [
+      "TL_CowBoi",
+      "TL_luke12",
+      "TL_PurdyKurty",
+      "TL_aLOW"
+    ]
+  },
+  "8": {
+    "teamId": 8,
+    "rank": 15,
+    "players": [
+      "AL_Delwyn",
+      "AL_Himass",
+      "AL_Destroyy",
+      "AL_Sololzy"
+    ]
+  },
+  "13": {
+    "teamId": 13,
+    "rank": 4,
+    "players": [
+      "GEN_seoul",
+      "GEN_diyy",
+      "GEN_Salute",
+      "GEN_BeaN"
+    ]
+  },
+  "11": {
+    "teamId": 11,
+    "rank": 16,
+    "players": [
+      "DNS_Gyumin",
+      "DNS_Heaven",
+      "DNS_REX",
+      "DNS_DIEL"
+    ]
+  },
+  "3": {
+    "teamId": 3,
+    "rank": 3,
+    "players": [
+      "4AM_HSmm",
+      "4AM_SpaceMan",
+      "4AM_Shen",
+      "4AM_WINDah"
+    ]
+  },
+  "9": {
+    "teamId": 9,
+    "rank": 11,
+    "players": [
+      "EA_Lericz",
+      "EA_Nourinz",
+      "EA_Pathompong",
+      "EA_OHPONDZ"
+    ]
+  },
+  "2": {
+    "teamId": 2,
+    "rank": 1,
+    "players": [
+      "VP_NIXZYEE",
+      "VP_Beami",
+      "VP_curexi",
+      "VP_Lukarux"
+    ]
+  },
+  "14": {
+    "teamId": 14,
+    "rank": 2,
+    "players": [
+      "FLC_TGLTN",
+      "FLC_Kickstart",
+      "FLC_Gustav",
+      "FLC_Shrimzy"
+    ]
+  }
+}
