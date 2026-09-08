@@ -1,0 +1,415 @@
+[
+  {
+    "name": "AAA Esports",
+    "koreanName": "AAA Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=AAA",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Black9",
+      "Focus",
+      "MooHeon",
+      "MooSik",
+      "RimQ"
+    ]
+  },
+  {
+    "name": "AZLA PENTAGRAM",
+    "koreanName": "AZLA PENTAGRAM",
+    "logoUrl": "https://via.placeholder.com/100?text=AZLA",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "F1ame",
+      "HAMMER",
+      "Orca",
+      "redzone"
+    ]
+  },
+  {
+    "name": "BKL Esports",
+    "koreanName": "BKL Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=BKL",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Bok",
+      "Rene",
+      "Santa",
+      "Yugeun"
+    ]
+  },
+  {
+    "name": "C5 Esports",
+    "koreanName": "C5 Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=C5",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Archi",
+      "Gray",
+      "KrbyZ",
+      "Krbyz",
+      "Malik",
+      "malik",
+      "todn"
+    ]
+  },
+  {
+    "name": "Crazy Raccoon",
+    "koreanName": "Crazy Raccoon",
+    "logoUrl": "https://via.placeholder.com/100?text=CR",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Glaz",
+      "Gyuyeon",
+      "Inonix",
+      "Pio"
+    ]
+  },
+  {
+    "name": "DK Esports",
+    "koreanName": "DK Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=DK",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Americano",
+      "Mantal",
+      "Under",
+      "minuda"
+    ]
+  },
+  {
+    "name": "DN SOOPers",
+    "koreanName": "DN SOOPers",
+    "logoUrl": "https://via.placeholder.com/100?text=DNS",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "DIEL",
+      "Gyumin",
+      "Heaven",
+      "REX"
+    ]
+  },
+  {
+    "name": "Eagle Owls",
+    "koreanName": "Eagle Owls",
+    "logoUrl": "https://via.placeholder.com/100?text=EOS",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "DK",
+      "HongGilDong",
+      "Jaechan",
+      "Right"
+    ]
+  },
+  {
+    "name": "FN Pocheon",
+    "koreanName": "FN Pocheon",
+    "logoUrl": "https://via.placeholder.com/100?text=FN",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "BreaKers",
+      "Hush",
+      "Starlord",
+      "kkachi"
+    ]
+  },
+  {
+    "name": "GGWP Esports",
+    "koreanName": "GGWP Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=GGWP",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Geunwon",
+      "Wanted",
+      "insfire",
+      "naheesoo",
+      "sony"
+    ]
+  },
+  {
+    "name": "Gen.G Esports",
+    "koreanName": "Gen.G Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=GEN",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "BeaN",
+      "Salute",
+      "diyy",
+      "seoul"
+    ]
+  },
+  {
+    "name": "GmI Esports",
+    "koreanName": "GmI Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=GmI",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "2935",
+      "GMI",
+      "rabbit"
+    ]
+  },
+  {
+    "name": "Hi Esports",
+    "koreanName": "Hi Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=Hi",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "QEQ2",
+      "korean",
+      "ming",
+      "tae"
+    ]
+  },
+  {
+    "name": "KBR Esports",
+    "koreanName": "KBR Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=KBR",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Cliche",
+      "HITMAN",
+      "Leaper",
+      "Sayd"
+    ]
+  },
+  {
+    "name": "KCR Esports",
+    "koreanName": "KCR Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=KCR",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "S4ngJae",
+      "Seokho",
+      "antjd"
+    ]
+  },
+  {
+    "name": "KX Esports",
+    "koreanName": "KX Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=KX",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "GuJiBBi",
+      "Kkxpeace",
+      "List",
+      "PokJu"
+    ]
+  },
+  {
+    "name": "KYA Esports",
+    "koreanName": "KYA Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=KYA",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Akashi",
+      "KXAKK",
+      "MasiDDA",
+      "RooKie"
+    ]
+  },
+  {
+    "name": "MAY Esports",
+    "koreanName": "MAY Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=MAY",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "218",
+      "LePol",
+      "MN3",
+      "Stealth"
+    ]
+  },
+  {
+    "name": "MHG Esports",
+    "koreanName": "MHG Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=MHG",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Agnes",
+      "CHANAHRI",
+      "DO",
+      "DaeJang",
+      "JEJE",
+      "Roger"
+    ]
+  },
+  {
+    "name": "NS Esports (농심 레드포스)",
+    "koreanName": "NS Esports (농심 레드포스)",
+    "logoUrl": "https://via.placeholder.com/100?text=NS",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "4mine",
+      "Curo",
+      "RicE",
+      "yoyangwon"
+    ]
+  },
+  {
+    "name": "OM Esports",
+    "koreanName": "OM Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=OM",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "DH",
+      "Pez",
+      "PrxY",
+      "xYou"
+    ]
+  },
+  {
+    "name": "PNKO Esports",
+    "koreanName": "PNKO Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=PNKO",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Entia",
+      "LongDuo",
+      "Oops",
+      "ShotDuo"
+    ]
+  },
+  {
+    "name": "Qx Esports",
+    "koreanName": "Qx Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=Qx",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Glance",
+      "Hyuk",
+      "LOV3",
+      "youth"
+    ]
+  },
+  {
+    "name": "SGA Esports",
+    "koreanName": "SGA Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=SGA",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Hane",
+      "Innate",
+      "Xantast",
+      "inforyou",
+      "innate"
+    ]
+  },
+  {
+    "name": "SGZ Esports",
+    "koreanName": "SGZ Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=SGZ",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "EsrA",
+      "JUNGI",
+      "LinZhaoMing",
+      "Yubi"
+    ]
+  },
+  {
+    "name": "SLT Esports",
+    "koreanName": "SLT Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=SLT",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Haru",
+      "IcARuS",
+      "JJuNye0ng",
+      "KoKo"
+    ]
+  },
+  {
+    "name": "T1",
+    "koreanName": "T1",
+    "logoUrl": "https://via.placeholder.com/100?text=T1",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "EEND",
+      "Heather",
+      "Rain1ng",
+      "Type"
+    ]
+  },
+  {
+    "name": "TAG Esports",
+    "koreanName": "TAG Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=TAG",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Devil",
+      "MaengGu",
+      "caidekoujio",
+      "flash",
+      "snowfake",
+      "spirit"
+    ]
+  },
+  {
+    "name": "XF Esports",
+    "koreanName": "XF Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=XF",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "570yT",
+      "Arte",
+      "ChoiHyunseo",
+      "One1Tap",
+      "Sunday"
+    ]
+  },
+  {
+    "name": "XGZ Esports",
+    "koreanName": "XGZ Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=XGZ",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Eight",
+      "PURGE",
+      "Select",
+      "TIGHT",
+      "eight"
+    ]
+  },
+  {
+    "name": "YCZ Esports",
+    "koreanName": "YCZ Esports",
+    "logoUrl": "https://via.placeholder.com/100?text=YCZ",
+    "region": "KR",
+    "league": "PWS",
+    "players": [
+      "Ohnyeory",
+      "bulguk4_4",
+      "hyewon_n",
+      "naning_g"
+    ]
+  }
+]

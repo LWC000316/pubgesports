@@ -1,0 +1,35 @@
+{
+  "routes": [],
+  "korean_samples": [],
+  "color_variables": [
+    "--lightningcss-light: ;",
+    "--lightningcss-dark:initial;",
+    "--lightningcss-light: ;",
+    "--lightningcss-dark:initial;",
+    "--bg:#0a0c10;",
+    "--panel:#13161c;",
+    "--panel2:#1a1e26;",
+    "--panel3:#1a1e26;",
+    "--border:#232a35;",
+    "--border2:#2c3442;",
+    "--divider:#181b22;",
+    "--text:#e5e7eb;",
+    "--muted:#9ca3af;",
+    "--dim:#8a94a4;",
+    "--faint:#7e8898;",
+    "--accent:#06e5d5;",
+    "--accent-bg:#0e2e2b;",
+    "--accent-on:#06e5d5;",
+    "--danger:#ef4444;",
+    "--ok:#34d399;",
+    "--warn:#fbbf24;",
+    "--dim:hover,.map-rail--dim:focus-within{opacity:1}.map-rail--dim.map-rail--l:hover,.map-rail--dim.map-rail--l:focus-within,.map-rail--dim.map-rail--r:hover,.map-rail--dim.map-rail--r:focus-within{transform:translateY(-50%)translate(0)}@media (prefers-reduced-motion:reduce){.map-rail{transition:opacity .18s}.map-rail--dim.map-rail--l,.map-rail--dim.map-rail--r{transform:translateY(-50%)}}@keyframes psp-slide{0%{opacity:0;"
+  ],
+  "fonts": [
+    "font-family:Archivo,Pretendard,-apple-system,system-ui,Segoe UI,Apple SD Gothic Neo,Malgun Gothic,sans-serif;",
+    "font-family:Archivo;",
+    "font-family:Pretendard;",
+    "font-family:inherit}body{background:var(--bg);",
+    "font-family:Archivo Expanded;"
+  ]
+}

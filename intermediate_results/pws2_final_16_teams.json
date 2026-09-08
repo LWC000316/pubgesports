@@ -1,0 +1,162 @@
+[
+  {
+    "tag": "DNF",
+    "rank": 1,
+    "players": [
+      "DNF_DIEL",
+      "DNF_Gyumin",
+      "DNF_Heaven",
+      "DNF_Salute"
+    ]
+  },
+  {
+    "tag": "DN",
+    "rank": 2,
+    "players": [
+      "DN_Barpo",
+      "DN_Daeyeon",
+      "DN_Hela",
+      "DN_wonderful"
+    ]
+  },
+  {
+    "tag": "GP",
+    "rank": 3,
+    "players": [
+      "GP_Fairy",
+      "GP_GimJun",
+      "GP_PolarBear",
+      "GP_Woong"
+    ]
+  },
+  {
+    "tag": "FN",
+    "rank": 4,
+    "players": [
+      "FN_BreaKers",
+      "FN_Rex",
+      "FN_Starlord",
+      "FN_ZeniTh"
+    ]
+  },
+  {
+    "tag": "GEN",
+    "rank": 5,
+    "players": [
+      "GEN_BeaN",
+      "GEN_F1ame",
+      "GEN_Orca",
+      "GEN_Tosi"
+    ]
+  },
+  {
+    "tag": "EOS",
+    "rank": 6,
+    "players": [
+      "EOS_Arte",
+      "EOS_FoxVer",
+      "EOS_Hama",
+      "EOS_Hush"
+    ]
+  },
+  {
+    "tag": "PHE",
+    "rank": 7,
+    "players": [
+      "PHE_DAEVA",
+      "PHE_ROY",
+      "PHE_Silky",
+      "PHE_Stella"
+    ]
+  },
+  {
+    "tag": "GGP",
+    "rank": 8,
+    "players": [
+      "GGP_HyukSung",
+      "GGP_KK0BUK",
+      "GGP_Minuda",
+      "GGP_heyden"
+    ]
+  },
+  {
+    "tag": "SEN",
+    "rank": 9,
+    "players": [
+      "SEN_Hyein",
+      "SEN_Sunday",
+      "SEN_Xquad",
+      "SEN_vilo"
+    ]
+  },
+  {
+    "tag": "AZLA",
+    "rank": 10,
+    "players": [
+      "AZLA_Glaz",
+      "AZLA_HAMMER",
+      "AZLA_HowL",
+      "AZLA_redzone"
+    ]
+  },
+  {
+    "tag": "T1",
+    "rank": 11,
+    "players": [
+      "T1_EEND",
+      "T1_Heather",
+      "T1_Rain1ng",
+      "T1_Type"
+    ]
+  },
+  {
+    "tag": "BGP",
+    "rank": 12,
+    "players": [
+      "BGP_AKaN",
+      "BGP_Parkpro",
+      "BGP_Pio",
+      "BGP_Seongjang"
+    ]
+  },
+  {
+    "tag": "DK",
+    "rank": 13,
+    "players": [
+      "DK_JangGu",
+      "DK_WICKED",
+      "DK_kkachi",
+      "DK_seoul"
+    ]
+  },
+  {
+    "tag": "GNL",
+    "rank": 14,
+    "players": [
+      "GNL_Americano",
+      "GNL_Ayoh",
+      "GNL_Geunwon",
+      "GNL_Mandu"
+    ]
+  },
+  {
+    "tag": "SGA",
+    "rank": 15,
+    "players": [
+      "SGA_Hane",
+      "SGA_Heat",
+      "SGA_TaxDer",
+      "SGA_Zephyros"
+    ]
+  },
+  {
+    "tag": "KX",
+    "rank": 16,
+    "players": [
+      "KX_Chigi",
+      "KX_July20th",
+      "KX_SINGAM",
+      "KX_Yong"
+    ]
+  }
+]

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Shield, Trophy, RefreshCw, Flame, ShieldPlus } from 'lucide-react';
+import { Flame, Shield, Trophy, Zap } from 'lucide-react';
 
-export default function Header({ activeTab, setActiveTab, onOpenCrawler, onOpenAdmin }) {
-  const tabs = [
-    { id: 'teams', label: 'PUBG ESPORTS', icon: Shield, desc: '권역별 프로팀 & 선수 로스터' },
-    { id: 'tournaments', label: 'TOURNAMENTS', icon: Trophy, desc: '공식 세계 대회 및 권역 리그' }
+export default function Header({ activeTab, setActiveTab }) {
+  const navTabs = [
+    { id: 'pe', label: 'PE', icon: Shield },
+    { id: 'tournaments', label: '대회', icon: Trophy },
+    { id: 'hit_ending', label: '히트엔딩', icon: Zap }
   ];
 
   return (
@@ -20,7 +21,7 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler, onOpenA
       zIndex: 100
     }}>
       {/* Brand Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer' }} onClick={() => setActiveTab('teams')}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer' }} onClick={() => setActiveTab('pe')}>
         <div style={{
           width: '42px',
           height: '42px',
@@ -35,19 +36,18 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler, onOpenA
         </div>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#fff', letterSpacing: '1px' }}>PUBG PRO</span>
-            <span style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--accent-gold)' }}>VAULT</span>
-            <span className="badge badge-gold">Official API</span>
+            <span style={{ fontSize: '1.35rem', fontWeight: '900', color: '#fff', letterSpacing: '1px' }}>PUBG</span>
+            <span style={{ fontSize: '1.35rem', fontWeight: '900', color: 'var(--accent-gold)' }}>ESPORTS</span>
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0, fontWeight: '500' }}>
-            Official Tournaments, Regional Rosters & 15-Step Sensitivity System
+            Pro Analytics & Match Ending Archive
           </p>
         </div>
       </div>
 
-      {/* Navigation Tabs */}
+      {/* 3대 네비게이션 탭: PE, 대회, 히트엔딩 */}
       <nav style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        {tabs.map((tab) => {
+        {navTabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
           return (
@@ -58,16 +58,15 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler, onOpenA
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '10px 20px',
+                padding: '10px 24px',
                 borderRadius: 'var(--radius-sm)',
-                background: isActive ? 'rgba(243, 166, 31, 0.18)' : 'transparent',
+                background: isActive ? 'rgba(243, 166, 31, 0.16)' : 'transparent',
                 border: isActive ? '1px solid var(--border-active)' : '1px solid transparent',
                 color: isActive ? 'var(--accent-gold)' : 'var(--text-muted)',
                 fontWeight: '800',
-                fontFamily: 'var(--font-display)',
                 fontSize: '0.95rem',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.2s ease'
               }}
             >
               <Icon size={18} color={isActive ? 'var(--accent-gold)' : 'var(--text-muted)'} />
@@ -76,29 +75,6 @@ export default function Header({ activeTab, setActiveTab, onOpenCrawler, onOpenA
           );
         })}
       </nav>
-
-      {/* Action Buttons (Admin & Sync) */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <button
-          onClick={onOpenAdmin}
-          className="btn-primary"
-          style={{ fontSize: '0.8rem', padding: '7px 12px' }}
-          title="관리자: 팀/선수 데이터 등록 및 편집"
-        >
-          <ShieldPlus size={15} />
-          <span>ADMIN MANAGE</span>
-        </button>
-
-        <button
-          onClick={onOpenCrawler}
-          className="btn-secondary"
-          style={{ fontSize: '0.8rem', padding: '7px 12px' }}
-          title="공식 데이터 동기화 패널"
-        >
-          <RefreshCw size={14} color="var(--accent-cyan)" />
-          <span>API SYNC</span>
-        </button>
-      </div>
     </header>
   );
 }

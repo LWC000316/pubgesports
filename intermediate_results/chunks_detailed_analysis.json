@@ -1,0 +1,89 @@
+{
+  "Admin-BgtPz-YP.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": [
+      "http://localhost",
+      "https://cdn.jsdelivr.net/npm/tesseract.js",
+      "https://opencollective.com/tesseractjs"
+    ]
+  },
+  "combinedStats-1M8MZyeu.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "CombinedStats-DF1UioeV.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "index-BVrWBIgE.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "LegalPage-DM_JcizW.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "loadMatchStats-DMWuc7Rg.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "loadPlayerRegistry-DAwZTWap.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "PlayerCareerSummary-sO7uAcL_.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "renderer-DmOTzQ0E.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "RoadToPgc-CRie8XPa.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "Simulator-CxC2cpDQ.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": []
+  },
+  "supabaseClient-BuEEPi6L.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": [
+      "https://sqsouczuiycvtjnfztqs.supabase.co",
+      "http://localhost"
+    ]
+  },
+  "theme-CGumIbvH.js": {
+    "tables": [],
+    "selects": [],
+    "rpcs": [],
+    "urls": [
+      "https://rolldown.rs/in-depth/bundling-cjs#require-external-modules"
+    ]
+  }
+}

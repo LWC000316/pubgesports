@@ -1,0 +1,43 @@
+{
+  "index-BVrWBIgE.js": {
+    "size": 635183,
+    "keys": [],
+    "apis": [
+      "https://react.dev",
+      "https://vercel.com",
+      "https://va.vercel-scripts.com",
+      "https://twitter.com"
+    ],
+    "from_tables": [],
+    "rpc_calls": [],
+    "routes": [],
+    "pubg_api": [],
+    "twire_api": []
+  },
+  "supabaseClient-BuEEPi6L.js": {
+    "size": 207345,
+    "keys": [],
+    "apis": [
+      "http://localhost",
+      "https://github.com",
+      "https://sqsouczuiycvtjnfztqs.supabase.co"
+    ],
+    "from_tables": [],
+    "rpc_calls": [],
+    "routes": [],
+    "pubg_api": [],
+    "twire_api": []
+  },
+  "theme-CGumIbvH.js": {
+    "size": 9437,
+    "keys": [],
+    "apis": [
+      "https://rolldown.rs"
+    ],
+    "from_tables": [],
+    "rpc_calls": [],
+    "routes": [],
+    "pubg_api": [],
+    "twire_api": []
+  }
+}
