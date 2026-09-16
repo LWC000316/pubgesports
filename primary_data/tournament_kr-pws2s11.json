@@ -1,0 +1,73 @@
+{
+  "data": {
+    "type": "tournament",
+    "id": "kr-pws2s11",
+    "relationships": {
+      "matches": {
+        "data": [
+          {
+            "type": "match",
+            "id": "3a45e416-9f7e-4130-9549-aa8476781a45"
+          },
+          {
+            "type": "match",
+            "id": "e77eacd4-aa4b-49b6-be50-8cde7f5892ad"
+          },
+          {
+            "type": "match",
+            "id": "0a587e81-3669-4e74-853e-d75478ade8c7"
+          },
+          {
+            "type": "match",
+            "id": "90cfb033-db3a-4d5f-a992-a4e74b16ad58"
+          },
+          {
+            "type": "match",
+            "id": "fdfb903c-0c51-46c9-b5f0-32b1ebd9060f"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "type": "match",
+      "id": "0a587e81-3669-4e74-853e-d75478ade8c7",
+      "attributes": {
+        "createdAt": "2026-09-09T11:07:03Z"
+      }
+    },
+    {
+      "type": "match",
+      "id": "90cfb033-db3a-4d5f-a992-a4e74b16ad58",
+      "attributes": {
+        "createdAt": "2026-09-09T10:23:19Z"
+      }
+    },
+    {
+      "type": "match",
+      "id": "fdfb903c-0c51-46c9-b5f0-32b1ebd9060f",
+      "attributes": {
+        "createdAt": "2026-09-09T09:50:08Z"
+      }
+    },
+    {
+      "type": "match",
+      "id": "3a45e416-9f7e-4130-9549-aa8476781a45",
+      "attributes": {
+        "createdAt": "2026-09-09T12:21:30Z"
+      }
+    },
+    {
+      "type": "match",
+      "id": "e77eacd4-aa4b-49b6-be50-8cde7f5892ad",
+      "attributes": {
+        "createdAt": "2026-09-09T11:41:35Z"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.pubg.com/tournaments/kr-pws2s11"
+  },
+  "meta": {}
+}

@@ -33,6 +33,6 @@ public class PlayerHighlight {
         this.player = player;
         this.title = title;
         this.videoUrl = videoUrl;
-        this.tournament = tournament;
+        this.tournament = tournament;  
     }
 }

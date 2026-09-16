@@ -1,0 +1,242 @@
+[
+  {
+    "teamTag": "GK",
+    "totalPoints": 70,
+    "killPoints": 37,
+    "rankPoints": 33,
+    "chickens": 3,
+    "damage": 5811.3,
+    "players": [
+      "GK_AKaN",
+      "GK_EJ",
+      "GK_Parkpro",
+      "GK_Seongjang"
+    ],
+    "rank": 1
+  },
+  {
+    "teamTag": "DNS",
+    "totalPoints": 60,
+    "killPoints": 43,
+    "rankPoints": 17,
+    "chickens": 0,
+    "damage": 6209.9,
+    "players": [
+      "DNS_DIEL",
+      "DNS_Gyumin",
+      "DNS_Heaven",
+      "DNS_Rex"
+    ],
+    "rank": 2
+  },
+  {
+    "teamTag": "AZLA",
+    "totalPoints": 49,
+    "killPoints": 28,
+    "rankPoints": 21,
+    "chickens": 0,
+    "damage": 5531.1,
+    "players": [
+      "AZLA_F1ame",
+      "AZLA_HAMMER",
+      "AZLA_Orca",
+      "AZLA_redzone"
+    ],
+    "rank": 3
+  },
+  {
+    "teamTag": "EOS",
+    "totalPoints": 37,
+    "killPoints": 24,
+    "rankPoints": 13,
+    "chickens": 1,
+    "damage": 3131.2,
+    "players": [
+      "EOS_DK",
+      "EOS_Jaechan",
+      "EOS_Right",
+      "EOS_SINGAM"
+    ],
+    "rank": 4
+  },
+  {
+    "teamTag": "DN",
+    "totalPoints": 34,
+    "killPoints": 24,
+    "rankPoints": 10,
+    "chickens": 1,
+    "damage": 3288.3,
+    "players": [
+      "DN_Barpo",
+      "DN_Stella",
+      "DN_Tosi",
+      "DN_wonderful"
+    ],
+    "rank": 5
+  },
+  {
+    "teamTag": "SL",
+    "totalPoints": 34,
+    "killPoints": 22,
+    "rankPoints": 12,
+    "chickens": 0,
+    "damage": 3747.5,
+    "players": [
+      "SL_Freaky",
+      "SL_Morek",
+      "SL_muel",
+      "SL_vilo"
+    ],
+    "rank": 6
+  },
+  {
+    "teamTag": "TCN",
+    "totalPoints": 31,
+    "killPoints": 23,
+    "rankPoints": 8,
+    "chickens": 0,
+    "damage": 4179.5,
+    "players": [
+      "TCN_2cut",
+      "TCN_2heart",
+      "TCN_CxldMxn",
+      "TCN_HanINu"
+    ],
+    "rank": 7
+  },
+  {
+    "teamTag": "GGWP",
+    "totalPoints": 23,
+    "killPoints": 15,
+    "rankPoints": 8,
+    "chickens": 0,
+    "damage": 2487.5,
+    "players": [
+      "GGWP_Geunwon",
+      "GGWP_Wanted",
+      "GGWP_naheesoo",
+      "GGWP_sony"
+    ],
+    "rank": 8
+  },
+  {
+    "teamTag": "SXA",
+    "totalPoints": 21,
+    "killPoints": 13,
+    "rankPoints": 8,
+    "chickens": 0,
+    "damage": 2794.5,
+    "players": [
+      "SXA_BBANG",
+      "SXA_HELLPER",
+      "SXA_KAL",
+      "SXA_Sunday"
+    ],
+    "rank": 9
+  },
+  {
+    "teamTag": "VEX",
+    "totalPoints": 20,
+    "killPoints": 13,
+    "rankPoints": 7,
+    "chickens": 0,
+    "damage": 2607.3,
+    "players": [
+      "VEX_Lure",
+      "VEX_Nyeong",
+      "VEX_ROY",
+      "VEX_Solution"
+    ],
+    "rank": 10
+  },
+  {
+    "teamTag": "C5",
+    "totalPoints": 19,
+    "killPoints": 10,
+    "rankPoints": 9,
+    "chickens": 0,
+    "damage": 2295.4,
+    "players": [
+      "C5_Archi",
+      "C5_Gray",
+      "C5_Krbyz",
+      "C5_Malik"
+    ],
+    "rank": 11
+  },
+  {
+    "teamTag": "ISK",
+    "totalPoints": 16,
+    "killPoints": 12,
+    "rankPoints": 4,
+    "chickens": 0,
+    "damage": 2723.2,
+    "players": [
+      "ISK_Genom",
+      "ISK_ParkChaN",
+      "ISK_Primmie",
+      "ISK_Yong"
+    ],
+    "rank": 12
+  },
+  {
+    "teamTag": "CR",
+    "totalPoints": 13,
+    "killPoints": 11,
+    "rankPoints": 2,
+    "chickens": 0,
+    "damage": 2263.7,
+    "players": [
+      "CR_Ayoh",
+      "CR_GGoBuGi",
+      "CR_Glaz",
+      "CR_Gyuyeon"
+    ],
+    "rank": 13
+  },
+  {
+    "teamTag": "SPF",
+    "totalPoints": 13,
+    "killPoints": 10,
+    "rankPoints": 3,
+    "chickens": 0,
+    "damage": 1844.1,
+    "players": [
+      "SPF_Acid",
+      "SPF_Karwn",
+      "SPF_TheMinos",
+      "SPF_Todol"
+    ],
+    "rank": 14
+  },
+  {
+    "teamTag": "FN",
+    "totalPoints": 12,
+    "killPoints": 8,
+    "rankPoints": 4,
+    "chickens": 0,
+    "damage": 1426.6,
+    "players": [
+      "FN_BreaKers",
+      "FN_Hush",
+      "FN_Starlord",
+      "FN_kkachi"
+    ],
+    "rank": 15
+  },
+  {
+    "teamTag": "SEN",
+    "totalPoints": 6,
+    "killPoints": 5,
+    "rankPoints": 1,
+    "chickens": 0,
+    "damage": 1935.6,
+    "players": [
+      "SEN_HyukSung",
+      "SEN_Rascal",
+      "SEN_VenTus",
+      "SEN_heyden"
+    ],
+    "rank": 16
+  }
+]

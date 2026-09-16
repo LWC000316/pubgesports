@@ -1,0 +1,98 @@
+{
+  "GGWP": [
+    "GGWP_Geunwon",
+    "GGWP_Wanted",
+    "GGWP_naheesoo",
+    "GGWP_sony"
+  ],
+  "TCN": [
+    "TCN_2cut",
+    "TCN_2heart",
+    "TCN_CxldMxn",
+    "TCN_HanINu"
+  ],
+  "DN": [
+    "DN_Barpo",
+    "DN_Stella",
+    "DN_Tosi",
+    "DN_wonderful"
+  ],
+  "AZLA": [
+    "AZLA_F1ame",
+    "AZLA_HAMMER",
+    "AZLA_Orca",
+    "AZLA_redzone"
+  ],
+  "ISK": [
+    "ISK_Genom",
+    "ISK_ParkChaN",
+    "ISK_Primmie",
+    "ISK_Yong"
+  ],
+  "C5": [
+    "C5_Archi",
+    "C5_Gray",
+    "C5_Krbyz",
+    "C5_Malik"
+  ],
+  "EOS": [
+    "EOS_DK",
+    "EOS_Jaechan",
+    "EOS_Right",
+    "EOS_SINGAM"
+  ],
+  "VEX": [
+    "VEX_Lure",
+    "VEX_Nyeong",
+    "VEX_ROY",
+    "VEX_Solution"
+  ],
+  "DNS": [
+    "DNS_DIEL",
+    "DNS_Gyumin",
+    "DNS_Heaven",
+    "DNS_Rex"
+  ],
+  "GK": [
+    "GK_AKaN",
+    "GK_EJ",
+    "GK_Parkpro",
+    "GK_Seongjang"
+  ],
+  "FN": [
+    "FN_BreaKers",
+    "FN_Hush",
+    "FN_Starlord",
+    "FN_kkachi"
+  ],
+  "SXA": [
+    "SXA_BBANG",
+    "SXA_HELLPER",
+    "SXA_KAL",
+    "SXA_Sunday"
+  ],
+  "SEN": [
+    "SEN_HyukSung",
+    "SEN_Rascal",
+    "SEN_VenTus",
+    "SEN_heyden"
+  ],
+  "CR": [
+    "CR_Ayoh",
+    "CR_GGoBuGi",
+    "CR_Glaz",
+    "CR_Gyuyeon"
+  ],
+  "SPF": [
+    "SPF_Acid",
+    "SPF_Karwn",
+    "SPF_TheMinos",
+    "SPF_Todol"
+  ],
+  "SL": [
+    "SL_Freaky",
+    "SL_Morek",
+    "SL_muel",
+    "SL_vilo"
+  ]
+}

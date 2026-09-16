@@ -1,0 +1,1050 @@
+[
+  {
+    "id": "dns",
+    "name": "SOOPers",
+    "koreanName": "디엔 숲퍼스",
+    "tag": "DNS",
+    "league": "PWS",
+    "rank": 1,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (디엔 숲퍼스)",
+    "roster": [
+      {
+        "nickname": "DIEL",
+        "realName": "DIEL",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gyumin",
+        "realName": "Gyumin",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Heaven",
+        "realName": "Heaven",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Rex",
+        "realName": "Rex",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "geng",
+    "name": "Gen.G Esports",
+    "koreanName": "젠지 이스포츠",
+    "tag": "GEN",
+    "league": "PWS",
+    "rank": 2,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (젠지 이스포츠)",
+    "roster": [
+      {
+        "nickname": "BeaN",
+        "realName": "BeaN",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "taemin",
+        "realName": "taemin",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Salute",
+        "realName": "Salute",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "seoul",
+        "realName": "seoul",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "t1",
+    "name": "T1",
+    "koreanName": "티원",
+    "tag": "T1",
+    "league": "PWS",
+    "rank": 3,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (티원)",
+    "roster": [
+      {
+        "nickname": "EEND",
+        "realName": "EEND",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Heather",
+        "realName": "Heather",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Rain1ng",
+        "realName": "Rain1ng",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Type",
+        "realName": "Type",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "bgp",
+    "name": "Baegopa",
+    "koreanName": "배고파",
+    "tag": "BGP",
+    "league": "PWS",
+    "rank": 4,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (배고파)",
+    "roster": [
+      {
+        "nickname": "Pio",
+        "realName": "Pio",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Inonix",
+        "realName": "Inonix",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "blackwalk",
+        "realName": "blackwalk",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "yugee",
+        "realName": "yugee",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "fn",
+    "name": "FN Esports",
+    "koreanName": "에프엔 이스포츠 (포천)",
+    "tag": "FN",
+    "league": "PWS",
+    "rank": 5,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (에프엔 이스포츠 (포천))",
+    "roster": [
+      {
+        "nickname": "BreaKers",
+        "realName": "BreaKers",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Hush",
+        "realName": "Hush",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "kkachi",
+        "realName": "kkachi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Starlord",
+        "realName": "Starlord",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "azla",
+    "name": "AZLA PENTAGRAM",
+    "koreanName": "아즐라 펜타그램",
+    "tag": "AZLA",
+    "league": "PWS",
+    "rank": 6,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (아즐라 펜타그램)",
+    "roster": [
+      {
+        "nickname": "F1ame",
+        "realName": "F1ame",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HAMMER",
+        "realName": "HAMMER",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Orca",
+        "realName": "Orca",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "redzone",
+        "realName": "redzone",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "dn",
+    "name": "Divine",
+    "koreanName": "디바인",
+    "tag": "DN",
+    "league": "PWS",
+    "rank": 7,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (디바인)",
+    "roster": [
+      {
+        "nickname": "Barpo",
+        "realName": "Barpo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Stella",
+        "realName": "Stella",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Tosi",
+        "realName": "Tosi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Daejang",
+        "realName": "Daejang",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "wonderful",
+        "realName": "wonderful",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "phe",
+    "name": "PHANTOM HEARTS",
+    "koreanName": "팬텀 하츠 이스포츠",
+    "tag": "PHE",
+    "league": "PWS",
+    "rank": 8,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (팬텀 하츠 이스포츠)",
+    "roster": [
+      {
+        "nickname": "DAEVA",
+        "realName": "DAEVA",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "King",
+        "realName": "King",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "GimJun",
+        "realName": "GimJun",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ZeniTh",
+        "realName": "ZeniTh",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "dgp",
+    "name": "GAMEPT",
+    "koreanName": "대전 게임피티",
+    "tag": "DGP",
+    "league": "PWS",
+    "rank": 9,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (대전 게임피티)",
+    "roster": [
+      {
+        "nickname": "fizzy",
+        "realName": "fizzy",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "instinct",
+        "realName": "instinct",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "PolarBear",
+        "realName": "PolarBear",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Search",
+        "realName": "Search",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "sen",
+    "name": "SENTINEL",
+    "koreanName": "센티넬",
+    "tag": "SEN",
+    "league": "PWS",
+    "rank": 10,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (센티넬)",
+    "roster": [
+      {
+        "nickname": "Rascal",
+        "realName": "Rascal",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "heyden",
+        "realName": "heyden",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HyukSung",
+        "realName": "HyukSung",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "VenTus",
+        "realName": "VenTus",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "spf",
+    "name": "SUPERFECT",
+    "koreanName": "슈퍼펙트",
+    "tag": "SPF",
+    "league": "PWS",
+    "rank": 11,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (슈퍼펙트)",
+    "roster": [
+      {
+        "nickname": "Acid",
+        "realName": "Acid",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "TheMinos",
+        "realName": "TheMinos",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Karwn",
+        "realName": "Karwn",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Todol",
+        "realName": "Todol",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "vex",
+    "name": "Vex E-Sports",
+    "koreanName": "벡스 이스포츠",
+    "tag": "VEX",
+    "league": "PWS",
+    "rank": 12,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (벡스 이스포츠)",
+    "roster": [
+      {
+        "nickname": "Forward",
+        "realName": "Forward",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Solution",
+        "realName": "Solution",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Lure",
+        "realName": "Lure",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Nyeong",
+        "realName": "Nyeong",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ROY",
+        "realName": "ROY",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "gk",
+    "name": "Geekay Esports",
+    "koreanName": "긱에이 이스포츠",
+    "tag": "GK",
+    "league": "PWS",
+    "rank": 13,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (긱에이 이스포츠)",
+    "roster": [
+      {
+        "nickname": "Parkpro",
+        "realName": "Parkpro",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "EJ",
+        "realName": "EJ",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Seongjang",
+        "realName": "Seongjang",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "AKaN",
+        "realName": "AKaN",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "eos",
+    "name": "Eagle Owls",
+    "koreanName": "이글 아울스",
+    "tag": "EOS",
+    "league": "PWS",
+    "rank": 14,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (이글 아울스)",
+    "roster": [
+      {
+        "nickname": "DK",
+        "realName": "DK",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "SINGAM",
+        "realName": "SINGAM",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Right",
+        "realName": "Right",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Jaechan",
+        "realName": "Jaechan",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "sxa",
+    "name": "SQUAD X ACADEMY",
+    "koreanName": "스쿼드 엑스 아카데미",
+    "tag": "SXA",
+    "league": "PWS",
+    "rank": 15,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (스쿼드 엑스 아카데미)",
+    "roster": [
+      {
+        "nickname": "KAL",
+        "realName": "KAL",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "BBANG",
+        "realName": "BBANG",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HELLPER",
+        "realName": "HELLPER",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Sunday",
+        "realName": "Sunday",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "cr",
+    "name": "Crazy Raccoon",
+    "koreanName": "크레이지 라쿤",
+    "tag": "CR",
+    "league": "PWS",
+    "rank": 16,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (크레이지 라쿤)",
+    "roster": [
+      {
+        "nickname": "Ayoh",
+        "realName": "Ayoh",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "GGoBuGi",
+        "realName": "GGoBuGi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Glaz",
+        "realName": "Glaz",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gyuyeon",
+        "realName": "Gyuyeon",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "sl",
+    "name": "SLASH DOOM LAB",
+    "koreanName": "슬래시 둠 랩",
+    "tag": "SL",
+    "league": "PWS",
+    "rank": 17,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (슬래시 둠 랩)",
+    "roster": [
+      {
+        "nickname": "Morek",
+        "realName": "Morek",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Freaky",
+        "realName": "Freaky",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "vilo",
+        "realName": "vilo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "muel",
+        "realName": "muel",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "isk",
+    "name": "ISKRA",
+    "koreanName": "이스크라",
+    "tag": "ISK",
+    "league": "PWS",
+    "rank": 18,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (이스크라)",
+    "roster": [
+      {
+        "nickname": "ParkChaN",
+        "realName": "ParkChaN",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Genom",
+        "realName": "Genom",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Yong",
+        "realName": "Yong",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Primmie",
+        "realName": "Primmie",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "tcn",
+    "name": "The Crown",
+    "koreanName": "더 크라운",
+    "tag": "TCN",
+    "league": "PWS",
+    "rank": 19,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (더 크라운)",
+    "roster": [
+      {
+        "nickname": "2cut",
+        "realName": "2cut",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "2heart",
+        "realName": "2heart",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "CxldMxn",
+        "realName": "CxldMxn",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HanlNu",
+        "realName": "HanlNu",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "sgz",
+    "name": "samgukzee",
+    "koreanName": "삼국지",
+    "tag": "SGZ",
+    "league": "PWS",
+    "rank": 20,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (삼국지)",
+    "roster": [
+      {
+        "nickname": "GuanYu",
+        "realName": "GuanYu",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ZhaoYun",
+        "realName": "ZhaoYun",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Yubi",
+        "realName": "Yubi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "YeoPo",
+        "realName": "YeoPo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "hsd",
+    "name": "HESEDIAN",
+    "koreanName": "헤세디안 (구 Qx)",
+    "tag": "HSD",
+    "league": "PWS",
+    "rank": 21,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (헤세디안 (구 Qx))",
+    "roster": [
+      {
+        "nickname": "LOV3",
+        "realName": "LOV3",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Glance",
+        "realName": "Glance",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Hyuk",
+        "realName": "Hyuk",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "youth",
+        "realName": "youth",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "c5",
+    "name": "CFiVE",
+    "koreanName": "씨파이브",
+    "tag": "C5",
+    "league": "PWS",
+    "rank": 22,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (씨파이브)",
+    "roster": [
+      {
+        "nickname": "Archi",
+        "realName": "Archi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Malik",
+        "realName": "Malik",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gray",
+        "realName": "Gray",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Krbyz",
+        "realName": "Krbyz",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "ggwp",
+    "name": "GGWP",
+    "koreanName": "지지더블유피",
+    "tag": "GGWP",
+    "league": "PWS",
+    "rank": 23,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (지지더블유피)",
+    "roster": [
+      {
+        "nickname": "sony",
+        "realName": "sony",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Geunwon",
+        "realName": "Geunwon",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "naheesoo",
+        "realName": "naheesoo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Wanted",
+        "realName": "Wanted",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "om",
+    "name": "Overwhelm",
+    "koreanName": "오버웸 (구 아레떼)",
+    "tag": "OM",
+    "league": "PWS",
+    "rank": 24,
+    "description": "2026 PWS Phase 2 리퀴피디아 공식 검증 참가팀 (오버웸 (구 아레떼))",
+    "roster": [
+      {
+        "nickname": "Woong",
+        "realName": "Woong",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "night",
+        "realName": "night",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Fairy",
+        "realName": "Fairy",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "FoxVer",
+        "realName": "FoxVer",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  }
+]

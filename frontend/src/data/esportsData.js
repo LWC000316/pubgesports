@@ -1,130 +1,1107 @@
-// 공식 e스포츠 웹사이트(pubgesports.com) 기준 최신 검증 마스터 데이터셋
+// 2026 PUBG WEEKLY SERIES: KOREA Phase 2 공식 검증 마스터 데이터셋 (리퀴피디아 팀 업적 전수 일치)
 
-// 2024 PWS 공식 최신 참가 프로팀 및 정확한 이적 반영 실전 로스터
+export const TOURNAMENT_LOGOS = {
+  PWS: "/logos/tournaments/pws.png",
+  PCL: "/logos/tournaments/pcl.png",
+  EMEA: "/logos/tournaments/emea.png",
+  AMER: "/logos/tournaments/amer.png",
+  APAC: "/logos/tournaments/apac.png"
+};
+
 export const LATEST_PWS2_TEAMS = [
   {
-    id: 'geng',
-    name: 'Gen.G Esports',
-    koreanName: '젠지 이스포츠',
-    tag: 'GEN',
-    league: 'PWS',
-    rank: 1,
-    description: 'seoul과 Salute, BeaN이 뭉친 대한민국 최정상 슈퍼 로스터 구단',
-    roster: [
-      { nickname: 'seoul', realName: '조기열', role: 'Main Fragger', dpi: 800, sens: 32, mouse: 'Logitech G PRO X Superlight' },
-      { nickname: 'Salute', realName: '우제현', role: 'Ace Attacker', dpi: 800, sens: 28, mouse: 'Logitech G PRO X Superlight 2' },
-      { nickname: 'BeaN', realName: '오원빈', role: 'All-rounder', dpi: 800, sens: 30, mouse: 'Vaxee XE Wireless' },
-      { nickname: 'diyy', realName: '김진수', role: 'Support', dpi: 800, sens: 34, mouse: 'Razer Viper V3 Pro' }
+    "id": "dn_soopers",
+    "name": "DN SOOPers",
+    "tag": "DNS",
+    "seedType": "pro",
+    "logo": "/logos/teams/dns.png",
+    "trophies": [
+      {
+        "name": "PWS",
+        "count": 3
+      },
+      {
+        "name": "PPM",
+        "count": 1
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Rex",
+        "realName": "Rex",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gyumin",
+        "realName": "Gyumin",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Heaven",
+        "realName": "Heaven",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "DIEL",
+        "realName": "DIEL",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 'dnw',
-    name: 'DN SOOPers (Danawa)',
-    koreanName: '다나와 (디엔 숲퍼스)',
-    tag: 'DNW',
-    league: 'PWS',
-    rank: 2,
-    description: 'Heaven과 Gyumin, DIEL, REX가 이끄는 대한민국 명문 프로팀',
-    roster: [
-      { nickname: 'Heaven', realName: '김태성', role: 'Main Fragger', dpi: 800, sens: 30, mouse: 'Zowie EC2-CW' },
-      { nickname: 'Gyumin', realName: '심규민', role: 'In-Game Leader', dpi: 800, sens: 32, mouse: 'Logitech G PRO X Superlight' },
-      { nickname: 'DIEL', realName: '김진현', role: 'Attacker', dpi: 800, sens: 34, mouse: 'Razer DeathAdder V3 Pro' },
-      { nickname: 'REX', realName: '김해찬', role: 'Support', dpi: 800, sens: 29, mouse: 'Zowie S2-C' }
+    "id": "geng_esports",
+    "name": "Gen.G Esports",
+    "tag": "GEN",
+    "seedType": "pro",
+    "logo": "/logos/teams/geng.png",
+    "trophies": [
+      {
+        "name": "PGC",
+        "count": 1
+      },
+      {
+        "name": "PGS",
+        "count": 1
+      },
+      {
+        "name": "PGI",
+        "count": 1
+      },
+      {
+        "name": "PKL",
+        "count": 2
+      },
+      {
+        "name": "BSC",
+        "count": 1
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "seoul",
+        "realName": "seoul",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Salute",
+        "realName": "Salute",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "taemin",
+        "realName": "taemin",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "BeaN",
+        "realName": "BeaN",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 'cr',
-    name: 'Crazy Raccoon',
-    koreanName: '크레이지 라쿤',
-    tag: 'CR',
-    league: 'PWS',
-    rank: 3,
-    description: '전설적인 레전드 Pio와 Inonix가 이끄는 강력한 베테랑 연합팀',
-    roster: [
-      { nickname: 'Pio', realName: '차승훈', role: 'Legendary IGL', dpi: 400, sens: 52, mouse: 'Logitech G PRO X Superlight' },
-      { nickname: 'Inonix', realName: '나희주', role: 'Main Fragger', dpi: 400, sens: 48, mouse: 'Razer DeathAdder V3 Pro' },
-      { nickname: 'Glaz', realName: '윤성민', role: 'Attacker', dpi: 800, sens: 30, mouse: 'Logitech G PRO X Superlight' },
-      { nickname: 'Gyuyeon', realName: '최규연', role: 'Support', dpi: 800, sens: 33, mouse: 'Zowie EC1-C' }
+    "id": "t1",
+    "name": "T1",
+    "tag": "T1",
+    "seedType": "pro",
+    "logo": "/logos/teams/t1.png",
+    "trophies": [
+      {
+        "name": "BSC",
+        "count": 1
+      },
+      {
+        "name": "PCS",
+        "count": 1
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Rain1ng",
+        "realName": "Rain1ng",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "EEND",
+        "realName": "EEND",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Heather",
+        "realName": "Heather",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Type",
+        "realName": "Type",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 't1',
-    name: 'T1',
-    koreanName: '티원',
-    tag: 'T1',
-    league: 'PWS',
-    rank: 4,
-    description: 'Rain1ng 주장 중심의 견고한 팀워크를 갖춘 전통의 명문 T1',
-    roster: [
-      { nickname: 'Rain1ng', realName: '김종명', role: 'Captain / Fragger', dpi: 800, sens: 31, mouse: 'Logitech G PRO X Superlight 2' },
-      { nickname: 'EEND', realName: '노태영', role: 'Support', dpi: 800, sens: 28, mouse: 'Zowie EC2-CW' },
-      { nickname: 'Heather', realName: '차지훈', role: 'Scout', dpi: 400, sens: 50, mouse: 'Vaxee NP-01S' },
-      { nickname: 'Type', realName: '이도경', role: 'Attacker', dpi: 800, sens: 33, mouse: 'Razer Viper V2 Pro' }
+    "id": "baegopa",
+    "name": "Baegopa",
+    "tag": "BGP",
+    "seedType": "pro",
+    "logo": "/logos/teams/bgp.png",
+    "trophies": [
+      {
+        "name": "APL",
+        "count": 1
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Pio",
+        "realName": "Pio",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Inonix",
+        "realName": "Inonix",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "blackwalk",
+        "realName": "blackwalk",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "yugee",
+        "realName": "yugee",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 'dk',
-    name: 'DK Esports',
-    koreanName: '디플러스 기아 (DK)',
-    tag: 'DK',
-    league: 'PWS',
-    rank: 5,
-    description: 'Americano와 minuda의 날카로운 교전 피지컬을 앞세운 강호',
-    roster: [
-      { nickname: 'Americano', realName: '정영훈', role: 'Main Fragger', dpi: 800, sens: 36, mouse: 'Logitech G PRO X Superlight 2' },
-      { nickname: 'minuda', realName: '이민우', role: 'Attacker', dpi: 800, sens: 31, mouse: 'Zowie FK2-C' },
-      { nickname: 'Mantal', realName: '정수영', role: 'In-Game Leader', dpi: 800, sens: 29, mouse: 'Razer DeathAdder V3' },
-      { nickname: 'Under', realName: '박성찬', role: 'Support', dpi: 800, sens: 30, mouse: 'Vaxee XE' }
+    "id": "fn_esports",
+    "name": "FN Esports",
+    "tag": "FN",
+    "seedType": "pro",
+    "logo": "/logos/teams/fn.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Starlord",
+        "realName": "Starlord",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "kkachi",
+        "realName": "kkachi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "BreaKers",
+        "realName": "BreaKers",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Hush",
+        "realName": "Hush",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 'azla',
-    name: 'AZLA PENTAGRAM',
-    koreanName: '아즐라 펜타그램',
-    tag: 'AZLA',
-    league: 'PWS',
-    rank: 6,
-    description: 'F1ame과 Orca가 가세한 강력한 외곽 회전 운영의 아즐라',
-    roster: [
-      { nickname: 'F1ame', realName: '김성민', role: 'Main Fragger', dpi: 800, sens: 32, mouse: 'Razer Viper V3 Pro' },
-      { nickname: 'Orca', realName: '이장원', role: 'Support', dpi: 400, sens: 48, mouse: 'Zowie EC1-C' },
-      { nickname: 'HAMMER', realName: '이영현', role: 'All-rounder', dpi: 800, sens: 32, mouse: 'Zowie EC2-C' },
-      { nickname: 'redzone', realName: '최원석', role: 'Attacker', dpi: 400, sens: 46, mouse: 'Vaxee Outset AX' }
+    "id": "azla_pentagram",
+    "name": "AZLA PENTAGRAM",
+    "tag": "AZLA",
+    "seedType": "pro",
+    "logo": "/logos/teams/azla.png",
+    "trophies": [
+      {
+        "name": "PLS",
+        "count": 2
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "F1ame",
+        "realName": "F1ame",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HAMMER",
+        "realName": "HAMMER",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Orca",
+        "realName": "Orca",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "redzone",
+        "realName": "redzone",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 'fn',
-    name: 'FN Pocheon',
-    koreanName: '피앤 포천',
-    tag: 'FN',
-    league: 'PWS',
-    rank: 7,
-    description: '베테랑 Starlord와 kkachi, BreaKers가 이끄는 견고한 경기력',
-    roster: [
-      { nickname: 'Starlord', realName: '이종호', role: 'In-Game Leader', dpi: 800, sens: 30, mouse: 'Logitech G PRO Wireless' },
-      { nickname: 'kkachi', realName: '배호진', role: 'Main Fragger', dpi: 800, sens: 29, mouse: 'Logitech G PRO Wireless' },
-      { nickname: 'BreaKers', realName: '유원석', role: 'Attacker', dpi: 800, sens: 34, mouse: 'Zowie S2-C' },
-      { nickname: 'Hush', realName: '김민성', role: 'Support', dpi: 400, sens: 48, mouse: 'Vaxee XE' }
+    "id": "divine",
+    "name": "Divine",
+    "tag": "DN",
+    "seedType": "pro",
+    "logo": "/logos/teams/dn.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Barpo",
+        "realName": "Barpo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Stella",
+        "realName": "Stella",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Tosi",
+        "realName": "Tosi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Daejang",
+        "realName": "Daejang",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   },
   {
-    id: 'sga',
-    name: 'SGA Esports',
-    koreanName: '에스지에이 인천',
-    tag: 'SGA',
-    league: 'PWS',
-    rank: 8,
-    description: '지역 연고 바탕의 끈끈한 교전력과 집중력의 SGA 인천',
-    roster: [
-      { nickname: 'Hane', realName: '김하늘', role: 'Main Fragger', dpi: 800, sens: 31, mouse: 'Razer DeathAdder V3 Pro' },
-      { nickname: 'Xantast', realName: '이동훈', role: 'Attacker', dpi: 800, sens: 33, mouse: 'Logitech G PRO X Superlight' },
-      { nickname: 'Innate', realName: '정우진', role: 'In-Game Leader', dpi: 800, sens: 28, mouse: 'Zowie EC2-CW' },
-      { nickname: 'inforyou', realName: '박상현', role: 'Support', dpi: 400, sens: 50, mouse: 'Logitech G304' }
+    "id": "phantom_hearts",
+    "name": "PHANTOM HEARTS",
+    "tag": "PHE",
+    "seedType": "pro",
+    "logo": "/logos/teams/phe.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "DAEVA",
+        "realName": "DAEVA",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "King",
+        "realName": "King",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "GimJun",
+        "realName": "GimJun",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ZeniTh",
+        "realName": "ZeniTh",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "daejeon_game_pt",
+    "name": "DAEJEON GAME PT",
+    "tag": "DGP",
+    "seedType": "pro",
+    "logo": "/logos/teams/dgp.png",
+    "trophies": [
+      {
+        "name": "BSC",
+        "count": 1
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "fizzy",
+        "realName": "fizzy",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "instinct",
+        "realName": "instinct",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "PolarBear",
+        "realName": "PolarBear",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Search",
+        "realName": "Search",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "sentinel",
+    "name": "SENTINEL",
+    "tag": "SEN",
+    "seedType": "pro",
+    "logo": "/logos/teams/sen.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Rascal",
+        "realName": "Rascal",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "heyden",
+        "realName": "heyden",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HyukSung",
+        "realName": "HyukSung",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "VenTus",
+        "realName": "VenTus",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "superfect",
+    "name": "SUPERFECT",
+    "tag": "SPF",
+    "seedType": "pro",
+    "logo": "/logos/teams/spf.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Acid",
+        "realName": "Acid",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "TheMinos",
+        "realName": "TheMinos",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Karwn",
+        "realName": "Karwn",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Todol",
+        "realName": "Todol",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "vex_e_sports",
+    "name": "Vex E-Sports",
+    "tag": "VEX",
+    "seedType": "pro",
+    "logo": "/logos/teams/vex.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Lure",
+        "realName": "Lure",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Nyeong",
+        "realName": "Nyeong",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ROY",
+        "realName": "ROY",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Solution",
+        "realName": "Solution",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "geekay_esports",
+    "name": "Geekay Esports",
+    "tag": "GK",
+    "seedType": "pro",
+    "logo": "/logos/teams/gk.png",
+    "trophies": [
+      {
+        "name": "PEC",
+        "count": 1
+      }
+    ],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "AKaN",
+        "realName": "AKaN",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Parkpro",
+        "realName": "Parkpro",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Seongjang",
+        "realName": "Seongjang",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "EJ",
+        "realName": "EJ",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "eagle_owls",
+    "name": "Eagle Owls",
+    "tag": "EOS",
+    "seedType": "amateur",
+    "logo": "/logos/teams/eos.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "SINGAM",
+        "realName": "SINGAM",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "DK",
+        "realName": "DK",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Right",
+        "realName": "Right",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Jaechan",
+        "realName": "Jaechan",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "squad_x_academy",
+    "name": "SQUAD X ACADEMY",
+    "tag": "SXA",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "BBANG",
+        "realName": "BBANG",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Sunday",
+        "realName": "Sunday",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HELLPER",
+        "realName": "HELLPER",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "KAL",
+        "realName": "KAL",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "crazy_raccoon",
+    "name": "Crazy Raccoon",
+    "tag": "CR",
+    "seedType": "amateur",
+    "logo": "/logos/teams/cr.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Glaz",
+        "realName": "Glaz",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gyuyeon",
+        "realName": "Gyuyeon",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Ayoh",
+        "realName": "Ayoh",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "GGoBuGi",
+        "realName": "GGoBuGi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "slash_doom_lab",
+    "name": "SLASH DOOM LAB",
+    "tag": "SL",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Freaky",
+        "realName": "Freaky",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Morek",
+        "realName": "Morek",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "muel",
+        "realName": "muel",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "vilo",
+        "realName": "vilo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "iskra",
+    "name": "ISKRA",
+    "tag": "ISK",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "ParkChaN",
+        "realName": "ParkChaN",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Genom",
+        "realName": "Genom",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Yong",
+        "realName": "Yong",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Primmie",
+        "realName": "Primmie",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown",
+    "tag": "TCN",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "CxldMxn",
+        "realName": "CxldMxn",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HanlNu",
+        "realName": "HanlNu",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "2cut",
+        "realName": "2cut",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "2heart",
+        "realName": "2heart",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "samgukzee",
+    "name": "samgukzee",
+    "tag": "SGZ",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "GuanYu",
+        "realName": "GuanYu",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ZhaoYun",
+        "realName": "ZhaoYun",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Yubi",
+        "realName": "Yubi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "YeoPo",
+        "realName": "YeoPo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "hesedian",
+    "name": "HESEDIAN",
+    "tag": "HSD",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "LOV3",
+        "realName": "LOV3",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Glance",
+        "realName": "Glance",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Hyuk",
+        "realName": "Hyuk",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "youth",
+        "realName": "youth",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "cfive",
+    "name": "CFiVE",
+    "tag": "C5",
+    "seedType": "amateur",
+    "logo": "",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Archi",
+        "realName": "Archi",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Malik",
+        "realName": "Malik",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gray",
+        "realName": "Gray",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Krbyz",
+        "realName": "Krbyz",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "ggwp",
+    "name": "GGWP",
+    "tag": "GGWP",
+    "seedType": "amateur",
+    "logo": "/logos/teams/ggwp.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "sony",
+        "realName": "sony",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Geunwon",
+        "realName": "Geunwon",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "naheesoo",
+        "realName": "naheesoo",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Wanted",
+        "realName": "Wanted",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "overwhelm",
+    "name": "Overwhelm",
+    "tag": "OM",
+    "seedType": "amateur",
+    "logo": "/logos/teams/om.png",
+    "trophies": [],
+    "league": "PWS",
+    "roster": [
+      {
+        "nickname": "Woong",
+        "realName": "Woong",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "night",
+        "realName": "night",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Fairy",
+        "realName": "Fairy",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "FoxVer",
+        "realName": "FoxVer",
+        "role": "Player",
+        "dpi": 800,
+        "sens": 32,
+        "mouse": "Logitech G PRO X Superlight"
+      }
     ]
   }
 ];
 
-// HOT 탭: 최신 소속팀이 완벽하게 반영된 스타 선수 12인
 export const HOT_PLAYERS_12 = [
   {
     id: 1,

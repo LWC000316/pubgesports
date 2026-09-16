@@ -1,0 +1,2112 @@
+[
+  {
+    "matchId": "3a45e416-9f7e-4130-9549-aa8476781a45",
+    "createdAt": "2026-09-09T12:21:30Z",
+    "rosters": [
+      {
+        "rank": 4,
+        "teamTag": "GGWP",
+        "players": [
+          {
+            "name": "GGWP_naheesoo",
+            "kills": 1,
+            "damage": 168.5
+          },
+          {
+            "name": "GGWP_sony",
+            "kills": 1,
+            "damage": 255.1
+          },
+          {
+            "name": "GGWP_Geunwon",
+            "kills": 4,
+            "damage": 388.4
+          },
+          {
+            "name": "GGWP_Wanted",
+            "kills": 0,
+            "damage": 43.3
+          }
+        ]
+      },
+      {
+        "rank": 6,
+        "teamTag": "TCN",
+        "players": [
+          {
+            "name": "TCN_HanINu",
+            "kills": 0,
+            "damage": 76.6
+          },
+          {
+            "name": "TCN_2heart",
+            "kills": 3,
+            "damage": 481.9
+          },
+          {
+            "name": "TCN_2cut",
+            "kills": 1,
+            "damage": 100
+          },
+          {
+            "name": "TCN_CxldMxn",
+            "kills": 3,
+            "damage": 258.0
+          }
+        ]
+      },
+      {
+        "rank": 13,
+        "teamTag": "DN",
+        "players": [
+          {
+            "name": "DN_Stella",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "DN_Tosi",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "DN_Barpo",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "DN_wonderful",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "teamTag": "AZLA",
+        "players": [
+          {
+            "name": "AZLA_redzone",
+            "kills": 6,
+            "damage": 1009.5
+          },
+          {
+            "name": "AZLA_F1ame",
+            "kills": 1,
+            "damage": 249.0
+          },
+          {
+            "name": "AZLA_HAMMER",
+            "kills": 2,
+            "damage": 544.3
+          },
+          {
+            "name": "AZLA_Orca",
+            "kills": 3,
+            "damage": 449.7
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "teamTag": "ISK",
+        "players": [
+          {
+            "name": "ISK_Yong",
+            "kills": 0,
+            "damage": 171.4
+          },
+          {
+            "name": "ISK_Primmie",
+            "kills": 0,
+            "damage": 103.7
+          },
+          {
+            "name": "ISK_Genom",
+            "kills": 0,
+            "damage": 159.7
+          },
+          {
+            "name": "ISK_ParkChaN",
+            "kills": 1,
+            "damage": 84.9
+          }
+        ]
+      },
+      {
+        "rank": 16,
+        "teamTag": "C5",
+        "players": [
+          {
+            "name": "C5_Krbyz",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "C5_Gray",
+            "kills": 0,
+            "damage": 77.4
+          },
+          {
+            "name": "C5_Archi",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "C5_Malik",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "teamTag": "EOS",
+        "players": [
+          {
+            "name": "EOS_SINGAM",
+            "kills": 1,
+            "damage": 88.6
+          },
+          {
+            "name": "EOS_Jaechan",
+            "kills": 6,
+            "damage": 406.5
+          },
+          {
+            "name": "EOS_Right",
+            "kills": 4,
+            "damage": 335.0
+          },
+          {
+            "name": "EOS_DK",
+            "kills": 1,
+            "damage": 450.8
+          }
+        ]
+      },
+      {
+        "rank": 10,
+        "teamTag": "VEX",
+        "players": [
+          {
+            "name": "VEX_Solution",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "VEX_Nyeong",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "VEX_Lure",
+            "kills": 1,
+            "damage": 128.9
+          },
+          {
+            "name": "VEX_ROY",
+            "kills": 1,
+            "damage": 190.7
+          }
+        ]
+      },
+      {
+        "rank": 11,
+        "teamTag": "DNS",
+        "players": [
+          {
+            "name": "DNS_Gyumin",
+            "kills": 1,
+            "damage": 100
+          },
+          {
+            "name": "DNS_Rex",
+            "kills": 3,
+            "damage": 238.0
+          },
+          {
+            "name": "DNS_Heaven",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "DNS_DIEL",
+            "kills": 0,
+            "damage": 95.1
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "teamTag": "GK",
+        "players": [
+          {
+            "name": "GK_AKaN",
+            "kills": 2,
+            "damage": 234.2
+          },
+          {
+            "name": "GK_EJ",
+            "kills": 0,
+            "damage": 62.7
+          },
+          {
+            "name": "GK_Seongjang",
+            "kills": 1,
+            "damage": 611.0
+          },
+          {
+            "name": "GK_Parkpro",
+            "kills": 1,
+            "damage": 321.0
+          }
+        ]
+      },
+      {
+        "rank": 12,
+        "teamTag": "FN",
+        "players": [
+          {
+            "name": "FN_Starlord",
+            "kills": 1,
+            "damage": 100
+          },
+          {
+            "name": "FN_kkachi",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "FN_BreaKers",
+            "kills": 1,
+            "damage": 100
+          },
+          {
+            "name": "FN_Hush",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "teamTag": "SXA",
+        "players": [
+          {
+            "name": "SXA_KAL",
+            "kills": 0,
+            "damage": 68.9
+          },
+          {
+            "name": "SXA_HELLPER",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SXA_Sunday",
+            "kills": 2,
+            "damage": 364.9
+          },
+          {
+            "name": "SXA_BBANG",
+            "kills": 1,
+            "damage": 528.0
+          }
+        ]
+      },
+      {
+        "rank": 7,
+        "teamTag": "SEN",
+        "players": [
+          {
+            "name": "SEN_heyden",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SEN_Rascal",
+            "kills": 0,
+            "damage": 136.6
+          },
+          {
+            "name": "SEN_VenTus",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SEN_HyukSung",
+            "kills": 0,
+            "damage": 272.6
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "teamTag": "CR",
+        "players": [
+          {
+            "name": "CR_Gyuyeon",
+            "kills": 1,
+            "damage": 355.4
+          },
+          {
+            "name": "CR_Glaz",
+            "kills": 0,
+            "damage": 21.8
+          },
+          {
+            "name": "CR_Ayoh",
+            "kills": 1,
+            "damage": 208.3
+          },
+          {
+            "name": "CR_GGoBuGi",
+            "kills": 2,
+            "damage": 176.7
+          }
+        ]
+      },
+      {
+        "rank": 15,
+        "teamTag": "SPF",
+        "players": [
+          {
+            "name": "SPF_Todol",
+            "kills": 0,
+            "damage": 77.4
+          },
+          {
+            "name": "SPF_Acid",
+            "kills": 1,
+            "damage": 77
+          },
+          {
+            "name": "SPF_Karwn",
+            "kills": 1,
+            "damage": 145.2
+          },
+          {
+            "name": "SPF_TheMinos",
+            "kills": 0,
+            "damage": 87.7
+          }
+        ]
+      },
+      {
+        "rank": 14,
+        "teamTag": "SL",
+        "players": [
+          {
+            "name": "SL_vilo",
+            "kills": 1,
+            "damage": 124.6
+          },
+          {
+            "name": "SL_muel",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SL_Freaky",
+            "kills": 3,
+            "damage": 366.7
+          },
+          {
+            "name": "SL_Morek",
+            "kills": 0,
+            "damage": 185.5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "e77eacd4-aa4b-49b6-be50-8cde7f5892ad",
+    "createdAt": "2026-09-09T11:41:35Z",
+    "rosters": [
+      {
+        "rank": 4,
+        "teamTag": "AZLA",
+        "players": [
+          {
+            "name": "AZLA_F1ame",
+            "kills": 1,
+            "damage": 135.9
+          },
+          {
+            "name": "AZLA_HAMMER",
+            "kills": 3,
+            "damage": 372.7
+          },
+          {
+            "name": "AZLA_redzone",
+            "kills": 0,
+            "damage": 82.1
+          },
+          {
+            "name": "AZLA_Orca",
+            "kills": 0,
+            "damage": 20.9
+          }
+        ]
+      },
+      {
+        "rank": 16,
+        "teamTag": "FN",
+        "players": [
+          {
+            "name": "FN_kkachi",
+            "kills": 0,
+            "damage": 100
+          },
+          {
+            "name": "FN_BreaKers",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "FN_Starlord",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "FN_Hush",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 14,
+        "teamTag": "SEN",
+        "players": [
+          {
+            "name": "SEN_Rascal",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SEN_VenTus",
+            "kills": 0,
+            "damage": 49.1
+          },
+          {
+            "name": "SEN_heyden",
+            "kills": 0,
+            "damage": 46.8
+          },
+          {
+            "name": "SEN_HyukSung",
+            "kills": 0,
+            "damage": 121.6
+          }
+        ]
+      },
+      {
+        "rank": 6,
+        "teamTag": "EOS",
+        "players": [
+          {
+            "name": "EOS_DK",
+            "kills": 1,
+            "damage": 173.9
+          },
+          {
+            "name": "EOS_SINGAM",
+            "kills": 3,
+            "damage": 324.5
+          },
+          {
+            "name": "EOS_Jaechan",
+            "kills": 1,
+            "damage": 39.0
+          },
+          {
+            "name": "EOS_Right",
+            "kills": 2,
+            "damage": 371.8
+          }
+        ]
+      },
+      {
+        "rank": 15,
+        "teamTag": "GGWP",
+        "players": [
+          {
+            "name": "GGWP_sony",
+            "kills": 0,
+            "damage": 90.1
+          },
+          {
+            "name": "GGWP_naheesoo",
+            "kills": 2,
+            "damage": 204.9
+          },
+          {
+            "name": "GGWP_Wanted",
+            "kills": 0,
+            "damage": 206.3
+          },
+          {
+            "name": "GGWP_Geunwon",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "teamTag": "GK",
+        "players": [
+          {
+            "name": "GK_EJ",
+            "kills": 1,
+            "damage": 309.7
+          },
+          {
+            "name": "GK_Parkpro",
+            "kills": 3,
+            "damage": 444.9
+          },
+          {
+            "name": "GK_Seongjang",
+            "kills": 3,
+            "damage": 160.3
+          },
+          {
+            "name": "GK_AKaN",
+            "kills": 2,
+            "damage": 334.9
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "teamTag": "DN",
+        "players": [
+          {
+            "name": "DN_Barpo",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "DN_Tosi",
+            "kills": 2,
+            "damage": 177
+          },
+          {
+            "name": "DN_Stella",
+            "kills": 3,
+            "damage": 123.7
+          },
+          {
+            "name": "DN_wonderful",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "teamTag": "DNS",
+        "players": [
+          {
+            "name": "DNS_Rex",
+            "kills": 5,
+            "damage": 442.5
+          },
+          {
+            "name": "DNS_DIEL",
+            "kills": 2,
+            "damage": 515.4
+          },
+          {
+            "name": "DNS_Heaven",
+            "kills": 3,
+            "damage": 370.8
+          },
+          {
+            "name": "DNS_Gyumin",
+            "kills": 1,
+            "damage": 242.0
+          }
+        ]
+      },
+      {
+        "rank": 11,
+        "teamTag": "SXA",
+        "players": [
+          {
+            "name": "SXA_Sunday",
+            "kills": 0,
+            "damage": 37.9
+          },
+          {
+            "name": "SXA_KAL",
+            "kills": 2,
+            "damage": 151.5
+          },
+          {
+            "name": "SXA_BBANG",
+            "kills": 0,
+            "damage": 34.9
+          },
+          {
+            "name": "SXA_HELLPER",
+            "kills": 3,
+            "damage": 312.5
+          }
+        ]
+      },
+      {
+        "rank": 13,
+        "teamTag": "SPF",
+        "players": [
+          {
+            "name": "SPF_Acid",
+            "kills": 0,
+            "damage": 133.0
+          },
+          {
+            "name": "SPF_Karwn",
+            "kills": 2,
+            "damage": 255.3
+          },
+          {
+            "name": "SPF_Todol",
+            "kills": 0,
+            "damage": 39.6
+          },
+          {
+            "name": "SPF_TheMinos",
+            "kills": 0,
+            "damage": 99.2
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "teamTag": "C5",
+        "players": [
+          {
+            "name": "C5_Archi",
+            "kills": 0,
+            "damage": 26.2
+          },
+          {
+            "name": "C5_Gray",
+            "kills": 2,
+            "damage": 391.8
+          },
+          {
+            "name": "C5_Krbyz",
+            "kills": 0,
+            "damage": 25.7
+          },
+          {
+            "name": "C5_Malik",
+            "kills": 1,
+            "damage": 240.2
+          }
+        ]
+      },
+      {
+        "rank": 12,
+        "teamTag": "SL",
+        "players": [
+          {
+            "name": "SL_muel",
+            "kills": 0,
+            "damage": 68.8
+          },
+          {
+            "name": "SL_Freaky",
+            "kills": 2,
+            "damage": 130.7
+          },
+          {
+            "name": "SL_Morek",
+            "kills": 2,
+            "damage": 323
+          },
+          {
+            "name": "SL_vilo",
+            "kills": 2,
+            "damage": 274.7
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "teamTag": "ISK",
+        "players": [
+          {
+            "name": "ISK_Primmie",
+            "kills": 0,
+            "damage": 311.9
+          },
+          {
+            "name": "ISK_Yong",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "ISK_ParkChaN",
+            "kills": 0,
+            "damage": 115.5
+          },
+          {
+            "name": "ISK_Genom",
+            "kills": 0,
+            "damage": 23.8
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "teamTag": "VEX",
+        "players": [
+          {
+            "name": "VEX_Nyeong",
+            "kills": 3,
+            "damage": 514.6
+          },
+          {
+            "name": "VEX_Solution",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "VEX_Lure",
+            "kills": 1,
+            "damage": 338.6
+          },
+          {
+            "name": "VEX_ROY",
+            "kills": 0,
+            "damage": 118.4
+          }
+        ]
+      },
+      {
+        "rank": 7,
+        "teamTag": "CR",
+        "players": [
+          {
+            "name": "CR_GGoBuGi",
+            "kills": 0,
+            "damage": 124.2
+          },
+          {
+            "name": "CR_Gyuyeon",
+            "kills": 0,
+            "damage": 42.3
+          },
+          {
+            "name": "CR_Glaz",
+            "kills": 0,
+            "damage": 25.8
+          },
+          {
+            "name": "CR_Ayoh",
+            "kills": 0,
+            "damage": 77.9
+          }
+        ]
+      },
+      {
+        "rank": 10,
+        "teamTag": "TCN",
+        "players": [
+          {
+            "name": "TCN_2heart",
+            "kills": 1,
+            "damage": 128.4
+          },
+          {
+            "name": "TCN_2cut",
+            "kills": 1,
+            "damage": 23.0
+          },
+          {
+            "name": "TCN_HanINu",
+            "kills": 0,
+            "damage": 130.5
+          },
+          {
+            "name": "TCN_CxldMxn",
+            "kills": 2,
+            "damage": 192.8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "0a587e81-3669-4e74-853e-d75478ade8c7",
+    "createdAt": "2026-09-09T11:07:03Z",
+    "rosters": [
+      {
+        "rank": 2,
+        "teamTag": "AZLA",
+        "players": [
+          {
+            "name": "AZLA_HAMMER",
+            "kills": 1,
+            "damage": 265.9
+          },
+          {
+            "name": "AZLA_redzone",
+            "kills": 2,
+            "damage": 589.1
+          },
+          {
+            "name": "AZLA_Orca",
+            "kills": 2,
+            "damage": 453.4
+          },
+          {
+            "name": "AZLA_F1ame",
+            "kills": 3,
+            "damage": 682.5
+          }
+        ]
+      },
+      {
+        "rank": 7,
+        "teamTag": "TCN",
+        "players": [
+          {
+            "name": "TCN_HanINu",
+            "kills": 3,
+            "damage": 365.9
+          },
+          {
+            "name": "TCN_2heart",
+            "kills": 0,
+            "damage": 172.6
+          },
+          {
+            "name": "TCN_2cut",
+            "kills": 1,
+            "damage": 234.2
+          },
+          {
+            "name": "TCN_CxldMxn",
+            "kills": 0,
+            "damage": 114.1
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "teamTag": "SPF",
+        "players": [
+          {
+            "name": "SPF_Todol",
+            "kills": 2,
+            "damage": 248.0
+          },
+          {
+            "name": "SPF_Karwn",
+            "kills": 1,
+            "damage": 180.6
+          },
+          {
+            "name": "SPF_Acid",
+            "kills": 0,
+            "damage": 106.7
+          },
+          {
+            "name": "SPF_TheMinos",
+            "kills": 0,
+            "damage": 50.2
+          }
+        ]
+      },
+      {
+        "rank": 16,
+        "teamTag": "SXA",
+        "players": [
+          {
+            "name": "SXA_HELLPER",
+            "kills": 0,
+            "damage": 68.7
+          },
+          {
+            "name": "SXA_BBANG",
+            "kills": 0,
+            "damage": 91.1
+          },
+          {
+            "name": "SXA_KAL",
+            "kills": 1,
+            "damage": 101.3
+          },
+          {
+            "name": "SXA_Sunday",
+            "kills": 1,
+            "damage": 65.2
+          }
+        ]
+      },
+      {
+        "rank": 12,
+        "teamTag": "SEN",
+        "players": [
+          {
+            "name": "SEN_HyukSung",
+            "kills": 0,
+            "damage": 61.0
+          },
+          {
+            "name": "SEN_Rascal",
+            "kills": 0,
+            "damage": 30.8
+          },
+          {
+            "name": "SEN_VenTus",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SEN_heyden",
+            "kills": 0,
+            "damage": 26.4
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "teamTag": "FN",
+        "players": [
+          {
+            "name": "FN_Starlord",
+            "kills": 0,
+            "damage": 23.0
+          },
+          {
+            "name": "FN_BreaKers",
+            "kills": 0,
+            "damage": 46.3
+          },
+          {
+            "name": "FN_Hush",
+            "kills": 1,
+            "damage": 136.7
+          },
+          {
+            "name": "FN_kkachi",
+            "kills": 3,
+            "damage": 447.0
+          }
+        ]
+      },
+      {
+        "rank": 14,
+        "teamTag": "ISK",
+        "players": [
+          {
+            "name": "ISK_Genom",
+            "kills": 1,
+            "damage": 118.0
+          },
+          {
+            "name": "ISK_ParkChaN",
+            "kills": 1,
+            "damage": 144.7
+          },
+          {
+            "name": "ISK_Primmie",
+            "kills": 1,
+            "damage": 56.2
+          },
+          {
+            "name": "ISK_Yong",
+            "kills": 0,
+            "damage": 74.1
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "teamTag": "EOS",
+        "players": [
+          {
+            "name": "EOS_Right",
+            "kills": 0,
+            "damage": 62.0
+          },
+          {
+            "name": "EOS_SINGAM",
+            "kills": 3,
+            "damage": 120.9
+          },
+          {
+            "name": "EOS_Jaechan",
+            "kills": 0,
+            "damage": 41.4
+          },
+          {
+            "name": "EOS_DK",
+            "kills": 1,
+            "damage": 344.3
+          }
+        ]
+      },
+      {
+        "rank": 6,
+        "teamTag": "DNS",
+        "players": [
+          {
+            "name": "DNS_Heaven",
+            "kills": 2,
+            "damage": 429.0
+          },
+          {
+            "name": "DNS_Rex",
+            "kills": 1,
+            "damage": 194.8
+          },
+          {
+            "name": "DNS_DIEL",
+            "kills": 1,
+            "damage": 197.4
+          },
+          {
+            "name": "DNS_Gyumin",
+            "kills": 3,
+            "damage": 417.4
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "teamTag": "SL",
+        "players": [
+          {
+            "name": "SL_muel",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SL_Freaky",
+            "kills": 2,
+            "damage": 311.3
+          },
+          {
+            "name": "SL_Morek",
+            "kills": 1,
+            "damage": 181.5
+          },
+          {
+            "name": "SL_vilo",
+            "kills": 1,
+            "damage": 306.4
+          }
+        ]
+      },
+      {
+        "rank": 11,
+        "teamTag": "GGWP",
+        "players": [
+          {
+            "name": "GGWP_sony",
+            "kills": 1,
+            "damage": 66.4
+          },
+          {
+            "name": "GGWP_Geunwon",
+            "kills": 0,
+            "damage": 26.5
+          },
+          {
+            "name": "GGWP_naheesoo",
+            "kills": 1,
+            "damage": 104.9
+          },
+          {
+            "name": "GGWP_Wanted",
+            "kills": 0,
+            "damage": 114.5
+          }
+        ]
+      },
+      {
+        "rank": 10,
+        "teamTag": "C5",
+        "players": [
+          {
+            "name": "C5_Gray",
+            "kills": 0,
+            "damage": 17.4
+          },
+          {
+            "name": "C5_Archi",
+            "kills": 1,
+            "damage": 100
+          },
+          {
+            "name": "C5_Krbyz",
+            "kills": 0,
+            "damage": 36.7
+          },
+          {
+            "name": "C5_Malik",
+            "kills": 0,
+            "damage": 52.6
+          }
+        ]
+      },
+      {
+        "rank": 15,
+        "teamTag": "VEX",
+        "players": [
+          {
+            "name": "VEX_ROY",
+            "kills": 1,
+            "damage": 100.0
+          },
+          {
+            "name": "VEX_Nyeong",
+            "kills": 0,
+            "damage": 249.1
+          },
+          {
+            "name": "VEX_Lure",
+            "kills": 0,
+            "damage": 24
+          },
+          {
+            "name": "VEX_Solution",
+            "kills": 0,
+            "damage": 267.8
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "teamTag": "DN",
+        "players": [
+          {
+            "name": "DN_Stella",
+            "kills": 2,
+            "damage": 427.3
+          },
+          {
+            "name": "DN_Barpo",
+            "kills": 4,
+            "damage": 311.0
+          },
+          {
+            "name": "DN_Tosi",
+            "kills": 2,
+            "damage": 265.2
+          },
+          {
+            "name": "DN_wonderful",
+            "kills": 2,
+            "damage": 350.7
+          }
+        ]
+      },
+      {
+        "rank": 13,
+        "teamTag": "CR",
+        "players": [
+          {
+            "name": "CR_Glaz",
+            "kills": 1,
+            "damage": 11.6
+          },
+          {
+            "name": "CR_Ayoh",
+            "kills": 3,
+            "damage": 101.1
+          },
+          {
+            "name": "CR_Gyuyeon",
+            "kills": 0,
+            "damage": 46.6
+          },
+          {
+            "name": "CR_GGoBuGi",
+            "kills": 0,
+            "damage": 56.2
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "teamTag": "GK",
+        "players": [
+          {
+            "name": "GK_AKaN",
+            "kills": 2,
+            "damage": 88.4
+          },
+          {
+            "name": "GK_Seongjang",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "GK_Parkpro",
+            "kills": 0,
+            "damage": 118.9
+          },
+          {
+            "name": "GK_EJ",
+            "kills": 1,
+            "damage": 124.2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "90cfb033-db3a-4d5f-a992-a4e74b16ad58",
+    "createdAt": "2026-09-09T10:23:19Z",
+    "rosters": [
+      {
+        "rank": 6,
+        "teamTag": "ISK",
+        "players": [
+          {
+            "name": "ISK_Genom",
+            "kills": 2,
+            "damage": 262.9
+          },
+          {
+            "name": "ISK_Primmie",
+            "kills": 0,
+            "damage": 146.4
+          },
+          {
+            "name": "ISK_ParkChaN",
+            "kills": 1,
+            "damage": 239.0
+          },
+          {
+            "name": "ISK_Yong",
+            "kills": 0,
+            "damage": 100
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "teamTag": "SXA",
+        "players": [
+          {
+            "name": "SXA_KAL",
+            "kills": 0,
+            "damage": 199.5
+          },
+          {
+            "name": "SXA_Sunday",
+            "kills": 1,
+            "damage": 143.5
+          },
+          {
+            "name": "SXA_BBANG",
+            "kills": 1,
+            "damage": 122.1
+          },
+          {
+            "name": "SXA_HELLPER",
+            "kills": 0,
+            "damage": 143.4
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "teamTag": "AZLA",
+        "players": [
+          {
+            "name": "AZLA_Orca",
+            "kills": 0,
+            "damage": 95.0
+          },
+          {
+            "name": "AZLA_redzone",
+            "kills": 0,
+            "damage": 91.5
+          },
+          {
+            "name": "AZLA_HAMMER",
+            "kills": 2,
+            "damage": 138.0
+          },
+          {
+            "name": "AZLA_F1ame",
+            "kills": 1,
+            "damage": 223.3
+          }
+        ]
+      },
+      {
+        "rank": 16,
+        "teamTag": "EOS",
+        "players": [
+          {
+            "name": "EOS_Jaechan",
+            "kills": 0,
+            "damage": 28.0
+          },
+          {
+            "name": "EOS_Right",
+            "kills": 0,
+            "damage": 62.9
+          },
+          {
+            "name": "EOS_DK",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "EOS_SINGAM",
+            "kills": 1,
+            "damage": 75
+          }
+        ]
+      },
+      {
+        "rank": 11,
+        "teamTag": "FN",
+        "players": [
+          {
+            "name": "FN_Starlord",
+            "kills": 0,
+            "damage": 40.2
+          },
+          {
+            "name": "FN_kkachi",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "FN_BreaKers",
+            "kills": 0,
+            "damage": 79.8
+          },
+          {
+            "name": "FN_Hush",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 14,
+        "teamTag": "SPF",
+        "players": [
+          {
+            "name": "SPF_Acid",
+            "kills": 2,
+            "damage": 131.5
+          },
+          {
+            "name": "SPF_TheMinos",
+            "kills": 0,
+            "damage": 99.6
+          },
+          {
+            "name": "SPF_Todol",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SPF_Karwn",
+            "kills": 1,
+            "damage": 47.0
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "teamTag": "GK",
+        "players": [
+          {
+            "name": "GK_Parkpro",
+            "kills": 5,
+            "damage": 630.2
+          },
+          {
+            "name": "GK_Seongjang",
+            "kills": 4,
+            "damage": 481.8
+          },
+          {
+            "name": "GK_EJ",
+            "kills": 1,
+            "damage": 275.5
+          },
+          {
+            "name": "GK_AKaN",
+            "kills": 4,
+            "damage": 432.8
+          }
+        ]
+      },
+      {
+        "rank": 10,
+        "teamTag": "CR",
+        "players": [
+          {
+            "name": "CR_Ayoh",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "CR_Glaz",
+            "kills": 0,
+            "damage": 132.2
+          },
+          {
+            "name": "CR_Gyuyeon",
+            "kills": 1,
+            "damage": 170.6
+          },
+          {
+            "name": "CR_GGoBuGi",
+            "kills": 1,
+            "damage": 289.4
+          }
+        ]
+      },
+      {
+        "rank": 7,
+        "teamTag": "SL",
+        "players": [
+          {
+            "name": "SL_vilo",
+            "kills": 0,
+            "damage": 127.1
+          },
+          {
+            "name": "SL_Freaky",
+            "kills": 1,
+            "damage": 331.3
+          },
+          {
+            "name": "SL_Morek",
+            "kills": 0,
+            "damage": 15.6
+          },
+          {
+            "name": "SL_muel",
+            "kills": 2,
+            "damage": 145.9
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "teamTag": "VEX",
+        "players": [
+          {
+            "name": "VEX_Nyeong",
+            "kills": 0,
+            "damage": 118.5
+          },
+          {
+            "name": "VEX_ROY",
+            "kills": 0,
+            "damage": 123.5
+          },
+          {
+            "name": "VEX_Solution",
+            "kills": 0,
+            "damage": 35.0
+          },
+          {
+            "name": "VEX_Lure",
+            "kills": 1,
+            "damage": 38.5
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "teamTag": "TCN",
+        "players": [
+          {
+            "name": "TCN_CxldMxn",
+            "kills": 0,
+            "damage": 175.5
+          },
+          {
+            "name": "TCN_2cut",
+            "kills": 2,
+            "damage": 604.0
+          },
+          {
+            "name": "TCN_2heart",
+            "kills": 2,
+            "damage": 321.7
+          },
+          {
+            "name": "TCN_HanINu",
+            "kills": 1,
+            "damage": 230.5
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "teamTag": "C5",
+        "players": [
+          {
+            "name": "C5_Archi",
+            "kills": 2,
+            "damage": 377.8
+          },
+          {
+            "name": "C5_Krbyz",
+            "kills": 0,
+            "damage": 202.2
+          },
+          {
+            "name": "C5_Gray",
+            "kills": 0,
+            "damage": 65.7
+          },
+          {
+            "name": "C5_Malik",
+            "kills": 2,
+            "damage": 232.3
+          }
+        ]
+      },
+      {
+        "rank": 12,
+        "teamTag": "DN",
+        "players": [
+          {
+            "name": "DN_Barpo",
+            "kills": 0,
+            "damage": 95.0
+          },
+          {
+            "name": "DN_wonderful",
+            "kills": 2,
+            "damage": 186.5
+          },
+          {
+            "name": "DN_Tosi",
+            "kills": 2,
+            "damage": 280.9
+          },
+          {
+            "name": "DN_Stella",
+            "kills": 0,
+            "damage": 94.7
+          }
+        ]
+      },
+      {
+        "rank": 13,
+        "teamTag": "SEN",
+        "players": [
+          {
+            "name": "SEN_heyden",
+            "kills": 1,
+            "damage": 65.2
+          },
+          {
+            "name": "SEN_VenTus",
+            "kills": 0,
+            "damage": 154.8
+          },
+          {
+            "name": "SEN_Rascal",
+            "kills": 0,
+            "damage": 20.9
+          },
+          {
+            "name": "SEN_HyukSung",
+            "kills": 0,
+            "damage": 64.2
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "teamTag": "DNS",
+        "players": [
+          {
+            "name": "DNS_DIEL",
+            "kills": 2,
+            "damage": 535.0
+          },
+          {
+            "name": "DNS_Gyumin",
+            "kills": 6,
+            "damage": 365.0
+          },
+          {
+            "name": "DNS_Heaven",
+            "kills": 1,
+            "damage": 594.2
+          },
+          {
+            "name": "DNS_Rex",
+            "kills": 3,
+            "damage": 281.1
+          }
+        ]
+      },
+      {
+        "rank": 15,
+        "teamTag": "GGWP",
+        "players": [
+          {
+            "name": "GGWP_Geunwon",
+            "kills": 0,
+            "damage": 77.7
+          },
+          {
+            "name": "GGWP_naheesoo",
+            "kills": 1,
+            "damage": 35.0
+          },
+          {
+            "name": "GGWP_sony",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "GGWP_Wanted",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "fdfb903c-0c51-46c9-b5f0-32b1ebd9060f",
+    "createdAt": "2026-09-09T09:50:08Z",
+    "rosters": [
+      {
+        "rank": 10,
+        "teamTag": "SEN",
+        "players": [
+          {
+            "name": "SEN_HyukSung",
+            "kills": 1,
+            "damage": 258.8
+          },
+          {
+            "name": "SEN_VenTus",
+            "kills": 3,
+            "damage": 528.5
+          },
+          {
+            "name": "SEN_heyden",
+            "kills": 0,
+            "damage": 4.9
+          },
+          {
+            "name": "SEN_Rascal",
+            "kills": 0,
+            "damage": 93.4
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "teamTag": "GGWP",
+        "players": [
+          {
+            "name": "GGWP_sony",
+            "kills": 2,
+            "damage": 202.7
+          },
+          {
+            "name": "GGWP_naheesoo",
+            "kills": 2,
+            "damage": 258.5
+          },
+          {
+            "name": "GGWP_Wanted",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "GGWP_Geunwon",
+            "kills": 0,
+            "damage": 244.7
+          }
+        ]
+      },
+      {
+        "rank": 15,
+        "teamTag": "SPF",
+        "players": [
+          {
+            "name": "SPF_Karwn",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SPF_Todol",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "SPF_Acid",
+            "kills": 0,
+            "damage": 40.7
+          },
+          {
+            "name": "SPF_TheMinos",
+            "kills": 0,
+            "damage": 25.4
+          }
+        ]
+      },
+      {
+        "rank": 13,
+        "teamTag": "DN",
+        "players": [
+          {
+            "name": "DN_Tosi",
+            "kills": 0,
+            "damage": 274.1
+          },
+          {
+            "name": "DN_Barpo",
+            "kills": 2,
+            "damage": 344.6
+          },
+          {
+            "name": "DN_Stella",
+            "kills": 2,
+            "damage": 259.9
+          },
+          {
+            "name": "DN_wonderful",
+            "kills": 1,
+            "damage": 97.7
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "teamTag": "AZLA",
+        "players": [
+          {
+            "name": "AZLA_Orca",
+            "kills": 1,
+            "damage": 0
+          },
+          {
+            "name": "AZLA_redzone",
+            "kills": 0,
+            "damage": 45.7
+          },
+          {
+            "name": "AZLA_HAMMER",
+            "kills": 0,
+            "damage": 50.4
+          },
+          {
+            "name": "AZLA_F1ame",
+            "kills": 0,
+            "damage": 32.2
+          }
+        ]
+      },
+      {
+        "rank": 11,
+        "teamTag": "EOS",
+        "players": [
+          {
+            "name": "EOS_Right",
+            "kills": 0,
+            "damage": 67.6
+          },
+          {
+            "name": "EOS_Jaechan",
+            "kills": 0,
+            "damage": 17.2
+          },
+          {
+            "name": "EOS_SINGAM",
+            "kills": 0,
+            "damage": 49.1
+          },
+          {
+            "name": "EOS_DK",
+            "kills": 0,
+            "damage": 72.7
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "teamTag": "SL",
+        "players": [
+          {
+            "name": "SL_muel",
+            "kills": 0,
+            "damage": 23.2
+          },
+          {
+            "name": "SL_Morek",
+            "kills": 2,
+            "damage": 373.0
+          },
+          {
+            "name": "SL_Freaky",
+            "kills": 0,
+            "damage": 225.3
+          },
+          {
+            "name": "SL_vilo",
+            "kills": 3,
+            "damage": 232.9
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "teamTag": "ISK",
+        "players": [
+          {
+            "name": "ISK_Primmie",
+            "kills": 0,
+            "damage": 136.1
+          },
+          {
+            "name": "ISK_ParkChaN",
+            "kills": 1,
+            "damage": 122.0
+          },
+          {
+            "name": "ISK_Yong",
+            "kills": 4,
+            "damage": 278.5
+          },
+          {
+            "name": "ISK_Genom",
+            "kills": 0,
+            "damage": 74.4
+          }
+        ]
+      },
+      {
+        "rank": 16,
+        "teamTag": "CR",
+        "players": [
+          {
+            "name": "CR_GGoBuGi",
+            "kills": 1,
+            "damage": 75.0
+          },
+          {
+            "name": "CR_Gyuyeon",
+            "kills": 0,
+            "damage": 220.2
+          },
+          {
+            "name": "CR_Ayoh",
+            "kills": 0,
+            "damage": 128.4
+          },
+          {
+            "name": "CR_Glaz",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 6,
+        "teamTag": "SXA",
+        "players": [
+          {
+            "name": "SXA_BBANG",
+            "kills": 0,
+            "damage": 18.9
+          },
+          {
+            "name": "SXA_KAL",
+            "kills": 1,
+            "damage": 145.6
+          },
+          {
+            "name": "SXA_HELLPER",
+            "kills": 0,
+            "damage": 114.1
+          },
+          {
+            "name": "SXA_Sunday",
+            "kills": 0,
+            "damage": 82.5
+          }
+        ]
+      },
+      {
+        "rank": 12,
+        "teamTag": "FN",
+        "players": [
+          {
+            "name": "FN_BreaKers",
+            "kills": 0,
+            "damage": 78.5
+          },
+          {
+            "name": "FN_kkachi",
+            "kills": 1,
+            "damage": 157.5
+          },
+          {
+            "name": "FN_Starlord",
+            "kills": 0,
+            "damage": 10.2
+          },
+          {
+            "name": "FN_Hush",
+            "kills": 1,
+            "damage": 107.4
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "teamTag": "DNS",
+        "players": [
+          {
+            "name": "DNS_Rex",
+            "kills": 3,
+            "damage": 373.4
+          },
+          {
+            "name": "DNS_Heaven",
+            "kills": 4,
+            "damage": 436.8
+          },
+          {
+            "name": "DNS_Gyumin",
+            "kills": 2,
+            "damage": 156.2
+          },
+          {
+            "name": "DNS_DIEL",
+            "kills": 0,
+            "damage": 225.8
+          }
+        ]
+      },
+      {
+        "rank": 1,
+        "teamTag": "GK",
+        "players": [
+          {
+            "name": "GK_AKaN",
+            "kills": 3,
+            "damage": 469.4
+          },
+          {
+            "name": "GK_EJ",
+            "kills": 2,
+            "damage": 187.9
+          },
+          {
+            "name": "GK_Parkpro",
+            "kills": 1,
+            "damage": 112.4
+          },
+          {
+            "name": "GK_Seongjang",
+            "kills": 1,
+            "damage": 411.1
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "teamTag": "VEX",
+        "players": [
+          {
+            "name": "VEX_Lure",
+            "kills": 3,
+            "damage": 224.5
+          },
+          {
+            "name": "VEX_Solution",
+            "kills": 2,
+            "damage": 135.2
+          },
+          {
+            "name": "VEX_ROY",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "VEX_Nyeong",
+            "kills": 0,
+            "damage": 0
+          }
+        ]
+      },
+      {
+        "rank": 14,
+        "teamTag": "C5",
+        "players": [
+          {
+            "name": "C5_Gray",
+            "kills": 0,
+            "damage": 162.9
+          },
+          {
+            "name": "C5_Krbyz",
+            "kills": 0,
+            "damage": 41.4
+          },
+          {
+            "name": "C5_Archi",
+            "kills": 0,
+            "damage": 0
+          },
+          {
+            "name": "C5_Malik",
+            "kills": 2,
+            "damage": 245.1
+          }
+        ]
+      },
+      {
+        "rank": 7,
+        "teamTag": "TCN",
+        "players": [
+          {
+            "name": "TCN_HanINu",
+            "kills": 0,
+            "damage": 200.0
+          },
+          {
+            "name": "TCN_2heart",
+            "kills": 0,
+            "damage": 34.5
+          },
+          {
+            "name": "TCN_2cut",
+            "kills": 1,
+            "damage": 69.1
+          },
+          {
+            "name": "TCN_CxldMxn",
+            "kills": 2,
+            "damage": 266.2
+          }
+        ]
+      }
+    ]
+  }
+]

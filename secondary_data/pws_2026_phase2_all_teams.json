@@ -1,0 +1,307 @@
+{
+  "totalTeamsCount": 30,
+  "verifiedMatchesCount": 6,
+  "anomalyMatchesCount": 0,
+  "teams": [
+    {
+      "teamTag": "AAA",
+      "playerCount": 4,
+      "players": [
+        "AAA_Black9",
+        "AAA_Focus",
+        "AAA_MooHeon",
+        "AAA_RimQ"
+      ]
+    },
+    {
+      "teamTag": "AZLA",
+      "playerCount": 4,
+      "players": [
+        "AZLA_F1ame",
+        "AZLA_HAMMER",
+        "AZLA_Orca",
+        "AZLA_redzone"
+      ]
+    },
+    {
+      "teamTag": "BKL",
+      "playerCount": 4,
+      "players": [
+        "BKL_Bok",
+        "BKL_Rene",
+        "BKL_Santa",
+        "BKL_Yugeun"
+      ]
+    },
+    {
+      "teamTag": "C5",
+      "playerCount": 4,
+      "players": [
+        "C5_Archi",
+        "C5_Gray",
+        "C5_Krbyz",
+        "C5_Malik"
+      ]
+    },
+    {
+      "teamTag": "CR",
+      "playerCount": 4,
+      "players": [
+        "CR_Ayoh",
+        "CR_GGoBuGi",
+        "CR_Glaz",
+        "CR_Gyuyeon"
+      ]
+    },
+    {
+      "teamTag": "DK",
+      "playerCount": 4,
+      "players": [
+        "DK_Americano",
+        "DK_Mantal",
+        "DK_Under",
+        "DK_minuda"
+      ]
+    },
+    {
+      "teamTag": "DN",
+      "playerCount": 4,
+      "players": [
+        "DN_Barpo",
+        "DN_Stella",
+        "DN_Tosi",
+        "DN_wonderful"
+      ]
+    },
+    {
+      "teamTag": "DNS",
+      "playerCount": 4,
+      "players": [
+        "DNS_DIEL",
+        "DNS_Gyumin",
+        "DNS_Heaven",
+        "DNS_Rex"
+      ]
+    },
+    {
+      "teamTag": "EOS",
+      "playerCount": 4,
+      "players": [
+        "EOS_DK",
+        "EOS_Jaechan",
+        "EOS_Right",
+        "EOS_SINGAM"
+      ]
+    },
+    {
+      "teamTag": "FN",
+      "playerCount": 4,
+      "players": [
+        "FN_BreaKers",
+        "FN_Hush",
+        "FN_Starlord",
+        "FN_kkachi"
+      ]
+    },
+    {
+      "teamTag": "GGWP",
+      "playerCount": 4,
+      "players": [
+        "GGWP_Geunwon",
+        "GGWP_Wanted",
+        "GGWP_naheesoo",
+        "GGWP_sony"
+      ]
+    },
+    {
+      "teamTag": "GK",
+      "playerCount": 4,
+      "players": [
+        "GK_AKaN",
+        "GK_EJ",
+        "GK_Parkpro",
+        "GK_Seongjang"
+      ]
+    },
+    {
+      "teamTag": "Hi",
+      "playerCount": 4,
+      "players": [
+        "Hi_QEQ2",
+        "Hi_korean",
+        "Hi_ming",
+        "Hi_tae"
+      ]
+    },
+    {
+      "teamTag": "ISK",
+      "playerCount": 4,
+      "players": [
+        "ISK_Genom",
+        "ISK_ParkChaN",
+        "ISK_Primmie",
+        "ISK_Yong"
+      ]
+    },
+    {
+      "teamTag": "KBR",
+      "playerCount": 4,
+      "players": [
+        "KBR_Cliche",
+        "KBR_HITMAN",
+        "KBR_Leaper",
+        "KBR_Sayd"
+      ]
+    },
+    {
+      "teamTag": "KX",
+      "playerCount": 4,
+      "players": [
+        "KX_GuJiBBi",
+        "KX_Kkxpeace",
+        "KX_List",
+        "KX_PokJu"
+      ]
+    },
+    {
+      "teamTag": "MHG",
+      "playerCount": 4,
+      "players": [
+        "MHG_CHANAHRI",
+        "MHG_DaeJang",
+        "MHG_JEJE",
+        "MHG_Roger"
+      ]
+    },
+    {
+      "teamTag": "NS",
+      "playerCount": 4,
+      "players": [
+        "NS_4mine",
+        "NS_Curo",
+        "NS_RicE",
+        "NS_yoyangwon"
+      ]
+    },
+    {
+      "teamTag": "PNKO",
+      "playerCount": 4,
+      "players": [
+        "PNKO_Entia",
+        "PNKO_LongDuo",
+        "PNKO_Oops",
+        "PNKO_ShotDuo"
+      ]
+    },
+    {
+      "teamTag": "SEN",
+      "playerCount": 4,
+      "players": [
+        "SEN_HyukSung",
+        "SEN_Rascal",
+        "SEN_VenTus",
+        "SEN_heyden"
+      ]
+    },
+    {
+      "teamTag": "SGA",
+      "playerCount": 4,
+      "players": [
+        "SGA_Hane",
+        "SGA_Xantast",
+        "SGA_inforyou",
+        "SGA_innate"
+      ]
+    },
+    {
+      "teamTag": "SL",
+      "playerCount": 4,
+      "players": [
+        "SL_Freaky",
+        "SL_Morek",
+        "SL_muel",
+        "SL_vilo"
+      ]
+    },
+    {
+      "teamTag": "SPF",
+      "playerCount": 4,
+      "players": [
+        "SPF_Acid",
+        "SPF_Karwn",
+        "SPF_TheMinos",
+        "SPF_Todol"
+      ]
+    },
+    {
+      "teamTag": "SXA",
+      "playerCount": 4,
+      "players": [
+        "SXA_BBANG",
+        "SXA_HELLPER",
+        "SXA_KAL",
+        "SXA_Sunday"
+      ]
+    },
+    {
+      "teamTag": "TAG",
+      "playerCount": 4,
+      "players": [
+        "TAG_MaengGu",
+        "TAG_caidekoujio",
+        "TAG_snowfake",
+        "TAG_spirit"
+      ]
+    },
+    {
+      "teamTag": "TCN",
+      "playerCount": 4,
+      "players": [
+        "TCN_2cut",
+        "TCN_2heart",
+        "TCN_CxldMxn",
+        "TCN_HanINu"
+      ]
+    },
+    {
+      "teamTag": "VEX",
+      "playerCount": 4,
+      "players": [
+        "VEX_Lure",
+        "VEX_Nyeong",
+        "VEX_ROY",
+        "VEX_Solution"
+      ]
+    },
+    {
+      "teamTag": "XF",
+      "playerCount": 4,
+      "players": [
+        "XF_570yT",
+        "XF_Arte",
+        "XF_One1Tap",
+        "XF_Sunday"
+      ]
+    },
+    {
+      "teamTag": "XGZ",
+      "playerCount": 4,
+      "players": [
+        "XGZ_Eight",
+        "XGZ_PURGE",
+        "XGZ_Select",
+        "XGZ_TIGHT"
+      ]
+    },
+    {
+      "teamTag": "YCZ",
+      "playerCount": 4,
+      "players": [
+        "YCZ_Ohnyeory",
+        "YCZ_bulguk4_4",
+        "YCZ_hyewon_n",
+        "YCZ_naning_g"
+      ]
+    }
+  ]
+}

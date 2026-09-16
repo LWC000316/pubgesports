@@ -1,0 +1,34 @@
+{
+  "totalTeams": 24,
+  "tournament": "2026 PUBG WEEKLY SERIES: Phase 2",
+  "proSeedTeams": [
+    { "name": "DN SOOPers", "tag": "DNS", "seed": "PRO" },
+    { "name": "Geekay Esports", "tag": "GK", "seed": "PRO" },
+    { "name": "T1", "tag": "T1", "seed": "PRO" },
+    { "name": "Gen.G", "tag": "GEN", "seed": "PRO" },
+    { "name": "Divine", "tag": "DN", "seed": "PRO" },
+    { "name": "AZLA PENTAGRAM", "tag": "AZLA", "seed": "PRO" },
+    { "name": "VEX E_Sports", "tag": "VEX", "seed": "PRO" },
+    { "name": "SUPERFECT", "tag": "SPF", "seed": "PRO" },
+    { "name": "PHANTOM HEARTS_E", "tag": "PHE", "seed": "PRO" },
+    { "name": "FN Pocheon", "tag": "FN", "seed": "PRO" },
+    { "name": "Baegopa", "tag": "BGP", "seed": "PRO" },
+    { "name": "DAEJEON GAME PT", "tag": "DGP", "seed": "PRO" },
+    { "name": "Sentinel", "tag": "SEN", "seed": "PRO" }
+  ],
+  "qualifierTeams": [
+    { "name": "Eagle Owls", "tag": "EOS", "seed": "CUP_QUALIFIER" },
+    { "name": "SQUAD X ACADEMY", "tag": "SXA", "seed": "CUP_QUALIFIER" },
+    { "name": "Crazy Raccoon", "tag": "CR", "seed": "CUP_QUALIFIER" },
+    { "name": "mumoham", "tag": "MM", "seed": "CUP_QUALIFIER" },
+    { "name": "ISKRA", "tag": "ISK", "seed": "CUP_QUALIFIER" },
+    { "name": "The Crown", "tag": "TCN", "seed": "CUP_QUALIFIER" },
+    { "name": "samgukzee", "tag": "SGZ", "seed": "CUP_QUALIFIER" },
+    { "name": "Qx", "tag": "Qx", "seed": "CUP_QUALIFIER" },
+    { "name": "CFiVE", "tag": "C5", "seed": "CUP_QUALIFIER" },
+    { "name": "GGWP", "tag": "GGWP", "seed": "CUP_QUALIFIER" }
+  ],
+  "specialSeedTeams": [
+    { "name": "Overwhelm", "tag": "OM", "seed": "SPECIAL_AMATEUR" }
+  ]
+}
