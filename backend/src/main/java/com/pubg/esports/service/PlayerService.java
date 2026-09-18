@@ -4,6 +4,7 @@ import com.pubg.esports.domain.Player;
 import com.pubg.esports.domain.Team;
 import com.pubg.esports.dto.PlayerDetailResponseDto;
 import com.pubg.esports.dto.PlayerListResponseDto;
+import com.pubg.esports.dto.TeamCardDto;
 import com.pubg.esports.dto.TeamResponseDto;
 import com.pubg.esports.repository.PlayerRepository;
 import com.pubg.esports.repository.TeamRepository;
@@ -23,7 +24,20 @@ public class PlayerService {
     private final TeamRepository teamRepository;
 
     public List<PlayerListResponseDto> getPlayers(Long teamId, String query) {
-        List<Player> players = playerRepository.searchPlayers(teamId, query);
+        boolean hasTeam = teamId != null;
+        boolean hasQuery = query != null && !query.trim().isEmpty();
+        List<Player> players;
+
+        if (hasTeam && hasQuery) {
+            players = playerRepository.searchByTeamIdAndQueryWithTeam(teamId, query.trim());
+        } else if (hasTeam) {
+            players = playerRepository.findByTeamIdWithTeam(teamId);
+        } else if (hasQuery) {
+            players = playerRepository.searchByQueryWithTeam(query.trim());
+        } else {
+            players = playerRepository.findAllWithTeam();
+        }
+
         return players.stream()
                 .map(PlayerListResponseDto::from)
                 .collect(Collectors.toList());
@@ -44,6 +58,12 @@ public class PlayerService {
     public List<TeamResponseDto> getAllTeams() {
         return teamRepository.findAll().stream()
                 .map(TeamResponseDto::from)
+                .collect(Collectors.toList());
+    }
+
+    public List<TeamCardDto> getTeamCards(String league) {
+        return teamRepository.findByLeagueWithPlayers(league).stream()
+                .map(TeamCardDto::from)
                 .collect(Collectors.toList());
     }
 }

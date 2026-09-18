@@ -2,6 +2,7 @@ package com.pubg.esports.controller;
 
 import com.pubg.esports.dto.PlayerDetailResponseDto;
 import com.pubg.esports.dto.PlayerListResponseDto;
+import com.pubg.esports.dto.TeamCardDto;
 import com.pubg.esports.dto.TeamResponseDto;
 import com.pubg.esports.service.PlayerService;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,11 @@ public class PlayerController {
     @GetMapping("/teams")
     public ResponseEntity<List<TeamResponseDto>> getTeams() {
         return ResponseEntity.ok(playerService.getAllTeams());
+    }
+
+    @GetMapping("/teams/cards")
+    public ResponseEntity<List<TeamCardDto>> getTeamCards(
+            @RequestParam(defaultValue = "PWS") String league) {
+        return ResponseEntity.ok(playerService.getTeamCards(league));
     }
 }

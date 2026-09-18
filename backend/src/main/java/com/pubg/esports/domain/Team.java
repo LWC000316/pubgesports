@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,10 @@ public class Team {
     @Column(nullable = false)
     private String region;
 
+    private String tag;
+
+    private String seedType; // pro, amateur
+
     private String league;
 
     private String logoUrl;
@@ -42,10 +47,17 @@ public class Team {
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players = new ArrayList<>();
 
+    // players 와 동시에 fetch join 하면 MultipleBagFetchException 이 나므로 배치 로딩으로 가져온다.
+    @BatchSize(size = 50)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TeamTrophy> trophies = new ArrayList<>();
+
     @Builder
-    public Team(String name, String region, String league, String logoUrl, String description, Integer foundedYear, String coach, String achievements) {
+    public Team(String name, String region, String tag, String seedType, String league, String logoUrl, String description, Integer foundedYear, String coach, String achievements) {
         this.name = name;
         this.region = region;
+        this.tag = tag;
+        this.seedType = seedType;
         this.league = league;
         this.logoUrl = logoUrl;
         this.description = description;
@@ -63,5 +75,14 @@ public class Team {
         this.foundedYear = foundedYear;
         this.coach = coach;
         this.achievements = achievements;
+    }
+
+    public void addTrophy(TeamTrophy trophy) {
+        this.trophies.add(trophy);
+        trophy.assignTeam(this);
+    }
+
+    public void clearTrophies() {
+        this.trophies.clear();
     }
 }

@@ -1,10 +1,36 @@
-import React, { useState } from 'react';
-import { Search, Shield, Mouse, ChevronRight, Flame, Trophy, Crown, Target } from 'lucide-react';
-import { LATEST_PWS2_TEAMS, HOT_PLAYERS_12, TOURNAMENT_LOGOS } from '../data/esportsData';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Search, Shield, Mouse, ChevronRight, Flame, Trophy, Crown, Target, AlertTriangle, RefreshCw } from 'lucide-react';
+import { HOT_PLAYERS_12, TOURNAMENT_LOGOS } from '../data/esportsData';
 
 export default function PlayersTab({ onSelectPlayer }) {
   const [selectedTab, setSelectedTab] = useState('PWS');
   const [searchQuery, setSearchQuery] = useState('');
+
+  // PWS 팀 목록은 백엔드에서 가져온다 (vite 프록시가 localhost:8080 으로 넘김)
+  const [pwsTeams, setPwsTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const loadPwsTeams = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/teams/cards?league=PWS');
+      if (!res.ok) {
+        throw new Error(`서버가 ${res.status} ${res.statusText} 로 응답했습니다.`);
+      }
+      setPwsTeams(await res.json());
+    } catch (e) {
+      setError(e.message || '알 수 없는 오류');
+      setPwsTeams([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadPwsTeams();
+  }, [loadPwsTeams]);
 
   const filterChips = [
     { id: 'HOT', label: 'HOT', icon: Flame, desc: '인기 스타 선수 TOP 12' },
@@ -15,11 +41,12 @@ export default function PlayersTab({ onSelectPlayer }) {
     { id: 'APAC', label: 'APAC', logo: TOURNAMENT_LOGOS.APAC, desc: 'PUBG Asia Pacific' }
   ];
 
-  // PWS 탭: 검색어 필터링
-  const filteredTeams = LATEST_PWS2_TEAMS.filter(t => {
+  // PWS 탭: 검색어 필터링 (API 응답에는 누락 필드가 있을 수 있어 옵셔널 체이닝 필수)
+  const filteredTeams = pwsTeams.filter(t => {
     const q = searchQuery.toLowerCase();
-    const matchesTeamName = t.name.toLowerCase().includes(q) || t.tag.toLowerCase().includes(q);
-    const matchesRoster = t.roster.some(p => p.nickname.toLowerCase().includes(q));
+    const matchesTeamName =
+      t.name?.toLowerCase().includes(q) || t.tag?.toLowerCase().includes(q);
+    const matchesRoster = t.roster?.some(p => p.nickname?.toLowerCase().includes(q));
     return matchesTeamName || matchesRoster;
   });
 
@@ -30,7 +57,7 @@ export default function PlayersTab({ onSelectPlayer }) {
   // HOT 탭: 선수 필터링
   const filteredHotPlayers = HOT_PLAYERS_12.filter(p => {
     const q = searchQuery.toLowerCase();
-    return p.nickname.toLowerCase().includes(q) || p.realName.includes(q) || p.team.toLowerCase().includes(q);
+    return p.nickname?.toLowerCase().includes(q) || p.realName?.includes(q) || p.team?.toLowerCase().includes(q);
   });
 
   // 팀 카드 렌더러 함수
@@ -176,14 +203,14 @@ export default function PlayersTab({ onSelectPlayer }) {
             Official Roster
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-            {team.roster.map((player) => (
+            {(team.roster ?? []).map((player) => (
               <div
-                key={player.nickname}
+                key={player.id ?? player.nickname}
                 onClick={() => onSelectPlayer && onSelectPlayer({
                   ...player,
                   team: team.name,
-                  league: 'PWS',
-                  country: 'KR',
+                  league: team.league,
+                  country: team.region,
                   dpi: player.dpi,
                   generalSens: player.sens,
                   mouseName: player.mouse
@@ -294,8 +321,71 @@ export default function PlayersTab({ onSelectPlayer }) {
         </div>
       </div>
 
+      {/* PWS 로딩 중 */}
+      {selectedTab === 'PWS' && loading && (
+        <div className="glass-panel" style={{
+          padding: '60px 24px',
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center',
+          border: '1px solid var(--border-subtle)'
+        }}>
+          <RefreshCw
+            size={36}
+            color="var(--accent-gold)"
+            style={{ marginBottom: '16px', animation: 'pulseGlow 1.4s ease-in-out infinite' }}
+          />
+          <div style={{ fontWeight: '900', color: '#fff', fontSize: '1rem', marginBottom: '6px' }}>
+            공식 로스터를 불러오는 중입니다
+          </div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+            백엔드 서버에서 PWS 팀 데이터를 가져오고 있습니다.
+          </div>
+        </div>
+      )}
+
+      {/* PWS 로드 실패 */}
+      {selectedTab === 'PWS' && !loading && error && (
+        <div className="glass-panel" style={{
+          padding: '60px 24px',
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center',
+          border: '1px solid rgba(255, 51, 75, 0.35)',
+          background: 'linear-gradient(135deg, rgba(255, 51, 75, 0.1) 0%, rgba(22, 26, 38, 0.95) 100%)'
+        }}>
+          <AlertTriangle size={36} color="#ff334b" style={{ marginBottom: '16px' }} />
+          <div style={{ fontWeight: '900', color: '#fff', fontSize: '1rem', marginBottom: '8px' }}>
+            팀 데이터를 불러오지 못했습니다
+          </div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '6px' }}>
+            {error}
+          </div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '20px' }}>
+            백엔드 서버(localhost:8080)와 PostgreSQL 컨테이너가 실행 중인지 확인해 주세요.
+          </div>
+          <button
+            onClick={loadPwsTeams}
+            style={{
+              padding: '10px 22px',
+              borderRadius: 'var(--radius-sm)',
+              background: 'var(--accent-gold)',
+              color: '#000',
+              border: 'none',
+              fontWeight: '800',
+              fontSize: '0.85rem',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+          >
+            <RefreshCw size={15} />
+            다시 시도
+          </button>
+        </div>
+      )}
+
       {/* 1. PWS 선택 시: 공식 프로 시드와 퀄리파이어 시드 분리 뷰 */}
-      {selectedTab === 'PWS' && (
+      {selectedTab === 'PWS' && !loading && !error && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
           
           {/* 대회 공식 명칭 헤더 배너 */}
@@ -322,10 +412,10 @@ export default function PlayersTab({ onSelectPlayer }) {
             </div>
             <div style={{ display: 'flex', gap: '8px' }}>
               <span className="badge badge-gold" style={{ fontSize: '0.75rem', fontWeight: '800' }}>
-                13 PRO SEEDS
+                {proTeams.length} PRO SEEDS
               </span>
               <span className="badge" style={{ fontSize: '0.75rem', fontWeight: '800', background: 'rgba(255,255,255,0.08)', color: '#fff' }}>
-                11 QUALIFIER SEEDS
+                {qualifierTeams.length} QUALIFIER SEEDS
               </span>
             </div>
           </div>

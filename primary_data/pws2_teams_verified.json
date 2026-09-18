@@ -1,0 +1,1117 @@
+[
+  {
+    "id": "dn_soopers",
+    "name": "DN SOOPers",
+    "tag": "DNS",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/dns.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "PWS",
+        "count": 3
+      },
+      {
+        "name": "PPM",
+        "count": 1
+      }
+    ],
+    "players": [
+      {
+        "nickname": "Rex",
+        "realName": "Rex",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gyumin",
+        "realName": "Gyumin",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Heaven",
+        "realName": "Heaven",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "DIEL",
+        "realName": "DIEL",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "geng_esports",
+    "name": "Gen.G Esports",
+    "tag": "GEN",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/geng.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "PGC",
+        "count": 1
+      },
+      {
+        "name": "PGS",
+        "count": 1
+      },
+      {
+        "name": "PGI",
+        "count": 1
+      },
+      {
+        "name": "PKL",
+        "count": 2
+      },
+      {
+        "name": "BSC",
+        "count": 1
+      }
+    ],
+    "players": [
+      {
+        "nickname": "seoul",
+        "realName": "seoul",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Salute",
+        "realName": "Salute",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "taemin",
+        "realName": "taemin",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "BeaN",
+        "realName": "BeaN",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "t1",
+    "name": "T1",
+    "tag": "T1",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/t1.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "BSC",
+        "count": 1
+      },
+      {
+        "name": "PCS",
+        "count": 1
+      }
+    ],
+    "players": [
+      {
+        "nickname": "Rain1ng",
+        "realName": "Rain1ng",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "EEND",
+        "realName": "EEND",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Heather",
+        "realName": "Heather",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Type",
+        "realName": "Type",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "baegopa",
+    "name": "Baegopa",
+    "tag": "BGP",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/bgp.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "APL",
+        "count": 1
+      }
+    ],
+    "players": [
+      {
+        "nickname": "Pio",
+        "realName": "Pio",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Inonix",
+        "realName": "Inonix",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "blackwalk",
+        "realName": "blackwalk",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "yugee",
+        "realName": "yugee",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "fn_esports",
+    "name": "FN Esports",
+    "tag": "FN",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/fn.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Starlord",
+        "realName": "Starlord",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "kkachi",
+        "realName": "kkachi",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "BreaKers",
+        "realName": "BreaKers",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Hush",
+        "realName": "Hush",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "azla_pentagram",
+    "name": "AZLA PENTAGRAM",
+    "tag": "AZLA",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/azla.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "PLS",
+        "count": 2
+      }
+    ],
+    "players": [
+      {
+        "nickname": "F1ame",
+        "realName": "F1ame",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HAMMER",
+        "realName": "HAMMER",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Orca",
+        "realName": "Orca",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "redzone",
+        "realName": "redzone",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "divine",
+    "name": "Divine",
+    "tag": "DN",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/dn.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Barpo",
+        "realName": "Barpo",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Stella",
+        "realName": "Stella",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Tosi",
+        "realName": "Tosi",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Daejang",
+        "realName": "Daejang",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "phantom_hearts",
+    "name": "PHANTOM HEARTS",
+    "tag": "PHE",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/phe.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "DAEVA",
+        "realName": "DAEVA",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "King",
+        "realName": "King",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "GimJun",
+        "realName": "GimJun",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ZeniTh",
+        "realName": "ZeniTh",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "daejeon_game_pt",
+    "name": "DAEJEON GAME PT",
+    "tag": "DGP",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/dgp.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "BSC",
+        "count": 1
+      }
+    ],
+    "players": [
+      {
+        "nickname": "fizzy",
+        "realName": "fizzy",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "instinct",
+        "realName": "instinct",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "PolarBear",
+        "realName": "PolarBear",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Search",
+        "realName": "Search",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "sentinel",
+    "name": "SENTINEL",
+    "tag": "SEN",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/sen.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Rascal",
+        "realName": "Rascal",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "heyden",
+        "realName": "heyden",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HyukSung",
+        "realName": "HyukSung",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "VenTus",
+        "realName": "VenTus",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "superfect",
+    "name": "SUPERFECT",
+    "tag": "SPF",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/spf.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Acid",
+        "realName": "Acid",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "TheMinos",
+        "realName": "TheMinos",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Karwn",
+        "realName": "Karwn",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Todol",
+        "realName": "Todol",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "vex_e_sports",
+    "name": "Vex E-Sports",
+    "tag": "VEX",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/vex.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Lure",
+        "realName": "Lure",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Nyeong",
+        "realName": "Nyeong",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ROY",
+        "realName": "ROY",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Solution",
+        "realName": "Solution",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "geekay_esports",
+    "name": "Geekay Esports",
+    "tag": "GK",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/gk.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [
+      {
+        "name": "PEC",
+        "count": 1
+      }
+    ],
+    "players": [
+      {
+        "nickname": "AKaN",
+        "realName": "AKaN",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Parkpro",
+        "realName": "Parkpro",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Seongjang",
+        "realName": "Seongjang",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "EJ",
+        "realName": "EJ",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "eagle_owls",
+    "name": "Eagle Owls",
+    "tag": "EOS",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/eos.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "SINGAM",
+        "realName": "SINGAM",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "DK",
+        "realName": "DK",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Right",
+        "realName": "Right",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Jaechan",
+        "realName": "Jaechan",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "squad_x_academy",
+    "name": "SQUAD X ACADEMY",
+    "tag": "SXA",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "BBANG",
+        "realName": "BBANG",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Sunday",
+        "realName": "Sunday",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HELLPER",
+        "realName": "HELLPER",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "KAL",
+        "realName": "KAL",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "crazy_raccoon",
+    "name": "Crazy Raccoon",
+    "tag": "CR",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/cr.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Glaz",
+        "realName": "Glaz",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gyuyeon",
+        "realName": "Gyuyeon",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Ayoh",
+        "realName": "Ayoh",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "GGoBuGi",
+        "realName": "GGoBuGi",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "slash_doom_lab",
+    "name": "SLASH DOOM LAB",
+    "tag": "SL",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Freaky",
+        "realName": "Freaky",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Morek",
+        "realName": "Morek",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "muel",
+        "realName": "muel",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "vilo",
+        "realName": "vilo",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "iskra",
+    "name": "ISKRA",
+    "tag": "ISK",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "ParkChaN",
+        "realName": "ParkChaN",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Genom",
+        "realName": "Genom",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Yong",
+        "realName": "Yong",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Primmie",
+        "realName": "Primmie",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown",
+    "tag": "TCN",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "CxldMxn",
+        "realName": "CxldMxn",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "HanlNu",
+        "realName": "HanlNu",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "2cut",
+        "realName": "2cut",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "2heart",
+        "realName": "2heart",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "samgukzee",
+    "name": "samgukzee",
+    "tag": "SGZ",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "GuanYu",
+        "realName": "GuanYu",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "ZhaoYun",
+        "realName": "ZhaoYun",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Yubi",
+        "realName": "Yubi",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "YeoPo",
+        "realName": "YeoPo",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "hesedian",
+    "name": "HESEDIAN",
+    "tag": "HSD",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "LOV3",
+        "realName": "LOV3",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Glance",
+        "realName": "Glance",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Hyuk",
+        "realName": "Hyuk",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "youth",
+        "realName": "youth",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "cfive",
+    "name": "CFiVE",
+    "tag": "C5",
+    "seedType": "amateur",
+    "logoUrl": "",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Archi",
+        "realName": "Archi",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Malik",
+        "realName": "Malik",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Gray",
+        "realName": "Gray",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Krbyz",
+        "realName": "Krbyz",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "ggwp",
+    "name": "GGWP",
+    "tag": "GGWP",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/ggwp.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "sony",
+        "realName": "sony",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Geunwon",
+        "realName": "Geunwon",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "naheesoo",
+        "realName": "naheesoo",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Wanted",
+        "realName": "Wanted",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  },
+  {
+    "id": "overwhelm",
+    "name": "Overwhelm",
+    "tag": "OM",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/om.png",
+    "league": "PWS",
+    "region": "KR",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Woong",
+        "realName": "Woong",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "night",
+        "realName": "night",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "Fairy",
+        "realName": "Fairy",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      },
+      {
+        "nickname": "FoxVer",
+        "realName": "FoxVer",
+        "role": "Player",
+        "mouseDpi": 800,
+        "generalSens": 32.0,
+        "mouseName": "Logitech G PRO X Superlight"
+      }
+    ]
+  }
+]

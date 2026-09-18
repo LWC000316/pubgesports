@@ -12,10 +12,17 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Optional<Player> findByNicknameIgnoreCase(String nickname);
 
-    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.team WHERE " +
-           "(:teamId IS NULL OR p.team.id = :teamId) AND " +
-           "(:query IS NULL OR LOWER(p.nickname) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.realName) LIKE LOWER(CONCAT('%', :query, '%')))")
-    List<Player> searchPlayers(@Param("teamId") Long teamId, @Param("query") String query);
+    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.team ORDER BY p.id ASC")
+    List<Player> findAllWithTeam();
+
+    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.team WHERE p.team.id = :teamId ORDER BY p.id ASC")
+    List<Player> findByTeamIdWithTeam(@Param("teamId") Long teamId);
+
+    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.team WHERE LOWER(p.nickname) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.realName) LIKE LOWER(CONCAT('%', :query, '%')) ORDER BY p.id ASC")
+    List<Player> searchByQueryWithTeam(@Param("query") String query);
+
+    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.team WHERE p.team.id = :teamId AND (LOWER(p.nickname) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.realName) LIKE LOWER(CONCAT('%', :query, '%'))) ORDER BY p.id ASC")
+    List<Player> searchByTeamIdAndQueryWithTeam(@Param("teamId") Long teamId, @Param("query") String query);
 
     List<Player> findByTeamId(Long teamId);
 }
