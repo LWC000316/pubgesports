@@ -1,9 +1,6 @@
 package com.pubg.esports.dto;
 
 import com.pubg.esports.domain.Player;
-import com.pubg.esports.domain.PlayerGear;
-import com.pubg.esports.domain.PlayerHighlight;
-import com.pubg.esports.domain.PlayerSetting;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -29,7 +26,6 @@ public class PlayerDetailResponseDto {
     private TeamInfo team;
     private SettingDto setting;
     private List<GearDto> gears;
-    private List<HighlightDto> highlights;
 
     @Getter
     @Builder
@@ -53,7 +49,6 @@ public class PlayerDetailResponseDto {
 
         SettingDto settingDto = player.getSetting() != null ? SettingDto.from(player.getSetting()) : null;
         List<GearDto> gearDtos = player.getGears().stream().map(GearDto::from).collect(Collectors.toList());
-        List<HighlightDto> highlightDtos = player.getHighlights().stream().map(HighlightDto::from).collect(Collectors.toList());
 
         return PlayerDetailResponseDto.builder()
                 .id(player.getId())
@@ -70,7 +65,6 @@ public class PlayerDetailResponseDto {
                 .team(teamInfo)
                 .setting(settingDto)
                 .gears(gearDtos)
-                .highlights(highlightDtos)
                 .build();
     }
 }

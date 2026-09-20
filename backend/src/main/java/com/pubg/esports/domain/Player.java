@@ -50,9 +50,6 @@ public class Player {
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PlayerGear> gears = new ArrayList<>();
 
-    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PlayerHighlight> highlights = new ArrayList<>();
-
     @Builder
     public Player(Team team, String nickname, String realName, String role, String country,
                   String profileImageUrl, String chzzkUrl, String youtubeUrl, String soopUrl, boolean isActive) {
@@ -98,9 +95,5 @@ public class Player {
 
     public void addGear(PlayerGear gear) {
         this.gears.add(gear);
-    }
-
-    public void addHighlight(PlayerHighlight highlight) {
-        this.highlights.add(highlight);
     }
 }

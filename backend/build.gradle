@@ -31,9 +31,6 @@ dependencies {
     // H2 Database (개발 및 로컬 테스트용 인메모리 대체 지원)
     runtimeOnly 'com.h2database:h2'
 
-    // Jsoup (Web Crawling / HTML Parsing)
-    implementation 'org.jsoup:jsoup:1.17.2'
-
     // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
