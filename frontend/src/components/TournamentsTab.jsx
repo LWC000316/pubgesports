@@ -6,7 +6,11 @@ export default function TournamentsTab() {
   const [selectedTourneyId, setSelectedTourneyId] = useState(TOURNAMENTS_DATA[0].id);
 
   const currentTourney = TOURNAMENTS_DATA.find(t => t.id === selectedTourneyId) || TOURNAMENTS_DATA[0];
-  const leaderboard = LEADERBOARD_PGS4;
+
+  // LEADERBOARD_PGS4 는 PGS4 의 순위표다. 예전에는 어떤 대회를 골라도 이걸 보여줘서
+  // PWS 를 선택해도 PGS4 순위가 나왔다. 정적 데이터에 대회 연결 키가 없으므로
+  // 해당 대회일 때만 렌더하고, 나머지는 데이터 없음으로 표시한다.
+  const leaderboard = selectedTourneyId === 'pgs4' ? LEADERBOARD_PGS4 : [];
 
   const topThree = leaderboard.slice(0, 3);
 
@@ -84,6 +88,18 @@ export default function TournamentsTab() {
         </div>
       </div>
 
+      {leaderboard.length === 0 && (
+        <div className="glass-panel" style={{ padding: '60px 20px', textAlign: 'center' }}>
+          <Trophy size={36} color="var(--accent-gold)" style={{ margin: '0 auto 16px auto' }} />
+          <h3 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '8px' }}>
+            순위 데이터가 없습니다
+          </h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+            {currentTourney.name} 의 순위표가 아직 준비되지 않았습니다.
+          </p>
+        </div>
+      )}
+
       {/* 상위 1~3위 포디움 카드 */}
       <div style={{
         display: 'grid',
@@ -141,7 +157,11 @@ export default function TournamentsTab() {
       </div>
 
       {/* 종합 리더보드 테이블 */}
-      <div className="glass-panel" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <div className="glass-panel" style={{
+        borderRadius: 'var(--radius-md)',
+        overflow: 'hidden',
+        display: leaderboard.length === 0 ? 'none' : 'block'
+      }}>
         <div style={{ padding: '18px 24px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#fff', margin: 0 }}>
             종합 순위표 (Leaderboard)

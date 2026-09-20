@@ -87,14 +87,18 @@ public class PubgOfficialApiService {
             }
             log.info("공식 API에서 필터링된 주요 대회 총 {}건 로드 완료", result.size());
         } catch (Exception e) {
-            log.warn("공식 PUBG API 호출 중 예외 발생 (Fallback 모드로 안전 전환): {}", e.getMessage());
+            log.warn("공식 PUBG API 호출 실패: {}", e.getMessage());
         }
 
         if (result.isEmpty()) {
-            result = getStandardMajorTournaments();
+            // 호출이 실패하면 빈 목록을 그대로 반환한다.
+            // 예전에는 하드코딩한 대회 목록을 공식 API 응답인 것처럼 돌려줬는데,
+            // 검증되지 않은 값이 검증된 것처럼 보이므로 폴백을 없앴다.
+            log.warn("공식 API에서 가져온 대회가 없습니다. 빈 목록을 반환합니다.");
+            return result;
         }
 
-        // 캐시 저장
+        // 캐시 저장 (실패 응답은 캐시하지 않는다)
         tournamentCache.put("MAJOR_TOURNAMENTS", result);
         return result;
     }
@@ -145,65 +149,4 @@ public class PubgOfficialApiService {
         return "[" + kw + "] " + id.replace("-", " ").toUpperCase();
     }
 
-    public List<Map<String, Object>> getStandardMajorTournaments() {
-        List<Map<String, Object>> list = new ArrayList<>();
-
-        list.add(Map.of(
-                "id", "as-pgs9gf",
-                "name", "PUBG Global Series 9 (PGS 9)",
-                "category", "GLOBAL (세계 대회)",
-                "tier", "S-Tier",
-                "region", "GLOBAL",
-                "location", "Shanghai, China",
-                "prizePool", "$300,000",
-                "champion", "Gen.G Esports (대한민국 젠지 우승)",
-                "status", "COMPLETED"
-        ));
-
-        list.add(Map.of(
-                "id", "eu-ewc26fs",
-                "name", "Esports World Cup 2026 (EWC PUBG)",
-                "category", "GLOBAL (세계 대회)",
-                "tier", "S-Tier",
-                "region", "GLOBAL",
-                "location", "Riyadh, Saudi Arabia",
-                "prizePool", "$2,000,000",
-                "status", "UPCOMING"
-        ));
-
-        list.add(Map.of(
-                "id", "as-pnc26gf",
-                "name", "PUBG Nations Cup 2026 (PNC 2026)",
-                "category", "GLOBAL (세계 대회)",
-                "tier", "S-Tier",
-                "region", "GLOBAL",
-                "location", "Seoul, South Korea",
-                "prizePool", "$500,000",
-                "status", "UPCOMING"
-        ));
-
-        list.add(Map.of(
-                "id", "kr-pws2c5",
-                "name", "2026 PUBG WEEKLY SERIES: Phase 1 (PWS)",
-                "category", "REGIONAL: KR (대한민국 PWS)",
-                "tier", "Regional-Tier",
-                "region", "KR",
-                "location", "Seoul, South Korea",
-                "prizePool", "₩100,000,000",
-                "status", "COMPLETED"
-        ));
-
-        list.add(Map.of(
-                "id", "cn-pcl26ab",
-                "name", "2026 PUBG CHAMPIONS LEAGUE: Spring (PCL)",
-                "category", "REGIONAL: CN (중국 PCL)",
-                "tier", "Regional-Tier",
-                "region", "CN",
-                "location", "Shanghai, China",
-                "prizePool", "¥1,000,000",
-                "status", "COMPLETED"
-        ));
-
-        return list;
-    }
 }

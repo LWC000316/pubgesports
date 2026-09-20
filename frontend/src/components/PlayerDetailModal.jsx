@@ -1,24 +1,59 @@
 import React from 'react';
 import { X, Crosshair, Mouse, Monitor, Headphones, Keyboard, Video, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
 
+const NOT_SET = '미등록';
+
+const GEAR_CATEGORIES = ['MOUSE', 'MOUSEPAD', 'KEYBOARD', 'HEADSET', 'MONITOR'];
+
+// 값이 없으면 null 을 돌려준다. 기본값을 지어내면 검증되지 않은 수치가
+// 검증된 것처럼 보이므로 절대 대체값을 넣지 않는다.
+const pick = (...values) => values.find(v => v !== undefined && v !== null && v !== '') ?? null;
+
+function StatValue({ value, suffix = '', color = '#fff' }) {
+  const missing = value === null;
+  return (
+    <div style={{
+      fontSize: missing ? '0.95rem' : '1.1rem',
+      fontWeight: '800',
+      color: missing ? 'var(--text-muted)' : color,
+      marginTop: '2px'
+    }}>
+      {missing ? NOT_SET : `${value}${suffix}`}
+    </div>
+  );
+}
+
 export default function PlayerDetailModal({ player, onClose }) {
   if (!player) return null;
 
-  const dpi = player.setting?.mouseDpi || player.dpi || 800;
-  const generalSens = player.setting?.generalSens || player.generalSens || 30;
-  const aimSens = player.setting?.aimSens || player.aimSens || 30;
-  const adsSens = player.setting?.adsSens || player.adsSens || 30;
-  const verticalMultiplier = player.setting?.verticalMultiplier || player.verticalMultiplier || 1.0;
-  const fov = player.setting?.fov || player.fov || 103;
-  const resolution = player.setting?.resolution || player.resolution || '1920 x 1080';
+  const dpi = pick(player.setting?.mouseDpi, player.dpi);
+  const generalSens = pick(player.setting?.generalSens, player.generalSens, player.sens);
+  // 백엔드 SettingDto 는 aimingSens 로 내보낸다
+  const aimSens = pick(player.setting?.aimingSens, player.setting?.aimSens, player.aimSens);
+  const adsSens = pick(player.setting?.adsSens, player.adsSens);
+  const verticalMultiplier = pick(player.setting?.verticalMultiplier, player.verticalMultiplier);
+  const fov = pick(player.setting?.fov, player.fov);
+  const resolution = pick(player.setting?.resolution, player.resolution);
 
-  const gears = player.gears || [
-    { category: 'MOUSE', name: player.mouseName || '로지텍 G PRO X Superlight', brand: 'Logitech' },
-    { category: 'MOUSEPAD', name: player.mousepad || '아티산 제로 XSoft', brand: 'Artisan' },
-    { category: 'KEYBOARD', name: player.keyboard || '우팅 60HE', brand: 'Wooting' },
-    { category: 'HEADSET', name: player.headset || '보스 QC20', brand: 'Bose' },
-    { category: 'MONITOR', name: player.monitor || '조위 XL2546K', brand: 'ZOWIE' }
-  ];
+  const aimAds = (aimSens === null && adsSens === null)
+    ? null
+    : `${aimSens ?? '?'} / ${adsSens ?? '?'}`;
+
+  // 5개 카테고리를 항상 노출한다. 비어 있는 항목이 보여야 무엇을 수집해야 하는지 드러난다.
+  const gearByCategory = new Map(
+    (player.gears ?? []).map(g => [g.category?.toUpperCase(), g.name])
+  );
+  const flatGear = {
+    MOUSE: pick(player.mouseName, player.mouse),
+    MOUSEPAD: pick(player.mousepad),
+    KEYBOARD: pick(player.keyboard),
+    HEADSET: pick(player.headset),
+    MONITOR: pick(player.monitor)
+  };
+  const gears = GEAR_CATEGORIES.map(category => ({
+    category,
+    name: pick(gearByCategory.get(category), flatGear[category])
+  }));
 
   const getGearIcon = (category) => {
     switch (category.toUpperCase()) {
@@ -127,32 +162,32 @@ export default function PlayerDetailModal({ player, onClose }) {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>마우스 DPI</div>
-                <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#fff', marginTop: '2px' }}>{dpi} DPI</div>
+                <StatValue value={dpi} suffix=" DPI" />
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>일반 감도</div>
-                <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--accent-cyan)', marginTop: '2px' }}>{generalSens}</div>
+                <StatValue value={generalSens} color="var(--accent-cyan)" />
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>조준 / ADS 감도</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#fff', marginTop: '2px' }}>{aimSens} / {adsSens}</div>
+                <StatValue value={aimAds} />
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>수직 배율 감도</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#fff', marginTop: '2px' }}>{verticalMultiplier}</div>
+                <StatValue value={verticalMultiplier} />
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>시야각 (FOV)</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#fff', marginTop: '2px' }}>{fov}</div>
+                <StatValue value={fov} />
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>해상도</div>
-                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#fff', marginTop: '2px' }}>{resolution}</div>
+                <StatValue value={resolution} />
               </div>
             </div>
           </div>
@@ -183,7 +218,13 @@ export default function PlayerDetailModal({ player, onClose }) {
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{g.category}</div>
-                    <div style={{ fontSize: '0.9rem', color: '#fff', fontWeight: '700' }}>{g.name}</div>
+                    <div style={{
+                      fontSize: '0.9rem',
+                      color: g.name === null ? 'var(--text-muted)' : '#fff',
+                      fontWeight: '700'
+                    }}>
+                      {g.name === null ? NOT_SET : g.name}
+                    </div>
                   </div>
                 </div>
               ))}

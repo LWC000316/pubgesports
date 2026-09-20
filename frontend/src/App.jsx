@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import PlayersTab from './components/PlayersTab';
+import PlayersTab from './components/players/PlayersTab';
 import TournamentsTab from './components/TournamentsTab';
 import HitEndingTab from './components/HitEndingTab';
 import PlayerDetailModal from './components/PlayerDetailModal';
