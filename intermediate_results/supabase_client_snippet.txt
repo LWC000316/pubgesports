@@ -1,5 +1,0 @@
-github.com/orgs/supabase/discussions/37217`);var Ki={BASE_URL:`/`,DEV:!1,MODE:`production`,PROD:!0,SSR:!1,VITE_SUPABASE_KEY:`sb_publishable_7_ip1nxMniQwwANdx4Kr_Q_4YRr8--4`,VITE_SUPABASE_URL:`https://sqsouczuiycvtjnfztqs.supabase.co`,VITE_VERCEL_BRANCH_URL:`pubg-tracker-git-main-cheeze-factory.vercel.app`,VITE_VERCEL_DEPLOYMENT_ID:`dpl_AP3xAxBFXQ2MzWHX3b4NFJ7MUFhC`,VITE_VERCEL_ENV:`production`,VITE_VERCEL_GIT_COMMIT_AUTHOR_LOGIN:`cheezelity`,VITE_VERCEL_GIT_COMMIT_AUTHOR_NAME:`cheezelity`,VITE_VERCEL_GIT_COMMIT_MESSAGE:`feat(status): 스테이지 진행 상태 4종 + 자동 판정 + 전수 그룹 분류 · OVR 열
-
-상태 어휘를 3종에서 4종(live/ongoing/upcoming/ended)으로 늘리면서 같은 자리에서
-네 번 화면이 깨졌다. 근본 원인은 전부 "상태를 이름으로 고르는" 코드였다.
-판정과 분류를 config.

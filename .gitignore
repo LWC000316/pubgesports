@@ -10,6 +10,15 @@ ehthumbs.db
 # Claude Code personal overrides (project .claude/settings.json IS committed)
 .claude/settings.local.json
 
+# Secrets and local environment
+# 비밀값은 추적되는 파일에 넣지 말 것. 아래 경로를 쓴다.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
 # IDE and Editor Files
 .idea/
 .vscode/

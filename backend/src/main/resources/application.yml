@@ -3,9 +3,9 @@ spring:
     name: pubg-esports-backend
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/pubg_esports
-    username: pubg_user
-    password: pubg_password123!
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/pubg_esports}
+    username: ${DB_USERNAME:pubg_user}
+    password: ${DB_PASSWORD:pubg_password123!}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -23,7 +23,8 @@ server:
 pubg:
   api:
     base-url: https://api.pubg.com
-    key: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlNjM4MjBkMC04NGRjLTAxM2YtNjgxMS03ZTUyYjRmOWRlYzkiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNzg3OTAwNzgyLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6InB1Ymdlc3BvcnRzX3NlIn0.m7No-1f2HTUil7JUfTyAF0CdpXbYqCPHsEWI4u8Fc4I
+    # 환경변수 PUBG_API_KEY 로 주입한다. 값을 이 파일에 다시 적지 말 것 — git 에 추적되는 파일이다.
+    key: ${PUBG_API_KEY:}
     allowed-tiers:
       - PWS
       - PCL

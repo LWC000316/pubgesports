@@ -1,8 +1,13 @@
+# [폐기됨] 타사 사이트(wwcd.lol)의 Supabase 스토리지를 조회하던 스크립트.
+# 남의 인프라 자격증명을 레포에 두지 않기 위해 엔드포인트와 키를 제거했다.
+# 자기장 데이터는 primary_data/match_*.json 의 asset URL 로 크래프톤 공식
+# 텔레메트리를 받는 경로를 쓴다. 이 파일은 조사 이력 기록용으로만 남긴다.
+import os
 import urllib.request
 import json
 
-base_url = "https://sqsouczuiycvtjnfztqs.supabase.co"
-key = "sb_publishable_7_ip1nxMniQwwANdx4Kr_Q_4YRr8--4"
+base_url = os.environ.get("WWCD_SUPABASE_URL", "")
+key = os.environ.get("WWCD_SUPABASE_KEY", "")
 
 headers = {
     "apikey": key,

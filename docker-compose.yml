@@ -4,9 +4,10 @@ services:
     container_name: pubg-postgres
     restart: always
     environment:
-      POSTGRES_DB: pubg_esports
-      POSTGRES_USER: pubg_user
-      POSTGRES_PASSWORD: pubg_password123!
+      POSTGRES_DB: ${DB_NAME:-pubg_esports}
+      POSTGRES_USER: ${DB_USERNAME:-pubg_user}
+      # 로컬 개발용 기본값. 외부에 노출되는 환경에서는 반드시 .env 로 덮어쓸 것
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-pubg_password123!}
     ports:
       - "5432:5432"
     volumes:
