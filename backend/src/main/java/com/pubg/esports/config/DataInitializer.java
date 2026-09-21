@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -19,6 +20,15 @@ import java.util.Set;
 @Component
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
+
+    /**
+     * 검증된 리그 시드 파일. 리그를 추가할 때는 이 목록에 한 줄만 넣으면 된다.
+     * 파일 스키마는 pws2_teams_verified.json 과 동일해야 한다.
+     */
+    private static final List<String> VERIFIED_SEEDS = List.of(
+            "primary_data/pws2_teams_verified.json",
+            "primary_data/pcl_teams_verified.json"
+    );
 
     private final TeamRepository teamRepository;
     private final PlayerRepository playerRepository;
@@ -29,24 +39,26 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) {
         Set<String> loadedTeamNames = new HashSet<>();
 
-        // 검증된 PWS 데이터를 먼저 적재한다. 아래 레거시 파일의 PWS 항목은
-        // 로고가 플레이스홀더라 덮어쓰면 안 되므로 순서가 중요하다.
-        loadVerifiedPwsTeams(loadedTeamNames);
+        // 검증된 시드를 먼저 전부 적재한다. 아래 레거시 파일은 로고가 플레이스홀더라
+        // 덮어쓰면 안 되므로 순서가 중요하다.
+        for (String seedPath : VERIFIED_SEEDS) {
+            loadVerifiedTeams(seedPath, loadedTeamNames);
+        }
         loadLegacyOfficialTeams(loadedTeamNames);
     }
 
-    private void loadVerifiedPwsTeams(Set<String> loadedTeamNames) {
-        File jsonFile = resolveDataFile("primary_data/pws2_teams_verified.json");
+    private void loadVerifiedTeams(String seedPath, Set<String> loadedTeamNames) {
+        File jsonFile = resolveDataFile(seedPath);
         if (jsonFile == null) {
-            log.warn("primary_data/pws2_teams_verified.json 파일을 찾을 수 없어 PWS 검증 데이터 적재를 건너뜁니다.");
+            log.warn("{} 파일이 없어 해당 리그 시드 적재를 건너뜁니다.", seedPath);
             return;
         }
 
-        log.info("=== 검증된 PWS 팀 데이터 적재 시작 ===");
+        log.info("=== 검증 시드 적재 시작: {} ===", seedPath);
         try {
             JsonNode root = objectMapper.readTree(jsonFile);
             if (!root.isArray()) {
-                log.warn("pws2_teams_verified.json 의 최상위가 배열이 아닙니다.");
+                log.warn("{} 의 최상위가 배열이 아닙니다.", seedPath);
                 return;
             }
 
@@ -62,13 +74,21 @@ public class DataInitializer implements CommandLineRunner {
 
                 String region = tNode.path("region").asText("KR");
 
+                // league 에 기본값을 주지 않는다. 누락된 팀이 조용히 다른 리그로
+                // 섞여 들어가는 사고를 막기 위해 건너뛰고 경고만 남긴다.
+                String league = tNode.path("league").asText("");
+                if (league.isEmpty()) {
+                    log.warn("{}: '{}' 팀에 league 값이 없어 건너뜁니다.", seedPath, name);
+                    continue;
+                }
+
                 // 템플릿 문자열로 채우지 않는다. 시드에 없는 값은 비워 둔다.
                 Team team = Team.builder()
                         .name(name)
                         .region(region)
                         .tag(tNode.path("tag").asText(null))
                         .seedType(tNode.path("seedType").asText(null))
-                        .league(tNode.path("league").asText("PWS"))
+                        .league(league)
                         .logoUrl(tNode.path("logoUrl").asText(""))
                         .build();
 
@@ -122,10 +142,10 @@ public class DataInitializer implements CommandLineRunner {
                 }
             }
 
-            log.info("=== PWS 검증 데이터 적재 완료: {}개 팀, {}명 선수, 트로피 {}건 ===",
-                    teamCount, playerCount, trophyCount);
+            log.info("=== 검증 시드 적재 완료 [{}]: {}개 팀, {}명 선수, 트로피 {}건 ===",
+                    seedPath, teamCount, playerCount, trophyCount);
         } catch (Exception e) {
-            log.error("PWS 검증 시드 데이터 로딩 실패: {}", e.getMessage(), e);
+            log.error("검증 시드 로딩 실패 [{}]: {}", seedPath, e.getMessage(), e);
         }
     }
 

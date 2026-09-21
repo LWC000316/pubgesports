@@ -57,7 +57,9 @@ Standard layered Spring Boot app:
 - `controller/` — `PlayerController` (the live one), `TournamentController`, `PubgTournamentController`.
 
 The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticated admin CRUD (`AdminController`/`AdminService`) were deleted. The crawler never actually scraped anything — its parser discarded the value it parsed, and its 4 AM scheduled job only stamped `lastCrawledAt`, producing a false "just refreshed" timestamp. Player settings/gear will be collected via Discord instead, and under the current `ddl-auto: create` that data has to enter through a seed file, not an API (anything written at runtime is lost on restart).
-- `config/DataInitializer.java` — on every startup, wipes and reloads the DB from **two** seed files, and the order is load-bearing: first `primary_data/pws2_teams_verified.json` (the Liquipedia-verified PWS bracket — real logos, structured trophies, `seedType`), then `primary_data/official_teams_and_rosters.json`, skipping any team whose name was already loaded. `Team.name` is `unique`, and the legacy file's PWS entries are placeholders (`via.placeholder.com` logos, templated descriptions), so reversing the order either violates the constraint or lets placeholder rows win. Both paths are looked up relative to the working directory with a `../` fallback.
+- `config/DataInitializer.java` — on every startup, wipes and reloads the DB. It loads every file in the `VERIFIED_SEEDS` list first (one per league, same schema as `pws2_teams_verified.json`), then `primary_data/official_teams_and_rosters.json`, skipping any team whose name was already loaded. **The order is load-bearing**: `Team.name` is `unique`, and the legacy file's entries are placeholders (`via.placeholder.com` logos, templated descriptions), so reversing it either violates the constraint or lets placeholder rows win. A seed file that does not exist logs a warning and is skipped — that is the normal state for a league whose data has not been collected yet. Paths are looked up relative to the working directory with a `../` fallback.
+
+**Adding a league on the backend** is one line in `VERIFIED_SEEDS`. `league` has no default: a seed team without a `league` value is skipped with a warning rather than silently loaded as PWS.
 
 **Team card endpoint gotcha**: `GET /api/teams/cards?league=PWS` (backing the PE tab) filters on `seedType IS NOT NULL`, not on league alone. The legacy seed file also contains 25 teams with `league = "PWS"`, so filtering by league only returns 49 teams instead of the intended 24. `seedType` is what marks a team as part of a verified tournament bracket.
 
@@ -74,6 +76,7 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 
 - `App.jsx` — top-level tab state machine: `pe` (`components/players/PlayersTab.jsx`), `tournaments` (`TournamentsTab.jsx`), `hit_ending` (`HitEndingTab.jsx`).
 - `components/players/` — `PlayersTab` (chips + search + branch only), `LeagueTeamGrid` (the replication unit), `TeamCard`, `HotPlayerGrid`.
+- `components/players/TeamCard.jsx` — renders the `{dpi}DPI` badge only when `dpi` is present. Leagues collected from Liquipedia have no measured settings, so the field is absent rather than defaulted.
 - `components/PlayerDetailModal.jsx` — per-player popup. Reads `player.setting?.*` / `player.gears[]` first, then flat fields, and renders `미등록` when a value is genuinely absent. **Never reintroduce default values here** — every PWS player used to display a fabricated FOV, resolution and full gear rack as if verified.
 - `components/HitEndingTab.jsx` — "준비 중" placeholder. Its previous content was invented match narration attributed to real players; the real feature needs the telemetry pipeline.
 - `components/TournamentsTab.jsx` — static. `LEADERBOARD_PGS4` renders only when PGS4 is selected; the static data has no tournament key, so other tournaments show an empty state.
@@ -83,6 +86,13 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 **Startup race**: `DataInitializer` is a `CommandLineRunner`, so it runs *after* the web server accepts requests. For a few seconds after boot, `/api/teams/cards` returns `[]` from a freshly dropped schema. When waiting for readiness, poll for the expected row count (24 PWS teams), not for HTTP 200.
 
 **Known broken**: `GET /api/tournaments/official` returns 500 and always has — `PubgTournamentController` declares `@CrossOrigin(origins = "*")` while `WebConfig` sets `allowCredentials(true)`, which Spring rejects. Also, `TournamentController` and `PubgTournamentController` both map `/api/tournaments`, so `/official` and `/{id}` overlap.
+
+### Collecting a new league (`ingest/`)
+`ingest/` is the repeatable tooling, as opposed to `scripts/` which is a historical record. `build_league_seed.py` turns one Liquipedia tournament page into a seed draft, `verify_seed.py` checks the draft's shape offline (schema, placeholder detection, roster sizes, diff against the legacy file), and `liquipedia_client.py` handles LPDB v3 auth, the **60-requests-per-hour** limit, and response caching under `intermediate_results/liquipedia_cache/`. See `ingest/README.md` for the full procedure.
+
+Two rules the tooling enforces: it never writes player settings (`mouseDpi`/`generalSens`/`mouseName`) because Liquipedia does not have them, and it never picks `seedType` automatically — only `pro` and `amateur` render (`LeagueTeamGrid.jsx`), so any other value makes a team vanish from the page. Liquipedia content is CC-BY-SA 3.0 and requires attribution on screen.
+
+`LIQUIPEDIA_API_KEY` and `LIQUIPEDIA_CONTACT` come from the environment; the key is not self-service and must be requested and approved.
 
 ### Data pipeline (`scripts/`, `primary_data/`, `intermediate_results/`)
 `scripts/01_...py` through `scripts/69_...py` are one-off research scripts, numbered in the order they were run, used to source and reconcile tournament/team/roster data from the official PUBG API and Liquipedia. **Treat them as an audit trail, not a runnable pipeline** — several now reference files that were deleted, and the third-party scraped bundles that scripts 30/38–41 depended on are gone (they carried another site's Supabase endpoint and key). There is currently no repeatable ingestion step; the planned telemetry work will need one, and it should live separately from this archive.

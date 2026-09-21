@@ -138,9 +138,12 @@ export default function TeamCard({ team, onSelectPlayer }) {
                 <span style={{ fontWeight: '800', color: '#fff', fontSize: '0.88rem' }}>
                   {player.nickname}
                 </span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--accent-gold)' }}>
-                  {player.dpi}DPI
-                </span>
+                {/* 실측 DPI 가 있는 선수만 표시한다. 없는 값을 지어내지 않는다. */}
+                {player.dpi != null && (
+                  <span style={{ fontSize: '0.7rem', color: 'var(--accent-gold)' }}>
+                    {player.dpi}DPI
+                  </span>
+                )}
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 {player.role}

@@ -74,3 +74,6 @@ tmp/
 # Docker and Local Database
 postgres_data/
 *.h2.db
+
+# 리퀴피디아 API 응답 캐시 (약관상 캐싱은 필요하지만 저장소에 넣을 산출물은 아니다)
+intermediate_results/liquipedia_cache/
