@@ -11,7 +11,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/tournaments")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+// CORS 는 WebConfig 가 /api/** 전체에 적용한다. 여기서 origins="*" 를 다시 선언하면
+// allowCredentials(true) 와 충돌해 Spring 이 요청을 500 으로 거부한다.
 public class PubgTournamentController {
 
     private final PubgOfficialApiService pubgOfficialApiService;

@@ -85,7 +85,11 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 
 **Startup race**: `DataInitializer` is a `CommandLineRunner`, so it runs *after* the web server accepts requests. For a few seconds after boot, `/api/teams/cards` returns `[]` from a freshly dropped schema. When waiting for readiness, poll for the expected row count (24 PWS teams), not for HTTP 200.
 
-**Known broken**: `GET /api/tournaments/official` returns 500 and always has — `PubgTournamentController` declares `@CrossOrigin(origins = "*")` while `WebConfig` sets `allowCredentials(true)`, which Spring rejects. Also, `TournamentController` and `PubgTournamentController` both map `/api/tournaments`, so `/official` and `/{id}` overlap.
+**CORS lives only in `WebConfig`** (`/api/**`, `allowCredentials(true)`). Do not add `@CrossOrigin` to a controller: combining `origins = "*"` with credentials makes Spring reject every request to that controller with a 500. That is exactly why `GET /api/tournaments/official` was broken until it was removed. Without `PUBG_API_KEY` the endpoint returns `[]`.
+
+`TournamentController` and `PubgTournamentController` both use the `/api/tournaments` prefix. This is not a runtime conflict — Spring matches the literal `/official` before the `/{id}` pattern — but keep new literal paths out of `{id}`'s way.
+
+**Known broken**: `GET /api/tournaments/{id}` for a tournament that does not exist returns 500 instead of 404 (`TournamentService` throws `IllegalArgumentException`). The tournament tables are always empty for now, so every id hits this. Fix it when the 대회 tab is built.
 
 ### Collecting a new league (`ingest/`)
 `ingest/` is the repeatable tooling, as opposed to `scripts/` which is a historical record. `build_league_seed.py` turns one Liquipedia tournament page into a seed draft, `verify_seed.py` checks the draft's shape offline (schema, placeholder detection, roster sizes, diff against the legacy file), and `liquipedia_client.py` handles LPDB v3 auth, the **60-requests-per-hour** limit, and response caching under `intermediate_results/liquipedia_cache/`. See `ingest/README.md` for the full procedure.
