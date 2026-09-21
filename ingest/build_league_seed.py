@@ -113,7 +113,15 @@ def build(args, client):
 
     seed_map = {}
     if args.seed_map:
-        seed_map = json.loads(Path(args.seed_map).read_text(encoding="utf-8"))
+        raw_map = json.loads(Path(args.seed_map).read_text(encoding="utf-8"))
+        # 밑줄로 시작하는 키는 설명용 메모다.
+        seed_map = {k: v for k, v in raw_map.items() if not k.startswith("_")}
+        missing = [n for n in seed_map if n not in names]
+        if missing:
+            # 이름 표기가 다르면 조용히 빠지므로 반드시 알린다.
+            print("경고: seed-map 에 있지만 참가자 목록에 없는 팀 %d개: %s" % (len(missing), missing))
+        if args.only_mapped:
+            names = [n for n in names if n in seed_map]
 
     rosters = fetch_rosters(client, names)
     meta = fetch_team_meta(client, names)
@@ -145,6 +153,8 @@ def main():
     ap.add_argument("--seed-type", default=None,
                     help="seed-map 에 없는 팀의 seedType. pro/amateur 만 화면에 나온다")
     ap.add_argument("--seed-map", default=None, help="팀명→seedType JSON")
+    ap.add_argument("--only-mapped", action="store_true",
+                    help="seed-map 에 있는 팀만 시드에 넣는다 (예: PCL 은 Stage S 24팀만)")
     ap.add_argument("--out", default=None, help="초안 출력 경로")
     ap.add_argument("--limit", type=int, default=100)
     ap.add_argument("--wiki", default="pubg")

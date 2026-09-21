@@ -37,7 +37,7 @@ python ingest/build_league_seed.py --dump-fields --page "PUBG_Champions_League/2
 python ingest/build_league_seed.py \
     --page "PUBG_Champions_League/2026" \
     --league PCL --region CN \
-    --seed-map ingest/seed_types_pcl.json \
+    --seed-map ingest/seed_types_pcl.json --only-mapped \
     --out intermediate_results/pcl_seed_draft.json
 
 # 3. 형식 검사
@@ -71,6 +71,16 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 **트로피는 자동 수집하지 않는다** — PWS 때 팀 페이지의 1위 기록을 사람이 읽어 확정했고
 그 과정에서 두 번 정정이 있었다 (보고서 26·27). 같은 방식으로 확인한다.
 
+## 리그별 결정
+
+| 리그 | 대상 | seedType 구분 | 구분표 |
+|---|---|---|---|
+| PWS | 2026 Phase 2 참가 24팀 | pro 13 / amateur 11 (프로 시드 / 예선 통과) | 시드 파일에 직접 기록 |
+| PCL | 2026 Autumn **Stage S** 참가 24팀 | pro 8 (Stage S 직행) / amateur 16 (하위 스테이지에서 올라옴) | `seed_types_pcl.json` |
+
+PCL 은 40팀이 Stage B·A·S 세 단계로 나뉘어 PWS 와 구조가 다르다. 사용자 결정으로 Stage S 24팀만
+싣고, 직행/승격을 pro/amateur 로 대응시켰다. 공식 API 대회 ID 는 `cn-pclas26`.
+
 ## 파일
 
 | 파일 | 하는 일 |
@@ -78,6 +88,7 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 | `liquipedia_client.py` | LPDB v3 호출. 인증·호출 한도·캐시·gzip. 단독 실행하면 응답 덤프 |
 | `build_league_seed.py` | 대회 문서 하나 → 시드 초안 JSON |
 | `verify_seed.py` | 초안 형식 검사와 레거시 비교. 네트워크를 쓰지 않는다 |
+| `seed_types_pcl.json` | PCL 팀명 → seedType 구분표 |
 
 ## 아직 확인하지 못한 것
 
