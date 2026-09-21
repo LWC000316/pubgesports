@@ -47,7 +47,8 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 #    cp intermediate_results/pcl_seed_draft.json primary_data/pcl_teams_verified.json
 
 # 5. 백엔드 DataInitializer.VERIFIED_SEEDS 에 경로 한 줄 추가
-#    프론트 PlayersTab.jsx 의 LEAGUES 에는 PCL·EMEA·AMER·APAC 이 이미 있다
+#    프론트 PlayersTab.jsx 의 LEAGUES 에는 PCL·EMEA·AMER·APAC 이 이미 있다.
+#    해당 리그 항목에 sourceUrl(대조에 쓴 리퀴피디아 문서)을 넣는다 — 출처 표기에 쓰인다
 ```
 
 ## 지키는 규칙

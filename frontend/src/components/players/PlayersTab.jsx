@@ -6,8 +6,15 @@ import HotPlayerGrid from './HotPlayerGrid';
 
 // 리그를 추가할 때는 이 배열에만 항목을 넣으면 된다.
 // bannerTitle 이 있는 리그는 팀 목록 위에 대회 공식 명칭 배너를 띄운다.
+// sourceUrl 은 데이터를 대조한 리퀴피디아 문서. 출처 표기(CC-BY-SA)에 쓰인다.
 const LEAGUES = [
-  { id: 'PWS', label: 'PWS', logo: TOURNAMENT_LOGOS.PWS, bannerTitle: '2026 PUBG WEEKLY SERIES: KOREA Phase 2' },
+  {
+    id: 'PWS',
+    label: 'PWS',
+    logo: TOURNAMENT_LOGOS.PWS,
+    bannerTitle: '2026 PUBG WEEKLY SERIES: KOREA Phase 2',
+    sourceUrl: 'https://liquipedia.net/pubg/PUBG_WEEKLY_SERIES/2026/Phase_2'
+  },
   { id: 'PCL', label: 'PCL', logo: TOURNAMENT_LOGOS.PCL },
   { id: 'EMEA', label: 'EMEA', logo: TOURNAMENT_LOGOS.EMEA },
   { id: 'AMER', label: 'AMER', logo: TOURNAMENT_LOGOS.AMER },
@@ -100,6 +107,7 @@ export default function PlayersTab({ onSelectPlayer }) {
           searchQuery={searchQuery}
           bannerLogo={activeLeague.logo}
           bannerTitle={activeLeague.bannerTitle}
+          sourceUrl={activeLeague.sourceUrl}
           onSelectPlayer={onSelectPlayer}
         />
       )}

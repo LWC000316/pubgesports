@@ -14,7 +14,7 @@ const EMPTY = [];
  *
  * bannerTitle 은 대회 공식 명칭처럼 리그별로 다른 문구가 있을 때만 넘긴다.
  */
-export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, onSelectPlayer }) {
+export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, sourceUrl, onSelectPlayer }) {
   const fetcher = useCallback(() => fetchTeamCards(league), [league]);
   const { data: teams, loading, error, reload } = useApi(fetcher, [league], EMPTY);
 
@@ -111,7 +111,30 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
         teams={qualifierTeams}
         onSelectPlayer={onSelectPlayer}
       />
+
+      <SourceAttribution sourceUrl={sourceUrl} />
     </div>
+  );
+}
+
+/**
+ * 리퀴피디아 콘텐츠는 CC-BY-SA 3.0 이라 화면에 출처를 밝혀야 한다.
+ * sourceUrl 이 있으면 대조에 쓴 대회 문서로, 없으면 위키 첫 화면으로 연결한다.
+ */
+function SourceAttribution({ sourceUrl }) {
+  const linkStyle = { color: 'var(--text-muted)', textDecoration: 'underline' };
+  return (
+    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'right', margin: 0 }}>
+      팀·로스터·트로피 정보 출처:{' '}
+      <a href={sourceUrl || 'https://liquipedia.net/pubg'} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+        Liquipedia
+      </a>
+      {' '}(
+      <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer" style={linkStyle}>
+        CC BY-SA 3.0
+      </a>
+      )
+    </p>
   );
 }
 
