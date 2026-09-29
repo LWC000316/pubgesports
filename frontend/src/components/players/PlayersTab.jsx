@@ -29,7 +29,13 @@ const LEAGUES = [
     bannerTitle: 'PUBG EMEA CHAMPIONSHIP: 2026 Fall',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_EMEA_Championship/2026/Fall'
   },
-  { id: 'AMER', label: 'AMER', logo: TOURNAMENT_LOGOS.AMER },
+  {
+    id: 'AMER',
+    label: 'AMER',
+    logo: TOURNAMENT_LOGOS.AMER,
+    bannerTitle: 'PUBG AMERICAS SERIES 2 — 2026',
+    sourceUrl: 'https://liquipedia.net/pubg/PUBG_Americas_Series/2026/2'
+  },
   // APAC 은 태국(PTS)·베트남(PVS) 으로 나눴다. 각각 독립된 권역 리그다.
   { id: 'PTS', label: 'PTS', logo: TOURNAMENT_LOGOS.PTS },
   { id: 'PVS', label: 'PVS', logo: TOURNAMENT_LOGOS.PVS }

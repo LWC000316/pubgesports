@@ -141,6 +141,11 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 | PWS | 2026 Phase 2 참가 24팀 | pro 13 / amateur 11 (프로 시드 / 예선 통과) | 시드 파일에 직접 기록 |
 | PCL | 2026 Autumn **Stage S** 참가 24팀 | pro 8 (Stage S 직행) / amateur 16 (하위 스테이지에서 올라옴) | `seed_types_pcl.json` |
 | EMEA | 2026 Fall 참가 29팀 | pro 9 (`method=invite`) / amateur 20 (`method=qual`) | **자동** — `--seed-from-qualification` |
+| AMER | 2026 Series 2 참가 29팀 | pro 7 (`method=invite`) / amateur 22 (`method=qual`) | **자동** — `--seed-from-qualification` |
+
+아직 안 한 리그: **PTS**(태국, 최신 `PUBG_Thailand_Series/2026/Phase_1`, 24팀, 종료됨),
+**PVS**(베트남, 최신 `PUBG_Vietnam_Series/2026/Phase_2`, 16팀, 인포박스에 날짜가 비어 있어
+시작 여부 확인 필요). 탭과 로고는 이미 있고 시드 파일만 없다.
 
 **EMEA 는 구분표가 필요 없다.** Stage 소절이 없는 대신 팀마다 `|qualification={{Qualification|method=...}}`
 가 있어서 초청(invite)과 예선 통과(qual)를 위키 데이터에서 그대로 가를 수 있다.

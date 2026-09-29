@@ -1,0 +1,1049 @@
+[
+  {
+    "id": "team_falcons",
+    "name": "Team Falcons",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/team_falcons.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Shrimzy",
+        "realName": "Shrimzy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Gustav",
+        "realName": "Gustav",
+        "role": "Player"
+      },
+      {
+        "nickname": "TGLTN",
+        "realName": "TGLTN",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kickstart",
+        "realName": "Kickstart",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "55_e_sports",
+    "name": "55 e-Sports",
+    "tag": "55",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/55.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "gabriehw",
+        "realName": "gabriehw",
+        "role": "Player"
+      },
+      {
+        "nickname": "KerakTMz",
+        "realName": "KerakTMz",
+        "role": "Player"
+      },
+      {
+        "nickname": "rnzeera",
+        "realName": "rnzeera",
+        "role": "Player"
+      },
+      {
+        "nickname": "sweezy",
+        "realName": "sweezy",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "copenhagen_wolves",
+    "name": "Copenhagen Wolves",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/copenhagen_wolves.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Snakers",
+        "realName": "Snakers",
+        "role": "Player"
+      },
+      {
+        "nickname": "hwinn",
+        "realName": "hwinn",
+        "role": "Player"
+      },
+      {
+        "nickname": "Fludd",
+        "realName": "Fludd",
+        "role": "Player"
+      },
+      {
+        "nickname": "Vox",
+        "realName": "Vox",
+        "role": "Player"
+      },
+      {
+        "nickname": "SAyFoo",
+        "realName": "SAyFoo",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "roc_esports",
+    "name": "ROC Esports",
+    "tag": "ROC",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/roc.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "rbN",
+        "realName": "rbN",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sparkingg",
+        "realName": "Sparkingg",
+        "role": "Player"
+      },
+      {
+        "nickname": "sxntastico",
+        "realName": "sxntastico",
+        "role": "Player"
+      },
+      {
+        "nickname": "cauan7zin",
+        "realName": "cauan7zin",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "team_liquid",
+    "name": "Team Liquid",
+    "tag": "TL",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/tl.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "PurdyKurty",
+        "realName": "PurdyKurty",
+        "role": "Player"
+      },
+      {
+        "nickname": "CowBoi",
+        "realName": "CowBoi",
+        "role": "Player"
+      },
+      {
+        "nickname": "diyy",
+        "realName": "diyy",
+        "role": "Player"
+      },
+      {
+        "nickname": "luke12",
+        "realName": "luke12",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "toyo_esports",
+    "name": "TOYO Esports",
+    "tag": "TOYO",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/toyo.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "emikxz",
+        "realName": "emikxz",
+        "role": "Player"
+      },
+      {
+        "nickname": "Capitan",
+        "realName": "Capitan",
+        "role": "Player"
+      },
+      {
+        "nickname": "soldzzzz",
+        "realName": "soldzzzz",
+        "role": "Player"
+      },
+      {
+        "nickname": "Fakezin",
+        "realName": "Fakezin",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "godlike_esports",
+    "name": "GodLike Esports",
+    "tag": "GODLIKE",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/godlike.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Haven",
+        "realName": "Haven",
+        "role": "Player"
+      },
+      {
+        "nickname": "Tny7",
+        "realName": "Tny7",
+        "role": "Player"
+      },
+      {
+        "nickname": "lfp1",
+        "realName": "lfp1",
+        "role": "Player"
+      },
+      {
+        "nickname": "fana",
+        "realName": "fana",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "circle_nine",
+    "name": "Circle Nine",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/circle_nine.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "bielmtcalmo",
+        "realName": "bielmtcalmo",
+        "role": "Player"
+      },
+      {
+        "nickname": "Dr4FTk1NG",
+        "realName": "Dr4FTk1NG",
+        "role": "Player"
+      },
+      {
+        "nickname": "possa",
+        "realName": "possa",
+        "role": "Player"
+      },
+      {
+        "nickname": "zkrakeN",
+        "realName": "zkrakeN",
+        "role": "Player"
+      },
+      {
+        "nickname": "FXSHMN",
+        "realName": "FXSHMN",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "no_org",
+    "name": "No Org",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/no_org.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "guizeraa",
+        "realName": "guizeraa",
+        "role": "Player"
+      },
+      {
+        "nickname": "v1n1",
+        "realName": "v1n1",
+        "role": "Player"
+      },
+      {
+        "nickname": "PIPAA",
+        "realName": "PIPAA",
+        "role": "Player"
+      },
+      {
+        "nickname": "beNjA",
+        "realName": "beNjA",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "per_diem_withholders",
+    "name": "Per Diem Withholders",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/per_diem_withholders.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Bizzler",
+        "realName": "Bizzler",
+        "role": "Player"
+      },
+      {
+        "nickname": "J4M",
+        "realName": "J4M",
+        "role": "Player"
+      },
+      {
+        "nickname": "gats",
+        "realName": "gats",
+        "role": "Player"
+      },
+      {
+        "nickname": "AR2N",
+        "realName": "AR2N",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kolten",
+        "realName": "Kolten",
+        "role": "Sub"
+      },
+      {
+        "nickname": "xQnn",
+        "realName": "xQnn",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "duel",
+    "name": "DUEL",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/duel.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Woo1y",
+        "realName": "Woo1y",
+        "role": "Player"
+      },
+      {
+        "nickname": "Balefrost",
+        "realName": "Balefrost",
+        "role": "Player"
+      },
+      {
+        "nickname": "Myca",
+        "realName": "Myca",
+        "role": "Player"
+      },
+      {
+        "nickname": "pentalol",
+        "realName": "pentalol",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kein",
+        "realName": "Kein",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "shhhhhhhh",
+    "name": "SHHHHHHHH",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/shhhhhhhh.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "JimmyGuzman",
+        "realName": "JimmyGuzman",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kalniix",
+        "realName": "Kalniix",
+        "role": "Player"
+      },
+      {
+        "nickname": "kl4uZeera",
+        "realName": "kl4uZeera",
+        "role": "Player"
+      },
+      {
+        "nickname": "San71Hero1",
+        "realName": "San71Hero1",
+        "role": "Player"
+      },
+      {
+        "nickname": "FranXzz",
+        "realName": "FranXzz",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "team_fate",
+    "name": "Team FATE",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/team_fate.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Tater",
+        "realName": "Tater",
+        "role": "Player"
+      },
+      {
+        "nickname": "fl8nkr",
+        "realName": "fl8nkr",
+        "role": "Player"
+      },
+      {
+        "nickname": "TimFee",
+        "realName": "TimFee",
+        "role": "Player"
+      },
+      {
+        "nickname": "xennny",
+        "realName": "xennny",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "bilu",
+    "name": "BILU",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/bilu.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "OhNytavoN",
+        "realName": "OhNytavoN",
+        "role": "Player"
+      },
+      {
+        "nickname": "FROGMAN1",
+        "realName": "FROGMAN1",
+        "role": "Player"
+      },
+      {
+        "nickname": "zVini",
+        "realName": "zVini",
+        "role": "Player"
+      },
+      {
+        "nickname": "M4UR1L1O",
+        "realName": "M4UR1L1O",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "gosu_intl_gaming_alliance",
+    "name": "Gosu Intl Gaming Alliance",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/gosu_intl_gaming_alliance.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "SneakAttack",
+        "realName": "SneakAttack",
+        "role": "Player"
+      },
+      {
+        "nickname": "Maurnzz",
+        "realName": "Maurnzz",
+        "role": "Player"
+      },
+      {
+        "nickname": "froost1k",
+        "realName": "froost1k",
+        "role": "Player"
+      },
+      {
+        "nickname": "k1lawi",
+        "realName": "k1lawi",
+        "role": "Player"
+      },
+      {
+        "nickname": "xur",
+        "realName": "xur",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "pest_control",
+    "name": "Pest Control",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/pest_control.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "JoShY",
+        "realName": "JoShY",
+        "role": "Player"
+      },
+      {
+        "nickname": "HotNSpicy",
+        "realName": "HotNSpicy",
+        "role": "Player"
+      },
+      {
+        "nickname": "KaraM",
+        "realName": "KaraM",
+        "role": "Player"
+      },
+      {
+        "nickname": "shanedoe",
+        "realName": "shanedoe",
+        "role": "Player"
+      },
+      {
+        "nickname": "Adam",
+        "realName": "Adam",
+        "role": "Sub"
+      },
+      {
+        "nickname": "BATTL3X",
+        "realName": "BATTL3X",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "no_way",
+    "name": "No Way",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/no_way.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "ZxLopes",
+        "realName": "ZxLopes",
+        "role": "Player"
+      },
+      {
+        "nickname": "dnL",
+        "realName": "dnL",
+        "role": "Player"
+      },
+      {
+        "nickname": "gladiador",
+        "realName": "gladiador",
+        "role": "Player"
+      },
+      {
+        "nickname": "slabyy",
+        "realName": "slabyy",
+        "role": "Player"
+      },
+      {
+        "nickname": "glockmtfofo",
+        "realName": "glockmtfofo",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "arc_e_sports",
+    "name": "ARC e-Sports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/arc_e_sports.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "LiiPeeXx",
+        "realName": "LiiPeeXx",
+        "role": "Player"
+      },
+      {
+        "nickname": "Dadinho",
+        "realName": "Dadinho",
+        "role": "Player"
+      },
+      {
+        "nickname": "Jibbss",
+        "realName": "Jibbss",
+        "role": "Player"
+      },
+      {
+        "nickname": "zDarkCastle",
+        "realName": "zDarkCastle",
+        "role": "Player"
+      },
+      {
+        "nickname": "vps1",
+        "realName": "vps1",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "taesan",
+    "name": "Taesan",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/taesan.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "zZRISE",
+        "realName": "zZRISE",
+        "role": "Player"
+      },
+      {
+        "nickname": "oredanaP",
+        "realName": "oredanaP",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kaibutsu",
+        "realName": "Kaibutsu",
+        "role": "Player"
+      },
+      {
+        "nickname": "As-Nico",
+        "realName": "As-Nico",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "for_nothing",
+    "name": "For Nothing",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/for_nothing.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "gmoo",
+        "realName": "gmoo",
+        "role": "Player"
+      },
+      {
+        "nickname": "LucasMSzin",
+        "realName": "LucasMSzin",
+        "role": "Player"
+      },
+      {
+        "nickname": "napoly",
+        "realName": "napoly",
+        "role": "Player"
+      },
+      {
+        "nickname": "PauloSam",
+        "realName": "PauloSam",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "me_anoto_mi_tio",
+    "name": "Me anoto mi tio",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/me_anoto_mi_tio.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "danitw",
+        "realName": "danitw",
+        "role": "Player"
+      },
+      {
+        "nickname": "Adyra",
+        "realName": "Adyra",
+        "role": "Player"
+      },
+      {
+        "nickname": "andreww",
+        "realName": "andreww",
+        "role": "Player"
+      },
+      {
+        "nickname": "NCLS",
+        "realName": "NCLS",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "chupinsky_s",
+    "name": "Chupinsky's",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/chupinsky_s.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "0racle",
+        "realName": "0racle",
+        "role": "Player"
+      },
+      {
+        "nickname": "7beeee",
+        "realName": "7beeee",
+        "role": "Player"
+      },
+      {
+        "nickname": "Luizeer4",
+        "realName": "Luizeer4",
+        "role": "Player"
+      },
+      {
+        "nickname": "piiero",
+        "realName": "piiero",
+        "role": "Player"
+      },
+      {
+        "nickname": "xduduu",
+        "realName": "xduduu",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "earthworms",
+    "name": "Earthworms",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/earthworms.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "HUGHLIGAN",
+        "realName": "HUGHLIGAN",
+        "role": "Player"
+      },
+      {
+        "nickname": "Its_Nlan",
+        "realName": "Its_Nlan",
+        "role": "Player"
+      },
+      {
+        "nickname": "tysN",
+        "realName": "tysN",
+        "role": "Player"
+      },
+      {
+        "nickname": "LiberalMaxxing",
+        "realName": "LiberalMaxxing",
+        "role": "Player"
+      },
+      {
+        "nickname": "miksUU",
+        "realName": "miksUU",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Palecks",
+        "realName": "Palecks",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "newgen_allstars",
+    "name": "Newgen Allstars",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/newgen_allstars.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Shinboi",
+        "realName": "Shinboi",
+        "role": "Player"
+      },
+      {
+        "nickname": "Poonage",
+        "realName": "Poonage",
+        "role": "Player"
+      },
+      {
+        "nickname": "Choppy",
+        "realName": "Choppy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Stokeley",
+        "realName": "Stokeley",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "boundary_esports",
+    "name": "Boundary Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/boundary_esports.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Penry24",
+        "realName": "Penry24",
+        "role": "Player"
+      },
+      {
+        "nickname": "bibinxzol",
+        "realName": "bibinxzol",
+        "role": "Player"
+      },
+      {
+        "nickname": "Jimmy",
+        "realName": "Jimmy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sqinzy",
+        "realName": "Sqinzy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Pasty",
+        "realName": "Pasty",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "keep_out",
+    "name": "Keep Out",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/keep_out.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "RADS",
+        "realName": "RADS",
+        "role": "Player"
+      },
+      {
+        "nickname": "LOK1fps",
+        "realName": "LOK1fps",
+        "role": "Player"
+      },
+      {
+        "nickname": "SEVENTTEEEEEEEEN",
+        "realName": "SEVENTTEEEEEEEEN",
+        "role": "Player"
+      },
+      {
+        "nickname": "Bielzera",
+        "realName": "Bielzera",
+        "role": "Player"
+      }
+    ]
+  },
+  {
+    "id": "overp0wered",
+    "name": "OVERP0WERED",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/overp0wered.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "RepoLiN",
+        "realName": "RepoLiN",
+        "role": "Player"
+      },
+      {
+        "nickname": "infinite",
+        "realName": "infinite",
+        "role": "Player"
+      },
+      {
+        "nickname": "zelo",
+        "realName": "zelo",
+        "role": "Player"
+      },
+      {
+        "nickname": "vxras",
+        "realName": "vxras",
+        "role": "Player"
+      },
+      {
+        "nickname": "Fulyy1",
+        "realName": "Fulyy1",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "antarctic_fox",
+    "name": "Antarctic Fox",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/antarctic_fox.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Plushiee",
+        "realName": "Plushiee",
+        "role": "Player"
+      },
+      {
+        "nickname": "tm2js",
+        "realName": "tm2js",
+        "role": "Player"
+      },
+      {
+        "nickname": "TaiTle",
+        "realName": "TaiTle",
+        "role": "Player"
+      },
+      {
+        "nickname": "Ohmlalov",
+        "realName": "Ohmlalov",
+        "role": "Player"
+      },
+      {
+        "nickname": "KaJeev",
+        "realName": "KaJeev",
+        "role": "Sub"
+      }
+    ]
+  },
+  {
+    "id": "last_minute_roster",
+    "name": "Last Minute Roster",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/last_minute_roster.png",
+    "league": "AMER",
+    "region": "AMER",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "abdou",
+        "realName": "abdou",
+        "role": "Player"
+      },
+      {
+        "nickname": "chakouch",
+        "realName": "chakouch",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sharpshot",
+        "realName": "Sharpshot",
+        "role": "Player"
+      },
+      {
+        "nickname": "Tiska",
+        "realName": "Tiska",
+        "role": "Player"
+      },
+      {
+        "nickname": "PastaBiceps",
+        "realName": "PastaBiceps",
+        "role": "Sub"
+      }
+    ]
+  }
+]
