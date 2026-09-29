@@ -1,128 +1,127 @@
-# HANDOFF — 2026-09-20
+# HANDOFF — 2026-09-29
 
-Claude Code 설정 → PE탭 PWS 백엔드 연동 → 전체 구조 감사 → 정비까지 완료한 시점.
-**모든 작업이 아직 커밋되지 않았습니다.**
+리그 6개 중 **4개 수집 완료**. 여기까지 전부 커밋·푸시됨 (`895d4ac`).
 
 ---
 
 ## 1. 완료한 일
 
-### A. Claude Code 설정 (커밋 `cdbf817`)
-`.claude/settings.json`(권한 허용 18/차단 6), 커스텀 커맨드 `/dev`·`/report`(프로젝트), `/handoff`·`/spec`(전역, `~/.claude/commands/`), `CLAUDE.md` 생성.
+### 리그 데이터 (이번 세션의 주 작업)
 
-### B. PE탭 PWS 백엔드 연동 (커밋 `1dcb905`)
-프론트가 정적 상수를 쓰던 것을 API 호출로 전환. `Team`에 `tag`·`seedType`·`TeamTrophy` 추가, `TeamCardDto`와 `GET /api/teams/cards?league=PWS` 신설, `DataInitializer`가 검증 PWS 시드를 먼저 적재하고 레거시는 팀명 중복 시 스킵.
+| 탭 | 대회 | 팀 | 구성 | 시드 구분 방법 |
+|---|---|---|---|---|
+| PWS | 2026 Phase 2 (한국) | 24 | pro 13 / am 11 | 시드 파일 직접 기록 |
+| PCL | 2026 Autumn Stage S (중국) | 24 | pro 8 / am 16 | `seed_types_pcl.json` 수작업 |
+| EMEA | 2026 Fall | 29 | pro 9 / am 20 | **자동** (`--seed-from-qualification`) |
+| AMER | 2026 Series 2 | 29 | pro 7 / am 22 | **자동** (`--seed-from-qualification`) |
 
-### C. 보안 — 노출 구조 제거 (미커밋)
-**API 키가 21곳에 있었습니다.** `application.yml` 하나가 아니라 **파이썬 스크립트 20개에 같은 키가 복붙**돼 있었음.
+선수 합계 493명, 팀 로고 106개.
 
-- 21곳 전부 `os.environ["PUBG_API_KEY"]` / `${PUBG_API_KEY}` 참조로 변경
-- `docker-compose.yml` DB 비밀번호도 환경변수화(로컬 기본값 유지)
-- `.gitignore`에 `.env`, `.env.*`, `*.pem`, `*.key`, `secrets/` 추가 (이전에는 `.env` 항목이 아예 없었음)
-- 타사(wwcd.lol) Supabase 키·엔드포인트 제거 — 번들 15개 + `supabase_client_snippet.txt` 삭제, `scripts/40`·`41`의 하드코딩 키 제거
-- **추적 파일 전수 스캔 결과 자격증명 0건**
+### 수집 도구 (`ingest/`)
+- `mediawiki_client.py` — `liquipedia.net/pubg/api.php`. **API 키 불필요.** 연락처 포함 UA, gzip, 응답 캐싱, 호출 간 2초
+- `build_league_seed_mediawiki.py` — 대회 문서 하나 → 시드 초안 + 로고 다운로드
 
-### D. 죽은 코드 삭제 (미커밋, 총 34건)
-크롤러 일체(`CrawlerService`/`CrawlerController`/`CrawlerStatusDto` + `@EnableScheduling` + Jsoup 의존성), 관리자 API(`AdminController`/`AdminService` + DTO 2), `mockData.js`, `TeamRosterView.jsx`(255줄), `PlayerHighlight`+`HighlightDto`+`PlayerHighlightRepository`, `PlayerSettingRepository`, `PlayerGearRepository`, `PROJECT_OVERVIEW.md`, `scripts/70`, `secondary_data/`, 서드파티 번들 16개, `sl.png`.
+**LPDB v3 키를 기다릴 필요가 없다는 것이 이번 세션의 핵심 발견이다.** 리퀴피디아에는 API 가 두 개이고, 기존 PWS 데이터도 키 없는 MediaWiki 경로로 들어온 것이었다.
 
-`intermediate_results/` 6.4MB → 216KB.
+### 탭 구조 변경
+APAC 을 **PTS(태국)·PVS(베트남)** 로 분리. 탭은 `PWS / PCL / EMEA / AMER / PTS / PVS` 여섯 개.
 
-### E. 데이터 무결성 (미커밋)
-- **`PlayerDetailModal`** — FOV·해상도·마우스패드·키보드·헤드셋·모니터를 하드코딩 기본값으로 채워 **모든 PWS 선수가 검증된 값인 양 표시**하던 버그 제거. 이제 실제 값만 표시하고 없으면 `미등록`
-- **`PubgOfficialApiService`** — API 실패 시 하드코딩 대회 목록("EWC 2026 / $2,000,000" 등)을 `source: KRAFTON_OFFICIAL_API` 라벨로 반환하던 폴백 61줄 제거
-- **`HitEndingTab`** — 실존 선수(Xmpl·seoul·Salute·TGLTN)에 대한 출처 없는 경기 서술 제거, "준비 중" + 계획 안내로 대체
-- **`TournamentsTab`** — 선택한 대회와 무관하게 항상 PGS4 순위표를 보여주던 버그 수정
-
-### F. 리그 복제 준비 — 리팩터 (미커밋) ★이번 작업의 핵심
-`PlayersTab.jsx` **600줄 → 108줄**. 신규 9파일.
-
-```
-api/client.js, api/teams.js          모든 백엔드 호출 경로
-hooks/useApi.js                      { data, loading, error, reload }
-components/common/{Loading,Error}Panel.jsx
-components/players/PlayersTab.jsx    칩 + 검색 + 분기만
-components/players/LeagueTeamGrid.jsx  ← league prop 하나로 동작 (복제 단위)
-components/players/TeamCard.jsx
-components/players/HotPlayerGrid.jsx
-```
-
-**리그 추가가 `PlayersTab.jsx`의 `LEAGUES` 배열에 한 줄 넣는 일이 됐습니다.** PCL·EMEA·AMER·APAC을 실제로 API에 연결해 빈 상태를 표시하도록 했고, 브라우저로 동작을 확인했습니다.
-
-### G. 검증 (브라우저 실측)
-PWS 24팀(pro13/am11) 리팩터 전과 동일 · PCL 탭 빈 상태 표시 · 선수 모달 `미등록` · 대회 탭 PWS 선택 시 순위표 없음 · 히트엔딩 준비 중 · HOT 탭 회귀 없음 · 콘솔 에러 0건 · `compileJava` 및 `npm run build` 통과(번들 189.5KB).
+### 대회 로고 정정
+EMEA·APAC 로고가 **국기 이미지**였다(`scripts/65` 가 `Eu_hd.png` 144x96, `Asia-pacific_flag_hd.png` 36x24 를 하드코딩). EMEA 를 실제 로고(800x207)로 교체하고 PTS·PVS 를 새로 받았다. 참조가 사라진 `apac.png` 는 삭제.
 
 ---
 
 ## 2. 진행 중인 일
 
-**없음.** 코드 작업은 완결됐고 검증도 끝났습니다.
+**없음.** 커밋·푸시 완료, 작업 트리 깨끗.
+
+실행 중일 수 있는 것: Docker(`pubg-postgres`), 백엔드 8080, Vite 5173. 세션이 끝나면 백엔드·Vite 는 내려간다.
 
 ---
 
 ## 3. 다음 할 일
 
-### 우선순위 1 — 커밋 (사용자 답변 대기)
-두 가지를 두 번 물었으나 아직 답을 못 받았습니다.
-1. `interim_reports/29_trophy_and_challenger_removal_and_api_verification.md` — 사용자가 직접 작성한 파일. 커밋에 포함할지
-2. 커밋을 **보안 정리 / 죽은 코드 삭제 / 무결성 + 리팩터** 로 나눌지, 하나로 할지
+### 우선순위 1 — 남은 리그 2개
+**여기서 재개하면 된다.** 절차는 EMEA·AMER 과 동일하다.
 
-로컬이 `origin/main`보다 2커밋 앞선 상태(B·A). 푸시는 별도 확인 필요.
+```bash
+# PTS (태국) — 종료된 대회라 안전
+python ingest/build_league_seed_mediawiki.py \
+    --page "PUBG_Thailand_Series/2026/Phase_1" \
+    --league PTS --region TH \
+    --seed-from-qualification --include-subs --download-logos \
+    --out intermediate_results/pts_seed_draft.json
 
-### 우선순위 2 — API 키 재발급 (사용자만 가능)
-코드는 환경변수화했지만 **옛 키가 커밋 `ba3a8d5` 히스토리에 살아 있습니다.** 저장소는 Private이라 급하지 않으나, 협업자 추가나 public 전환 시 그대로 노출됩니다. 크래프톤 개발자 포털에서 재발급 필요. 파일만 고치는 것으로는 무효화되지 않습니다.
+python ingest/verify_seed.py intermediate_results/pts_seed_draft.json --compare-league PTS
+# 사람이 원문 대조 → primary_data/pts_teams_verified.json 으로 확정
+```
 
-### 우선순위 3 — `/api/tournaments/official` 500 수정
-**원래부터 깨져 있던 엔드포인트입니다** (제 변경 때문이 아님). `PubgTournamentController`의 `@CrossOrigin(origins = "*")`와 `WebConfig`의 `allowCredentials(true)`가 충돌해 Spring이 거부. `@CrossOrigin` 한 줄 제거로 해결(`WebConfig`가 이미 `/api/**` CORS 처리). 이 때문에 E항목의 가짜 폴백 제거는 **코드·컴파일만 확인했고 실제 응답으로 검증하지 못했습니다.**
+그다음 배선 2곳:
+1. `DataInitializer.VERIFIED_SEEDS` 에 경로 한 줄
+2. `PlayersTab.jsx` 의 해당 리그에 `bannerTitle` 과 `sourceUrl`
 
-### 우선순위 4 — 기능 착수 (각각의 선행 조건 있음)
-| 기능 | 선행 조건 |
-|---|---|
-| 다른 리그(PCL 등) | 검증된 시드 데이터. 코드는 준비됨 |
-| 선수 상세 실데이터 | 디스코드 수집 → **API가 아니라 시드 파일로** 유입 |
-| HOT 탭 | `ddl-auto: create` → Flyway 전환 (조회수 영속성) |
-| 대회 탭 | `scripts/49~51`의 순위·스탯 집계를 Java로 이식 (약 80% 완성돼 있음) |
-| 히트엔딩 | 반복 실행 텔레메트리 파이프라인 |
+**PTS**: `PUBG_Thailand_Series/2026/Phase_1` (24팀, 2026-04-28 ~ 05-12 종료)
+**PVS**: `PUBG_Vietnam_Series/2026/Phase_2` (16팀). **인포박스에 날짜가 비어 있어 시작 여부를 먼저 확인할 것.** 시작 전이면 참가팀이 확정되지 않았을 수 있다.
+
+`--seed-from-qualification` 이 먹히는지는 돌려봐야 안다. 실패하면 `method` 가 없는 것이므로 PCL 처럼 구분표를 만들어야 한다.
+
+### 우선순위 2 — EMEA·AMER 재수집
+두 대회 모두 **2026-10-04 에 끝난다.** 진행 중에 수집했으므로 종료 후 다시 돌려야 최종 명단이 된다.
+
+### 우선순위 3 — PUBG API 키 (사용자 조치)
+`setx PUBG_API_KEY` 로 저장돼 있고 실제 호출도 **HTTP 200** 으로 확인했다. 다만 Claude Code 세션에서는 안 잡힌다 — **터미널 창을 완전히 닫고 새로 열어야** 한다(`/exit` 만으로는 부족). 지금 진행 중인 작업에는 이 키가 필요 없다.
+
+옛 키가 커밋 `ba3a8d5` 히스토리에 잔존한다. Private 저장소라 급하지 않으나 재발급 권장.
+
+### 우선순위 4 — 트로피
+PWS 만 채워져 있고 PCL·EMEA·AMER 은 전부 빈 배열이다. 자동 수집하지 않는 항목이라 사람이 확인해서 채워야 한다(PWS 도 세 번 고쳤다 — 보고서 26·27).
 
 ### 우선순위 5 — 미룬 정비
-컨트롤러 경로 충돌(`/api/tournaments` 중복 매핑), 로고 이미지 압축(`vex.png` 1.6MB 등 3.1MB), `README.md` 재작성(모순 17건), LICENSE 없음, 테스트 0개.
+`/api/tournaments/{id}` 가 404 대신 500, 로고 이미지 최적화(`vex.png` 1.6MB 등), `README.md` 재작성, LICENSE 없음, 테스트 0개.
 
 ---
 
 ## 4. 관련 파일
 
-- `CLAUDE.md` — 매 세션 자동 로드. 리그 추가 방법, 시드 적재 순서, 기동 레이스, 알려진 고장이 정리돼 있음
-- `primary_data/pws2_teams_verified.json` — 검증된 24팀. 직접 편집한다 (생성 스크립트 없음)
-- `frontend/src/components/players/LeagueTeamGrid.jsx` — 리그 복제 단위
-- `frontend/src/api/` + `hooks/useApi.js` — 모든 백엔드 호출 경로
-- `interim_reports/` 29건 — 데이터 결정 근거
-
-**참고**: 삭제한 구 `PlayersTab.jsx`(600줄)의 최종 내용은 git blob `ab69879e45c5dea1bf33468fdbb4711b01d95de0` 에 보존돼 있습니다. 복원이 필요하면 `git cat-file -p ab69879 > 파일명`.
+- `ingest/README.md` — 리그 추가 절차. **PCL 에서 실제로 걸린 함정들이 정리돼 있다**
+- `ingest/build_league_seed_mediawiki.py` — 수집기
+- `primary_data/*_teams_verified.json` — 리그별 확정 시드 (손으로 편집 가능, 생성 스크립트는 초안까지만)
+- `CLAUDE.md` — 매 세션 자동 로드. 리그 추가 방법·함정 정리
+- `frontend/src/components/players/PlayersTab.jsx` — `LEAGUES` 배열이 탭 정의
+- `backend/.../config/DataInitializer.java` — `VERIFIED_SEEDS` 목록
 
 ---
 
 ## 5. 주의사항
 
-### 데이터 품질
-**검증된 실데이터는 팀 단위뿐입니다** — 팀명·태그·로고·트로피·시드(리퀴피디아 대조, 보고서 26·27). **선수 개인 데이터는 전부 플레이스홀더**입니다: 로스터 96명 전원 `800 DPI / 32 감도 / 동일 마우스`, `realName`이 닉네임과 동일. 선수 세팅을 근거로 뭔가 주장하지 말 것.
+### 데이터 성격
+- **수집한 로스터는 "대회 시점" 기준이다.** 이적이 반영되지 않으며 그게 의도다. PCL 의 Weibo Gaming 은 대회 후 4명 전원이 바뀌었지만 시드에는 대회 때 명단이 들어 있다
+- **자동 갱신 시스템은 없다.** 스케줄러 0건. 바꾸려면 스크립트를 다시 돌린다
+- **선수 세팅은 PWS 만 값이 있고 그마저 가짜다** (96명 전원 800/32/동일 마우스 — `scripts/60` 이 일괄 주입). PCL·EMEA·AMER 은 아예 넣지 않아 화면에 `미등록` 이 뜬다. 이게 올바른 상태다
+- **트로피는 PWS 만 채워져 있다**
 
-**리퀴피디아는 실시간 호출하지 않습니다.** 백엔드에 관련 코드 0줄이며 앞으로도 넣지 않습니다.
+### 리그별 차이 (다음 리그에서도 나올 수 있다)
+- 위키 코드가 **약칭인 리그**(PCL: `jdg`)와 **팀 이름 그대로인 리그**(EMEA: `Natus Vincere`)가 있다. `code_to_tag()` 가 코드와 팀명이 같으면 tag 를 비운다
+- 참가팀이 **Stage 소절로 나뉘는 대회**(PCL: S 8 / A 8 / B 24)가 있다. 목표 팀이 여러 소절에 흩어져 있으면 `--seed-map` 으로 골라내야 한다
+- 동명 팀은 문서명이 `ZEAL (Chinese team)` 이 된다. 접미사를 뗀다
+- 위키 원문은 **팀 이름이 아니라 내부 코드**를 준다. 정식명은 렌더된 HTML 에서만 얻는다. **개수가 다르면 멈추도록** 되어 있다
 
-### 코드 수정 시 함정
-- **`ddl-auto: create`** — 재기동마다 스키마·데이터 전멸 후 시드에서 재적재. 런타임에 쓴 데이터는 남지 않는다
-- **기동 레이스** — `DataInitializer`는 웹 서버 기동 *후* 실행. 기동 직후 몇 초간 `/api/teams/cards`가 `[]`를 반환한다. 준비 확인은 "HTTP 200"이 아니라 **"24팀이 오는가"** 로 할 것
-- **PostgreSQL null 파라미터** — JPQL에 nullable 파라미터 바인딩 금지. 조건별 전용 메서드로 분기
-- **컬렉션 2개 동시 fetch join 금지** — `Team.players` + `Team.trophies` → `MultipleBagFetchException`. trophies는 `@BatchSize`
-- **`seedType IS NOT NULL`** — 팀 카드 조회에서 필수. 없으면 24팀 대신 49팀
-- **`index.css`에 `spin` 키프레임 없음** — `fadeIn`, `pulseGlow`만 있다
-- **기본값을 지어내지 말 것** — 값이 없으면 `미등록`. 이 세션에서 프론트·백엔드 양쪽의 창작 폴백을 제거했다
+### 코드 함정
+- **`ddl-auto: create`** — 재기동마다 DB 전멸 후 시드 재적재
+- **기동 레이스** — `DataInitializer` 가 웹 서버 뒤에 실행된다. 준비 확인은 "HTTP 200" 이 아니라 **기대 팀 수**로 할 것
+- **PostgreSQL null 파라미터** — JPQL 에 nullable 바인딩 금지
+- **컬렉션 2개 동시 fetch join 금지** (`MultipleBagFetchException`)
+- **`seedType IS NOT NULL`** — 팀 카드 조회 필수 조건
+- **`pro`/`amateur` 외의 seedType 은 화면에서 사라진다** (`LeagueTeamGrid`)
 
-### 협업 관련
+### 협업
 - 한국어로 소통한다
-- **지시하지 않은 작업을 임의로 진행하지 말 것.** 세션 초반에 그 문제로 작업을 전부 되돌린 이력이 있다. 요청을 수행할 수 없으면 대체 작업을 만들지 말고 알리고 멈출 것
-- 비자명한 작업은 **계획을 먼저 보고하고 승인받는다**(EnterPlanMode → ExitPlanMode)
-- **조사 에이전트 보고를 그대로 믿지 말 것.** 이 세션에서 "트로피 13팀"(실제 7팀), "1090줄이 번들에 실린다"(실제로는 tree-shaking돼 0.68KB 차이) 두 건이 틀렸다. 수치는 원본으로 확인한다
-- 감사 결과를 보고할 때는 **"미완성 / 정비 필요 / 삭제 대상"을 구분**할 것. 나열식 보고가 "구조부터 잘못됐다"로 읽혀 불필요한 불안을 준 적이 있다
+- **지시하지 않은 작업을 임의로 진행하지 말 것.** 세션 초반에 그 문제로 작업을 전부 되돌린 이력이 있다
+- 비자명한 작업은 **계획을 먼저 보고하고 승인받는다**
+- **모르거나 애매하면 물어본다.** 이번 리그 작업에서 7번 멈추고 질문했고 그중 하나는 내가 확인하지 않고 선택지를 만든 실수였다(리퀴피디아에 팀 약칭 데이터가 있다고 가정했으나 없었다)
+- **조사 결과를 그대로 믿지 말 것.** 수치는 원본으로 확인한다
 
 ---
 
 **이어받는 법**: `claude -c` (같은 폴더에서), 또는 `/clear` 후 `@HANDOFF.md`.
+**바로 이어서 할 일**: 위 "우선순위 1 — 남은 리그 2개" 의 PTS 명령부터.
