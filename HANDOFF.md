@@ -91,6 +91,15 @@ PTS 는 근거 없이 20팀이 프로가 되고, PVS 는 **컵 1위 팀이 아�
 
 ## 5. 주의사항
 
+### 데이터 신선도 — 먼저 이걸 돌린다
+
+```bash
+python ingest/check_freshness.py      # 읽기만 한다. 약 1분
+```
+
+더 최근 대회가 생겼는지, 로스터가 달라졌는지, 종료 후 재수집했는지를 본다.
+기준 파일은 `primary_data/_sources.json` 이고 **재수집하면 이 파일도 같이 고친다.**
+
 ### 데이터 성격
 - **수집한 로스터는 "대회 시점" 기준이다.** 이적이 반영되지 않으며 그게 의도다
 - **자동 갱신 시스템은 없다.** 스케줄러 0건. 바꾸려면 스크립트를 다시 돌린다
@@ -110,9 +119,13 @@ PTS 는 근거 없이 20팀이 프로가 되고, PVS 는 **컵 1위 팀이 아�
 - 선수 필터는 `type=staff` 뿐 아니라 **`role=` 이 붙은 항목 전부**를 제외한다
 
 ### 코드 함정
-- **`ddl-auto: create`** — 재기동마다 DB 전멸 후 시드 재적재
-- **엔티티를 지워도 테이블은 안 지워진다.** Hibernate 가 모르는 테이블은 드롭 대상이 아니다.
-  트로피 제거 때 `team_trophies` 가 고아로 남아 수동 `DROP TABLE` 했다
+- **스키마는 Flyway 가 관리한다** (`db/migration`). `ddl-auto` 는 `validate`.
+  **데이터가 재기동해도 남는다** — 2026-09-29 에 `ddl-auto: create` 를 걷어냈다
+- **시드 파일을 고쳤으면 `SEED_MODE=always` 로 한 번 기동**해야 DB 에 반영된다.
+  기본값 `auto` 는 `teams` 가 비었을 때만 적재한다
+- **엔티티를 바꾸면 마이그레이션도 같은 커밋에** 넣어야 `validate` 가 통과한다.
+  `V1__init_schema.sql` 은 고치지 말고 `V2` 를 추가한다
+- **런타임 누적 테이블은 자연키로.** `SEED_MODE=always` 재적재 때 `players.id` 가 바뀐다
 - **기동 레이스** — `DataInitializer` 가 웹 서버 뒤에 실행된다. 준비 확인은 **기대 팀 수**로
 - **PostgreSQL null 파라미터** — JPQL 에 nullable 바인딩 금지
 - **컬렉션 2개 동시 fetch join 금지** (`MultipleBagFetchException`)

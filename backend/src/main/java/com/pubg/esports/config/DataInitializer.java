@@ -6,6 +6,7 @@ import com.pubg.esports.domain.*;
 import com.pubg.esports.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,9 +39,41 @@ public class DataInitializer implements CommandLineRunner {
     private final PlayerRepository playerRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * auto   - 비어 있을 때만 적재 (기본)
+     * always - 기동마다 팀·선수를 지우고 다시 적재. 시드 파일을 고친 뒤 한 번 쓴다
+     * never  - 적재하지 않는다
+     */
+    @Value("${app.seed.mode:auto}")
+    private String seedMode;
+
     @Override
     @Transactional
     public void run(String... args) {
+        // 예전에는 ddl-auto: create 가 기동마다 스키마를 날려서 이 메서드가 항상
+        // 빈 DB 에 적재했다. 이제 스키마와 데이터가 남으므로 적재 여부를 직접 정한다.
+        if ("never".equalsIgnoreCase(seedMode)) {
+            log.info("app.seed.mode=never 이므로 시드 적재를 건너뜁니다.");
+            return;
+        }
+
+        long existing = teamRepository.count();
+        if ("always".equalsIgnoreCase(seedMode)) {
+            if (existing > 0) {
+                log.info("app.seed.mode=always — 기존 팀 {}개와 소속 선수를 지우고 다시 적재합니다.",
+                        existing);
+                // deleteAllInBatch 는 JPA 연관을 타지 않는 단일 DELETE 라
+                // player_settings·player_gears 의 FK 제약에 걸린다.
+                // deleteAll 은 엔티티를 읽어 cascade = ALL 을 따라 자식까지 지운다.
+                teamRepository.deleteAll();
+                playerRepository.deleteAll();   // 팀이 없는 레거시 선수까지 정리
+            }
+        } else if (existing > 0) {
+            log.info("이미 팀 {}개가 적재돼 있어 시드를 건너뜁니다. "
+                    + "시드 파일을 고쳤다면 SEED_MODE=always 로 한 번 기동하세요.", existing);
+            return;
+        }
+
         Set<String> loadedTeamNames = new HashSet<>();
 
         // 검증된 시드를 먼저 전부 적재한다. 아래 레거시 파일은 로고가 플레이스홀더라

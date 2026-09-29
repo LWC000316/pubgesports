@@ -1,12 +1,23 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Shield } from 'lucide-react';
 import { fetchTeamCards } from '../../api/teams';
+import { fetchLeagueSources } from '../../api/leagues';
 import { useApi } from '../../hooks/useApi';
 import LoadingPanel from '../common/LoadingPanel';
 import ErrorPanel from '../common/ErrorPanel';
 import TeamCard from './TeamCard';
 
 const EMPTY = [];
+
+// 수집 출처는 리그를 바꿔도 안 변하므로 한 번만 받아 둔다.
+// 실패해도 팀 목록은 그대로 보여야 하므로 에러를 삼킨다.
+let sourcesPromise = null;
+function loadSources() {
+  if (!sourcesPromise) {
+    sourcesPromise = fetchLeagueSources().catch(() => []);
+  }
+  return sourcesPromise;
+}
 
 // 목록 순서. 프로로 볼 수 있는 구단을 앞에, 그 뒤로 아마추어 구단을 잇는다.
 // 구획을 나누지 않고 한 줄기로 늘어놓는다 — 리그마다 "프로"의 근거가 달라서
@@ -22,6 +33,10 @@ const SEED_ORDER = { pro: 0, amateur: 1 };
 export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, sourceUrl, onSelectPlayer }) {
   const fetcher = useCallback(() => fetchTeamCards(league), [league]);
   const { data: teams, loading, error, reload } = useApi(fetcher, [league], EMPTY);
+
+  const [sources, setSources] = useState(EMPTY);
+  useEffect(() => { loadSources().then(setSources); }, []);
+  const source = sources.find(s => s.league?.toUpperCase() === league.toUpperCase());
 
   if (loading) {
     return (
@@ -108,7 +123,7 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
         ))}
       </div>
 
-      <SourceAttribution sourceUrl={sourceUrl} />
+      <SourceAttribution sourceUrl={sourceUrl} source={source} />
     </div>
   );
 }
@@ -117,10 +132,20 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
  * 리퀴피디아 콘텐츠는 CC-BY-SA 3.0 이라 화면에 출처를 밝혀야 한다.
  * sourceUrl 이 있으면 대조에 쓴 대회 문서로, 없으면 위키 첫 화면으로 연결한다.
  */
-function SourceAttribution({ sourceUrl }) {
+function SourceAttribution({ sourceUrl, source }) {
   const linkStyle = { color: 'var(--text-muted)', textDecoration: 'underline' };
+  // 대회가 아직 진행 중이면 명단이 더 바뀔 수 있다는 것을 밝힌다.
+  const ongoing = source?.tournamentEnd
+    && source.tournamentEnd > new Date().toISOString().slice(0, 10);
   return (
     <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'right', margin: 0 }}>
+      {source?.collectedAt && (
+        <>
+          <strong style={{ color: 'var(--text-muted)' }}>{source.collectedAt} 기준</strong>
+          {ongoing && ` · 대회 진행 중 (${source.tournamentEnd} 종료 예정)`}
+          {' · '}
+        </>
+      )}
       팀·로스터 정보 출처:{' '}
       <a href={sourceUrl || 'https://liquipedia.net/pubg'} target="_blank" rel="noopener noreferrer" style={linkStyle}>
         Liquipedia

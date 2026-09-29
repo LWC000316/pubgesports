@@ -8,9 +8,17 @@ spring:
     password: ${DB_PASSWORD:pubg_password123!}
     driver-class-name: org.postgresql.Driver
 
+  # 스키마는 Flyway 가 관리한다 (db/migration). Hibernate 는 검증만 한다.
+  # 예전에는 ddl-auto: create 라 기동마다 DB 가 전멸했다 — 조회수처럼 런타임에
+  # 쌓이는 값을 담을 수 없었고, 수동으로 넣은 행도 재시작하면 사라졌다.
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
@@ -19,6 +27,13 @@ spring:
 
 server:
   port: 8080
+
+app:
+  seed:
+    # auto   - teams 테이블이 비어 있을 때만 시드를 적재한다 (기본)
+    # always - 기동마다 팀·선수를 지우고 다시 적재한다. 시드 파일을 고친 뒤 한 번 쓴다
+    # never  - 적재하지 않는다
+    mode: ${SEED_MODE:auto}
 
 pubg:
   api:

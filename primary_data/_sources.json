@@ -1,0 +1,72 @@
+{
+  "_note": "각 리그 시드가 어느 대회 문서에서 언제 수집됐는지 기록한다. ingest/check_freshness.py 가 이 파일을 기준으로 최신 여부를 판정하고, DataInitializer 가 collectedAt 을 읽어 API 로 내보낸다. 시드를 다시 수집하면 이 파일의 page·collectedAt 도 같이 고칠 것. teamAliases 는 시드 표기 -> 위키 표기. subset=true 는 시드가 문서 참가팀의 부분집합이라는 뜻이다(PCL 은 Stage S 24팀만). latestConfirmedAt 은 시작일이 없어 자동 판정이 안 되는 대회를 사람이 최신이라고 확인한 날짜다.",
+  "leagues": {
+    "PWS": {
+      "page": "PUBG_WEEKLY_SERIES/2026/Phase_2",
+      "seriesPrefix": "PUBG WEEKLY SERIES",
+      "seedFile": "primary_data/pws2_teams_verified.json",
+      "collectedAt": "2026-09-18",
+      "tournamentStart": "2026-09-09",
+      "tournamentEnd": "2026-10-04",
+      "rostersFromHtml": false,
+      "teamAliases": {
+        "AZLA PENTAGRAM": "PENTAGRAM",
+        "DAEJEON GAME PT": "GAME PT",
+        "DN SOOPers": "SOOPers",
+        "SENTINEL": "Sentinel",
+        "SUPERFECT": "SUPERFECT Academy",
+        "samgukzee": "Samgukzee"
+      },
+      "note": "시드 표기가 위키와 다른 팀이 6개 있다. scripts/59 경로로 수집한 옛 데이터라 스폰서 접두사와 대소문자가 다르다. 로스터가 완전히 일치해 같은 팀임을 확인했고 teamAliases 로 대응시킨다."
+    },
+    "PCL": {
+      "page": "PUBG_Champions_League/2026/Autumn",
+      "seriesPrefix": "PUBG Champions League",
+      "seedFile": "primary_data/pcl_teams_verified.json",
+      "collectedAt": "2026-09-29",
+      "tournamentStart": "2026-08-26",
+      "tournamentEnd": "2026-09-27",
+      "rostersFromHtml": false,
+      "note": "참가 24팀은 Stage S 실제 진출팀이다. 참가자 소절의 Stage S 는 직행 8팀뿐이라 하위 페이지 /Stage_S 의 GroupDraw3x8 으로 대조했다.",
+      "subset": true
+    },
+    "EMEA": {
+      "page": "PUBG_EMEA_Championship/2026/Fall",
+      "seriesPrefix": "PUBG EMEA Championship",
+      "seedFile": "primary_data/emea_teams_verified.json",
+      "collectedAt": "2026-09-29",
+      "tournamentStart": "2026-09-11",
+      "tournamentEnd": "2026-10-04",
+      "rostersFromHtml": false
+    },
+    "AMER": {
+      "page": "PUBG_Americas_Series/2026/2",
+      "seriesPrefix": "PUBG Americas Series",
+      "seedFile": "primary_data/amer_teams_verified.json",
+      "collectedAt": "2026-09-29",
+      "tournamentStart": "2026-09-11",
+      "tournamentEnd": "2026-10-04",
+      "rostersFromHtml": false
+    },
+    "PTS": {
+      "page": "PUBG_Thailand_Series/2026/Phase_2",
+      "seriesPrefix": "PUBG Thailand Series",
+      "seedFile": "primary_data/pts_teams_verified.json",
+      "collectedAt": "2026-09-29",
+      "tournamentStart": "2026-09-21",
+      "tournamentEnd": "2026-10-08",
+      "rostersFromHtml": true
+    },
+    "PVS": {
+      "page": "PUBG_Vietnam_Series/2026/Phase_2",
+      "seriesPrefix": "PUBG Vietnam Series",
+      "seedFile": "primary_data/pvs_teams_verified.json",
+      "collectedAt": "2026-09-29",
+      "tournamentStart": null,
+      "tournamentEnd": null,
+      "rostersFromHtml": false,
+      "note": "인포박스에 날짜가 없다. Week 3·4 의 finished= 가 비어 있지만 미진행이 아니라 2주차까지만 치르고 끝난 대회다. Phase 2 가 이 시리즈의 최신임을 사용자가 확인했다(2026-09-29).",
+      "latestConfirmedAt": "2026-09-29"
+    }
+  }
+}
