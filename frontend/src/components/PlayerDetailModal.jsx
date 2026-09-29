@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, Crosshair, Mouse, Monitor, Headphones, Keyboard, Video, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
+import { fetchPlayerDetail } from '../api/players';
 
 const NOT_SET = '미등록';
 
@@ -24,16 +25,32 @@ function StatValue({ value, suffix = '', color = '#fff' }) {
 }
 
 export default function PlayerDetailModal({ player, onClose }) {
+  // 팀 카드가 넘겨주는 값은 dpi·sens·mouse 뿐이다. 나머지 감도와 장비는
+  // /api/players/{id} 에만 있으므로 모달을 열 때 받아 와 덮어쓴다.
+  // 실패하면 카드가 준 값만 그대로 쓴다 — 모달이 안 열리는 것보다 낫다.
+  const [detail, setDetail] = useState(null);
+
+  useEffect(() => {
+    setDetail(null);
+    if (!player?.id) return;
+    let cancelled = false;
+    fetchPlayerDetail(player.id)
+      .then(d => { if (!cancelled) setDetail(d); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [player?.id]);
+
   if (!player) return null;
 
-  const dpi = pick(player.setting?.mouseDpi, player.dpi);
-  const generalSens = pick(player.setting?.generalSens, player.generalSens, player.sens);
+  const full = detail ?? player;
+  const dpi = pick(full.setting?.mouseDpi, player.dpi);
+  const generalSens = pick(full.setting?.generalSens, player.generalSens, player.sens);
   // 백엔드 SettingDto 는 aimingSens 로 내보낸다
-  const aimSens = pick(player.setting?.aimingSens, player.setting?.aimSens, player.aimSens);
-  const adsSens = pick(player.setting?.adsSens, player.adsSens);
-  const verticalMultiplier = pick(player.setting?.verticalMultiplier, player.verticalMultiplier);
-  const fov = pick(player.setting?.fov, player.fov);
-  const resolution = pick(player.setting?.resolution, player.resolution);
+  const aimSens = pick(full.setting?.aimingSens, full.setting?.aimSens, player.aimSens);
+  const adsSens = pick(full.setting?.adsSens, player.adsSens);
+  const verticalMultiplier = pick(full.setting?.verticalMultiplier, player.verticalMultiplier);
+  const fov = pick(full.setting?.fov, player.fov);
+  const resolution = pick(full.setting?.resolution, player.resolution);
 
   const aimAds = (aimSens === null && adsSens === null)
     ? null
@@ -41,7 +58,7 @@ export default function PlayerDetailModal({ player, onClose }) {
 
   // 5개 카테고리를 항상 노출한다. 비어 있는 항목이 보여야 무엇을 수집해야 하는지 드러난다.
   const gearByCategory = new Map(
-    (player.gears ?? []).map(g => [g.category?.toUpperCase(), g.name])
+    (full.gears ?? []).map(g => [g.category?.toUpperCase(), g.name])
   );
   const flatGear = {
     MOUSE: pick(player.mouseName, player.mouse),

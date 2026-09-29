@@ -147,23 +147,7 @@ public class DataInitializer implements CommandLineRunner {
                             .isActive(true)
                             .build();
 
-                    // 시드에 있는 값만 채운다. fov/해상도 등은 실측값이 없으므로 null 로 둔다.
-                    PlayerSetting setting = PlayerSetting.builder()
-                            .player(player)
-                            .mouseDpi(pNode.path("mouseDpi").isMissingNode() ? null : pNode.path("mouseDpi").asInt())
-                            .generalSens(pNode.path("generalSens").isMissingNode() ? null : pNode.path("generalSens").asDouble())
-                            .build();
-                    player.setSetting(setting);
-
-                    String mouseName = pNode.path("mouseName").asText("");
-                    if (!mouseName.isEmpty()) {
-                        player.addGear(PlayerGear.builder()
-                                .player(player)
-                                .category("MOUSE")
-                                .name(mouseName)
-                                .build());
-                    }
-
+                    applySettingAndGears(player, pNode);
                     playerRepository.save(player);
                     playerCount++;
                 }
@@ -226,42 +210,19 @@ public class DataInitializer implements CommandLineRunner {
                 if (playersNode.isArray()) {
                     for (JsonNode pNode : playersNode) {
                         String nickname = pNode.path("nickname").asText();
-                        String realName = pNode.path("realName").asText("Pro " + nickname);
-                        String role = pNode.path("role").asText("Player");
-                        int dpi = pNode.path("mouseDpi").asInt(800);
-                        double genSens = pNode.path("generalSens").asDouble(30.0);
 
                         Player player = Player.builder()
                                 .team(team)
                                 .nickname(nickname)
-                                .realName(realName)
-                                .role(role)
-                                .country(region.equals("KR") ? "KR" : region.equals("CN") ? "CN" : region.equals("AMER") ? "US" : "EU")
-                                .profileImageUrl("https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80")
+                                .realName(pNode.path("realName").asText(nickname))
+                                .role(pNode.path("role").asText("Player"))
+                                .country(region)
                                 .isActive(true)
                                 .build();
 
-                        PlayerSetting setting = PlayerSetting.builder()
-                                .player(player)
-                                .mouseDpi(dpi)
-                                .generalSens(genSens)
-                                .aimingSens(genSens)
-                                .adsSens(genSens)
-                                .verticalMultiplier(1.0)
-                                .fov(90)
-                                .resolution("1920x1080")
-                                .screenMode("전체 화면")
-                                .renderScale(100)
-                                .build();
-
-                        player.setSetting(setting);
-
-                        player.addGear(PlayerGear.builder().player(player).category("MOUSE").name(pNode.path("mouseName").asText("Logitech G PRO X SUPERLIGHT 2")).brand("Logitech").build());
-                        player.addGear(PlayerGear.builder().player(player).category("MOUSEPAD").name(pNode.path("mousepadName").asText("Artisan Zero Soft")).brand("Artisan").build());
-                        player.addGear(PlayerGear.builder().player(player).category("KEYBOARD").name(pNode.path("keyboardName").asText("Wooting 60HE")).brand("Wooting").build());
-                        player.addGear(PlayerGear.builder().player(player).category("HEADSET").name(pNode.path("headsetName").asText("Bose QC20")).brand("Bose").build());
-                        player.addGear(PlayerGear.builder().player(player).category("MONITOR").name(pNode.path("monitorName").asText("BenQ XL2566K (360Hz)")).brand("BenQ").build());
-
+                        // 검증 시드와 같은 규칙을 쓴다. 기본값을 지어내지 않는다 —
+                        // 예전에는 여기서 296명 전원에게 800/30/FOV90 과 장비 5종을 찍어 넣었다.
+                        applySettingAndGears(player, pNode);
                         playerRepository.save(player);
                         playerCount++;
                     }
@@ -272,6 +233,84 @@ public class DataInitializer implements CommandLineRunner {
         } catch (Exception e) {
             log.error("시드 데이터 로딩 실패: {}", e.getMessage(), e);
         }
+    }
+
+
+    /**
+     * 시드의 setting/gears 를 선수에 붙인다.
+     *
+     * 시드에 있는 값만 채운다 — **기본값을 지어내지 않는다.** 예전에는 이 자리에서
+     * 800 DPI, 감도 30, FOV 90, 마우스/키보드/헤드셋/모니터를 전원에게 찍어 넣었고,
+     * 화면에는 실측값처럼 보였다. 없는 값은 null 로 두면 모달이 '미등록' 을 그린다.
+     *
+     * 시드 형식:
+     * <pre>
+     * {
+     *   "nickname": "...",
+     *   "setting": { "mouseDpi": 800, "generalSens": 47, "fov": 103,
+     *                "resolution": "1920x1080", ... },
+     *   "gears": [ { "category": "MOUSE", "name": "...", "brand": "...",
+     *                "imageUrl": "...", "purchaseLink": "..." } ]
+     * }
+     * </pre>
+     */
+    private void applySettingAndGears(Player player, JsonNode pNode) {
+        JsonNode s = pNode.path("setting");
+
+        PlayerSetting setting = PlayerSetting.builder()
+                .player(player)
+                .mouseDpi(intOrNull(s, "mouseDpi"))
+                .generalSens(doubleOrNull(s, "generalSens"))
+                .aimingSens(doubleOrNull(s, "aimingSens"))
+                .adsSens(doubleOrNull(s, "adsSens"))
+                .scope2xSens(doubleOrNull(s, "scope2xSens"))
+                .scope3xSens(doubleOrNull(s, "scope3xSens"))
+                .scope4xSens(doubleOrNull(s, "scope4xSens"))
+                .scope6xSens(doubleOrNull(s, "scope6xSens"))
+                .verticalMultiplier(doubleOrNull(s, "verticalMultiplier"))
+                .fov(intOrNull(s, "fov"))
+                .resolution(textOrNull(s, "resolution"))
+                .screenMode(textOrNull(s, "screenMode"))
+                .renderScale(intOrNull(s, "renderScale"))
+                .build();
+        player.setSetting(setting);
+
+        for (JsonNode g : pNode.path("gears")) {
+            String category = textOrNull(g, "category");
+            String name = textOrNull(g, "name");
+            // category/name 은 엔티티에서 NOT NULL 이다. 하나라도 비면 넣지 않는다.
+            if (category == null || name == null) {
+                log.warn("{}: category/name 이 없는 장비 항목을 건너뜁니다.", player.getNickname());
+                continue;
+            }
+            player.addGear(PlayerGear.builder()
+                    .player(player)
+                    .category(category.toUpperCase(Locale.ROOT))
+                    .name(name)
+                    .brand(textOrNull(g, "brand"))
+                    .imageUrl(textOrNull(g, "imageUrl"))
+                    .purchaseLink(textOrNull(g, "purchaseLink"))
+                    .build());
+        }
+    }
+
+    private static Integer intOrNull(JsonNode node, String field) {
+        JsonNode v = node.path(field);
+        return v.isMissingNode() || v.isNull() ? null : v.asInt();
+    }
+
+    private static Double doubleOrNull(JsonNode node, String field) {
+        JsonNode v = node.path(field);
+        return v.isMissingNode() || v.isNull() ? null : v.asDouble();
+    }
+
+    private static String textOrNull(JsonNode node, String field) {
+        JsonNode v = node.path(field);
+        if (v.isMissingNode() || v.isNull()) {
+            return null;
+        }
+        String text = v.asText().trim();
+        return text.isEmpty() ? null : text;
     }
 
     private File resolveDataFile(String relativePath) {

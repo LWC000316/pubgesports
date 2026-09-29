@@ -252,3 +252,79 @@ PCL 은 40팀이 Stage B·A·S 세 단계로 나뉘어 PWS 와 구조가 다르�
 키를 받으면 `--dump-fields` 를 먼저 돌려 진짜 필드명을 보고 그 부분을 고쳐야 한다.
 로고 URL 을 LPDB `team` 이 주지 않으면 MediaWiki `imageinfo` 를 병행해야 한다
 (`scripts/63` 에 전례가 있다).
+
+---
+
+# 선수 감도·장비 수집 (디스코드)
+
+리퀴피디아에도 공식 API 에도 **감도·장비 데이터는 없다.** 사람이 모아서 시드 파일에
+직접 적는다. 자동 수집 경로는 존재하지 않는다 (해외 사이트들도 전부 수작업이다).
+
+## 시드 형식
+
+선수 항목에 `setting` 과 `gears` 를 넣는다. **있는 값만 적는다 — 모르는 값은 키를 뺀다.**
+빠진 값은 화면에 `미등록` 으로 나온다. 그게 올바른 상태다.
+
+```json
+{
+  "nickname": "Rain1ng",
+  "realName": "Rain1ng",
+  "role": "Player",
+  "setting": {
+    "mouseDpi": 800,
+    "generalSens": 47,
+    "aimingSens": 45,
+    "adsSens": 35,
+    "scope2xSens": 30,
+    "scope3xSens": 28,
+    "scope4xSens": 25,
+    "scope6xSens": 20,
+    "verticalMultiplier": 1.0,
+    "fov": 103,
+    "resolution": "1920x1080",
+    "screenMode": "전체 화면",
+    "renderScale": 100
+  },
+  "gears": [
+    { "category": "MOUSE",    "name": "Razer Viper V3 Pro", "brand": "Razer" },
+    { "category": "MOUSEPAD", "name": "..." },
+    { "category": "KEYBOARD", "name": "..." },
+    { "category": "HEADSET",  "name": "..." },
+    { "category": "MONITOR",  "name": "..." }
+  ]
+}
+```
+
+- `setting` 13개 필드는 모두 선택이다. 없으면 키를 넣지 않는다
+- `gears` 의 `category`·`name` 은 필수, `brand`·`imageUrl`·`purchaseLink` 는 선택
+- 화면에 구획이 나오는 카테고리는 `MOUSE`·`MOUSEPAD`·`KEYBOARD`·`HEADSET`·`MONITOR` 다
+- **기본값을 넣지 말 것.** 예전에 전원에게 800/32/동일 마우스를 찍어 넣어 실측처럼
+  보이게 한 적이 있다. 2026-09-29 에 392명분(3840개 값)을 전부 지웠다
+
+## 반영 방법
+
+시드 파일을 고친 뒤 **`SEED_MODE=always` 로 한 번 기동**해야 DB 에 들어간다.
+기본값 `auto` 는 `teams` 가 비었을 때만 적재하므로 변경이 반영되지 않는다.
+
+```bash
+cd backend && SEED_MODE=always ./gradlew bootRun
+```
+
+## 선수 식별
+
+닉네임은 리그 간에 겹칠 수 있다. 화면에 나오는 팀끼리 겹치는 건 현재 `Lu` 하나뿐이지만
+(PCL Golden Quester Gaming / EMEA Twisted Minds), 수집이 늘면 더 나온다.
+**`리그 + 팀 + 닉네임`** 으로 특정한다. `players.id` 는 쓰면 안 된다 — 재적재 때 바뀐다.
+
+## 화면까지 도달하는 경로
+
+```
+시드 파일 setting/gears
+  -> DataInitializer.applySettingAndGears()   13개 필드 + 장비 전부
+  -> player_settings / player_gears
+  -> GET /api/players/{id}                    SettingDto + GearDto
+  -> PlayerDetailModal                        모달을 열 때 이 API 를 호출한다
+```
+
+팀 카드(`/api/teams/cards`)의 roster 에는 `dpi`·`sens`·`mouse` 세 개만 실린다.
+146팀 전부에 전체 세팅을 실으면 응답이 과해지기 때문이다. 나머지는 모달이 따로 받는다.
