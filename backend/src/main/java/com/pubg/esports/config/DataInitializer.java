@@ -30,7 +30,8 @@ public class DataInitializer implements CommandLineRunner {
             "primary_data/pcl_teams_verified.json",
             "primary_data/emea_teams_verified.json",
             "primary_data/amer_teams_verified.json",
-            "primary_data/pts_teams_verified.json"
+            "primary_data/pts_teams_verified.json",
+            "primary_data/pvs_teams_verified.json"
     );
 
     private final TeamRepository teamRepository;

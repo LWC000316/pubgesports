@@ -44,7 +44,13 @@ const LEAGUES = [
     bannerTitle: 'PUBG THAILAND SERIES 2026 — Phase 1',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_Thailand_Series/2026/Phase_1'
   },
-  { id: 'PVS', label: 'PVS', logo: TOURNAMENT_LOGOS.PVS }
+  {
+    id: 'PVS',
+    label: 'PVS',
+    logo: TOURNAMENT_LOGOS.PVS,
+    bannerTitle: 'PUBG VIETNAM SERIES 2026 — Phase 2',
+    sourceUrl: 'https://liquipedia.net/pubg/PUBG_Vietnam_Series/2026/Phase_2'
+  }
 ];
 
 const HOT_CHIP = { id: 'HOT', label: 'HOT', icon: Flame };

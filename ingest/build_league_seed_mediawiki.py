@@ -112,8 +112,12 @@ def parse_participants(wikitext, include_subs):
         for pm in re.finditer(r"\{\{Person\|([^|}\n]+)([^}]*)\}\}", body):
             nick = pm.group(1).strip()
             attrs = pm.group(2)
-            if "type=staff" in attrs or "role=Coach" in attrs:
-                continue  # 코치·스태프 제외
+            # 스태프 제외. role= 이 붙어 있으면 비선수다 — 위키에서 확인한 값은
+            # Coach / head coach / Assistant Coach / Analyst 이고 선수에는 role= 이 없다.
+            # 예전에는 type=staff 와 role=Coach 만 걸러서 role=analyst 가 선수로 새어
+            # 들어갔다(PVS Team Flash 의 NielT).
+            if "type=staff" in attrs or re.search(r"\brole=", attrs):
+                continue
             is_sub = "status=sub" in attrs
             if is_sub and not include_subs:
                 continue

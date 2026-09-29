@@ -1,0 +1,636 @@
+[
+  {
+    "id": "anyone_s_legend",
+    "name": "Anyone's Legend",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/anyone_s_legend.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Delwyn",
+        "realName": "Delwyn",
+        "role": "Player"
+      },
+      {
+        "nickname": "Himass",
+        "realName": "Himass",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sololzy",
+        "realName": "Sololzy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Taikonn",
+        "realName": "Taikonn",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Anyone%27s_Legend"
+  },
+  {
+    "id": "the_expendables",
+    "name": "The Expendables",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/the_expendables.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Clories",
+        "realName": "Clories",
+        "role": "Player"
+      },
+      {
+        "nickname": "DuCkHjeUz",
+        "realName": "DuCkHjeUz",
+        "role": "Player"
+      },
+      {
+        "nickname": "TanVuu",
+        "realName": "TanVuu",
+        "role": "Player"
+      },
+      {
+        "nickname": "Hoangf",
+        "realName": "Hoangf",
+        "role": "Player"
+      },
+      {
+        "nickname": "JUND",
+        "realName": "JUND",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "The_Expendables"
+  },
+  {
+    "id": "alpha_gaming",
+    "name": "Alpha Gaming",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/alpha_gaming.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "SimonT",
+        "realName": "SimonT",
+        "role": "Player"
+      },
+      {
+        "nickname": "YmCud",
+        "realName": "YmCud",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sapauu",
+        "realName": "Sapauu",
+        "role": "Player"
+      },
+      {
+        "nickname": "Destroyy",
+        "realName": "Destroyy",
+        "role": "Player"
+      },
+      {
+        "nickname": "BinBlue",
+        "realName": "BinBlue",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Alpha_Gaming"
+  },
+  {
+    "id": "unicorn_cyber",
+    "name": "Unicorn Cyber",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/unicorn_cyber.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "QuaySama",
+        "realName": "QuaySama",
+        "role": "Player"
+      },
+      {
+        "nickname": "LEMINH",
+        "realName": "LEMINH",
+        "role": "Player"
+      },
+      {
+        "nickname": "VanNghj",
+        "realName": "VanNghj",
+        "role": "Player"
+      },
+      {
+        "nickname": "FLoww",
+        "realName": "FLoww",
+        "role": "Player"
+      },
+      {
+        "nickname": "MHZ",
+        "realName": "MHZ",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Unicorn_Cyber"
+  },
+  {
+    "id": "team_flash",
+    "name": "Team Flash",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/team_flash.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "LamBaouwu",
+        "realName": "LamBaouwu",
+        "role": "Player"
+      },
+      {
+        "nickname": "TDuy",
+        "realName": "TDuy",
+        "role": "Player"
+      },
+      {
+        "nickname": "TTT",
+        "realName": "TTT",
+        "role": "Player"
+      },
+      {
+        "nickname": "LongX",
+        "realName": "LongX",
+        "role": "Player"
+      },
+      {
+        "nickname": "QuocKhanh",
+        "realName": "QuocKhanh",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Team_Flash"
+  },
+  {
+    "id": "hela_esports",
+    "name": "HELA Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/hela_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "NVTK",
+        "realName": "NVTK",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kabbb",
+        "realName": "Kabbb",
+        "role": "Player"
+      },
+      {
+        "nickname": "ZyxLee",
+        "realName": "ZyxLee",
+        "role": "Player"
+      },
+      {
+        "nickname": "TrungHieu",
+        "realName": "TrungHieu",
+        "role": "Player"
+      },
+      {
+        "nickname": "TT",
+        "realName": "TT",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Hyca",
+        "realName": "Hyca",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "HELA_Esports"
+  },
+  {
+    "id": "roy_esports",
+    "name": "ROY Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/roy_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Br1annn88",
+        "realName": "Br1annn88",
+        "role": "Player"
+      },
+      {
+        "nickname": "HoangNam",
+        "realName": "HoangNam",
+        "role": "Player"
+      },
+      {
+        "nickname": "Binnekkk",
+        "realName": "Binnekkk",
+        "role": "Player"
+      },
+      {
+        "nickname": "MetalD",
+        "realName": "MetalD",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "ROY_Esports"
+  },
+  {
+    "id": "cerberus_esports",
+    "name": "CERBERUS Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/cerberus_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Tanbinh",
+        "realName": "Tanbinh",
+        "role": "Player"
+      },
+      {
+        "nickname": "Zest",
+        "realName": "Zest",
+        "role": "Player"
+      },
+      {
+        "nickname": "StannnL",
+        "realName": "StannnL",
+        "role": "Player"
+      },
+      {
+        "nickname": "YUDIRT",
+        "realName": "YUDIRT",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "CERBERUS_Esports"
+  },
+  {
+    "id": "four_crazy_rabbits",
+    "name": "Four Crazy Rabbits",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/four_crazy_rabbits.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "HoangAnh",
+        "realName": "HoangAnh",
+        "role": "Player"
+      },
+      {
+        "nickname": "BaoLP",
+        "realName": "BaoLP",
+        "role": "Player"
+      },
+      {
+        "nickname": "5657",
+        "realName": "5657",
+        "role": "Player"
+      },
+      {
+        "nickname": "Zitua22",
+        "realName": "Zitua22",
+        "role": "Player"
+      },
+      {
+        "nickname": "ThongLee",
+        "realName": "ThongLee",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Four_Crazy_Rabbits"
+  },
+  {
+    "id": "win_d_esports",
+    "name": "Win.D Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/win_d_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Marcus",
+        "realName": "Marcus",
+        "role": "Player"
+      },
+      {
+        "nickname": "Ninja2K",
+        "realName": "Ninja2K",
+        "role": "Player"
+      },
+      {
+        "nickname": "18K",
+        "realName": "18K",
+        "role": "Player"
+      },
+      {
+        "nickname": "Itzel",
+        "realName": "Itzel",
+        "role": "Player"
+      },
+      {
+        "nickname": "Miko5",
+        "realName": "Miko5",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Win.D_Esports"
+  },
+  {
+    "id": "fant_me",
+    "name": "Fantôme",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/fant_me.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Longday",
+        "realName": "Longday",
+        "role": "Player"
+      },
+      {
+        "nickname": "Cunn",
+        "realName": "Cunn",
+        "role": "Player"
+      },
+      {
+        "nickname": "Vietkonnn",
+        "realName": "Vietkonnn",
+        "role": "Player"
+      },
+      {
+        "nickname": "BB",
+        "realName": "BB",
+        "role": "Player"
+      },
+      {
+        "nickname": "Eddie",
+        "realName": "Eddie",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Fant%C3%B4me"
+  },
+  {
+    "id": "rue_esports",
+    "name": "RUE Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/rue_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Yulieee2k6",
+        "realName": "Yulieee2k6",
+        "role": "Player"
+      },
+      {
+        "nickname": "BeoK",
+        "realName": "BeoK",
+        "role": "Player"
+      },
+      {
+        "nickname": "Yakult",
+        "realName": "Yakult",
+        "role": "Player"
+      },
+      {
+        "nickname": "ShaZam1",
+        "realName": "ShaZam1",
+        "role": "Player"
+      },
+      {
+        "nickname": "Dyann",
+        "realName": "Dyann",
+        "role": "Sub"
+      },
+      {
+        "nickname": "AnBee",
+        "realName": "AnBee",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "RUE_Esports"
+  },
+  {
+    "id": "four_devil_thunder",
+    "name": "Four Devil Thunder",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/four_devil_thunder.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "zqzaa",
+        "realName": "zqzaa",
+        "role": "Player"
+      },
+      {
+        "nickname": "lowP",
+        "realName": "lowP",
+        "role": "Player"
+      },
+      {
+        "nickname": "EnuT",
+        "realName": "EnuT",
+        "role": "Player"
+      },
+      {
+        "nickname": "MocLinh",
+        "realName": "MocLinh",
+        "role": "Player"
+      },
+      {
+        "nickname": "jongcho",
+        "realName": "jongcho",
+        "role": "Sub"
+      },
+      {
+        "nickname": "HuyPhu",
+        "realName": "HuyPhu",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Four_Devil_Thunder"
+  },
+  {
+    "id": "gasy_esports",
+    "name": "GASY Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/gasy_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Lowji",
+        "realName": "Lowji",
+        "role": "Player"
+      },
+      {
+        "nickname": "Browny",
+        "realName": "Browny",
+        "role": "Player"
+      },
+      {
+        "nickname": "idky",
+        "realName": "idky",
+        "role": "Player"
+      },
+      {
+        "nickname": "SPK",
+        "realName": "SPK",
+        "role": "Player"
+      },
+      {
+        "nickname": "Mey",
+        "realName": "Mey",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Jinoo",
+        "realName": "Jinoo",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "GASY_Esports"
+  },
+  {
+    "id": "tr_n_long_kingsky",
+    "name": "Trần Long KingSky",
+    "tag": "TRAN LONG KINGSKY",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/tran_long_kingsky.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Max",
+        "realName": "Max",
+        "role": "Player"
+      },
+      {
+        "nickname": "1801",
+        "realName": "1801",
+        "role": "Player"
+      },
+      {
+        "nickname": "Neitnart",
+        "realName": "Neitnart",
+        "role": "Player"
+      },
+      {
+        "nickname": "HgQuyn1510",
+        "realName": "HgQuyn1510",
+        "role": "Player"
+      },
+      {
+        "nickname": "Xxxxx",
+        "realName": "Xxxxx",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Vingar",
+        "realName": "Vingar",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Tr%E1%BA%A7n_Long_KingSky"
+  },
+  {
+    "id": "the_daredevil_team",
+    "name": "The Daredevil Team",
+    "tag": "TDT ESPORTS",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/tdt_esports.png",
+    "league": "PVS",
+    "region": "VN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "777",
+        "realName": "777",
+        "role": "Player"
+      },
+      {
+        "nickname": "Zyu1",
+        "realName": "Zyu1",
+        "role": "Player"
+      },
+      {
+        "nickname": "Junnn",
+        "realName": "Junnn",
+        "role": "Player"
+      },
+      {
+        "nickname": "Hakai",
+        "realName": "Hakai",
+        "role": "Player"
+      },
+      {
+        "nickname": "xBuoms",
+        "realName": "xBuoms",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "The_Daredevil_Team"
+  }
+]

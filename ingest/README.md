@@ -143,9 +143,15 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 | EMEA | 2026 Fall 참가 29팀 | pro 9 (`method=invite`) / amateur 20 (`method=qual`) | **자동** — `--seed-from-qualification` |
 | AMER | 2026 Series 2 참가 29팀 | pro 7 (`method=invite`) / amateur 22 (`method=qual`) | **자동** — `--seed-from-qualification` |
 | PTS | 2026 Phase 1 참가 24팀 | pro 20 (`method=invite`) / amateur 4 (`method=qual`) | **자동** — 태국은 대부분 초청제라 비율이 반대다 |
+| PVS | 2026 Phase 2 참가 16팀 | pro 3 (`method=invite`) / amateur 13 (`method=qual`) | **자동** |
 
-아직 안 한 리그: **PVS**(베트남, `PUBG_Vietnam_Series/2026/Phase_2`, 16팀, `invite 3 / qual 13`).
-참가팀은 등재돼 있으나 인포박스에 날짜가 비어 있어 진행 예정일 수 있다. 탭과 로고는 이미 있다.
+여섯 리그 모두 수집 완료. 다만 **EMEA·AMER 은 2026-10-04 에 끝나고 PVS 는 인포박스에
+날짜가 비어 있어** 진행 예정일 수 있다. 셋 다 종료 후 재수집이 필요하다.
+
+**스태프 제외 규칙**: `type=staff` 뿐 아니라 `role=` 이 붙은 사람은 전부 비선수다.
+확인된 값은 Coach / head coach / Assistant Coach / Analyst 이며 선수에는 `role=` 이 없다.
+예전에는 `type=staff` 와 `role=Coach` 만 걸러서 `role=analyst` 가 선수로 새어 들어갔다
+(PVS Team Flash 의 NielT).
 
 **EMEA 는 구분표가 필요 없다.** Stage 소절이 없는 대신 팀마다 `|qualification={{Qualification|method=...}}`
 가 있어서 초청(invite)과 예선 통과(qual)를 위키 데이터에서 그대로 가를 수 있다.
