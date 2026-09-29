@@ -8,10 +8,10 @@ import HotPlayerGrid from './HotPlayerGrid';
 // bannerTitle 이 있는 리그는 팀 목록 위에 대회 공식 명칭 배너를 띄운다.
 // sourceUrl 은 데이터를 대조한 리퀴피디아 문서. 출처 표기(CC-BY-SA)에 쓰인다.
 //
-// seedLabels 는 pro/amateur 두 그룹의 화면 제목이다. seedType 값 자체는 같아도
-// 리그마다 본선 진입 근거가 달라서 이름을 하나로 통일하면 사실과 어긋난다.
-// 아래 라벨은 전부 리퀴피디아 원문의 qualification 값에서 나온 것이다.
-// 근거가 없는 리그는 seedLabels 를 생략해 단일 목록으로 그린다.
+// 팀 목록은 구획을 나누지 않고 한 줄기로 늘어놓는다. 프로로 볼 수 있는 구단이
+// 앞에 오고 그 뒤로 아마추어 구단이 이어진다 — 순서는 seedType 이 정한다
+// (LeagueTeamGrid 의 SEED_ORDER). 리그마다 '프로'의 근거가 달라서 구획 제목을
+// 붙이면 어느 리그에서는 반드시 사실과 어긋나므로 제목 없이 순서로만 구분한다.
 const LEAGUES = [
   {
     id: 'PWS',
@@ -19,8 +19,7 @@ const LEAGUES = [
     logo: TOURNAMENT_LOGOS.PWS,
     bannerTitle: '2026 PUBG WEEKLY SERIES: KOREA Phase 2',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_WEEKLY_SERIES/2026/Phase_2',
-    // 위키가 직접 text=Pro Seed / text=Amateur Seed 로 표기하는 유일한 리그.
-    seedLabels: { pro: 'Pro Seeds', amateur: 'Qualifier Seeds' }
+    // 상단 13팀: 위키가 text=Pro Seed 로 직접 표기한 팀.
   },
   {
     id: 'PCL',
@@ -28,9 +27,8 @@ const LEAGUES = [
     logo: TOURNAMENT_LOGOS.PCL,
     bannerTitle: 'PUBG CHAMPIONS LEAGUE 2026: Autumn — Stage S',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_Champions_League/2026/Autumn',
-    // 위키에는 invite 가 없고 전부 qual(Spring 성적 / PCL Cup) 이다.
-    // 이 구분은 seed_types_pcl.json 에 사람이 직접 확정한 값이다.
-    seedLabels: { pro: 'Pro Seeds', amateur: 'Qualifier Seeds' }
+    // 상단 8팀: Stage S 직행 시드. 나머지 16팀은 Stage A 에서 올라왔다.
+    // 위키에는 invite 가 없어 seed_types_pcl.json 에 사람이 확정한 값이다.
   },
   {
     id: 'EMEA',
@@ -38,8 +36,7 @@ const LEAGUES = [
     logo: TOURNAMENT_LOGOS.EMEA,
     bannerTitle: 'PUBG EMEA CHAMPIONSHIP: 2026 Fall',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_EMEA_Championship/2026/Fall',
-    // invite = Global Partner 3 · Regional Partner 5 · PGS Attending 1
-    seedLabels: { pro: 'Partner Teams', amateur: 'Cup Qualifiers' }
+    // 상단 9팀: Global Partner 3 · Regional Partner 5 · PGS Attending 1.
   },
   {
     id: 'AMER',
@@ -47,8 +44,7 @@ const LEAGUES = [
     logo: TOURNAMENT_LOGOS.AMER,
     bannerTitle: 'PUBG AMERICAS SERIES 2 — 2026',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_Americas_Series/2026/2',
-    // invite = Global Partner 1 · Regional Partner 5 · PGS Attending 1
-    seedLabels: { pro: 'Partner Teams', amateur: 'Cup Qualifiers' }
+    // 상단 7팀: Global Partner 1 · Regional Partner 5 · PGS Attending 1.
   },
   // APAC 은 태국(PTS)·베트남(PVS) 으로 나눴다. 각각 독립된 권역 리그다.
   {
@@ -57,8 +53,8 @@ const LEAGUES = [
     logo: TOURNAMENT_LOGOS.PTS,
     bannerTitle: 'PUBG THAILAND SERIES 2026 — Phase 1',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_Thailand_Series/2026/Phase_1',
-    // seedLabels 없음: 위키가 {{Qualification|method=invite|}} 로만 적어
-    // 20팀을 프로 티어라고 부를 근거가 원문에 존재하지 않는다. 단일 목록으로 그린다.
+    // 위키가 {{Qualification|method=invite|}} 로만 적어 프로/아마 근거가 원문에
+    // 없다. 현재 순서는 invite 20팀이 앞, 예선 통과 4팀이 뒤일 뿐이다.
   },
   {
     id: 'PVS',
@@ -66,9 +62,7 @@ const LEAGUES = [
     logo: TOURNAMENT_LOGOS.PVS,
     bannerTitle: 'PUBG VIETNAM SERIES 2026 — Phase 2',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_Vietnam_Series/2026/Phase_2',
-    // 프로/아마 구분이 아니라 진입 경로가 둘인 것이다.
-    // invite = Phase 1 파이널 1~3위, qual = PVS Cup 포인트 1~13위.
-    seedLabels: { pro: 'Phase 1 Finals Seeds', amateur: 'PVS Cup Qualifiers' }
+    // 상단 3팀: Phase 1 파이널 1~3위. 나머지는 PVS Cup 포인트 1~13위.
   }
 ];
 
@@ -159,7 +153,6 @@ export default function PlayersTab({ onSelectPlayer }) {
           bannerLogo={activeLeague.logo}
           bannerTitle={activeLeague.bannerTitle}
           sourceUrl={activeLeague.sourceUrl}
-          seedLabels={activeLeague.seedLabels}
           onSelectPlayer={onSelectPlayer}
         />
       )}

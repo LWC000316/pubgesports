@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Crown, Target, Shield, Users } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import { fetchTeamCards } from '../../api/teams';
 import { useApi } from '../../hooks/useApi';
 import LoadingPanel from '../common/LoadingPanel';
@@ -8,18 +8,18 @@ import TeamCard from './TeamCard';
 
 const EMPTY = [];
 
+// 목록 순서. 프로로 볼 수 있는 구단을 앞에, 그 뒤로 아마추어 구단을 잇는다.
+// 구획을 나누지 않고 한 줄기로 늘어놓는다 — 리그마다 "프로"의 근거가 달라서
+// 구획 제목을 붙이면 어느 리그에서는 반드시 사실과 어긋난다.
+const SEED_ORDER = { pro: 0, amateur: 1 };
+
 /**
- * 리그 하나의 팀 목록. PWS·PCL·EMEA·AMER·APAC 이 모두 이 컴포넌트를 쓴다.
+ * 리그 하나의 팀 목록. 여섯 리그가 모두 이 컴포넌트를 쓴다.
  * 리그를 추가할 때는 league prop 만 바꿔서 렌더하면 된다.
  *
  * bannerTitle 은 대회 공식 명칭처럼 리그별로 다른 문구가 있을 때만 넘긴다.
- *
- * seedLabels 는 두 시드 그룹의 화면 제목이다. 리그마다 본선 진입 경로의 근거가
- * 달라서(PWS 는 위키가 Pro/Amateur Seed 라고 명시, EMEA·AMER 은 파트너팀 제도,
- * PVS 는 직전 페이즈 성적) 같은 seedType 에 같은 이름을 붙이면 사실과 어긋난다.
- * null 을 넘기면 구분 근거가 없는 리그로 보고 단일 목록으로 그린다(PTS).
  */
-export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, sourceUrl, seedLabels, onSelectPlayer }) {
+export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, sourceUrl, onSelectPlayer }) {
   const fetcher = useCallback(() => fetchTeamCards(league), [league]);
   const { data: teams, loading, error, reload } = useApi(fetcher, [league], EMPTY);
 
@@ -51,36 +51,10 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
     return matchesTeam || matchesRoster;
   });
 
-  // seedLabels 가 없는 리그는 위키에 시드 구분 근거가 없다는 뜻이라 나누지 않는다.
-  const groups = seedLabels
-    ? [
-        {
-          key: 'pro',
-          title: seedLabels.pro,
-          teams: filtered.filter(t => t.seedType === 'pro'),
-          icon: <Crown size={20} color="var(--accent-gold)" />,
-          borderColor: 'rgba(243, 166, 31, 0.3)',
-          highlight: true
-        },
-        {
-          key: 'amateur',
-          title: seedLabels.amateur,
-          teams: filtered.filter(t => t.seedType === 'amateur'),
-          icon: <Target size={20} color="#00e5ff" />,
-          borderColor: 'rgba(255, 255, 255, 0.15)',
-          highlight: false
-        }
-      ]
-    : [
-        {
-          key: 'all',
-          title: 'Participants',
-          teams: filtered,
-          icon: <Users size={20} color="var(--accent-gold)" />,
-          borderColor: 'rgba(243, 166, 31, 0.3)',
-          highlight: true
-        }
-      ];
+  // Array.prototype.sort 는 안정 정렬이라 같은 seedType 안에서는 API 순서가 유지된다.
+  const ordered = [...filtered].sort(
+    (a, b) => (SEED_ORDER[a.seedType] ?? 9) - (SEED_ORDER[b.seedType] ?? 9)
+  );
 
   if ((teams ?? []).length === 0) {
     return (
@@ -97,7 +71,7 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {bannerTitle && (
         <div className="glass-panel" style={{
           padding: '16px 22px',
@@ -118,32 +92,21 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
               {bannerTitle}
             </span>
           </div>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {groups.map(g => (
-              <span
-                key={g.key}
-                className={g.highlight ? 'badge badge-gold' : 'badge'}
-                style={g.highlight
-                  ? { fontSize: '0.75rem', fontWeight: '800' }
-                  : { fontSize: '0.75rem', fontWeight: '800', background: 'rgba(255,255,255,0.08)', color: '#fff' }}
-              >
-                {g.teams.length} {g.title.toUpperCase()}
-              </span>
-            ))}
-          </div>
+          <span className="badge badge-gold" style={{ fontSize: '0.75rem', fontWeight: '800' }}>
+            {ordered.length} TEAMS
+          </span>
         </div>
       )}
 
-      {groups.map(g => (
-        <SeedSection
-          key={g.key}
-          title={`${g.title} (${g.teams.length})`}
-          icon={g.icon}
-          borderColor={g.borderColor}
-          teams={g.teams}
-          onSelectPlayer={onSelectPlayer}
-        />
-      ))}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+        gap: '20px'
+      }}>
+        {ordered.map(team => (
+          <TeamCard key={team.id} team={team} onSelectPlayer={onSelectPlayer} />
+        ))}
+      </div>
 
       <SourceAttribution sourceUrl={sourceUrl} />
     </div>
@@ -168,44 +131,5 @@ function SourceAttribution({ sourceUrl }) {
       </a>
       )
     </p>
-  );
-}
-
-function SeedSection({ title, icon, borderColor, teams, onSelectPlayer }) {
-  if (teams.length === 0) return null;
-
-  return (
-    <div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        marginBottom: '16px',
-        paddingBottom: '8px',
-        borderBottom: `1px solid ${borderColor}`
-      }}>
-        {icon}
-        <h2 style={{
-          fontSize: '1.1rem',
-          fontWeight: '900',
-          color: '#fff',
-          margin: 0,
-          letterSpacing: '0.05em',
-          textTransform: 'uppercase'
-        }}>
-          {title}
-        </h2>
-      </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
-        gap: '20px'
-      }}>
-        {teams.map(team => (
-          <TeamCard key={team.id} team={team} onSelectPlayer={onSelectPlayer} />
-        ))}
-      </div>
-    </div>
   );
 }

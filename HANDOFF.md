@@ -6,14 +6,17 @@
 
 ## 1. 현재 상태
 
-| 탭 | 대회 | 팀 | 시드 구분 | 화면 제목 |
+팀 목록은 **구획 없이 한 줄기**로 나온다. 프로로 볼 수 있는 구단이 앞, 아마추어가 뒤.
+구획 제목도 구분선도 없다.
+
+| 탭 | 대회 | 팀 | 상단 / 하단 | 상단이 근거하는 것 |
 |---|---|---|---|---|
-| PWS | 2026 Phase 2 (한국) | 24 | 13 / 11 | Pro Seeds / Qualifier Seeds |
-| PCL | 2026 Autumn Stage S (중국) | 24 | 8 / 16 | Pro Seeds / Qualifier Seeds |
-| EMEA | 2026 Fall | 29 | 9 / 20 | Partner Teams / Cup Qualifiers |
-| AMER | 2026 Series 2 | 29 | 7 / 22 | Partner Teams / Cup Qualifiers |
-| PTS | 2026 Phase 1 (태국) | 24 | — | **Participants** (분할 안 함) |
-| PVS | 2026 Phase 2 (베트남) | 16 | 3 / 13 | Phase 1 Finals Seeds / PVS Cup Qualifiers |
+| PWS | 2026 Phase 2 (한국) | 24 | 13 / 11 | 위키의 `text=Pro Seed` |
+| PCL | 2026 Autumn Stage S (중국) | 24 | 8 / 16 | Stage S 직행 시드 |
+| EMEA | 2026 Fall | 29 | 9 / 20 | Global·Regional Partner, PGS Attending |
+| AMER | 2026 Series 2 | 29 | 7 / 22 | 동일 |
+| PVS | 2026 Phase 2 (베트남) | 16 | 3 / 13 | 직전 Phase 1 파이널 1~3위 |
+| PTS | 2026 Phase 1 (태국) | 24 | 20 / 4 | **없음** — 순서에 실질적 의미 없음 |
 
 ### 이번에 고친 것
 
@@ -21,7 +24,8 @@
 **본선 진입 경로**(직행 / 예선 통과)다. `--seed-from-qualification` 이 `invite→pro`,
 `qual→amateur` 로 기계적으로 매핑했는데 **그 규칙은 PWS 에서만 참**이었다. 결과적으로
 PTS 는 근거 없이 20팀이 프로가 되고, PVS 는 **컵 1위 팀이 아마추어로** 들어가 있었다.
-화면 제목은 이제 `PlayersTab.jsx` 의 `seedLabels` 가 리그별로 정한다.
+그룹에 이름을 붙이려는 시도를 두 번 했고 두 번 다 위키가 뒷받침하지 않는 주장을
+만들어냈다. 결국 **구획을 없애고 순서로만 구분**하기로 했다.
 
 **2. 트로피를 제품에서 제거했다.** `TeamCard.jsx` 가 애초에 렌더하지 않아 이미 죽은
 데이터였다. 엔티티·DTO·적재 루프·시드 필드·ingest 로직을 모두 지웠다.
@@ -49,7 +53,7 @@ PTS 는 근거 없이 20팀이 프로가 되고, PVS 는 **컵 1위 팀이 아�
 **PVS 는 재수집 대상이 아니다.** Week 3·4 가 `finished=` 로 비어 있지만 미진행이 아니라
 2주차까지만 치르고 끝난 대회다(사용자 확인). 참가 16팀 확정.
 절차는 `ingest/README.md` 와 동일하되, **`--seed-from-qualification` 결과를 그대로
-믿지 말고 그 리그의 `text=` 값을 직접 확인**한 뒤 `seedLabels` 를 정할 것.
+믿지 말고 그 리그의 `text=` 값을 직접 확인**할 것.
 
 ### 우선순위 2 — 선수 감도·장비 (디스코드 수집 대기)
 `ddl-auto: create` 아래에서는 런타임에 쓴 데이터가 재기동 때 사라진다.
@@ -76,7 +80,8 @@ PTS 는 근거 없이 20팀이 프로가 되고, PVS 는 **컵 1위 팀이 아�
 - `ingest/build_league_seed_mediawiki.py` — 수집기 (키 불필요)
 - `primary_data/*_teams_verified.json` — 리그별 확정 시드 (손으로 편집 가능)
 - `CLAUDE.md` — 매 세션 자동 로드
-- `frontend/src/components/players/PlayersTab.jsx` — `LEAGUES` 배열 = 탭 + `seedLabels`
+- `frontend/src/components/players/PlayersTab.jsx` — `LEAGUES` 배열이 탭 정의
+- `frontend/src/components/players/LeagueTeamGrid.jsx` — `SEED_ORDER` 가 목록 순서
 - `backend/.../config/DataInitializer.java` — `VERIFIED_SEEDS` 목록
 
 ---
@@ -104,7 +109,8 @@ PTS 는 근거 없이 20팀이 프로가 되고, PVS 는 **컵 1위 팀이 아�
 - **PostgreSQL null 파라미터** — JPQL 에 nullable 바인딩 금지
 - **컬렉션 2개 동시 fetch join 금지** (`MultipleBagFetchException`)
 - **`seedType IS NOT NULL`** — 팀 카드 조회 필수 조건
-- **`pro`/`amateur` 외의 seedType 은 화면에서 사라진다** (`LeagueTeamGrid`)
+- **`seedType` 이 null 이면 팀이 사라진다** (`seedType IS NOT NULL` 필터). `pro`/`amateur`
+  외의 값은 목록 맨 뒤로 밀린다 (`SEED_ORDER` 기본값 9)
 
 ### 협업
 - 한국어로 소통한다

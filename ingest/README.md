@@ -137,17 +137,22 @@ PWS 때 사람이 읽어 확정했으나 두 번 정정이 있었고(보고서 2
 
 ## 리그별 결정
 
-`seedType` 은 **프로 여부가 아니라 본선 진입 경로**다. `pro` = 직행, `amateur` = 예선 통과.
-근거가 리그마다 달라서 **화면 제목은 `PlayersTab.jsx` 의 `seedLabels` 가 리그별로 정한다.**
+`seedType` 은 **화면 제목이 아니라 정렬 키**다. 팀 목록은 **구획 없이 한 줄기**로 나오고,
+프로로 볼 수 있는 구단이 앞, 아마추어 구단이 그 뒤에 이어진다. 구획 제목도 구분선도 없다
+(`LeagueTeamGrid.jsx` 의 `SEED_ORDER`). **그룹에 이름을 붙이려는 시도를 두 번 했고 두 번 다
+위키가 뒷받침하지 않는 주장을 만들어냈다.** 리그마다 `pro` 의 근거가 다르기 때문이다.
 
-| 리그 | 대상 | 구분 | 위키 근거 | 화면 제목 |
-|---|---|---|---|---|
-| PWS | 2026 Phase 2 · 24팀 | 13 / 11 | **`text=Pro Seed` · `text=Amateur Seed`** — 위키가 직접 씀 | Pro Seeds / Qualifier Seeds |
-| PCL | 2026 Autumn **Stage S** · 24팀 | 8 / 16 | **없음** — 위키는 전부 `qual`(Spring 성적·PCL Cup). 사람이 확정 | Pro Seeds / Qualifier Seeds |
-| EMEA | 2026 Fall · 29팀 | 9 / 20 | Global Partner 3 · Regional Partner 5 · PGS Attending 1 | Partner Teams / Cup Qualifiers |
-| AMER | 2026 Series 2 · 29팀 | 7 / 22 | Global Partner 1 · Regional Partner 5 · PGS Attending 1 | Partner Teams / Cup Qualifiers |
-| PTS | 2026 Phase 1 · 24팀 | 20 / 4 | **없음** — `{{Qualification\|method=invite\|}}` 뿐, text 도 page 도 없음 | **분할 안 함** (`Participants`) |
-| PVS | 2026 Phase 2 · 16팀 | 3 / 13 | Phase 1 파이널 1~3위 · PVS Cup 포인트 1~13위 | Phase 1 Finals Seeds / PVS Cup Qualifiers |
+| 리그 | 대상 | 상단 / 하단 | `pro` 가 실제로 근거하는 것 |
+|---|---|---|---|
+| PWS | 2026 Phase 2 · 24팀 | 13 / 11 | 위키가 직접 `text=Pro Seed` 로 표기 |
+| PCL | 2026 Autumn **Stage S** · 24팀 | 8 / 16 | Stage S 직행 시드 8팀. 위키에 `invite` 가 없어 사람이 확정 |
+| EMEA | 2026 Fall · 29팀 | 9 / 20 | Global Partner 3 · Regional Partner 5 · PGS Attending 1 |
+| AMER | 2026 Series 2 · 29팀 | 7 / 22 | Global Partner 1 · Regional Partner 5 · PGS Attending 1 |
+| PVS | 2026 Phase 2 · 16팀 | 3 / 13 | 직전 Phase 1 파이널 1~3위 |
+| PTS | 2026 Phase 1 · 24팀 | 20 / 4 | **없음** — `{{Qualification\|method=invite\|}}` 뿐. 이 리그의 순서에는 실질적 의미가 없다 |
+
+`seedType` 은 여전히 **모든 팀에 값이 있어야 한다.** `findByLeagueWithPlayers` 가
+`seedType IS NOT NULL` 로 거르므로 비우면 팀이 화면에서 사라진다.
 
 **`--seed-from-qualification` 의 결과를 그대로 믿지 말 것.** 이 플래그는 `invite→pro`,
 `qual→amateur` 로 기계적으로 옮길 뿐이고, 그 매핑이 맞는지는 **리그마다 `text=` 값을 직접
