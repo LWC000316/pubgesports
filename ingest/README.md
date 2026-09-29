@@ -14,20 +14,83 @@
   → DataInitializer 가 기동 때 적재 → /api/teams/cards?league=<리그>
 ```
 
-## 준비
+## 리퀴피디아 API 는 두 개다 — 어느 쪽을 쓸지 먼저 정한다
+
+| | MediaWiki API | LPDB v3 |
+|---|---|---|
+| 주소 | `liquipedia.net/pubg/api.php` | `api.liquipedia.net/api/v3` |
+| 키 | **불필요 (공개)** | 승인 필요 |
+| 받는 것 | 위키 원문(wikitext) → 직접 파싱 | 정규화된 레코드 |
+| 이 레포의 사용 이력 | **`scripts/59`·`63` 등 8개가 이미 사용** | 아직 없음 |
+
+**이 디렉터리(`ingest/`)는 LPDB v3 용이다.** 키가 없으면 돌릴 수 없다.
+
+**키가 없어도 리그를 추가할 수 있다.** 현재 PWS 24팀 데이터가 MediaWiki 경로로 들어왔다.
+`scripts/59_fetch_liquipedia_pws_teams.py` 가 `action=parse` 로 대회 문서 원문을 받아
+`{{Opponent|팀명}}` / `{{Person|닉네임}}` 을 정규식으로 뽑고, `scripts/63` 이 `action=query`
+로 로고 이미지 URL 을, `65` 가 파일을 받았다. 같은 방식을 다른 리그에 쓸 수 있다.
+
+**선택 기준**: 지금 당장 필요하면 MediaWiki, 문서 형식 변경에 덜 깨지는 안정성을 원하면
+LPDB. MediaWiki 는 위키 문법을 정규식으로 파싱하므로 문서 구조가 바뀌면 깨진다.
+
+## LPDB v3 준비
 
 ```bash
-export LIQUIPEDIA_API_KEY=...          # 리퀴피디아에서 승인받은 LPDB v3 키
+export LIQUIPEDIA_API_KEY=...          # 승인받은 LPDB v3 키
 export LIQUIPEDIA_CONTACT=you@example.com   # 약관상 User-Agent 에 연락처가 필요
 ```
 
-키는 자가 발급이 안 된다. <https://liquipedia.net/api-terms-of-use> 의 문의 양식으로
-신청해 승인을 받아야 한다. 교육·비영리·커뮤니티 프로젝트는 무상이다.
+키는 자가 발급이 안 된다. 약관(<https://liquipedia.net/api-terms-of-use>)에는
+"Upon approved request Liquipedia grants access" 와 문의 창구가
+**디스코드(<https://liquipedia.net/discord>)** 라는 것만 적혀 있다. 신청 양식도,
+접수 상태를 조회하는 페이지도 없다 — 디스코드로 직접 문의해야 한다.
+(비영리·커뮤니티 프로젝트의 무상 여부는 약관 문서에서 확인하지 못했다. 문의할 때 같이 확인할 것.)
 
 **키를 추적 파일에 쓰지 않는다.** 예전에 PUBG API 키가 21곳에 복붙돼 있었고 커밋
 `d8f04a7` 에서 전부 환경변수로 옮겼다.
 
-## 리그 하나 추가하기
+MediaWiki 경로도 약관상 **연락처가 포함된 User-Agent** 와 gzip 수락이 필요하다.
+`scripts/59` 의 User-Agent 에 있는 `contact@pubgproject.local` 은 존재하지 않는 도메인이므로
+재사용할 때 실제 연락처로 바꿀 것.
+
+## 리그 하나 추가하기 (MediaWiki 경로 — 키 불필요, PCL 을 이걸로 했다)
+
+```bash
+# 1. 문서 구조를 눈으로 먼저 본다. 파서를 추측으로 쓰지 않는다.
+python ingest/mediawiki_client.py "PUBG_Champions_League/2026/Autumn" --what wikitext
+
+# 2. 초안 생성 + 로고 내려받기
+python ingest/build_league_seed_mediawiki.py \
+    --page "PUBG_Champions_League/2026/Autumn" \
+    --league PCL --region CN \
+    --seed-map ingest/seed_types_pcl.json --include-subs --download-logos \
+    --out intermediate_results/pcl_seed_draft.json
+
+# 3. 형식 검사
+python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-league PCL
+
+# 4. 사람이 원문과 대조한 뒤 확정
+#    primary_data/<리그>_teams_verified.json
+
+# 5. 배선: DataInitializer.VERIFIED_SEEDS 에 경로 한 줄,
+#    PlayersTab.jsx 의 해당 리그에 bannerTitle 과 sourceUrl
+```
+
+**PCL 에서 실제로 걸린 것들** (다른 리그에서도 나올 수 있다)
+- 위키 원문의 `{{Opponent|jdg}}` 는 **팀 이름이 아니라 리퀴피디아 내부 코드**다. 정식명은
+  렌더된 HTML(`prop=text`)의 참가팀 카드에서만 얻을 수 있다. 원문 코드 순서와 HTML 카드
+  순서를 대응시키되, **개수가 다르면 멈춘다**(순서 대응을 신뢰할 수 없으므로).
+- **팀 약칭(`tag`) 데이터가 리퀴피디아에 없다.** 팀 문서 인포박스에도, `Template:<코드>` 에도
+  없다. 현재는 내부 코드를 대문자로 올리고 동명 구분자(`cn` 등)를 뗀 **추정값**을 쓰며,
+  시드의 `tagSource` 에 그 사실을 남긴다.
+- 동명 팀은 문서명이 `ZEAL (Chinese team)` 처럼 된다. `clean_team_name()` 이 `(... team)` 을 뗀다.
+- 참가팀이 스테이지별 소절로 나뉠 수 있다. PCL 은 Stage S 8 / A 8 / B 24 = 40 이고,
+  Stage S 에 오르는 24팀은 세 소절에 흩어져 있어 `--seed-map` 으로 골라냈다.
+- 로고 `src` 는 썸네일이라 원본 경로로 바꿔야 한다(`_full_size_image`).
+
+## 리그 하나 추가하기 (LPDB 경로 — 키가 있을 때)
+
+3~4단계(검사·대조)와 5단계(배선)는 경로와 무관하게 동일하다.
 
 ```bash
 # 1. 응답의 진짜 필드명을 먼저 본다. 매핑은 아직 추정이다.

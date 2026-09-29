@@ -15,7 +15,13 @@ const LEAGUES = [
     bannerTitle: '2026 PUBG WEEKLY SERIES: KOREA Phase 2',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_WEEKLY_SERIES/2026/Phase_2'
   },
-  { id: 'PCL', label: 'PCL', logo: TOURNAMENT_LOGOS.PCL },
+  {
+    id: 'PCL',
+    label: 'PCL',
+    logo: TOURNAMENT_LOGOS.PCL,
+    bannerTitle: 'PUBG CHAMPIONS LEAGUE 2026: Autumn — Stage S',
+    sourceUrl: 'https://liquipedia.net/pubg/PUBG_Champions_League/2026/Autumn'
+  },
   { id: 'EMEA', label: 'EMEA', logo: TOURNAMENT_LOGOS.EMEA },
   { id: 'AMER', label: 'AMER', logo: TOURNAMENT_LOGOS.AMER },
   { id: 'APAC', label: 'APAC', logo: TOURNAMENT_LOGOS.APAC }

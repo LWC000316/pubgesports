@@ -96,7 +96,12 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 
 Two rules the tooling enforces: it never writes player settings (`mouseDpi`/`generalSens`/`mouseName`) because Liquipedia does not have them, and it never picks `seedType` automatically — only `pro` and `amateur` render (`LeagueTeamGrid.jsx`), so any other value makes a team vanish from the page. Liquipedia content is CC-BY-SA 3.0 and requires attribution on screen.
 
-`LIQUIPEDIA_API_KEY` and `LIQUIPEDIA_CONTACT` come from the environment; the key is not self-service and must be requested and approved.
+`LIQUIPEDIA_API_KEY` and `LIQUIPEDIA_CONTACT` come from the environment. The LPDB key is not self-service: the terms name Discord (<https://liquipedia.net/discord>) as the only contact channel, and there is no application form or status page.
+
+**An approved key is not required to add a league.** Liquipedia exposes two APIs, and the PWS data already in this repo came from the other one: the public MediaWiki API at `liquipedia.net/pubg/api.php`, no key needed. `scripts/59_fetch_liquipedia_pws_teams.py` fetches a tournament page's wikitext with `action=parse` and regexes out `{{Opponent|...}}` / `{{Person|...}}`; `scripts/63` pulls logo URLs with `action=query` and `scripts/65` downloads them. That path works today; `ingest/` (LPDB) is the more robust upgrade for when a key arrives. Either way the terms require a contact-bearing User-Agent and gzip — and note the UA in `scripts/59` uses a non-existent domain, so replace it before reusing.
+
+### PUBG official API key
+Self-service and instant at <https://developer.pubg.com> ("My Apps"); default limit 10 requests/minute. This repo's app is registered as `pubgesports_se`. Nothing in the current PE-tab path needs it — it is required only for fetching new match/tournament data.
 
 ### Data pipeline (`scripts/`, `primary_data/`, `intermediate_results/`)
 `scripts/01_...py` through `scripts/69_...py` are one-off research scripts, numbered in the order they were run, used to source and reconcile tournament/team/roster data from the official PUBG API and Liquipedia. **Treat them as an audit trail, not a runnable pipeline** — several now reference files that were deleted, and the third-party scraped bundles that scripts 30/38–41 depended on are gone (they carried another site's Supabase endpoint and key). There is currently no repeatable ingestion step; the planned telemetry work will need one, and it should live separately from this archive.

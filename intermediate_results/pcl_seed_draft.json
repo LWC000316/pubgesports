@@ -1,0 +1,1013 @@
+[
+  {
+    "id": "17_gaming",
+    "name": "17 Gaming",
+    "tag": "17",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/17.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Lilghost",
+        "realName": "Lilghost",
+        "role": "Player"
+      },
+      {
+        "nickname": "tiantian",
+        "realName": "tiantian",
+        "role": "Player"
+      },
+      {
+        "nickname": "WenBo",
+        "realName": "WenBo",
+        "role": "Player"
+      },
+      {
+        "nickname": "xwudd",
+        "realName": "xwudd",
+        "role": "Player"
+      },
+      {
+        "nickname": "shou",
+        "realName": "shou",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "17_Gaming"
+  },
+  {
+    "id": "jd_gaming",
+    "name": "JD Gaming",
+    "tag": "JDG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/jdg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Dec12th",
+        "realName": "Dec12th",
+        "role": "Player"
+      },
+      {
+        "nickname": "Cold119",
+        "realName": "Cold119",
+        "role": "Player"
+      },
+      {
+        "nickname": "SuZe",
+        "realName": "SuZe",
+        "role": "Player"
+      },
+      {
+        "nickname": "nanss",
+        "realName": "nanss",
+        "role": "Player"
+      },
+      {
+        "nickname": "Donzz",
+        "realName": "Donzz",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "JD_Gaming"
+  },
+  {
+    "id": "four_angry_men",
+    "name": "Four Angry Men",
+    "tag": "4AM",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/4am.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "HSmm",
+        "realName": "HSmm",
+        "role": "Player"
+      },
+      {
+        "nickname": "Shen",
+        "realName": "Shen",
+        "role": "Player"
+      },
+      {
+        "nickname": "SpaceMan",
+        "realName": "SpaceMan",
+        "role": "Player"
+      },
+      {
+        "nickname": "WINDah",
+        "realName": "WINDah",
+        "role": "Player"
+      },
+      {
+        "nickname": "WangZai",
+        "realName": "WangZai",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Four_Angry_Men"
+  },
+  {
+    "id": "petrichor_road",
+    "name": "Petrichor Road",
+    "tag": "PERO",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/pero.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "MMing",
+        "realName": "MMing",
+        "role": "Player"
+      },
+      {
+        "nickname": "Cui71",
+        "realName": "Cui71",
+        "role": "Player"
+      },
+      {
+        "nickname": "i26v6",
+        "realName": "i26v6",
+        "role": "Player"
+      },
+      {
+        "nickname": "04NB",
+        "realName": "04NB",
+        "role": "Player"
+      },
+      {
+        "nickname": "Aixleft",
+        "realName": "Aixleft",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Myl",
+        "realName": "Myl",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Petrichor_Road"
+  },
+  {
+    "id": "tyloo",
+    "name": "TYLOO",
+    "tag": "TYLOO",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/tyloo.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "OneDragon",
+        "realName": "OneDragon",
+        "role": "Player"
+      },
+      {
+        "nickname": "1ee",
+        "realName": "1ee",
+        "role": "Player"
+      },
+      {
+        "nickname": "HaoSkr",
+        "realName": "HaoSkr",
+        "role": "Player"
+      },
+      {
+        "nickname": "KKong",
+        "realName": "KKong",
+        "role": "Player"
+      },
+      {
+        "nickname": "MMao",
+        "realName": "MMao",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "TYLOO"
+  },
+  {
+    "id": "weibo_gaming",
+    "name": "Weibo Gaming",
+    "tag": "WBG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/wbg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "iL1u",
+        "realName": "iL1u",
+        "role": "Player"
+      },
+      {
+        "nickname": "SuiX1ngKK",
+        "realName": "SuiX1ngKK",
+        "role": "Player"
+      },
+      {
+        "nickname": "RKBro",
+        "realName": "RKBro",
+        "role": "Player"
+      },
+      {
+        "nickname": "Boliang",
+        "realName": "Boliang",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Weibo_Gaming"
+  },
+  {
+    "id": "edward_gaming",
+    "name": "EDward Gaming",
+    "tag": "EDG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/edg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Axidd",
+        "realName": "Axidd",
+        "role": "Player"
+      },
+      {
+        "nickname": "Solo9",
+        "realName": "Solo9",
+        "role": "Player"
+      },
+      {
+        "nickname": "Hhuixx7",
+        "realName": "Hhuixx7",
+        "role": "Player"
+      },
+      {
+        "nickname": "GuoTvT",
+        "realName": "GuoTvT",
+        "role": "Player"
+      },
+      {
+        "nickname": "LongSkr",
+        "realName": "LongSkr",
+        "role": "Sub"
+      },
+      {
+        "nickname": "BailongMax",
+        "realName": "BailongMax",
+        "role": "Sub"
+      },
+      {
+        "nickname": "77bindi",
+        "realName": "77bindi",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "EDward_Gaming"
+  },
+  {
+    "id": "xiyouzhandui",
+    "name": "XiYouZhanDui",
+    "tag": "XY",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/xy.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "TangSeng",
+        "realName": "TangSeng",
+        "role": "Player"
+      },
+      {
+        "nickname": "WuKong",
+        "realName": "WuKong",
+        "role": "Player"
+      },
+      {
+        "nickname": "ShaSeng",
+        "realName": "ShaSeng",
+        "role": "Player"
+      },
+      {
+        "nickname": "BaJie",
+        "realName": "BaJie",
+        "role": "Player"
+      },
+      {
+        "nickname": "NiuMoWang",
+        "realName": "NiuMoWang",
+        "role": "Sub"
+      },
+      {
+        "nickname": "wabibabu",
+        "realName": "wabibabu",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Yangjian",
+        "realName": "Yangjian",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "XiYouZhanDui"
+  },
+  {
+    "id": "mikael",
+    "name": "MiKael",
+    "tag": "MKL",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/mkl.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "DouZiVv",
+        "realName": "DouZiVv",
+        "role": "Player"
+      },
+      {
+        "nickname": "midouzi",
+        "realName": "midouzi",
+        "role": "Player"
+      },
+      {
+        "nickname": "Xihan",
+        "realName": "Xihan",
+        "role": "Player"
+      },
+      {
+        "nickname": "PPeng",
+        "realName": "PPeng",
+        "role": "Player"
+      },
+      {
+        "nickname": "hhxx",
+        "realName": "hhxx",
+        "role": "Sub"
+      },
+      {
+        "nickname": "xHH",
+        "realName": "xHH",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "MiKael"
+  },
+  {
+    "id": "newhappy",
+    "name": "NewHappy",
+    "tag": "NEWH",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/newh.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "L1ttle1ee",
+        "realName": "L1ttle1ee",
+        "role": "Player"
+      },
+      {
+        "nickname": "Bigt1ger",
+        "realName": "Bigt1ger",
+        "role": "Player"
+      },
+      {
+        "nickname": "129",
+        "realName": "129",
+        "role": "Player"
+      },
+      {
+        "nickname": "L1Yapi",
+        "realName": "L1Yapi",
+        "role": "Player"
+      },
+      {
+        "nickname": "M1naTozZ",
+        "realName": "M1naTozZ",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "NewHappy"
+  },
+  {
+    "id": "722_gaming",
+    "name": "722 Gaming",
+    "tag": "722",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/722.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Future",
+        "realName": "Future",
+        "role": "Player"
+      },
+      {
+        "nickname": "He1Mao",
+        "realName": "He1Mao",
+        "role": "Player"
+      },
+      {
+        "nickname": "Luxus",
+        "realName": "Luxus",
+        "role": "Player"
+      },
+      {
+        "nickname": "PsychoZ",
+        "realName": "PsychoZ",
+        "role": "Player"
+      },
+      {
+        "nickname": "AixGu",
+        "realName": "AixGu",
+        "role": "Sub"
+      },
+      {
+        "nickname": "shan",
+        "realName": "shan",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "722_Gaming"
+  },
+  {
+    "id": "xtart_gaming",
+    "name": "XTART Gaming",
+    "tag": "XTR",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/xtr.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "X1yu",
+        "realName": "X1yu",
+        "role": "Player"
+      },
+      {
+        "nickname": "Jing",
+        "realName": "Jing",
+        "role": "Player"
+      },
+      {
+        "nickname": "77aws",
+        "realName": "77aws",
+        "role": "Player"
+      },
+      {
+        "nickname": "Yuyu",
+        "realName": "Yuyu",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "XTART_Gaming"
+  },
+  {
+    "id": "golden_quester_gaming",
+    "name": "Golden Quester Gaming",
+    "tag": "GQG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/gqg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "XiaoHuxxXX",
+        "realName": "XiaoHuxxXX",
+        "role": "Player"
+      },
+      {
+        "nickname": "Dong",
+        "realName": "Dong",
+        "role": "Player"
+      },
+      {
+        "nickname": "HuLi",
+        "realName": "HuLi",
+        "role": "Player"
+      },
+      {
+        "nickname": "Lu",
+        "realName": "Lu",
+        "role": "Player"
+      },
+      {
+        "nickname": "PengEGM",
+        "realName": "PengEGM",
+        "role": "Sub"
+      },
+      {
+        "nickname": "HS01",
+        "realName": "HS01",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Golden_Quester_Gaming"
+  },
+  {
+    "id": "nanmou",
+    "name": "NanMou",
+    "tag": "NM",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/nm.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Czaiii",
+        "realName": "Czaiii",
+        "role": "Player"
+      },
+      {
+        "nickname": "taiyANG",
+        "realName": "taiyANG",
+        "role": "Player"
+      },
+      {
+        "nickname": "7iaoZhikk",
+        "realName": "7iaoZhikk",
+        "role": "Player"
+      },
+      {
+        "nickname": "duoyu",
+        "realName": "duoyu",
+        "role": "Player"
+      },
+      {
+        "nickname": "NBT8",
+        "realName": "NBT8",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "NanMou"
+  },
+  {
+    "id": "bmz",
+    "name": "BMZ",
+    "tag": "BMZ",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/bmz.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "FeiFeiNB",
+        "realName": "FeiFeiNB",
+        "role": "Player"
+      },
+      {
+        "nickname": "XIAOQI",
+        "realName": "XIAOQI",
+        "role": "Player"
+      },
+      {
+        "nickname": "QingZa1",
+        "realName": "QingZa1",
+        "role": "Player"
+      },
+      {
+        "nickname": "XIAOLIAO",
+        "realName": "XIAOLIAO",
+        "role": "Player"
+      },
+      {
+        "nickname": "1ook",
+        "realName": "1ook",
+        "role": "Sub"
+      },
+      {
+        "nickname": "1hang",
+        "realName": "1hang",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "BMZ"
+  },
+  {
+    "id": "nirvana_gaming",
+    "name": "Nirvana Gaming",
+    "tag": "NVG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/nvg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Shan",
+        "realName": "Shan",
+        "role": "Player"
+      },
+      {
+        "nickname": "HangKK",
+        "realName": "HangKK",
+        "role": "Player"
+      },
+      {
+        "nickname": "D1Fei11",
+        "realName": "D1Fei11",
+        "role": "Player"
+      },
+      {
+        "nickname": "Rain",
+        "realName": "Rain",
+        "role": "Player"
+      },
+      {
+        "nickname": "cj6i",
+        "realName": "cj6i",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Nirvana_Gaming"
+  },
+  {
+    "id": "007_gaming",
+    "name": "007 Gaming",
+    "tag": "007",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/007.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "roll",
+        "realName": "roll",
+        "role": "Player"
+      },
+      {
+        "nickname": "X1aoSa86",
+        "realName": "X1aoSa86",
+        "role": "Player"
+      },
+      {
+        "nickname": "TanKe11",
+        "realName": "TanKe11",
+        "role": "Player"
+      },
+      {
+        "nickname": "DJinRong",
+        "realName": "DJinRong",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "007_Gaming"
+  },
+  {
+    "id": "rainbowstyle",
+    "name": "RainbowStyle",
+    "tag": "RBS",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/rbs.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "DaTou",
+        "realName": "DaTou",
+        "role": "Player"
+      },
+      {
+        "nickname": "JiangXiaoY",
+        "realName": "JiangXiaoY",
+        "role": "Player"
+      },
+      {
+        "nickname": "PerPer",
+        "realName": "PerPer",
+        "role": "Player"
+      },
+      {
+        "nickname": "RuiRui",
+        "realName": "RuiRui",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "RainbowStyle"
+  },
+  {
+    "id": "gohappy",
+    "name": "GoHappy",
+    "tag": "GH",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/gh.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Dogone",
+        "realName": "Dogone",
+        "role": "Player"
+      },
+      {
+        "nickname": "ZZP",
+        "realName": "ZZP",
+        "role": "Player"
+      },
+      {
+        "nickname": "BoBo",
+        "realName": "BoBo",
+        "role": "Player"
+      },
+      {
+        "nickname": "Supersea",
+        "realName": "Supersea",
+        "role": "Player"
+      },
+      {
+        "nickname": "V6OwO",
+        "realName": "V6OwO",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Leiziiii",
+        "realName": "Leiziiii",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Ceushy",
+        "realName": "Ceushy",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "GoHappy"
+  },
+  {
+    "id": "zhu_chao_gaming",
+    "name": "Zhu Chao Gaming",
+    "tag": "ZCG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/zcg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "KeyS",
+        "realName": "KeyS",
+        "role": "Player"
+      },
+      {
+        "nickname": "Jie7",
+        "realName": "Jie7",
+        "role": "Player"
+      },
+      {
+        "nickname": "XiaoAHao",
+        "realName": "XiaoAHao",
+        "role": "Player"
+      },
+      {
+        "nickname": "Xnan",
+        "realName": "Xnan",
+        "role": "Player"
+      },
+      {
+        "nickname": "Xtqvq",
+        "realName": "Xtqvq",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Csky",
+        "realName": "Csky",
+        "role": "Sub"
+      },
+      {
+        "nickname": "YinY",
+        "realName": "YinY",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Zhu_Chao_Gaming"
+  },
+  {
+    "id": "change_the_game",
+    "name": "Change The Game",
+    "tag": "CTG",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/ctg.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "PeeKk1ng",
+        "realName": "PeeKk1ng",
+        "role": "Player"
+      },
+      {
+        "nickname": "Yun",
+        "realName": "Yun",
+        "role": "Player"
+      },
+      {
+        "nickname": "HangZai",
+        "realName": "HangZai",
+        "role": "Player"
+      },
+      {
+        "nickname": "Chue",
+        "realName": "Chue",
+        "role": "Player"
+      },
+      {
+        "nickname": "TDD",
+        "realName": "TDD",
+        "role": "Sub"
+      },
+      {
+        "nickname": "xGuang",
+        "realName": "xGuang",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Always",
+        "realName": "Always",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Remain",
+        "realName": "Remain",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Change_The_Game"
+  },
+  {
+    "id": "geita",
+    "name": "GeiTa",
+    "tag": "GEITA",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/geita.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "700",
+        "realName": "700",
+        "role": "Player"
+      },
+      {
+        "nickname": "Mad597",
+        "realName": "Mad597",
+        "role": "Player"
+      },
+      {
+        "nickname": "SungHea",
+        "realName": "SungHea",
+        "role": "Player"
+      },
+      {
+        "nickname": "Monkeyfire",
+        "realName": "Monkeyfire",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "GeiTa"
+  },
+  {
+    "id": "soy_milk_squad",
+    "name": "Soy Milk Squad",
+    "tag": "SMS",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/sms.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "Nirvana",
+        "realName": "Nirvana",
+        "role": "Player"
+      },
+      {
+        "nickname": "Xcircle",
+        "realName": "Xcircle",
+        "role": "Player"
+      },
+      {
+        "nickname": "DD",
+        "realName": "DD",
+        "role": "Player"
+      },
+      {
+        "nickname": "FORGEN1337",
+        "realName": "FORGEN1337",
+        "role": "Player"
+      },
+      {
+        "nickname": "Linze",
+        "realName": "Linze",
+        "role": "Sub"
+      },
+      {
+        "nickname": "Reven",
+        "realName": "Reven",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Soy_Milk_Squad"
+  },
+  {
+    "id": "zeal",
+    "name": "ZEAL",
+    "tag": "ZEAL",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/zeal.png",
+    "league": "PCL",
+    "region": "CN",
+    "trophies": [],
+    "players": [
+      {
+        "nickname": "GOGE",
+        "realName": "GOGE",
+        "role": "Player"
+      },
+      {
+        "nickname": "Yang",
+        "realName": "Yang",
+        "role": "Player"
+      },
+      {
+        "nickname": "MiloIce",
+        "realName": "MiloIce",
+        "role": "Player"
+      },
+      {
+        "nickname": "PanGuan",
+        "realName": "PanGuan",
+        "role": "Player"
+      },
+      {
+        "nickname": "iMe1ody",
+        "realName": "iMe1ody",
+        "role": "Sub"
+      },
+      {
+        "nickname": "XXingYie",
+        "realName": "XXingYie",
+        "role": "Sub"
+      },
+      {
+        "nickname": "7r4v1ss",
+        "realName": "7r4v1ss",
+        "role": "Sub"
+      },
+      {
+        "nickname": "L1yucH3n9",
+        "realName": "L1yucH3n9",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "ZEAL_(Chinese_team)"
+  }
+]
