@@ -5,7 +5,8 @@ export const TOURNAMENT_LOGOS = {
   PCL: "/logos/tournaments/pcl.png",
   EMEA: "/logos/tournaments/emea.png",
   AMER: "/logos/tournaments/amer.png",
-  APAC: "/logos/tournaments/apac.png"
+  PTS: "/logos/tournaments/pts.png",
+  PVS: "/logos/tournaments/pvs.png"
 };
 
 // LATEST_PWS2_TEAMS 는 이 파일에서 제거되었다.

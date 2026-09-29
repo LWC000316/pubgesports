@@ -36,21 +36,30 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOGO_DIR = PROJECT_ROOT / "frontend" / "public" / "logos" / "teams"
 
 # 리퀴피디아 팀 코드 뒤에 붙는 동명이인 구분자. 약칭에는 들어가지 않는다.
-DISAMBIGUATORS = {"cn", "kr", "eu", "na", "sea", "jp", "tw", "br"}
+DISAMBIGUATORS = {"cn", "kr", "eu", "na", "sea", "jp", "tw", "br",
+                  "ru", "tr", "th", "vn", "mn", "us", "uk", "de", "fr", "pl"}
 
 
-def code_to_tag(code):
+def code_to_tag(code, name=None):
     """
     '{{Opponent|jdg}}' 의 코드를 약칭으로 바꾼다.
 
     리퀴피디아에는 팀 약칭 필드가 없다(팀 문서 인포박스에도, Template: 에도 없음).
     그래서 내부 코드를 대문자로 올리고 구분자만 떼어 쓴다 — **추정값**이며
     실제 팀 약칭과 다를 수 있다. 시드의 tagSource 로 그 사실을 남긴다.
+
+    다만 리그에 따라 코드가 팀 이름 그대로인 경우가 있다(EMEA: 'Natus Vincere').
+    그건 약칭이 아니므로 빈 값을 돌려준다. 이름을 대문자로 되풀이해 봐야
+    화면에서 팀명 아래에 같은 글자가 한 번 더 나올 뿐이다.
     """
     parts = code.strip().split()
     if len(parts) > 1 and parts[-1].lower() in DISAMBIGUATORS:
         parts = parts[:-1]
-    return " ".join(parts).upper()
+    tag = " ".join(parts).upper()
+
+    if name and tag == name.strip().upper():
+        return ""
+    return tag
 
 
 def clean_team_name(name):
@@ -94,6 +103,11 @@ def parse_participants(wikitext, include_subs):
         end = starts[i + 1].start() if i + 1 < len(starts) else len(section)
         body = section[mm.end():end]
 
+        # 참가 자격. EMEA 처럼 Stage 구분이 없는 대회는 이걸로 시드를 가른다.
+        qm = re.search(r"\|qualification=\{\{Qualification\|([^}]*)\}\}", body)
+        qual = qm.group(1) if qm else ""
+        method = (re.search(r"method=([a-z]+)", qual) or [None, None])[1] if qual else None
+
         players = []
         for pm in re.finditer(r"\{\{Person\|([^|}\n]+)([^}]*)\}\}", body):
             nick = pm.group(1).strip()
@@ -104,7 +118,8 @@ def parse_participants(wikitext, include_subs):
             if is_sub and not include_subs:
                 continue
             players.append({"nickname": nick, "sub": is_sub})
-        entries.append({"code": code, "players": players})
+        entries.append({"code": code, "players": players,
+                        "qualMethod": method, "qualText": qual})
     return entries
 
 
@@ -160,11 +175,11 @@ def download_logos(teams, contact):
     LOGO_DIR.mkdir(parents=True, exist_ok=True)
     ok, failed = [], []
     for t in teams:
-        url, tag = t.get("_logoRemote"), t.get("tag")
-        if not url or not tag:
+        url = t.get("_logoRemote")
+        if not url:
             failed.append(t["name"])
             continue
-        dest = LOGO_DIR / ("%s.png" % tag.lower().replace(" ", "_"))
+        dest = LOGO_DIR / Path(t["logoUrl"]).name
         try:
             req = urllib.request.Request(url, headers={
                 "User-Agent": "PUBGProVault/1.0 (%s)" % contact})
@@ -183,6 +198,9 @@ def main():
     ap.add_argument("--league", required=True, help="시드에 기록할 리그 코드 (PCL 등)")
     ap.add_argument("--region", default=None, help="팀 지역 기본값 (CN 등)")
     ap.add_argument("--seed-map", default=None, help="팀명→seedType JSON")
+    ap.add_argument("--seed-from-qualification", action="store_true",
+                    help="참가 자격으로 시드를 가른다 (method=invite -> pro, 그 외 -> amateur). "
+                         "EMEA 처럼 Stage 소절이 없는 대회용")
     ap.add_argument("--include-subs", action="store_true",
                     help="status=sub 선수도 로스터에 넣는다 (코치는 항상 제외)")
     ap.add_argument("--download-logos", action="store_true")
@@ -221,9 +239,18 @@ def main():
 
     targets = [by_name[n] for n in seed_map] if seed_map else entries
 
+    if args.seed_from_qualification and not seed_map:
+        missing_qual = [e["name"] for e in targets if not e.get("qualMethod")]
+        if missing_qual:
+            raise SystemExit(
+                "참가 자격 정보가 없는 팀 %d개가 있어 시드를 가를 수 없습니다: %s"
+                % (len(missing_qual), missing_qual))
+
     teams = []
     for e in targets:
-        tag = code_to_tag(e["code"])
+        tag = code_to_tag(e["code"], e["name"])
+        # 파일명은 tag 가 있으면 tag, 없으면 팀명에서 만든다.
+        logo_stem = slugify(tag) if tag else slugify(e["name"])
         players = [{
             "nickname": p["nickname"],
             "realName": p["nickname"],   # 리퀴피디아 참가팀 표에는 본명이 없다
@@ -236,8 +263,10 @@ def main():
             "tag": tag,
             # tag 는 리퀴피디아 내부 코드에서 유도한 추정값이다. 팀 약칭 데이터가 없다.
             "tagSource": "liquipedia-opponent-code",
-            "seedType": seed_map.get(e["name"]),
-            "logoUrl": "/logos/teams/%s.png" % tag.lower().replace(" ", "_"),
+            "seedType": (seed_map.get(e["name"]) if seed_map
+                         else ("pro" if e.get("qualMethod") == "invite" else "amateur")
+                         if args.seed_from_qualification else None),
+            "logoUrl": "/logos/teams/%s.png" % logo_stem,
             "league": args.league,
             "region": args.region or "",
             "trophies": [],              # 수집하지 않는다. 사람이 확인해서 채운다

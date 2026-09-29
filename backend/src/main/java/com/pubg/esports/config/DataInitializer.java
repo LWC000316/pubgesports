@@ -27,7 +27,8 @@ public class DataInitializer implements CommandLineRunner {
      */
     private static final List<String> VERIFIED_SEEDS = List.of(
             "primary_data/pws2_teams_verified.json",
-            "primary_data/pcl_teams_verified.json"
+            "primary_data/pcl_teams_verified.json",
+            "primary_data/emea_teams_verified.json"
     );
 
     private final TeamRepository teamRepository;

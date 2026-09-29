@@ -72,6 +72,8 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 - `hooks/useApi.js` — `{ data, loading, error, reload }`. Re-runs when the caller's `deps` change and resets `data` to the fallback on failure so a previous league's rows never linger.
 - `components/common/{LoadingPanel,ErrorPanel}.jsx` — shared states. `ErrorPanel` takes `onRetry`.
 
+**Leagues**: `PWS` (Korea), `PCL` (China), `EMEA`, `AMER`, `PTS` (Thailand), `PVS` (Vietnam). `APAC` was split into PTS and PVS — they are separate regional leagues, not one. Seeded so far: PWS 24, PCL 24, EMEA 29. AMER/PTS/PVS have tabs and logos but no data yet, so they render the empty state.
+
 **How to add a league** (this is the point of the current structure): append one entry to `LEAGUES` in `components/players/PlayersTab.jsx` and seed that league's teams. `components/players/LeagueTeamGrid.jsx` takes a single `league` prop and handles fetching, search filtering, pro/qualifier splitting, and the loading/error/empty states — all five leagues are the same component with a different prop. `bannerTitle` is optional and only PWS sets it. `sourceUrl` is the Liquipedia page the league's data was checked against; `LeagueTeamGrid` renders it as the CC-BY-SA attribution line under the team list (falling back to the wiki front page). Set it whenever a league's seed comes from Liquipedia.
 
 - `App.jsx` — top-level tab state machine: `pe` (`components/players/PlayersTab.jsx`), `tournaments` (`TournamentsTab.jsx`), `hit_ending` (`HitEndingTab.jsx`).

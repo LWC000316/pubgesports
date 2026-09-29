@@ -22,9 +22,17 @@ const LEAGUES = [
     bannerTitle: 'PUBG CHAMPIONS LEAGUE 2026: Autumn — Stage S',
     sourceUrl: 'https://liquipedia.net/pubg/PUBG_Champions_League/2026/Autumn'
   },
-  { id: 'EMEA', label: 'EMEA', logo: TOURNAMENT_LOGOS.EMEA },
+  {
+    id: 'EMEA',
+    label: 'EMEA',
+    logo: TOURNAMENT_LOGOS.EMEA,
+    bannerTitle: 'PUBG EMEA CHAMPIONSHIP: 2026 Fall',
+    sourceUrl: 'https://liquipedia.net/pubg/PUBG_EMEA_Championship/2026/Fall'
+  },
   { id: 'AMER', label: 'AMER', logo: TOURNAMENT_LOGOS.AMER },
-  { id: 'APAC', label: 'APAC', logo: TOURNAMENT_LOGOS.APAC }
+  // APAC 은 태국(PTS)·베트남(PVS) 으로 나눴다. 각각 독립된 권역 리그다.
+  { id: 'PTS', label: 'PTS', logo: TOURNAMENT_LOGOS.PTS },
+  { id: 'PVS', label: 'PVS', logo: TOURNAMENT_LOGOS.PVS }
 ];
 
 const HOT_CHIP = { id: 'HOT', label: 'HOT', icon: Flame };

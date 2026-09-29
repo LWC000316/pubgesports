@@ -140,6 +140,15 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 |---|---|---|---|
 | PWS | 2026 Phase 2 참가 24팀 | pro 13 / amateur 11 (프로 시드 / 예선 통과) | 시드 파일에 직접 기록 |
 | PCL | 2026 Autumn **Stage S** 참가 24팀 | pro 8 (Stage S 직행) / amateur 16 (하위 스테이지에서 올라옴) | `seed_types_pcl.json` |
+| EMEA | 2026 Fall 참가 29팀 | pro 9 (`method=invite`) / amateur 20 (`method=qual`) | **자동** — `--seed-from-qualification` |
+
+**EMEA 는 구분표가 필요 없다.** Stage 소절이 없는 대신 팀마다 `|qualification={{Qualification|method=...}}`
+가 있어서 초청(invite)과 예선 통과(qual)를 위키 데이터에서 그대로 가를 수 있다.
+다른 리그도 이 형식이면 `--seed-from-qualification` 을 먼저 시도할 것.
+
+`tag` 는 리그마다 성격이 다르다. PCL 은 코드가 진짜 약칭(`jdg`→JDG)이지만 EMEA 는 코드가
+팀 이름 그대로(`Natus Vincere`)라 대문자로 올려봐야 의미가 없다. `code_to_tag()` 가
+코드와 팀명이 같으면 빈 값을 돌려주고, 그때는 로고 파일명을 팀명에서 만든다.
 
 PCL 은 40팀이 Stage B·A·S 세 단계로 나뉘어 PWS 와 구조가 다르다. 사용자 결정으로 Stage S 24팀만
 싣고, 직행/승격을 pro/amateur 로 대응시켰다. 공식 API 대회 ID 는 `cn-pclas26`.

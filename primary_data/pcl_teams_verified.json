@@ -159,7 +159,7 @@
   {
     "id": "tyloo",
     "name": "TYLOO",
-    "tag": "TYLOO",
+    "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "pro",
     "logoUrl": "/logos/teams/tyloo.png",
@@ -564,7 +564,7 @@
   {
     "id": "bmz",
     "name": "BMZ",
-    "tag": "BMZ",
+    "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "amateur",
     "logoUrl": "/logos/teams/bmz.png",
@@ -860,7 +860,7 @@
   {
     "id": "geita",
     "name": "GeiTa",
-    "tag": "GEITA",
+    "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "amateur",
     "logoUrl": "/logos/teams/geita.png",
@@ -936,7 +936,7 @@
   {
     "id": "zeal",
     "name": "ZEAL",
-    "tag": "ZEAL",
+    "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "amateur",
     "logoUrl": "/logos/teams/zeal.png",
