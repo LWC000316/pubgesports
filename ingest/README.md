@@ -131,22 +131,31 @@ python ingest/verify_seed.py intermediate_results/pcl_seed_draft.json --compare-
 (`LeagueTeamGrid.jsx`), 다른 값을 넣으면 팀이 있어도 어느 구획에도 안 들어가 사라진다.
 대회 구조를 확인하고 `--seed-map` 으로 명시한다.
 
-**트로피는 자동 수집하지 않는다** — PWS 때 팀 페이지의 1위 기록을 사람이 읽어 확정했고
-그 과정에서 두 번 정정이 있었다 (보고서 26·27). 같은 방식으로 확인한다.
+**트로피는 더 이상 다루지 않는다** (2026-09-29 결정). 엔티티·DTO·시드 필드를 전부 제거했다.
+PWS 때 사람이 읽어 확정했으나 두 번 정정이 있었고(보고서 26·27) 화면에서도 쓰이지 않았다.
+당시 기록은 `scripts/66·68·69` 와 보고서 25·26·29 에 감사 기록으로 남아 있다.
 
 ## 리그별 결정
 
-| 리그 | 대상 | seedType 구분 | 구분표 |
-|---|---|---|---|
-| PWS | 2026 Phase 2 참가 24팀 | pro 13 / amateur 11 (프로 시드 / 예선 통과) | 시드 파일에 직접 기록 |
-| PCL | 2026 Autumn **Stage S** 참가 24팀 | pro 8 (Stage S 직행) / amateur 16 (하위 스테이지에서 올라옴) | `seed_types_pcl.json` |
-| EMEA | 2026 Fall 참가 29팀 | pro 9 (`method=invite`) / amateur 20 (`method=qual`) | **자동** — `--seed-from-qualification` |
-| AMER | 2026 Series 2 참가 29팀 | pro 7 (`method=invite`) / amateur 22 (`method=qual`) | **자동** — `--seed-from-qualification` |
-| PTS | 2026 Phase 1 참가 24팀 | pro 20 (`method=invite`) / amateur 4 (`method=qual`) | **자동** — 태국은 대부분 초청제라 비율이 반대다 |
-| PVS | 2026 Phase 2 참가 16팀 | pro 3 (`method=invite`) / amateur 13 (`method=qual`) | **자동** |
+`seedType` 은 **프로 여부가 아니라 본선 진입 경로**다. `pro` = 직행, `amateur` = 예선 통과.
+근거가 리그마다 달라서 **화면 제목은 `PlayersTab.jsx` 의 `seedLabels` 가 리그별로 정한다.**
 
-여섯 리그 모두 수집 완료. 다만 **EMEA·AMER 은 2026-10-04 에 끝나고 PVS 는 인포박스에
-날짜가 비어 있어** 진행 예정일 수 있다. 셋 다 종료 후 재수집이 필요하다.
+| 리그 | 대상 | 구분 | 위키 근거 | 화면 제목 |
+|---|---|---|---|---|
+| PWS | 2026 Phase 2 · 24팀 | 13 / 11 | **`text=Pro Seed` · `text=Amateur Seed`** — 위키가 직접 씀 | Pro Seeds / Qualifier Seeds |
+| PCL | 2026 Autumn **Stage S** · 24팀 | 8 / 16 | **없음** — 위키는 전부 `qual`(Spring 성적·PCL Cup). 사람이 확정 | Pro Seeds / Qualifier Seeds |
+| EMEA | 2026 Fall · 29팀 | 9 / 20 | Global Partner 3 · Regional Partner 5 · PGS Attending 1 | Partner Teams / Cup Qualifiers |
+| AMER | 2026 Series 2 · 29팀 | 7 / 22 | Global Partner 1 · Regional Partner 5 · PGS Attending 1 | Partner Teams / Cup Qualifiers |
+| PTS | 2026 Phase 1 · 24팀 | 20 / 4 | **없음** — `{{Qualification\|method=invite\|}}` 뿐, text 도 page 도 없음 | **분할 안 함** (`Participants`) |
+| PVS | 2026 Phase 2 · 16팀 | 3 / 13 | Phase 1 파이널 1~3위 · PVS Cup 포인트 1~13위 | Phase 1 Finals Seeds / PVS Cup Qualifiers |
+
+**`--seed-from-qualification` 의 결과를 그대로 믿지 말 것.** 이 플래그는 `invite→pro`,
+`qual→amateur` 로 기계적으로 옮길 뿐이고, 그 매핑이 맞는지는 **리그마다 `text=` 값을 직접
+봐야 안다.** 처음 여섯 리그를 수집할 때 PWS 에서만 참인 규칙을 전부에 적용해서, PTS 는 근거
+없이 20팀이 프로가 되고 PVS 는 **컵 1위 팀이 아마추어로** 들어갔다 (2026-09-29 정정).
+
+여섯 리그 모두 수집 완료. 다만 **EMEA·AMER 은 2026-10-04 에 끝나고 PVS 는 Week 3·4 가
+아직 `finished=` 로 비어 있다.** 셋 다 종료 후 재수집이 필요하다.
 
 **스태프 제외 규칙**: `type=staff` 뿐 아니라 `role=` 이 붙은 사람은 전부 비선수다.
 확인된 값은 Coach / head coach / Assistant Coach / Analyst 이며 선수에는 `role=` 이 없다.

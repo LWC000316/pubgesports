@@ -68,7 +68,6 @@ public class DataInitializer implements CommandLineRunner {
 
             int teamCount = 0;
             int playerCount = 0;
-            int trophyCount = 0;
 
             for (JsonNode tNode : root) {
                 String name = tNode.path("name").asText();
@@ -95,15 +94,6 @@ public class DataInitializer implements CommandLineRunner {
                         .league(league)
                         .logoUrl(tNode.path("logoUrl").asText(""))
                         .build();
-
-                for (JsonNode trNode : tNode.path("trophies")) {
-                    team.addTrophy(TeamTrophy.builder()
-                            .team(team)
-                            .name(trNode.path("name").asText())
-                            .count(trNode.path("count").asInt(0))
-                            .build());
-                    trophyCount++;
-                }
 
                 teamRepository.save(team);
                 loadedTeamNames.add(name.toLowerCase(Locale.ROOT));
@@ -146,8 +136,8 @@ public class DataInitializer implements CommandLineRunner {
                 }
             }
 
-            log.info("=== 검증 시드 적재 완료 [{}]: {}개 팀, {}명 선수, 트로피 {}건 ===",
-                    seedPath, teamCount, playerCount, trophyCount);
+            log.info("=== 검증 시드 적재 완료 [{}]: {}개 팀, {}명 선수 ===",
+                    seedPath, teamCount, playerCount);
         } catch (Exception e) {
             log.error("검증 시드 로딩 실패 [{}]: {}", seedPath, e.getMessage(), e);
         }

@@ -137,8 +137,6 @@ def build(args, client):
             "logoUrl": pick(m, TEAM_LOGO_KEYS),
             "league": args.league,
             "region": pick(m, TEAM_REGION_KEYS) or args.region,
-            # 트로피는 수집하지 않는다. 팀 페이지의 1위 기록을 사람이 확인해서 채운다.
-            "trophies": [],
             "players": rosters.get(n, []),
         })
     return teams, raw

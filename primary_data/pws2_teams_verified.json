@@ -7,16 +7,6 @@
     "logoUrl": "/logos/teams/dns.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "PWS",
-        "count": 3
-      },
-      {
-        "name": "PPM",
-        "count": 1
-      }
-    ],
     "players": [
       {
         "nickname": "Rex",
@@ -60,28 +50,6 @@
     "logoUrl": "/logos/teams/geng.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "PGC",
-        "count": 1
-      },
-      {
-        "name": "PGS",
-        "count": 1
-      },
-      {
-        "name": "PGI",
-        "count": 1
-      },
-      {
-        "name": "PKL",
-        "count": 2
-      },
-      {
-        "name": "BSC",
-        "count": 1
-      }
-    ],
     "players": [
       {
         "nickname": "seoul",
@@ -125,16 +93,6 @@
     "logoUrl": "/logos/teams/t1.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "BSC",
-        "count": 1
-      },
-      {
-        "name": "PCS",
-        "count": 1
-      }
-    ],
     "players": [
       {
         "nickname": "Rain1ng",
@@ -178,12 +136,6 @@
     "logoUrl": "/logos/teams/bgp.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "APL",
-        "count": 1
-      }
-    ],
     "players": [
       {
         "nickname": "Pio",
@@ -227,7 +179,6 @@
     "logoUrl": "/logos/teams/fn.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Starlord",
@@ -271,12 +222,6 @@
     "logoUrl": "/logos/teams/azla.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "PLS",
-        "count": 2
-      }
-    ],
     "players": [
       {
         "nickname": "F1ame",
@@ -320,7 +265,6 @@
     "logoUrl": "/logos/teams/dn.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Barpo",
@@ -364,7 +308,6 @@
     "logoUrl": "/logos/teams/phe.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "DAEVA",
@@ -408,12 +351,6 @@
     "logoUrl": "/logos/teams/dgp.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "BSC",
-        "count": 1
-      }
-    ],
     "players": [
       {
         "nickname": "fizzy",
@@ -457,7 +394,6 @@
     "logoUrl": "/logos/teams/sen.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Rascal",
@@ -501,7 +437,6 @@
     "logoUrl": "/logos/teams/spf.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Acid",
@@ -545,7 +480,6 @@
     "logoUrl": "/logos/teams/vex.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Lure",
@@ -589,12 +523,6 @@
     "logoUrl": "/logos/teams/gk.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [
-      {
-        "name": "PEC",
-        "count": 1
-      }
-    ],
     "players": [
       {
         "nickname": "AKaN",
@@ -638,7 +566,6 @@
     "logoUrl": "/logos/teams/eos.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "SINGAM",
@@ -682,7 +609,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "BBANG",
@@ -726,7 +652,6 @@
     "logoUrl": "/logos/teams/cr.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Glaz",
@@ -770,7 +695,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Freaky",
@@ -814,7 +738,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "ParkChaN",
@@ -858,7 +781,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "CxldMxn",
@@ -902,7 +824,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "GuanYu",
@@ -946,7 +867,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "LOV3",
@@ -990,7 +910,6 @@
     "logoUrl": "",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Archi",
@@ -1034,7 +953,6 @@
     "logoUrl": "/logos/teams/ggwp.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "sony",
@@ -1078,7 +996,6 @@
     "logoUrl": "/logos/teams/om.png",
     "league": "PWS",
     "region": "KR",
-    "trophies": [],
     "players": [
       {
         "nickname": "Woong",

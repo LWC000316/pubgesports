@@ -23,7 +23,6 @@ public class TeamCardDto {
     private String logo;
     private String league;
     private String region;
-    private List<TrophyDto> trophies;
     private List<RosterPlayerDto> roster;
 
     public static TeamCardDto from(Team team) {
@@ -35,23 +34,10 @@ public class TeamCardDto {
                 .logo(team.getLogoUrl())
                 .league(team.getLeague())
                 .region(team.getRegion())
-                .trophies(team.getTrophies().stream()
-                        .map(t -> TrophyDto.builder()
-                                .name(t.getName())
-                                .count(t.getCount())
-                                .build())
-                        .collect(Collectors.toList()))
                 .roster(team.getPlayers().stream()
                         .map(RosterPlayerDto::from)
                         .collect(Collectors.toList()))
                 .build();
-    }
-
-    @Getter
-    @Builder
-    public static class TrophyDto {
-        private String name;
-        private int count;
     }
 
     @Getter

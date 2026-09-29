@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,9 @@ public class Team {
 
     private String tag;
 
+    // 대회 본선 진입 경로. pro = 직행 시드(파트너팀/직전 성적/Pro Seed),
+    // amateur = 예선(컵·퀄리파이어) 통과. 리그마다 근거가 달라 화면 라벨은
+    // PlayersTab 의 seedLabels 에서 리그별로 지정한다.
     private String seedType; // pro, amateur
 
     private String league;
@@ -46,11 +48,6 @@ public class Team {
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players = new ArrayList<>();
-
-    // players 와 동시에 fetch join 하면 MultipleBagFetchException 이 나므로 배치 로딩으로 가져온다.
-    @BatchSize(size = 50)
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TeamTrophy> trophies = new ArrayList<>();
 
     @Builder
     public Team(String name, String region, String tag, String seedType, String league, String logoUrl, String description, Integer foundedYear, String coach, String achievements) {
@@ -75,14 +72,5 @@ public class Team {
         this.foundedYear = foundedYear;
         this.coach = coach;
         this.achievements = achievements;
-    }
-
-    public void addTrophy(TeamTrophy trophy) {
-        this.trophies.add(trophy);
-        trophy.assignTeam(this);
-    }
-
-    public void clearTrophies() {
-        this.trophies.clear();
     }
 }

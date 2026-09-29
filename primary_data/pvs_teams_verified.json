@@ -8,7 +8,6 @@
     "logoUrl": "/logos/teams/anyone_s_legend.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Delwyn",
@@ -41,7 +40,6 @@
     "logoUrl": "/logos/teams/the_expendables.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Clories",
@@ -79,7 +77,6 @@
     "logoUrl": "/logos/teams/alpha_gaming.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "SimonT",
@@ -117,7 +114,6 @@
     "logoUrl": "/logos/teams/unicorn_cyber.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "QuaySama",
@@ -155,7 +151,6 @@
     "logoUrl": "/logos/teams/team_flash.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "LamBaouwu",
@@ -193,7 +188,6 @@
     "logoUrl": "/logos/teams/hela_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "NVTK",
@@ -236,7 +230,6 @@
     "logoUrl": "/logos/teams/roy_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Br1annn88",
@@ -269,7 +262,6 @@
     "logoUrl": "/logos/teams/cerberus_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Tanbinh",
@@ -302,7 +294,6 @@
     "logoUrl": "/logos/teams/four_crazy_rabbits.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "HoangAnh",
@@ -340,7 +331,6 @@
     "logoUrl": "/logos/teams/win_d_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Marcus",
@@ -378,7 +368,6 @@
     "logoUrl": "/logos/teams/fant_me.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Longday",
@@ -416,7 +405,6 @@
     "logoUrl": "/logos/teams/rue_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Yulieee2k6",
@@ -459,7 +447,6 @@
     "logoUrl": "/logos/teams/four_devil_thunder.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "zqzaa",
@@ -502,7 +489,6 @@
     "logoUrl": "/logos/teams/gasy_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Lowji",
@@ -539,13 +525,12 @@
   {
     "id": "tr_n_long_kingsky",
     "name": "Trần Long KingSky",
-    "tag": "TRAN LONG KINGSKY",
-    "tagSource": "liquipedia-opponent-code",
+    "tag": "",
+    "tagSource": "none",
     "seedType": "amateur",
     "logoUrl": "/logos/teams/tran_long_kingsky.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "Max",
@@ -582,13 +567,12 @@
   {
     "id": "the_daredevil_team",
     "name": "The Daredevil Team",
-    "tag": "TDT ESPORTS",
-    "tagSource": "liquipedia-opponent-code",
+    "tag": "",
+    "tagSource": "none",
     "seedType": "amateur",
     "logoUrl": "/logos/teams/tdt_esports.png",
     "league": "PVS",
     "region": "VN",
-    "trophies": [],
     "players": [
       {
         "nickname": "777",

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Crown, Target, Shield } from 'lucide-react';
+import { Crown, Target, Shield, Users } from 'lucide-react';
 import { fetchTeamCards } from '../../api/teams';
 import { useApi } from '../../hooks/useApi';
 import LoadingPanel from '../common/LoadingPanel';
@@ -13,8 +13,13 @@ const EMPTY = [];
  * 리그를 추가할 때는 league prop 만 바꿔서 렌더하면 된다.
  *
  * bannerTitle 은 대회 공식 명칭처럼 리그별로 다른 문구가 있을 때만 넘긴다.
+ *
+ * seedLabels 는 두 시드 그룹의 화면 제목이다. 리그마다 본선 진입 경로의 근거가
+ * 달라서(PWS 는 위키가 Pro/Amateur Seed 라고 명시, EMEA·AMER 은 파트너팀 제도,
+ * PVS 는 직전 페이즈 성적) 같은 seedType 에 같은 이름을 붙이면 사실과 어긋난다.
+ * null 을 넘기면 구분 근거가 없는 리그로 보고 단일 목록으로 그린다(PTS).
  */
-export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, sourceUrl, onSelectPlayer }) {
+export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, bannerTitle, sourceUrl, seedLabels, onSelectPlayer }) {
   const fetcher = useCallback(() => fetchTeamCards(league), [league]);
   const { data: teams, loading, error, reload } = useApi(fetcher, [league], EMPTY);
 
@@ -46,8 +51,36 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
     return matchesTeam || matchesRoster;
   });
 
-  const proTeams = filtered.filter(t => t.seedType === 'pro');
-  const qualifierTeams = filtered.filter(t => t.seedType === 'amateur');
+  // seedLabels 가 없는 리그는 위키에 시드 구분 근거가 없다는 뜻이라 나누지 않는다.
+  const groups = seedLabels
+    ? [
+        {
+          key: 'pro',
+          title: seedLabels.pro,
+          teams: filtered.filter(t => t.seedType === 'pro'),
+          icon: <Crown size={20} color="var(--accent-gold)" />,
+          borderColor: 'rgba(243, 166, 31, 0.3)',
+          highlight: true
+        },
+        {
+          key: 'amateur',
+          title: seedLabels.amateur,
+          teams: filtered.filter(t => t.seedType === 'amateur'),
+          icon: <Target size={20} color="#00e5ff" />,
+          borderColor: 'rgba(255, 255, 255, 0.15)',
+          highlight: false
+        }
+      ]
+    : [
+        {
+          key: 'all',
+          title: 'Participants',
+          teams: filtered,
+          icon: <Users size={20} color="var(--accent-gold)" />,
+          borderColor: 'rgba(243, 166, 31, 0.3)',
+          highlight: true
+        }
+      ];
 
   if ((teams ?? []).length === 0) {
     return (
@@ -85,32 +118,32 @@ export default function LeagueTeamGrid({ league, searchQuery = '', bannerLogo, b
               {bannerTitle}
             </span>
           </div>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <span className="badge badge-gold" style={{ fontSize: '0.75rem', fontWeight: '800' }}>
-              {proTeams.length} PRO SEEDS
-            </span>
-            <span className="badge" style={{ fontSize: '0.75rem', fontWeight: '800', background: 'rgba(255,255,255,0.08)', color: '#fff' }}>
-              {qualifierTeams.length} QUALIFIER SEEDS
-            </span>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            {groups.map(g => (
+              <span
+                key={g.key}
+                className={g.highlight ? 'badge badge-gold' : 'badge'}
+                style={g.highlight
+                  ? { fontSize: '0.75rem', fontWeight: '800' }
+                  : { fontSize: '0.75rem', fontWeight: '800', background: 'rgba(255,255,255,0.08)', color: '#fff' }}
+              >
+                {g.teams.length} {g.title.toUpperCase()}
+              </span>
+            ))}
           </div>
         </div>
       )}
 
-      <SeedSection
-        title={`Pro Seeds (${proTeams.length})`}
-        icon={<Crown size={20} color="var(--accent-gold)" />}
-        borderColor="rgba(243, 166, 31, 0.3)"
-        teams={proTeams}
-        onSelectPlayer={onSelectPlayer}
-      />
-
-      <SeedSection
-        title={`Qualifier Seeds (${qualifierTeams.length})`}
-        icon={<Target size={20} color="#00e5ff" />}
-        borderColor="rgba(255, 255, 255, 0.15)"
-        teams={qualifierTeams}
-        onSelectPlayer={onSelectPlayer}
-      />
+      {groups.map(g => (
+        <SeedSection
+          key={g.key}
+          title={`${g.title} (${g.teams.length})`}
+          icon={g.icon}
+          borderColor={g.borderColor}
+          teams={g.teams}
+          onSelectPlayer={onSelectPlayer}
+        />
+      ))}
 
       <SourceAttribution sourceUrl={sourceUrl} />
     </div>
@@ -125,7 +158,7 @@ function SourceAttribution({ sourceUrl }) {
   const linkStyle = { color: 'var(--text-muted)', textDecoration: 'underline' };
   return (
     <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'right', margin: 0 }}>
-      팀·로스터·트로피 정보 출처:{' '}
+      팀·로스터 정보 출처:{' '}
       <a href={sourceUrl || 'https://liquipedia.net/pubg'} target="_blank" rel="noopener noreferrer" style={linkStyle}>
         Liquipedia
       </a>

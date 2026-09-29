@@ -18,11 +18,10 @@ LPDB v3 를 쓰는 build_league_seed.py 와 같은 일을 하지만 승인 키 �
 선수 세팅(mouseDpi·generalSens·mouseName)은 **넣지 않는다.** 리퀴피디아에 없는 값이다.
 PWS 는 scripts/60 이 전원에게 800/32/동일 마우스를 일괄로 붙여서 지금도 가짜값이 남아 있다.
 같은 실수를 반복하지 않는다.
-
-트로피도 수집하지 않는다. 팀 문서의 1위 기록을 사람이 읽어 확인해야 한다(보고서 26·27).
 """
 
 import argparse
+import unicodedata
 import html as html_mod
 import json
 import re
@@ -51,15 +50,25 @@ def code_to_tag(code, name=None):
     다만 리그에 따라 코드가 팀 이름 그대로인 경우가 있다(EMEA: 'Natus Vincere').
     그건 약칭이 아니므로 빈 값을 돌려준다. 이름을 대문자로 되풀이해 봐야
     화면에서 팀명 아래에 같은 글자가 한 번 더 나올 뿐이다.
+
+    비교는 발음부호를 벗겨서 한다. 위키 코드는 ASCII 로만 적히는 일이 잦아
+    (PVS: 코드 'Tran Long KingSky' / 팀명 'Trần Long KingSky') 단순 비교로는
+    같은 이름을 다른 문자열로 보고 약칭을 만들어 버린다.
     """
     parts = code.strip().split()
     if len(parts) > 1 and parts[-1].lower() in DISAMBIGUATORS:
         parts = parts[:-1]
     tag = " ".join(parts).upper()
 
-    if name and tag == name.strip().upper():
+    if name and _fold(tag) == _fold(name):
         return ""
     return tag
+
+
+def _fold(text):
+    """발음부호를 떼고 대문자로 맞춘 비교용 문자열."""
+    decomposed = unicodedata.normalize("NFD", text.strip())
+    return "".join(c for c in decomposed if unicodedata.category(c) != "Mn").upper()
 
 
 def clean_team_name(name):
@@ -273,7 +282,6 @@ def main():
             "logoUrl": "/logos/teams/%s.png" % logo_stem,
             "league": args.league,
             "region": args.region or "",
-            "trophies": [],              # 수집하지 않는다. 사람이 확인해서 채운다
             "players": players,
             "_logoRemote": e.get("logo"),
             "_liquipediaPage": e.get("page"),

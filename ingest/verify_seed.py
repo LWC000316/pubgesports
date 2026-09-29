@@ -135,7 +135,6 @@ def main():
     by_seed = Counter(t.get("seedType") for t in teams)
     print("seedType: %s" % dict(by_seed))
     print("league: %s" % dict(Counter(t.get("league") for t in teams)))
-    print("트로피 보유 팀: %d개" % sum(1 for t in teams if t.get("trophies")))
 
     problems = check_schema(teams)
     print("\n[1] 스키마 - %s" % ("이상 없음" if not problems else "%d건" % len(problems)))
@@ -165,7 +164,7 @@ def main():
         print("  초안에만 있음 (%d): %s" % (len(d["only_in_draft"]), d["only_in_draft"]))
         print("  레거시에만 있음 (%d): %s" % (len(d["only_in_legacy"]), d["only_in_legacy"]))
 
-    print("\n검사는 형식만 본다. 팀명·로스터·트로피가 맞는지는 리퀴피디아 원문과 대조해야 한다.")
+    print("\n검사는 형식만 본다. 팀명·로스터가 맞는지는 리퀴피디아 원문과 대조해야 한다.")
     return 1 if problems else 0
 
 
