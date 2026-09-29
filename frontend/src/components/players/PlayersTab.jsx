@@ -51,10 +51,10 @@ const LEAGUES = [
     id: 'PTS',
     label: 'PTS',
     logo: TOURNAMENT_LOGOS.PTS,
-    bannerTitle: 'PUBG THAILAND SERIES 2026 — Phase 1',
-    sourceUrl: 'https://liquipedia.net/pubg/PUBG_Thailand_Series/2026/Phase_1',
-    // 위키가 {{Qualification|method=invite|}} 로만 적어 프로/아마 근거가 원문에
-    // 없다. 현재 순서는 invite 20팀이 앞, 예선 통과 4팀이 뒤일 뿐이다.
+    bannerTitle: 'PUBG THAILAND SERIES 2026 — Phase 2',
+    sourceUrl: 'https://liquipedia.net/pubg/PUBG_Thailand_Series/2026/Phase_2',
+    // 위키가 {{Qualification|method=invite}} 로만 적어 프로/아마 근거가 원문에
+    // 없다. 현재 순서는 invite 18팀이 앞, 예선 통과 6팀이 뒤일 뿐이다.
   },
   {
     id: 'PVS',

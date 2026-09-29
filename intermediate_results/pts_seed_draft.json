@@ -1,38 +1,5 @@
 [
   {
-    "id": "earena",
-    "name": "EArena",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/earena.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "Nourinz",
-        "realName": "Nourinz",
-        "role": "Player"
-      },
-      {
-        "nickname": "Pathompong",
-        "realName": "Pathompong",
-        "role": "Player"
-      },
-      {
-        "nickname": "OHPONDZ",
-        "realName": "OHPONDZ",
-        "role": "Player"
-      },
-      {
-        "nickname": "Lericz",
-        "realName": "Lericz",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "EArena"
-  },
-  {
     "id": "full_sense",
     "name": "FULL SENSE",
     "tag": "",
@@ -43,8 +10,13 @@
     "region": "TH",
     "players": [
       {
-        "nickname": "Belmoth",
-        "realName": "Belmoth",
+        "nickname": "Thanad0l",
+        "realName": "Thanad0l",
+        "role": "Player"
+      },
+      {
+        "nickname": "Flukky",
+        "realName": "Flukky",
         "role": "Player"
       },
       {
@@ -53,13 +25,8 @@
         "role": "Player"
       },
       {
-        "nickname": "Thanad0l",
-        "realName": "Thanad0l",
-        "role": "Player"
-      },
-      {
-        "nickname": "TiGGER",
-        "realName": "TiGGER",
+        "nickname": "Belmoth",
+        "realName": "Belmoth",
         "role": "Player"
       }
     ],
@@ -76,8 +43,8 @@
     "region": "TH",
     "players": [
       {
-        "nickname": "Jacob",
-        "realName": "Jacob",
+        "nickname": "Scappy",
+        "realName": "Scappy",
         "role": "Player"
       },
       {
@@ -86,8 +53,8 @@
         "role": "Player"
       },
       {
-        "nickname": "Scappy",
-        "realName": "Scappy",
+        "nickname": "Jacob",
+        "realName": "Jacob",
         "role": "Player"
       },
       {
@@ -109,8 +76,13 @@
     "region": "TH",
     "players": [
       {
-        "nickname": "DimasTy",
-        "realName": "DimasTy",
+        "nickname": "TiGGER",
+        "realName": "TiGGER",
+        "role": "Player"
+      },
+      {
+        "nickname": "RangerX",
+        "realName": "RangerX",
         "role": "Player"
       },
       {
@@ -119,116 +91,12 @@
         "role": "Player"
       },
       {
-        "nickname": "Flukky",
-        "realName": "Flukky",
-        "role": "Player"
-      },
-      {
-        "nickname": "RangerX",
-        "realName": "RangerX",
+        "nickname": "Excrozit",
+        "realName": "Excrozit",
         "role": "Player"
       }
     ],
     "_liquipediaPage": "Theerathon_Five"
-  },
-  {
-    "id": "buriram_united_esports",
-    "name": "Buriram United Esports",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/buriram_united_esports.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "Kannn",
-        "realName": "Kannn",
-        "role": "Player"
-      },
-      {
-        "nickname": "Ascari",
-        "realName": "Ascari",
-        "role": "Player"
-      },
-      {
-        "nickname": "RiwZ",
-        "realName": "RiwZ",
-        "role": "Player"
-      },
-      {
-        "nickname": "Hatsawat",
-        "realName": "Hatsawat",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "Buriram_United_Esports"
-  },
-  {
-    "id": "fw_esports",
-    "name": "FW Esports",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/fw_esports.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "Banana0ne",
-        "realName": "Banana0ne",
-        "role": "Player"
-      },
-      {
-        "nickname": "C0NAXY",
-        "realName": "C0NAXY",
-        "role": "Player"
-      },
-      {
-        "nickname": "rEiiz",
-        "realName": "rEiiz",
-        "role": "Player"
-      },
-      {
-        "nickname": "SixSackz",
-        "realName": "SixSackz",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "FW_Esports"
-  },
-  {
-    "id": "sharper_esports",
-    "name": "Sharper Esports",
-    "tag": "SHARPER ESPORT",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/sharper_esport.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "ThanawatTH",
-        "realName": "ThanawatTH",
-        "role": "Player"
-      },
-      {
-        "nickname": "Jdaii",
-        "realName": "Jdaii",
-        "role": "Player"
-      },
-      {
-        "nickname": "Earthzapalui",
-        "realName": "Earthzapalui",
-        "role": "Player"
-      },
-      {
-        "nickname": "Thunderz",
-        "realName": "Thunderz",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "Sharper_Esports"
   },
   {
     "id": "armory_gaming",
@@ -241,18 +109,8 @@
     "region": "TH",
     "players": [
       {
-        "nickname": "ShanKs",
-        "realName": "ShanKs",
-        "role": "Player"
-      },
-      {
-        "nickname": "Curt",
-        "realName": "Curt",
-        "role": "Player"
-      },
-      {
-        "nickname": "Riskyyz",
-        "realName": "Riskyyz",
+        "nickname": "SixSackz",
+        "realName": "SixSackz",
         "role": "Player"
       },
       {
@@ -261,83 +119,50 @@
         "role": "Player"
       },
       {
-        "nickname": "PPmelly",
-        "realName": "PPmelly",
-        "role": "Sub"
+        "nickname": "Riskyyz",
+        "realName": "Riskyyz",
+        "role": "Player"
+      },
+      {
+        "nickname": "Bragalixz",
+        "realName": "Bragalixz",
+        "role": "Player"
       }
     ],
     "_liquipediaPage": "Armory_Gaming"
   },
   {
-    "id": "iconic_esports",
-    "name": "Iconic Esports",
+    "id": "buriram_united_esports",
+    "name": "Buriram United Esports",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "pro",
-    "logoUrl": "/logos/teams/iconic_esports.png",
+    "logoUrl": "/logos/teams/buriram_united_esports.png",
     "league": "PTS",
     "region": "TH",
     "players": [
       {
-        "nickname": "J4ME",
-        "realName": "J4ME",
+        "nickname": "RiwZ",
+        "realName": "RiwZ",
         "role": "Player"
       },
       {
-        "nickname": "Xizzy",
-        "realName": "Xizzy",
+        "nickname": "Noardra",
+        "realName": "Noardra",
         "role": "Player"
       },
       {
-        "nickname": "Choppers",
-        "realName": "Choppers",
+        "nickname": "Kannn",
+        "realName": "Kannn",
         "role": "Player"
       },
       {
-        "nickname": "Megaa",
-        "realName": "Megaa",
+        "nickname": "Hatsawat",
+        "realName": "Hatsawat",
         "role": "Player"
       }
     ],
-    "_liquipediaPage": "Iconic_Esports"
-  },
-  {
-    "id": "peek_a_boo_hoo",
-    "name": "PEEK A BOO HOO",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/peek_a_boo_hoo.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "zeireR",
-        "realName": "zeireR",
-        "role": "Player"
-      },
-      {
-        "nickname": "Gems",
-        "realName": "Gems",
-        "role": "Player"
-      },
-      {
-        "nickname": "Jayers",
-        "realName": "Jayers",
-        "role": "Player"
-      },
-      {
-        "nickname": "Sunnoname",
-        "realName": "Sunnoname",
-        "role": "Player"
-      },
-      {
-        "nickname": "Billyz",
-        "realName": "Billyz",
-        "role": "Sub"
-      }
-    ],
-    "_liquipediaPage": "PEEK_A_BOO_HOO"
+    "_liquipediaPage": "Buriram_United_Esports"
   },
   {
     "id": "kanombot",
@@ -355,132 +180,13 @@
         "role": "Player"
       },
       {
-        "nickname": "Imaginesz",
-        "realName": "Imaginesz",
+        "nickname": "RossitedJR",
+        "realName": "RossitedJR",
         "role": "Player"
       },
       {
-        "nickname": "DAREALMOSSK1",
-        "realName": "DAREALMOSSK1",
-        "role": "Player"
-      },
-      {
-        "nickname": "Excrozit",
-        "realName": "Excrozit",
-        "role": "Player"
-      },
-      {
-        "nickname": "1non",
-        "realName": "1non",
-        "role": "Sub"
-      },
-      {
-        "nickname": "Korpaiix",
-        "realName": "Korpaiix",
-        "role": "Sub"
-      }
-    ],
-    "_liquipediaPage": "KanomBOT"
-  },
-  {
-    "id": "magnetic",
-    "name": "MAGnetic",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/magnetic.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "Warden",
-        "realName": "Warden",
-        "role": "Player"
-      },
-      {
-        "nickname": "Pody",
-        "realName": "Pody",
-        "role": "Player"
-      },
-      {
-        "nickname": "SamMaskCH",
-        "realName": "SamMaskCH",
-        "role": "Player"
-      },
-      {
-        "nickname": "SRV",
-        "realName": "SRV",
-        "role": "Player"
-      },
-      {
-        "nickname": "Onetouchzz",
-        "realName": "Onetouchzz",
-        "role": "Sub"
-      },
-      {
-        "nickname": "BIOTT",
-        "realName": "BIOTT",
-        "role": "Sub"
-      }
-    ],
-    "_liquipediaPage": "MAGnetic"
-  },
-  {
-    "id": "dangerous_esports",
-    "name": "DANGEROUS ESPORTS",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/dangerous_esports.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "JEllYxJAY",
-        "realName": "JEllYxJAY",
-        "role": "Player"
-      },
-      {
-        "nickname": "Zuric",
-        "realName": "Zuric",
-        "role": "Player"
-      },
-      {
-        "nickname": "Chaoszyy",
-        "realName": "Chaoszyy",
-        "role": "Player"
-      },
-      {
-        "nickname": "Abruzzii",
-        "realName": "Abruzzii",
-        "role": "Player"
-      },
-      {
-        "nickname": "AMGOD",
-        "realName": "AMGOD",
-        "role": "Sub"
-      }
-    ],
-    "_liquipediaPage": "DANGEROUS_ESPORTS"
-  },
-  {
-    "id": "allin_esports",
-    "name": "Allin Esports",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/allin_esports.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "RogueNANZMY",
-        "realName": "RogueNANZMY",
-        "role": "Player"
-      },
-      {
-        "nickname": "koraxxx",
-        "realName": "koraxxx",
+        "nickname": "Xizzy",
+        "realName": "Xizzy",
         "role": "Player"
       },
       {
@@ -489,102 +195,26 @@
         "role": "Player"
       },
       {
-        "nickname": "Rharious",
-        "realName": "Rharious",
-        "role": "Player"
-      },
-      {
-        "nickname": "Switzy",
-        "realName": "Switzy",
+        "nickname": "1non",
+        "realName": "1non",
         "role": "Sub"
       }
     ],
-    "_liquipediaPage": "Allin_Esports"
-  },
-  {
-    "id": "dry_carbon_e_sport",
-    "name": "Dry Carbon E-Sport",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/dry_carbon_e_sport.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "BiONiXgg",
-        "realName": "BiONiXgg",
-        "role": "Player"
-      },
-      {
-        "nickname": "Syrax",
-        "realName": "Syrax",
-        "role": "Player"
-      },
-      {
-        "nickname": "IK9z",
-        "realName": "IK9z",
-        "role": "Player"
-      },
-      {
-        "nickname": "DTYXx_x",
-        "realName": "DTYXx_x",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "Dry_Carbon_E-Sport"
-  },
-  {
-    "id": "friend",
-    "name": "FRIEND",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
-    "logoUrl": "/logos/teams/friend.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "Sunter",
-        "realName": "Sunter",
-        "role": "Player"
-      },
-      {
-        "nickname": "Evangeline",
-        "realName": "Evangeline",
-        "role": "Player"
-      },
-      {
-        "nickname": "FAKER",
-        "realName": "FAKER",
-        "role": "Player"
-      },
-      {
-        "nickname": "UNQ",
-        "realName": "UNQ",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "FRIEND"
+    "_liquipediaPage": "KanomBOT"
   },
   {
     "id": "iwin_esports",
     "name": "IWIN Esports",
-    "tag": "IWIN ESPORT",
+    "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "pro",
-    "logoUrl": "/logos/teams/iwin_esport.png",
+    "logoUrl": "/logos/teams/iwin_esports.png",
     "league": "PTS",
     "region": "TH",
     "players": [
       {
-        "nickname": "OlymPuS",
-        "realName": "OlymPuS",
-        "role": "Player"
-      },
-      {
-        "nickname": "Jayce",
-        "realName": "Jayce",
+        "nickname": "C0NAXY",
+        "realName": "C0NAXY",
         "role": "Player"
       },
       {
@@ -593,9 +223,19 @@
         "role": "Player"
       },
       {
+        "nickname": "Jayce",
+        "realName": "Jayce",
+        "role": "Player"
+      },
+      {
+        "nickname": "OlymPuS",
+        "realName": "OlymPuS",
+        "role": "Player"
+      },
+      {
         "nickname": "Neones",
         "realName": "Neones",
-        "role": "Player"
+        "role": "Sub"
       },
       {
         "nickname": "flukfiixq",
@@ -606,87 +246,133 @@
     "_liquipediaPage": "IWIN_Esports"
   },
   {
-    "id": "innosize",
-    "name": "InNoSize",
+    "id": "fw_esports",
+    "name": "FW Esports",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "pro",
-    "logoUrl": "/logos/teams/innosize.png",
+    "logoUrl": "/logos/teams/fw_esports.png",
     "league": "PTS",
     "region": "TH",
     "players": [
       {
-        "nickname": "JaoKhun_X2",
-        "realName": "JaoKhun_X2",
+        "nickname": "Aegon",
+        "realName": "Aegon",
         "role": "Player"
       },
       {
-        "nickname": "XueBriann",
-        "realName": "XueBriann",
+        "nickname": "rEiiz",
+        "realName": "rEiiz",
         "role": "Player"
       },
       {
-        "nickname": "Scoobydoojubjub",
-        "realName": "Scoobydoojubjub",
+        "nickname": "Curt",
+        "realName": "Curt",
         "role": "Player"
       },
       {
-        "nickname": "MillHunt",
-        "realName": "MillHunt",
+        "nickname": "Banana0ne",
+        "realName": "Banana0ne",
         "role": "Player"
-      },
-      {
-        "nickname": "CrOz-X7",
-        "realName": "CrOz-X7",
-        "role": "Sub"
-      },
-      {
-        "nickname": "Fewwy",
-        "realName": "Fewwy",
-        "role": "Sub"
       }
     ],
-    "_liquipediaPage": "InNoSize"
+    "_liquipediaPage": "FW_Esports"
+  },
+  {
+    "id": "sharper_esports",
+    "name": "Sharper Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/sharper_esports.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "Thunderz",
+        "realName": "Thunderz",
+        "role": "Player"
+      },
+      {
+        "nickname": "ThanawatTH",
+        "realName": "ThanawatTH",
+        "role": "Player"
+      },
+      {
+        "nickname": "Jdaii",
+        "realName": "Jdaii",
+        "role": "Player"
+      },
+      {
+        "nickname": "Earthzapalui",
+        "realName": "Earthzapalui",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Sharper_Esports"
+  },
+  {
+    "id": "earena",
+    "name": "EArena",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/earena.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "Pathompong",
+        "realName": "Pathompong",
+        "role": "Player"
+      },
+      {
+        "nickname": "OHPONDZ",
+        "realName": "OHPONDZ",
+        "role": "Player"
+      },
+      {
+        "nickname": "Nourinz",
+        "realName": "Nourinz",
+        "role": "Player"
+      },
+      {
+        "nickname": "Lericz",
+        "realName": "Lericz",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "EArena"
   },
   {
     "id": "matilda_esports",
     "name": "Matilda Esports",
-    "tag": "MATILDA ESPORT",
+    "tag": "",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "pro",
-    "logoUrl": "/logos/teams/matilda_esport.png",
+    "logoUrl": "/logos/teams/matilda_esports.png",
     "league": "PTS",
     "region": "TH",
     "players": [
       {
-        "nickname": "roger",
-        "realName": "roger",
+        "nickname": "Che4kk1tzx",
+        "realName": "Che4kk1tzx",
         "role": "Player"
       },
       {
-        "nickname": "Dabii",
-        "realName": "Dabii",
+        "nickname": "Windieselx",
+        "realName": "Windieselx",
         "role": "Player"
       },
       {
-        "nickname": "Guymin",
-        "realName": "Guymin",
+        "nickname": "FAKER",
+        "realName": "FAKER",
         "role": "Player"
       },
       {
-        "nickname": "Beartic",
-        "realName": "Beartic",
+        "nickname": "Estherline",
+        "realName": "Estherline",
         "role": "Player"
-      },
-      {
-        "nickname": "Che4kk1tz",
-        "realName": "Che4kk1tz",
-        "role": "Sub"
-      },
-      {
-        "nickname": "l3verz",
-        "realName": "l3verz",
-        "role": "Sub"
       }
     ],
     "_liquipediaPage": "Matilda_Esports"
@@ -702,8 +388,13 @@
     "region": "TH",
     "players": [
       {
-        "nickname": "Hamz",
-        "realName": "Hamz",
+        "nickname": "Salvador",
+        "realName": "Salvador",
+        "role": "Player"
+      },
+      {
+        "nickname": "Dino",
+        "realName": "Dino",
         "role": "Player"
       },
       {
@@ -712,66 +403,411 @@
         "role": "Player"
       },
       {
-        "nickname": "DN",
-        "realName": "DN",
-        "role": "Player"
-      },
-      {
-        "nickname": "rodman",
-        "realName": "rodman",
+        "nickname": "FORLAFIRST",
+        "realName": "FORLAFIRST",
         "role": "Player"
       }
     ],
     "_liquipediaPage": "Team_Of_The_Year"
   },
   {
-    "id": "fast_esports",
-    "name": "FAST ESPORTS",
+    "id": "sisaket_united_esports",
+    "name": "Sisaket United Esports",
     "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
-    "logoUrl": "/logos/teams/fast_esports.png",
+    "tagSource": "none",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/sisaket_united.png",
     "league": "PTS",
     "region": "TH",
     "players": [
       {
-        "nickname": "Salvador",
-        "realName": "Salvador",
+        "nickname": "Warden",
+        "realName": "Warden",
         "role": "Player"
       },
       {
-        "nickname": "Scu1esSkrr",
-        "realName": "Scu1esSkrr",
+        "nickname": "KM99",
+        "realName": "KM99",
         "role": "Player"
       },
       {
-        "nickname": "F0RLAFIRST",
-        "realName": "F0RLAFIRST",
+        "nickname": "SamMaskCH",
+        "realName": "SamMaskCH",
         "role": "Player"
       },
       {
-        "nickname": "Recovery",
-        "realName": "Recovery",
+        "nickname": "Pody",
+        "realName": "Pody",
         "role": "Player"
       }
     ],
-    "_liquipediaPage": "FAST_ESPORTS"
+    "_liquipediaPage": "Sisaket_United_Esports"
+  },
+  {
+    "id": "ak_esports",
+    "name": "AK Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/ak_esports.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "StandardBro",
+        "realName": "StandardBro",
+        "role": "Player"
+      },
+      {
+        "nickname": "BiONiX",
+        "realName": "BiONiX",
+        "role": "Player"
+      },
+      {
+        "nickname": "iK9z",
+        "realName": "iK9z",
+        "role": "Player"
+      },
+      {
+        "nickname": "DTYX",
+        "realName": "DTYX",
+        "role": "Player"
+      },
+      {
+        "nickname": "King1max",
+        "realName": "King1max",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "AK_Esports"
+  },
+  {
+    "id": "runner_esport",
+    "name": "Runner Esport",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/runner_esport.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "Sunter",
+        "realName": "Sunter",
+        "role": "Player"
+      },
+      {
+        "nickname": "Rharious",
+        "realName": "Rharious",
+        "role": "Player"
+      },
+      {
+        "nickname": "Scoobydoo",
+        "realName": "Scoobydoo",
+        "role": "Player"
+      },
+      {
+        "nickname": "JaoKhuN",
+        "realName": "JaoKhuN",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Runner_Esport"
+  },
+  {
+    "id": "allin_esports",
+    "name": "Allin Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/allin_esports.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "roger",
+        "realName": "roger",
+        "role": "Player"
+      },
+      {
+        "nickname": "Beartic",
+        "realName": "Beartic",
+        "role": "Player"
+      },
+      {
+        "nickname": "Skyy",
+        "realName": "Skyy",
+        "role": "Player"
+      },
+      {
+        "nickname": "RogueNANZMY",
+        "realName": "RogueNANZMY",
+        "role": "Player"
+      },
+      {
+        "nickname": "koraxx",
+        "realName": "koraxx",
+        "role": "Sub"
+      },
+      {
+        "nickname": "21SEP",
+        "realName": "21SEP",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Allin_Esports"
+  },
+  {
+    "id": "first_kill_esports",
+    "name": "FIRST KILL ESPORTS",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/first_kill_esports.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "FlintMinJae",
+        "realName": "FlintMinJae",
+        "role": "Player"
+      },
+      {
+        "nickname": "Piastri",
+        "realName": "Piastri",
+        "role": "Player"
+      },
+      {
+        "nickname": "Revenants",
+        "realName": "Revenants",
+        "role": "Player"
+      },
+      {
+        "nickname": "Champtinho",
+        "realName": "Champtinho",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "FIRST_KILL_ESPORTS"
+  },
+  {
+    "id": "siena",
+    "name": "SIENA",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "pro",
+    "logoUrl": "/logos/teams/siena.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "PiMEE",
+        "realName": "PiMEE",
+        "role": "Player"
+      },
+      {
+        "nickname": "Goldenrabbit",
+        "realName": "Goldenrabbit",
+        "role": "Player"
+      },
+      {
+        "nickname": "poodlepie",
+        "realName": "poodlepie",
+        "role": "Player"
+      },
+      {
+        "nickname": "JonSnowz",
+        "realName": "JonSnowz",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "SIENA"
+  },
+  {
+    "id": "zyrtec",
+    "name": "Zyrtec",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/zyrtec.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "HazyMoon",
+        "realName": "HazyMoon",
+        "role": "Player"
+      },
+      {
+        "nickname": "AresAikon",
+        "realName": "AresAikon",
+        "role": "Player"
+      },
+      {
+        "nickname": "J4ME",
+        "realName": "J4ME",
+        "role": "Player"
+      },
+      {
+        "nickname": "DimasTy",
+        "realName": "DimasTy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Syrax",
+        "realName": "Syrax",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Zyrtec"
+  },
+  {
+    "id": "genesis_of_divine",
+    "name": "Genesis Of Divine",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/genesis_of_divine.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "Sakky",
+        "realName": "Sakky",
+        "role": "Player"
+      },
+      {
+        "nickname": "UNQ",
+        "realName": "UNQ",
+        "role": "Player"
+      },
+      {
+        "nickname": "bestmins",
+        "realName": "bestmins",
+        "role": "Player"
+      },
+      {
+        "nickname": "GODMXNZ",
+        "realName": "GODMXNZ",
+        "role": "Player"
+      },
+      {
+        "nickname": "ZEROONE",
+        "realName": "ZEROONE",
+        "role": "Sub"
+      }
+    ],
+    "_liquipediaPage": "Genesis_Of_Divine"
+  },
+  {
+    "id": "peek_a_boo_hoo",
+    "name": "PEEK A BOO HOO",
+    "tag": "BOOH",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/booh.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "SviTT",
+        "realName": "SviTT",
+        "role": "Player"
+      },
+      {
+        "nickname": "mossjiiun",
+        "realName": "mossjiiun",
+        "role": "Player"
+      },
+      {
+        "nickname": "Gems",
+        "realName": "Gems",
+        "role": "Player"
+      },
+      {
+        "nickname": "zeireR",
+        "realName": "zeireR",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "PEEK_A_BOO_HOO"
+  },
+  {
+    "id": "i_jet_kae",
+    "name": "I JET KAE",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/i_jet_kae.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "12345iloveuu",
+        "realName": "12345iloveuu",
+        "role": "Player"
+      },
+      {
+        "nickname": "Billy",
+        "realName": "Billy",
+        "role": "Player"
+      },
+      {
+        "nickname": "2aeseong",
+        "realName": "2aeseong",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sunnoname",
+        "realName": "Sunnoname",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "I_JET_KAE"
+  },
+  {
+    "id": "io_the_legend",
+    "name": "IO The Legend",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": "amateur",
+    "logoUrl": "/logos/teams/io_the_legend.png",
+    "league": "PTS",
+    "region": "TH",
+    "players": [
+      {
+        "nickname": "Llegacyz",
+        "realName": "Llegacyz",
+        "role": "Player"
+      },
+      {
+        "nickname": "King1set",
+        "realName": "King1set",
+        "role": "Player"
+      },
+      {
+        "nickname": "Kekhuayy",
+        "realName": "Kekhuayy",
+        "role": "Player"
+      },
+      {
+        "nickname": "Bankblack",
+        "realName": "Bankblack",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "IO_The_Legend"
   },
   {
     "id": "new_generation_success_e_sports",
     "name": "New Generation Success E-sports",
-    "tag": "",
+    "tag": "NGS",
     "tagSource": "liquipedia-opponent-code",
     "seedType": "amateur",
-    "logoUrl": "/logos/teams/new_generation_success_e_sports.png",
+    "logoUrl": "/logos/teams/ngs.png",
     "league": "PTS",
     "region": "TH",
     "players": [
-      {
-        "nickname": "PunDiii",
-        "realName": "PunDiii",
-        "role": "Player"
-      },
       {
         "nickname": "SunD4yJubJub",
         "realName": "SunD4yJubJub",
@@ -783,82 +819,21 @@
         "role": "Player"
       },
       {
+        "nickname": "PunDii",
+        "realName": "PunDii",
+        "role": "Player"
+      },
+      {
         "nickname": "FlukMaximus",
         "realName": "FlukMaximus",
         "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "New_Generation_Success_E-sports"
-  },
-  {
-    "id": "bannok_team",
-    "name": "BANNOK.TEAM",
-    "tag": "",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
-    "logoUrl": "/logos/teams/bannok_team.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "idui8",
-        "realName": "idui8",
-        "role": "Player"
       },
       {
-        "nickname": "Asta",
-        "realName": "Asta",
-        "role": "Player"
-      },
-      {
-        "nickname": "Derickz",
-        "realName": "Derickz",
-        "role": "Player"
-      },
-      {
-        "nickname": "BanNokBoy",
-        "realName": "BanNokBoy",
-        "role": "Player"
-      }
-    ],
-    "_liquipediaPage": "BANNOK.TEAM"
-  },
-  {
-    "id": "district_9",
-    "name": "District 9",
-    "tag": "D9",
-    "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
-    "logoUrl": "/logos/teams/d9.png",
-    "league": "PTS",
-    "region": "TH",
-    "players": [
-      {
-        "nickname": "Pekkyy",
-        "realName": "Pekkyy",
-        "role": "Player"
-      },
-      {
-        "nickname": "VEXz",
-        "realName": "VEXz",
-        "role": "Player"
-      },
-      {
-        "nickname": "kendekoom",
-        "realName": "kendekoom",
-        "role": "Player"
-      },
-      {
-        "nickname": "mytg",
-        "realName": "mytg",
-        "role": "Player"
-      },
-      {
-        "nickname": "jiwjixz",
-        "realName": "jiwjixz",
+        "nickname": "Pchxmp",
+        "realName": "Pchxmp",
         "role": "Sub"
       }
     ],
-    "_liquipediaPage": "District_9"
+    "_liquipediaPage": "New_Generation_Success_E-sports"
   }
 ]

@@ -72,7 +72,9 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 - `hooks/useApi.js` — `{ data, loading, error, reload }`. Re-runs when the caller's `deps` change and resets `data` to the fallback on failure so a previous league's rows never linger.
 - `components/common/{LoadingPanel,ErrorPanel}.jsx` — shared states. `ErrorPanel` takes `onRetry`.
 
-**Leagues**: `PWS` (Korea), `PCL` (China), `EMEA`, `AMER`, `PTS` (Thailand), `PVS` (Vietnam). `APAC` was split into PTS and PVS — they are separate regional leagues, not one. All six are seeded: PWS 24, PCL 24, EMEA 29, AMER 29, PTS 24, PVS 16 — 146 teams, 685 players.
+**Leagues**: `PWS` (Korea), `PCL` (China), `EMEA`, `AMER`, `PTS` (Thailand), `PVS` (Vietnam). `APAC` was split into PTS and PVS — they are separate regional leagues, not one. All six are seeded: PWS 24, PCL 24, EMEA 29, AMER 29, PTS 24, PVS 16 — 146 teams, 680 players.
+
+**Each league's seed comes from that region's most recent tournament.** When refreshing one, list the series' subpages first and pick the latest — do not assume a finished tournament is the current one. PTS was first collected from Phase 1 (April) while Phase 2 had already started in September; switching replaced 9 of 24 teams and changed the roster of 12 of the 15 that stayed.
 
 **`seedType` is a sort key, not a label.** The team list is **one uncut grid**: teams that read as professional orgs come first, the amateur ones follow where those end, and there is no section heading or divider between them (`SEED_ORDER` in `LeagueTeamGrid.jsx`). Do not reintroduce "Pro Seeds / Qualifier Seeds" headings, per-league group titles, or a `seedLabels` prop — two passes at naming the groups both produced claims the wiki does not support, because the basis for `pro` differs per league. What each league's `pro` actually rests on: PWS — the wiki literally says `text=Pro Seed`; PCL — the 8 Stage S direct seeds (no wiki `invite` at all; set by hand in `ingest/seed_types_pcl.json`); EMEA/AMER — Global/Regional Partner and PGS Attending teams; PVS — the top 3 of the previous phase's finals; **PTS — nothing**, its page carries a bare `{{Qualification|method=invite|}}` for 20 of 24 teams, so that league's ordering carries no real signal. `seedType` must still stay non-null on every team: `findByLeagueWithPlayers` filters on `seedType IS NOT NULL`.
 
@@ -99,6 +101,8 @@ The crawler (`CrawlerService`/`CrawlerController`, Jsoup) and the unauthenticate
 
 ### Collecting a new league (`ingest/`)
 `ingest/` is the repeatable tooling, as opposed to `scripts/` which is a historical record. `build_league_seed.py` turns one Liquipedia tournament page into a seed draft, `verify_seed.py` checks the draft's shape offline (schema, placeholder detection, roster sizes, diff against the legacy file), and `liquipedia_client.py` handles LPDB v3 auth, the **60-requests-per-hour** limit, and response caching under `intermediate_results/liquipedia_cache/`. See `ingest/README.md` for the full procedure.
+
+`{{Opponent|X|import=true}}` teams keep their roster on the team's own page, not in the tournament page's wikitext, so a wikitext-only read silently gives them zero players. The builder stops when it sees `import=true` and tells you to pass `--rosters-from-html`, which reads the rendered `team-participant-card` markup instead (Main/Subs/Staff tabs by label; `DNP` counts as a sub). PTS 2026 Phase 2 is the first page in this repo to use it, for 7 of 24 teams.
 
 Two rules the tooling enforces: it never writes player settings (`mouseDpi`/`generalSens`/`mouseName`) because Liquipedia does not have them, and it never picks `seedType` automatically — only `pro` and `amateur` render (`LeagueTeamGrid.jsx`), so any other value makes a team vanish from the page. Liquipedia content is CC-BY-SA 3.0 and requires attribution on screen.
 

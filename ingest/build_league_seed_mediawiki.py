@@ -184,6 +184,89 @@ def fetch_team_display(client, page):
     return out
 
 
+# 렌더 HTML 의 로스터 탭. 팀마다 조합이 달라 라벨로 판별한다.
+STAFF_TAB_LABELS = {"staff"}
+SUB_TAB_LABELS = {"subs", "sub", "substitutes"}
+# Main 탭 안에 섞여 있을 수 있는 비선수 역할. 위키에서 확인한 값 기준.
+STAFF_ROLE_WORDS = ("coach", "analyst", "manager")
+
+
+def parse_participants_html(client, page, include_subs):
+    """
+    렌더된 HTML 에서 팀별 로스터를 뽑는다.
+
+    `{{Opponent|X|import=true}}` 로 적힌 팀은 로스터가 팀 문서에서 주입되므로
+    **위키 원문에는 선수가 없다** (PTS 2026 Phase 2 의 7팀). 원문만 읽으면 그런
+    팀이 선수 0명으로 조용히 들어온다. 렌더 HTML 에는 주입된 로스터까지 나온다.
+
+    카드 구조:
+      div.team-participant-card
+        스위치 버튼:  data-toggle-area-btn="N" ... >Main|Subs|Staff<
+        내용 영역:    data-toggle-area-content="N"
+          div.team-participant-card__member
+            span.name > (a) 닉네임
+            div.team-participant-card__member-role-right  역할(Captain/Coach/DNP...)
+
+    탭이 아예 없는 팀은 영역 전체가 주전 명단이다.
+    """
+    doc = html_mod.unescape(
+        client.get({"action": "parse", "page": page, "prop": "text"})["parse"]["text"]["*"])
+    m = re.search(r'id="Participants".*?(?=<h2)', doc, re.S)
+    scope = m.group(0) if m else doc
+
+    cards = re.split(r'<div class="general-collapsible[^"]*team-participant-card">', scope)[1:]
+    out = []
+    for card in cards:
+        am = re.search(r'class="block-team[^"]*".*?<a href="/pubg/([^"]+)"[^>]*title="([^"]+)"',
+                       card, re.S)
+        if not am:
+            continue
+        name = clean_team_name(am.group(2))
+
+        tabs = {int(t.group(1)): t.group(2).strip().lower()
+                for t in re.finditer(r'data-toggle-area-btn="(\d+)"[^>]*>([^<]+)', card)}
+        bounds = [(int(t.group(1)), t.start()) for t in
+                  re.finditer(r'data-toggle-area-content="(\d+)"', card)]
+
+        regions = []
+        if bounds:
+            for i, (num, start) in enumerate(bounds):
+                end = bounds[i + 1][1] if i + 1 < len(bounds) else len(card)
+                label = tabs.get(num, "main")
+                if label in STAFF_TAB_LABELS:
+                    continue
+                regions.append((label in SUB_TAB_LABELS, card[start:end]))
+        else:
+            regions.append((False, card))
+
+        players = []
+        for is_sub_tab, body in regions:
+            if is_sub_tab and not include_subs:
+                continue
+            for mm in re.finditer(
+                    r'card__member">(.*?)(?=card__member">|</div></div></div>|\Z)', body, re.S):
+                chunk = mm.group(1)
+                nm = re.search(r'class="name"[^>]*>(?:<a[^>]*>)?([^<]+)', chunk)
+                if not nm:
+                    continue
+                nick = nm.group(1).strip()
+                if not nick or nick == "TBD":
+                    continue
+                rm = re.search(r'member-role-right">([^<]*)', chunk)
+                role = (rm.group(1).strip() if rm else "")
+                # Main 탭에 코치가 섞여 있는 문서가 있어 역할로 한 번 더 거른다.
+                if any(w in role.lower() for w in STAFF_ROLE_WORDS):
+                    continue
+                # DNP = 출전하지 않은 선수. 교체 선수와 같이 다룬다.
+                is_sub = is_sub_tab or role.upper() == "DNP"
+                if is_sub and not include_subs:
+                    continue
+                players.append({"nickname": nick, "sub": is_sub})
+
+        out.append({"name": name, "players": players})
+    return out
+
+
 def download_logos(teams, contact):
     LOGO_DIR.mkdir(parents=True, exist_ok=True)
     ok, failed = [], []
@@ -216,6 +299,11 @@ def main():
                          "EMEA 처럼 Stage 소절이 없는 대회용")
     ap.add_argument("--include-subs", action="store_true",
                     help="status=sub 선수도 로스터에 넣는다 (코치는 항상 제외)")
+    ap.add_argument("--rosters-from-html", action="store_true",
+                    help="로스터를 위키 원문 대신 렌더된 HTML 에서 읽는다. "
+                         "{{Opponent|X|import=true}} 로 적힌 팀은 로스터가 팀 문서에서 "
+                         "주입되어 원문에 선수가 없다 (PTS 2026 Phase 2). "
+                         "원문에 import=true 가 하나라도 있으면 이 옵션이 필요하다")
     ap.add_argument("--download-logos", action="store_true")
     ap.add_argument("--out", default=None)
     ap.add_argument("--offline", action="store_true")
@@ -233,9 +321,40 @@ def main():
             "개수가 맞지 않아 코드↔정식명 대응을 신뢰할 수 없습니다.\n"
             "순서 대응 대신 다른 방법이 필요합니다. 진행을 멈춥니다.")
 
+    # import=true 는 로스터를 원문에 두지 않는다. 조용히 선수 0명으로 넘어가는 것을 막는다.
+    imported = [b.split("|")[0].strip()
+                for b in wt.split("{{Opponent|")[1:]
+                if "import=true" in b.split("qualification")[0]]
+    if imported and not args.rosters_from_html:
+        raise SystemExit(
+            "import=true 로 적힌 팀 %d개가 있습니다: %s\n"
+            "이 팀들은 로스터가 위키 원문에 없어 선수 0명으로 들어갑니다.\n"
+            "--rosters-from-html 을 붙여 다시 실행하세요. 진행을 멈춥니다."
+            % (len(imported), imported))
+
     # 순서 대응. 아래에서 seed-map 과 대조해 이름이 전부 맞는지 검증한다.
     for e, d in zip(entries, displays):
         e.update(d)
+
+    if args.rosters_from_html:
+        html_rosters = parse_participants_html(client, args.page, args.include_subs)
+        if len(html_rosters) != len(entries):
+            raise SystemExit(
+                "렌더 HTML 로스터 카드 %d개가 원문 Opponent %d개와 다릅니다. 진행을 멈춥니다."
+                % (len(html_rosters), len(entries)))
+        by_html = {r["name"]: r["players"] for r in html_rosters}
+        unmatched = [e["name"] for e in entries if e["name"] not in by_html]
+        if unmatched:
+            raise SystemExit(
+                "렌더 HTML 에서 로스터를 찾지 못한 팀 %d개: %s\n진행을 멈춥니다."
+                % (len(unmatched), unmatched))
+        for e in entries:
+            e["players"] = by_html[e["name"]]
+        empty = [e["name"] for e in entries if not e["players"]]
+        if empty:
+            raise SystemExit("로스터가 비어 있는 팀 %d개: %s\n진행을 멈춥니다." % (len(empty), empty))
+        print("렌더 HTML 에서 로스터 적용: %d팀, 선수 %d명"
+              % (len(entries), sum(len(e["players"]) for e in entries)))
 
     seed_map = {}
     if args.seed_map:

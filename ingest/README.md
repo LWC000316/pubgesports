@@ -149,7 +149,7 @@ PWS 때 사람이 읽어 확정했으나 두 번 정정이 있었고(보고서 2
 | EMEA | 2026 Fall · 29팀 | 9 / 20 | Global Partner 3 · Regional Partner 5 · PGS Attending 1 |
 | AMER | 2026 Series 2 · 29팀 | 7 / 22 | Global Partner 1 · Regional Partner 5 · PGS Attending 1 |
 | PVS | 2026 Phase 2 · 16팀 | 3 / 13 | 직전 Phase 1 파이널 1~3위 |
-| PTS | 2026 Phase 1 · 24팀 | 20 / 4 | **없음** — `{{Qualification\|method=invite\|}}` 뿐. 이 리그의 순서에는 실질적 의미가 없다 |
+| PTS | 2026 **Phase 2** · 24팀 | 18 / 6 | **없음** — `{{Qualification\|method=invite}}` 뿐. 이 리그의 순서에는 실질적 의미가 없다 |
 
 `seedType` 은 여전히 **모든 팀에 값이 있어야 한다.** `findByLeagueWithPlayers` 가
 `seedType IS NOT NULL` 로 거르므로 비우면 팀이 화면에서 사라진다.
@@ -159,8 +159,38 @@ PWS 때 사람이 읽어 확정했으나 두 번 정정이 있었고(보고서 2
 봐야 안다.** 처음 여섯 리그를 수집할 때 PWS 에서만 참인 규칙을 전부에 적용해서, PTS 는 근거
 없이 20팀이 프로가 되고 PVS 는 **컵 1위 팀이 아마추어로** 들어갔다 (2026-09-29 정정).
 
-여섯 리그 모두 수집 완료. **재수집이 필요한 것은 EMEA·AMER 둘뿐**이다 (2026-10-04 종료 예정,
-진행 중에 수집했다).
+여섯 리그 모두 수집 완료. **재수집이 필요한 것은 EMEA·AMER·PTS 셋**이다
+(EMEA·AMER 2026-10-04, PTS 2026-10-08 종료 예정. 셋 다 진행 중에 수집했다).
+
+## 대회를 고를 때 — 종료 여부가 아니라 최신 여부를 본다
+
+PTS 는 처음에 **Phase 1(2026-04-28~05-12)** 로 수집했다. "종료된 대회라 안전하다"고 판단했는데
+그때 이미 **Phase 2 가 09-21 에 시작**해 있었다. 결과적으로 5개월 지난 명단이 화면에 떠 있었고,
+Phase 2 로 바꾸니 **24팀 중 9팀이 교체**되고 유지된 15팀 중 12팀의 주전이 달라졌다.
+
+새 리그·새 시즌을 수집할 때는 먼저 시리즈의 하위 문서를 전부 나열해 **가장 최근 것**을 고른다:
+
+```bash
+python - <<'EOF'
+import sys; sys.path.insert(0,'ingest')
+from mediawiki_client import MediaWikiClient
+c=MediaWikiClient()
+r=c.get({'action':'query','list':'allpages','apprefix':'PUBG Thailand Series/2026',
+         'aplimit':'200','apfilterredir':'nonredirects'})
+for p in r['query']['allpages']:
+    if p['title'].count('/')==2: print(p['title'])
+EOF
+```
+
+## `import=true` — 로스터가 원문에 없는 경우
+
+`{{Opponent|FULL SENSE|import=true}}` 로 적힌 팀은 로스터를 **팀 문서에서 주입**하므로
+위키 원문에 선수가 없다. 원문만 읽으면 그 팀이 **선수 0명으로 조용히 들어간다.**
+PTS 2026 Phase 2 의 7팀이 이 경우였다.
+
+수집기는 원문에 `import=true` 가 하나라도 있으면 **멈추고** `--rosters-from-html` 을 요구한다.
+이 옵션은 렌더된 HTML 의 `team-participant-card` 를 읽는다. 카드의 Main/Subs/Staff 탭을
+라벨로 구분해 스태프를 빼고, `DNP`(출전하지 않음) 역할은 교체 선수로 다룬다.
 
 **PVS 는 종료됐다.** Results 의 Week 3·4 가 `finished=` 로 비어 있지만 이는 미진행이 아니라
 대회가 2주차까지만 치르고 끝났기 때문이다(사용자 확인, 2026-09-29). 참가 16팀은 확정이며
