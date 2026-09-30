@@ -12,12 +12,18 @@
       {
         "nickname": "Delwyn",
         "realName": "Delwyn",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "youtube": "https://youtube.com/channel/UCuFnuY9BlEDw7tV1Lc7JPAw"
+        }
       },
       {
         "nickname": "Himass",
         "realName": "Himass",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "youtube": "https://youtube.com/@himass6999"
+        }
       },
       {
         "nickname": "Sololzy",
@@ -51,6 +57,9 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/@Taikonn1505"
         }
       }
     ]
@@ -102,7 +111,10 @@
       {
         "nickname": "TanVuu",
         "realName": "TanVuu",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "youtube": "https://youtube.com/@tanvuu"
+        }
       },
       {
         "nickname": "Hoangf",
@@ -175,7 +187,10 @@
       {
         "nickname": "Sapauu",
         "realName": "Sapauu",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "youtube": "https://youtube.com/@Sapau"
+        }
       },
       {
         "nickname": "Destroyy",
@@ -273,7 +288,10 @@
       {
         "nickname": "TTT",
         "realName": "TTT",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "youtube": "https://youtube.com/@HuuDat0101"
+        }
       },
       {
         "nickname": "LongX",
@@ -403,6 +421,9 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/channel/UC7Xo-fcrr_HRX3UnZEOSylg"
         }
       },
       {
@@ -733,6 +754,9 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/channel/UCV18IQf9nLLKuLsatiJlVdg"
         }
       },
       {

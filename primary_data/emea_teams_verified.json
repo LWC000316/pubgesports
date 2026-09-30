@@ -24,6 +24,10 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/feyerist",
+          "youtube": "https://youtube.com/feyerist"
         }
       },
       {
@@ -41,6 +45,9 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/hakatory_"
         }
       },
       {
@@ -63,6 +70,9 @@
           "scope6xSens": 34.0,
           "scope8xSens": 34.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/spyrro_"
         }
       }
     ]
@@ -92,6 +102,9 @@
           "scope6xSens": 21.0,
           "scope8xSens": 20.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/batulins"
         }
       },
       {
@@ -109,6 +122,9 @@
           "scope6xSens": 39.0,
           "scope8xSens": 39.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/perfect1ks"
         }
       },
       {
@@ -126,6 +142,9 @@
           "scope6xSens": 18.0,
           "scope8xSens": 18.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/xmpl8"
         }
       },
       {
@@ -143,6 +162,9 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/1amlu"
         }
       }
     ]
@@ -172,6 +194,10 @@
           "scope6xSens": 39.0,
           "scope8xSens": 39.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/lukarux",
+          "youtube": "https://youtube.com/channel/UC9ks-NV4ijpHA88JMPwNVjw/featured"
         }
       },
       {
@@ -189,6 +215,9 @@
           "scope6xSens": 42.0,
           "scope8xSens": 42.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/beami"
         }
       },
       {
@@ -206,6 +235,9 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/curexi"
         }
       },
       {
@@ -223,6 +255,10 @@
           "scope6xSens": 36.0,
           "scope8xSens": 36.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/nixzyee",
+          "youtube": "https://youtube.com/channel/UCeLBfqpKKW0gJL2DtN9YFgg"
         }
       }
     ]
@@ -240,12 +276,19 @@
       {
         "nickname": "KILYAKAi",
         "realName": "KILYAKAi",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/kilyakai_pubg",
+          "youtube": "https://youtube.com/Ardinjehh"
+        }
       },
       {
         "nickname": "Itzz_ChrizZ",
         "realName": "Itzz_ChrizZ",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/Itzz_ChrizZ"
+        }
       },
       {
         "nickname": "Jeemzz",
@@ -262,12 +305,18 @@
           "scope6xSens": 30.0,
           "scope8xSens": 30.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/jeemzz"
         }
       },
       {
         "nickname": "Ketter",
         "realName": "Ketter",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/ketterpubg"
+        }
       }
     ]
   },
@@ -296,6 +345,10 @@
           "scope6xSens": 25.0,
           "scope8xSens": 25.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/codemarco",
+          "youtube": "https://youtube.com/CodeMarco"
         }
       },
       {
@@ -306,12 +359,19 @@
       {
         "nickname": "Metebey",
         "realName": "Metebey",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/metebeyPUBG"
+        }
       },
       {
         "nickname": "crossberk",
         "realName": "crossberk",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/crossberk",
+          "youtube": "https://youtube.com/@crossberk"
+        }
       }
     ]
   },
@@ -340,6 +400,10 @@
           "scope6xSens": 26.0,
           "scope8xSens": 26.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/shilla",
+          "youtube": "https://youtube.com/channel/UCd9F3MGYD2ZZoL764cLTjbw"
         }
       },
       {
@@ -357,6 +421,9 @@
           "scope6xSens": 25.0,
           "scope8xSens": 25.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/quetpa"
         }
       },
       {
@@ -367,7 +434,10 @@
       {
         "nickname": "odunmavisi",
         "realName": "odunmavisi",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/odunmavisi"
+        }
       },
       {
         "nickname": "dekaci",
@@ -389,7 +459,11 @@
       {
         "nickname": "ADOUZ1E",
         "realName": "ADOUZ1E",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/ADOUZ1E",
+          "youtube": "https://youtube.com/AdouzTV"
+        }
       },
       {
         "nickname": "Bestoloch",
@@ -406,6 +480,9 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/iambesto"
         }
       },
       {
@@ -423,6 +500,10 @@
           "scope6xSens": 37.0,
           "scope8xSens": 37.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/f1lfirst",
+          "youtube": "https://youtube.com/channel/UCeM3OZIMurl-MlDwiVK56LQ"
         }
       },
       {
@@ -462,6 +543,9 @@
           "scope6xSens": 36.0,
           "scope8xSens": 36.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/gedr0x7"
         }
       },
       {
@@ -479,6 +563,9 @@
           "scope6xSens": 37.0,
           "scope8xSens": 37.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/hallomybad"
         }
       },
       {
@@ -501,7 +588,10 @@
       {
         "nickname": "QWZYYY",
         "realName": "QWZYYY",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/qwizzyuzi"
+        }
       }
     ]
   },
@@ -530,6 +620,9 @@
           "scope6xSens": 42.0,
           "scope8xSens": 42.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/difxsenshu"
         }
       },
       {
@@ -547,17 +640,27 @@
           "scope6xSens": 41.0,
           "scope8xSens": 42.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/sosedl",
+          "youtube": "https://youtube.com/channel/UCT7XSt1m9FgorPp3SuK-v7w"
         }
       },
       {
         "nickname": "staed",
         "realName": "staed",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/staedf"
+        }
       },
       {
         "nickname": "Mellman",
         "realName": "Mellman",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/mellPUBG"
+        }
       }
     ]
   },
@@ -579,7 +682,10 @@
       {
         "nickname": "SkaV",
         "realName": "SkaV",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/skav_7"
+        }
       },
       {
         "nickname": "Kova1evy",
@@ -621,12 +727,18 @@
       {
         "nickname": "Dazz",
         "realName": "Dazz",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/shinydazz"
+        }
       },
       {
         "nickname": "Jogez",
         "realName": "Jogez",
-        "role": "Sub"
+        "role": "Sub",
+        "streams": {
+          "twitch": "https://twitch.tv/jogezii"
+        }
       }
     ]
   },
@@ -675,7 +787,10 @@
       {
         "nickname": "Nod1",
         "realName": "Nod1",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/ygnod1"
+        }
       },
       {
         "nickname": "kHRysTaLNi",
@@ -751,6 +866,9 @@
           "scope6xSens": 26.0,
           "scope8xSens": 26.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/mykLe"
         }
       },
       {
@@ -761,7 +879,10 @@
       {
         "nickname": "marcis13",
         "realName": "marcis13",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/marcis15"
+        }
       },
       {
         "nickname": "TeaBone",
@@ -778,6 +899,9 @@
           "scope6xSens": 41.0,
           "scope8xSens": 41.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/teabonetv"
         }
       },
       {
@@ -849,6 +973,10 @@
           "scope6xSens": 37.0,
           "scope8xSens": 37.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/pwddddddddd",
+          "youtube": "https://youtube.com/@pwddddddddd"
         }
       },
       {
@@ -903,7 +1031,11 @@
       {
         "nickname": "xLurex",
         "realName": "xLurex",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/xlurex",
+          "youtube": "https://youtube.com/@xlurex3931"
+        }
       },
       {
         "nickname": "sunfloweeeee",
@@ -925,7 +1057,11 @@
       {
         "nickname": "Justus",
         "realName": "Justus",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/Justus2036",
+          "youtube": "https://youtube.com/@JustusS2036"
+        }
       },
       {
         "nickname": "ares",
@@ -957,7 +1093,10 @@
       {
         "nickname": "Marcelek",
         "realName": "Marcelek",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/marcelek"
+        }
       },
       {
         "nickname": "bombilovo",
@@ -984,6 +1123,9 @@
           "scope6xSens": 27.0,
           "scope8xSens": 27.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/fuzzface49"
         }
       },
       {
@@ -1006,7 +1148,10 @@
       {
         "nickname": "gt210kz",
         "realName": "gt210kz",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/gt210ww"
+        }
       },
       {
         "nickname": "fletobe",
@@ -1053,7 +1198,10 @@
       {
         "nickname": "Verstory",
         "realName": "Verstory",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/verstory_"
+        }
       },
       {
         "nickname": "saintxd",
@@ -1075,7 +1223,10 @@
       {
         "nickname": "hoba",
         "realName": "hoba",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/hobapubg_"
+        }
       },
       {
         "nickname": "imSancho",
@@ -1119,6 +1270,9 @@
           "scope6xSens": 30.0,
           "scope8xSens": 30.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/fexxpubg"
         }
       },
       {
@@ -1136,22 +1290,36 @@
           "scope6xSens": 25.0,
           "scope8xSens": 25.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/vardFPS"
         }
       },
       {
         "nickname": "PaiinZ",
         "realName": "PaiinZ",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/paiinz_pubg",
+          "youtube": "https://youtube.com/channel/UCp7R3guTp2Y6mqRoqFw2mGg"
+        }
       },
       {
         "nickname": "KnorkiS",
         "realName": "KnorkiS",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/knorkis",
+          "youtube": "https://youtube.com/@knorkis2243"
+        }
       },
       {
         "nickname": "PiXeL1K",
         "realName": "PiXeL1K",
-        "role": "Sub"
+        "role": "Sub",
+        "streams": {
+          "twitch": "https://twitch.tv/pixel1k"
+        }
       }
     ]
   },
@@ -1254,6 +1422,9 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/layosh_"
         }
       },
       {
@@ -1281,7 +1452,10 @@
       {
         "nickname": "shengen",
         "realName": "shengen",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://www.twitch.tv/shengenxx"
+        }
       },
       {
         "nickname": "Abelisk",

@@ -138,12 +138,17 @@ public class DataInitializer implements CommandLineRunner {
                         continue;
                     }
 
+                    JsonNode streams = pNode.path("streams");
                     Player player = Player.builder()
                             .team(team)
                             .nickname(nickname)
                             .realName(pNode.path("realName").asText(nickname))
                             .role(pNode.path("role").asText("Player"))
                             .country(region)
+                            .twitchUrl(textOrNull(streams, "twitch"))
+                            .chzzkUrl(textOrNull(streams, "chzzk"))
+                            .youtubeUrl(textOrNull(streams, "youtube"))
+                            .soopUrl(textOrNull(streams, "soop"))
                             .isActive(true)
                             .build();
 
@@ -211,12 +216,17 @@ public class DataInitializer implements CommandLineRunner {
                     for (JsonNode pNode : playersNode) {
                         String nickname = pNode.path("nickname").asText();
 
+                        JsonNode streams = pNode.path("streams");
                         Player player = Player.builder()
                                 .team(team)
                                 .nickname(nickname)
                                 .realName(pNode.path("realName").asText(nickname))
                                 .role(pNode.path("role").asText("Player"))
                                 .country(region)
+                                .twitchUrl(textOrNull(streams, "twitch"))
+                                .chzzkUrl(textOrNull(streams, "chzzk"))
+                                .youtubeUrl(textOrNull(streams, "youtube"))
+                                .soopUrl(textOrNull(streams, "soop"))
                                 .isActive(true)
                                 .build();
 

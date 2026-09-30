@@ -23,6 +23,9 @@
           "scope6xSens": 42.0,
           "scope8xSens": 42.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/dnw_rex"
         }
       },
       {
@@ -40,6 +43,11 @@
           "scope6xSens": 39.0,
           "scope8xSens": 39.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/gbl_gyumin",
+          "youtube": "https://youtube.com/@gyumin7395",
+          "soop": "https://ch.sooplive.co.kr/kkomong02"
         }
       },
       {
@@ -57,6 +65,11 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/hv1205",
+          "youtube": "https://youtube.com/channel/UCSW3_Ci-3mQlwhRTv-SiDZg",
+          "soop": "https://ch.sooplive.co.kr/ts1205"
         }
       },
       {
@@ -102,6 +115,10 @@
           "scope6xSens": 21.0,
           "scope8xSens": 20.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/dnwseoul",
+          "soop": "https://ch.sooplive.co.kr/ac9639"
         }
       },
       {
@@ -119,12 +136,19 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/@SALUTE_PUBG",
+          "soop": "https://ch.sooplive.co.kr/woojaehyun02"
         }
       },
       {
         "nickname": "taemin",
         "realName": "taemin",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "twitch": "https://twitch.tv/xoals1106"
+        }
       },
       {
         "nickname": "BeaN",
@@ -141,6 +165,10 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/@PUBGBeaN",
+          "soop": "https://ch.sooplive.co.kr/dhdnjsqls00"
         }
       }
     ]
@@ -186,6 +214,11 @@
           "scope6xSens": 40.0,
           "scope8xSens": 40.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/2_end",
+          "youtube": "https://youtube.com/@pubgeend7457",
+          "soop": "https://ch.sooplive.co.kr/nty1313"
         }
       },
       {
@@ -203,6 +236,10 @@
           "scope6xSens": 45.0,
           "scope8xSens": 46.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/@heather05",
+          "soop": "https://ch.sooplive.co.kr/ckwlgns1029"
         }
       },
       {
@@ -248,6 +285,11 @@
           "scope6xSens": 39.0,
           "scope8xSens": 39.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/akdlshdp1",
+          "youtube": "https://youtube.com/@PUBGPIO",
+          "soop": "https://ch.sooplive.co.kr/cc1890"
         }
       },
       {
@@ -265,12 +307,20 @@
           "scope6xSens": 38.0,
           "scope8xSens": 38.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/channel/UCfFtI4fPw2P2xmgAGGFyctA",
+          "soop": "https://ch.sooplive.co.kr/skgmlwn123"
         }
       },
       {
         "nickname": "blackwalk",
         "realName": "blackwalk",
-        "role": "Player"
+        "role": "Player",
+        "streams": {
+          "youtube": "https://youtube.com/channel/UCvPDPTxTLitVEyGu4Xt6m8g",
+          "soop": "https://ch.sooplive.co.kr/gudcjf604"
+        }
       },
       {
         "nickname": "yugee",
@@ -303,6 +353,10 @@
           "scope6xSens": 18.0,
           "scope8xSens": 18.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/pubg_starlord",
+          "youtube": "https://youtube.com/channel/UCCcXJ262HqswS0g5KUrCx3g"
         }
       },
       {
@@ -399,6 +453,9 @@
           "scope6xSens": 34.0,
           "scope8xSens": 34.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/hammer0924"
         }
       },
       {
@@ -478,6 +535,9 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/trgpkj"
         }
       },
       {
@@ -528,6 +588,11 @@
           "scope6xSens": 28.0,
           "scope8xSens": 28.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/daevaya",
+          "youtube": "https://youtube.com/channel/UCUjdmQ8eAMmWI3F__T6I3Pg",
+          "soop": "https://ch.sooplive.co.kr/kaka1148"
         }
       },
       {
@@ -550,6 +615,9 @@
           "scope6xSens": 33.0,
           "scope8xSens": 33.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/gimjun1"
         }
       },
       {
@@ -567,6 +635,11 @@
           "scope6xSens": 20.0,
           "scope8xSens": 20.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/tnrjsakffu",
+          "youtube": "https://youtube.com/@ZeniTh-dl6qp",
+          "soop": "https://ch.sooplive.co.kr/dlwotjd3123"
         }
       }
     ]
@@ -815,6 +888,9 @@
           "scope6xSens": 50.0,
           "scope8xSens": 50.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "soop": "https://ch.sooplive.co.kr/kmo7895"
         }
       },
       {
@@ -849,6 +925,9 @@
           "scope6xSens": 39.0,
           "scope8xSens": 39.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/seongjang"
         }
       },
       {
@@ -866,6 +945,9 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "soop": "https://ch.sooplive.co.kr/leejo0526"
         }
       }
     ]
@@ -980,6 +1062,9 @@
           "scope6xSens": 37.0,
           "scope8xSens": 37.0,
           "resolution": "1728x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/nefiex_"
         }
       },
       {
@@ -1014,6 +1099,9 @@
           "scope6xSens": 43.0,
           "scope8xSens": 43.0,
           "resolution": "1920x1080"
+        },
+        "streams": {
+          "twitch": "https://twitch.tv/ayoh_"
         }
       },
       {

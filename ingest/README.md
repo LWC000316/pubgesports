@@ -373,3 +373,44 @@ DPI·일반·수직·스코프 / 2·3·4·6·8배율 / 해상도).
 ```
 
 장비(마우스·키보드 등)는 이 시트에 없다. 여전히 전원 `미등록` 이고 별도 수집이 필요하다.
+
+## 선수 방송국 링크
+
+리퀴피디아 **선수 문서**의 `{{Infobox player}}` 에 `twitch`·`youtube`·`afreeca` 필드가 있다.
+
+```bash
+python ingest/collect_player_links.py --survey   # 분포만
+python ingest/collect_player_links.py            # 시드에 기록
+cd backend && SEED_MODE=always ./gradlew bootRun
+```
+
+**검색으로 찾지 않는다.** 닉네임이 겹치는 사람이 많아 엉뚱한 채널을 붙일 위험이 크다.
+위키가 그 선수 문서에 직접 적어 둔 값만 쓴다.
+
+선수 문서명은 **대회 문서의 렌더 HTML** 에서 얻는다 (`<a href="/pubg/PageName">`).
+위키 원문의 `{{Person|Nick}}` 은 닉네임만 주고, 문서명이 다른 경우가 29건 있다.
+문서 원문은 `action=query&prop=revisions` 로 **50개씩 묶어** 받는다 (267개가 6회 호출).
+
+시드 형식:
+
+```json
+"streams": {
+  "twitch":  "https://twitch.tv/TGLTN",
+  "youtube": "https://youtube.com/@heather05",
+  "soop":    "https://ch.sooplive.co.kr/ckwlgns1029",
+  "chzzk":   "https://chzzk.naver.com/<id>"
+}
+```
+
+- `afreeca` 와 `soop` 은 같은 플랫폼이다 (아프리카TV → SOOP 개명). 둘 다 `soop` 으로 넣는다
+- 값이 전체 URL 이면 그대로, 아이디만 있으면 템플릿에 끼운다. **앞 슬래시를 떼야 한다** —
+  `youtube = '/channel/UC...'` 같은 값이 있어 그냥 붙이면 `youtube.com//channel/...` 이 된다
+
+### 2026-09-30 기준 수집 결과
+
+```
+시드 선수 680명 -> 선수 문서를 찾은 사람 267명 -> 방송 링크 보유 170명
+twitch 149 · youtube 85 · soop 14 (한 사람이 여러 개를 갖기도 한다)
+```
+
+한국 선수는 `afreeca`(SOOP) 비중이 크고, 유럽·미주는 `twitch` 가 대부분이다.

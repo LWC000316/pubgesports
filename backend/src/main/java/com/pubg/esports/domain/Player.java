@@ -34,6 +34,8 @@ public class Player {
 
     private String profileImageUrl;
 
+    private String twitchUrl;
+
     private String chzzkUrl;
 
     private String youtubeUrl;
@@ -52,13 +54,14 @@ public class Player {
 
     @Builder
     public Player(Team team, String nickname, String realName, String role, String country,
-                  String profileImageUrl, String chzzkUrl, String youtubeUrl, String soopUrl, boolean isActive) {
+                  String profileImageUrl, String twitchUrl, String chzzkUrl, String youtubeUrl, String soopUrl, boolean isActive) {
         this.team = team;
         this.nickname = nickname;
         this.realName = realName;
         this.role = role;
         this.country = country;
         this.profileImageUrl = profileImageUrl;
+        this.twitchUrl = twitchUrl;
         this.chzzkUrl = chzzkUrl;
         this.youtubeUrl = youtubeUrl;
         this.soopUrl = soopUrl;
@@ -78,12 +81,14 @@ public class Player {
     }
 
     public void updateProfile(String nickname, String realName, String role, String country,
-                              String profileImageUrl, String chzzkUrl, String youtubeUrl, String soopUrl) {
+                              String profileImageUrl, String twitchUrl, String chzzkUrl,
+                              String youtubeUrl, String soopUrl) {
         this.nickname = nickname;
         this.realName = realName;
         this.role = role;
         this.country = country;
         this.profileImageUrl = profileImageUrl;
+        this.twitchUrl = twitchUrl;
         this.chzzkUrl = chzzkUrl;
         this.youtubeUrl = youtubeUrl;
         this.soopUrl = soopUrl;

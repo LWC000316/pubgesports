@@ -71,6 +71,14 @@ export default function PlayerDetailModal({ player, onClose }) {
   ];
   const hasScopes = scopes.some(([, v]) => v !== null);
 
+  // 방송국. 리퀴피디아 선수 문서에 적힌 값만 들어온다 — 검색으로 짐작하지 않는다.
+  const streams = [
+    ['Twitch', pick(full.twitchUrl), '#a970ff'],
+    ['YouTube', pick(full.youtubeUrl), '#ff4d4d'],
+    ['SOOP', pick(full.soopUrl), '#00b5ff'],
+    ['CHZZK', pick(full.chzzkUrl), '#00e5a0']
+  ].filter(([, url]) => url !== null);
+
   // 5개 카테고리를 항상 노출한다. 비어 있는 항목이 보여야 무엇을 수집해야 하는지 드러난다.
   const gearByCategory = new Map(
     (full.gears ?? []).map(g => [g.category?.toUpperCase(), g.name])
@@ -222,6 +230,41 @@ export default function PlayerDetailModal({ player, onClose }) {
                 <StatValue value={resolution} />
               </div>
             </div>
+
+            {streams.length > 0 && (
+              <div style={{ marginTop: '14px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
+                  방송국
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {streams.map(([label, url, color]) => (
+                    <a
+                      key={label}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        padding: '8px 12px',
+                        borderRadius: 'var(--radius-sm)',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: `1px solid ${color}40`,
+                        color: color,
+                        fontSize: '0.8rem',
+                        fontWeight: '800',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      <Video size={14} />
+                      {label}
+                      <ExternalLink size={12} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {hasScopes && (
               <div style={{ marginTop: '14px' }}>
