@@ -25,4 +25,14 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     List<Player> searchByTeamIdAndQueryWithTeam(@Param("teamId") Long teamId, @Param("query") String query);
 
     List<Player> findByTeamId(Long teamId);
+
+    /**
+     * HOT 탭이 자연키(리그+팀+닉네임)로 선수를 찾을 때 쓴다.
+     * players.id 는 SEED_MODE=always 재적재 때 바뀌므로 조회수의 키로 쓸 수 없다.
+     */
+    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.team t "
+         + "WHERE t.league = :league AND t.name = :teamName AND p.nickname = :nickname")
+    Optional<Player> findByNaturalKey(@Param("league") String league,
+                                                @Param("teamName") String teamName,
+                                                @Param("nickname") String nickname);
 }

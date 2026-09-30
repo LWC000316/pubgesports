@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X, Crosshair, Mouse, Monitor, Headphones, Keyboard, Video, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
 import { fetchPlayerDetail } from '../api/players';
+import { recordPlayerView } from '../api/hot';
 
 const NOT_SET = '미등록';
 
@@ -46,6 +47,8 @@ export default function PlayerDetailModal({ player, onClose }) {
     fetchPlayerDetail(player.id)
       .then(d => { if (!cancelled) setDetail(d); })
       .catch(() => {});
+    // HOT 탭 집계. 실패해도 모달 동작에 영향을 주지 않는다.
+    recordPlayerView(player.id).catch(() => {});
     return () => { cancelled = true; };
   }, [player?.id]);
 
