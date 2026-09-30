@@ -291,7 +291,37 @@
         "role": "Player",
         "streams": {
           "youtube": "https://youtube.com/@HuuDat0101"
-        }
+        },
+        "gears": [
+          {
+            "category": "MONITOR",
+            "name": "BenQ XL2546 (240Hz)",
+            "brand": "BenQ",
+            "sourceUrl": "https://www.youtube.com/@HuuDat0101",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "Monka 750",
+            "brand": "Monka",
+            "sourceUrl": "https://www.youtube.com/@HuuDat0101",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "ZOWIE",
+            "brand": "ZOWIE",
+            "sourceUrl": "https://www.youtube.com/@HuuDat0101",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.youtube.com/@HuuDat0101",
+            "collectedAt": "2026-09-30"
+          }
+        ]
       },
       {
         "nickname": "LongX",

@@ -17,7 +17,6 @@ public class PlayerDetailResponseDto {
     private String role;
     private String country;
     private String profileImageUrl;
-    private String twitchUrl;
     private String chzzkUrl;
     private String youtubeUrl;
     private String soopUrl;
@@ -58,7 +57,6 @@ public class PlayerDetailResponseDto {
                 .role(player.getRole())
                 .country(player.getCountry())
                 .profileImageUrl(player.getProfileImageUrl())
-                .twitchUrl(player.getTwitchUrl())
                 .chzzkUrl(player.getChzzkUrl())
                 .youtubeUrl(player.getYoutubeUrl())
                 .soopUrl(player.getSoopUrl())

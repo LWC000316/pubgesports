@@ -2,7 +2,8 @@
 """
 리퀴피디아 선수 문서에서 방송·SNS 링크를 모아 시드에 넣는다.
 
-선수 문서의 `{{Infobox player}}` 에 twitch/youtube/afreeca 같은 필드가 있다.
+선수 문서의 `{{Infobox player}}` 에 youtube/afreeca/chzzk 필드가 있다.
+**트위치는 다루지 않는다** — 링크는 많지만 정보란에 장비를 적는 선수가 없었다.
 **검색으로 추측하지 않는다** — 닉네임이 겹치는 사람이 많아 엉뚱한 채널을 붙일
 위험이 크다. 위키가 그 선수 문서에 직접 적어 둔 값만 쓴다.
 
@@ -33,7 +34,6 @@ SOURCES = PROJECT_ROOT / "primary_data" / "_sources.json"
 
 # 인포박스 필드 -> 시드 키. 방송만 가져온다. 트위터·인스타는 방송국이 아니라 넣지 않는다.
 LINK_FIELDS = {
-    "twitch": ("twitch", "https://twitch.tv/%s"),
     "youtube": ("youtube", "https://youtube.com/%s"),
     "afreeca": ("soop", "https://ch.sooplive.co.kr/%s"),
     "soop": ("soop", "https://ch.sooplive.co.kr/%s"),

@@ -81,8 +81,8 @@ export default function PlayerDetailModal({ player, onClose }) {
   const hasScopes = scopes.some(([, v]) => v !== null);
 
   // 방송국. 리퀴피디아 선수 문서에 적힌 값만 들어온다 — 검색으로 짐작하지 않는다.
+  // 트위치는 다루지 않는다 — 링크는 많지만 정보란에 장비를 적는 선수가 없었다.
   const streams = [
-    ['Twitch', pick(full.twitchUrl), '#a970ff'],
     ['YouTube', pick(full.youtubeUrl), '#ff4d4d'],
     ['SOOP', pick(full.soopUrl), '#00b5ff'],
     ['CHZZK', pick(full.chzzkUrl), '#00e5a0']

@@ -23,9 +23,6 @@
           "scope6xSens": 42.0,
           "scope8xSens": 42.0,
           "resolution": "1728x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/dnw_rex"
         }
       },
       {
@@ -45,7 +42,6 @@
           "resolution": "1728x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/gbl_gyumin",
           "youtube": "https://youtube.com/@gyumin7395",
           "soop": "https://ch.sooplive.co.kr/kkomong02"
         },
@@ -111,7 +107,6 @@
           "resolution": "1728x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/hv1205",
           "youtube": "https://youtube.com/channel/UCSW3_Ci-3mQlwhRTv-SiDZg",
           "soop": "https://ch.sooplive.co.kr/ts1205"
         },
@@ -224,7 +219,6 @@
           "resolution": "1920x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/dnwseoul",
           "soop": "https://ch.sooplive.co.kr/ac9639"
         }
       },
@@ -302,10 +296,7 @@
       {
         "nickname": "taemin",
         "realName": "taemin",
-        "role": "Player",
-        "streams": {
-          "twitch": "https://twitch.tv/xoals1106"
-        }
+        "role": "Player"
       },
       {
         "nickname": "BeaN",
@@ -444,7 +435,6 @@
           "resolution": "1728x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/2_end",
           "youtube": "https://youtube.com/@pubgeend7457",
           "soop": "https://ch.sooplive.co.kr/nty1313"
         },
@@ -622,7 +612,6 @@
           "resolution": "1920x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/akdlshdp1",
           "youtube": "https://youtube.com/@PUBGPIO",
           "soop": "https://ch.sooplive.co.kr/cc1890"
         }
@@ -690,7 +679,6 @@
           "resolution": "1728x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/pubg_starlord",
           "youtube": "https://youtube.com/channel/UCCcXJ262HqswS0g5KUrCx3g"
         }
       },
@@ -788,9 +776,6 @@
           "scope6xSens": 34.0,
           "scope8xSens": 34.0,
           "resolution": "1728x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/hammer0924"
         }
       },
       {
@@ -870,9 +855,6 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/trgpkj"
         }
       },
       {
@@ -925,7 +907,6 @@
           "resolution": "1920x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/daevaya",
           "youtube": "https://youtube.com/channel/UCUjdmQ8eAMmWI3F__T6I3Pg",
           "soop": "https://ch.sooplive.co.kr/kaka1148"
         }
@@ -950,9 +931,6 @@
           "scope6xSens": 33.0,
           "scope8xSens": 33.0,
           "resolution": "1728x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/gimjun1"
         }
       },
       {
@@ -972,7 +950,6 @@
           "resolution": "1920x1080"
         },
         "streams": {
-          "twitch": "https://twitch.tv/tnrjsakffu",
           "youtube": "https://youtube.com/@ZeniTh-dl6qp",
           "soop": "https://ch.sooplive.co.kr/dlwotjd3123"
         }
@@ -1260,9 +1237,6 @@
           "scope6xSens": 39.0,
           "scope8xSens": 39.0,
           "resolution": "1920x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/seongjang"
         }
       },
       {
@@ -1433,9 +1407,6 @@
           "scope6xSens": 37.0,
           "scope8xSens": 37.0,
           "resolution": "1728x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/nefiex_"
         }
       },
       {
@@ -1470,9 +1441,6 @@
           "scope6xSens": 43.0,
           "scope8xSens": 43.0,
           "resolution": "1920x1080"
-        },
-        "streams": {
-          "twitch": "https://twitch.tv/ayoh_"
         }
       },
       {
