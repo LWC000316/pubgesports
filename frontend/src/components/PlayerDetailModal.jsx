@@ -52,9 +52,24 @@ export default function PlayerDetailModal({ player, onClose }) {
   const fov = pick(full.setting?.fov, player.fov);
   const resolution = pick(full.setting?.resolution, player.resolution);
 
-  const aimAds = (aimSens === null && adsSens === null)
-    ? null
-    : `${aimSens ?? '?'} / ${adsSens ?? '?'}`;
+  // 둘 다 있을 때만 합쳐 쓴다. 하나만 있으면 그 값만 보여주고 제목도 그에 맞춘다.
+  // 예전에는 한쪽이 없으면 '? / 36' 처럼 물음표가 그대로 노출됐다.
+  const aimAdsLabel = (aimSens !== null && adsSens !== null)
+    ? '조준 / ADS 감도'
+    : (aimSens !== null ? '조준 감도' : 'ADS 감도');
+  const aimAds = (aimSens !== null && adsSens !== null)
+    ? `${aimSens} / ${adsSens}`
+    : (aimSens ?? adsSens);
+
+  // 배율별 감도. 수집은 하는데 화면에 없으면 모은 값이 사라진 것과 같다.
+  const scopes = [
+    ['2배율', pick(full.setting?.scope2xSens)],
+    ['3배율', pick(full.setting?.scope3xSens)],
+    ['4배율', pick(full.setting?.scope4xSens)],
+    ['6배율', pick(full.setting?.scope6xSens)],
+    ['8배율', pick(full.setting?.scope8xSens)]
+  ];
+  const hasScopes = scopes.some(([, v]) => v !== null);
 
   // 5개 카테고리를 항상 노출한다. 비어 있는 항목이 보여야 무엇을 수집해야 하는지 드러난다.
   const gearByCategory = new Map(
@@ -188,7 +203,7 @@ export default function PlayerDetailModal({ player, onClose }) {
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: 'var(--radius-sm)' }}>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>조준 / ADS 감도</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{aimAdsLabel}</div>
                 <StatValue value={aimAds} />
               </div>
 
@@ -207,6 +222,34 @@ export default function PlayerDetailModal({ player, onClose }) {
                 <StatValue value={resolution} />
               </div>
             </div>
+
+            {hasScopes && (
+              <div style={{ marginTop: '14px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
+                  배율별 감도
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px' }}>
+                  {scopes.map(([label, value]) => (
+                    <div key={label} style={{
+                      background: 'rgba(255,255,255,0.03)',
+                      padding: '10px 6px',
+                      borderRadius: 'var(--radius-sm)',
+                      textAlign: 'center'
+                    }}>
+                      <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>{label}</div>
+                      <div style={{
+                        fontSize: value === null ? '0.75rem' : '0.95rem',
+                        fontWeight: '800',
+                        color: value === null ? 'var(--text-muted)' : '#fff',
+                        marginTop: '2px'
+                      }}>
+                        {value === null ? NOT_SET : value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Column: Gear */}

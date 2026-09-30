@@ -267,6 +267,7 @@ public class DataInitializer implements CommandLineRunner {
                 .scope3xSens(doubleOrNull(s, "scope3xSens"))
                 .scope4xSens(doubleOrNull(s, "scope4xSens"))
                 .scope6xSens(doubleOrNull(s, "scope6xSens"))
+                .scope8xSens(doubleOrNull(s, "scope8xSens"))
                 .verticalMultiplier(doubleOrNull(s, "verticalMultiplier"))
                 .fov(intOrNull(s, "fov"))
                 .resolution(textOrNull(s, "resolution"))

@@ -12,27 +12,87 @@
       {
         "nickname": "Lilghost",
         "realName": "Lilghost",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 30.0,
+          "verticalMultiplier": 1.11,
+          "adsSens": 25.0,
+          "scope2xSens": 25.0,
+          "scope3xSens": 25.0,
+          "scope4xSens": 25.0,
+          "scope6xSens": 25.0,
+          "scope8xSens": 25.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "tiantian",
         "realName": "tiantian",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 1600,
+          "generalSens": 40.0,
+          "verticalMultiplier": 1.05,
+          "adsSens": 37.0,
+          "scope2xSens": 38.0,
+          "scope3xSens": 42.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "WenBo",
         "realName": "WenBo",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 38.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 30.0,
+          "scope2xSens": 35.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 38.0,
+          "scope6xSens": 38.0,
+          "scope8xSens": 38.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "xwudd",
         "realName": "xwudd",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 30.0,
+          "verticalMultiplier": 0.6,
+          "adsSens": 30.0,
+          "scope2xSens": 43.0,
+          "scope3xSens": 45.0,
+          "scope4xSens": 47.0,
+          "scope6xSens": 47.0,
+          "scope8xSens": 47.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "shou",
         "realName": "shou",
-        "role": "Sub"
+        "role": "Sub",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 30.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 23.0,
+          "scope2xSens": 24.0,
+          "scope3xSens": 21.0,
+          "scope4xSens": 16.0,
+          "scope6xSens": 15.0,
+          "scope8xSens": 18.0,
+          "resolution": "1728x1080"
+        }
       }
     ]
   },
@@ -49,12 +109,36 @@
       {
         "nickname": "Dec12th",
         "realName": "Dec12th",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 45.0,
+          "verticalMultiplier": 0.85,
+          "adsSens": 35.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Cold119",
         "realName": "Cold119",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 45.0,
+          "verticalMultiplier": 1.1,
+          "adsSens": 40.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 42.0,
+          "scope4xSens": 42.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "SuZe",
@@ -64,7 +148,19 @@
       {
         "nickname": "nanss",
         "realName": "nanss",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 45.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 35.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Donzz",
@@ -86,22 +182,70 @@
       {
         "nickname": "HSmm",
         "realName": "HSmm",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 40.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 27.0,
+          "scope2xSens": 32.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 32.0,
+          "scope6xSens": 32.0,
+          "scope8xSens": 32.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Shen",
         "realName": "Shen",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 45.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 35.0,
+          "scope2xSens": 35.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 38.0,
+          "scope6xSens": 38.0,
+          "scope8xSens": 38.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "SpaceMan",
         "realName": "SpaceMan",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 45.0,
+          "verticalMultiplier": 0.98,
+          "adsSens": 33.0,
+          "scope2xSens": 36.0,
+          "scope3xSens": 38.0,
+          "scope4xSens": 38.0,
+          "scope6xSens": 38.0,
+          "scope8xSens": 38.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "WINDah",
         "realName": "WINDah",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 50.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 35.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "WangZai",
@@ -123,32 +267,104 @@
       {
         "nickname": "MMing",
         "realName": "MMing",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 60.0,
+          "verticalMultiplier": 1.1,
+          "adsSens": 30.0,
+          "scope2xSens": 30.0,
+          "scope3xSens": 30.0,
+          "scope4xSens": 30.0,
+          "scope6xSens": 30.0,
+          "scope8xSens": 30.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Cui71",
         "realName": "Cui71",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 25.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 20.0,
+          "scope2xSens": 22.0,
+          "scope3xSens": 22.0,
+          "scope4xSens": 22.0,
+          "scope6xSens": 22.0,
+          "scope8xSens": 22.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "i26v6",
         "realName": "i26v6",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 40.0,
+          "verticalMultiplier": 0.85,
+          "adsSens": 33.0,
+          "scope2xSens": 37.0,
+          "scope3xSens": 37.0,
+          "scope4xSens": 38.0,
+          "scope6xSens": 37.0,
+          "scope8xSens": 37.0,
+          "resolution": "1920x1080"
+        }
       },
       {
         "nickname": "04NB",
         "realName": "04NB",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 45.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 40.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Aixleft",
         "realName": "Aixleft",
-        "role": "Sub"
+        "role": "Sub",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 50.0,
+          "verticalMultiplier": 1.15,
+          "adsSens": 38.0,
+          "scope2xSens": 38.0,
+          "scope3xSens": 38.0,
+          "scope4xSens": 41.0,
+          "scope6xSens": 41.0,
+          "scope8xSens": 41.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Myl",
         "realName": "Myl",
-        "role": "Sub"
+        "role": "Sub",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 60.0,
+          "verticalMultiplier": 0.85,
+          "adsSens": 32.0,
+          "scope2xSens": 33.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 39.0,
+          "scope6xSens": 41.0,
+          "scope8xSens": 42.0,
+          "resolution": "1728x1080"
+        }
       }
     ]
   },
@@ -234,7 +450,19 @@
       {
         "nickname": "Axidd",
         "realName": "Axidd",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 45.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 35.0,
+          "scope2xSens": 35.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 35.0,
+          "scope6xSens": 35.0,
+          "scope8xSens": 35.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Solo9",
@@ -254,7 +482,19 @@
       {
         "nickname": "LongSkr",
         "realName": "LongSkr",
-        "role": "Sub"
+        "role": "Sub",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 50.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 33.0,
+          "scope2xSens": 33.0,
+          "scope3xSens": 36.0,
+          "scope4xSens": 36.0,
+          "scope6xSens": 36.0,
+          "scope8xSens": 36.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "BailongMax",
@@ -464,7 +704,19 @@
       {
         "nickname": "Yuyu",
         "realName": "Yuyu",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 25.0,
+          "verticalMultiplier": 0.86,
+          "adsSens": 16.0,
+          "scope2xSens": 20.0,
+          "scope3xSens": 22.0,
+          "scope4xSens": 24.0,
+          "scope6xSens": 24.0,
+          "scope8xSens": 24.0,
+          "resolution": "1728x1080"
+        }
       }
     ]
   },
@@ -617,7 +869,19 @@
       {
         "nickname": "Rain",
         "realName": "Rain",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 50.0,
+          "verticalMultiplier": 0.85,
+          "adsSens": 34.0,
+          "scope2xSens": 34.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 35.0,
+          "scope6xSens": 38.0,
+          "scope8xSens": 38.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "cj6i",
@@ -713,7 +977,19 @@
       {
         "nickname": "BoBo",
         "realName": "BoBo",
-        "role": "Player"
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 800,
+          "generalSens": 34.0,
+          "verticalMultiplier": 1.1,
+          "adsSens": 26.0,
+          "scope2xSens": 26.0,
+          "scope3xSens": 31.0,
+          "scope4xSens": 26.0,
+          "scope6xSens": 26.0,
+          "scope8xSens": 26.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "Supersea",

@@ -15,6 +15,7 @@ public class SettingDto {
     private Double scope3xSens;
     private Double scope4xSens;
     private Double scope6xSens;
+    private Double scope8xSens;
     private Double verticalMultiplier;
     private Integer fov;
     private String resolution;
@@ -39,6 +40,7 @@ public class SettingDto {
                 .scope3xSens(setting.getScope3xSens())
                 .scope4xSens(setting.getScope4xSens())
                 .scope6xSens(setting.getScope6xSens())
+                .scope8xSens(setting.getScope8xSens())
                 .verticalMultiplier(setting.getVerticalMultiplier())
                 .fov(setting.getFov())
                 .resolution(setting.getResolution())
