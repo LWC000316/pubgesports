@@ -13,6 +13,8 @@ public class GearDto {
     private String brand;
     private String imageUrl;
     private String purchaseLink;
+    private String sourceUrl;
+    private String collectedAt;
 
     public static GearDto from(PlayerGear gear) {
         return GearDto.builder()
@@ -22,6 +24,8 @@ public class GearDto {
                 .brand(gear.getBrand())
                 .imageUrl(gear.getImageUrl())
                 .purchaseLink(gear.getPurchaseLink())
+                .sourceUrl(gear.getSourceUrl())
+                .collectedAt(gear.getCollectedAt())
                 .build();
     }
 }

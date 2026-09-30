@@ -4,7 +4,16 @@ import { fetchPlayerDetail } from '../api/players';
 
 const NOT_SET = '미등록';
 
+// 항상 보여주는 다섯 칸. 비어 있어도 노출해야 무엇을 더 모아야 하는지 드러난다.
 const GEAR_CATEGORIES = ['MOUSE', 'MOUSEPAD', 'KEYBOARD', 'HEADSET', 'MONITOR'];
+
+// 값이 있을 때만 덧붙이는 칸. 한국 선수 글에 실제로 자주 나오는 항목들이다.
+const GEAR_LABELS = {
+  MOUSE: 'MOUSE', MOUSEPAD: 'MOUSEPAD', KEYBOARD: 'KEYBOARD',
+  HEADSET: 'HEADSET', MONITOR: 'MONITOR',
+  EARPHONE: '이어폰', DAC: '사운드카드', MIC: '마이크',
+  MOUSEFEET: '마우스피트', ARMSLEEVE: '팔토시'
+};
 
 // 값이 없으면 null 을 돌려준다. 기본값을 지어내면 검증되지 않은 수치가
 // 검증된 것처럼 보이므로 절대 대체값을 넣지 않는다.
@@ -90,10 +99,22 @@ export default function PlayerDetailModal({ player, onClose }) {
     HEADSET: pick(player.headset),
     MONITOR: pick(player.monitor)
   };
-  const gears = GEAR_CATEGORIES.map(category => ({
-    category,
-    name: pick(gearByCategory.get(category), flatGear[category])
-  }));
+  // 다섯 칸을 먼저, 그 밖에 수집된 카테고리를 뒤에 붙인다.
+  const extraCategories = [...gearByCategory.keys()]
+    .filter(c => c && !GEAR_CATEGORIES.includes(c));
+  const gears = [
+    ...GEAR_CATEGORIES.map(category => ({
+      category,
+      name: pick(gearByCategory.get(category), flatGear[category])
+    })),
+    ...extraCategories.map(category => ({
+      category,
+      name: pick(gearByCategory.get(category))
+    }))
+  ];
+
+  // 장비 출처. 어느 글에서 언제 가져왔는지 밝힌다.
+  const gearSource = (full.gears ?? []).find(g => g.sourceUrl) ?? null;
 
   const getGearIcon = (category) => {
     switch (category.toUpperCase()) {
@@ -320,7 +341,7 @@ export default function PlayerDetailModal({ player, onClose }) {
                     {getGearIcon(g.category)}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{g.category}</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{GEAR_LABELS[g.category] ?? g.category}</div>
                     <div style={{
                       fontSize: '0.9rem',
                       color: g.name === null ? 'var(--text-muted)' : '#fff',
@@ -332,6 +353,20 @@ export default function PlayerDetailModal({ player, onClose }) {
                 </div>
               ))}
             </div>
+
+            {gearSource && (
+              <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '12px', marginBottom: 0 }}>
+                {gearSource.collectedAt} 기준 ·{' '}
+                <a
+                  href={gearSource.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--text-muted)', textDecoration: 'underline' }}
+                >
+                  선수 본인이 올린 글
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </div>

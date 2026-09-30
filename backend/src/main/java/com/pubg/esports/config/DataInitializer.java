@@ -301,6 +301,8 @@ public class DataInitializer implements CommandLineRunner {
                     .brand(textOrNull(g, "brand"))
                     .imageUrl(textOrNull(g, "imageUrl"))
                     .purchaseLink(textOrNull(g, "purchaseLink"))
+                    .sourceUrl(textOrNull(g, "sourceUrl"))
+                    .collectedAt(textOrNull(g, "collectedAt"))
                     .build());
         }
     }

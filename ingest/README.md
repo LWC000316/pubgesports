@@ -414,3 +414,58 @@ twitch 149 · youtube 85 · soop 14 (한 사람이 여러 개를 갖기도 한�
 ```
 
 한국 선수는 `afreeca`(SOOP) 비중이 크고, 유럽·미주는 `twitch` 가 대부분이다.
+
+## 선수 장비 (수작업)
+
+장비는 **자동 수집 경로가 없다.** 리퀴피디아에도, 공식 API 에도, 감도 시트에도 없다.
+선수가 자기 방송국 게시판이나 유튜브 설명란에 올린 글을 사람이 읽어 옮겨 적는다.
+
+```bash
+python ingest/apply_gear.py ingest/pws_gear_2026_09_30.json --dry-run
+python ingest/apply_gear.py ingest/pws_gear_2026_09_30.json
+cd backend && SEED_MODE=always ./gradlew bootRun
+```
+
+### 어디를 볼 것인가
+
+**SOOP 게시판이 가장 낫다.** `https://www.sooplive.com/station/<아이디>/board` 를 열면
+공지 본문 미리보기까지 한 페이지에 나와서 글을 따로 열지 않아도 되는 경우가 많다.
+제목이 `장비 및 설정`, `감도 설정 & 장비`, `2026 현재 세팅` 같은 공지를 찾는다.
+
+| 경로 | 수확률 (PWS 기준) |
+|---|---|
+| SOOP 게시판 공지 | 13명 중 6명 |
+| YouTube 영상 설명란 | 11명 중 2명 |
+| Twitch 정보란·패널 | **0명** — 장비를 적지 않는다 |
+
+유튜브 설명은 `ytInitialPlayerResponse.videoDetails.shortDescription` 으로 읽는다.
+페이지의 `더보기` 는 펼쳐도 DOM 에 전문이 안 들어오는 경우가 있다.
+SOOP 게시판은 클라이언트 렌더링이라 `fetch` 로는 빈 껍데기만 온다 — 페이지를 실제로 열어야 한다.
+
+### 출처와 기준일을 반드시 같이 넣는다
+
+장비는 감도보다 자주 바뀌고 **출처끼리 어긋난다.** Salute 는 유튜브 설명과 SOOP 공지의
+마우스·키보드·패드·헤드셋이 전부 달랐다 (SOOP 글이 2023년에 쓰고 계속 수정한 것이라
+일부가 오래됐다). 어디서 언제 가져왔는지가 없으면 나중에 되짚을 수 없다.
+
+`PlayerGear.sourceUrl` / `collectedAt` 이 그 자리다 (V4 마이그레이션). 모달 하단에
+`YYYY-MM-DD 기준 · 선수 본인이 올린 글` 로 노출된다.
+
+`collectedAt` 은 **글 작성일이 아니라 본문이 밝힌 기준일**이다. SOOP 공지는 오래 전에
+쓰고 계속 고치는 방식이라 작성일이 의미가 없다 (Heaven 은 2023-01-12 작성, 제목은 2026.09.30).
+
+### 카테고리
+
+화면은 `MOUSE`·`MOUSEPAD`·`KEYBOARD`·`HEADSET`·`MONITOR` 다섯 칸을 **없어도 항상** 보여주고,
+그 밖에 수집된 것은 값이 있을 때만 덧붙인다. 한국 선수 글에 실제로 나오는 항목:
+`EARPHONE`(이어폰) · `DAC`(사운드카드·사블) · `MIC` · `MOUSEFEET`(마우스피트) · `ARMSLEEVE`(팔토시).
+
+### 2026-09-30 기준 수집 결과 (PWS)
+
+```
+대상 15명 (youtube·soop 링크 보유) -> 장비 확보 7명
+Heaven 9종 · Heather 9종 · BeaN 10종 · Salute 7종 · Gyumin 6종 · EEND 6종 · EJ 5종
+
+못 찾음 8명: seoul · Pio · Inonix · blackwalk · Starlord · DAEVA · ZeniTh · AKaN
+  게시판에 팬 질문("마우스 뭐 쓰세요?")만 있고 본인이 올린 장비 글이 없다
+```

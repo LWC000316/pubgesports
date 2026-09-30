@@ -48,7 +48,51 @@
           "twitch": "https://twitch.tv/gbl_gyumin",
           "youtube": "https://youtube.com/@gyumin7395",
           "soop": "https://ch.sooplive.co.kr/kkomong02"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "닌젓소 소라 V2 핑크",
+            "brand": "Ninjutso",
+            "sourceUrl": "https://www.sooplive.com/station/kkomong02/board",
+            "collectedAt": "2025-03-27"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "VAXEE PE L",
+            "brand": "VAXEE",
+            "sourceUrl": "https://www.sooplive.com/station/kkomong02/board",
+            "collectedAt": "2025-03-27"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "SteelSeries Apex Pro TKL",
+            "brand": "SteelSeries",
+            "sourceUrl": "https://www.sooplive.com/station/kkomong02/board",
+            "collectedAt": "2025-03-27"
+          },
+          {
+            "category": "HEADSET",
+            "name": "HyperX Cloud II",
+            "brand": "HyperX",
+            "sourceUrl": "https://www.sooplive.com/station/kkomong02/board",
+            "collectedAt": "2025-03-27"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.sooplive.com/station/kkomong02/board",
+            "collectedAt": "2025-03-27"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster G5",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/kkomong02/board",
+            "collectedAt": "2025-03-27"
+          }
+        ]
       },
       {
         "nickname": "Heaven",
@@ -70,7 +114,70 @@
           "twitch": "https://twitch.tv/hv1205",
           "youtube": "https://youtube.com/channel/UCSW3_Ci-3mQlwhRTv-SiDZg",
           "soop": "https://ch.sooplive.co.kr/ts1205"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "Logitech G PRO SUPERSTRIKE X3",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "아티산 하야테 오츠 미드",
+            "brand": "Artisan",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "VENOM 87HE",
+            "brand": "Venom",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "HEADSET",
+            "name": "Logitech G PRO X3",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "MONITOR",
+            "name": "ZOWIE XL2566X+ 400Hz",
+            "brand": "ZOWIE",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "DAC",
+            "name": "젠하이저 GSX1000",
+            "brand": "Sennheiser",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "MOUSEFEET",
+            "name": "순정 (동글피트 미사용)",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          },
+          {
+            "category": "ARMSLEEVE",
+            "name": "월핵 소라 / ROCKBROS",
+            "sourceUrl": "https://www.sooplive.com/station/ts1205/post/96918417",
+            "collectedAt": "2026-09-30"
+          }
+        ]
       },
       {
         "nickname": "DIEL",
@@ -140,7 +247,57 @@
         "streams": {
           "youtube": "https://youtube.com/@SALUTE_PUBG",
           "soop": "https://ch.sooplive.co.kr/woojaehyun02"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "DEX / 탈론게임즈 유리피트, 소라 V2",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "로지텍 신제품 패드",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "VENOM 87HE",
+            "brand": "Venom",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "HEADSET",
+            "name": "Logitech G PRO X v2",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "MONITOR",
+            "name": "BenQ ZOWIE XL2546K",
+            "brand": "BenQ",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster G5",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          }
+        ]
       },
       {
         "nickname": "taemin",
@@ -169,7 +326,78 @@
         "streams": {
           "youtube": "https://youtube.com/@PUBGBeaN",
           "soop": "https://ch.sooplive.co.kr/dhdnjsqls00"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "Logitech G PRO X Superlight 2",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "아티산 하야테 오츠 MID / PD170",
+            "brand": "Artisan",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "VENOM 87HE",
+            "brand": "Venom",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "HEADSET",
+            "name": "SteelSeries Arctis Nova 5",
+            "brand": "SteelSeries",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "키위 오케스트라 라이트",
+            "brand": "KiwiEars",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "MONITOR",
+            "name": "BenQ XL2546K",
+            "brand": "BenQ",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster G5",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "MIC",
+            "name": "SteelSeries Arctis Nova 5",
+            "brand": "SteelSeries",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "MOUSEFEET",
+            "name": "아티산 미즈구모 도트피트 6점",
+            "brand": "Artisan",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          },
+          {
+            "category": "ARMSLEEVE",
+            "name": "SXG 토시",
+            "sourceUrl": "https://www.sooplive.com/station/dhdnjsqls00/board",
+            "collectedAt": "2026-08-27"
+          }
+        ]
       }
     ]
   },
@@ -219,7 +447,50 @@
           "twitch": "https://twitch.tv/2_end",
           "youtube": "https://youtube.com/@pubgeend7457",
           "soop": "https://ch.sooplive.co.kr/nty1313"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "람주 마야 X",
+            "brand": "Lamzu",
+            "sourceUrl": "https://www.sooplive.com/station/nty1313/post/67295471",
+            "collectedAt": "2026-05-19"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "더블액스게이밍",
+            "sourceUrl": "https://www.sooplive.com/station/nty1313/post/67295471",
+            "collectedAt": "2026-05-19"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "Razer BlackWidow V4",
+            "brand": "Razer",
+            "sourceUrl": "https://www.sooplive.com/station/nty1313/post/67295471",
+            "collectedAt": "2026-05-19"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.sooplive.com/station/nty1313/post/67295471",
+            "collectedAt": "2026-05-19"
+          },
+          {
+            "category": "MONITOR",
+            "name": "BenQ XL2546K",
+            "brand": "BenQ",
+            "sourceUrl": "https://www.sooplive.com/station/nty1313/post/67295471",
+            "collectedAt": "2026-05-19"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster G6",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/nty1313/post/67295471",
+            "collectedAt": "2026-05-19"
+          }
+        ]
       },
       {
         "nickname": "Heather",
@@ -240,7 +511,71 @@
         "streams": {
           "youtube": "https://youtube.com/@heather05",
           "soop": "https://ch.sooplive.co.kr/ckwlgns1029"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "Logitech G PRO X Superlight",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "VAXEE PA B22",
+            "brand": "VAXEE",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "Everglide SU75",
+            "brand": "Everglide",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "HEADSET",
+            "name": "HyperX Cloud II",
+            "brand": "HyperX",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "SUPERTFZ FORCE1",
+            "brand": "TFZ",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "MONITOR",
+            "name": "BenQ ZOWIE XL2566K",
+            "brand": "BenQ",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster X1",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "MIC",
+            "name": "GM200U",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          },
+          {
+            "category": "MOUSEFEET",
+            "name": "BTL 피트",
+            "brand": "BTL",
+            "sourceUrl": "https://www.sooplive.com/station/ckwlgns1029/board",
+            "collectedAt": "2026-09-20"
+          }
+        ]
       },
       {
         "nickname": "Type",
@@ -948,7 +1283,43 @@
         },
         "streams": {
           "soop": "https://ch.sooplive.co.kr/leejo0526"
-        }
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "Logitech G PRO X Superstrike",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/leejo0526/post/198751119",
+            "collectedAt": "2026-06-15"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "스테디위너스 MAGEN 소프트",
+            "brand": "Steady Winners",
+            "sourceUrl": "https://www.sooplive.com/station/leejo0526/post/198751119",
+            "collectedAt": "2026-06-15"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "독거미 키보드",
+            "sourceUrl": "https://www.sooplive.com/station/leejo0526/post/198751119",
+            "collectedAt": "2026-06-15"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.sooplive.com/station/leejo0526/post/198751119",
+            "collectedAt": "2026-06-15"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster G5",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/leejo0526/post/198751119",
+            "collectedAt": "2026-06-15"
+          }
+        ]
       }
     ]
   },
