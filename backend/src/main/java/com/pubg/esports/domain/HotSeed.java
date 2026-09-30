@@ -39,4 +39,16 @@ public class HotSeed {
 
     @Column(length = 500)
     private String note;
+
+    public static HotSeed of(String league, String teamName, String nickname,
+                             int seedRank, String source, String note) {
+        HotSeed seed = new HotSeed();
+        seed.league = league;
+        seed.teamName = teamName;
+        seed.nickname = nickname;
+        seed.seedRank = seedRank;
+        seed.source = source;
+        seed.note = note;
+        return seed;
+    }
 }

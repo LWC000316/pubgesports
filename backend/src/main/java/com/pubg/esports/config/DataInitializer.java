@@ -37,6 +37,7 @@ public class DataInitializer implements CommandLineRunner {
 
     private final TeamRepository teamRepository;
     private final PlayerRepository playerRepository;
+    private final HotSeedRepository hotSeedRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
@@ -82,6 +83,46 @@ public class DataInitializer implements CommandLineRunner {
             loadVerifiedTeams(seedPath, loadedTeamNames);
         }
         loadLegacyOfficialTeams(loadedTeamNames);
+        loadHotSeeds();
+    }
+
+    /**
+     * HOT 탭 초기 순위. 조회수가 쌓이기 전 화면을 채우고, 쌓이면 자연히 밀려난다.
+     * 선수 정보는 담지 않는다 — 자연키만 두고 조회 시점에 players 를 찾는다.
+     */
+    private void loadHotSeeds() {
+        File file = resolveDataFile("primary_data/hot_seeds_2026.json");
+        if (file == null) {
+            log.warn("primary_data/hot_seeds_2026.json 이 없어 HOT 초기 순위를 건너뜁니다.");
+            return;
+        }
+        try {
+            JsonNode doc = objectMapper.readTree(file);
+            String source = doc.path("_source").asText("");
+            hotSeedRepository.deleteAllInBatch();
+
+            int n = 0;
+            for (JsonNode s : doc.path("seeds")) {
+                String league = s.path("league").asText("");
+                String team = s.path("team").asText("");
+                String nickname = s.path("nickname").asText("");
+                if (league.isEmpty() || team.isEmpty() || nickname.isEmpty()) {
+                    log.warn("HOT 초기 순위에 리그/팀/닉네임이 빠진 항목이 있어 건너뜁니다.");
+                    continue;
+                }
+                hotSeedRepository.save(HotSeed.of(league, team, nickname,
+                        s.path("seedRank").asInt(),
+                        source,
+                        String.format("%s %d킬 %.0f데미지",
+                                s.path("events").asText(""),
+                                s.path("kills").asInt(),
+                                s.path("damage").asDouble())));
+                n++;
+            }
+            log.info("=== HOT 초기 순위 {}명 적재 ===", n);
+        } catch (Exception e) {
+            log.error("HOT 초기 순위 로딩 실패: {}", e.getMessage(), e);
+        }
     }
 
     private void loadVerifiedTeams(String seedPath, Set<String> loadedTeamNames) {

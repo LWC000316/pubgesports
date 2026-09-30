@@ -485,3 +485,49 @@ PVS  TTT 4종 (베트남어. Màn Hình=모니터, Phím=키보드, Tai nghe=이
 
 방송 링크 170명 중 149명이 트위치였지만 **정보란·패널에 장비를 적는 선수가 0명**이었다.
 `V5__drop_twitch_url.sql` 로 칸을 지웠고 수집기·모달에서도 뺐다. 다시 넣지 말 것.
+
+## HOT 탭 초기 순위 (세계대회 성적)
+
+조회수가 쌓이기 전 HOT 탭을 채우는 12명이다. **2026년 세계대회 본선의 개인 킬 순**
+(동점이면 데미지)이며, 조회수가 쌓이면 자연히 밀려난다.
+
+```bash
+powershell -NoProfile -File ingest/collect_world_stats.ps1
+# -> intermediate_results/world_stats_2026.json
+# 우리 로스터와 대조해 primary_data/hot_seeds_2026.json 으로 확정
+cd backend && SEED_MODE=always ./gradlew bootRun
+```
+
+**출처는 공식 PUBG API 다.** 킬·데미지는 리퀴피디아에 없다. 대회 id:
+
+| 대회 | id | 경기 |
+|---|---|---|
+| PGS 9 Grand Finals | `as-pgs9gf` | 15 |
+| PGS 8 Final Stage | `as-pgs8fsg` | 12 |
+| PGS 7 Final Stage | `as-pgs7fsg` | 8 |
+| PNC 2026 Grand Finals | `as-pnc26gf` | 15 |
+| EWC 2026 Main | `eu-26ewcmt` | 4 |
+
+`GET /tournaments` 로 대회를 찾고 `GET /shards/tournament/matches/{id}` 로 경기별
+participant 통계를 받는다. **10회/분 제한**이 있어 경기마다 6초씩 쉰다 (54경기 약 8분).
+
+### 주의
+
+- **API 키를 출력하지 않는다.** 사용자 환경변수에만 있고 셸에는 없으므로
+  PowerShell 이 `[Environment]::GetEnvironmentVariable('PUBG_API_KEY','User')` 로
+  직접 읽어 요청에만 쓴다
+- **`.ps1` 은 UTF-8 BOM 으로 저장한다.** Windows PowerShell 5.1 은 BOM 이 없으면
+  ANSI 로 읽어 한글이 깨지고 문자열 리터럴이 터진다 (실제로 겪었다)
+- **인게임 아이디는 `팀태그_닉네임`** 이다. 접두사를 떼고 대조하되 `GK_EJ01` 처럼
+  숫자 접미사가 붙는 경우가 있어 팀태그로 교차 확인한다
+- 닉네임이 여러 선수와 겹치면 **넣지 않는다.** 짐작해서 붙이지 않는다
+
+### 2026-09-30 결과
+
+```
+54경기 · 선수 216명 -> 우리 로스터와 일치 138명 -> 상위 12명 확정
+1 tiantian 49킬 · 2 curexi 48 · 3 DIEL 48 · 4 NIXZYEE 47 · 5 EJ 47 · 6 KISS 45
+7 Pathompong 45 · 8 Himass 44 · 9 Beami 43 · 10 WenBo 43 · 11 Lilghost 41 · 12 Cui71 40
+```
+
+PCL 4 · EMEA 3 · PWS 2 · PTS 2 · PVS 1 로 여섯 권역 중 다섯이 들어갔다 (AMER 은 13위 Shrimzy).

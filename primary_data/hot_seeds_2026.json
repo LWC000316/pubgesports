@@ -1,0 +1,139 @@
+{
+  "_note": "HOT 탭 초기 순위. 2026년 세계대회 본선(PGS 7·8·9, PNC, EWC) 54경기의 개인 킬 순(동점이면 데미지)이다. 공식 PUBG API 가 출처이며 리퀴피디아에는 이 수치가 없다. 조회수가 쌓이면 자연히 밀려난다. ingest/collect_world_stats.ps1 로 다시 뽑을 수 있다.",
+  "_source": "https://api.pubg.com/tournaments (as-pgs9gf, as-pgs8fsg, as-pgs7fsg, as-pnc26gf, eu-26ewcmt)",
+  "_collected": "2026-09-30",
+  "seeds": [
+    {
+      "seedRank": 1,
+      "league": "PCL",
+      "team": "17 Gaming",
+      "nickname": "tiantian",
+      "ingameId": "17_tiantian",
+      "kills": 49,
+      "damage": 9447.4,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 2,
+      "league": "EMEA",
+      "team": "Virtus.pro",
+      "nickname": "curexi",
+      "ingameId": "VP_curexi",
+      "kills": 48,
+      "damage": 8443.5,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 3,
+      "league": "PWS",
+      "team": "DN SOOPers",
+      "nickname": "DIEL",
+      "ingameId": "DNS_DIEL",
+      "kills": 48,
+      "damage": 7335.2,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 4,
+      "league": "EMEA",
+      "team": "Virtus.pro",
+      "nickname": "NIXZYEE",
+      "ingameId": "VP_NIXZYEE",
+      "kills": 47,
+      "damage": 9066.8,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 5,
+      "league": "PWS",
+      "team": "Geekay Esports",
+      "nickname": "EJ",
+      "ingameId": "GK_EJ01",
+      "kills": 47,
+      "damage": 7625.6,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 6,
+      "league": "PTS",
+      "team": "Made in Thailand",
+      "nickname": "KISS",
+      "ingameId": "MiTH_KISS",
+      "kills": 45,
+      "damage": 9947.5,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 7,
+      "league": "PTS",
+      "team": "EArena",
+      "nickname": "Pathompong",
+      "ingameId": "EA_Pathompong",
+      "kills": 45,
+      "damage": 7199.1,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 8,
+      "league": "PVS",
+      "team": "Anyone's Legend",
+      "nickname": "Himass",
+      "ingameId": "AL_Himass",
+      "kills": 44,
+      "damage": 9011.8,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 9,
+      "league": "EMEA",
+      "team": "Virtus.pro",
+      "nickname": "Beami",
+      "ingameId": "VP_Beami",
+      "kills": 43,
+      "damage": 9133.3,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 10,
+      "league": "PCL",
+      "team": "17 Gaming",
+      "nickname": "WenBo",
+      "ingameId": "17_WenBo",
+      "kills": 43,
+      "damage": 6518.2,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 11,
+      "league": "PCL",
+      "team": "17 Gaming",
+      "nickname": "Lilghost",
+      "ingameId": "17_Lilghost",
+      "kills": 41,
+      "damage": 7135.7,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    },
+    {
+      "seedRank": 12,
+      "league": "PCL",
+      "team": "Petrichor Road",
+      "nickname": "Cui71",
+      "ingameId": "PeRo_Cui71",
+      "kills": 40,
+      "damage": 6044.6,
+      "matches": 35,
+      "events": "PGS 9 Grand Finals / PGS 8 Final Stage / PGS 7 Final Stage"
+    }
+  ]
+}
