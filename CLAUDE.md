@@ -94,8 +94,27 @@ This replaced `ddl-auto: create`, which dropped and rebuilt everything on every 
 
 **Player settings and gear are hand-collected** (Discord); neither Liquipedia nor the official API has them. They enter through `setting` and `gears` on a player in a seed file — see `ingest/README.md` for the format. `DataInitializer.applySettingAndGears` reads all 13 `PlayerSetting` fields and the full gear list, and **writes nothing that the seed does not contain**. The 3,840 fabricated values that used to fill these (392 players at a uniform 800 DPI / sens 30-32 / identical gear rack, injected by `scripts/60` and by hardcoded defaults in the legacy loader) were deleted on 2026-09-29. Identify a player by **league + team + nickname**, never by `players.id`, which changes on a `SEED_MODE=always` reload.
 - `components/HitEndingTab.jsx` — "준비 중" placeholder. Its previous content was invented match narration attributed to real players; the real feature needs the telemetry pipeline.
-- `components/TournamentsTab.jsx` — static. `LEADERBOARD_PGS4` renders only when PGS4 is selected; the static data has no tournament key, so other tournaments show an empty state.
-- `data/esportsData.js` — hand-maintained static dataset for the tabs not yet wired to the backend: `HOT_PLAYERS_12`, `TOURNAMENT_LOGOS`, `TOURNAMENTS_DATA`, `LEADERBOARD_PGS4`.
+- `components/TournamentsTab.jsx` — the 대회 tab. **Three levels of navigation, then three views**: category (`global`/`regional`/`scrim`) -> series (`PGS`/`PNC`/`EWC`/`PGC`, or the six league codes) -> tournament -> 리더보드 / 플레이어 스탯 / 매치로그. A series with no data still gets a disabled chip and an `EmptyPanel` naming the reason, so "nothing here" is distinguishable from "broken". `SERIES_NOTE` holds those reasons (EWC is anonymized in the official API; PGC 2026 has not happened).
+- `components/tournaments/PlayerStatsTable.jsx` — 11 columns, **every one sortable both directions**; default is OVERALL descending, and a text column (선수·팀) starts ascending instead. Top 20 with an expand button.
+- `components/tournaments/MatchLogMap.jsx` — canvas over the real map image. Coordinates arrive as 0–1 ratios so the canvas keeps a fixed 760px internal resolution and is stretched with CSS; nothing re-scales per map. Draws the blue zone (evenodd fill so outside is dimmed), per-team trajectories, current positions (red when DBNO) and kill markers, with play/seek and a team filter.
+- `data/esportsData.js` — down to `TOURNAMENT_LOGOS` alone. `TOURNAMENTS_DATA` and the hand-typed `LEADERBOARD_PGS4` were removed once the 대회 tab read from the API.
+
+### 대회 tab data (`primary_data/tournaments/`, `primary_data/matchlogs/`)
+Served by `TournamentArchiveService`/`MatchLogService` straight from JSON files, **not from the empty `Tournament` entities** — this data has no score (ranking rules differ per tournament, so none is computed) and its teams do not always map to a `Team` row.
+
+Ten tournaments, 146 match logs. Collection is two steps, split because only the first needs the network and the API key:
+```
+powershell ingest/fetch_tournament.ps1 <id>     # 공식 API -> intermediate_results/tournaments/
+python ingest/build_tournament_seed.py <id>     # 집계 -> primary_data/tournaments/<id>.json
+python ingest/build_match_log.py <id>           # 텔레메트리 -> primary_data/matchlogs/<id>/
+```
+`build_match_log.py` **discards the 33MB telemetry file after extracting** (295KB out of 54,000 events); pass `--keep-telemetry` to keep it. Ten tournaments would otherwise be ~5GB. `--relabel-only` re-applies team names to logs already built, with no network.
+
+**The OVERALL column is a reconstruction, not an official number.** The official API gives no composite score; `overall_score()` in `build_tournament_seed.py` was fitted by least squares to 28 published values and matches 18 of 21 spot-checked players exactly (max diff 1). The coefficients are **not shown on screen** and should not be. The sample was all 15-match players, so whether the inputs are totals or per-match averages could not be distinguished — re-derive before trusting it on a short tournament.
+
+Two collection traps, both already hit: a nations cup (PNC) resolves to club teams unless `--team-from-prefix` is passed, and EWC 2026 comes back anonymized (`EWC-Player-23`), which the builder now refuses rather than ingesting. Match-log tracks carry the **resolved** team name (`team`) and keep the in-game prefix in `tag`; `load_team_names()` reuses the aggregation step's majority vote instead of guessing again.
+
+Map images under `frontend/public/maps/` come from PUBG's official `api-assets` repo. `Neon_Main.png` is actually a JPEG despite the extension — browsers sniff the content and render it, so do not "fix" it by renaming.
 - Vite dev server proxies `/api/*` to `http://localhost:8080` (see `vite.config.js`); it does not proxy in `vite preview`/production builds.
 
 **Startup race**: `DataInitializer` is a `CommandLineRunner`, so it runs *after* the web server accepts requests. On a boot that actually seeds (an empty database, or `SEED_MODE=always`), `/api/teams/cards` returns `[]` for a few seconds. When waiting for readiness, poll for the expected row count (24 PWS teams), not for HTTP 200.

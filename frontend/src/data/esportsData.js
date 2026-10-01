@@ -1,4 +1,4 @@
-// 2026 PUBG WEEKLY SERIES: KOREA Phase 2 공식 검증 마스터 데이터셋 (리퀴피디아 팀 업적 전수 일치)
+// 아직 백엔드에 연결되지 않은 화면이 쓰는 정적 데이터. 지금은 리그 로고뿐이다.
 
 export const TOURNAMENT_LOGOS = {
   PWS: "/logos/tournaments/pws.png",
@@ -14,34 +14,7 @@ export const TOURNAMENT_LOGOS = {
 // 백엔드 DataInitializer 가 직접 읽는다. 프론트엔드는 /api/teams/cards 로 받는다.
 
 
-export const TOURNAMENTS_DATA = [
-  {
-    id: 'pgs4',
-    name: 'PUBG Global Series 4 (PGS 4)',
-    tier: 'Global S-Tier',
-    location: '상하이, 중국',
-    period: '2024.06.03 ~ 2024.06.09',
-    status: '종료',
-    prizePool: '$300,000',
-    totalMatches: 18,
-    champion: 'Twisted Minds'
-  },
-  {
-    id: 'pws2024_s1',
-    name: '2024 PUBG WEEKLY SERIES: KOREA Phase 1',
-    tier: 'Regional Tier 1',
-    location: '서울, 대한민국',
-    period: '2024.03.23 ~ 2024.04.14',
-    status: '종료',
-    prizePool: '₩80,000,000',
-    totalMatches: 30,
-    champion: 'Kwangdong Freecs'
-  }
-];
-
-export const LEADERBOARD_PGS4 = [
-  { rank: 1, team: 'Twisted Minds', tag: 'TWIS', region: 'EMEA', wwcd: 3, killPoints: 89, rankPoints: 48, total: 137, prize: '$100,000' },
-  { rank: 2, team: 'CERBERUS Esports', tag: 'CES', region: 'APAC', wwcd: 2, killPoints: 81, rankPoints: 44, total: 125, prize: '$40,000' },
-  { rank: 3, team: 'Soniqs', tag: 'SQ', region: 'AMER', wwcd: 2, killPoints: 72, rankPoints: 41, total: 113, prize: '$20,000' },
-  { rank: 4, team: 'Gen.G Esports', tag: 'GEN', region: 'KR', wwcd: 2, killPoints: 68, rankPoints: 37, total: 105, prize: '$14,000' }
-];
+// TOURNAMENTS_DATA 와 LEADERBOARD_PGS4 는 이 파일에서 제거되었다.
+// 대회 목록·순위표·선수 기록은 공식 PUBG API 에서 받아 정리한
+// primary_data/tournaments/*.json 이 원본이고, 백엔드가 /api/tournaments/archive
+// 로 내보낸다. 손으로 적은 PGS 4 순위표는 그 경로로 대체됐다.

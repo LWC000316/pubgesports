@@ -44,6 +44,24 @@ def fold(text):
     return "".join(c for c in d if unicodedata.category(c) != "Mn").upper()
 
 
+def overall_score(kills, avg_damage, avg_survival_min, knocks):
+    """
+    선수 종합 점수.
+
+    공식 API 는 종합 점수를 주지 않는다. 이 계수는 wwcd.lol 이 공개한 PGS 9
+    Grand Final 통합 스탯의 OVERALL 값 28건에 최소제곱으로 맞춰 얻은 것이다
+    (최대오차 0.48 - OVERALL 이 정수 표시라 반올림 범위 안).
+
+    주의: 표본이 전원 15경기라 **총합 기준인지 경기당 평균 기준인지 구분할 수
+    없었다.** 경기 수가 다른 대회에서는 어긋날 수 있다. 킬·기절은 총합,
+    데미지·생존은 경기당 평균으로 둔 것이 그 표본에 가장 잘 맞았다.
+    """
+    return (kills * 1.5414
+            + avg_damage * 0.0863
+            + avg_survival_min * 0.9057
+            + knocks * 0.3157)
+
+
 def load_our_players():
     """폴딩한 닉네임 -> [(리그, 팀, 닉네임)]"""
     index = defaultdict(list)
@@ -138,6 +156,8 @@ def main():
     teams = defaultdict(lambda: {"matches": 0, "kills": 0, "wwcd": 0,
                                  "ranks": [], "league": None, "resolved": False})
     players = defaultdict(lambda: {"kills": 0, "damage": 0.0, "matches": 0,
+                                   "knocks": 0, "assists": 0, "survived": 0,
+                                   "headshots": 0, "longestKill": 0.0, "revives": 0,
                                    "team": None, "league": None})
     maps = []
 
@@ -171,6 +191,13 @@ def main():
                 rec = players[nick]
                 rec["kills"] += int(s.get("kills") or 0)
                 rec["damage"] += float(s.get("damageDealt") or 0)
+                rec["knocks"] += int(s.get("DBNOs") or 0)
+                rec["assists"] += int(s.get("assists") or 0)
+                rec["survived"] += int(s.get("timeSurvived") or 0)
+                rec["headshots"] += int(s.get("headshotKills") or 0)
+                rec["revives"] += int(s.get("revives") or 0)
+                rec["longestKill"] = max(rec["longestKill"],
+                                         float(s.get("longestKill") or 0))
                 rec["matches"] += 1
                 rec["team"] = team
                 rec["league"] = league
@@ -204,11 +231,29 @@ def main():
     for i, row in enumerate(standings, 1):
         row["rank"] = i
 
-    player_rows = sorted(
-        ({"nickname": n, "team": v["team"], "league": v["league"],
-          "kills": v["kills"], "damage": round(v["damage"], 1), "matches": v["matches"]}
-         for n, v in players.items()),
-        key=lambda r: (-r["kills"], -r["damage"]))
+    player_rows = []
+    for n, v in players.items():
+        m = max(v["matches"], 1)
+        avg_damage = v["damage"] / m
+        avg_survival_min = v["survived"] / m / 60
+        player_rows.append({
+            "nickname": n,
+            "team": v["team"],
+            "league": v["league"],
+            "matches": v["matches"],
+            "overall": round(overall_score(v["kills"], avg_damage,
+                                           avg_survival_min, v["knocks"])),
+            "kills": v["kills"],
+            "knocks": v["knocks"],
+            "assists": v["assists"],
+            "headshots": v["headshots"],
+            "revives": v["revives"],
+            "damage": round(v["damage"], 1),
+            "avgDamage": round(avg_damage, 1),
+            "avgSurvival": round(v["survived"] / m),
+            "longestKill": round(v["longestKill"], 1),
+        })
+    player_rows.sort(key=lambda r: (-r["overall"], -r["kills"]))
 
     meta_file = raw / "tournament.json"
     created = None

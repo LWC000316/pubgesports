@@ -13,3 +13,15 @@ export function fetchTournaments(category) {
 export function fetchTournament(id) {
   return apiGet(`/api/tournaments/archive/${encodeURIComponent(id)}`);
 }
+
+/** 그 대회에서 매치로그(이동 경로)를 가진 경기 id 목록. */
+export function fetchMatchIds(tournamentId) {
+  return apiGet(`/api/tournaments/archive/${encodeURIComponent(tournamentId)}/matches`);
+}
+
+/** 경기 하나의 매치로그 — 이동 경로·자기장·킬 지점. */
+export function fetchMatchLog(tournamentId, matchId) {
+  return apiGet(
+    `/api/tournaments/archive/${encodeURIComponent(tournamentId)}/matches/${encodeURIComponent(matchId)}`
+  );
+}

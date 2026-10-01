@@ -81,3 +81,7 @@ intermediate_results/liquipedia_cache/
 # 대회 경기 원본. 공식 API 에서 다시 받을 수 있어 추적하지 않는다 (대회당 약 3MB).
 # 집계 결과인 primary_data/tournaments/*.json 만 커밋한다.
 intermediate_results/tournaments/
+
+# 텔레메트리 원본. 경기당 33MB 라 저장소에 넣지 않는다.
+# 집계 결과인 primary_data/matchlogs/*.json 만 커밋한다 (경기당 약 300KB).
+intermediate_results/telemetry/

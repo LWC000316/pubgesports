@@ -23,6 +23,8 @@ public class TournamentArchiveDto {
     private String name;
     /** global / regional / scrim */
     private String category;
+    /** PGS / PNC / EWC / PGC, 또는 지역 리그 코드 (PWS·PCL·EMEA·AMER·PTS·PVS) */
+    private String series;
     private String source;
     private String createdAt;
     private int matchCount;
@@ -54,15 +56,25 @@ public class TournamentArchiveDto {
         private String nickname;
         private String team;
         private String league;
-        private int kills;
-        private double damage;
         private int matches;
+        /** 종합 점수 */
+        private int overall;
+        private int kills;
+        private int knocks;
+        private int assists;
+        private int headshots;
+        private int revives;
+        private double damage;
+        private double avgDamage;
+        /** 평균 생존 시간(초) */
+        private int avgSurvival;
+        private double longestKill;
     }
 
     /** 목록용. standings/players 를 빼고 요약만 담는다. */
     public TournamentArchiveDto toSummary() {
         return TournamentArchiveDto.builder()
-                .id(id).name(name).category(category).source(source)
+                .id(id).name(name).category(category).series(series).source(source)
                 .createdAt(createdAt).matchCount(matchCount).maps(maps).note(note)
                 .build();
     }
@@ -96,9 +108,17 @@ public class TournamentArchiveDto {
                     .nickname(p.path("nickname").asText())
                     .team(text(p, "team"))
                     .league(text(p, "league"))
-                    .kills(p.path("kills").asInt())
-                    .damage(p.path("damage").asDouble())
                     .matches(p.path("matches").asInt())
+                    .overall(p.path("overall").asInt())
+                    .kills(p.path("kills").asInt())
+                    .knocks(p.path("knocks").asInt())
+                    .assists(p.path("assists").asInt())
+                    .headshots(p.path("headshots").asInt())
+                    .revives(p.path("revives").asInt())
+                    .damage(p.path("damage").asDouble())
+                    .avgDamage(p.path("avgDamage").asDouble())
+                    .avgSurvival(p.path("avgSurvival").asInt())
+                    .longestKill(p.path("longestKill").asDouble())
                     .build());
         }
 
@@ -106,6 +126,7 @@ public class TournamentArchiveDto {
                 .id(doc.path("id").asText())
                 .name(doc.path("name").asText())
                 .category(text(doc, "category"))
+                .series(text(doc, "series"))
                 .source(text(doc, "source"))
                 .createdAt(text(doc, "createdAt"))
                 .matchCount(doc.path("matchCount").asInt())
