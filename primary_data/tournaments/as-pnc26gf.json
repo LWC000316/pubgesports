@@ -1,0 +1,707 @@
+{
+  "id": "as-pnc26gf",
+  "name": "PNC 2026 Grand Finals",
+  "category": "global",
+  "source": "https://api.pubg.com/tournaments/as-pnc26gf",
+  "createdAt": null,
+  "matchCount": 15,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "KOR",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 63,
+      "wwcd": 3,
+      "bestRank": 1,
+      "avgRank": 6.0,
+      "rank": 1
+    },
+    {
+      "team": "VIE",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 55,
+      "wwcd": 3,
+      "bestRank": 1,
+      "avgRank": 7.87,
+      "rank": 2
+    },
+    {
+      "team": "DEN",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 61,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 8.53,
+      "rank": 3
+    },
+    {
+      "team": "CHN",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 57,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 6.53,
+      "rank": 4
+    },
+    {
+      "team": "BRA",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 85,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.27,
+      "rank": 5
+    },
+    {
+      "team": "ARG",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 71,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.73,
+      "rank": 6
+    },
+    {
+      "team": "NEU",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 70,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.6,
+      "rank": 7
+    },
+    {
+      "team": "UKR",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 64,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.4,
+      "rank": 8
+    },
+    {
+      "team": "FIN",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 46,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.33,
+      "rank": 9
+    },
+    {
+      "team": "USA",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 61,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 7.53,
+      "rank": 10
+    },
+    {
+      "team": "THA",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 53,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 7.47,
+      "rank": 11
+    },
+    {
+      "team": "GER",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 47,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.0,
+      "rank": 12
+    },
+    {
+      "team": "GBR",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 44,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 9.47,
+      "rank": 13
+    },
+    {
+      "team": "PHI",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 42,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 10.87,
+      "rank": 14
+    },
+    {
+      "team": "INA",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 42,
+      "wwcd": 0,
+      "bestRank": 6,
+      "avgRank": 11.27,
+      "rank": 15
+    },
+    {
+      "team": "TUR",
+      "league": null,
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 35,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 10.13,
+      "rank": 16
+    }
+  ],
+  "players": [
+    {
+      "nickname": "sparkingg",
+      "team": "BRA",
+      "league": null,
+      "kills": 34,
+      "damage": 4504.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Lev4nte",
+      "team": "NEU",
+      "league": null,
+      "kills": 25,
+      "damage": 3954.0,
+      "matches": 15
+    },
+    {
+      "nickname": "PIPAA",
+      "team": "ARG",
+      "league": null,
+      "kills": 24,
+      "damage": 3056.1,
+      "matches": 15
+    },
+    {
+      "nickname": "xwudd",
+      "team": "CHN",
+      "league": null,
+      "kills": 23,
+      "damage": 4192.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Kickstart",
+      "team": "USA",
+      "league": null,
+      "kills": 23,
+      "damage": 4022.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Hakatory",
+      "team": "UKR",
+      "league": null,
+      "kills": 21,
+      "damage": 4960.6,
+      "matches": 15
+    },
+    {
+      "nickname": "TanVuu",
+      "team": "VIE",
+      "league": null,
+      "kills": 21,
+      "damage": 3224.4,
+      "matches": 15
+    },
+    {
+      "nickname": "bielmtcalmo",
+      "team": "BRA",
+      "league": null,
+      "kills": 20,
+      "damage": 4256.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Beami",
+      "team": "DEN",
+      "league": null,
+      "kills": 20,
+      "damage": 4223.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Heaven",
+      "team": "KOR",
+      "league": null,
+      "kills": 19,
+      "damage": 3307.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Himass",
+      "team": "VIE",
+      "league": null,
+      "kills": 19,
+      "damage": 3050.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Gustav",
+      "team": "DEN",
+      "league": null,
+      "kills": 18,
+      "damage": 3909.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Capitan",
+      "team": "ARG",
+      "league": null,
+      "kills": 18,
+      "damage": 3666.2,
+      "matches": 15
+    },
+    {
+      "nickname": "S4TTA",
+      "team": "FIN",
+      "league": null,
+      "kills": 18,
+      "damage": 3249.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Tny7",
+      "team": "BRA",
+      "league": null,
+      "kills": 18,
+      "damage": 3180.7,
+      "matches": 15
+    },
+    {
+      "nickname": "BatulinS",
+      "team": "NEU",
+      "league": null,
+      "kills": 18,
+      "damage": 2110.4,
+      "matches": 15
+    },
+    {
+      "nickname": "Heather",
+      "team": "KOR",
+      "league": null,
+      "kills": 17,
+      "damage": 3409.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Gyumin",
+      "team": "KOR",
+      "league": null,
+      "kills": 17,
+      "damage": 3355.4,
+      "matches": 15
+    },
+    {
+      "nickname": "SpaceMan",
+      "team": "CHN",
+      "league": null,
+      "kills": 17,
+      "damage": 2540.1,
+      "matches": 15
+    },
+    {
+      "nickname": "TiGGER",
+      "team": "THA",
+      "league": null,
+      "kills": 17,
+      "damage": 2490.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Dr4ftk1NG",
+      "team": "ARG",
+      "league": null,
+      "kills": 16,
+      "damage": 3838.2,
+      "matches": 15
+    },
+    {
+      "nickname": "boost1k-",
+      "team": "UKR",
+      "league": null,
+      "kills": 16,
+      "damage": 3760.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Scappy",
+      "team": "THA",
+      "league": null,
+      "kills": 16,
+      "damage": 2860.1,
+      "matches": 15
+    },
+    {
+      "nickname": "SkaV",
+      "team": "FIN",
+      "league": null,
+      "kills": 16,
+      "damage": 2845.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Setsunaa",
+      "team": "INA",
+      "league": null,
+      "kills": 16,
+      "damage": 2697.7,
+      "matches": 15
+    },
+    {
+      "nickname": "vard",
+      "team": "GBR",
+      "league": null,
+      "kills": 15,
+      "damage": 3295.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Shilla",
+      "team": "TUR",
+      "league": null,
+      "kills": 15,
+      "damage": 3150.8,
+      "matches": 15
+    },
+    {
+      "nickname": "PaiinZ",
+      "team": "GER",
+      "league": null,
+      "kills": 15,
+      "damage": 2745.4,
+      "matches": 15
+    },
+    {
+      "nickname": "PurdyKurty",
+      "team": "USA",
+      "league": null,
+      "kills": 15,
+      "damage": 2210.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Ketter",
+      "team": "DEN",
+      "league": null,
+      "kills": 15,
+      "damage": 2113.9,
+      "matches": 15
+    },
+    {
+      "nickname": "tRycKK",
+      "team": "INA",
+      "league": null,
+      "kills": 14,
+      "damage": 2456.1,
+      "matches": 15
+    },
+    {
+      "nickname": "AljnBOTz",
+      "team": "PHI",
+      "league": null,
+      "kills": 14,
+      "damage": 2374.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Justus",
+      "team": "GER",
+      "league": null,
+      "kills": 14,
+      "damage": 1951.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Lu",
+      "team": "NEU",
+      "league": null,
+      "kills": 14,
+      "damage": 1907.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Feyerist",
+      "team": "UKR",
+      "league": null,
+      "kills": 14,
+      "damage": 1771.4,
+      "matches": 15
+    },
+    {
+      "nickname": "DIFX",
+      "team": "UKR",
+      "league": null,
+      "kills": 13,
+      "damage": 4043.6,
+      "matches": 15
+    },
+    {
+      "nickname": "ADOUZ1E",
+      "team": "NEU",
+      "league": null,
+      "kills": 13,
+      "damage": 3665.6,
+      "matches": 15
+    },
+    {
+      "nickname": "zkrakeN",
+      "team": "BRA",
+      "league": null,
+      "kills": 13,
+      "damage": 3087.8,
+      "matches": 15
+    },
+    {
+      "nickname": "alec",
+      "team": "PHI",
+      "league": null,
+      "kills": 13,
+      "damage": 2406.3,
+      "matches": 15
+    },
+    {
+      "nickname": "ares",
+      "team": "GER",
+      "league": null,
+      "kills": 13,
+      "damage": 2274.7,
+      "matches": 15
+    },
+    {
+      "nickname": "emikxz",
+      "team": "ARG",
+      "league": null,
+      "kills": 13,
+      "damage": 2094.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Shrimzy",
+      "team": "USA",
+      "league": null,
+      "kills": 12,
+      "damage": 2424.2,
+      "matches": 15
+    },
+    {
+      "nickname": "TeaBone",
+      "team": "GBR",
+      "league": null,
+      "kills": 12,
+      "damage": 2391.7,
+      "matches": 15
+    },
+    {
+      "nickname": "KISS",
+      "team": "THA",
+      "league": null,
+      "kills": 11,
+      "damage": 3419.1,
+      "matches": 15
+    },
+    {
+      "nickname": "CowBoi",
+      "team": "USA",
+      "league": null,
+      "kills": 11,
+      "damage": 2385.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Lilghost",
+      "team": "CHN",
+      "league": null,
+      "kills": 11,
+      "damage": 2302.4,
+      "matches": 15
+    },
+    {
+      "nickname": "Seongjang",
+      "team": "KOR",
+      "league": null,
+      "kills": 10,
+      "damage": 2715.4,
+      "matches": 15
+    },
+    {
+      "nickname": "Fexx",
+      "team": "GBR",
+      "league": null,
+      "kills": 9,
+      "damage": 3558.2,
+      "matches": 15
+    },
+    {
+      "nickname": "Belmoth",
+      "team": "THA",
+      "league": null,
+      "kills": 9,
+      "damage": 2782.5,
+      "matches": 15
+    },
+    {
+      "nickname": "CeeJay18",
+      "team": "PHI",
+      "league": null,
+      "kills": 9,
+      "damage": 2461.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Sololzy",
+      "team": "VIE",
+      "league": null,
+      "kills": 9,
+      "damage": 1886.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Mikzenn",
+      "team": "DEN",
+      "league": null,
+      "kills": 8,
+      "damage": 2379.4,
+      "matches": 15
+    },
+    {
+      "nickname": "Metebey",
+      "team": "TUR",
+      "league": null,
+      "kills": 8,
+      "damage": 2368.5,
+      "matches": 15
+    },
+    {
+      "nickname": "mykLe",
+      "team": "GBR",
+      "league": null,
+      "kills": 8,
+      "damage": 2303.0,
+      "matches": 15
+    },
+    {
+      "nickname": "curexi",
+      "team": "FIN",
+      "league": null,
+      "kills": 8,
+      "damage": 2227.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Jekzy",
+      "team": "INA",
+      "league": null,
+      "kills": 8,
+      "damage": 1620.9,
+      "matches": 15
+    },
+    {
+      "nickname": "CodeMarco",
+      "team": "TUR",
+      "league": null,
+      "kills": 7,
+      "damage": 1840.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Tiantian",
+      "team": "CHN",
+      "league": null,
+      "kills": 6,
+      "damage": 2706.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Delwyn",
+      "team": "VIE",
+      "league": null,
+      "kills": 6,
+      "damage": 1694.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Eyaaa",
+      "team": "PHI",
+      "league": null,
+      "kills": 6,
+      "damage": 1143.5,
+      "matches": 15
+    },
+    {
+      "nickname": "ItzzChrizZ",
+      "team": "GER",
+      "league": null,
+      "kills": 5,
+      "damage": 1975.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Celtik",
+      "team": "TUR",
+      "league": null,
+      "kills": 5,
+      "damage": 1387.7,
+      "matches": 15
+    },
+    {
+      "nickname": "iExE",
+      "team": "FIN",
+      "league": null,
+      "kills": 4,
+      "damage": 1576.1,
+      "matches": 15
+    },
+    {
+      "nickname": "QueenV3WHL",
+      "team": "INA",
+      "league": null,
+      "kills": 4,
+      "damage": 1569.8,
+      "matches": 15
+    }
+  ]
+}

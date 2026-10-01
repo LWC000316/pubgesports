@@ -42,4 +42,14 @@ public class TournamentController {
     public ResponseEntity<List<PlayerStatDto>> getTournamentPlayerStats(@PathVariable Long id) {
         return ResponseEntity.ok(tournamentService.getTournamentPlayerStats(id));
     }
+
+    /**
+     * 없는 대회를 조회하면 500 이 아니라 404 를 준다.
+     * TournamentService 가 IllegalArgumentException 을 던지는데 그대로 두면
+     * Spring 이 500 으로 내보낸다. 대회 테이블은 아직 비어 있어 모든 id 가 여기로 온다.
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Void> handleNotFound(IllegalArgumentException e) {
+        return ResponseEntity.notFound().build();
+    }
 }

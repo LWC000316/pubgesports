@@ -1,0 +1,707 @@
+{
+  "id": "as-pgs8fsg",
+  "name": "PGS 8 Final Stage",
+  "category": "global",
+  "source": "https://api.pubg.com/tournaments/as-pgs8fsg",
+  "createdAt": null,
+  "matchCount": 10,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "17 Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 65,
+      "wwcd": 3,
+      "bestRank": 1,
+      "avgRank": 6.7,
+      "rank": 1
+    },
+    {
+      "team": "Team Falcons",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 48,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.2,
+      "rank": 2
+    },
+    {
+      "team": "EArena",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 41,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.3,
+      "rank": 3
+    },
+    {
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 39,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.6,
+      "rank": 4
+    },
+    {
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 38,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.4,
+      "rank": 5
+    },
+    {
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 37,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.4,
+      "rank": 6
+    },
+    {
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 33,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.2,
+      "rank": 7
+    },
+    {
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 33,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.0,
+      "rank": 8
+    },
+    {
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 53,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.3,
+      "rank": 9
+    },
+    {
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 47,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.1,
+      "rank": 10
+    },
+    {
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 41,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.7,
+      "rank": 11
+    },
+    {
+      "team": "Team Liquid",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 35,
+      "wwcd": 0,
+      "bestRank": 6,
+      "avgRank": 10.4,
+      "rank": 12
+    },
+    {
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 29,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.1,
+      "rank": 13
+    },
+    {
+      "team": "JD Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 29,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 9.9,
+      "rank": 14
+    },
+    {
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 26,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 9.3,
+      "rank": 15
+    },
+    {
+      "team": "The Expendables",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 13,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 11.4,
+      "rank": 16
+    }
+  ],
+  "players": [
+    {
+      "nickname": "tiantian",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 19,
+      "damage": 3997.3,
+      "matches": 10
+    },
+    {
+      "nickname": "WenBo",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 17,
+      "damage": 2708.1,
+      "matches": 10
+    },
+    {
+      "nickname": "curexi",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 16,
+      "damage": 2851.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Lilghost",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 16,
+      "damage": 2758.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Beami",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 16,
+      "damage": 2569.8,
+      "matches": 10
+    },
+    {
+      "nickname": "EJ01",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 16,
+      "damage": 2272.4,
+      "matches": 10
+    },
+    {
+      "nickname": "REX",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 16,
+      "damage": 1953.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Pathompong",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 16,
+      "damage": 1914.5,
+      "matches": 10
+    },
+    {
+      "nickname": "KISS",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 15,
+      "damage": 2882.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Cui71",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 15,
+      "damage": 2167.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Baren",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 14,
+      "damage": 3232.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Himass",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 14,
+      "damage": 2535.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Gustav",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 2250.7,
+      "matches": 10
+    },
+    {
+      "nickname": "NIXZYEE",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 13,
+      "damage": 2274.5,
+      "matches": 10
+    },
+    {
+      "nickname": "OHPONDZ",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 13,
+      "damage": 1928.6,
+      "matches": 10
+    },
+    {
+      "nickname": "xwudd",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 1300.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Shrimzy",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 2787.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Destroyy",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 12,
+      "damage": 2147.3,
+      "matches": 10
+    },
+    {
+      "nickname": "CowBoi",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 2092.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Kickstart",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 2854.1,
+      "matches": 10
+    },
+    {
+      "nickname": "TGLTN",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 2594.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Scappy",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 11,
+      "damage": 2236.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Tny7",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 2027.5,
+      "matches": 10
+    },
+    {
+      "nickname": "DIEL",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 1804.0,
+      "matches": 10
+    },
+    {
+      "nickname": "aLOW",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 1414.1,
+      "matches": 10
+    },
+    {
+      "nickname": "lfp1",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 10,
+      "damage": 2185.4,
+      "matches": 10
+    },
+    {
+      "nickname": "BatulinS",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 1347.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Salute",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 2342.9,
+      "matches": 10
+    },
+    {
+      "nickname": "seoul",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 2114.3,
+      "matches": 10
+    },
+    {
+      "nickname": "PurdyKurty",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 1831.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Seongjang",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 1485.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Dec12th",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 9,
+      "damage": 1323.9,
+      "matches": 10
+    },
+    {
+      "nickname": "SimonT",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 9,
+      "damage": 1276.7,
+      "matches": 10
+    },
+    {
+      "nickname": "diyy",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 1096.1,
+      "matches": 10
+    },
+    {
+      "nickname": "xmpl",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 2635.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Taikonn",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 8,
+      "damage": 1993.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Lukarux",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1839.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Parkpro",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 8,
+      "damage": 1770.2,
+      "matches": 10
+    },
+    {
+      "nickname": "MMing",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1601.7,
+      "matches": 10
+    },
+    {
+      "nickname": "i26v6",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1581.4,
+      "matches": 10
+    },
+    {
+      "nickname": "SuZe",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1395.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Delwyn",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 8,
+      "damage": 1333.4,
+      "matches": 10
+    },
+    {
+      "nickname": "nanss",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1136.4,
+      "matches": 10
+    },
+    {
+      "nickname": "fana",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 1796.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Sololzy",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 7,
+      "damage": 1753.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Gyumin",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 1591.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Lericz",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1411.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Jacob",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1347.0,
+      "matches": 10
+    },
+    {
+      "nickname": "BeaN",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 1752.6,
+      "matches": 10
+    },
+    {
+      "nickname": "Perfect1ks",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1370.2,
+      "matches": 10
+    },
+    {
+      "nickname": "pauu",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 6,
+      "damage": 1222.4,
+      "matches": 10
+    },
+    {
+      "nickname": "YmCud",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 6,
+      "damage": 1064.6,
+      "matches": 10
+    },
+    {
+      "nickname": "Hoangf",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 6,
+      "damage": 738.8,
+      "matches": 10
+    },
+    {
+      "nickname": "04NB",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 6,
+      "damage": 595.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Nourinz",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1585.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Heaven",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 5,
+      "damage": 1474.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Haven",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 1364.0,
+      "matches": 10
+    },
+    {
+      "nickname": "AKaN",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 5,
+      "damage": 1022.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Cold119",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 4,
+      "damage": 1410.7,
+      "matches": 10
+    },
+    {
+      "nickname": "DuCkHjeUz",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 4,
+      "damage": 686.1,
+      "matches": 10
+    },
+    {
+      "nickname": "TanVuu",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 3,
+      "damage": 1214.1,
+      "matches": 10
+    },
+    {
+      "nickname": "luke12",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 1086.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Lu",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 2,
+      "damage": 947.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Clories",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 0,
+      "damage": 437.9,
+      "matches": 10
+    }
+  ]
+}

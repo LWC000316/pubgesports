@@ -27,6 +27,7 @@
 
 import argparse
 import json
+import re
 import sys
 import unicodedata
 from collections import defaultdict
@@ -63,11 +64,18 @@ def split_ingame_id(name):
     return None, name
 
 
-def resolve_team(participant_names, our_players):
+def resolve_team(participant_names, our_players, prefix_only=False):
     """
     로스터 참가자 이름들로 팀을 찾는다.
     우리 시드에서 찾은 팀이 과반이면 그 팀, 아니면 인게임 접두사를 쓴다.
     """
+    if prefix_only:
+        prefixes = [split_ingame_id(n)[0] for n in participant_names]
+        prefixes = [p for p in prefixes if p]
+        if prefixes:
+            return None, max(set(prefixes), key=prefixes.count), True
+        return None, "UNKNOWN", False
+
     votes = defaultdict(int)
     for raw in participant_names:
         prefix, nick = split_ingame_id(raw)
@@ -95,6 +103,11 @@ def main():
     ap.add_argument("--name", default=None, help="화면에 쓸 대회 이름")
     ap.add_argument("--category", default=None,
                     choices=["global", "regional", "scrim"], help="분류")
+    ap.add_argument("--team-from-prefix", action="store_true",
+                    help="팀을 우리 명단이 아니라 인게임 아이디 접두사로 정한다. "
+                         "네이션스컵(PNC)처럼 팀이 클럽이 아니라 국가인 대회용 — "
+                         "그냥 두면 선수가 소속 클럽으로 묶여 'KOR' 이 아니라 "
+                         "'DN SOOPers' 가 나온다")
     args = ap.parse_args()
 
     if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
@@ -109,6 +122,18 @@ def main():
         raise SystemExit("경기 파일이 없습니다: %s" % raw)
 
     our_players = load_our_players()
+
+    # 참가자 이름이 익명화된 대회가 있다 (EWC 2026 은 전원 `EWC-Player-23` 형태).
+    # 선수도 팀도 알 수 없으니 그럴듯한 표를 만들지 않고 멈춘다.
+    first = json.loads(match_files[0].read_text(encoding="utf-8-sig"))
+    sample = [p["attributes"]["stats"]["name"]
+              for p in first.get("included", []) if p.get("type") == "participant"]
+    anon = [n for n in sample if re.fullmatch(r"[A-Za-z]+-Player-\d+", n or "")]
+    if sample and len(anon) > len(sample) / 2:
+        raise SystemExit(
+            "참가자 이름이 익명화돼 있습니다 (%s 등 %d/%d명).\n"
+            "선수도 팀도 알 수 없어 순위표를 만들지 않습니다. 진행을 멈춥니다."
+            % (anon[0], len(anon), len(sample)))
 
     teams = defaultdict(lambda: {"matches": 0, "kills": 0, "wwcd": 0,
                                  "ranks": [], "league": None, "resolved": False})
@@ -131,7 +156,8 @@ def main():
             if not names:
                 continue
 
-            league, team, resolved = resolve_team(names, our_players)
+            league, team, resolved = resolve_team(
+                names, our_players, prefix_only=args.team_from_prefix)
             rank = roster.get("attributes", {}).get("stats", {}).get("rank")
 
             kills = 0

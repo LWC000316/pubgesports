@@ -1,251 +1,380 @@
-import React, { useState } from 'react';
-import { Trophy, MapPin, Calendar, DollarSign, Medal, Award, Flame } from 'lucide-react';
-import { TOURNAMENTS_DATA, LEADERBOARD_PGS4 } from '../data/esportsData';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Trophy, Globe, Shield, Swords, Crosshair, Map as MapIcon } from 'lucide-react';
+import { fetchTournaments, fetchTournament } from '../api/tournaments';
+import { useApi } from '../hooks/useApi';
+import LoadingPanel from './common/LoadingPanel';
+import ErrorPanel from './common/ErrorPanel';
 
+const EMPTY = [];
+const NOT_SET = '미등록';
+
+// wwcd.lol 과 같은 3분류다 (사용자 지시).
+const CATEGORIES = [
+  { id: 'global', label: 'GLOBAL', desc: '글로벌 대회', icon: Globe },
+  { id: 'regional', label: 'REGIONAL', desc: '지역 리그', icon: Shield },
+  { id: 'scrim', label: 'SCRIM', desc: '연습 경기', icon: Swords }
+];
+
+const MAP_NAMES = {
+  Baltic_Main: 'Erangel',
+  Desert_Main: 'Miramar',
+  Savage_Main: 'Sanhok',
+  DihorOtok_Main: 'Vikendi',
+  Tiger_Main: 'Taego',
+  Neon_Main: 'Rondo',
+  Kiki_Main: 'Deston',
+  Chimera_Main: 'Paramo'
+};
+
+/**
+ * 대회 탭. 글로벌 · 지역리그 · 스크림 3분류로 나누고 대회를 고르면
+ * 순위표와 선수 기록을 보여준다.
+ *
+ * 데이터는 공식 PUBG API 에서 받아 정리한 primary_data/tournaments/*.json 이다
+ * (ingest/fetch_tournament.ps1 + build_tournament_seed.py).
+ *
+ * **순위 점수는 없다.** 대회 규정마다 달라 계산하지 않았다 — API 가 직접 주는
+ * 값(경기 수·킬·WWCD·평균 순위)만 보여준다. 점수를 지어내지 않는다.
+ */
 export default function TournamentsTab() {
-  const [selectedTourneyId, setSelectedTourneyId] = useState(TOURNAMENTS_DATA[0].id);
+  const [category, setCategory] = useState('global');
+  const [selectedId, setSelectedId] = useState(null);
 
-  const currentTourney = TOURNAMENTS_DATA.find(t => t.id === selectedTourneyId) || TOURNAMENTS_DATA[0];
+  const listFetcher = useCallback(() => fetchTournaments(category), [category]);
+  const { data: list, loading, error, reload } = useApi(listFetcher, [category], EMPTY);
 
-  // LEADERBOARD_PGS4 는 PGS4 의 순위표다. 예전에는 어떤 대회를 골라도 이걸 보여줘서
-  // PWS 를 선택해도 PGS4 순위가 나왔다. 정적 데이터에 대회 연결 키가 없으므로
-  // 해당 대회일 때만 렌더하고, 나머지는 데이터 없음으로 표시한다.
-  const leaderboard = selectedTourneyId === 'pgs4' ? LEADERBOARD_PGS4 : [];
+  // 분류를 바꾸면 그 분류의 첫 대회를 고른다.
+  useEffect(() => {
+    const first = (list ?? [])[0];
+    setSelectedId(first ? first.id : null);
+  }, [list]);
 
-  const topThree = leaderboard.slice(0, 3);
+  if (loading) {
+    return <LoadingPanel title="대회 목록을 불러오는 중입니다" detail="백엔드 서버에서 가져오고 있습니다." />;
+  }
+
+  if (error) {
+    return (
+      <ErrorPanel
+        title="대회 목록을 불러오지 못했습니다"
+        message={error}
+        hint="백엔드 서버(localhost:8080)와 PostgreSQL 컨테이너가 실행 중인지 확인해 주세요."
+        onRetry={reload}
+      />
+    );
+  }
 
   return (
     <div className="animate-fade-in" style={{ padding: '0 24px 40px' }}>
-      
-      {/* 대회 셀렉터 탭 */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '24px', flexWrap: 'wrap' }}>
-        {TOURNAMENTS_DATA.map(t => {
-          const isActive = selectedTourneyId === t.id;
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+        {CATEGORIES.map(c => {
+          const isActive = category === c.id;
+          const Icon = c.icon;
           return (
             <button
-              key={t.id}
-              onClick={() => setSelectedTourneyId(t.id)}
+              key={c.id}
+              onClick={() => setCategory(c.id)}
               style={{
-                padding: '10px 20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 18px',
                 borderRadius: 'var(--radius-sm)',
                 background: isActive ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.04)',
                 color: isActive ? '#000' : 'var(--text-muted)',
                 border: isActive ? '1px solid var(--accent-gold)' : '1px solid var(--border-subtle)',
-                fontWeight: '800',
+                fontWeight: '900',
                 fontSize: '0.88rem',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
+                transition: 'all 0.2s ease'
               }}
             >
-              <Trophy size={16} />
-              <span>{t.name}</span>
+              <Icon size={16} color={isActive ? '#000' : 'var(--accent-gold)'} />
+              <span>{c.label}</span>
+              <span style={{ fontWeight: '600', fontSize: '0.78rem', opacity: 0.75 }}>
+                {c.desc}
+              </span>
             </button>
           );
         })}
       </div>
 
-      {/* 대회 개요 메타 바 */}
-      <div className="glass-panel" style={{
-        padding: '20px 24px',
-        borderRadius: 'var(--radius-md)',
-        marginBottom: '28px',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '20px'
-      }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: '900', color: '#fff', margin: 0 }}>
-              {currentTourney.name}
-            </h2>
-            <span className="badge badge-gold">{currentTourney.tier}</span>
-            <span className="badge badge-cyan">{currentTourney.status}</span>
+      {(list ?? []).length === 0 ? (
+        <EmptyCategory category={category} />
+      ) : (
+        <>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+            {list.map(t => {
+              const isActive = selectedId === t.id;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setSelectedId(t.id)}
+                  style={{
+                    padding: '9px 16px',
+                    borderRadius: 'var(--radius-sm)',
+                    background: isActive ? 'rgba(243, 166, 31, 0.15)' : 'rgba(255, 255, 255, 0.03)',
+                    color: isActive ? 'var(--accent-gold)' : 'var(--text-muted)',
+                    border: `1px solid ${isActive ? 'rgba(243, 166, 31, 0.5)' : 'var(--border-subtle)'}`,
+                    fontWeight: '800',
+                    fontSize: '0.84rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {t.name}
+                </button>
+              );
+            })}
           </div>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
-            그랜드 파이널 18개 매치 종합 결과 (SUPER 룰셋 공식 포인트 규정 적용)
-          </p>
-        </div>
 
-        {/* 메타 인포 칩들 */}
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', fontSize: '0.85rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
-            <MapPin size={16} color="var(--accent-cyan)" />
-            <span style={{ color: '#fff' }}>{currentTourney.location}</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
-            <Calendar size={16} color="var(--accent-cyan)" />
-            <span style={{ color: '#fff' }}>{currentTourney.period}</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
-            <DollarSign size={16} color="var(--accent-gold)" />
-            <span style={{ color: 'var(--accent-gold)', fontWeight: '800' }}>총상금 {currentTourney.prizePool}</span>
-          </div>
-        </div>
-      </div>
-
-      {leaderboard.length === 0 && (
-        <div className="glass-panel" style={{ padding: '60px 20px', textAlign: 'center' }}>
-          <Trophy size={36} color="var(--accent-gold)" style={{ margin: '0 auto 16px auto' }} />
-          <h3 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '8px' }}>
-            순위 데이터가 없습니다
-          </h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-            {currentTourney.name} 의 순위표가 아직 준비되지 않았습니다.
-          </p>
-        </div>
+          {selectedId && <TournamentDetail id={selectedId} />}
+        </>
       )}
+    </div>
+  );
+}
 
-      {/* 상위 1~3위 포디움 카드 */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '20px',
-        marginBottom: '28px'
+function EmptyCategory({ category }) {
+  // 지어낸 데이터로 채우지 않는다. 왜 비어 있는지 밝힌다.
+  const reason = {
+    global: '글로벌 대회 기록이 아직 수집되지 않았습니다.',
+    regional: '지역 리그 기록이 아직 수집되지 않았습니다.',
+    scrim: '스크림은 비공식 연습 경기라 공식 PUBG API 대회 목록에 올라오지 않습니다.'
+  }[category];
+
+  return (
+    <div className="glass-panel" style={{ padding: '60px 20px', textAlign: 'center' }}>
+      <Trophy size={36} color="var(--accent-gold)" style={{ margin: '0 auto 16px auto' }} />
+      <h3 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '8px' }}>
+        아직 등록된 대회가 없습니다
+      </h3>
+      <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', margin: 0 }}>{reason}</p>
+    </div>
+  );
+}
+
+function TournamentDetail({ id }) {
+  const fetcher = useCallback(() => fetchTournament(id), [id]);
+  const { data, loading, error, reload } = useApi(fetcher, [id], null);
+
+  if (loading) {
+    return <LoadingPanel title="대회 기록을 불러오는 중입니다" detail="순위표와 선수 기록을 가져오고 있습니다." />;
+  }
+  if (error) {
+    return (
+      <ErrorPanel
+        title="대회 기록을 불러오지 못했습니다"
+        message={error}
+        hint="백엔드 서버가 실행 중인지 확인해 주세요."
+        onRetry={reload}
+      />
+    );
+  }
+  if (!data) return null;
+
+  const maps = (data.maps ?? []).map(m => MAP_NAMES[m] ?? m);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <div className="glass-panel" style={{
+        padding: '18px 22px',
+        borderRadius: 'var(--radius-sm)',
+        border: '1px solid rgba(243, 166, 31, 0.3)',
+        background: 'linear-gradient(135deg, rgba(243, 166, 31, 0.1) 0%, rgba(22, 26, 38, 0.95) 100%)'
       }}>
-        {topThree.map((item, idx) => {
-          const colors = [
-            { border: '#f3a61f', bg: 'rgba(243, 166, 31, 0.08)', title: '1ST CHAMPION', badge: 'badge-gold' },
-            { border: '#00e5ff', bg: 'rgba(0, 229, 255, 0.08)', title: '2ND RUNNER UP', badge: 'badge-cyan' },
-            { border: '#cd7f32', bg: 'rgba(205, 127, 50, 0.08)', title: '3RD PLACE', badge: 'badge-gold' }
-          ][idx];
-
-          return (
-            <div
-              key={item.rank}
-              className="glass-panel"
-              style={{
-                padding: '20px',
-                borderRadius: 'var(--radius-md)',
-                border: `1px solid ${colors.border}`,
-                background: colors.bg,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between'
-              }}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <Award size={18} color={colors.border} />
-                  <span style={{ fontSize: '0.8rem', fontWeight: '900', color: colors.border, letterSpacing: '0.5px' }}>
-                    {colors.title}
-                  </span>
-                </div>
-                <div style={{ fontSize: '1.35rem', fontWeight: '900', color: '#fff', marginBottom: '4px' }}>
-                  {item.team}
-                </div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  {item.region} 권역 • 상금 {item.prize}
-                </div>
-              </div>
-
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: '1.8rem', fontWeight: '900', color: colors.border, fontFamily: 'var(--font-display)' }}>
-                  {item.total}
-                </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                  치킨 {item.wwcd}회 • {item.killPoints}킬
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Trophy size={20} color="var(--accent-gold)" />
+            <span style={{ fontWeight: '900', color: '#fff', fontSize: '1.1rem' }}>{data.name}</span>
+          </div>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <span className="badge badge-gold" style={{ fontSize: '0.75rem', fontWeight: '800' }}>
+              {data.matchCount} MATCHES
+            </span>
+            <span className="badge" style={{ fontSize: '0.75rem', fontWeight: '800', background: 'rgba(255,255,255,0.08)', color: '#fff' }}>
+              {data.standings?.length ?? 0} TEAMS
+            </span>
+          </div>
+        </div>
+        {maps.length > 0 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '12px', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+            <MapIcon size={14} />
+            {maps.join(' · ')}
+          </div>
+        )}
       </div>
 
-      {/* 종합 리더보드 테이블 */}
-      <div className="glass-panel" style={{
-        borderRadius: 'var(--radius-md)',
-        overflow: 'hidden',
-        display: leaderboard.length === 0 ? 'none' : 'block'
-      }}>
-        <div style={{ padding: '18px 24px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#fff', margin: 0 }}>
-            종합 순위표 (Leaderboard)
-          </h3>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            총 16개 프로팀 참가
-          </span>
-        </div>
+      <Standings rows={data.standings ?? []} />
+      <PlayerStats rows={data.players ?? []} />
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.88rem' }}>
-            <thead>
-              <tr style={{ background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}>
-                <th style={{ padding: '14px 20px', width: '70px', textAlign: 'center' }}>순위</th>
-                <th style={{ padding: '14px 20px' }}>팀명</th>
-                <th style={{ padding: '14px 16px', textAlign: 'center' }}>권역</th>
-                <th style={{ padding: '14px 16px', textAlign: 'center' }}>치킨(WWCD)</th>
-                <th style={{ padding: '14px 16px', textAlign: 'center' }}>킬 포인트</th>
-                <th style={{ padding: '14px 16px', textAlign: 'center' }}>순위 포인트</th>
-                <th style={{ padding: '14px 20px', textAlign: 'center' }}>토탈 점수</th>
-                <th style={{ padding: '14px 20px', textAlign: 'right' }}>상금</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leaderboard.map((row) => {
-                const isTop3 = row.rank <= 3;
-                return (
-                  <tr
-                    key={row.rank}
-                    style={{
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
-                      background: isTop3 ? 'rgba(243, 166, 31, 0.03)' : 'transparent',
-                      transition: 'background 0.15s ease'
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)'}
-                    onMouseLeave={e => e.currentTarget.style.background = isTop3 ? 'rgba(243, 166, 31, 0.03)' : 'transparent'}
-                  >
-                    <td style={{ padding: '14px 20px', textAlign: 'center', fontWeight: '900', color: isTop3 ? 'var(--accent-gold)' : 'var(--text-muted)' }}>
-                      #{row.rank}
-                    </td>
-                    <td style={{ padding: '14px 20px', fontWeight: '800', color: '#fff' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{
-                          display: 'inline-block',
-                          width: '24px',
-                          height: '24px',
-                          borderRadius: '4px',
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          textAlign: 'center',
-                          lineHeight: '24px',
-                          fontSize: '0.72rem',
-                          fontWeight: '800',
-                          color: 'var(--accent-gold)'
-                        }}>
-                          {row.tag}
-                        </span>
-                        <span>{row.team}</span>
-                      </div>
-                    </td>
-                    <td style={{ padding: '14px 16px', textAlign: 'center', color: 'var(--text-muted)' }}>
-                      {row.region}
-                    </td>
-                    <td style={{ padding: '14px 16px', textAlign: 'center', fontWeight: '700', color: row.wwcd > 0 ? 'var(--accent-gold)' : 'var(--text-muted)' }}>
-                      {row.wwcd > 0 ? `${row.wwcd}회 🍗` : '0회'}
-                    </td>
-                    <td style={{ padding: '14px 16px', textAlign: 'center', color: 'var(--accent-cyan)', fontWeight: '700' }}>
-                      {row.killPoints}
-                    </td>
-                    <td style={{ padding: '14px 16px', textAlign: 'center', color: 'var(--text-muted)' }}>
-                      {row.rankPoints}
-                    </td>
-                    <td style={{ padding: '14px 20px', textAlign: 'center', fontWeight: '900', color: '#fff', fontSize: '1.05rem', fontFamily: 'var(--font-display)' }}>
-                      {row.total}
-                    </td>
-                    <td style={{ padding: '14px 20px', textAlign: 'right', color: 'var(--text-muted)', fontWeight: '600' }}>
-                      {row.prize}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+      <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.6 }}>
+        {data.note}
+        {data.source && (
+          <>
+            {' '}출처:{' '}
+            <a href={data.source} target="_blank" rel="noopener noreferrer"
+               style={{ color: 'var(--text-muted)', textDecoration: 'underline' }}>
+              PUBG 공식 API
+            </a>
+          </>
+        )}
+      </p>
+    </div>
+  );
+}
+
+function Standings({ rows }) {
+  if (rows.length === 0) return null;
+  return (
+    <div>
+      <SectionTitle icon={<Trophy size={18} color="var(--accent-gold)" />} text={`순위표 (${rows.length}팀)`} />
+      <div className="glass-panel" style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
+        <HeaderRow cols={['#', '팀', '경기', '치킨', '킬', '최고', '평균']} />
+        {rows.map(r => (
+          <div key={r.team} style={{
+            display: 'grid',
+            gridTemplateColumns: '48px 1fr 60px 60px 60px 60px 70px',
+            padding: '11px 16px',
+            borderTop: '1px solid rgba(255,255,255,0.04)',
+            alignItems: 'center',
+            fontSize: '0.86rem',
+            background: r.rank <= 3 ? 'rgba(243, 166, 31, 0.05)' : 'transparent'
+          }}>
+            <span style={{ fontWeight: '900', color: r.rank <= 3 ? 'var(--accent-gold)' : 'var(--text-muted)' }}>
+              {r.rank}
+            </span>
+            <span style={{ color: '#fff', fontWeight: '700' }}>
+              {r.team}
+              {!r.teamResolved && (
+                <span title="우리 선수 명단에서 팀을 찾지 못해 인게임 아이디 접두사를 씁니다"
+                      style={{ marginLeft: '6px', fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                  (태그)
+                </span>
+              )}
+              {r.league && (
+                <span style={{ marginLeft: '8px', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                  {r.league}
+                </span>
+              )}
+            </span>
+            <Cell value={r.matches} />
+            <Cell value={r.wwcd} highlight={r.wwcd > 0} />
+            <Cell value={r.kills} />
+            <Cell value={r.bestRank} />
+            <Cell value={r.avgRank} />
+          </div>
+        ))}
       </div>
     </div>
+  );
+}
+
+function PlayerStats({ rows }) {
+  const [expanded, setExpanded] = useState(false);
+  if (rows.length === 0) return null;
+  const shown = expanded ? rows : rows.slice(0, 15);
+
+  return (
+    <div>
+      <SectionTitle icon={<Crosshair size={18} color="var(--accent-cyan)" />} text={`선수 기록 (${rows.length}명)`} />
+      <div className="glass-panel" style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
+        <HeaderRow cols={['#', '선수', '팀', '경기', '킬', '데미지']} grid="48px 1fr 1fr 60px 60px 90px" />
+        {shown.map((p, i) => (
+          <div key={`${p.nickname}-${p.team}`} style={{
+            display: 'grid',
+            gridTemplateColumns: '48px 1fr 1fr 60px 60px 90px',
+            padding: '11px 16px',
+            borderTop: '1px solid rgba(255,255,255,0.04)',
+            alignItems: 'center',
+            fontSize: '0.86rem'
+          }}>
+            <span style={{ fontWeight: '900', color: i < 3 ? 'var(--accent-cyan)' : 'var(--text-muted)' }}>
+              {i + 1}
+            </span>
+            <span style={{ color: '#fff', fontWeight: '700' }}>{p.nickname}</span>
+            <span style={{ color: 'var(--text-muted)' }}>{p.team ?? NOT_SET}</span>
+            <Cell value={p.matches} />
+            <Cell value={p.kills} highlight />
+            <Cell value={Math.round(p.damage)} />
+          </div>
+        ))}
+      </div>
+      {rows.length > 15 && (
+        <button
+          onClick={() => setExpanded(v => !v)}
+          style={{
+            marginTop: '10px',
+            padding: '8px 16px',
+            borderRadius: 'var(--radius-sm)',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid var(--border-subtle)',
+            color: 'var(--text-muted)',
+            fontSize: '0.8rem',
+            fontWeight: '700',
+            cursor: 'pointer'
+          }}
+        >
+          {expanded ? '접기' : `전체 ${rows.length}명 보기`}
+        </button>
+      )}
+    </div>
+  );
+}
+
+function SectionTitle({ icon, text }) {
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      marginBottom: '12px',
+      paddingBottom: '8px',
+      borderBottom: '1px solid rgba(255,255,255,0.08)'
+    }}>
+      {icon}
+      <h2 style={{
+        fontSize: '1.05rem',
+        fontWeight: '900',
+        color: '#fff',
+        margin: 0,
+        letterSpacing: '0.04em',
+        textTransform: 'uppercase'
+      }}>
+        {text}
+      </h2>
+    </div>
+  );
+}
+
+function HeaderRow({ cols, grid = '48px 1fr 60px 60px 60px 60px 70px' }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: grid,
+      padding: '10px 16px',
+      background: 'rgba(255,255,255,0.03)',
+      fontSize: '0.74rem',
+      color: 'var(--text-muted)',
+      fontWeight: '800',
+      textTransform: 'uppercase',
+      letterSpacing: '0.04em'
+    }}>
+      {cols.map((c, i) => (
+        <span key={c} style={{ textAlign: i >= 2 ? 'right' : 'left' }}>{c}</span>
+      ))}
+    </div>
+  );
+}
+
+function Cell({ value, highlight = false }) {
+  const missing = value === null || value === undefined;
+  return (
+    <span style={{
+      textAlign: 'right',
+      color: missing ? 'var(--text-muted)' : (highlight ? 'var(--accent-gold)' : '#fff'),
+      fontWeight: highlight ? '800' : '600'
+    }}>
+      {missing ? '-' : value}
+    </span>
   );
 }
