@@ -1,0 +1,731 @@
+{
+  "id": "kr-pws2wf3",
+  "name": "PWS 2026 Phase 2 Week Final 3",
+  "category": "regional",
+  "source": "https://api.pubg.com/tournaments/kr-pws2wf3",
+  "createdAt": null,
+  "matchCount": 10,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "PHANTOM HEARTS",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 42,
+      "wwcd": 3,
+      "bestRank": 1,
+      "avgRank": 8.0,
+      "rank": 1
+    },
+    {
+      "team": "T1",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 60,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 6.5,
+      "rank": 2
+    },
+    {
+      "team": "Divine",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 55,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 4.6,
+      "rank": 3
+    },
+    {
+      "team": "AZLA PENTAGRAM",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 54,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.3,
+      "rank": 4
+    },
+    {
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 49,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.8,
+      "rank": 5
+    },
+    {
+      "team": "Baegopa",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 43,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.1,
+      "rank": 6
+    },
+    {
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 42,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.5,
+      "rank": 7
+    },
+    {
+      "team": "Eagle Owls",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 52,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 8.0,
+      "rank": 8
+    },
+    {
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 40,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 6.9,
+      "rank": 9
+    },
+    {
+      "team": "FN Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 32,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 7.9,
+      "rank": 10
+    },
+    {
+      "team": "Crazy Raccoon",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 32,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 9.8,
+      "rank": 11
+    },
+    {
+      "team": "GGWP",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 32,
+      "wwcd": 0,
+      "bestRank": 6,
+      "avgRank": 11.0,
+      "rank": 12
+    },
+    {
+      "team": "DAEJEON GAME PT",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 27,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 10.9,
+      "rank": 13
+    },
+    {
+      "team": "Vex E-Sports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 23,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 10.7,
+      "rank": 14
+    },
+    {
+      "team": "SLASH DOOM LAB",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 19,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 10.0,
+      "rank": 15
+    },
+    {
+      "team": "CFiVE",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 14,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 11.0,
+      "rank": 16
+    }
+  ],
+  "players": [
+    {
+      "nickname": "Type",
+      "team": "T1",
+      "league": "PWS",
+      "kills": 21,
+      "damage": 2193.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Barpo",
+      "team": "Divine",
+      "league": "PWS",
+      "kills": 20,
+      "damage": 2739.3,
+      "matches": 10
+    },
+    {
+      "nickname": "SINGAM",
+      "team": "Eagle Owls",
+      "league": "PWS",
+      "kills": 20,
+      "damage": 2046.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Heather",
+      "team": "T1",
+      "league": "PWS",
+      "kills": 17,
+      "damage": 3049.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Rex",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 17,
+      "damage": 2944.7,
+      "matches": 10
+    },
+    {
+      "nickname": "AKaN",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 17,
+      "damage": 2420.5,
+      "matches": 10
+    },
+    {
+      "nickname": "redzone",
+      "team": "AZLA PENTAGRAM",
+      "league": "PWS",
+      "kills": 16,
+      "damage": 2393.0,
+      "matches": 10
+    },
+    {
+      "nickname": "yugee",
+      "team": "Baegopa",
+      "league": "PWS",
+      "kills": 16,
+      "damage": 2322.7,
+      "matches": 10
+    },
+    {
+      "nickname": "King",
+      "team": "PHANTOM HEARTS",
+      "league": "PWS",
+      "kills": 16,
+      "damage": 2285.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Stella",
+      "team": "Divine",
+      "league": "PWS",
+      "kills": 14,
+      "damage": 2720.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Jaechan",
+      "team": "Eagle Owls",
+      "league": "PWS",
+      "kills": 14,
+      "damage": 2530.6,
+      "matches": 10
+    },
+    {
+      "nickname": "EEND",
+      "team": "T1",
+      "league": "PWS",
+      "kills": 14,
+      "damage": 2493.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Orca",
+      "team": "AZLA PENTAGRAM",
+      "league": "PWS",
+      "kills": 14,
+      "damage": 2333.5,
+      "matches": 10
+    },
+    {
+      "nickname": "seoul",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 13,
+      "damage": 3464.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Gyumin",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 13,
+      "damage": 2275.7,
+      "matches": 10
+    },
+    {
+      "nickname": "HAMMER",
+      "team": "AZLA PENTAGRAM",
+      "league": "PWS",
+      "kills": 13,
+      "damage": 2025.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Salute",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 12,
+      "damage": 3389.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Tosi",
+      "team": "Divine",
+      "league": "PWS",
+      "kills": 12,
+      "damage": 2769.1,
+      "matches": 10
+    },
+    {
+      "nickname": "BreaKers",
+      "team": "FN Esports",
+      "league": "PWS",
+      "kills": 12,
+      "damage": 2059.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Seongjang",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 12,
+      "damage": 1845.4,
+      "matches": 10
+    },
+    {
+      "nickname": "GGoBuGi",
+      "team": "Crazy Raccoon",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 2749.6,
+      "matches": 10
+    },
+    {
+      "nickname": "ZeniTh",
+      "team": "PHANTOM HEARTS",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 2581.3,
+      "matches": 10
+    },
+    {
+      "nickname": "GimJun",
+      "team": "PHANTOM HEARTS",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 2443.4,
+      "matches": 10
+    },
+    {
+      "nickname": "F1ame",
+      "team": "AZLA PENTAGRAM",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 2269.4,
+      "matches": 10
+    },
+    {
+      "nickname": "sony",
+      "team": "GGWP",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 1197.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Glaz",
+      "team": "Crazy Raccoon",
+      "league": "PWS",
+      "kills": 11,
+      "damage": 1090.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Heaven",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 10,
+      "damage": 2529.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Inonix",
+      "team": "Baegopa",
+      "league": "PWS",
+      "kills": 10,
+      "damage": 2388.1,
+      "matches": 10
+    },
+    {
+      "nickname": "taemin",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 10,
+      "damage": 2079.4,
+      "matches": 10
+    },
+    {
+      "nickname": "blackwalk",
+      "team": "Baegopa",
+      "league": "PWS",
+      "kills": 10,
+      "damage": 1903.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Hush",
+      "team": "FN Esports",
+      "league": "PWS",
+      "kills": 10,
+      "damage": 1107.4,
+      "matches": 10
+    },
+    {
+      "nickname": "wonderful",
+      "team": "Divine",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 2289.2,
+      "matches": 10
+    },
+    {
+      "nickname": "DIEL",
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 2153.6,
+      "matches": 10
+    },
+    {
+      "nickname": "instinct",
+      "team": "DAEJEON GAME PT",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 1823.3,
+      "matches": 10
+    },
+    {
+      "nickname": "fizzy",
+      "team": "DAEJEON GAME PT",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 1362.3,
+      "matches": 10
+    },
+    {
+      "nickname": "ROY",
+      "team": "Vex E-Sports",
+      "league": "PWS",
+      "kills": 9,
+      "damage": 1351.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Rain1ng",
+      "team": "T1",
+      "league": "PWS",
+      "kills": 8,
+      "damage": 1998.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Parkpro",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 8,
+      "damage": 1263.8,
+      "matches": 10
+    },
+    {
+      "nickname": "DK",
+      "team": "Eagle Owls",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 2501.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Pio",
+      "team": "Baegopa",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 2127.3,
+      "matches": 10
+    },
+    {
+      "nickname": "lawn",
+      "team": "Eagle Owls",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 1700.4,
+      "matches": 5
+    },
+    {
+      "nickname": "BeaN",
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 1556.5,
+      "matches": 10
+    },
+    {
+      "nickname": "kkachi",
+      "team": "FN Esports",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 1362.6,
+      "matches": 10
+    },
+    {
+      "nickname": "naheesoo",
+      "team": "GGWP",
+      "league": "PWS",
+      "kills": 7,
+      "damage": 1301.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Geunwon",
+      "team": "GGWP",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 1775.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Morek",
+      "team": "SLASH DOOM LAB",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 1650.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Nyeong",
+      "team": "Vex E-Sports",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 1618.3,
+      "matches": 10
+    },
+    {
+      "nickname": "vilo",
+      "team": "SLASH DOOM LAB",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 1390.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Americano",
+      "team": "GGWP",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 993.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Archi",
+      "team": "CFiVE",
+      "league": "PWS",
+      "kills": 6,
+      "damage": 815.0,
+      "matches": 10
+    },
+    {
+      "nickname": "PolarBear",
+      "team": "DAEJEON GAME PT",
+      "league": "PWS",
+      "kills": 5,
+      "damage": 1428.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Gyuyeon",
+      "team": "Crazy Raccoon",
+      "league": "PWS",
+      "kills": 5,
+      "damage": 1198.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Ayoh",
+      "team": "Crazy Raccoon",
+      "league": "PWS",
+      "kills": 5,
+      "damage": 1012.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Lure",
+      "team": "Vex E-Sports",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 1310.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Search",
+      "team": "DAEJEON GAME PT",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 1259.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Gray",
+      "team": "CFiVE",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 1231.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Solution",
+      "team": "Vex E-Sports",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 1092.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Freaky",
+      "team": "SLASH DOOM LAB",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 965.8,
+      "matches": 10
+    },
+    {
+      "nickname": "DAEVA",
+      "team": "PHANTOM HEARTS",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 885.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Malik",
+      "team": "CFiVE",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 852.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Right",
+      "team": "Eagle Owls",
+      "league": "PWS",
+      "kills": 4,
+      "damage": 703.6,
+      "matches": 5
+    },
+    {
+      "nickname": "EJ",
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "kills": 3,
+      "damage": 1431.4,
+      "matches": 10
+    },
+    {
+      "nickname": "muel",
+      "team": "SLASH DOOM LAB",
+      "league": "PWS",
+      "kills": 3,
+      "damage": 982.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Starlord",
+      "team": "FN Esports",
+      "league": "PWS",
+      "kills": 3,
+      "damage": 899.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Wanted",
+      "team": "GGWP",
+      "league": "PWS",
+      "kills": 2,
+      "damage": 303.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Hddanddan",
+      "team": "CFiVE",
+      "league": "PWS",
+      "kills": 0,
+      "damage": 570.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Krbyz",
+      "team": "CFiVE",
+      "league": "PWS",
+      "kills": 0,
+      "damage": 207.6,
+      "matches": 5
+    }
+  ]
+}

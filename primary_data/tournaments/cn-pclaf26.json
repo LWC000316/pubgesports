@@ -1,0 +1,715 @@
+{
+  "id": "cn-pclaf26",
+  "name": "PCL 2026 Autumn Finals",
+  "category": "regional",
+  "source": "https://api.pubg.com/tournaments/cn-pclaf26",
+  "createdAt": null,
+  "matchCount": 15,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "17 Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 82,
+      "wwcd": 3,
+      "bestRank": 1,
+      "avgRank": 7.13,
+      "rank": 1
+    },
+    {
+      "team": "Zhu Chao Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 56,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 5.8,
+      "rank": 2
+    },
+    {
+      "team": "MiKael",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 48,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 8.53,
+      "rank": 3
+    },
+    {
+      "team": "Four Angry Men",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 94,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.47,
+      "rank": 4
+    },
+    {
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 78,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.0,
+      "rank": 5
+    },
+    {
+      "team": "EDward Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 71,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.67,
+      "rank": 6
+    },
+    {
+      "team": "Weibo Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 45,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.73,
+      "rank": 7
+    },
+    {
+      "team": "Golden Quester Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 44,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.67,
+      "rank": 8
+    },
+    {
+      "team": "722 Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 41,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.53,
+      "rank": 9
+    },
+    {
+      "team": "XTART Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 39,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.53,
+      "rank": 10
+    },
+    {
+      "team": "007 Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 33,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 11.67,
+      "rank": 11
+    },
+    {
+      "team": "NewHappy",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 68,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.4,
+      "rank": 12
+    },
+    {
+      "team": "Soy Milk Squad",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 64,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.07,
+      "rank": 13
+    },
+    {
+      "team": "TYLOO",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 54,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.87,
+      "rank": 14
+    },
+    {
+      "team": "XiYouZhanDui",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 46,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 7.47,
+      "rank": 15
+    },
+    {
+      "team": "JD Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 43,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 10.47,
+      "rank": 16
+    }
+  ],
+  "players": [
+    {
+      "nickname": "xwudd",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 35,
+      "damage": 4719.8,
+      "matches": 15
+    },
+    {
+      "nickname": "L1ttle1ee",
+      "team": "NewHappy",
+      "league": "PCL",
+      "kills": 26,
+      "damage": 3961.6,
+      "matches": 15
+    },
+    {
+      "nickname": "HSmm",
+      "team": "Four Angry Men",
+      "league": "PCL",
+      "kills": 26,
+      "damage": 3489.9,
+      "matches": 15
+    },
+    {
+      "nickname": "WINDah",
+      "team": "Four Angry Men",
+      "league": "PCL",
+      "kills": 25,
+      "damage": 3985.4,
+      "matches": 15
+    },
+    {
+      "nickname": "MMing",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 23,
+      "damage": 5518.4,
+      "matches": 15
+    },
+    {
+      "nickname": "Axidd",
+      "team": "EDward Gaming",
+      "league": "PCL",
+      "kills": 23,
+      "damage": 3329.5,
+      "matches": 15
+    },
+    {
+      "nickname": "SpaceMan",
+      "team": "Four Angry Men",
+      "league": "PCL",
+      "kills": 22,
+      "damage": 4986.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Cui71",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 22,
+      "damage": 3689.8,
+      "matches": 15
+    },
+    {
+      "nickname": "DD",
+      "team": "Soy Milk Squad",
+      "league": "PCL",
+      "kills": 21,
+      "damage": 3774.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Shen",
+      "team": "Four Angry Men",
+      "league": "PCL",
+      "kills": 21,
+      "damage": 3436.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Yuyu",
+      "team": "XTART Gaming",
+      "league": "PCL",
+      "kills": 20,
+      "damage": 3176.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Xnan",
+      "team": "Zhu Chao Gaming",
+      "league": "PCL",
+      "kills": 19,
+      "damage": 3878.2,
+      "matches": 15
+    },
+    {
+      "nickname": "04NB",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 19,
+      "damage": 3357.2,
+      "matches": 15
+    },
+    {
+      "nickname": "OneDragon",
+      "team": "TYLOO",
+      "league": "PCL",
+      "kills": 18,
+      "damage": 4548.8,
+      "matches": 15
+    },
+    {
+      "nickname": "GuoTvT",
+      "team": "EDward Gaming",
+      "league": "PCL",
+      "kills": 18,
+      "damage": 3317.8,
+      "matches": 15
+    },
+    {
+      "nickname": "tiantianhaovo",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 18,
+      "damage": 2717.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Nirvana",
+      "team": "Soy Milk Squad",
+      "league": "PCL",
+      "kills": 18,
+      "damage": 2654.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Solo9",
+      "team": "EDward Gaming",
+      "league": "PCL",
+      "kills": 17,
+      "damage": 3820.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Xihan",
+      "team": "MiKael",
+      "league": "PCL",
+      "kills": 17,
+      "damage": 3320.5,
+      "matches": 15
+    },
+    {
+      "nickname": "L1Yapi",
+      "team": "NewHappy",
+      "league": "PCL",
+      "kills": 17,
+      "damage": 2879.4,
+      "matches": 15
+    },
+    {
+      "nickname": "1ee",
+      "team": "TYLOO",
+      "league": "PCL",
+      "kills": 17,
+      "damage": 2850.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Lilghost",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 16,
+      "damage": 3055.1,
+      "matches": 15
+    },
+    {
+      "nickname": "HuLiii",
+      "team": "Golden Quester Gaming",
+      "league": "PCL",
+      "kills": 16,
+      "damage": 3002.7,
+      "matches": 15
+    },
+    {
+      "nickname": "SuiX1ngKK",
+      "team": "Weibo Gaming",
+      "league": "PCL",
+      "kills": 16,
+      "damage": 2517.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Dec12th",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 16,
+      "damage": 2450.3,
+      "matches": 15
+    },
+    {
+      "nickname": "FORGEN1337",
+      "team": "Soy Milk Squad",
+      "league": "PCL",
+      "kills": 16,
+      "damage": 1968.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Dong",
+      "team": "Golden Quester Gaming",
+      "league": "PCL",
+      "kills": 15,
+      "damage": 2449.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Luxus",
+      "team": "722 Gaming",
+      "league": "PCL",
+      "kills": 15,
+      "damage": 2391.1,
+      "matches": 15
+    },
+    {
+      "nickname": "i26v6",
+      "team": "Petrichor Road",
+      "league": "PCL",
+      "kills": 14,
+      "damage": 3010.1,
+      "matches": 15
+    },
+    {
+      "nickname": "iL1u",
+      "team": "Weibo Gaming",
+      "league": "PCL",
+      "kills": 14,
+      "damage": 2281.5,
+      "matches": 15
+    },
+    {
+      "nickname": "hhxx",
+      "team": "MiKael",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 3937.0,
+      "matches": 15
+    },
+    {
+      "nickname": "WenBo",
+      "team": "17 Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 3561.5,
+      "matches": 15
+    },
+    {
+      "nickname": "Jie7",
+      "team": "Zhu Chao Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2897.3,
+      "matches": 15
+    },
+    {
+      "nickname": "XiaoAHao",
+      "team": "Zhu Chao Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2876.0,
+      "matches": 15
+    },
+    {
+      "nickname": "X1aoSa86",
+      "team": "007 Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2657.6,
+      "matches": 15
+    },
+    {
+      "nickname": "TangSeng",
+      "team": "XiYouZhanDui",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2560.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Bigt1ger",
+      "team": "NewHappy",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2522.3,
+      "matches": 15
+    },
+    {
+      "nickname": "PsychoZ",
+      "team": "722 Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2131.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Hhuixx7",
+      "team": "EDward Gaming",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 2033.5,
+      "matches": 15
+    },
+    {
+      "nickname": "WuKong",
+      "team": "XiYouZhanDui",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 1984.2,
+      "matches": 15
+    },
+    {
+      "nickname": "BaJie",
+      "team": "XiYouZhanDui",
+      "league": "PCL",
+      "kills": 13,
+      "damage": 1789.8,
+      "matches": 15
+    },
+    {
+      "nickname": "129",
+      "team": "NewHappy",
+      "league": "PCL",
+      "kills": 12,
+      "damage": 2677.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Cold119",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 12,
+      "damage": 2452.7,
+      "matches": 15
+    },
+    {
+      "nickname": "KeyS",
+      "team": "Zhu Chao Gaming",
+      "league": "PCL",
+      "kills": 11,
+      "damage": 3300.0,
+      "matches": 15
+    },
+    {
+      "nickname": "KKong",
+      "team": "TYLOO",
+      "league": "PCL",
+      "kills": 11,
+      "damage": 2157.3,
+      "matches": 15
+    },
+    {
+      "nickname": "DouZiVv",
+      "team": "MiKael",
+      "league": "PCL",
+      "kills": 11,
+      "damage": 2017.6,
+      "matches": 15
+    },
+    {
+      "nickname": "X1yu",
+      "team": "XTART Gaming",
+      "league": "PCL",
+      "kills": 10,
+      "damage": 1945.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Xcircle",
+      "team": "Soy Milk Squad",
+      "league": "PCL",
+      "kills": 9,
+      "damage": 2444.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Lu",
+      "team": "Golden Quester Gaming",
+      "league": "PCL",
+      "kills": 9,
+      "damage": 1289.4,
+      "matches": 15
+    },
+    {
+      "nickname": "HaoSkr",
+      "team": "TYLOO",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 2649.8,
+      "matches": 15
+    },
+    {
+      "nickname": "Future",
+      "team": "722 Gaming",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 2504.0,
+      "matches": 15
+    },
+    {
+      "nickname": "nanss",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1984.4,
+      "matches": 15
+    },
+    {
+      "nickname": "roll",
+      "team": "007 Gaming",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1826.2,
+      "matches": 15
+    },
+    {
+      "nickname": "RKBro",
+      "team": "Weibo Gaming",
+      "league": "PCL",
+      "kills": 8,
+      "damage": 1618.1,
+      "matches": 15
+    },
+    {
+      "nickname": "PPeng",
+      "team": "MiKael",
+      "league": "PCL",
+      "kills": 7,
+      "damage": 2443.7,
+      "matches": 15
+    },
+    {
+      "nickname": "TanKe11",
+      "team": "007 Gaming",
+      "league": "PCL",
+      "kills": 7,
+      "damage": 2184.2,
+      "matches": 15
+    },
+    {
+      "nickname": "i1Jing",
+      "team": "XTART Gaming",
+      "league": "PCL",
+      "kills": 7,
+      "damage": 1753.6,
+      "matches": 15
+    },
+    {
+      "nickname": "SuZe",
+      "team": "JD Gaming",
+      "league": "PCL",
+      "kills": 7,
+      "damage": 1508.9,
+      "matches": 15
+    },
+    {
+      "nickname": "ShaSeng",
+      "team": "XiYouZhanDui",
+      "league": "PCL",
+      "kills": 7,
+      "damage": 1341.2,
+      "matches": 15
+    },
+    {
+      "nickname": "Boliang",
+      "team": "Weibo Gaming",
+      "league": "PCL",
+      "kills": 7,
+      "damage": 1116.4,
+      "matches": 15
+    },
+    {
+      "nickname": "DJinRong",
+      "team": "007 Gaming",
+      "league": "PCL",
+      "kills": 5,
+      "damage": 1434.8,
+      "matches": 15
+    },
+    {
+      "nickname": "XiaoHuxxXX",
+      "team": "Golden Quester Gaming",
+      "league": "PCL",
+      "kills": 4,
+      "damage": 2560.9,
+      "matches": 15
+    },
+    {
+      "nickname": "He1Mao",
+      "team": "722 Gaming",
+      "league": "PCL",
+      "kills": 4,
+      "damage": 1929.8,
+      "matches": 10
+    },
+    {
+      "nickname": "77aws",
+      "team": "XTART Gaming",
+      "league": "PCL",
+      "kills": 2,
+      "damage": 1201.5,
+      "matches": 15
+    },
+    {
+      "nickname": "shan",
+      "team": "722 Gaming",
+      "league": "PCL",
+      "kills": 1,
+      "damage": 595.6,
+      "matches": 5
+    }
+  ]
+}

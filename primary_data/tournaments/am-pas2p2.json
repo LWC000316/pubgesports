@@ -1,0 +1,1298 @@
+{
+  "id": "am-pas2p2",
+  "name": "PAS 2 2026 Playoff 2",
+  "category": "regional",
+  "source": "https://api.pubg.com/tournaments/am-pas2p2",
+  "createdAt": null,
+  "matchCount": 15,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "Pest Control",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 66,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 6.93,
+      "rank": 1
+    },
+    {
+      "team": "DUEL",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 49,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 9.07,
+      "rank": 2
+    },
+    {
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 30,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 5.0,
+      "rank": 3
+    },
+    {
+      "team": "Gosu Intl Gaming Alliance",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 61,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 10.33,
+      "rank": 4
+    },
+    {
+      "team": "Circle Nine",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 49,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.2,
+      "rank": 5
+    },
+    {
+      "team": "55 e-Sports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 48,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.5,
+      "rank": 6
+    },
+    {
+      "team": "No Org",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 45,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.5,
+      "rank": 7
+    },
+    {
+      "team": "No Way",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 45,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.0,
+      "rank": 8
+    },
+    {
+      "team": "BILU",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 27,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.8,
+      "rank": 9
+    },
+    {
+      "team": "TOYO",
+      "league": null,
+      "teamResolved": false,
+      "matches": 5,
+      "kills": 20,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.0,
+      "rank": 10
+    },
+    {
+      "team": "Copenhagen Wolves",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 17,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.4,
+      "rank": 11
+    },
+    {
+      "team": "For Nothing",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 17,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.7,
+      "rank": 12
+    },
+    {
+      "team": "Newgen Allstars",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 56,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 9.7,
+      "rank": 13
+    },
+    {
+      "team": "Per Diem Withholders",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 44,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 9.0,
+      "rank": 14
+    },
+    {
+      "team": "Team Liquid",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 33,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.0,
+      "rank": 15
+    },
+    {
+      "team": "SHHHHHHHH",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 30,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 10.6,
+      "rank": 16
+    },
+    {
+      "team": "INSK",
+      "league": null,
+      "teamResolved": false,
+      "matches": 10,
+      "kills": 29,
+      "wwcd": 0,
+      "bestRank": 5,
+      "avgRank": 9.6,
+      "rank": 17
+    },
+    {
+      "team": "Team Falcons",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 28,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.4,
+      "rank": 18
+    },
+    {
+      "team": "Last Minute Roster",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 28,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 7.2,
+      "rank": 19
+    },
+    {
+      "team": "Me anoto mi tio",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 27,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 9.4,
+      "rank": 20
+    },
+    {
+      "team": "Taesan",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 26,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 9.4,
+      "rank": 21
+    },
+    {
+      "team": "ROC Esports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 25,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 8.8,
+      "rank": 22
+    },
+    {
+      "team": "Keep Out",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 22,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 8.2,
+      "rank": 23
+    },
+    {
+      "team": "Team FATE",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 21,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 7.6,
+      "rank": 24
+    },
+    {
+      "team": "Earthworms",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 17,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.0,
+      "rank": 25
+    },
+    {
+      "team": "OVERP0WERED",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 16,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 6.8,
+      "rank": 26
+    },
+    {
+      "team": "ARC e-Sports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 15,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 10.7,
+      "rank": 27
+    },
+    {
+      "team": "Boundary Esports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 11,
+      "wwcd": 0,
+      "bestRank": 5,
+      "avgRank": 10.2,
+      "rank": 28
+    },
+    {
+      "team": "Antarctic Fox",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 8,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 9.4,
+      "rank": 29
+    }
+  ],
+  "players": [
+    {
+      "nickname": "JoShY",
+      "team": "Pest Control",
+      "league": "AMER",
+      "kills": 25,
+      "damage": 3600.5,
+      "matches": 15
+    },
+    {
+      "nickname": "Shinboi",
+      "team": "Newgen Allstars",
+      "league": "AMER",
+      "kills": 21,
+      "damage": 3078.1,
+      "matches": 10
+    },
+    {
+      "nickname": "SneakAttack",
+      "team": "Gosu Intl Gaming Alliance",
+      "league": "AMER",
+      "kills": 20,
+      "damage": 2577.2,
+      "matches": 15
+    },
+    {
+      "nickname": "Ar2n",
+      "team": "Per Diem Withholders",
+      "league": "AMER",
+      "kills": 16,
+      "damage": 3001.1,
+      "matches": 10
+    },
+    {
+      "nickname": "possa",
+      "team": "Circle Nine",
+      "league": "AMER",
+      "kills": 16,
+      "damage": 2785.5,
+      "matches": 10
+    },
+    {
+      "nickname": "bielmtcalmo",
+      "team": "Circle Nine",
+      "league": "AMER",
+      "kills": 16,
+      "damage": 2574.0,
+      "matches": 10
+    },
+    {
+      "nickname": "PIPAA",
+      "team": "No Org",
+      "league": "AMER",
+      "kills": 15,
+      "damage": 2704.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Balefrost",
+      "team": "DUEL",
+      "league": "AMER",
+      "kills": 15,
+      "damage": 2529.0,
+      "matches": 15
+    },
+    {
+      "nickname": "KerakTMz",
+      "team": "55 e-Sports",
+      "league": "AMER",
+      "kills": 15,
+      "damage": 2409.7,
+      "matches": 10
+    },
+    {
+      "nickname": "pentalol",
+      "team": "DUEL",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 3781.5,
+      "matches": 15
+    },
+    {
+      "nickname": "Myca",
+      "team": "DUEL",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 3012.8,
+      "matches": 15
+    },
+    {
+      "nickname": "froost1k-",
+      "team": "Gosu Intl Gaming Alliance",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 2693.8,
+      "matches": 15
+    },
+    {
+      "nickname": "slabyy",
+      "team": "No Way",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 2615.6,
+      "matches": 10
+    },
+    {
+      "nickname": "gabriew",
+      "team": "55 e-Sports",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 2493.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Bizzler",
+      "team": "Per Diem Withholders",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 2357.4,
+      "matches": 10
+    },
+    {
+      "nickname": "K1lawi",
+      "team": "Gosu Intl Gaming Alliance",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 2050.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Poonage",
+      "team": "Newgen Allstars",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 1955.7,
+      "matches": 10
+    },
+    {
+      "nickname": "gladiador",
+      "team": "No Way",
+      "league": "AMER",
+      "kills": 14,
+      "damage": 1740.4,
+      "matches": 10
+    },
+    {
+      "nickname": "beNja",
+      "team": "No Org",
+      "league": "AMER",
+      "kills": 13,
+      "damage": 2548.9,
+      "matches": 10
+    },
+    {
+      "nickname": "zkrakeN",
+      "team": "Circle Nine",
+      "league": "AMER",
+      "kills": 13,
+      "damage": 2547.9,
+      "matches": 10
+    },
+    {
+      "nickname": "shanedoe",
+      "team": "Pest Control",
+      "league": "AMER",
+      "kills": 13,
+      "damage": 2386.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Tny7",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 13,
+      "damage": 2188.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Shrimzy",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 13,
+      "damage": 2147.7,
+      "matches": 5
+    },
+    {
+      "nickname": "HotNSpicy",
+      "team": "Pest Control",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 3840.0,
+      "matches": 15
+    },
+    {
+      "nickname": "xur",
+      "team": "Gosu Intl Gaming Alliance",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 2359.3,
+      "matches": 10
+    },
+    {
+      "nickname": "choppy",
+      "team": "Newgen Allstars",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 2356.2,
+      "matches": 10
+    },
+    {
+      "nickname": "sxntastico",
+      "team": "ROC Esports",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 2215.2,
+      "matches": 5
+    },
+    {
+      "nickname": "OhNytavoN",
+      "team": "BILU",
+      "league": "AMER",
+      "kills": 12,
+      "damage": 1435.7,
+      "matches": 5
+    },
+    {
+      "nickname": "lewis",
+      "team": "INSK",
+      "league": null,
+      "kills": 12,
+      "damage": 1412.2,
+      "matches": 10
+    },
+    {
+      "nickname": "sweezy",
+      "team": "55 e-Sports",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 2233.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Tiska-",
+      "team": "Last Minute Roster",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 1406.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Sharpshot",
+      "team": "Last Minute Roster",
+      "league": "AMER",
+      "kills": 11,
+      "damage": 1369.2,
+      "matches": 5
+    },
+    {
+      "nickname": "guizeraa237",
+      "team": "No Org",
+      "league": "AMER",
+      "kills": 10,
+      "damage": 2405.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Adam",
+      "team": "Pest Control",
+      "league": "AMER",
+      "kills": 10,
+      "damage": 1775.8,
+      "matches": 10
+    },
+    {
+      "nickname": "diyy",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 10,
+      "damage": 1626.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Tater",
+      "team": "Team FATE",
+      "league": "AMER",
+      "kills": 10,
+      "damage": 1557.0,
+      "matches": 5
+    },
+    {
+      "nickname": "zVini-_-",
+      "team": "BILU",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 2372.7,
+      "matches": 5
+    },
+    {
+      "nickname": "Kalniix",
+      "team": "SHHHHHHHH",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 2175.1,
+      "matches": 15
+    },
+    {
+      "nickname": "gats",
+      "team": "Per Diem Withholders",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 2086.6,
+      "matches": 10
+    },
+    {
+      "nickname": "Stokeley",
+      "team": "Newgen Allstars",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 1994.1,
+      "matches": 10
+    },
+    {
+      "nickname": "ZxLopes",
+      "team": "No Way",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 1875.4,
+      "matches": 10
+    },
+    {
+      "nickname": "danitw",
+      "team": "Me anoto mi tio",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 1432.6,
+      "matches": 10
+    },
+    {
+      "nickname": "FaKe",
+      "team": "SHHHHHHHH",
+      "league": "AMER",
+      "kills": 9,
+      "damage": 885.1,
+      "matches": 15
+    },
+    {
+      "nickname": "Adyra",
+      "team": "Me anoto mi tio",
+      "league": "AMER",
+      "kills": 8,
+      "damage": 2333.8,
+      "matches": 10
+    },
+    {
+      "nickname": "CowBoi",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 8,
+      "damage": 2091.4,
+      "matches": 5
+    },
+    {
+      "nickname": "gloock77",
+      "team": "No Way",
+      "league": "AMER",
+      "kills": 8,
+      "damage": 1797.5,
+      "matches": 10
+    },
+    {
+      "nickname": "luke12",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 8,
+      "damage": 1755.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Sprayerzz",
+      "team": "For Nothing",
+      "league": "AMER",
+      "kills": 8,
+      "damage": 1675.5,
+      "matches": 10
+    },
+    {
+      "nickname": "rnzeera",
+      "team": "55 e-Sports",
+      "league": "AMER",
+      "kills": 8,
+      "damage": 1419.2,
+      "matches": 10
+    },
+    {
+      "nickname": "SOLDZZZZ93",
+      "team": "TOYO",
+      "league": null,
+      "kills": 8,
+      "damage": 1021.6,
+      "matches": 5
+    },
+    {
+      "nickname": "v1n1zxz",
+      "team": "No Org",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 2749.3,
+      "matches": 10
+    },
+    {
+      "nickname": "kl4uZeera",
+      "team": "SHHHHHHHH",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 2290.4,
+      "matches": 15
+    },
+    {
+      "nickname": "cauan7zin",
+      "team": "ROC Esports",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 1980.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Luizeer4",
+      "team": "INSK",
+      "league": null,
+      "kills": 7,
+      "damage": 1521.3,
+      "matches": 9
+    },
+    {
+      "nickname": "Superlfp1",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 1322.0,
+      "matches": 5
+    },
+    {
+      "nickname": "oredanaP",
+      "team": "Taesan",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 1305.8,
+      "matches": 10
+    },
+    {
+      "nickname": "LOK1fps",
+      "team": "Keep Out",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 1135.4,
+      "matches": 5
+    },
+    {
+      "nickname": "PurdyKurty",
+      "team": "Team Liquid",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 1098.7,
+      "matches": 5
+    },
+    {
+      "nickname": "seventteen",
+      "team": "Keep Out",
+      "league": "AMER",
+      "kills": 7,
+      "damage": 965.1,
+      "matches": 5
+    },
+    {
+      "nickname": "andreww",
+      "team": "Me anoto mi tio",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 2153.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Fakezin77",
+      "team": "TOYO",
+      "league": null,
+      "kills": 6,
+      "damage": 1678.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Woo1y",
+      "team": "DUEL",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 1601.0,
+      "matches": 15
+    },
+    {
+      "nickname": "infinite",
+      "team": "OVERP0WERED",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 1340.3,
+      "matches": 5
+    },
+    {
+      "nickname": "As-Nico",
+      "team": "Taesan",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 1066.3,
+      "matches": 10
+    },
+    {
+      "nickname": "KaraM",
+      "team": "Pest Control",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 996.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Dadinho5kk",
+      "team": "ARC e-Sports",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 907.9,
+      "matches": 10
+    },
+    {
+      "nickname": "RepoLiN",
+      "team": "OVERP0WERED",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 795.4,
+      "matches": 5
+    },
+    {
+      "nickname": "bibinxzol",
+      "team": "Boundary Esports",
+      "league": "AMER",
+      "kills": 6,
+      "damage": 629.9,
+      "matches": 5
+    },
+    {
+      "nickname": "San71Hero1",
+      "team": "SHHHHHHHH",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 1734.8,
+      "matches": 15
+    },
+    {
+      "nickname": "J4M",
+      "team": "Per Diem Withholders",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 1594.0,
+      "matches": 10
+    },
+    {
+      "nickname": "tysN-_x",
+      "team": "Earthworms",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 1279.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Snakers",
+      "team": "Copenhagen Wolves",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 1174.4,
+      "matches": 5
+    },
+    {
+      "nickname": "seven",
+      "team": "INSK",
+      "league": null,
+      "kills": 5,
+      "damage": 1173.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Kickstart",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 1170.8,
+      "matches": 5
+    },
+    {
+      "nickname": "0racle_",
+      "team": "INSK",
+      "league": null,
+      "kills": 5,
+      "damage": 1027.2,
+      "matches": 10
+    },
+    {
+      "nickname": "TGLTN",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 987.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Haven",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 947.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Gustav",
+      "team": "Team Falcons",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 914.9,
+      "matches": 5
+    },
+    {
+      "nickname": "fana",
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 911.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Kaibutsu--",
+      "team": "Taesan",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 666.0,
+      "matches": 10
+    },
+    {
+      "nickname": "xennny",
+      "team": "Team FATE",
+      "league": "AMER",
+      "kills": 5,
+      "damage": 386.4,
+      "matches": 5
+    },
+    {
+      "nickname": "PauloSam",
+      "team": "For Nothing",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1661.0,
+      "matches": 10
+    },
+    {
+      "nickname": "NCLS-",
+      "team": "Me anoto mi tio",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1548.6,
+      "matches": 10
+    },
+    {
+      "nickname": "HUGHLIGAN",
+      "team": "Earthworms",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1542.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Fludd",
+      "team": "Copenhagen Wolves",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1513.0,
+      "matches": 5
+    },
+    {
+      "nickname": "sparkingg",
+      "team": "ROC Esports",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1450.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Its_Nlan",
+      "team": "Earthworms",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1381.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Dr4FTk1NG",
+      "team": "Circle Nine",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1185.4,
+      "matches": 10
+    },
+    {
+      "nickname": "RADS",
+      "team": "Keep Out",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 1063.4,
+      "matches": 5
+    },
+    {
+      "nickname": "zZRISE",
+      "team": "Taesan",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 766.2,
+      "matches": 5
+    },
+    {
+      "nickname": "miksUU",
+      "team": "Earthworms",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 712.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Fachitakrr-",
+      "team": "Taesan",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 705.0,
+      "matches": 5
+    },
+    {
+      "nickname": "hwinn",
+      "team": "Copenhagen Wolves",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 690.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Vox",
+      "team": "Copenhagen Wolves",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 589.8,
+      "matches": 5
+    },
+    {
+      "nickname": "kajeeb",
+      "team": "Antarctic Fox",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 584.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Bielzera",
+      "team": "Keep Out",
+      "league": "AMER",
+      "kills": 4,
+      "damage": 436.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Jibbss",
+      "team": "ARC e-Sports",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 1703.2,
+      "matches": 10
+    },
+    {
+      "nickname": "zDarkCastle",
+      "team": "ARC e-Sports",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 1233.2,
+      "matches": 10
+    },
+    {
+      "nickname": "fl8nkr",
+      "team": "Team FATE",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 902.7,
+      "matches": 5
+    },
+    {
+      "nickname": "napoly",
+      "team": "For Nothing",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 875.1,
+      "matches": 10
+    },
+    {
+      "nickname": "emikxz11",
+      "team": "TOYO",
+      "league": null,
+      "kills": 3,
+      "damage": 789.6,
+      "matches": 5
+    },
+    {
+      "nickname": "MAURILIO1",
+      "team": "BILU",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 734.3,
+      "matches": 5
+    },
+    {
+      "nickname": "FROGMAN1",
+      "team": "BILU",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 651.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Capitan",
+      "team": "TOYO",
+      "league": null,
+      "kills": 3,
+      "damage": 628.6,
+      "matches": 5
+    },
+    {
+      "nickname": "LiiPeeXx",
+      "team": "ARC e-Sports",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 594.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Ohmlalov",
+      "team": "Antarctic Fox",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 557.5,
+      "matches": 5
+    },
+    {
+      "nickname": "abdou",
+      "team": "Last Minute Roster",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 541.9,
+      "matches": 5
+    },
+    {
+      "nickname": "vxras",
+      "team": "OVERP0WERED",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 459.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Sqinzy",
+      "team": "Boundary Esports",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 459.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Chakouchhh",
+      "team": "Last Minute Roster",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 290.7,
+      "matches": 5
+    },
+    {
+      "nickname": "TimFee",
+      "team": "Team FATE",
+      "league": "AMER",
+      "kills": 3,
+      "damage": 229.1,
+      "matches": 5
+    },
+    {
+      "nickname": "rbN777",
+      "team": "ROC Esports",
+      "league": "AMER",
+      "kills": 2,
+      "damage": 1078.9,
+      "matches": 5
+    },
+    {
+      "nickname": "Pasty",
+      "team": "Boundary Esports",
+      "league": "AMER",
+      "kills": 2,
+      "damage": 308.9,
+      "matches": 5
+    },
+    {
+      "nickname": "zelo",
+      "team": "OVERP0WERED",
+      "league": "AMER",
+      "kills": 1,
+      "damage": 831.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Plushiee",
+      "team": "Antarctic Fox",
+      "league": "AMER",
+      "kills": 1,
+      "damage": 682.5,
+      "matches": 5
+    },
+    {
+      "nickname": "LucasMS",
+      "team": "For Nothing",
+      "league": "AMER",
+      "kills": 1,
+      "damage": 577.6,
+      "matches": 5
+    },
+    {
+      "nickname": "gmoo",
+      "team": "For Nothing",
+      "league": "AMER",
+      "kills": 1,
+      "damage": 556.3,
+      "matches": 5
+    },
+    {
+      "nickname": "SnorlaXx",
+      "team": "Gosu Intl Gaming Alliance",
+      "league": "AMER",
+      "kills": 1,
+      "damage": 397.1,
+      "matches": 5
+    },
+    {
+      "nickname": "tmj2s",
+      "team": "Antarctic Fox",
+      "league": "AMER",
+      "kills": 0,
+      "damage": 438.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Jimmy",
+      "team": "Boundary Esports",
+      "league": "AMER",
+      "kills": 0,
+      "damage": 145.2,
+      "matches": 5
+    }
+  ]
+}

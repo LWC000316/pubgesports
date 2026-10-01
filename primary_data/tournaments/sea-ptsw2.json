@@ -1,0 +1,1067 @@
+{
+  "id": "sea-ptsw2",
+  "name": "PTS 2026 Phase 2 Week 2",
+  "category": "regional",
+  "source": "https://api.pubg.com/tournaments/sea-ptsw2",
+  "createdAt": null,
+  "matchCount": 10,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "FULL SENSE",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 101,
+      "wwcd": 4,
+      "bestRank": 1,
+      "avgRank": 3.8,
+      "rank": 1
+    },
+    {
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 39,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 4.6,
+      "rank": 2
+    },
+    {
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 34,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.7,
+      "rank": 3
+    },
+    {
+      "team": "Buriram United Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 28,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 3.6,
+      "rank": 4
+    },
+    {
+      "team": "Theerathon Five",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 22,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.0,
+      "rank": 5
+    },
+    {
+      "team": "Runner Esport",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 15,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.8,
+      "rank": 6
+    },
+    {
+      "team": "Allin Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 44,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 7.6,
+      "rank": 7
+    },
+    {
+      "team": "Zyrtec",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 39,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 8.3,
+      "rank": 8
+    },
+    {
+      "team": "Sharper Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 36,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 9.4,
+      "rank": 9
+    },
+    {
+      "team": "Armory Gaming",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 32,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 7.2,
+      "rank": 10
+    },
+    {
+      "team": "Matilda Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 26,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 8.7,
+      "rank": 11
+    },
+    {
+      "team": "FIRST KILL ESPORTS",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 24,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.2,
+      "rank": 12
+    },
+    {
+      "team": "EArena",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 23,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 5.8,
+      "rank": 13
+    },
+    {
+      "team": "IWIN Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 22,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 8.6,
+      "rank": 14
+    },
+    {
+      "team": "FW Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 20,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.4,
+      "rank": 15
+    },
+    {
+      "team": "AK Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 19,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 10.1,
+      "rank": 16
+    },
+    {
+      "team": "KanomBOT",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 15,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 10.8,
+      "rank": 17
+    },
+    {
+      "team": "I JET KAE",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 13,
+      "wwcd": 0,
+      "bestRank": 6,
+      "avgRank": 11.8,
+      "rank": 18
+    },
+    {
+      "team": "New Generation Success E-sports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 12,
+      "wwcd": 0,
+      "bestRank": 11,
+      "avgRank": 13.8,
+      "rank": 19
+    },
+    {
+      "team": "Team Of The Year",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 10,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 8.8,
+      "rank": 20
+    },
+    {
+      "team": "Genesis Of Divine",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 10,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 10.8,
+      "rank": 21
+    },
+    {
+      "team": "PEEK A BOO HOO",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 9,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 10.8,
+      "rank": 22
+    },
+    {
+      "team": "SIENA",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 8,
+      "wwcd": 0,
+      "bestRank": 10,
+      "avgRank": 12.4,
+      "rank": 23
+    },
+    {
+      "team": "IO The Legend",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 6,
+      "wwcd": 0,
+      "bestRank": 11,
+      "avgRank": 12.6,
+      "rank": 24
+    }
+  ],
+  "players": [
+    {
+      "nickname": "Thanad0l",
+      "team": "FULL SENSE",
+      "league": "PTS",
+      "kills": 33,
+      "damage": 5237.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Flash",
+      "team": "FULL SENSE",
+      "league": "PTS",
+      "kills": 29,
+      "damage": 3471.6,
+      "matches": 10
+    },
+    {
+      "nickname": "Flukky",
+      "team": "FULL SENSE",
+      "league": "PTS",
+      "kills": 26,
+      "damage": 4899.0,
+      "matches": 10
+    },
+    {
+      "nickname": "AresAikon",
+      "team": "Zyrtec",
+      "league": "PTS",
+      "kills": 19,
+      "damage": 2618.8,
+      "matches": 10
+    },
+    {
+      "nickname": "RogueNANZMY",
+      "team": "Allin Esports",
+      "league": "PTS",
+      "kills": 18,
+      "damage": 2740.2,
+      "matches": 10
+    },
+    {
+      "nickname": "KM99",
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "kills": 14,
+      "damage": 2450.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Jacob",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 14,
+      "damage": 1464.7,
+      "matches": 5
+    },
+    {
+      "nickname": "Belmoth",
+      "team": "FULL SENSE",
+      "league": "PTS",
+      "kills": 13,
+      "damage": 3145.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Earthzapalui",
+      "team": "Sharper Esports",
+      "league": "PTS",
+      "kills": 13,
+      "damage": 2330.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Bragalixz",
+      "team": "Armory Gaming",
+      "league": "PTS",
+      "kills": 11,
+      "damage": 1952.2,
+      "matches": 5
+    },
+    {
+      "nickname": "skyy",
+      "team": "Allin Esports",
+      "league": "PTS",
+      "kills": 11,
+      "damage": 1683.6,
+      "matches": 10
+    },
+    {
+      "nickname": "Scappy",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 11,
+      "damage": 1385.3,
+      "matches": 5
+    },
+    {
+      "nickname": "ThanawatTH",
+      "team": "Sharper Esports",
+      "league": "PTS",
+      "kills": 10,
+      "damage": 2117.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Jdaii",
+      "team": "Sharper Esports",
+      "league": "PTS",
+      "kills": 10,
+      "damage": 1849.2,
+      "matches": 10
+    },
+    {
+      "nickname": "FAKER",
+      "team": "Matilda Esports",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1936.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Pody",
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1747.6,
+      "matches": 10
+    },
+    {
+      "nickname": "beartic-",
+      "team": "Allin Esports",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1389.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Champtinho",
+      "team": "FIRST KILL ESPORTS",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1317.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Khawkong",
+      "team": "Theerathon Five",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1309.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Piastri",
+      "team": "FIRST KILL ESPORTS",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1272.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Riskyyz",
+      "team": "Armory Gaming",
+      "league": "PTS",
+      "kills": 9,
+      "damage": 1188.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Master",
+      "team": "IWIN Esports",
+      "league": "PTS",
+      "kills": 8,
+      "damage": 1547.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Kannn",
+      "team": "Buriram United Esports",
+      "league": "PTS",
+      "kills": 8,
+      "damage": 1285.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Pathompong",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 8,
+      "damage": 1256.9,
+      "matches": 5
+    },
+    {
+      "nickname": "Hatsawat",
+      "team": "Buriram United Esports",
+      "league": "PTS",
+      "kills": 8,
+      "damage": 968.0,
+      "matches": 5
+    },
+    {
+      "nickname": "KISS",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1951.7,
+      "matches": 5
+    },
+    {
+      "nickname": "Estherline",
+      "team": "Matilda Esports",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1707.0,
+      "matches": 10
+    },
+    {
+      "nickname": "DimasTy",
+      "team": "Zyrtec",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1642.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Aegon",
+      "team": "FW Esports",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1490.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Sapnix",
+      "team": "Armory Gaming",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1371.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Nourinz",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1338.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Baren",
+      "team": "Made in Thailand",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1307.0,
+      "matches": 5
+    },
+    {
+      "nickname": "C0NAXY",
+      "team": "IWIN Esports",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1276.2,
+      "matches": 5
+    },
+    {
+      "nickname": "JaoKhuN-",
+      "team": "Runner Esport",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 1245.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Che4kk1tzx",
+      "team": "Matilda Esports",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 938.3,
+      "matches": 10
+    },
+    {
+      "nickname": "J4ME",
+      "team": "Zyrtec",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 871.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Wanyerist",
+      "team": "New Generation Success E-sports",
+      "league": "PTS",
+      "kills": 7,
+      "damage": 779.5,
+      "matches": 5
+    },
+    {
+      "nickname": "RiwZ",
+      "team": "Buriram United Esports",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 1838.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Noardra",
+      "team": "Buriram United Esports",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 1676.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Syrax",
+      "team": "Zyrtec",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 1454.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Roger",
+      "team": "Allin Esports",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 1315.9,
+      "matches": 10
+    },
+    {
+      "nickname": "OHPONDZ",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 1114.1,
+      "matches": 5
+    },
+    {
+      "nickname": "BiONiXgg",
+      "team": "AK Esports",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 1067.3,
+      "matches": 10
+    },
+    {
+      "nickname": "DTYXx_x",
+      "team": "AK Esports",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 743.8,
+      "matches": 10
+    },
+    {
+      "nickname": "SamMaskCH",
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "kills": 6,
+      "damage": 707.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Jayce",
+      "team": "IWIN Esports",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1661.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Sunnoname",
+      "team": "I JET KAE",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1515.0,
+      "matches": 10
+    },
+    {
+      "nickname": "RangerX",
+      "team": "Theerathon Five",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1406.2,
+      "matches": 5
+    },
+    {
+      "nickname": "iK9z",
+      "team": "AK Esports",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1401.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Billy",
+      "team": "I JET KAE",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1263.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Warden",
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 1042.0,
+      "matches": 8
+    },
+    {
+      "nickname": "SixSackz",
+      "team": "Armory Gaming",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 982.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Curt",
+      "team": "FW Esports",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 705.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Sunter",
+      "team": "Runner Esport",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 599.2,
+      "matches": 5
+    },
+    {
+      "nickname": "JonSnowz",
+      "team": "SIENA",
+      "league": "PTS",
+      "kills": 5,
+      "damage": 334.9,
+      "matches": 5
+    },
+    {
+      "nickname": "ExcroziT",
+      "team": "Theerathon Five",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 1091.9,
+      "matches": 5
+    },
+    {
+      "nickname": "zeirer",
+      "team": "PEEK A BOO HOO",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 980.3,
+      "matches": 5
+    },
+    {
+      "nickname": "TiGGER",
+      "team": "Theerathon Five",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 960.7,
+      "matches": 5
+    },
+    {
+      "nickname": "Banana0ne",
+      "team": "FW Esports",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 862.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Xizzy",
+      "team": "KanomBOT",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 731.8,
+      "matches": 5
+    },
+    {
+      "nickname": "LeonzQ",
+      "team": "KanomBOT",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 668.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Sakky",
+      "team": "Genesis Of Divine",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 651.7,
+      "matches": 5
+    },
+    {
+      "nickname": "bestmins",
+      "team": "Genesis Of Divine",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 644.9,
+      "matches": 5
+    },
+    {
+      "nickname": "RossitedJR",
+      "team": "KanomBOT",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 599.7,
+      "matches": 5
+    },
+    {
+      "nickname": "rEiiz",
+      "team": "FW Esports",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 584.9,
+      "matches": 5
+    },
+    {
+      "nickname": "Dino",
+      "team": "Team Of The Year",
+      "league": "PTS",
+      "kills": 4,
+      "damage": 368.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Thunderz",
+      "team": "Sharper Esports",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 782.6,
+      "matches": 10
+    },
+    {
+      "nickname": "botflukez",
+      "team": "Team Of The Year",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 734.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Windieselx-",
+      "team": "Matilda Esports",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 682.6,
+      "matches": 10
+    },
+    {
+      "nickname": "PetDrET",
+      "team": "KanomBOT",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 642.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Revenants",
+      "team": "FIRST KILL ESPORTS",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 567.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Gems",
+      "team": "PEEK A BOO HOO",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 535.5,
+      "matches": 5
+    },
+    {
+      "nickname": "FlintMinJae",
+      "team": "FIRST KILL ESPORTS",
+      "league": "PTS",
+      "kills": 3,
+      "damage": 490.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Lericz",
+      "team": "EArena",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 990.6,
+      "matches": 5
+    },
+    {
+      "nickname": "2aeseong",
+      "team": "I JET KAE",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 899.0,
+      "matches": 10
+    },
+    {
+      "nickname": "King1max",
+      "team": "AK Esports",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 702.2,
+      "matches": 10
+    },
+    {
+      "nickname": "OlymPuS",
+      "team": "IWIN Esports",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 611.4,
+      "matches": 5
+    },
+    {
+      "nickname": "GODMXNz",
+      "team": "Genesis Of Divine",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 585.7,
+      "matches": 5
+    },
+    {
+      "nickname": "King1set",
+      "team": "IO The Legend",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 524.6,
+      "matches": 5
+    },
+    {
+      "nickname": "SunD4yJubJub",
+      "team": "New Generation Success E-sports",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 520.7,
+      "matches": 5
+    },
+    {
+      "nickname": "F0RLAFIRST",
+      "team": "Team Of The Year",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 515.9,
+      "matches": 5
+    },
+    {
+      "nickname": "PiMEE",
+      "team": "SIENA",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 455.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Rharious",
+      "team": "Runner Esport",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 429.0,
+      "matches": 5
+    },
+    {
+      "nickname": "FlukMaximus",
+      "team": "New Generation Success E-sports",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 417.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Bankblack",
+      "team": "IO The Legend",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 289.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Legacyz",
+      "team": "IO The Legend",
+      "league": "PTS",
+      "kills": 2,
+      "damage": 173.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Salvador",
+      "team": "Team Of The Year",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 589.8,
+      "matches": 5
+    },
+    {
+      "nickname": "SoiJuYaso_-",
+      "team": "New Generation Success E-sports",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 496.3,
+      "matches": 5
+    },
+    {
+      "nickname": "12345iloveu",
+      "team": "I JET KAE",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 492.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Scoobydoo",
+      "team": "Runner Esport",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 489.9,
+      "matches": 5
+    },
+    {
+      "nickname": "mossjiiun",
+      "team": "PEEK A BOO HOO",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 368.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Goldenrabbit",
+      "team": "SIENA",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 366.7,
+      "matches": 5
+    },
+    {
+      "nickname": "SviTT",
+      "team": "PEEK A BOO HOO",
+      "league": "PTS",
+      "kills": 1,
+      "damage": 330.2,
+      "matches": 5
+    },
+    {
+      "nickname": "UNQ",
+      "team": "Genesis Of Divine",
+      "league": "PTS",
+      "kills": 0,
+      "damage": 513.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Tortlenoname",
+      "team": "I JET KAE",
+      "league": "PTS",
+      "kills": 0,
+      "damage": 367.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Kekhuayy",
+      "team": "IO The Legend",
+      "league": "PTS",
+      "kills": 0,
+      "damage": 261.4,
+      "matches": 5
+    },
+    {
+      "nickname": "K33Mz",
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "kills": 0,
+      "damage": 183.5,
+      "matches": 2
+    },
+    {
+      "nickname": "poodlepie",
+      "team": "SIENA",
+      "league": "PTS",
+      "kills": 0,
+      "damage": 70.3,
+      "matches": 5
+    }
+  ]
+}

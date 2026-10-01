@@ -1,0 +1,1282 @@
+{
+  "id": "eu-pecfp2",
+  "name": "PEC 2026 Fall Playoff 2",
+  "category": "regional",
+  "source": "https://api.pubg.com/tournaments/eu-pecfp2",
+  "createdAt": null,
+  "matchCount": 15,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "WINside",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 28,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 7.6,
+      "rank": 1
+    },
+    {
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 89,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.6,
+      "rank": 2
+    },
+    {
+      "team": "Joga Bonito",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 66,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.8,
+      "rank": 3
+    },
+    {
+      "team": "Big John",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 51,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.33,
+      "rank": 4
+    },
+    {
+      "team": "Storm On Request",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 50,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.2,
+      "rank": 5
+    },
+    {
+      "team": "Bushido Wildcats",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 48,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.9,
+      "rank": 6
+    },
+    {
+      "team": "S2G Esports",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 38,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 6.4,
+      "rank": 7
+    },
+    {
+      "team": "Construction Workers",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 37,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 11.4,
+      "rank": 8
+    },
+    {
+      "team": "PGG",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 26,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 4.6,
+      "rank": 9
+    },
+    {
+      "team": "09",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 25,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.0,
+      "rank": 10
+    },
+    {
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 23,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.0,
+      "rank": 11
+    },
+    {
+      "team": "FullForcee",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 19,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 10.6,
+      "rank": 12
+    },
+    {
+      "team": "NewGate",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 18,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.4,
+      "rank": 13
+    },
+    {
+      "team": "Team Vitality",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 16,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.6,
+      "rank": 14
+    },
+    {
+      "team": "Aogiri Tree",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 48,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 10.0,
+      "rank": 15
+    },
+    {
+      "team": "Noslack",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 35,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 7.1,
+      "rank": 16
+    },
+    {
+      "team": "Aurora Gaming",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 34,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 9.2,
+      "rank": 17
+    },
+    {
+      "team": "S8UL Esports",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 30,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 6.4,
+      "rank": 18
+    },
+    {
+      "team": "Everlong",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 29,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 10.9,
+      "rank": 19
+    },
+    {
+      "team": "Natus Vincere",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 28,
+      "wwcd": 0,
+      "bestRank": 7,
+      "avgRank": 9.4,
+      "rank": 20
+    },
+    {
+      "team": "Kazakhstan",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 27,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 9.8,
+      "rank": 21
+    },
+    {
+      "team": "Acend",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 23,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 10.2,
+      "rank": 22
+    },
+    {
+      "team": "RAIU",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 22,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 9.8,
+      "rank": 23
+    },
+    {
+      "team": "Vis",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 18,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 4.8,
+      "rank": 24
+    },
+    {
+      "team": "Any Trolls in Chat",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 17,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.0,
+      "rank": 25
+    },
+    {
+      "team": "Winordie",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 15,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 8.0,
+      "rank": 26
+    },
+    {
+      "team": "AltF4",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 14,
+      "wwcd": 0,
+      "bestRank": 5,
+      "avgRank": 8.6,
+      "rank": 27
+    },
+    {
+      "team": "Freeside",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 14,
+      "wwcd": 0,
+      "bestRank": 4,
+      "avgRank": 9.0,
+      "rank": 28
+    },
+    {
+      "team": "MOC Esports",
+      "league": "EMEA",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 9,
+      "wwcd": 0,
+      "bestRank": 2,
+      "avgRank": 8.8,
+      "rank": 29
+    }
+  ],
+  "players": [
+    {
+      "nickname": "curexi",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 30,
+      "damage": 4710.1,
+      "matches": 15
+    },
+    {
+      "nickname": "slqven",
+      "team": "Joga Bonito",
+      "league": "EMEA",
+      "kills": 22,
+      "damage": 3464.5,
+      "matches": 15
+    },
+    {
+      "nickname": "kHRysTaLNi",
+      "team": "Joga Bonito",
+      "league": "EMEA",
+      "kills": 21,
+      "damage": 3570.5,
+      "matches": 15
+    },
+    {
+      "nickname": "xisooo",
+      "team": "Storm On Request",
+      "league": "EMEA",
+      "kills": 21,
+      "damage": 3263.7,
+      "matches": 10
+    },
+    {
+      "nickname": "Lukarux",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 21,
+      "damage": 3117.1,
+      "matches": 15
+    },
+    {
+      "nickname": "NIXZYEE",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 20,
+      "damage": 4923.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Beami",
+      "team": "Virtus.pro",
+      "league": "EMEA",
+      "kills": 18,
+      "damage": 3562.5,
+      "matches": 15
+    },
+    {
+      "nickname": "TeaBone",
+      "team": "Big John",
+      "league": "EMEA",
+      "kills": 18,
+      "damage": 3312.1,
+      "matches": 15
+    },
+    {
+      "nickname": "CodeMarco",
+      "team": "Bushido Wildcats",
+      "league": "EMEA",
+      "kills": 16,
+      "damage": 3198.9,
+      "matches": 10
+    },
+    {
+      "nickname": "crossberk",
+      "team": "Bushido Wildcats",
+      "league": "EMEA",
+      "kills": 16,
+      "damage": 2390.0,
+      "matches": 10
+    },
+    {
+      "nickname": "BatulinS",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 15,
+      "damage": 2040.8,
+      "matches": 5
+    },
+    {
+      "nickname": "snapx",
+      "team": "Aogiri Tree",
+      "league": "EMEA",
+      "kills": 14,
+      "damage": 2773.2,
+      "matches": 15
+    },
+    {
+      "nickname": "Shilla",
+      "team": "S2G Esports",
+      "league": "EMEA",
+      "kills": 14,
+      "damage": 2654.9,
+      "matches": 10
+    },
+    {
+      "nickname": "MadNiqative",
+      "team": "Aogiri Tree",
+      "league": "EMEA",
+      "kills": 14,
+      "damage": 2532.3,
+      "matches": 15
+    },
+    {
+      "nickname": "Nod1",
+      "team": "Joga Bonito",
+      "league": "EMEA",
+      "kills": 14,
+      "damage": 2413.9,
+      "matches": 15
+    },
+    {
+      "nickname": "KOJl9HHH",
+      "team": "Big John",
+      "league": "EMEA",
+      "kills": 13,
+      "damage": 2592.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Nowikk",
+      "team": "Big John",
+      "league": "EMEA",
+      "kills": 13,
+      "damage": 1751.0,
+      "matches": 15
+    },
+    {
+      "nickname": "PaiinZ",
+      "team": "Construction Workers",
+      "league": "EMEA",
+      "kills": 12,
+      "damage": 2264.3,
+      "matches": 10
+    },
+    {
+      "nickname": "sunfloweeeee",
+      "team": "Aurora Gaming",
+      "league": "EMEA",
+      "kills": 11,
+      "damage": 2398.3,
+      "matches": 10
+    },
+    {
+      "nickname": "fletobe",
+      "team": "Storm On Request",
+      "league": "EMEA",
+      "kills": 11,
+      "damage": 2345.2,
+      "matches": 10
+    },
+    {
+      "nickname": "Hakatory",
+      "team": "Natus Vincere",
+      "league": "EMEA",
+      "kills": 11,
+      "damage": 2232.9,
+      "matches": 5
+    },
+    {
+      "nickname": "iExE",
+      "team": "Noslack",
+      "league": "EMEA",
+      "kills": 11,
+      "damage": 1698.3,
+      "matches": 10
+    },
+    {
+      "nickname": "missyourvoice",
+      "team": "Aogiri Tree",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 3534.3,
+      "matches": 15
+    },
+    {
+      "nickname": "SkaV",
+      "team": "Noslack",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 2488.6,
+      "matches": 10
+    },
+    {
+      "nickname": "S4TTA",
+      "team": "Noslack",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 2143.0,
+      "matches": 10
+    },
+    {
+      "nickname": "hiro",
+      "team": "Aogiri Tree",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 1848.9,
+      "matches": 15
+    },
+    {
+      "nickname": "Vezyv1y",
+      "team": "Everlong",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 1744.8,
+      "matches": 10
+    },
+    {
+      "nickname": "DIFX",
+      "team": "09",
+      "league": "EMEA",
+      "kills": 10,
+      "damage": 1607.5,
+      "matches": 5
+    },
+    {
+      "nickname": "S1mon",
+      "team": "Joga Bonito",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 2920.7,
+      "matches": 15
+    },
+    {
+      "nickname": "Bestoloch",
+      "team": "S8UL Esports",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 2890.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Metebey",
+      "team": "Bushido Wildcats",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 2861.6,
+      "matches": 10
+    },
+    {
+      "nickname": "xLurex",
+      "team": "Aurora Gaming",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 2427.6,
+      "matches": 10
+    },
+    {
+      "nickname": "vard",
+      "team": "Construction Workers",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 1819.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Fexx",
+      "team": "Construction Workers",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 1691.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Dapezi",
+      "team": "Vis",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 1279.0,
+      "matches": 5
+    },
+    {
+      "nickname": "odunmavisi",
+      "team": "S2G Esports",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 1272.4,
+      "matches": 10
+    },
+    {
+      "nickname": "pwddddddddd",
+      "team": "WINside",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 951.1,
+      "matches": 5
+    },
+    {
+      "nickname": "SoseD",
+      "team": "09",
+      "league": "EMEA",
+      "kills": 9,
+      "damage": 558.0,
+      "matches": 5
+    },
+    {
+      "nickname": "DaNte",
+      "team": "S8UL Esports",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 2674.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Mogore",
+      "team": "Aurora Gaming",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1826.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Feyerist",
+      "team": "Natus Vincere",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1702.3,
+      "matches": 5
+    },
+    {
+      "nickname": "KILYAKAi",
+      "team": "Acend",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1499.2,
+      "matches": 5
+    },
+    {
+      "nickname": "210",
+      "team": "Storm On Request",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1359.5,
+      "matches": 10
+    },
+    {
+      "nickname": "quintx",
+      "team": "WINside",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1257.9,
+      "matches": 5
+    },
+    {
+      "nickname": "Quetpa",
+      "team": "S2G Esports",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 1232.4,
+      "matches": 10
+    },
+    {
+      "nickname": "kantiks",
+      "team": "NewGate",
+      "league": "EMEA",
+      "kills": 8,
+      "damage": 838.1,
+      "matches": 5
+    },
+    {
+      "nickname": "ADOUZ1E",
+      "team": "S8UL Esports",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 2283.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Marcelek",
+      "team": "Any Trolls in Chat",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 2198.6,
+      "matches": 10
+    },
+    {
+      "nickname": "imSancho",
+      "team": "Kazakhstan",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 2061.3,
+      "matches": 10
+    },
+    {
+      "nickname": "marcis",
+      "team": "Big John",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1987.6,
+      "matches": 15
+    },
+    {
+      "nickname": "Celtik",
+      "team": "Bushido Wildcats",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1986.0,
+      "matches": 10
+    },
+    {
+      "nickname": "saintxd",
+      "team": "Everlong",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1611.9,
+      "matches": 10
+    },
+    {
+      "nickname": "Presenti",
+      "team": "PGG",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1589.2,
+      "matches": 5
+    },
+    {
+      "nickname": "rinazxc",
+      "team": "Everlong",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1569.8,
+      "matches": 10
+    },
+    {
+      "nickname": "TheMad",
+      "team": "S2G Esports",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1411.1,
+      "matches": 10
+    },
+    {
+      "nickname": "Diga",
+      "team": "Kazakhstan",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1392.8,
+      "matches": 10
+    },
+    {
+      "nickname": "iamf1ve",
+      "team": "Kazakhstan",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1392.7,
+      "matches": 10
+    },
+    {
+      "nickname": "ZLOYYYYY",
+      "team": "FullForcee",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1295.8,
+      "matches": 5
+    },
+    {
+      "nickname": "SENKAPAUPAU",
+      "team": "NewGate",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1142.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Zubila",
+      "team": "PGG",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1140.7,
+      "matches": 5
+    },
+    {
+      "nickname": "PiXeL1K",
+      "team": "Construction Workers",
+      "league": "EMEA",
+      "kills": 7,
+      "damage": 1076.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Salik",
+      "team": "PGG",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1874.8,
+      "matches": 5
+    },
+    {
+      "nickname": "hoba",
+      "team": "Kazakhstan",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1774.5,
+      "matches": 10
+    },
+    {
+      "nickname": "f1lfirst",
+      "team": "S8UL Esports",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1666.7,
+      "matches": 10
+    },
+    {
+      "nickname": "INGMAR",
+      "team": "RAIU",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1641.6,
+      "matches": 10
+    },
+    {
+      "nickname": "cyatrash",
+      "team": "AltF4",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1583.5,
+      "matches": 5
+    },
+    {
+      "nickname": "ItzzChrizZ",
+      "team": "Acend",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1505.5,
+      "matches": 5
+    },
+    {
+      "nickname": "fors1k",
+      "team": "WINside",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1477.9,
+      "matches": 5
+    },
+    {
+      "nickname": "vaazoo",
+      "team": "RAIU",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1384.2,
+      "matches": 10
+    },
+    {
+      "nickname": "SL0YJACKET",
+      "team": "PGG",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1195.3,
+      "matches": 5
+    },
+    {
+      "nickname": "ext4nz",
+      "team": "Winordie",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 1143.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Gedrox",
+      "team": "Team Vitality",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 792.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Art1_x",
+      "team": "Aurora Gaming",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 766.5,
+      "matches": 10
+    },
+    {
+      "nickname": "rstqq",
+      "team": "FullForcee",
+      "league": "EMEA",
+      "kills": 6,
+      "damage": 636.0,
+      "matches": 5
+    },
+    {
+      "nickname": "habibi",
+      "team": "RAIU",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 2008.8,
+      "matches": 10
+    },
+    {
+      "nickname": "Doffy",
+      "team": "Any Trolls in Chat",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 1845.5,
+      "matches": 10
+    },
+    {
+      "nickname": "pozyyan",
+      "team": "Storm On Request",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 1218.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Loki",
+      "team": "AltF4",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 1107.2,
+      "matches": 5
+    },
+    {
+      "nickname": "Ketter",
+      "team": "Acend",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 1107.2,
+      "matches": 5
+    },
+    {
+      "nickname": "boost1k-",
+      "team": "Natus Vincere",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 1076.4,
+      "matches": 5
+    },
+    {
+      "nickname": "h0pejj",
+      "team": "WINside",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 1006.1,
+      "matches": 5
+    },
+    {
+      "nickname": "ares",
+      "team": "RAIU",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 999.3,
+      "matches": 10
+    },
+    {
+      "nickname": "Verstory",
+      "team": "Everlong",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 946.4,
+      "matches": 10
+    },
+    {
+      "nickname": "Sorry1AmCrazy",
+      "team": "Freeside",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 775.2,
+      "matches": 5
+    },
+    {
+      "nickname": "stikas",
+      "team": "Storm On Request",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 671.5,
+      "matches": 5
+    },
+    {
+      "nickname": "sayuw0",
+      "team": "Freeside",
+      "league": "EMEA",
+      "kills": 5,
+      "damage": 656.6,
+      "matches": 5
+    },
+    {
+      "nickname": "Kova1evy",
+      "team": "Noslack",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 1411.5,
+      "matches": 10
+    },
+    {
+      "nickname": "Perfect1ks",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 1407.7,
+      "matches": 5
+    },
+    {
+      "nickname": "Layosh",
+      "team": "Winordie",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 1036.1,
+      "matches": 5
+    },
+    {
+      "nickname": "spyrro",
+      "team": "Natus Vincere",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 1032.4,
+      "matches": 5
+    },
+    {
+      "nickname": "m41kk1",
+      "team": "Vis",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 970.5,
+      "matches": 5
+    },
+    {
+      "nickname": "Lev4nte",
+      "team": "Team Vitality",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 952.5,
+      "matches": 5
+    },
+    {
+      "nickname": "stratos",
+      "team": "Vis",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 781.1,
+      "matches": 5
+    },
+    {
+      "nickname": "jeemzz",
+      "team": "Acend",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 707.1,
+      "matches": 5
+    },
+    {
+      "nickname": "FAHODZzZ",
+      "team": "MOC Esports",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 647.1,
+      "matches": 5
+    },
+    {
+      "nickname": "sken1n",
+      "team": "FullForcee",
+      "league": "EMEA",
+      "kills": 4,
+      "damage": 600.2,
+      "matches": 5
+    },
+    {
+      "nickname": "xmpl",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 1823.2,
+      "matches": 5
+    },
+    {
+      "nickname": "shengen",
+      "team": "Winordie",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 981.4,
+      "matches": 5
+    },
+    {
+      "nickname": "recup",
+      "team": "Freeside",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 852.1,
+      "matches": 5
+    },
+    {
+      "nickname": "shyxs",
+      "team": "NewGate",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 799.0,
+      "matches": 5
+    },
+    {
+      "nickname": "Mellman",
+      "team": "09",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 772.3,
+      "matches": 5
+    },
+    {
+      "nickname": "hallomybad",
+      "team": "Team Vitality",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 713.8,
+      "matches": 5
+    },
+    {
+      "nickname": "BadBoyy2k",
+      "team": "MOC Esports",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 696.4,
+      "matches": 4
+    },
+    {
+      "nickname": "staed",
+      "team": "09",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 576.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Carlo",
+      "team": "Any Trolls in Chat",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 515.9,
+      "matches": 5
+    },
+    {
+      "nickname": "QWZYYY",
+      "team": "Team Vitality",
+      "league": "EMEA",
+      "kills": 3,
+      "damage": 300.6,
+      "matches": 5
+    },
+    {
+      "nickname": "bombilovo",
+      "team": "Any Trolls in Chat",
+      "league": "EMEA",
+      "kills": 2,
+      "damage": 1830.8,
+      "matches": 10
+    },
+    {
+      "nickname": "mindsetxx",
+      "team": "FullForcee",
+      "league": "EMEA",
+      "kills": 2,
+      "damage": 1000.4,
+      "matches": 5
+    },
+    {
+      "nickname": "Kursant",
+      "team": "AltF4",
+      "league": "EMEA",
+      "kills": 2,
+      "damage": 719.5,
+      "matches": 5
+    },
+    {
+      "nickname": "r0xxx",
+      "team": "Winordie",
+      "league": "EMEA",
+      "kills": 2,
+      "damage": 604.2,
+      "matches": 5
+    },
+    {
+      "nickname": "FRAG_IRAQ",
+      "team": "MOC Esports",
+      "league": "EMEA",
+      "kills": 2,
+      "damage": 265.9,
+      "matches": 5
+    },
+    {
+      "nickname": "Lu",
+      "team": "Twisted Minds",
+      "league": "EMEA",
+      "kills": 1,
+      "damage": 1342.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Dazz1014",
+      "team": "Vis",
+      "league": "EMEA",
+      "kills": 1,
+      "damage": 1045.1,
+      "matches": 5
+    },
+    {
+      "nickname": "Yokai",
+      "team": "AltF4",
+      "league": "EMEA",
+      "kills": 1,
+      "damage": 862.8,
+      "matches": 5
+    },
+    {
+      "nickname": "maver",
+      "team": "Freeside",
+      "league": "EMEA",
+      "kills": 1,
+      "damage": 535.4,
+      "matches": 5
+    },
+    {
+      "nickname": "N1tro",
+      "team": "NewGate",
+      "league": "EMEA",
+      "kills": 0,
+      "damage": 377.3,
+      "matches": 5
+    },
+    {
+      "nickname": "Fuzzface",
+      "team": "Any Trolls in Chat",
+      "league": "EMEA",
+      "kills": 0,
+      "damage": 325.1,
+      "matches": 5
+    },
+    {
+      "nickname": "17iamhung",
+      "team": "MOC Esports",
+      "league": "EMEA",
+      "kills": 0,
+      "damage": 207.4,
+      "matches": 5
+    }
+  ]
+}

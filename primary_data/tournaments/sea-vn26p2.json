@@ -1,0 +1,795 @@
+{
+  "id": "sea-vn26p2",
+  "name": "PVS 2026 Phase 2",
+  "category": "regional",
+  "source": "https://api.pubg.com/tournaments/sea-vn26p2",
+  "createdAt": null,
+  "matchCount": 31,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main",
+    "Neon_Main",
+    "Tiger_Main"
+  ],
+  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "standings": [
+    {
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 181,
+      "wwcd": 5,
+      "bestRank": 1,
+      "avgRank": 7.71,
+      "rank": 1
+    },
+    {
+      "team": "The Expendables",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 167,
+      "wwcd": 4,
+      "bestRank": 1,
+      "avgRank": 6.84,
+      "rank": 2
+    },
+    {
+      "team": "Team Flash",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 146,
+      "wwcd": 4,
+      "bestRank": 1,
+      "avgRank": 6.71,
+      "rank": 3
+    },
+    {
+      "team": "The Daredevil Team",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 125,
+      "wwcd": 4,
+      "bestRank": 1,
+      "avgRank": 7.06,
+      "rank": 4
+    },
+    {
+      "team": "Fantôme",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 86,
+      "wwcd": 3,
+      "bestRank": 1,
+      "avgRank": 8.13,
+      "rank": 5
+    },
+    {
+      "team": "Unicorn Cyber",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 178,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 7.03,
+      "rank": 6
+    },
+    {
+      "team": "ROY Esports",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 128,
+      "wwcd": 2,
+      "bestRank": 1,
+      "avgRank": 8.71,
+      "rank": 7
+    },
+    {
+      "team": "HELA Esports",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 127,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.55,
+      "rank": 8
+    },
+    {
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 120,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 7.71,
+      "rank": 9
+    },
+    {
+      "team": "Four Crazy Rabbits",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 102,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.16,
+      "rank": 10
+    },
+    {
+      "team": "Win.D Esports",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 98,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 8.94,
+      "rank": 11
+    },
+    {
+      "team": "GASY Esports",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 83,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 11.16,
+      "rank": 12
+    },
+    {
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 59,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 9.1,
+      "rank": 13
+    },
+    {
+      "team": "RUE Esports",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 56,
+      "wwcd": 1,
+      "bestRank": 1,
+      "avgRank": 10.97,
+      "rank": 14
+    },
+    {
+      "team": "CERBERUS Esports",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 127,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 9.94,
+      "rank": 15
+    },
+    {
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "teamResolved": true,
+      "matches": 31,
+      "kills": 61,
+      "wwcd": 0,
+      "bestRank": 3,
+      "avgRank": 11.68,
+      "rank": 16
+    }
+  ],
+  "players": [
+    {
+      "nickname": "Himass",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 70,
+      "damage": 9759.9,
+      "matches": 31
+    },
+    {
+      "nickname": "TanVuu",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 62,
+      "damage": 11734.7,
+      "matches": 31
+    },
+    {
+      "nickname": "VanNghj",
+      "team": "Unicorn Cyber",
+      "league": "PVS",
+      "kills": 54,
+      "damage": 8219.7,
+      "matches": 31
+    },
+    {
+      "nickname": "HoangNam",
+      "team": "ROY Esports",
+      "league": "PVS",
+      "kills": 53,
+      "damage": 8353.6,
+      "matches": 31
+    },
+    {
+      "nickname": "Taikonn",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 50,
+      "damage": 8437.1,
+      "matches": 31
+    },
+    {
+      "nickname": "Clories",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 45,
+      "damage": 6778.7,
+      "matches": 31
+    },
+    {
+      "nickname": "LEMINH",
+      "team": "Unicorn Cyber",
+      "league": "PVS",
+      "kills": 44,
+      "damage": 7777.3,
+      "matches": 31
+    },
+    {
+      "nickname": "QuaySama",
+      "team": "Unicorn Cyber",
+      "league": "PVS",
+      "kills": 42,
+      "damage": 7014.0,
+      "matches": 31
+    },
+    {
+      "nickname": "Delwyn",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 39,
+      "damage": 4814.5,
+      "matches": 31
+    },
+    {
+      "nickname": "YmCud",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 38,
+      "damage": 6688.0,
+      "matches": 31
+    },
+    {
+      "nickname": "TTT",
+      "team": "Team Flash",
+      "league": "PVS",
+      "kills": 38,
+      "damage": 6611.0,
+      "matches": 31
+    },
+    {
+      "nickname": "Floww",
+      "team": "Unicorn Cyber",
+      "league": "PVS",
+      "kills": 38,
+      "damage": 6433.4,
+      "matches": 31
+    },
+    {
+      "nickname": "NVTK",
+      "team": "HELA Esports",
+      "league": "PVS",
+      "kills": 38,
+      "damage": 6415.5,
+      "matches": 31
+    },
+    {
+      "nickname": "Junnn",
+      "team": "The Daredevil Team",
+      "league": "PVS",
+      "kills": 37,
+      "damage": 9176.1,
+      "matches": 31
+    },
+    {
+      "nickname": "Zyu1",
+      "team": "The Daredevil Team",
+      "league": "PVS",
+      "kills": 36,
+      "damage": 6612.7,
+      "matches": 31
+    },
+    {
+      "nickname": "Zest",
+      "team": "CERBERUS Esports",
+      "league": "PVS",
+      "kills": 36,
+      "damage": 6292.0,
+      "matches": 31
+    },
+    {
+      "nickname": "Itzel",
+      "team": "Win.D Esports",
+      "league": "PVS",
+      "kills": 36,
+      "damage": 5868.1,
+      "matches": 31
+    },
+    {
+      "nickname": "LongX",
+      "team": "Team Flash",
+      "league": "PVS",
+      "kills": 35,
+      "damage": 7744.5,
+      "matches": 31
+    },
+    {
+      "nickname": "StannnL",
+      "team": "CERBERUS Esports",
+      "league": "PVS",
+      "kills": 34,
+      "damage": 5907.8,
+      "matches": 31
+    },
+    {
+      "nickname": "Hoangf",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 34,
+      "damage": 5262.7,
+      "matches": 31
+    },
+    {
+      "nickname": "TrungHieu",
+      "team": "HELA Esports",
+      "league": "PVS",
+      "kills": 34,
+      "damage": 5260.9,
+      "matches": 31
+    },
+    {
+      "nickname": "777",
+      "team": "The Daredevil Team",
+      "league": "PVS",
+      "kills": 32,
+      "damage": 6021.7,
+      "matches": 31
+    },
+    {
+      "nickname": "TDuy",
+      "team": "Team Flash",
+      "league": "PVS",
+      "kills": 32,
+      "damage": 5934.6,
+      "matches": 23
+    },
+    {
+      "nickname": "YUDIRT",
+      "team": "CERBERUS Esports",
+      "league": "PVS",
+      "kills": 32,
+      "damage": 5619.2,
+      "matches": 31
+    },
+    {
+      "nickname": "Zitua22",
+      "team": "Four Crazy Rabbits",
+      "league": "PVS",
+      "kills": 32,
+      "damage": 4993.8,
+      "matches": 31
+    },
+    {
+      "nickname": "HoangAnh",
+      "team": "Four Crazy Rabbits",
+      "league": "PVS",
+      "kills": 31,
+      "damage": 6999.0,
+      "matches": 31
+    },
+    {
+      "nickname": "LamBaouwu",
+      "team": "Team Flash",
+      "league": "PVS",
+      "kills": 29,
+      "damage": 5450.6,
+      "matches": 26
+    },
+    {
+      "nickname": "Binnekkk",
+      "team": "ROY Esports",
+      "league": "PVS",
+      "kills": 28,
+      "damage": 5849.7,
+      "matches": 31
+    },
+    {
+      "nickname": "Kabbb",
+      "team": "HELA Esports",
+      "league": "PVS",
+      "kills": 28,
+      "damage": 4400.9,
+      "matches": 31
+    },
+    {
+      "nickname": "ZyxLee-",
+      "team": "HELA Esports",
+      "league": "PVS",
+      "kills": 27,
+      "damage": 4650.6,
+      "matches": 31
+    },
+    {
+      "nickname": "MetalD",
+      "team": "ROY Esports",
+      "league": "PVS",
+      "kills": 26,
+      "damage": 7032.6,
+      "matches": 31
+    },
+    {
+      "nickname": "SPK",
+      "team": "GASY Esports",
+      "league": "PVS",
+      "kills": 26,
+      "damage": 5994.9,
+      "matches": 31
+    },
+    {
+      "nickname": "DuCkHjeUz",
+      "team": "The Expendables",
+      "league": "PVS",
+      "kills": 26,
+      "damage": 5135.5,
+      "matches": 31
+    },
+    {
+      "nickname": "Cunn",
+      "team": "Fantôme",
+      "league": "PVS",
+      "kills": 25,
+      "damage": 5778.0,
+      "matches": 31
+    },
+    {
+      "nickname": "Tanbinh",
+      "team": "CERBERUS Esports",
+      "league": "PVS",
+      "kills": 25,
+      "damage": 5119.7,
+      "matches": 31
+    },
+    {
+      "nickname": "Vietkonn",
+      "team": "Fantôme",
+      "league": "PVS",
+      "kills": 24,
+      "damage": 2948.1,
+      "matches": 31
+    },
+    {
+      "nickname": "HgQuyn1510",
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "kills": 23,
+      "damage": 4646.3,
+      "matches": 26
+    },
+    {
+      "nickname": "Destroyy",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 23,
+      "damage": 3918.3,
+      "matches": 26
+    },
+    {
+      "nickname": "BinBlue",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 23,
+      "damage": 3686.1,
+      "matches": 20
+    },
+    {
+      "nickname": "Sololzy",
+      "team": "Anyone's Legend",
+      "league": "PVS",
+      "kills": 22,
+      "damage": 5284.4,
+      "matches": 31
+    },
+    {
+      "nickname": "BB",
+      "team": "Fantôme",
+      "league": "PVS",
+      "kills": 22,
+      "damage": 4062.7,
+      "matches": 31
+    },
+    {
+      "nickname": "lowP",
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "kills": 22,
+      "damage": 3880.4,
+      "matches": 31
+    },
+    {
+      "nickname": "Br1annn88",
+      "team": "ROY Esports",
+      "league": "PVS",
+      "kills": 21,
+      "damage": 5510.3,
+      "matches": 31
+    },
+    {
+      "nickname": "SimonT",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 21,
+      "damage": 3921.6,
+      "matches": 31
+    },
+    {
+      "nickname": "Marcus",
+      "team": "Win.D Esports",
+      "league": "PVS",
+      "kills": 21,
+      "damage": 3571.2,
+      "matches": 31
+    },
+    {
+      "nickname": "Hakaiii",
+      "team": "The Daredevil Team",
+      "league": "PVS",
+      "kills": 20,
+      "damage": 4981.4,
+      "matches": 31
+    },
+    {
+      "nickname": "Browny",
+      "team": "GASY Esports",
+      "league": "PVS",
+      "kills": 20,
+      "damage": 2926.7,
+      "matches": 15
+    },
+    {
+      "nickname": "BaoLP",
+      "team": "Four Crazy Rabbits",
+      "league": "PVS",
+      "kills": 19,
+      "damage": 3828.9,
+      "matches": 31
+    },
+    {
+      "nickname": "Yakultt",
+      "team": "RUE Esports",
+      "league": "PVS",
+      "kills": 18,
+      "damage": 3555.6,
+      "matches": 31
+    },
+    {
+      "nickname": "idky",
+      "team": "GASY Esports",
+      "league": "PVS",
+      "kills": 17,
+      "damage": 3157.2,
+      "matches": 31
+    },
+    {
+      "nickname": "zqzaa",
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "kills": 16,
+      "damage": 3897.5,
+      "matches": 31
+    },
+    {
+      "nickname": "18K-",
+      "team": "Win.D Esports",
+      "league": "PVS",
+      "kills": 16,
+      "damage": 3068.0,
+      "matches": 15
+    },
+    {
+      "nickname": "Ninja2K",
+      "team": "Win.D Esports",
+      "league": "PVS",
+      "kills": 15,
+      "damage": 3843.0,
+      "matches": 31
+    },
+    {
+      "nickname": "Longday",
+      "team": "Fantôme",
+      "league": "PVS",
+      "kills": 15,
+      "damage": 3354.2,
+      "matches": 31
+    },
+    {
+      "nickname": "pauu",
+      "team": "Alpha Gaming",
+      "league": "PVS",
+      "kills": 15,
+      "damage": 2895.9,
+      "matches": 16
+    },
+    {
+      "nickname": "1801",
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "kills": 15,
+      "damage": 2785.7,
+      "matches": 31
+    },
+    {
+      "nickname": "BeoK",
+      "team": "RUE Esports",
+      "league": "PVS",
+      "kills": 14,
+      "damage": 3158.7,
+      "matches": 31
+    },
+    {
+      "nickname": "Lowji",
+      "team": "GASY Esports",
+      "league": "PVS",
+      "kills": 13,
+      "damage": 3850.0,
+      "matches": 31
+    },
+    {
+      "nickname": "ThongLee",
+      "team": "Four Crazy Rabbits",
+      "league": "PVS",
+      "kills": 13,
+      "damage": 3171.8,
+      "matches": 20
+    },
+    {
+      "nickname": "MocLinh",
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "kills": 12,
+      "damage": 2398.5,
+      "matches": 31
+    },
+    {
+      "nickname": "quockhanh",
+      "team": "Team Flash",
+      "league": "PVS",
+      "kills": 12,
+      "damage": 1945.3,
+      "matches": 13
+    },
+    {
+      "nickname": "Max",
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "kills": 11,
+      "damage": 3709.7,
+      "matches": 31
+    },
+    {
+      "nickname": "Miko5",
+      "team": "Win.D Esports",
+      "league": "PVS",
+      "kills": 10,
+      "damage": 2071.9,
+      "matches": 16
+    },
+    {
+      "nickname": "Dyann",
+      "team": "RUE Esports",
+      "league": "PVS",
+      "kills": 8,
+      "damage": 2274.3,
+      "matches": 21
+    },
+    {
+      "nickname": "Neitnart",
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "kills": 8,
+      "damage": 1517.4,
+      "matches": 25
+    },
+    {
+      "nickname": "ShaZam1",
+      "team": "RUE Esports",
+      "league": "PVS",
+      "kills": 8,
+      "damage": 1401.4,
+      "matches": 15
+    },
+    {
+      "nickname": "Jinoo",
+      "team": "GASY Esports",
+      "league": "PVS",
+      "kills": 7,
+      "damage": 1776.1,
+      "matches": 16
+    },
+    {
+      "nickname": "Yulieee2k6",
+      "team": "RUE Esports",
+      "league": "PVS",
+      "kills": 7,
+      "damage": 1311.3,
+      "matches": 20
+    },
+    {
+      "nickname": "5657",
+      "team": "Four Crazy Rabbits",
+      "league": "PVS",
+      "kills": 7,
+      "damage": 931.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Enut",
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "kills": 5,
+      "damage": 844.8,
+      "matches": 11
+    },
+    {
+      "nickname": "JongChoo",
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "kills": 3,
+      "damage": 1407.4,
+      "matches": 10
+    },
+    {
+      "nickname": "HuyPhu",
+      "team": "Four Devil Thunder",
+      "league": "PVS",
+      "kills": 3,
+      "damage": 783.0,
+      "matches": 10
+    },
+    {
+      "nickname": "Xxxxx",
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "kills": 2,
+      "damage": 504.9,
+      "matches": 6
+    },
+    {
+      "nickname": "AnBee",
+      "team": "RUE Esports",
+      "league": "PVS",
+      "kills": 1,
+      "damage": 373.8,
+      "matches": 5
+    },
+    {
+      "nickname": "Vingarr",
+      "team": "Trần Long KingSky",
+      "league": "PVS",
+      "kills": 0,
+      "damage": 26.4,
+      "matches": 5
+    }
+  ]
+}
