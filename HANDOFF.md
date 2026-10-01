@@ -35,9 +35,26 @@
 조회수가 없으면 **2026 세계대회 개인 킬 순**(`hot_seeds`)이 대신 나오고,
 조회가 쌓이면 자연히 밀려난다.
 
-### 대회 탭 · 히트엔딩 탭
+### 대회 탭 — 수집기까지 완성, 화면은 미착수
 
-손대지 않았다. 대회 탭은 정적 데이터, 히트엔딩은 "준비 중" 이다.
+wwcd.lol 구조를 참고해 **글로벌 · 지역리그 · 스크림 3분류**로 간다 (사용자 지시).
+데이터는 **공식 PUBG API** 에서 직접 받는다 — wwcd.lol 의 Supabase 키가 예전에
+저장소에 들어 있어 제거한 이력이 있으므로 그쪽 데이터를 쓰지 않는다.
+
+```bash
+powershell -NoProfile -File ingest/fetch_tournament.ps1 as-pgs9gf
+python ingest/build_tournament_seed.py as-pgs9gf --name "PGS 9 Grand Finals" --category global
+```
+
+PGS 9 검증 완료: **15경기 · 16팀 · 64명, 팀 이름 미해결 0건.**
+결과는 `primary_data/tournaments/as-pgs9gf.json`.
+
+**남은 일**: 백엔드(`Tournament` 엔티티가 비어 있고 `/api/tournaments/{id}` 는 500),
+프론트(`TournamentsTab.jsx` 는 아직 정적 `LEADERBOARD_PGS4`), 나머지 대회 수집.
+
+### 히트엔딩 탭
+
+손대지 않았다. "준비 중" 이며 텔레메트리 파이프라인이 필요하다.
 
 ---
 
@@ -78,6 +95,16 @@
 옛 키가 커밋 `ba3a8d5` 히스토리에 잔존한다. Private 저장소라 급하지 않으나 재발급 권장.
 <https://developer.pubg.com> → My Apps (앱 이름 `pubgesports_se`)
 
+### 우선순위 3.5 — 대회 탭 이어서
+수집기는 끝났으니 다음은 **백엔드 + 화면**이다. PGS 9 하나가 화면에 제대로 뜨면
+나머지 대회는 같은 명령을 반복하면 된다.
+
+확인된 제약:
+- **PGC 2026 은 아직 없다.** 최신이 `as-pgc25gf`(2025-12-12). PGC 는 매년 12월이다
+- **스크림 5개는 공식 API 에 없다.** 비공식 연습 경기라 목록에 안 나온다.
+  API 에 있는 건 `kr-scrimb` 하나와 클랜전(`sea-ctf*`·`sea-ctg*`·`as-clan26`)뿐
+- 2026 세계대회 id: `as-pgs9gf`(15) · `as-pgs8fsg` · `as-pgs7fsg` · `as-pnc26gf`(15) · `eu-26ewcmt`(4)
+
 ### 우선순위 4 — 미룬 정비
 `/api/tournaments/{id}` 가 404 대신 500, 로고 이미지 최적화(`vex.png` 1.6MB),
 `README.md` 재작성, LICENSE 없음, 테스트 0개.
@@ -94,6 +121,8 @@
 | `python ingest/collect_player_links.py` | 방송 링크 수집 |
 | `python ingest/apply_gear.py <파일>` | 손으로 정리한 장비 → 시드 |
 | `powershell -File ingest/collect_world_stats.ps1` | 세계대회 킬·데미지 |
+| `powershell -File ingest/fetch_tournament.ps1 <id>` | 대회 경기 원본 내려받기 (이어받기 지원) |
+| `python ingest/build_tournament_seed.py <id>` | 받은 원본 → 순위표 시드 (네트워크 안 씀) |
 
 **시드 파일을 고쳤으면 `SEED_MODE=always` 로 한 번 기동**해야 DB 에 반영된다.
 
@@ -125,6 +154,9 @@
 - **`seedType` 이 null 이면 팀이 화면에서 사라진다** (`seedType IS NOT NULL` 필터)
 - **기동 레이스** — 준비 확인은 HTTP 200 이 아니라 **기대 팀 수**로
 - **`.ps1` 은 UTF-8 BOM 으로** 저장한다. 없으면 PowerShell 5.1 이 ANSI 로 읽어 터진다
+- **PowerShell 이 쓴 JSON 은 BOM 이 붙는다.** Python 에서 `utf-8-sig` 로 읽을 것
+- **대회 경기 원본은 커밋하지 않는다** (대회당 약 3MB). `.gitignore` 에 등록돼 있고
+  집계 결과만 `primary_data/tournaments/` 에 둔다
 - **API 키를 출력하지 않는다.** PowerShell 이 환경변수에서 직접 읽어 요청에만 쓴다
 
 ### 외부 API

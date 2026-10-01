@@ -77,3 +77,7 @@ postgres_data/
 
 # 리퀴피디아 API 응답 캐시 (약관상 캐싱은 필요하지만 저장소에 넣을 산출물은 아니다)
 intermediate_results/liquipedia_cache/
+
+# 대회 경기 원본. 공식 API 에서 다시 받을 수 있어 추적하지 않는다 (대회당 약 3MB).
+# 집계 결과인 primary_data/tournaments/*.json 만 커밋한다.
+intermediate_results/tournaments/
