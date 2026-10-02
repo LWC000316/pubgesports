@@ -270,12 +270,24 @@ function MatchLogView({ tournamentId }) {
 
 function Standings({ rows }) {
   if (rows.length === 0) return null;
+
+  // 사용자가 지정한 열 순서다. 순위점수·킬점수는 화면에서 "순위"·"킬" 로 줄여 쓴다.
+  const COLS = [
+    { key: 'matches', label: '경기' },
+    { key: 'wwcd', label: '치킨', gold: true },
+    { key: 'placementPoints', label: '순위' },
+    { key: 'killPoints', label: '킬' },
+    { key: 'avgPoints', label: '평균' },
+    { key: 'totalPoints', label: '합계', strong: true }
+  ];
+  const GRID = `48px 1fr repeat(${COLS.length}, 64px)`;
+
   return (
     <div className="glass-panel" style={{ borderRadius: 'var(--radius-sm)', overflowX: 'auto' }}>
       <div style={{ minWidth: '640px' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '48px 1fr 60px 60px 60px 60px 70px',
+          gridTemplateColumns: GRID,
           padding: '10px 16px',
           background: 'rgba(255,255,255,0.03)',
           fontSize: '0.73rem',
@@ -283,14 +295,17 @@ function Standings({ rows }) {
           fontWeight: '800',
           textTransform: 'uppercase'
         }}>
-          {['#', '팀', '경기', '치킨', '킬', '최고', '평균'].map((c, i) => (
-            <span key={c} style={{ textAlign: i >= 2 ? 'right' : 'left' }}>{c}</span>
+          <span>#</span>
+          <span>팀</span>
+          {COLS.map(c => (
+            <span key={c.key} style={{ textAlign: 'right' }}>{c.label}</span>
           ))}
         </div>
+
         {rows.map(r => (
           <div key={r.team} style={{
             display: 'grid',
-            gridTemplateColumns: '48px 1fr 60px 60px 60px 60px 70px',
+            gridTemplateColumns: GRID,
             padding: '11px 16px',
             borderTop: '1px solid rgba(255,255,255,0.04)',
             alignItems: 'center',
@@ -314,16 +329,22 @@ function Standings({ rows }) {
                 </span>
               )}
             </span>
-            {[r.matches, r.wwcd, r.kills, r.bestRank, r.avgRank].map((v, i) => (
-              <span key={i} style={{
-                textAlign: 'right',
-                color: v === null || v === undefined ? 'var(--text-muted)'
-                  : (i === 1 && v > 0 ? 'var(--accent-gold)' : '#fff'),
-                fontWeight: i === 1 && v > 0 ? '800' : '600'
-              }}>
-                {v === null || v === undefined ? '-' : v}
-              </span>
-            ))}
+            {COLS.map(c => {
+              const v = r[c.key];
+              const empty = v === null || v === undefined;
+              return (
+                <span key={c.key} style={{
+                  textAlign: 'right',
+                  color: empty ? 'var(--text-muted)'
+                    : c.strong ? 'var(--accent-gold)'
+                    : (c.gold && v > 0) ? 'var(--accent-gold)'
+                    : '#fff',
+                  fontWeight: c.strong ? '900' : (c.gold && v > 0) ? '800' : '600'
+                }}>
+                  {empty ? '-' : (c.key === 'avgPoints' ? v.toFixed(1) : v)}
+                </span>
+              );
+            })}
           </div>
         ))}
       </div>

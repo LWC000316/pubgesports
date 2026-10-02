@@ -2,6 +2,7 @@
   "id": "sea-ptsw2",
   "name": "PTS 2026 Phase 2 Week 2",
   "category": "regional",
+  "series": "PTS",
   "source": "https://api.pubg.com/tournaments/sea-ptsw2",
   "createdAt": null,
   "matchCount": 10,
@@ -11,7 +12,7 @@
     "Neon_Main",
     "Tiger_Main"
   ],
-  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "note": "순위 점수는 PUBG 이스포츠 표준 배점(1위 10 · 2위 6 · 3위 5 · 4위 4 · 5위 3 · 6위 2 · 7~8위 1 · 9위 이하 0, 킬 1점)으로 계산했다. 공식 API 는 배점표를 주지 않으므로 이 대회가 다른 표를 썼다면 값이 다를 수 있다.",
   "standings": [
     {
       "team": "FULL SENSE",
@@ -20,6 +21,10 @@
       "matches": 10,
       "kills": 101,
       "wwcd": 4,
+      "placementPoints": 62,
+      "killPoints": 101,
+      "totalPoints": 163,
+      "avgPoints": 16.3,
       "bestRank": 1,
       "avgRank": 3.8,
       "rank": 1
@@ -31,53 +36,13 @@
       "matches": 5,
       "kills": 39,
       "wwcd": 2,
+      "placementPoints": 27,
+      "killPoints": 39,
+      "totalPoints": 66,
+      "avgPoints": 13.2,
       "bestRank": 1,
       "avgRank": 4.6,
       "rank": 2
-    },
-    {
-      "team": "Sisaket United Esports",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 34,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 6.7,
-      "rank": 3
-    },
-    {
-      "team": "Buriram United Esports",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 5,
-      "kills": 28,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 3.6,
-      "rank": 4
-    },
-    {
-      "team": "Theerathon Five",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 5,
-      "kills": 22,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 6.0,
-      "rank": 5
-    },
-    {
-      "team": "Runner Esport",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 5,
-      "kills": 15,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 8.8,
-      "rank": 6
     },
     {
       "team": "Allin Esports",
@@ -86,9 +51,28 @@
       "matches": 10,
       "kills": 44,
       "wwcd": 0,
+      "placementPoints": 19,
+      "killPoints": 44,
+      "totalPoints": 63,
+      "avgPoints": 6.3,
       "bestRank": 3,
       "avgRank": 7.6,
-      "rank": 7
+      "rank": 3
+    },
+    {
+      "team": "Sisaket United Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 34,
+      "wwcd": 1,
+      "placementPoints": 26,
+      "killPoints": 34,
+      "totalPoints": 60,
+      "avgPoints": 6.0,
+      "bestRank": 1,
+      "avgRank": 6.7,
+      "rank": 4
     },
     {
       "team": "Zyrtec",
@@ -97,9 +81,28 @@
       "matches": 10,
       "kills": 39,
       "wwcd": 0,
+      "placementPoints": 21,
+      "killPoints": 39,
+      "totalPoints": 60,
+      "avgPoints": 6.0,
       "bestRank": 3,
       "avgRank": 8.3,
-      "rank": 8
+      "rank": 5
+    },
+    {
+      "team": "Buriram United Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 28,
+      "wwcd": 1,
+      "placementPoints": 26,
+      "killPoints": 28,
+      "totalPoints": 54,
+      "avgPoints": 10.8,
+      "bestRank": 1,
+      "avgRank": 3.6,
+      "rank": 6
     },
     {
       "team": "Sharper Esports",
@@ -108,9 +111,13 @@
       "matches": 10,
       "kills": 36,
       "wwcd": 0,
+      "placementPoints": 12,
+      "killPoints": 36,
+      "totalPoints": 48,
+      "avgPoints": 4.8,
       "bestRank": 4,
       "avgRank": 9.4,
-      "rank": 9
+      "rank": 7
     },
     {
       "team": "Armory Gaming",
@@ -119,8 +126,42 @@
       "matches": 5,
       "kills": 32,
       "wwcd": 0,
+      "placementPoints": 13,
+      "killPoints": 32,
+      "totalPoints": 45,
+      "avgPoints": 9.0,
       "bestRank": 2,
       "avgRank": 7.2,
+      "rank": 8
+    },
+    {
+      "team": "FIRST KILL ESPORTS",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 24,
+      "wwcd": 0,
+      "placementPoints": 15,
+      "killPoints": 24,
+      "totalPoints": 39,
+      "avgPoints": 7.8,
+      "bestRank": 2,
+      "avgRank": 6.2,
+      "rank": 9
+    },
+    {
+      "team": "Theerathon Five",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 22,
+      "wwcd": 1,
+      "placementPoints": 16,
+      "killPoints": 22,
+      "totalPoints": 38,
+      "avgPoints": 7.6,
+      "bestRank": 1,
+      "avgRank": 6.0,
       "rank": 10
     },
     {
@@ -130,20 +171,13 @@
       "matches": 10,
       "kills": 26,
       "wwcd": 0,
+      "placementPoints": 12,
+      "killPoints": 26,
+      "totalPoints": 38,
+      "avgPoints": 3.8,
       "bestRank": 3,
       "avgRank": 8.7,
       "rank": 11
-    },
-    {
-      "team": "FIRST KILL ESPORTS",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 5,
-      "kills": 24,
-      "wwcd": 0,
-      "bestRank": 2,
-      "avgRank": 6.2,
-      "rank": 12
     },
     {
       "team": "EArena",
@@ -152,8 +186,27 @@
       "matches": 5,
       "kills": 23,
       "wwcd": 0,
+      "placementPoints": 12,
+      "killPoints": 23,
+      "totalPoints": 35,
+      "avgPoints": 7.0,
       "bestRank": 2,
       "avgRank": 5.8,
+      "rank": 12
+    },
+    {
+      "team": "FW Esports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 20,
+      "wwcd": 0,
+      "placementPoints": 10,
+      "killPoints": 20,
+      "totalPoints": 30,
+      "avgPoints": 6.0,
+      "bestRank": 2,
+      "avgRank": 8.4,
       "rank": 13
     },
     {
@@ -163,20 +216,13 @@
       "matches": 5,
       "kills": 22,
       "wwcd": 0,
+      "placementPoints": 8,
+      "killPoints": 22,
+      "totalPoints": 30,
+      "avgPoints": 6.0,
       "bestRank": 4,
       "avgRank": 8.6,
       "rank": 14
-    },
-    {
-      "team": "FW Esports",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 5,
-      "kills": 20,
-      "wwcd": 0,
-      "bestRank": 2,
-      "avgRank": 8.4,
-      "rank": 15
     },
     {
       "team": "AK Esports",
@@ -185,8 +231,27 @@
       "matches": 10,
       "kills": 19,
       "wwcd": 0,
+      "placementPoints": 7,
+      "killPoints": 19,
+      "totalPoints": 26,
+      "avgPoints": 2.6,
       "bestRank": 4,
       "avgRank": 10.1,
+      "rank": 15
+    },
+    {
+      "team": "Runner Esport",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 15,
+      "wwcd": 1,
+      "placementPoints": 10,
+      "killPoints": 15,
+      "totalPoints": 25,
+      "avgPoints": 5.0,
+      "bestRank": 1,
+      "avgRank": 8.8,
       "rank": 16
     },
     {
@@ -196,31 +261,13 @@
       "matches": 5,
       "kills": 15,
       "wwcd": 0,
+      "placementPoints": 5,
+      "killPoints": 15,
+      "totalPoints": 20,
+      "avgPoints": 4.0,
       "bestRank": 4,
       "avgRank": 10.8,
       "rank": 17
-    },
-    {
-      "team": "I JET KAE",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 13,
-      "wwcd": 0,
-      "bestRank": 6,
-      "avgRank": 11.8,
-      "rank": 18
-    },
-    {
-      "team": "New Generation Success E-sports",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 5,
-      "kills": 12,
-      "wwcd": 0,
-      "bestRank": 11,
-      "avgRank": 13.8,
-      "rank": 19
     },
     {
       "team": "Team Of The Year",
@@ -229,9 +276,28 @@
       "matches": 5,
       "kills": 10,
       "wwcd": 0,
+      "placementPoints": 6,
+      "killPoints": 10,
+      "totalPoints": 16,
+      "avgPoints": 3.2,
       "bestRank": 3,
       "avgRank": 8.8,
-      "rank": 20
+      "rank": 18
+    },
+    {
+      "team": "I JET KAE",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 13,
+      "wwcd": 0,
+      "placementPoints": 3,
+      "killPoints": 13,
+      "totalPoints": 16,
+      "avgPoints": 1.6,
+      "bestRank": 6,
+      "avgRank": 11.8,
+      "rank": 19
     },
     {
       "team": "Genesis Of Divine",
@@ -240,9 +306,13 @@
       "matches": 5,
       "kills": 10,
       "wwcd": 0,
+      "placementPoints": 5,
+      "killPoints": 10,
+      "totalPoints": 15,
+      "avgPoints": 3.0,
       "bestRank": 3,
       "avgRank": 10.8,
-      "rank": 21
+      "rank": 20
     },
     {
       "team": "PEEK A BOO HOO",
@@ -251,8 +321,27 @@
       "matches": 5,
       "kills": 9,
       "wwcd": 0,
+      "placementPoints": 5,
+      "killPoints": 9,
+      "totalPoints": 14,
+      "avgPoints": 2.8,
       "bestRank": 3,
       "avgRank": 10.8,
+      "rank": 21
+    },
+    {
+      "team": "New Generation Success E-sports",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 5,
+      "kills": 12,
+      "wwcd": 0,
+      "placementPoints": 0,
+      "killPoints": 12,
+      "totalPoints": 12,
+      "avgPoints": 2.4,
+      "bestRank": 11,
+      "avgRank": 13.8,
       "rank": 22
     },
     {
@@ -262,6 +351,10 @@
       "matches": 5,
       "kills": 8,
       "wwcd": 0,
+      "placementPoints": 0,
+      "killPoints": 8,
+      "totalPoints": 8,
+      "avgPoints": 1.6,
       "bestRank": 10,
       "avgRank": 12.4,
       "rank": 23
@@ -273,6 +366,10 @@
       "matches": 5,
       "kills": 6,
       "wwcd": 0,
+      "placementPoints": 0,
+      "killPoints": 6,
+      "totalPoints": 6,
+      "avgPoints": 1.2,
       "bestRank": 11,
       "avgRank": 12.6,
       "rank": 24
@@ -1847,6 +1944,5 @@
       "avgSurvival": 622,
       "longestKill": 0.0
     }
-  ],
-  "series": "PTS"
+  ]
 }

@@ -46,6 +46,13 @@ public class TournamentArchiveDto {
         private int matches;
         private int kills;
         private int wwcd;
+        /** 순위 점수. PUBG 이스포츠 표준 배점(1위 10 … 7~8위 1, 9위 이하 0) */
+        private int placementPoints;
+        /** 킬 점수. 현행 규정은 1킬 1점이라 kills 와 같지만, 규정이 바뀌면 갈라진다 */
+        private int killPoints;
+        private int totalPoints;
+        /** 매치당 평균 점수 */
+        private Double avgPoints;
         private Integer bestRank;
         private Double avgRank;
     }
@@ -95,6 +102,11 @@ public class TournamentArchiveDto {
                     .matches(s.path("matches").asInt())
                     .kills(s.path("kills").asInt())
                     .wwcd(s.path("wwcd").asInt())
+                    .placementPoints(s.path("placementPoints").asInt())
+                    .killPoints(s.path("killPoints").asInt())
+                    .totalPoints(s.path("totalPoints").asInt())
+                    .avgPoints(s.path("avgPoints").isMissingNode() || s.path("avgPoints").isNull()
+                            ? null : s.path("avgPoints").asDouble())
                     .bestRank(s.path("bestRank").isMissingNode() || s.path("bestRank").isNull()
                             ? null : s.path("bestRank").asInt())
                     .avgRank(s.path("avgRank").isMissingNode() || s.path("avgRank").isNull()

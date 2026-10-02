@@ -2,6 +2,7 @@
   "id": "cn-pclaf26",
   "name": "PCL 2026 Autumn Finals",
   "category": "regional",
+  "series": "PCL",
   "source": "https://api.pubg.com/tournaments/cn-pclaf26",
   "createdAt": null,
   "matchCount": 15,
@@ -11,41 +12,8 @@
     "Neon_Main",
     "Tiger_Main"
   ],
-  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "note": "순위 점수는 PUBG 이스포츠 표준 배점(1위 10 · 2위 6 · 3위 5 · 4위 4 · 5위 3 · 6위 2 · 7~8위 1 · 9위 이하 0, 킬 1점)으로 계산했다. 공식 API 는 배점표를 주지 않으므로 이 대회가 다른 표를 썼다면 값이 다를 수 있다.",
   "standings": [
-    {
-      "team": "17 Gaming",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 82,
-      "wwcd": 3,
-      "bestRank": 1,
-      "avgRank": 7.13,
-      "rank": 1
-    },
-    {
-      "team": "Zhu Chao Gaming",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 56,
-      "wwcd": 2,
-      "bestRank": 1,
-      "avgRank": 5.8,
-      "rank": 2
-    },
-    {
-      "team": "MiKael",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 48,
-      "wwcd": 2,
-      "bestRank": 1,
-      "avgRank": 8.53,
-      "rank": 3
-    },
     {
       "team": "Four Angry Men",
       "league": "PCL",
@@ -53,20 +21,28 @@
       "matches": 15,
       "kills": 94,
       "wwcd": 1,
+      "placementPoints": 36,
+      "killPoints": 94,
+      "totalPoints": 130,
+      "avgPoints": 8.67,
       "bestRank": 1,
       "avgRank": 7.47,
-      "rank": 4
+      "rank": 1
     },
     {
-      "team": "Petrichor Road",
+      "team": "17 Gaming",
       "league": "PCL",
       "teamResolved": true,
       "matches": 15,
-      "kills": 78,
-      "wwcd": 1,
+      "kills": 82,
+      "wwcd": 3,
+      "placementPoints": 46,
+      "killPoints": 82,
+      "totalPoints": 128,
+      "avgPoints": 8.53,
       "bestRank": 1,
-      "avgRank": 8.0,
-      "rank": 5
+      "avgRank": 7.13,
+      "rank": 2
     },
     {
       "team": "EDward Gaming",
@@ -75,64 +51,43 @@
       "matches": 15,
       "kills": 71,
       "wwcd": 1,
+      "placementPoints": 41,
+      "killPoints": 71,
+      "totalPoints": 112,
+      "avgPoints": 7.47,
       "bestRank": 1,
       "avgRank": 7.67,
-      "rank": 6
+      "rank": 3
     },
     {
-      "team": "Weibo Gaming",
+      "team": "Petrichor Road",
       "league": "PCL",
       "teamResolved": true,
       "matches": 15,
-      "kills": 45,
+      "kills": 78,
       "wwcd": 1,
+      "placementPoints": 33,
+      "killPoints": 78,
+      "totalPoints": 111,
+      "avgPoints": 7.4,
       "bestRank": 1,
-      "avgRank": 8.73,
-      "rank": 7
+      "avgRank": 8.0,
+      "rank": 4
     },
     {
-      "team": "Golden Quester Gaming",
+      "team": "Zhu Chao Gaming",
       "league": "PCL",
       "teamResolved": true,
       "matches": 15,
-      "kills": 44,
-      "wwcd": 1,
+      "kills": 56,
+      "wwcd": 2,
+      "placementPoints": 54,
+      "killPoints": 56,
+      "totalPoints": 110,
+      "avgPoints": 7.33,
       "bestRank": 1,
-      "avgRank": 9.67,
-      "rank": 8
-    },
-    {
-      "team": "722 Gaming",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 41,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 8.53,
-      "rank": 9
-    },
-    {
-      "team": "XTART Gaming",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 39,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 9.53,
-      "rank": 10
-    },
-    {
-      "team": "007 Gaming",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 33,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 11.67,
-      "rank": 11
+      "avgRank": 5.8,
+      "rank": 5
     },
     {
       "team": "NewHappy",
@@ -141,9 +96,13 @@
       "matches": 15,
       "kills": 68,
       "wwcd": 0,
+      "placementPoints": 27,
+      "killPoints": 68,
+      "totalPoints": 95,
+      "avgPoints": 6.33,
       "bestRank": 2,
       "avgRank": 8.4,
-      "rank": 12
+      "rank": 6
     },
     {
       "team": "Soy Milk Squad",
@@ -152,20 +111,13 @@
       "matches": 15,
       "kills": 64,
       "wwcd": 0,
+      "placementPoints": 25,
+      "killPoints": 64,
+      "totalPoints": 89,
+      "avgPoints": 5.93,
       "bestRank": 2,
       "avgRank": 8.07,
-      "rank": 13
-    },
-    {
-      "team": "TYLOO",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 15,
-      "kills": 54,
-      "wwcd": 0,
-      "bestRank": 2,
-      "avgRank": 8.87,
-      "rank": 14
+      "rank": 7
     },
     {
       "team": "XiYouZhanDui",
@@ -174,9 +126,103 @@
       "matches": 15,
       "kills": 46,
       "wwcd": 0,
+      "placementPoints": 37,
+      "killPoints": 46,
+      "totalPoints": 83,
+      "avgPoints": 5.53,
       "bestRank": 2,
       "avgRank": 7.47,
-      "rank": 15
+      "rank": 8
+    },
+    {
+      "team": "TYLOO",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 54,
+      "wwcd": 0,
+      "placementPoints": 24,
+      "killPoints": 54,
+      "totalPoints": 78,
+      "avgPoints": 5.2,
+      "bestRank": 2,
+      "avgRank": 8.87,
+      "rank": 9
+    },
+    {
+      "team": "MiKael",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 48,
+      "wwcd": 2,
+      "placementPoints": 26,
+      "killPoints": 48,
+      "totalPoints": 74,
+      "avgPoints": 4.93,
+      "bestRank": 1,
+      "avgRank": 8.53,
+      "rank": 10
+    },
+    {
+      "team": "Weibo Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 45,
+      "wwcd": 1,
+      "placementPoints": 28,
+      "killPoints": 45,
+      "totalPoints": 73,
+      "avgPoints": 4.87,
+      "bestRank": 1,
+      "avgRank": 8.73,
+      "rank": 11
+    },
+    {
+      "team": "XTART Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 39,
+      "wwcd": 1,
+      "placementPoints": 30,
+      "killPoints": 39,
+      "totalPoints": 69,
+      "avgPoints": 4.6,
+      "bestRank": 1,
+      "avgRank": 9.53,
+      "rank": 12
+    },
+    {
+      "team": "722 Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 41,
+      "wwcd": 1,
+      "placementPoints": 28,
+      "killPoints": 41,
+      "totalPoints": 69,
+      "avgPoints": 4.6,
+      "bestRank": 1,
+      "avgRank": 8.53,
+      "rank": 13
+    },
+    {
+      "team": "Golden Quester Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 44,
+      "wwcd": 1,
+      "placementPoints": 20,
+      "killPoints": 44,
+      "totalPoints": 64,
+      "avgPoints": 4.27,
+      "bestRank": 1,
+      "avgRank": 9.67,
+      "rank": 14
     },
     {
       "team": "JD Gaming",
@@ -185,8 +231,27 @@
       "matches": 15,
       "kills": 43,
       "wwcd": 0,
+      "placementPoints": 14,
+      "killPoints": 43,
+      "totalPoints": 57,
+      "avgPoints": 3.8,
       "bestRank": 4,
       "avgRank": 10.47,
+      "rank": 15
+    },
+    {
+      "team": "007 Gaming",
+      "league": "PCL",
+      "teamResolved": true,
+      "matches": 15,
+      "kills": 33,
+      "wwcd": 1,
+      "placementPoints": 11,
+      "killPoints": 33,
+      "totalPoints": 44,
+      "avgPoints": 2.93,
+      "bestRank": 1,
+      "avgRank": 11.67,
       "rank": 16
     }
   ],
@@ -1231,6 +1296,5 @@
       "avgSurvival": 1051,
       "longestKill": 170.7
     }
-  ],
-  "series": "PCL"
+  ]
 }

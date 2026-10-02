@@ -44,6 +44,19 @@ def fold(text):
     return "".join(c for c in d if unicodedata.category(c) != "Mn").upper()
 
 
+# PUBG 이스포츠 표준 순위 점수 (2022년 이후 PGC·PGS·PWS·PCL·PEC·PAS 공통, 16팀 로비).
+# 킬은 1킬 1점이다.
+#
+# **대회마다 다를 수 있다.** 과거 PGC 의 슈퍼 포인트처럼 다른 표를 쓴 대회가 있고,
+# 공식 API 는 배점표를 주지 않는다. 다른 표를 쓰는 대회를 넣을 때는 여기를 분기시킬 것.
+PLACEMENT_POINTS = {1: 10, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1, 8: 1}
+
+
+def placement_points(rank):
+    """9위 이하는 0점이다."""
+    return PLACEMENT_POINTS.get(rank, 0)
+
+
 def overall_score(kills, avg_damage, avg_survival_min, knocks):
     """
     선수 종합 점수.
@@ -121,6 +134,9 @@ def main():
     ap.add_argument("--name", default=None, help="화면에 쓸 대회 이름")
     ap.add_argument("--category", default=None,
                     choices=["global", "regional", "scrim"], help="분류")
+    ap.add_argument("--series", default=None,
+                    help="시리즈 코드. 글로벌은 PGS·PNC·EWC·PGC, 지역은 리그 코드"
+                         " (PWS·PCL·EMEA·AMER·PTS·PVS). 대회 탭이 이걸로 묶는다")
     ap.add_argument("--team-from-prefix", action="store_true",
                     help="팀을 우리 명단이 아니라 인게임 아이디 접두사로 정한다. "
                          "네이션스컵(PNC)처럼 팀이 클럽이 아니라 국가인 대회용 — "
@@ -160,10 +176,25 @@ def main():
                                    "headshots": 0, "longestKill": 0.0, "revives": 0,
                                    "team": None, "league": None})
     maps = []
+    voided = []
 
     for f in match_files:
         doc = json.loads(f.read_text(encoding="utf-8-sig"))
         included = doc.get("included", [])
+
+        # 중단되고 재경기한 판을 걸러낸다. 공식 API 는 그런 경기도 그대로 준다.
+        # 정상 경기는 순위가 1..N 으로 퍼지는데, 중단된 판은 1위 하나에 나머지
+        # 전원 꼴찌로 기록된다. 그대로 넣으면 순위 점수·평균·선수 기록이 전부
+        # 어긋난다 (PVS 2026 Phase 2 의 2be5c1e7: 757초 · 18킬, 정상은 1700초 · 60킬).
+        rosters = [r for r in included if r.get("type") == "roster"]
+        ranks_seen = {r.get("attributes", {}).get("stats", {}).get("rank")
+                      for r in rosters}
+        ranks_seen.discard(None)
+        if rosters and len(ranks_seen) * 2 < len(rosters):
+            voided.append((f.stem.replace("match_", "")[:8], len(rosters),
+                           sorted(ranks_seen)))
+            continue
+
         maps.append(doc.get("data", {}).get("attributes", {}).get("mapName"))
 
         by_id = {p["id"]: p for p in included if p.get("type") == "participant"}
@@ -215,6 +246,9 @@ def main():
     standings = []
     for name, t in teams.items():
         ranks = t["ranks"]
+        place_pts = sum(placement_points(r) for r in ranks)
+        kill_pts = t["kills"]          # 1킬 1점
+        total_pts = place_pts + kill_pts
         standings.append({
             "team": name,
             "league": t["league"],
@@ -222,12 +256,16 @@ def main():
             "matches": t["matches"],
             "kills": t["kills"],
             "wwcd": t["wwcd"],
+            "placementPoints": place_pts,
+            "killPoints": kill_pts,
+            "totalPoints": total_pts,
+            "avgPoints": round(total_pts / t["matches"], 2) if t["matches"] else None,
             "bestRank": min(ranks) if ranks else None,
             "avgRank": round(sum(ranks) / len(ranks), 2) if ranks else None,
         })
-    # 점수가 없으므로 치킨 -> 킬 -> 평균 순위 로 세운다. 공식 순위가 아니다.
-    standings.sort(key=lambda r: (-r["wwcd"], -r["kills"],
-                                  r["avgRank"] if r["avgRank"] is not None else 99))
+    # 합계 -> 순위점수 -> 치킨 순. 동점은 대회 규정마다 다르게 깨지므로
+    # 이 순서가 공식 타이브레이커와 일치한다고 단정하지 말 것.
+    standings.sort(key=lambda r: (-r["totalPoints"], -r["placementPoints"], -r["wwcd"]))
     for i, row in enumerate(standings, 1):
         row["rank"] = i
 
@@ -265,12 +303,14 @@ def main():
         "id": args.tournament_id,
         "name": args.name or args.tournament_id,
         "category": args.category,
+        "series": args.series,
         "source": "https://api.pubg.com/tournaments/%s" % args.tournament_id,
         "createdAt": created,
-        "matchCount": len(match_files),
+        "matchCount": len(match_files) - len(voided),
         "maps": sorted(set(m for m in maps if m)),
-        "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. "
-                "API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+        "note": "순위 점수는 PUBG 이스포츠 표준 배점(1위 10 · 2위 6 · 3위 5 · 4위 4 · "
+                "5위 3 · 6위 2 · 7~8위 1 · 9위 이하 0, 킬 1점)으로 계산했다. "
+                "공식 API 는 배점표를 주지 않으므로 이 대회가 다른 표를 썼다면 값이 다를 수 있다.",
         "standings": standings,
         "players": player_rows,
     }
@@ -279,17 +319,22 @@ def main():
     out = OUT_DIR / ("%s.json" % args.tournament_id)
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    if voided:
+        print("중단된 경기 %d개를 뺐습니다 (순위가 흩어지지 않음):" % len(voided))
+        for mid, n, rr in voided:
+            print("  %s · 팀 %d개인데 순위가 %s 뿐" % (mid, n, rr))
+
     unresolved = [s["team"] for s in standings if not s["teamResolved"]]
     print("경기 %d개 · 팀 %d개 · 선수 %d명 -> %s"
-          % (len(match_files), len(standings), len(player_rows),
+          % (len(match_files) - len(voided), len(standings), len(player_rows),
              out.relative_to(PROJECT_ROOT)))
     if unresolved:
         print("우리 시드에서 팀을 못 찾아 인게임 접두사를 쓴 팀 %d개: %s"
               % (len(unresolved), unresolved))
     print("\n상위 8팀:")
     for s in standings[:8]:
-        print("  %2d. %-24s 치킨 %d · 킬 %3d · 평균순위 %s"
-              % (s["rank"], s["team"], s["wwcd"], s["kills"], s["avgRank"]))
+        print("  %2d. %-24s 치킨 %d · 킬 %3d · 합계 %s점"
+              % (s["rank"], s["team"], s["wwcd"], s["kills"], s["totalPoints"]))
     return 0
 
 

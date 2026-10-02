@@ -2,6 +2,7 @@
   "id": "as-pgs8fsg",
   "name": "PGS 8 Final Stage",
   "category": "global",
+  "series": "PGS",
   "source": "https://api.pubg.com/tournaments/as-pgs8fsg",
   "createdAt": null,
   "matchCount": 10,
@@ -11,7 +12,7 @@
     "Neon_Main",
     "Tiger_Main"
   ],
-  "note": "순위 점수는 대회 규정마다 달라 계산하지 않았다. API 가 직접 주는 값(킬·순위·WWCD)만 담는다.",
+  "note": "순위 점수는 PUBG 이스포츠 표준 배점(1위 10 · 2위 6 · 3위 5 · 4위 4 · 5위 3 · 6위 2 · 7~8위 1 · 9위 이하 0, 킬 1점)으로 계산했다. 공식 API 는 배점표를 주지 않으므로 이 대회가 다른 표를 썼다면 값이 다를 수 있다.",
   "standings": [
     {
       "team": "17 Gaming",
@@ -20,86 +21,13 @@
       "matches": 10,
       "kills": 65,
       "wwcd": 3,
+      "placementPoints": 36,
+      "killPoints": 65,
+      "totalPoints": 101,
+      "avgPoints": 10.1,
       "bestRank": 1,
       "avgRank": 6.7,
       "rank": 1
-    },
-    {
-      "team": "Team Falcons",
-      "league": "AMER",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 48,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 6.2,
-      "rank": 2
-    },
-    {
-      "team": "EArena",
-      "league": "PTS",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 41,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 8.3,
-      "rank": 3
-    },
-    {
-      "team": "DN SOOPers",
-      "league": "PWS",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 39,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 9.6,
-      "rank": 4
-    },
-    {
-      "team": "Geekay Esports",
-      "league": "PWS",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 38,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 9.4,
-      "rank": 5
-    },
-    {
-      "team": "Petrichor Road",
-      "league": "PCL",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 37,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 8.4,
-      "rank": 6
-    },
-    {
-      "team": "GodLike Esports",
-      "league": "AMER",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 33,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 8.2,
-      "rank": 7
-    },
-    {
-      "team": "Gen.G Esports",
-      "league": "PWS",
-      "teamResolved": true,
-      "matches": 10,
-      "kills": 33,
-      "wwcd": 1,
-      "bestRank": 1,
-      "avgRank": 9.0,
-      "rank": 8
     },
     {
       "team": "Virtus.pro",
@@ -108,9 +36,28 @@
       "matches": 10,
       "kills": 53,
       "wwcd": 0,
+      "placementPoints": 31,
+      "killPoints": 53,
+      "totalPoints": 84,
+      "avgPoints": 8.4,
       "bestRank": 2,
       "avgRank": 6.3,
-      "rank": 9
+      "rank": 2
+    },
+    {
+      "team": "Team Falcons",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 48,
+      "wwcd": 1,
+      "placementPoints": 35,
+      "killPoints": 48,
+      "totalPoints": 83,
+      "avgPoints": 8.3,
+      "bestRank": 1,
+      "avgRank": 6.2,
+      "rank": 3
     },
     {
       "team": "Made in Thailand",
@@ -119,9 +66,73 @@
       "matches": 10,
       "kills": 47,
       "wwcd": 0,
+      "placementPoints": 32,
+      "killPoints": 47,
+      "totalPoints": 79,
+      "avgPoints": 7.9,
       "bestRank": 2,
       "avgRank": 6.1,
-      "rank": 10
+      "rank": 4
+    },
+    {
+      "team": "EArena",
+      "league": "PTS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 41,
+      "wwcd": 1,
+      "placementPoints": 21,
+      "killPoints": 41,
+      "totalPoints": 62,
+      "avgPoints": 6.2,
+      "bestRank": 1,
+      "avgRank": 8.3,
+      "rank": 5
+    },
+    {
+      "team": "GodLike Esports",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 33,
+      "wwcd": 1,
+      "placementPoints": 27,
+      "killPoints": 33,
+      "totalPoints": 60,
+      "avgPoints": 6.0,
+      "bestRank": 1,
+      "avgRank": 8.2,
+      "rank": 6
+    },
+    {
+      "team": "DN SOOPers",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 39,
+      "wwcd": 1,
+      "placementPoints": 19,
+      "killPoints": 39,
+      "totalPoints": 58,
+      "avgPoints": 5.8,
+      "bestRank": 1,
+      "avgRank": 9.6,
+      "rank": 7
+    },
+    {
+      "team": "Geekay Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 38,
+      "wwcd": 1,
+      "placementPoints": 18,
+      "killPoints": 38,
+      "totalPoints": 56,
+      "avgPoints": 5.6,
+      "bestRank": 1,
+      "avgRank": 9.4,
+      "rank": 8
     },
     {
       "team": "Anyone's Legend",
@@ -130,20 +141,43 @@
       "matches": 10,
       "kills": 41,
       "wwcd": 0,
+      "placementPoints": 14,
+      "killPoints": 41,
+      "totalPoints": 55,
+      "avgPoints": 5.5,
       "bestRank": 2,
       "avgRank": 8.7,
-      "rank": 11
+      "rank": 9
     },
     {
-      "team": "Team Liquid",
-      "league": "AMER",
+      "team": "Petrichor Road",
+      "league": "PCL",
       "teamResolved": true,
       "matches": 10,
-      "kills": 35,
-      "wwcd": 0,
-      "bestRank": 6,
-      "avgRank": 10.4,
-      "rank": 12
+      "kills": 37,
+      "wwcd": 1,
+      "placementPoints": 17,
+      "killPoints": 37,
+      "totalPoints": 54,
+      "avgPoints": 5.4,
+      "bestRank": 1,
+      "avgRank": 8.4,
+      "rank": 10
+    },
+    {
+      "team": "Gen.G Esports",
+      "league": "PWS",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 33,
+      "wwcd": 1,
+      "placementPoints": 16,
+      "killPoints": 33,
+      "totalPoints": 49,
+      "avgPoints": 4.9,
+      "bestRank": 1,
+      "avgRank": 9.0,
+      "rank": 11
     },
     {
       "team": "Alpha Gaming",
@@ -152,9 +186,13 @@
       "matches": 10,
       "kills": 29,
       "wwcd": 0,
+      "placementPoints": 18,
+      "killPoints": 29,
+      "totalPoints": 47,
+      "avgPoints": 4.7,
       "bestRank": 2,
       "avgRank": 8.1,
-      "rank": 13
+      "rank": 12
     },
     {
       "team": "JD Gaming",
@@ -163,8 +201,27 @@
       "matches": 10,
       "kills": 29,
       "wwcd": 0,
+      "placementPoints": 12,
+      "killPoints": 29,
+      "totalPoints": 41,
+      "avgPoints": 4.1,
       "bestRank": 4,
       "avgRank": 9.9,
+      "rank": 13
+    },
+    {
+      "team": "Team Liquid",
+      "league": "AMER",
+      "teamResolved": true,
+      "matches": 10,
+      "kills": 35,
+      "wwcd": 0,
+      "placementPoints": 5,
+      "killPoints": 35,
+      "totalPoints": 40,
+      "avgPoints": 4.0,
+      "bestRank": 6,
+      "avgRank": 10.4,
       "rank": 14
     },
     {
@@ -174,6 +231,10 @@
       "matches": 10,
       "kills": 26,
       "wwcd": 0,
+      "placementPoints": 11,
+      "killPoints": 26,
+      "totalPoints": 37,
+      "avgPoints": 3.7,
       "bestRank": 3,
       "avgRank": 9.3,
       "rank": 15
@@ -185,6 +246,10 @@
       "matches": 10,
       "kills": 13,
       "wwcd": 0,
+      "placementPoints": 8,
+      "killPoints": 13,
+      "totalPoints": 21,
+      "avgPoints": 2.1,
       "bestRank": 3,
       "avgRank": 11.4,
       "rank": 16
@@ -1215,6 +1280,5 @@
       "avgSurvival": 775,
       "longestKill": 0.0
     }
-  ],
-  "series": "PGS"
+  ]
 }
