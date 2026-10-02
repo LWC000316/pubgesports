@@ -33,8 +33,10 @@ API_URL = "https://liquipedia.net/pubg/api.php"
 # 약관상 연락처가 필요하다. 개인 이메일 대신 프로젝트 URL 을 기본값으로 쓴다.
 DEFAULT_CONTACT = "https://github.com/LWC000316/pubgesports"
 
-# 문서에 명시된 수치가 아니라 보수적으로 잡은 값이다. 줄이지 말 것.
+# 리퀴피디아 약관의 호출 간격. action=parse 는 무거워서 따로 더 길게 둔다.
+# 2초로 parse 를 때리면 429 가 돌아온다(실측). 줄이지 말 것.
 MIN_SECONDS_BETWEEN_CALLS = 2.0
+MIN_SECONDS_BETWEEN_PARSE = 30.0
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = PROJECT_ROOT / "intermediate_results" / "liquipedia_cache"
@@ -61,10 +63,12 @@ class MediaWikiClient:
         digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:20]
         return self.cache_dir / ("mw_%s.json" % digest)
 
-    def _throttle(self):
+    def _throttle(self, action=None):
+        gap = (MIN_SECONDS_BETWEEN_PARSE if action == "parse"
+               else MIN_SECONDS_BETWEEN_CALLS)
         elapsed = time.time() - self._last_call
-        if elapsed < MIN_SECONDS_BETWEEN_CALLS:
-            time.sleep(MIN_SECONDS_BETWEEN_CALLS - elapsed)
+        if elapsed < gap:
+            time.sleep(gap - elapsed)
 
     def get(self, params, refresh=False):
         """api.php 를 호출하고 JSON 을 돌려준다. 응답은 캐시된다."""
@@ -80,7 +84,7 @@ class MediaWikiClient:
             raise SystemExit(
                 "offline 모드인데 캐시에 없는 요청입니다:\n  %s" % url)
 
-        self._throttle()
+        self._throttle(params.get("action"))
         req = urllib.request.Request(url, headers={
             "User-Agent": "PUBGProVault/1.0 (%s)" % self.contact,
             "Accept-Encoding": "gzip",
@@ -94,10 +98,23 @@ class MediaWikiClient:
                     raw = gzip.decompress(raw)
                 body = json.loads(raw.decode("utf-8"))
         except urllib.error.HTTPError as e:
-            detail = e.read().decode("utf-8", "replace")[:400]
-            raise SystemExit(
-                "리퀴피디아 %s 응답: %s\n요청: %s\n"
-                "403 이면 User-Agent 의 연락처를 확인하세요." % (e.code, detail, url))
+            if e.code == 429:
+                # 간격을 늘려 한 번만 더 시도한다. 그래도 막히면 사람이 볼 일이다.
+                self._last_call = time.time()
+                time.sleep(MIN_SECONDS_BETWEEN_PARSE)
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    raw = resp.read()
+                    if resp.info().get("Content-Encoding") == "gzip":
+                        raw = gzip.decompress(raw)
+                    body = json.loads(raw.decode("utf-8"))
+            else:
+                raw = e.read()
+                if e.headers.get("Content-Encoding") == "gzip":
+                    raw = gzip.decompress(raw)
+                detail = raw.decode("utf-8", "replace")[:400]
+                raise SystemExit(
+                    "리퀴피디아 %s 응답: %s\n요청: %s\n"
+                    "403 이면 User-Agent 의 연락처를 확인하세요." % (e.code, detail, url))
         finally:
             self._last_call = time.time()
 

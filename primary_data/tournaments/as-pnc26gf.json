@@ -12,7 +12,11 @@
     "Neon_Main",
     "Tiger_Main"
   ],
-  "note": "순위 점수는 PUBG 이스포츠 표준 배점(1위 10 · 2위 6 · 3위 5 · 4위 4 · 5위 3 · 6위 2 · 7~8위 1 · 9위 이하 0, 킬 1점)으로 계산했다. 공식 API 는 배점표를 주지 않으므로 이 대회가 다른 표를 썼다면 값이 다를 수 있다.",
+  "scoring": {
+    "table": "PUBG 이스포츠 2026 표준",
+    "verifiedBy": "리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 (CC-BY-SA 3.0)"
+  },
+  "note": "순위 점수는 PUBG 이스포츠 2026 표준 배점으로 계산했다 (출처: 리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 (CC-BY-SA 3.0)).",
   "standings": [
     {
       "team": "BRA",

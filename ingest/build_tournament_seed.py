@@ -44,17 +44,42 @@ def fold(text):
     return "".join(c for c in d if unicodedata.category(c) != "Mn").upper()
 
 
-# PUBG 이스포츠 표준 순위 점수 (2022년 이후 PGC·PGS·PWS·PCL·PEC·PAS 공통, 16팀 로비).
-# 킬은 1킬 1점이다.
+# 순위 점수 배점표. **공식 API 는 배점표를 주지 않으므로 바깥에서 확인한 것만 넣는다.**
 #
-# **대회마다 다를 수 있다.** 과거 PGC 의 슈퍼 포인트처럼 다른 표를 쓴 대회가 있고,
-# 공식 API 는 배점표를 주지 않는다. 다른 표를 쓰는 대회를 넣을 때는 여기를 분기시킬 것.
-PLACEMENT_POINTS = {1: 10, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1, 8: 1}
+# 확인되지 않은 시대는 여기에 넣지 않는다. 그러면 그 대회의 점수 열이 비고
+# (placementPoints / totalPoints / avgPoints 가 null), 화면은 킬·치킨·평균순위만
+# 보여준다. 틀린 점수를 맞는 것처럼 보여주느니 비워 두는 쪽이 낫다.
+#
+# `verifiedBy` 는 무엇으로 확인했는지다. 비어 있으면 아직 확인 전이라는 뜻이고,
+# 그런 표는 쓰이지 않는다.
+PLACEMENT_TABLES = [
+    {
+        # 리퀴피디아의 경기 템플릿에서 그대로 읽은 값이다. 17경기에서 같은 표가
+        # 나왔다: PCL 2026 Autumn Stage S(9), PVS 2026 Phase 1(4)·Phase 2(4).
+        # `python ingest/verify_scoring.py` 로 다시 확인할 수 있다.
+        "name": "PUBG 이스포츠 2026 표준",
+        "fromYear": 2026, "toYear": 2026,
+        "points": {1: 10, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1, 8: 1},
+        "killPoint": 1,
+        "verifiedBy": "리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 "
+                      "(CC-BY-SA 3.0)",
+    },
+    # 2025년 이전은 아직 확인하지 못했다. 같은 표를 썼을 가능성이 높지만 근거가
+    # 없으므로 넣지 않는다 — 넣으면 틀린 점수가 맞는 것처럼 보인다.
+    # 확인하려면: python ingest/verify_scoring.py --page PUBG_Global_Championship/2021
+]
 
 
-def placement_points(rank):
-    """9위 이하는 0점이다."""
-    return PLACEMENT_POINTS.get(rank, 0)
+def placement_table(year):
+    """그 연도에 쓸 배점표. 확인된 것이 없으면 None."""
+    try:
+        y = int(year)
+    except (TypeError, ValueError):
+        return None
+    for t in PLACEMENT_TABLES:
+        if t["fromYear"] <= y <= t["toYear"] and t.get("verifiedBy"):
+            return t
+    return None
 
 
 def overall_score(kills, avg_damage, avg_survival_min, knocks):
@@ -76,13 +101,14 @@ def overall_score(kills, avg_damage, avg_survival_min, knocks):
 
 
 def load_our_players():
-    """폴딩한 닉네임 -> [(리그, 팀, 닉네임)]"""
+    """폴딩한 닉네임 -> [(리그, 팀, 닉네임, 팀태그)]"""
     index = defaultdict(list)
     for path in sorted(PROJECT_ROOT.glob("primary_data/*_teams_verified.json")):
         for team in json.loads(path.read_text(encoding="utf-8")):
             for player in team.get("players", []):
                 index[fold(player["nickname"])].append(
-                    (team.get("league"), team["name"], player["nickname"]))
+                    (team.get("league"), team["name"], player["nickname"],
+                     team.get("tag")))
     return index
 
 
@@ -95,10 +121,35 @@ def split_ingame_id(name):
     return None, name
 
 
-def resolve_team(participant_names, our_players, prefix_only=False):
+def seed_years():
+    """우리 시드가 어느 시점의 로스터인지. primary_data/_sources.json 이 근거다."""
+    f = PROJECT_ROOT / "primary_data" / "_sources.json"
+    if not f.is_file():
+        return set()
+    doc = json.loads(f.read_text(encoding="utf-8"))
+    leagues = doc.get("leagues", doc)
+    out = set()
+    for v in leagues.values():
+        if isinstance(v, dict) and v.get("collectedAt"):
+            out.add(v["collectedAt"][:4])
+    return out
+
+
+def resolve_team(participant_names, our_players, prefix_only=False,
+                 contemporaneous=True):
     """
     로스터 참가자 이름들로 팀을 찾는다.
-    우리 시드에서 찾은 팀이 과반이면 그 팀, 아니면 인게임 접두사를 쓴다.
+
+    우리 시드는 2026년 로스터다. 선수가 이적하면 **옛날 팀이 지금 팀 이름으로**
+    찍힌다 — 2021 PGC 의 GEN_Asura 가 Baegopa 로, 2019 의 NAVI_ceh9 가 S8UL 로
+    나왔다. 그래서 과반 투표만으로는 믿지 않고 두 가지 중 하나를 더 본다.
+
+      1. 그 대회가 시드와 **같은 시기**면 이적 위험이 없으므로 그대로 믿는다.
+      2. 다른 시기면 시드의 팀 태그가 **인게임 접두사와 정확히 같을** 때만 믿는다.
+         접두사는 그 대회 당시의 태그라 시대와 무관하게 맞는 검사다. 태그가
+         비어 있는 리그(리퀴피디아 수집분 대부분)는 이 경로로 통과하지 못한다.
+
+    둘 다 아니면 접두사를 쓴다. 접두사는 언제나 사실이다.
     """
     if prefix_only:
         prefixes = [split_ingame_id(n)[0] for n in participant_names]
@@ -113,12 +164,28 @@ def resolve_team(participant_names, our_players, prefix_only=False):
         for cand in (nick, raw):
             hits = our_players.get(fold(cand))
             if hits and len(hits) == 1:
-                votes[(hits[0][0], hits[0][1])] += 1
+                votes[(hits[0][0], hits[0][1], hits[0][3])] += 1
                 break
+
+    prefixes = [split_ingame_id(n)[0] for n in participant_names]
+    prefixes = [p for p in prefixes if p]
+    common = max(set(prefixes), key=prefixes.count) if prefixes else None
+
     if votes:
-        (league, team), n = max(votes.items(), key=lambda kv: kv[1])
-        if n * 2 >= len(participant_names):        # 과반
-            return league, team, True
+        (league, team, tag), n = max(votes.items(), key=lambda kv: kv[1])
+        # 과반만으로는 모자란다. 선수가 이적하면 **옛날 팀이 지금 팀 이름으로**
+        # 찍힌다 (2021 PGC 의 GEN_Asura 가 Baegopa 로, 2019 의 NAVI 가 S8UL 로
+        # 나왔다). 인게임 접두사가 곧 그 대회 당시의 팀 태그이므로, 우리가 찾은
+        # 팀의 태그와 접두사가 같을 때만 이름을 믿는다. 다르면 접두사를 쓴다 —
+        # 접두사는 언제나 사실이다.
+        if n * 2 >= len(participant_names):
+            if contemporaneous:
+                # 시드와 같은 시기면 이적 위험이 없다. 태그 표기가 접두사와
+                # 달라도(VITALITY vs VIT) 그대로 믿는다.
+                return league, team, True
+            if tag and common and fold(tag) == fold(common):
+                # 다른 시기면 태그가 접두사와 정확히 같을 때만 믿는다.
+                return league, team, True
 
     prefixes = [split_ingame_id(n)[0] for n in participant_names]
     prefixes = [p for p in prefixes if p]
@@ -178,6 +245,19 @@ def main():
     maps = []
     voided = []
 
+    # 이 대회가 우리 시드와 같은 시기인지. 팀 이름 해석을 믿어도 되는지를 가른다.
+    first = json.loads(match_files[0].read_text(encoding="utf-8-sig"))
+    event_year = (first.get("data", {}).get("attributes", {}).get("createdAt") or "")[:4]
+    contemporaneous = event_year in seed_years()
+    table = placement_table(event_year)
+    if not table:
+        print("%s 년 배점표가 확인되지 않아 점수 열을 비웁니다. "
+              "킬·치킨·평균순위만 담습니다." % (event_year or "?"))
+    if not contemporaneous:
+        print("%s 년 대회다. 우리 시드(%s)와 시기가 달라 태그가 확인되는 팀만 "
+              "이름을 쓰고 나머지는 인게임 접두사로 둔다."
+              % (event_year or "?", "/".join(sorted(seed_years())) or "없음"))
+
     for f in match_files:
         doc = json.loads(f.read_text(encoding="utf-8-sig"))
         included = doc.get("included", [])
@@ -208,7 +288,8 @@ def main():
                 continue
 
             league, team, resolved = resolve_team(
-                names, our_players, prefix_only=args.team_from_prefix)
+                names, our_players, prefix_only=args.team_from_prefix,
+                contemporaneous=contemporaneous)
             rank = roster.get("attributes", {}).get("stats", {}).get("rank")
 
             kills = 0
@@ -246,9 +327,13 @@ def main():
     standings = []
     for name, t in teams.items():
         ranks = t["ranks"]
-        place_pts = sum(placement_points(r) for r in ranks)
-        kill_pts = t["kills"]          # 1킬 1점
-        total_pts = place_pts + kill_pts
+        if table:
+            place_pts = sum(table["points"].get(r, 0) for r in ranks)
+            kill_pts = t["kills"] * table["killPoint"]
+            total_pts = place_pts + kill_pts
+            avg_pts = round(total_pts / t["matches"], 2) if t["matches"] else None
+        else:
+            place_pts = kill_pts = total_pts = avg_pts = None
         standings.append({
             "team": name,
             "league": t["league"],
@@ -259,13 +344,19 @@ def main():
             "placementPoints": place_pts,
             "killPoints": kill_pts,
             "totalPoints": total_pts,
-            "avgPoints": round(total_pts / t["matches"], 2) if t["matches"] else None,
+            "avgPoints": avg_pts,
             "bestRank": min(ranks) if ranks else None,
             "avgRank": round(sum(ranks) / len(ranks), 2) if ranks else None,
         })
-    # 합계 -> 순위점수 -> 치킨 순. 동점은 대회 규정마다 다르게 깨지므로
-    # 이 순서가 공식 타이브레이커와 일치한다고 단정하지 말 것.
-    standings.sort(key=lambda r: (-r["totalPoints"], -r["placementPoints"], -r["wwcd"]))
+    if table:
+        # 합계 -> 순위점수 -> 치킨 순. 동점은 대회 규정마다 다르게 깨지므로
+        # 이 순서가 공식 타이브레이커와 일치한다고 단정하지 말 것.
+        standings.sort(key=lambda r: (-r["totalPoints"], -r["placementPoints"], -r["wwcd"]))
+    else:
+        # 배점표를 모르니 점수로 세울 수 없다. 치킨 -> 킬 -> 평균순위 로 두되
+        # 이것은 공식 순위가 아니다.
+        standings.sort(key=lambda r: (-r["wwcd"], -r["kills"],
+                                      r["avgRank"] if r["avgRank"] is not None else 99))
     for i, row in enumerate(standings, 1):
         row["rank"] = i
 
@@ -308,9 +399,13 @@ def main():
         "createdAt": created,
         "matchCount": len(match_files) - len(voided),
         "maps": sorted(set(m for m in maps if m)),
-        "note": "순위 점수는 PUBG 이스포츠 표준 배점(1위 10 · 2위 6 · 3위 5 · 4위 4 · "
-                "5위 3 · 6위 2 · 7~8위 1 · 9위 이하 0, 킬 1점)으로 계산했다. "
-                "공식 API 는 배점표를 주지 않으므로 이 대회가 다른 표를 썼다면 값이 다를 수 있다.",
+        "scoring": ({"table": table["name"], "verifiedBy": table["verifiedBy"]}
+                    if table else None),
+        "note": ("순위 점수는 %s 배점으로 계산했다 (출처: %s)."
+                 % (table["name"], table["verifiedBy"]) if table else
+                 "이 대회의 배점표를 확인하지 못해 순위 점수를 계산하지 않았다. "
+                 "공식 API 는 배점표를 주지 않는다. 아래는 API 가 직접 주는 "
+                 "값(킬·치킨·순위)뿐이며, 나열 순서는 공식 순위가 아니다."),
         "standings": standings,
         "players": player_rows,
     }
@@ -333,8 +428,10 @@ def main():
               % (len(unresolved), unresolved))
     print("\n상위 8팀:")
     for s in standings[:8]:
-        print("  %2d. %-24s 치킨 %d · 킬 %3d · 합계 %s점"
-              % (s["rank"], s["team"], s["wwcd"], s["kills"], s["totalPoints"]))
+        print("  %2d. %-24s 치킨 %d · 킬 %3d · %s"
+              % (s["rank"], s["team"], s["wwcd"], s["kills"],
+                 ("합계 %d점" % s["totalPoints"]) if s["totalPoints"] is not None
+                 else "평균순위 %s" % s["avgRank"]))
     return 0
 
 
