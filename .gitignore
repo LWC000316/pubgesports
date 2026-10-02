@@ -85,3 +85,8 @@ intermediate_results/tournaments/
 # 텔레메트리 원본. 경기당 33MB 라 저장소에 넣지 않는다.
 # 집계 결과인 primary_data/matchlogs/*.json 만 커밋한다 (경기당 약 300KB).
 intermediate_results/telemetry/
+
+# 대량 수집 진행 로그. 재실행하면 다시 생긴다.
+ingest/fetch_all.progress
+# 수집 전 확인용으로 받아 본 경기 원본. tournaments/ 와 같은 성격이다.
+intermediate_results/probe/
