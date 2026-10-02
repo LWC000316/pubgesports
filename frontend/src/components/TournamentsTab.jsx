@@ -51,24 +51,63 @@ const VIEWS = [
  * primary_data/matchlogs/ 다 (ingest/fetch_tournament.ps1 + build_tournament_seed.py
  * + build_match_log.py).
  */
+/**
+ * 한 시리즈의 대회들을 (연도 -> 회차) 로 묶는다.
+ *
+ * 공식 API 의 대회 id 하나는 **대회가 아니라 단계**다. PGS 7 은 네 개 — 조별
+ * (gsg) · ws · ss · 결승(fsg) — 로 나뉘어 있다. 그래서 회차로 다시 묶어
+ * "PGS 7" 한 칸 안에서 단계를 고르게 한다.
+ */
+function groupByYear(list) {
+  const years = new Map();
+  for (const t of list) {
+    const y = t.year ?? 0;
+    if (!years.has(y)) years.set(y, new Map());
+    // 회차가 없는 시리즈(PGC 2019 처럼)는 연도 자체가 한 대회다.
+    const key = t.edition ? `${t.series} ${t.edition}` : `${t.series} ${y}`;
+    const events = years.get(y);
+    if (!events.has(key)) events.set(key, []);
+    events.get(key).push(t);
+  }
+  for (const events of years.values()) {
+    for (const stages of events.values()) {
+      stages.sort((a, b) => (a.startDate ?? '').localeCompare(b.startDate ?? ''));
+    }
+  }
+  return years;
+}
+
+/** 단계 칩에 쓸 이름. 이름을 모르면 날짜로 구별한다 — 지어내지 않는다. */
+function stageLabel(t) {
+  if (t.stage) return t.stage;
+  if (t.stageCode) return t.stageCode.toUpperCase();
+  return t.startDate ? t.startDate.slice(5).replace('-', '/') : t.id;
+}
+
 export default function TournamentsTab() {
   const [category, setCategory] = useState('global');
   const [series, setSeries] = useState('PGS');
-  const [selectedId, setSelectedId] = useState(null);
+  const [year, setYear] = useState(null);
+  const [eventKey, setEventKey] = useState(null);
+  const [stageId, setStageId] = useState(null);
 
   const listFetcher = useCallback(() => fetchTournaments(category), [category]);
   const { data: list, loading, error, reload } = useApi(listFetcher, [category], EMPTY);
 
   const inSeries = (list ?? []).filter(t => t.series === series);
+  const byYear = groupByYear(inSeries);
+  const years = [...byYear.keys()].sort((a, b) => b - a);
+  const activeYear = years.includes(year) ? year : years[0];
+  const events = byYear.get(activeYear) ?? new Map();
+  const eventKeys = [...events.keys()];
+  const activeEvent = eventKeys.includes(eventKey) ? eventKey : eventKeys[0];
+  const stages = events.get(activeEvent) ?? [];
+  const activeStage = stages.some(t => t.id === stageId) ? stageId : stages[0]?.id;
 
-  useEffect(() => {
-    setSeries(SERIES[category]?.[0] ?? null);
-  }, [category]);
-
-  useEffect(() => {
-    setSelectedId(inSeries[0] ? inSeries[0].id : null);
-    // inSeries 는 매 렌더 새 배열이라 id 목록으로 비교한다.
-  }, [series, (list ?? []).map(t => t.id).join(',')]);
+  useEffect(() => { setSeries(SERIES[category]?.[0] ?? null); }, [category]);
+  useEffect(() => { setYear(null); setEventKey(null); setStageId(null); }, [series]);
+  useEffect(() => { setEventKey(null); setStageId(null); }, [activeYear]);
+  useEffect(() => { setStageId(null); }, [activeEvent]);
 
   if (loading) {
     return <LoadingPanel title="대회 목록을 불러오는 중입니다" detail="백엔드 서버에서 가져오고 있습니다." />;
@@ -88,15 +127,8 @@ export default function TournamentsTab() {
     <div className="animate-fade-in" style={{ padding: '0 24px 40px' }}>
       <ChipRow>
         {CATEGORIES.map(c => (
-          <Chip
-            key={c.id}
-            active={category === c.id}
-            onClick={() => setCategory(c.id)}
-            icon={c.icon}
-            label={c.label}
-            sub={c.desc}
-            big
-          />
+          <Chip key={c.id} active={category === c.id} onClick={() => setCategory(c.id)}
+                icon={c.icon} label={c.label} sub={c.desc} big />
         ))}
       </ChipRow>
 
@@ -105,14 +137,8 @@ export default function TournamentsTab() {
           {SERIES[category].map(s => {
             const count = (list ?? []).filter(t => t.series === s).length;
             return (
-              <Chip
-                key={s}
-                active={series === s}
-                onClick={() => setSeries(s)}
-                label={s}
-                sub={count > 0 ? `${count}` : '없음'}
-                dim={count === 0}
-              />
+              <Chip key={s} active={series === s} onClick={() => setSeries(s)}
+                    label={s} sub={count > 0 ? `${count}` : '없음'} dim={count === 0} />
             );
           })}
         </ChipRow>
@@ -131,36 +157,63 @@ export default function TournamentsTab() {
       ) : (
         <>
           <ChipRow>
-            {inSeries.map(t => (
-              <Chip
-                key={t.id}
-                active={selectedId === t.id}
-                onClick={() => setSelectedId(t.id)}
-                label={t.name}
-                sub={`${t.matchCount}경기`}
-                subtle
-              />
+            {years.map(y => (
+              <Chip key={y} active={activeYear === y} onClick={() => setYear(y)}
+                    label={y ? `${y}` : '연도 미상'}
+                    sub={`${byYear.get(y).size}`} />
             ))}
           </ChipRow>
-          {selectedId && <TournamentDetail id={selectedId} />}
+
+          <ChipRow>
+            {eventKeys.map(k => (
+              <Chip key={k} active={activeEvent === k} onClick={() => setEventKey(k)}
+                    label={k}
+                    sub={events.get(k).length > 1 ? `${events.get(k).length}단계` : null}
+                    subtle />
+            ))}
+          </ChipRow>
+
+          {activeStage && (
+            <TournamentDetail
+              id={activeStage}
+              stages={stages}
+              onStage={setStageId}
+              stageLabel={stageLabel}
+            />
+          )}
         </>
       )}
     </div>
   );
 }
 
-function TournamentDetail({ id }) {
+function TournamentDetail({ id, stages, onStage, stageLabel }) {
   const [view, setView] = useState('leaderboard');
   const fetcher = useCallback(() => fetchTournament(id), [id]);
   const { data, loading, error, reload } = useApi(fetcher, [id], null);
 
   useEffect(() => { setView('leaderboard'); }, [id]);
 
+  // 단계가 둘 이상일 때만 고를 줄을 낸다. 리더보드는 단계별로 봐야 맞다 —
+  // 조별예선과 결승은 참가 팀도 경기 수도 달라 합치면 뜻이 없다.
+  const stageRow = stages && stages.length > 1 ? (
+    <ChipRow>
+      {stages.map(t => (
+        <Chip key={t.id} active={t.id === id} onClick={() => onStage(t.id)}
+              label={stageLabel(t)} sub={`${t.matchCount}경기`} />
+      ))}
+    </ChipRow>
+  ) : null;
+
   if (loading) {
-    return <LoadingPanel title="대회 기록을 불러오는 중입니다" detail="순위표와 선수 기록을 가져오고 있습니다." />;
+    return (<>{stageRow}
+      <LoadingPanel title="대회 기록을 불러오는 중입니다" detail="순위표와 선수 기록을 가져오고 있습니다." />
+    </>);
   }
   if (error) {
-    return <ErrorPanel title="대회 기록을 불러오지 못했습니다" message={error} onRetry={reload} />;
+    return (<>{stageRow}
+      <ErrorPanel title="대회 기록을 불러오지 못했습니다" message={error} onRetry={reload} />
+    </>);
   }
   if (!data) return null;
 
@@ -168,6 +221,7 @@ function TournamentDetail({ id }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      {stageRow}
       <div className="glass-panel" style={{
         padding: '18px 22px',
         borderRadius: 'var(--radius-sm)',
@@ -178,6 +232,9 @@ function TournamentDetail({ id }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Trophy size={20} color="var(--accent-gold)" />
             <span style={{ fontWeight: '900', color: '#fff', fontSize: '1.1rem' }}>{data.name}</span>
+            {data.startDate && (
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{data.startDate}</span>
+            )}
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             <span className="badge badge-gold" style={{ fontSize: '0.75rem', fontWeight: '800' }}>

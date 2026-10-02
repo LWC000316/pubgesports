@@ -25,6 +25,15 @@ public class TournamentArchiveDto {
     private String category;
     /** PGS / PNC / EWC / PGC, 또는 지역 리그 코드 (PWS·PCL·EMEA·AMER·PTS·PVS) */
     private String series;
+    /** 첫 경기가 열린 해. 화면이 연도로 묶는다 */
+    private Integer year;
+    /** 시리즈 안의 회차. PGS 7 의 "7". 없으면 null */
+    private String edition;
+    /** 단계 이름. 확인된 코드(gf·gs·fs)만 채워지고 나머지는 null */
+    private String stage;
+    /** id 에서 뽑은 단계 코드 원문. 이름을 모르는 단계를 구별하는 데 쓴다 */
+    private String stageCode;
+    private String startDate;
     private String source;
     private String createdAt;
     private int matchCount;
@@ -83,6 +92,8 @@ public class TournamentArchiveDto {
         return TournamentArchiveDto.builder()
                 .id(id).name(name).category(category).series(series).source(source)
                 .createdAt(createdAt).matchCount(matchCount).maps(maps).note(note)
+                .year(year).edition(edition).stage(stage).stageCode(stageCode)
+                .startDate(startDate)
                 .build();
     }
 
@@ -139,6 +150,12 @@ public class TournamentArchiveDto {
                 .name(doc.path("name").asText())
                 .category(text(doc, "category"))
                 .series(text(doc, "series"))
+                .year(doc.path("year").isMissingNode() || doc.path("year").isNull()
+                        ? null : doc.path("year").asInt())
+                .edition(text(doc, "edition"))
+                .stage(text(doc, "stage"))
+                .stageCode(text(doc, "stageCode"))
+                .startDate(text(doc, "startDate"))
                 .source(text(doc, "source"))
                 .createdAt(text(doc, "createdAt"))
                 .matchCount(doc.path("matchCount").asInt())

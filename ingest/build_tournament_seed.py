@@ -26,6 +26,7 @@
 """
 
 import argparse
+import importlib.util
 import json
 import re
 import sys
@@ -34,6 +35,11 @@ from collections import defaultdict
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+_spec = importlib.util.spec_from_file_location(
+    "stage_label", Path(__file__).with_name("stage_label.py"))
+stage_label = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(stage_label)
 # PowerShell 의 Set-Content -Encoding UTF8 은 BOM 을 붙이므로 원본은 utf-8-sig 로 읽는다.
 RAW_DIR = PROJECT_ROOT / "intermediate_results" / "tournaments"
 OUT_DIR = PROJECT_ROOT / "primary_data" / "tournaments"
@@ -247,7 +253,10 @@ def main():
 
     # 이 대회가 우리 시드와 같은 시기인지. 팀 이름 해석을 믿어도 되는지를 가른다.
     first = json.loads(match_files[0].read_text(encoding="utf-8-sig"))
-    event_year = (first.get("data", {}).get("attributes", {}).get("createdAt") or "")[:4]
+    first_date = (first.get("data", {}).get("attributes", {}).get("createdAt") or "")[:10]
+    event_year = first_date[:4]
+    auto_series, auto_edition, auto_code, auto_stage = stage_label.parse_id(
+        args.tournament_id, int(event_year) if event_year.isdigit() else None)
     contemporaneous = event_year in seed_years()
     table = placement_table(event_year)
     if not table:
@@ -288,7 +297,8 @@ def main():
                 continue
 
             league, team, resolved = resolve_team(
-                names, our_players, prefix_only=args.team_from_prefix,
+                names, our_players,
+                prefix_only=args.team_from_prefix or auto_series == "PNC",
                 contemporaneous=contemporaneous)
             rank = roster.get("attributes", {}).get("stats", {}).get("rank")
 
@@ -392,9 +402,19 @@ def main():
 
     doc = {
         "id": args.tournament_id,
-        "name": args.name or args.tournament_id,
-        "category": args.category,
-        "series": args.series,
+        "name": args.name or stage_label.display_name(
+            args.tournament_id, int(event_year) if event_year.isdigit() else None),
+        "category": args.category or (
+            "global" if auto_series in ("PGC", "PGS", "PNC", "EWC") else "regional"),
+        "series": args.series or auto_series,
+        "year": int(event_year) if event_year.isdigit() else None,
+        # 회차·단계는 id 에서 뽑는다. 공식 API 는 대회 이름을 주지 않는다.
+        # 단계 이름은 확인된 코드(gf·gs·fs)만 채워지고 나머지는 null 이다 —
+        # 화면은 그런 단계를 날짜와 경기 수로 구별한다. stage_label.py 참고.
+        "edition": auto_edition,
+        "stageCode": auto_code,
+        "stage": auto_stage,
+        "startDate": first_date,
         "source": "https://api.pubg.com/tournaments/%s" % args.tournament_id,
         "createdAt": created,
         "matchCount": len(match_files) - len(voided),
