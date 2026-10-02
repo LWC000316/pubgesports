@@ -102,13 +102,29 @@ This replaced `ddl-auto: create`, which dropped and rebuilt everything on every 
 ### 대회 tab data (`primary_data/tournaments/`, `primary_data/matchlogs/`)
 Served by `TournamentArchiveService`/`MatchLogService` straight from JSON files, **not from the empty `Tournament` entities** — this data has no score (ranking rules differ per tournament, so none is computed) and its teams do not always map to a `Team` row.
 
-Ten tournaments, 146 match logs. Collection is two steps, split because only the first needs the network and the API key:
+**An official API tournament id is a stage, not a tournament.** PGS 7 is four ids (`as-pgs7gsg` 8/5, `as-pgs7ws` 8/6, `as-pgs7ss` 8/7, `as-pgs7fsg` 8/8). The archive groups them: category -> series -> year -> edition -> stage. Of the 1,194 ids the official API lists (2018 onward), 334 are main-event stages across the ten series, grouping into 123 tournaments; the rest are qualifiers, opens and clan matches. `ingest/stage_ids.txt` is that worklist, newest first.
+
+Collection is three steps, split because only the first needs the network and the API key:
 ```
-powershell ingest/fetch_tournament.ps1 <id>     # 공식 API -> intermediate_results/tournaments/
-python ingest/build_tournament_seed.py <id>     # 집계 -> primary_data/tournaments/<id>.json
-python ingest/build_match_log.py <id>           # 텔레메트리 -> primary_data/matchlogs/<id>/
+powershell ingest/fetch_tournament_list.ps1    # 공식 API 의 전체 대회 목록 (1회 호출)
+powershell ingest/fetch_all.ps1                # stage_ids.txt 를 통째로, 이어받기 지원
+python ingest/build_all.py                     # 집계 (네트워크 없음)
+python ingest/build_match_logs_all.py          # 글로벌 결승만 텔레메트리 추출
 ```
+Single-tournament equivalents are `fetch_tournament.ps1` / `build_tournament_seed.py` / `build_match_log.py`. **Fetching and aggregating are decoupled on purpose**: the whole archive can be re-aggregated in minutes after a rule change, without touching the API again (10 req/min means a full fetch is ~6 hours).
+
+`build_match_logs_all.py` defaults to the **global finals only** (27 stages, ~380 matches, ~12GB downloaded, ~95MB committed). All 334 stages would be ~155GB and 1.2GB committed, and nobody inspects player movement in a qualifier. `--list` previews the targets and the cost.
+
+**Tournament names are decoded from the id** (`ingest/stage_label.py`), because the official API returns only an id and a `createdAt`. Only verified stage codes get a name — `gf`=Grand Finals, `gs`/`gsg`=Group Stage, `fs`/`fsg`=Final Stage. `ws`, `ss`, `c1`–`c5`, `s22` and the rest are **left unnamed on purpose**; the UI distinguishes those stages by code, date and match count, all of which are facts. Add to `STAGE_NAMES` only after confirming on Liquipedia. A two-digit year embedded in an id is stripped using the first match's date, so `as-pgc23gf` reads as "PGC 2023 Grand Finals", not edition 23.
 `build_match_log.py` **discards the 33MB telemetry file after extracting** (295KB out of 54,000 events); pass `--keep-telemetry` to keep it. Ten tournaments would otherwise be ~5GB. `--relabel-only` re-applies team names to logs already built, with no network.
+
+**Team names resolve against our 2026 seeds, so old tournaments are gated.** A majority nickname vote alone mislabels historical rosters whenever players have since transferred — measured: 2019 PGC's `NAVI_ceh9` came out as "S8UL Esports", 2021's `GEN_Asura` as "Baegopa", 2023's `DNW_Salute` as "Gen.G Esports", mixed in with correct ones (`PeRo` -> Petrichor Road) and indistinguishable in the output. `resolve_team` now additionally requires either that the event is **contemporaneous with the seeds** (`seed_years()` reads `primary_data/_sources.json`) or that the seed's team tag **exactly equals the in-game prefix**. Otherwise it keeps the prefix, which is always true. Most Liquipedia-collected leagues have empty `tag` fields, which is why the contemporaneity path exists.
+
+**Placement points are only applied where the table was verified.** `PLACEMENT_TABLES` holds year ranges, and a table without a `verifiedBy` string is never used — those tournaments ship with `placementPoints`/`totalPoints`/`avgPoints` as null and the UI falls back to kills, WWCD and average rank. The 2026 table (1st 10, 2nd 6, 3rd 5, 4th 4, 5th 3, 6th 2, 7th–8th 1, kill 1) was read straight out of Liquipedia's match template and matched across 17 matches; `python ingest/verify_scoring.py` reproduces it from the cache, and `--page <title>` extends coverage to another year. **Only `p_kill`-bearing templates count** — the same wiki pages carry prize-money and season-point tables (`p1=450`, `p1=50`) that must not be confused with per-match scoring. Pre-2026 is still unverified: Liquipedia returned 429 and further probing would violate its terms.
+
+Liquipedia's `action=parse` needs a **30-second gap**, not the 2 seconds the rest of the API tolerates; `mediawiki_client.py` throttles per action and retries a 429 once.
+
+A match whose placements do not spread across the lobby is **dropped as a remake**: PVS 2026 Phase 2's `2be5c1e7` ended at 757 seconds with 18 kills (normal: ~1,700s, ~60 kills) and recorded one 1st place with fifteen 16ths. The builder reports what it dropped. The invariant that caught it is that each 16-team match distributes exactly 10+6+5+4+3+2+1+1 = 32 placement points, so `sum(placementPoints) == matchCount * 32` for every tournament.
 
 **The OVERALL column is a reconstruction, not an official number.** The official API gives no composite score; `overall_score()` in `build_tournament_seed.py` was fitted by least squares to 28 published values and matches 18 of 21 spot-checked players exactly (max diff 1). The coefficients are **not shown on screen** and should not be. The sample was all 15-match players, so whether the inputs are totals or per-match averages could not be distinguished — re-derive before trusting it on a short tournament.
 
