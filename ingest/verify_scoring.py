@@ -30,6 +30,7 @@ import argparse
 import importlib.util
 import json
 import re
+import urllib.parse
 import sys
 from collections import Counter
 from pathlib import Path
@@ -77,7 +78,8 @@ def from_cache():
         wt = (doc.get("body", {}).get("parse", {}).get("wikitext", {}) or {}).get("*", "")
         t = tables_in(wt) if wt else None
         if t:
-            page = re.search(r'page=([^&]+)', url).group(1).replace('%2F', '/')
+            page = urllib.parse.unquote_plus(
+                re.search(r'page=([^&]+)', url).group(1))
             found[page] = t
     return found
 

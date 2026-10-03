@@ -60,19 +60,22 @@ def fold(text):
 # 그런 표는 쓰이지 않는다.
 PLACEMENT_TABLES = [
     {
-        # 리퀴피디아의 경기 템플릿에서 그대로 읽은 값이다. 17경기에서 같은 표가
-        # 나왔다: PCL 2026 Autumn Stage S(9), PVS 2026 Phase 1(4)·Phase 2(4).
+        # 리퀴피디아 경기 템플릿에서 그대로 읽은 값이다. **7개 연도·3개 시리즈
+        # 28경기가 전부 같은 표**라 2019년부터 한 구간으로 둔다.
+        #   PGC  2019(결승·조별) 2021(결승·Weekly Finals) 2022 2023 2024 2025
+        #   PCL  2026 Autumn Stage S
+        #   PVS  2026 Phase 1·2
+        # 2020년은 PGC 가 열리지 않았다 (공식 API 목록에도 2020년 PGC 가 없다).
         # `python ingest/verify_scoring.py` 로 다시 확인할 수 있다.
-        "name": "PUBG 이스포츠 2026 표준",
-        "fromYear": 2026, "toYear": 2026,
+        "name": "PUBG 이스포츠 표준",
+        "fromYear": 2019, "toYear": 9999,
         "points": {1: 10, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1, 8: 1},
         "killPoint": 1,
-        "verifiedBy": "리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 "
-                      "(CC-BY-SA 3.0)",
+        "verifiedBy": "리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 "
+                      "(CC-BY-SA 3.0, 28경기)",
     },
-    # 2025년 이전은 아직 확인하지 못했다. 같은 표를 썼을 가능성이 높지만 근거가
-    # 없으므로 넣지 않는다 — 넣으면 틀린 점수가 맞는 것처럼 보인다.
-    # 확인하려면: python ingest/verify_scoring.py --page PUBG_Global_Championship/2021
+    # **2018년은 넣지 않는다.** PGI 2018 시절이라 형식이 달랐고 확인하지 않았다.
+    # 그 해 대회는 점수 열이 빈 채로 나간다.
 ]
 
 

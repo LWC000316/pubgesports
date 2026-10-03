@@ -18,11 +18,11 @@
     "Tiger_Main"
   ],
   "scoring": {
-    "table": "PUBG 이스포츠 2026 표준",
-    "verifiedBy": "리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 (CC-BY-SA 3.0)"
+    "table": "PUBG 이스포츠 표준",
+    "verifiedBy": "리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 (CC-BY-SA 3.0, 28경기)"
   },
   "matchesPerTeam": null,
-  "note": "순위 점수는 PUBG 이스포츠 2026 표준 배점으로 계산했다 (출처: 리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 (CC-BY-SA 3.0)).",
+  "note": "순위 점수는 PUBG 이스포츠 표준 배점으로 계산했다 (출처: 리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 (CC-BY-SA 3.0, 28경기)).",
   "standings": [
     {
       "team": "FN Esports",
