@@ -21,15 +21,31 @@ SERIES = [
 ]
 
 # **확인된 것만 넣는다.** 추측으로 채우면 화면에 지어낸 이름이 뜬다.
-# ws·ss·c1~c5·s22 등은 아직 뭔지 모르므로 비워 둔다 — 리퀴피디아로 확인되면
-# 여기에 추가하면 된다.
+#
+# ws·ss 는 리퀴피디아 "PUBG Global Series/2026/Circuit 3/Series 1" 의 Format 절로
+# 확인했다 (CC-BY-SA 3.0). 경기 수가 정확히 맞아떨어져 추측이 아니다:
+#   Group Stage 24팀 9경기  -> as-pgs7gsg 9경기
+#   Winners Stage 16팀 5경기 -> as-pgs7ws  5경기
+#   Survival Stage 16팀 5경기 -> as-pgs7ss  5경기
+#
+# c1~c5·s22·wf1~3 등은 아직 미확인이라 비워 둔다. 확인되면 여기에 추가한다.
 STAGE_NAMES = {
     "gf": "Grand Finals",
     "gs": "Group Stage",
     "gsg": "Group Stage",
+    "ws": "Winners Stage",
+    "ss": "Survival Stage",
     "fs": "Final Stage",
     "fsg": "Final Stage",
 }
+
+# **미해결: PGS 의 회차 번호는 공식 브랜딩과 다르다.**
+# 리퀴피디아는 PGS 2026 을 "Circuit 1~4 x (Series 1 / Series 2 / Series Final)"
+# 로 부른다. 우리 id 의 pgs1~pgs9 는 날짜상 정확히 3개씩 묶이고 매 3번째가 gf 로
+# 끝나므로 pgs7 = Circuit 3 Series 1 에 대응한다 — 이건 경기 수까지 맞아 확인됐다
+# (위키 Format: 조별 9 · Winners 5 · Survival 5 = as-pgs7gsg/ws/ss 와 동일).
+# 나머지 회차는 같은 규칙일 것으로 보이나 하나씩 확인하지 않았으므로 지금은
+# id 의 번호를 그대로 "PGS 7" 로 쓴다. 전부 확인되면 Circuit/Series 로 바꾼다.
 
 # 예선·오픈·컵은 본선 목록에서 빼는 데 쓴다.
 QUALIFIER = re.compile(r'(q[a-z]?\d?|qual|cup|open|ot\d?|tt|pim|cq|oq|of)$')
