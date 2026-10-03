@@ -47,11 +47,18 @@ SCORING = re.compile(r'p_kill\s*=\s*([\d.]+)((?:\s*\|\s*p\d+\s*=\s*\d+)+)')
 
 
 def tables_in(wikitext):
-    """(킬점수, ((순위, 점수), ...)) -> 등장 횟수"""
+    """
+    (킬점수, ((순위, 점수), ...)) -> 등장 횟수
+
+    **0점 항목은 버린다.** 같은 표를 어떤 문서는 p8 까지만 적고 어떤 문서는
+    p9=0 … p16=0 까지 적어 두는데, 그대로 비교하면 같은 표가 서로 다른 표로
+    보인다. 점수를 주는 순위만 남기면 둘이 같아진다.
+    """
     out = Counter()
     for m in SCORING.finditer(wikitext):
         pts = tuple(sorted((int(a), int(b)) for a, b in
-                           re.findall(r'p(\d+)\s*=\s*(\d+)', m.group(2))))
+                           re.findall(r'p(\d+)\s*=\s*(\d+)', m.group(2))
+                           if int(b) > 0))
         out[(float(m.group(1)), pts)] += 1
     return out
 

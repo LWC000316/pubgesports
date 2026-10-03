@@ -34,6 +34,8 @@ public class TournamentArchiveDto {
     /** id 에서 뽑은 단계 코드 원문. 이름을 모르는 단계를 구별하는 데 쓴다 */
     private String stageCode;
     private String startDate;
+    /** 팀마다 뛴 경기 수가 다르면 {min,max}. 같으면 null — 합계로 줄 세워도 되는지 가른다 */
+    private java.util.Map<String, Integer> matchesPerTeam;
     private String source;
     private String createdAt;
     private int matchCount;
@@ -93,8 +95,19 @@ public class TournamentArchiveDto {
                 .id(id).name(name).category(category).series(series).source(source)
                 .createdAt(createdAt).matchCount(matchCount).maps(maps).note(note)
                 .year(year).edition(edition).stage(stage).stageCode(stageCode)
-                .startDate(startDate)
+                .startDate(startDate).matchesPerTeam(matchesPerTeam)
                 .build();
+    }
+
+    private static java.util.Map<String, Integer> matchesPerTeam(JsonNode doc) {
+        JsonNode n = doc.path("matchesPerTeam");
+        if (n.isMissingNode() || n.isNull()) {
+            return null;
+        }
+        java.util.Map<String, Integer> out = new java.util.LinkedHashMap<>();
+        out.put("min", n.path("min").asInt());
+        out.put("max", n.path("max").asInt());
+        return out;
     }
 
     public static TournamentArchiveDto from(JsonNode doc) {
@@ -156,6 +169,7 @@ public class TournamentArchiveDto {
                 .stage(text(doc, "stage"))
                 .stageCode(text(doc, "stageCode"))
                 .startDate(text(doc, "startDate"))
+                .matchesPerTeam(matchesPerTeam(doc))
                 .source(text(doc, "source"))
                 .createdAt(text(doc, "createdAt"))
                 .matchCount(doc.path("matchCount").asInt())

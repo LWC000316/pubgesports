@@ -358,6 +358,7 @@ def main():
             "bestRank": min(ranks) if ranks else None,
             "avgRank": round(sum(ranks) / len(ranks), 2) if ranks else None,
         })
+    match_counts = [r["matches"] for r in standings]
     if table:
         # 합계 -> 순위점수 -> 치킨 순. 동점은 대회 규정마다 다르게 깨지므로
         # 이 순서가 공식 타이브레이커와 일치한다고 단정하지 말 것.
@@ -421,6 +422,12 @@ def main():
         "maps": sorted(set(m for m in maps if m)),
         "scoring": ({"table": table["name"], "verifiedBy": table["verifiedBy"]}
                     if table else None),
+        # 팀마다 뛴 경기 수가 다르면 합계 점수로 줄 세우는 것이 뜻을 잃는다.
+        # 여러 로비로 나뉘었거나 중간에 탈락이 있는 단계다 (수집한 61단계 중 15개).
+        # 화면이 이 값을 보고 "이 단계는 팀마다 경기 수가 다르다"고 알린다.
+        "matchesPerTeam": ({"min": min(match_counts), "max": max(match_counts)}
+                           if match_counts and min(match_counts) != max(match_counts)
+                           else None),
         "note": ("순위 점수는 %s 배점으로 계산했다 (출처: %s)."
                  % (table["name"], table["verifiedBy"]) if table else
                  "이 대회의 배점표를 확인하지 못해 순위 점수를 계산하지 않았다. "

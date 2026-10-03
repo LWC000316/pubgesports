@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Trophy, Globe, Shield, Swords, Crosshair, Map as MapIcon, Route } from 'lucide-react';
+import { Trophy, Globe, Shield, Swords, Crosshair, Map as MapIcon, Route, AlertTriangle } from 'lucide-react';
 import { fetchTournaments, fetchTournament, fetchMatchIds, fetchMatchLog } from '../api/tournaments';
 import { useApi } from '../hooks/useApi';
 import LoadingPanel from './common/LoadingPanel';
@@ -45,12 +45,14 @@ const VIEWS = [
 /**
  * 대회 탭.
  *
- *   분류(글로벌·지역·스크림) -> 시리즈(PGS·PWS 등) -> 대회 -> 리더보드 / 플레이어 스탯 / 매치로그
+ *   분류(글로벌·지역·스크림) -> 시리즈 -> 연도 -> 대회(회차) -> 단계
+ *     -> 리더보드 / 플레이어 스탯 / 매치로그
  *
  * 데이터는 공식 PUBG API 에서 받아 정리한 primary_data/tournaments/*.json 과
- * primary_data/matchlogs/ 다 (ingest/fetch_tournament.ps1 + build_tournament_seed.py
- * + build_match_log.py).
+ * primary_data/matchlogs/ 다 (ingest/ 의 fetch_all.ps1 + build_all.py +
+ * build_match_logs_all.py).
  */
+
 /**
  * 한 시리즈의 대회들을 (연도 -> 회차) 로 묶는다.
  *
@@ -265,7 +267,9 @@ function TournamentDetail({ id, stages, onStage, stageLabel }) {
         ))}
       </ChipRow>
 
-      {view === 'leaderboard' && <Standings rows={data.standings ?? []} />}
+      {view === 'leaderboard' && (
+        <Standings rows={data.standings ?? []} matchesPerTeam={data.matchesPerTeam} />
+      )}
       {view === 'players' && <PlayerStatsTable rows={data.players ?? []} />}
       {view === 'matchlog' && <MatchLogView tournamentId={id} />}
 
@@ -325,7 +329,7 @@ function MatchLogView({ tournamentId }) {
   );
 }
 
-function Standings({ rows }) {
+function Standings({ rows, matchesPerTeam }) {
   if (rows.length === 0) return null;
 
   // 사용자가 지정한 열 순서다. 순위점수·킬점수는 화면에서 "순위"·"킬" 로 줄여 쓴다.
@@ -340,7 +344,27 @@ function Standings({ rows }) {
   const GRID = `48px 1fr repeat(${COLS.length}, 64px)`;
 
   return (
-    <div className="glass-panel" style={{ borderRadius: 'var(--radius-sm)', overflowX: 'auto' }}>
+    <div>
+      {/* 팀마다 뛴 경기 수가 다르면 합계로 줄 세우는 것이 공정하지 않다.
+          여러 로비로 나뉘었거나 중간 탈락이 있는 단계다. 숨기지 않고 알린다. */}
+      {matchesPerTeam && (
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: '8px',
+          padding: '10px 14px', marginBottom: '10px',
+          borderRadius: 'var(--radius-sm)',
+          background: 'rgba(243, 166, 31, 0.08)',
+          border: '1px solid rgba(243, 166, 31, 0.25)',
+          fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5
+        }}>
+          <AlertTriangle size={15} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+          <span>
+            이 단계는 팀마다 뛴 경기 수가 다릅니다 (
+            <b style={{ color: '#fff' }}>{matchesPerTeam.min}~{matchesPerTeam.max}경기</b>
+            ). 합계 점수는 많이 뛴 팀이 유리하므로 순위를 그대로 결과로 읽지 마세요.
+          </span>
+        </div>
+      )}
+      <div className="glass-panel" style={{ borderRadius: 'var(--radius-sm)', overflowX: 'auto' }}>
       <div style={{ minWidth: '640px' }}>
         <div style={{
           display: 'grid',
@@ -404,6 +428,7 @@ function Standings({ rows }) {
             })}
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
