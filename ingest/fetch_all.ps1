@@ -6,24 +6,45 @@
 # API 는 10회/분 제한이라 334단계(약 3,500경기)에 6~7시간이 걸린다.
 # 진행 상황은 ingest/fetch_all.progress 에 한 줄씩 남는다.
 
-param([int]$DelaySeconds = 6)
+param(
+    [int]$DelaySeconds = 6,
+    # 이 분을 넘기면 받던 것을 마치고 깔끔히 끝낸다. GitHub Actions 는 작업 하나가
+    # 6시간을 넘으면 강제로 죽이는데, 그러면 뒤따르는 집계·커밋이 통째로 날아간다.
+    [int]$MaxMinutes = 0,
+    # 이미 집계된(primary_data/tournaments 에 결과가 있는) 단계는 건너뛴다.
+    # 커밋된 집계 결과가 곧 진행 표시라서, 서버는 원본을 보관하지 않아도 된다.
+    [switch]$SkipBuilt
+)
 
 $ErrorActionPreference = 'Continue'
 $root = Split-Path $PSScriptRoot -Parent
 $list = Join-Path $PSScriptRoot 'stage_ids.txt'
 $prog = Join-Path $PSScriptRoot 'fetch_all.progress'
 
-$key = [Environment]::GetEnvironmentVariable('PUBG_API_KEY', 'User')
+# 윈도우에서는 사용자 환경변수, CI 에서는 보통 프로세스 환경변수에 들어온다.
+$key = $env:PUBG_API_KEY
+if (-not $key -and $IsWindows -ne $false) {
+    $key = [Environment]::GetEnvironmentVariable('PUBG_API_KEY', 'User')
+}
 if (-not $key) { Write-Output 'PUBG_API_KEY 가 없습니다.'; exit 1 }
 $headers = @{ Authorization = "Bearer $key"; Accept = 'application/vnd.api+json' }
 
 $lines = Get-Content $list
+$built = Join-Path $root 'primary_data/tournaments'
+$deadline = if ($MaxMinutes -gt 0) { (Get-Date).AddMinutes($MaxMinutes) } else { $null }
 $n = 0
 foreach ($line in $lines) {
     $n++
     $parts = $line -split "`t"
     if ($parts.Count -lt 3) { continue }
     $date = $parts[0]; $series = $parts[1]; $tid = $parts[2]
+
+    if ($deadline -and (Get-Date) -gt $deadline) {
+        "시간이 다 돼 여기서 멈춥니다 ($n/$($lines.Count)). 다시 돌리면 이어받습니다." |
+            Tee-Object -FilePath $prog -Append
+        break
+    }
+    if ($SkipBuilt -and (Test-Path (Join-Path $built "$tid.json"))) { continue }
 
     $dir = Join-Path $root "intermediate_results/tournaments/$tid"
     New-Item -ItemType Directory -Force -Path $dir | Out-Null

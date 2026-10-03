@@ -1,0 +1,92 @@
+# 대회 기록을 공식 PUBG API 에서 받아 집계한다.
+#
+# **왜 서버에서 돌리나**: 공식 API 가 분당 10회만 허용해서 334단계를 받는 데 약
+# 6시간이 걸린다. 그동안 내 컴퓨터가 켜져 있어야 하는 것을 없애려는 것이다.
+# 서버로 옮긴다고 빨라지지는 않는다 — 제한은 계정 단위다.
+#
+# **원본은 보관하지 않는다**: 경기 원본은 334단계에 약 800MB 지만, 집계 결과는
+# 12MB 남짓이다. 그래서 받은 원본은 작업이 끝나면 버리고 집계 결과만 커밋한다.
+# **커밋된 primary_data/tournaments/*.json 이 곧 진행 표시**다 — 다음 실행은
+# 거기 없는 단계만 받는다. 여러 번 나눠 돌려도 이어진다.
+#
+# 쓰는 법: Actions 탭 -> 이 워크플로 -> Run workflow
+# 먼저 Settings -> Secrets and variables -> Actions 에 PUBG_API_KEY 를 넣어야 한다.
+
+name: 대회 기록 수집
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_minutes:
+        description: '이 분을 넘기면 받던 것을 마치고 끝낸다 (GitHub 작업 한도는 6시간)'
+        required: false
+        default: '320'
+      delay_seconds:
+        description: 'API 호출 간격(초). 분당 10회 제한이라 6초 미만으로 줄이지 말 것'
+        required: false
+        default: '6'
+
+permissions:
+  contents: write
+
+concurrency:
+  # 두 번 돌면 같은 단계를 두 번 받는다. 하나씩만 돈다.
+  group: collect-tournaments
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 남은 단계 확인
+        run: |
+          total=$(grep -c . ingest/stage_ids.txt)
+          built=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
+          echo "전체 $total 단계 · 이미 집계됨 $built · 이번에 받을 것 약 $((total-built))"
+
+      - name: 공식 API 에서 받기
+        env:
+          PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
+        run: |
+          pwsh -NoProfile -File ingest/fetch_all.ps1 \
+            -DelaySeconds ${{ github.event.inputs.delay_seconds || 6 }} \
+            -MaxMinutes ${{ github.event.inputs.max_minutes || 320 }} \
+            -SkipBuilt
+
+      - name: 집계
+        run: python ingest/build_all.py
+
+      - name: 결과 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add primary_data/tournaments
+          if git diff --cached --quiet; then
+            echo "새로 집계된 대회가 없습니다."
+            exit 0
+          fi
+          n=$(git diff --cached --name-only | wc -l)
+          git commit             -m "data: 대회 $n 단계 집계 (자동 수집)"             -m "공식 PUBG API 에서 받아 집계했다. 원본은 보관하지 않고 결과만 남긴다."             -m "남은 단계는 다음 실행이 이어서 받는다 - 커밋된 집계 결과가 진행 표시다."
+          git push
+
+      - name: 진행 상황
+        if: always()
+        run: |
+          total=$(grep -c . ingest/stage_ids.txt)
+          built=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
+          echo "### 수집 진행: $built / $total 단계" >> $GITHUB_STEP_SUMMARY
+          if [ "$built" -lt "$total" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "아직 남았습니다. 이 워크플로를 한 번 더 실행하면 이어서 받습니다." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "전부 끝났습니다." >> $GITHUB_STEP_SUMMARY
+          fi
