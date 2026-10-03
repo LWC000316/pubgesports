@@ -68,6 +68,22 @@ NUMBERED_STAGES = {
     "PGC": {"wf", "bm"},
 }
 
+# 코드가 숫자를 품은 구조일 때. 평평한 표로는 안 되는 것들만 둔다.
+#
+# PWS — 리퀴피디아 "PUBG WEEKLY SERIES/2026/Phase 2" 의 Format 과 달력으로 확인했다.
+#   Weekly Stage 는 3그룹 라운드로빈(AvsB·BvsC·AvsC) 이고 대결당 5경기,
+#   Weekly Finals 는 10경기다. 우리 id 의 경기 수와 날짜가 그대로 맞는다:
+#     s11·s12·s13 각 5경기 (9/9~9/11)  = Weekly Stage 1 의 세 대결
+#     wf1 10경기 (9/12~13)             = Weekly Finals 1
+#     s31·s32·s33 각 5경기 (9/23~25)   = Weekly Stage 3
+#     wf3 10경기 (9/26~27)             = Weekly Finals 3
+STAGE_PATTERNS = {
+    "PWS": [
+        (re.compile(r'^s(\d)(\d)$'), "Weekly Stage %s-%s"),
+        (re.compile(r'^wf(\d+)$'), "Weekly Finals %s"),
+    ],
+}
+
 _TRAILING_NUM = re.compile(r'^([a-z]+)(\d+)$')
 
 
@@ -75,6 +91,11 @@ def stage_name(series, code):
     """확인된 이름만 돌려준다. 모르면 None."""
     if not code:
         return None
+    for rx, fmt in STAGE_PATTERNS.get(series, ()):
+        m = rx.match(code)
+        if m:
+            return fmt % m.groups()
+
     table = STAGE_NAMES.get(series, {})
     if code in table:
         return table[code]
