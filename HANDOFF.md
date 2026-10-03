@@ -1,177 +1,259 @@
-# HANDOFF — 2026-09-30
+# HANDOFF — 2026-10-03
 
-4개 탭 중 **PE·HOT 두 개가 실제 데이터로 동작한다.** 전부 커밋·푸시됨 (`04d652f`).
+대회 탭이 **화면·집계 모두 동작**한다. 남은 것은 **데이터를 다 받는 일**이고,
+그 작업을 GitHub Actions 로 넘기는 준비까지 끝냈다.
 
 ```
-선수 903명 · 감도 162명 · 장비 8명 · 방송 링크 88명 · HOT 초기 12명
+본선 334단계 중  원본 125 수집 · 집계 118 · 단계 이름 74
+미푸시 커밋 14개 — 아직 로컬에만 있다
 ```
+
+> 이전 인수인계(2026-09-30, PE·HOT 완료 시점)는 git 이력에 있다. 이 문서는 그
+> 다음 작업인 **대회 탭**을 다룬다.
 
 ---
 
-## 1. 지금 상태
+## 1. 완료한 일
 
-### PE 탭 — 여섯 권역, 146팀 680명
+### 대회 탭 화면 (커밋 `822e9b9`, `7d238e4`, `6706abd`, `f6cfcc8`)
 
-팀 목록은 **구획 없이 한 줄기**다. 프로로 볼 수 있는 구단이 앞, 아마추어가 뒤.
-구획 제목도 구분선도 없다 (`LeagueTeamGrid.jsx` 의 `SEED_ORDER`).
+- **5단계 탐색**: 분류(글로벌·지역·스크림) → 시리즈 → 연도 → 대회(회차) → 단계
+  → 리더보드 / 플레이어 스탯 / 매치로그. 브라우저에서 직접 확인함.
+- 리더보드 열을 사용자 지정대로 바꿈: **경기 · 치킨 · 순위 · 킬 · 평균 · 합계**
+- 플레이어 스탯 11개 열 전부 양방향 정렬, 기본은 OVERALL 내림차순
+- 매치로그: 공식 맵 이미지 위에 이동 경로·자기장·킬 지점, 재생·팀 필터
+- **팀마다 경기 수가 다른 단계에 경고를 띄움** (61단계 중 15개가 해당)
+- 데이터 없는 시리즈(EWC·PGC)와 스크림은 **이유를 적어** 보여줌
 
-| 탭 | 대회 | 팀 | 상단/하단 | 상단이 근거하는 것 |
-|---|---|---|---|---|
-| PWS | 2026 Phase 2 (한국) | 24 | 13 / 11 | 위키의 `text=Pro Seed` |
-| PCL | 2026 Autumn Stage S (중국) | 24 | 8 / 16 | Stage S 직행 시드 |
-| EMEA | 2026 Fall | 29 | 9 / 20 | Global·Regional Partner, PGS Attending |
-| AMER | 2026 Series 2 | 29 | 7 / 22 | 동일 |
-| PTS | 2026 Phase 2 (태국) | 24 | 20 / 4 | **없음** — 순서에 의미 없음 |
-| PVS | 2026 Phase 2 (베트남) | 16 | 3 / 13 | 직전 Phase 1 파이널 1~3위 |
+### 데이터 정확성 (커밋 `86f46fb`, `96fefb0`, `80d4b87`)
 
-선수를 누르면 `GET /api/players/{id}` 로 감도 13종·장비를 받아 모달에 그린다.
-없는 값은 `미등록`. 하단에 수집 기준일과 출처 링크가 붙는다.
+- **옛날 팀 이름 오염 차단.** 2019 NAVI → "S8UL", 2021 Gen.G → "Baegopa" 로
+  찍히던 것을 막았다. 시드와 같은 시기가 아니면 팀 태그가 인게임 접두사와
+  정확히 같을 때만 이름을 쓴다. 2026년 대회는 회귀 없음(16/16 유지).
+- **배점표를 리퀴피디아에서 확인.** 7개 연도·3개 시리즈 **28경기가 전부 같은 표**
+  (킬 1점 · 1위 10 · 2위 6 · 3위 5 · 4위 4 · 5위 3 · 6위 2 · 7~8위 1).
+  2019년부터 적용. **2018년은 확인하지 않아 점수 열이 빈 채로 나간다.**
+- **중단된 재경기를 걸러냄.** 한 경기가 뿌리는 순위 점수 32점 고정이라는
+  불변식으로 잡는다. PVS 1건, PNC 3건 발견.
+- **단계 이름을 시리즈별로 가름.** 같은 코드가 다른 뜻이다 — `ws` 가 PGS 는
+  Winners Stage, PGC 는 Weekly Survival.
 
-### HOT 탭 — 조회수 기반
+### 단계 이름 (커밋 `d9e6723`, `96fefb0`, `7e384c6`, `29d9a69`)
 
-이번 주 조회수 순 상위 12명. **선수 데이터를 만들지 않고 참조만 한다** —
-자연키(리그+팀+닉네임)로 `players` 를 찾아 감도·마우스·소속을 가져온다.
+전부 리퀴피디아 Format 절과 **경기 수·날짜 지문이 맞아떨어진 것만** 넣었다.
 
-조회수가 없으면 **2026 세계대회 개인 킬 순**(`hot_seeds`)이 대신 나오고,
-조회가 쌓이면 자연히 밀려난다.
+| 시리즈 | 코드 → 이름 | 지문 |
+|---|---|---|
+| PGS | gsg·ws·ss·fsg → Group·Winners·Survival·Final Stage | 9·5·5경기 |
+| PGC | ws→Weekly Survival, gs→Grand Survival, wf·bm·rd | 하위 문서 9개 일대일 |
+| PWS | s\<주차\>\<일차\>→Weekly Stage, wf→Weekly Finals | 5·10경기 + 달력 |
+| EMEA | fc·fp·ff·sp·sf → Fall/Spring Cup·Playoff·Finals | 5·15경기 |
+| AMER | c·p·f → Cup·Playoff·Finals | 5·15경기 |
 
-### 대회 탭 — 수집기까지 완성, 화면은 미착수
+### 수집 도구 (커밋 `95d267d` 외)
 
-wwcd.lol 구조를 참고해 **글로벌 · 지역리그 · 스크림 3분류**로 간다 (사용자 지시).
-데이터는 **공식 PUBG API** 에서 직접 받는다 — wwcd.lol 의 Supabase 키가 예전에
-저장소에 들어 있어 제거한 이력이 있으므로 그쪽 데이터를 쓰지 않는다.
+- `ingest/fetch_tournament_list.ps1` — 공식 API 전체 목록 (호출 1회)
+- `ingest/stage_ids.txt` — 1,194개 중 본선 334단계 (최신순)
+- `ingest/fetch_all.ps1` — 일괄 수집, 이어받기. `-MaxMinutes`·`-SkipBuilt` 추가
+- `ingest/build_all.py` — 일괄 집계 (네트워크 없음)
+- `ingest/build_match_logs_all.py` — 매치로그 대상 선정·추출. `--list` 로 비용 확인
+- `ingest/stage_label.py` — id 에서 시리즈·회차·단계 해독
+- `ingest/verify_scoring.py` — 리퀴피디아에서 배점표 확인
+- `.github/workflows/collect-tournaments.yml` — **작성·YAML 검증 완료, 미실행**
 
-```bash
-powershell -NoProfile -File ingest/fetch_tournament.ps1 as-pgs9gf
-python ingest/build_tournament_seed.py as-pgs9gf --name "PGS 9 Grand Finals" --category global
-```
+### 시도했으나 취소함
 
-PGS 9 검증 완료: **15경기 · 16팀 · 64명, 팀 이름 미해결 0건.**
-결과는 `primary_data/tournaments/as-pgs9gf.json`.
-
-**남은 일**: 백엔드(`Tournament` 엔티티가 비어 있고 `/api/tournaments/{id}` 는 500),
-프론트(`TournamentsTab.jsx` 는 아직 정적 `LEADERBOARD_PGS4`), 나머지 대회 수집.
-
-### 히트엔딩 탭
-
-손대지 않았다. "준비 중" 이며 텔레메트리 파이프라인이 필요하다.
+- **없음.** 되돌린 결정은 없다. 다만 잘못 넣었다가 **같은 세션에서 고친 것**이
+  둘 있다 (아래 5번 참고): 평평한 단계 이름 표, 미검증 배점표.
 
 ---
 
 ## 2. 진행 중인 일
 
-**없음.** 작업 트리 깨끗.
+### 원본 수집 — 125 / 334
 
-실행 중일 수 있는 것: Docker(`pubg-postgres`), 백엔드 8080, Vite 5173.
+로컬에서 `ingest/fetch_all.ps1` 이 돌고 있었다. **세션이 끝나면 함께 죽는다.**
+받은 것은 그대로 남고 다시 돌리면 이어받는다.
+
+```
+받은 원본   intermediate_results/tournaments/  125단계 · 약 300MB (gitignore 대상)
+집계 결과   primary_data/tournaments/          118단계 · 4MB (커밋 대상)
+```
+
+원본 125 vs 집계 118 의 차이 7개는 아직 집계 안 돌린 것 + EWC 익명화 거부 1건.
+
+### 서버 전환 — 준비 끝, 사용자 조작 대기
+
+`.github/workflows/collect-tournaments.yml` 를 만들었고 YAML 파싱·스크립트 인자
+바인딩·`-SkipBuilt` 동작을 확인했다. **아직 푸시도 실행도 하지 않았다.**
+
+설계: **원본을 서버에 보관하지 않는다.** 받아서 집계하고 결과(12MB)만 커밋하며,
+**커밋된 `primary_data/tournaments/*.json` 이 곧 진행 표시**다. 다음 실행은 거기
+없는 단계만 받는다. 캐시도 아티팩트도 필요 없다.
+
+### 미완성 코드
+
+없다. 모든 변경은 빌드·테스트를 통과했고 커밋됐다.
 
 ---
 
 ## 3. 다음 할 일
 
-### 우선순위 1 — 진행 중 대회 재수집
-- **EMEA·AMER** 2026-10-04 종료 예정
-- **PTS** 2026-10-08 종료 예정
+### (1) 푸시 — 커밋 14개가 로컬에만 있다
 
-셋 다 진행 중에 수집했다. 종료 후 다시 돌려야 최종 명단이 된다.
-먼저 `python ingest/check_freshness.py` 로 확인할 것.
+```bash
+git push
+```
 
-### 우선순위 2 — 장비 (벽에 부딪힘)
-방송 링크가 있는 **96명 전원을 확인해 8명만 확보**했다. 나머지 88명은
-**정보가 없다** — 못 찾은 게 아니라 올려놓지 않았다.
+`822e9b9` 부터 `95d267d` 까지. 집계 결과 118단계와 워크플로 파일이 올라간다.
 
-- SOOP 게시판 공지: 13명 중 6명 (한국 선수만 이 문화가 있다)
-- YouTube 설명란: 96명 중 3명
-- Twitch: **0명** — 그래서 트위치를 아예 뺐다 (V5)
+### (2) GitHub Actions 로 나머지 수집 — **사용자만 할 수 있는 단계 포함**
 
-남은 길은 **선수에게 직접 묻는 것**(디스코드)뿐이다.
-`ingest/gear_2026_09_30.json` 에 한 줄 추가하고 `apply_gear.py` 를 돌리면 들어간다.
+1. **(사용자)** 저장소 Settings → Secrets and variables → Actions →
+   New repository secret → `PUBG_API_KEY` 등록.
+   키 값은 <https://developer.pubg.com> My Apps 에서 확인.
+   **키 값을 대화에 붙여넣지 말 것.** 지금까지도 환경변수로만 썼다.
+2. **(사용자)** Actions 탭 → "대회 기록 수집" → Run workflow.
+   입력값 기본 그대로 (`max_minutes` 320, `delay_seconds` 6).
+   `delay_seconds` 를 6 미만으로 줄이면 API 제한에 걸린다.
+3. 끝나면 요약에 `수집 진행: N / 334` 가 뜬다. 남았으면 한 번 더 실행.
 
-### 우선순위 3 — PUBG API 키
-**사용자 환경변수에는 저장돼 있고 실제로 동작한다** (세계대회 54경기 수집에 썼다).
-다만 이 셸에는 안 잡힌다 — **터미널 창을 완전히 닫고 새로 열어야** 한다(`/exit` 로는 부족).
-지금 작업에는 필요 없고, 대회 탭을 만들 때 편해진다.
-확인: `echo ${PUBG_API_KEY:+있음}`
+**미확인**: 저장소가 공개인지 비공개인지. 비공개면 Actions 무료 한도가 월
+2,000분(한 번에 최대 320분)이라 6번이면 소진된다. 남은 분량은 두 번이면 끝난다.
 
-옛 키가 커밋 `ba3a8d5` 히스토리에 잔존한다. Private 저장소라 급하지 않으나 재발급 권장.
-<https://developer.pubg.com> → My Apps (앱 이름 `pubgesports_se`)
+로컬에서 계속 받아도 된다 — 다만 서버와 같은 단계를 양쪽에서 받으면 낭비다.
+로컬로 더 받았다면 `python ingest/build_all.py` 후 커밋해야 서버가 건너뛴다.
 
-### 우선순위 3.5 — 대회 탭 이어서
-수집기는 끝났으니 다음은 **백엔드 + 화면**이다. PGS 9 하나가 화면에 제대로 뜨면
-나머지 대회는 같은 명령을 반복하면 된다.
+### (3) 수집 완료 후 마무리
 
-확인된 제약:
-- **PGC 2026 은 아직 없다.** 최신이 `as-pgc25gf`(2025-12-12). PGC 는 매년 12월이다
-- **스크림 5개는 공식 API 에 없다.** 비공식 연습 경기라 목록에 안 나온다.
-  API 에 있는 건 `kr-scrimb` 하나와 클랜전(`sea-ctf*`·`sea-ctg*`·`as-clan26`)뿐
-- 2026 세계대회 id: `as-pgs9gf`(15) · `as-pgs8fsg` · `as-pgs7fsg` · `as-pnc26gf`(15) · `eu-26ewcmt`(4)
+```bash
+git pull                                  # 서버가 커밋한 집계 결과
+python ingest/build_all.py                # 로컬 원본 중 미집계분
+cd backend && ./gradlew bootRun           # 재기동해야 화면에 반영됨
+```
 
-### 우선순위 4 — 미룬 정비
-`/api/tournaments/{id}` 가 404 대신 500, 로고 이미지 최적화(`vex.png` 1.6MB),
-`README.md` 재작성, LICENSE 없음, 테스트 0개.
+백엔드는 `@PostConstruct` 로 기동 시 한 번만 파일을 읽는다.
+
+### (4) 매치로그 추출 — 글로벌 결승 27단계
+
+```bash
+python ingest/build_match_logs_all.py --list   # 대상과 비용 먼저 확인
+python ingest/build_match_logs_all.py
+```
+
+약 380경기 · **12GB 내려받기** · 저장소 95MB 증가. API 호출은 추가로 들지 않는다
+(경기 JSON 안의 텔레메트리 URL 을 쓴다). 원본 33MB 는 추출 후 자동 삭제된다.
+
+### (5) 남은 단계 코드 이름 채우기 (선택)
+
+44개 단계가 아직 코드로 표시된다.
+
+```
+EMEA s26 · EWC api6·fs·gs · PCL ab·af26·as26·f·t · PGC api·ls
+PGS api·api2·xapi · PNC ai·cn26·ss · PTS f1·g1·w1·w2·ws
+PVS c262·p1·p2 · PWS c1~c5·f·lc·r·ws1
+```
+
+방법: 리퀴피디아 해당 문서의 Format 절을 읽고 **경기 수가 맞는지 대조**한 뒤
+`ingest/stage_label.py` 의 `STAGE_NAMES`/`STAGE_PATTERNS` 에 넣는다.
+**맞지 않으면 넣지 않는다.**
+
+### (6) PGS 회차 이름 — 미해결
+
+리퀴피디아는 PGS 2026 을 **Circuit 1~4 × (Series 1/2/Final)** 로 부른다.
+우리 id 의 pgs1~pgs9 는 날짜상 3개씩 묶이고 매 3번째가 `gf` 라
+**pgs7 = Circuit 3 Series 1** 이며 이건 경기 수까지 맞아 확인됐다.
+나머지 회차는 확인하지 않았다. 화면의 "PGS 7" 은 **크래프톤 내부 번호**지
+대회 이름이 아니다. 수집이 끝나 경기 수가 다 모이면 같은 방식으로 검증 가능.
 
 ---
 
-## 4. 도구
+## 4. 관련 파일
 
-| 명령 | 하는 일 |
+### 새로 만든 것
+
+| 경로 | 역할 |
 |---|---|
-| `python ingest/check_freshness.py` | 시드가 최신인지 점검 (읽기 전용) |
-| `python ingest/build_league_seed_mediawiki.py` | 대회 문서 → 시드 초안 |
-| `python ingest/apply_sens_sheet.py` | 감도 시트 → 시드 |
-| `python ingest/collect_player_links.py` | 방송 링크 수집 |
-| `python ingest/apply_gear.py <파일>` | 손으로 정리한 장비 → 시드 |
-| `powershell -File ingest/collect_world_stats.ps1` | 세계대회 킬·데미지 |
-| `powershell -File ingest/fetch_tournament.ps1 <id>` | 대회 경기 원본 내려받기 (이어받기 지원) |
-| `python ingest/build_tournament_seed.py <id>` | 받은 원본 → 순위표 시드 (네트워크 안 씀) |
+| `.github/workflows/collect-tournaments.yml` | 서버에서 수집·집계·커밋 |
+| `ingest/fetch_tournament_list.ps1` | 공식 API 전체 대회 목록 (호출 1회) |
+| `ingest/fetch_all.ps1` | 334단계 일괄 수집, 이어받기 |
+| `ingest/stage_ids.txt` | 본선 334단계 목록 (날짜·시리즈·id) |
+| `ingest/build_all.py` | 일괄 집계 |
+| `ingest/build_match_logs_all.py` | 매치로그 대상 선정·추출 |
+| `ingest/stage_label.py` | id → 시리즈·회차·단계 해독 |
+| `ingest/verify_scoring.py` | 리퀴피디아에서 배점표 확인 |
 
-**시드 파일을 고쳤으면 `SEED_MODE=always` 로 한 번 기동**해야 DB 에 반영된다.
+### 고친 것
+
+| 경로 | 무엇을 |
+|---|---|
+| `ingest/build_tournament_seed.py` | 배점표·팀이름 게이트·중단경기 제외·경기수 불균등 |
+| `ingest/build_match_log.py` | 텔레메트리 자동 삭제, `--relabel-only` |
+| `ingest/mediawiki_client.py` | `action=parse` 30초 간격, 429 재시도 |
+| `backend/.../dto/TournamentArchiveDto.java` | year·edition·stage·matchesPerTeam 등 |
+| `frontend/src/components/TournamentsTab.jsx` | 5단계 탐색, 리더보드 열, 경고 |
+| `frontend/src/components/tournaments/PlayerStatsTable.jsx` | 11열 양방향 정렬 |
+| `frontend/src/components/tournaments/MatchLogMap.jsx` | 반응형, 캔버스 해상도 고정 |
+| `CLAUDE.md` | "대회 tab data" 절 전체 |
+| `.gitignore` | 텔레메트리·진행로그·탐침 원본 제외 |
+
+### 읽기만 한 것
+
+- `primary_data/_sources.json` — 시드가 어느 시점인지. `seed_years()` 가 읽는다
+- `intermediate_results/liquipedia_cache/` — 배점표·단계이름 근거가 여기 있었다
 
 ---
 
 ## 5. 주의사항
 
-### 지어낸 값을 넣지 않는다 — 이 프로젝트의 제1원칙
-지금까지 걷어낸 가짜 데이터:
-- 선수 세팅 **3,840개** (392명이 전부 같은 값. `scripts/60` 과 레거시 로더)
-- `HOT_PLAYERS_12` **12명분** (seoul 이 800/32 로 적혀 있었으나 실제는 1600/30)
-- 트로피, 크롤러의 가짜 타임스탬프, PWS 전원의 FOV·해상도·장비 5종
+### 내가 틀렸다가 같은 세션에서 고친 것 둘
 
-**없으면 `미등록` 이 뜨는 것이 옳다.** 비어 있어도 신뢰가 깨지지 않는다.
+**(가) 배점표를 검증 없이 "표준"이라 단언했다.** 커밋 `6706abd` 에서 내 지식으로
+배점표를 넣고 공식 출처로 확인한 것처럼 설명했다. 다음 커밋에서 구조를 바꿔
+**`verifiedBy` 가 채워진 표만 쓰게** 했고, 그 뒤 리퀴피디아에서 실제로 읽어 채웠다.
+→ "맞았다"와 "검증했다"는 다르다.
 
-### 데이터 성격
-- **로스터·감도·장비 모두 "시점" 데이터다.** 이적을 실시간으로 쫓지 않는다.
-  그게 아카이브의 성격이다
-- **출처와 날짜를 같이 남긴다.** 장비는 출처끼리 어긋난다 — Salute 는 유튜브와
-  SOOP 공지의 마우스·키보드·패드·헤드셋이 전부 달랐다
-- **감도는 커뮤니티가 모아준다** (PUBG PRO SENS 시트 285명). 장비는 그런 집단이 없다
+**(나) 단계 이름을 평평한 표에 넣었다.** `ws`=Winners Stage 를 전 시리즈에
+적용해서 PGC 2021 의 `as-pgcws`(실제로는 Weekly Survival)에 틀린 이름이 붙었다.
+한 시간 뒤 PGC 하위 문서를 보다가 발견해 시리즈별로 갈랐다.
 
-### 코드 함정
-- **스키마는 Flyway** (`db/migration`, 현재 V6). `ddl-auto` 는 `validate`.
-  엔티티를 바꾸면 마이그레이션도 같은 커밋에 넣어야 기동한다
-- **런타임 누적 테이블은 자연키로.** `players.id` 는 재적재 때 바뀐다
-  (검증함: Heather 7235 → 8138, 조회수는 자연키 덕에 유지)
-- **`deleteAllInBatch()` 는 JPA cascade 를 무시한다.** `player_settings` FK 에 걸린다
-- **`seedType` 이 null 이면 팀이 화면에서 사라진다** (`seedType IS NOT NULL` 필터)
-- **기동 레이스** — 준비 확인은 HTTP 200 이 아니라 **기대 팀 수**로
-- **`.ps1` 은 UTF-8 BOM 으로** 저장한다. 없으면 PowerShell 5.1 이 ANSI 로 읽어 터진다
-- **PowerShell 이 쓴 JSON 은 BOM 이 붙는다.** Python 에서 `utf-8-sig` 로 읽을 것
-- **대회 경기 원본은 커밋하지 않는다** (대회당 약 3MB). `.gitignore` 에 등록돼 있고
-  집계 결과만 `primary_data/tournaments/` 에 둔다
-- **API 키를 출력하지 않는다.** PowerShell 이 환경변수에서 직접 읽어 요청에만 쓴다
+### 사용자가 잡아낸 내 실수
 
-### 외부 API
-- **리퀴피디아는 429 에 잘 걸린다.** 오늘 하루치 요청으로 몇 시간 막혔다. 캐시를 쓰고 아껴 쓸 것
-- **공식 PUBG API 는 10회/분.** 경기마다 6초씩 쉬면 안전하다
-- **SOOP 게시판은 클라이언트 렌더링**이라 `fetch` 로는 빈 껍데기만 온다. 페이지를 실제로 열어야 한다
-- **유튜브 설명은 `ytInitialPlayerResponse`** 로 읽는다. DOM 의 `더보기` 는 펼쳐도 전문이 안 나온다
+**공식 API 의 id 하나를 "대회"로 취급했다.** PGS 7 은 id 가 4개(조별·Winners·
+Survival·결승)인데 그중 결승 하나만 가져다 "PGS 7" 이라 불렀다. 예선이 통째로
+빠져 있었다. → **바깥 데이터로 구조를 짜기 전에 "레코드 하나가 무엇인가"를 먼저
+확인할 것.**
 
-### 협업
-- 한국어로 소통한다
-- **지시하지 않은 작업을 임의로 진행하지 말 것**
-- 비자명한 작업은 **계획을 먼저 보고하고 승인받는다**
-- **모르거나 애매하면 물어본다.** 짐작해서 데이터를 넣지 않는다
-- **작게 완성하고 넓힌다.** 처음부터 크게 잡아 지친 이력이 있다
+### 돌고 있는 작업 옆에서 테스트하지 말 것
+
+GitHub Actions 용 스크립트를 더미 키로 1분 돌렸는데 그때 진짜 수집이 같은 목록을
+훑고 있었다. 401 실패 45건이 진행 로그에 섞이고 빈 디렉터리 42개가 생겼다.
+데이터 손상은 없었지만(파일 1,564개 JSON 검증) 운이었다.
+
+### 함정 모음
+
+- **리퀴피디아 `action=parse` 는 30초 간격이 필요하다.** 2초로 때려 429 차단을
+  하루 겪었다. 차단되면 `action=query` 조차 막힌다. 더 때리면 길어진다
+- **배점표는 `p_kill` 이 붙은 템플릿만 본다.** 같은 문서에 상금 배분과 시즌
+  포인트(`p1=450`, `p1=50`)가 있어 섞으면 안 된다
+- **PowerShell `Tee-Object` 는 UTF-16LE 로 쓴다.** 진행 로그를 셸에서 읽으려면
+  `iconv -f UTF-16LE -t UTF-8` 가 필요하다. `Set-Content -Encoding UTF8` 은 BOM
+- **EWC 는 참가자가 전원 익명**(`EWC-Player-23`). 빌더가 거부한다. 정상이다
+- **`17`·`007`·`722`·`4AM` 은 진짜 팀 태그다** (중국 팀). 파싱 오류가 아니다
+- **`frontend/public/maps/Neon_Main.png` 는 확장자만 png 이고 내용은 JPEG.**
+  브라우저가 내용을 보고 렌더하므로 이름을 "고치지" 말 것
+- **서버로 옮겨도 수집이 빨라지지 않는다.** API 제한이 계정 단위다.
+  목적은 "컴퓨터가 꺼져도 돈다" 하나뿐이다
+- **백엔드는 기동 시 한 번만 집계 파일을 읽는다**(`@PostConstruct`).
+  새 데이터를 화면에 보이려면 재기동해야 한다
+
+### 미확인으로 남은 것
+
+- 저장소 공개 여부 (Actions 무료 한도에 영향)
+- 2018년 배점표 (PGI 시절). 그 해 대회는 점수 열이 빈 채로 나간다
+- 44개 단계 코드의 뜻
+- PGS 회차와 Circuit/Series 의 대응 (pgs7 하나만 확인됨)
 
 ---
 
-**이어받는 법**: `claude -c` (같은 폴더에서), 또는 `/clear` 후 `@HANDOFF.md`.
+`/clear` 후 `@HANDOFF.md` 로 이어받으면 된다.
