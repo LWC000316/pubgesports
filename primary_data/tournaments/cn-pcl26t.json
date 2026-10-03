@@ -23,7 +23,7 @@
   },
   "matchesPerTeam": {
     "min": 1,
-    "max": 24
+    "max": 22
   },
   "note": "순위 점수는 PUBG 이스포츠 표준 배점으로 계산했다 (출처: 리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 (CC-BY-SA 3.0, 28경기)).",
   "standings": [
@@ -31,15 +31,15 @@
       "team": "es",
       "league": null,
       "teamResolved": false,
-      "matches": 24,
+      "matches": 22,
       "kills": 26,
-      "wwcd": 11,
-      "placementPoints": 184,
+      "wwcd": 10,
+      "placementPoints": 168,
       "killPoints": 26,
-      "totalPoints": 210,
-      "avgPoints": 8.75,
+      "totalPoints": 194,
+      "avgPoints": 8.82,
       "bestRank": 1,
-      "avgRank": 1.71,
+      "avgRank": 1.73,
       "rank": 1
     },
     {
@@ -418,6 +418,21 @@
       "rank": 26
     },
     {
+      "team": "DouYuOB",
+      "league": null,
+      "teamResolved": false,
+      "matches": 5,
+      "kills": 0,
+      "wwcd": 1,
+      "placementPoints": 30,
+      "killPoints": 0,
+      "totalPoints": 30,
+      "avgPoints": 6.0,
+      "bestRank": 1,
+      "avgRank": 2.6,
+      "rank": 27
+    },
+    {
       "team": "MiKael",
       "league": "PCL",
       "teamResolved": true,
@@ -430,7 +445,7 @@
       "avgPoints": 2.3,
       "bestRank": 3,
       "avgRank": 9.0,
-      "rank": 27
+      "rank": 28
     },
     {
       "team": "NewHappy",
@@ -445,7 +460,7 @@
       "avgPoints": 3.67,
       "bestRank": 2,
       "avgRank": 7.17,
-      "rank": 28
+      "rank": 29
     },
     {
       "team": "DBNB",
@@ -460,7 +475,7 @@
       "avgPoints": 2.5,
       "bestRank": 2,
       "avgRank": 6.17,
-      "rank": 29
+      "rank": 30
     },
     {
       "team": "NRG",
@@ -475,21 +490,6 @@
       "avgPoints": 3.0,
       "bestRank": 4,
       "avgRank": 10.8,
-      "rank": 30
-    },
-    {
-      "team": "DouYuOB",
-      "league": null,
-      "teamResolved": false,
-      "matches": 3,
-      "kills": 0,
-      "wwcd": 0,
-      "placementPoints": 14,
-      "killPoints": 0,
-      "totalPoints": 14,
-      "avgPoints": 4.67,
-      "bestRank": 3,
-      "avgRank": 3.33,
       "rank": 31
     },
     {

@@ -78,6 +78,29 @@ NUMBERED_STAGES = {
 #     s31·s32·s33 각 5경기 (9/23~25)   = Weekly Stage 3
 #     wf3 10경기 (9/26~27)             = Weekly Finals 3
 STAGE_PATTERNS = {
+    # EMEA·AMER — "PUBG EMEA Championship/2026/Fall" 과 "PUBG Americas Series/2026/2"
+    # 의 Format 절이 같은 구조를 말한다. 경기 수가 그대로 맞는다.
+    #   Cup       -> c1~c5 각 5경기
+    #   Playoffs  -> "2 stages, each 3 days, 5 matches per day" = 15경기 -> p1·p2
+    #   Finals    -> f1 (하나뿐이라 번호를 붙이지 않는다)
+    # EMEA 코드의 앞 f 는 시즌(Fall)이다. 문서가 2026/Fall 이고 코드가 전부 f 로
+    # 시작한다. Spring 쪽 글자는 확인하지 않아 넣지 않는다.
+    "EMEA": [
+        (re.compile(r'^fc(\d+)$'), "Fall Cup %s"),
+        (re.compile(r'^fp(\d+)$'), "Fall Playoff %s"),
+        (re.compile(r'^ff\d*$'), "Fall Finals"),
+        # Spring 도 같은 구조다 ("PUBG EMEA Championship/2026/Spring" Format:
+        # Playoffs 2 stages x 3 days x 5 matches = 15경기). 우리 sp2 가 15경기
+        # 5/2 로 "May 1st-3rd" 와 맞고, sf2 가 15경기 5/8 로 그 뒤 Finals 다.
+        # Spring Cup 코드(sc*)는 데이터에 없어 넣지 않는다.
+        (re.compile(r'^sp(\d+)$'), "Spring Playoff %s"),
+        (re.compile(r'^sf\d*$'), "Spring Finals"),
+    ],
+    "AMER": [
+        (re.compile(r'^c(\d+)$'), "Cup %s"),
+        (re.compile(r'^p(\d+)$'), "Playoff %s"),
+        (re.compile(r'^f\d*$'), "Finals"),
+    ],
     "PWS": [
         (re.compile(r'^s(\d)(\d)$'), "Weekly Stage %s-%s"),
         (re.compile(r'^wf(\d+)$'), "Weekly Finals %s"),
