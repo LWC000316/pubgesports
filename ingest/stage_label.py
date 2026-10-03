@@ -22,22 +22,75 @@ SERIES = [
 
 # **확인된 것만 넣는다.** 추측으로 채우면 화면에 지어낸 이름이 뜬다.
 #
-# ws·ss 는 리퀴피디아 "PUBG Global Series/2026/Circuit 3/Series 1" 의 Format 절로
-# 확인했다 (CC-BY-SA 3.0). 경기 수가 정확히 맞아떨어져 추측이 아니다:
-#   Group Stage 24팀 9경기  -> as-pgs7gsg 9경기
-#   Winners Stage 16팀 5경기 -> as-pgs7ws  5경기
-#   Survival Stage 16팀 5경기 -> as-pgs7ss  5경기
+# **같은 코드가 시리즈마다 다른 단계를 뜻한다.** 그래서 시리즈별로 가른다.
+#   ws -> PGS 는 Winners Stage, PGC 는 Weekly Survival
+#   gs -> PGS 는 Group Stage,   PGC 는 Grand Survival
+# 평평한 표로 두면 PGC 2021 의 as-pgcws 에 "Winners Stage" 라는 틀린 이름이 붙는다.
 #
-# c1~c5·s22·wf1~3 등은 아직 미확인이라 비워 둔다. 확인되면 여기에 추가한다.
+# 근거 (리퀴피디아, CC-BY-SA 3.0):
+#   PGS — "PUBG Global Series/2026/Circuit 3/Series 1" 의 Format 절.
+#         경기 수가 맞아떨어진다: 조별 9 · Winners 5 · Survival 5
+#         = as-pgs7gsg 9 · as-pgs7ws 5 · as-pgs7ss 5
+#   PGC — "PUBG Global Championship/2021/" 하위 문서 목록.
+#         Bottom 16 / Grand Finals / Grand Survival / Rank Decision /
+#         Weekly Finals / Weekly Survival 이 우리 id 9개와 일대일로 맞는다.
+#
+# 확인하지 못한 코드는 비워 둔다. 화면은 그런 단계를 코드와 날짜·경기 수로
+# 구별하는데, 셋 다 데이터에서 나온 사실이라 지어낼 여지가 없다.
 STAGE_NAMES = {
-    "gf": "Grand Finals",
-    "gs": "Group Stage",
-    "gsg": "Group Stage",
-    "ws": "Winners Stage",
-    "ss": "Survival Stage",
-    "fs": "Final Stage",
-    "fsg": "Final Stage",
+    "PGS": {
+        "gs": "Group Stage", "gsg": "Group Stage",
+        "ws": "Winners Stage",
+        "ss": "Survival Stage",
+        "fs": "Final Stage", "fsg": "Final Stage",
+        "gf": "Grand Finals",
+    },
+    "PGC": {
+        "gf": "Grand Finals",
+        "gs": "Grand Survival",
+        "ws": "Weekly Survival",
+        "wf": "Weekly Finals",
+        "bm": "Bottom 16",
+        "rd": "Rank Decision",
+    },
 }
+
+# 어느 시리즈에서나 같은 뜻인 것만 둔다. 위에서 못 찾으면 여기를 본다.
+STAGE_NAMES_ANY = {
+    "gf": "Grand Finals",
+}
+
+# 코드 뒤 숫자를 이름에 붙여도 되는 것들. **여러 번 열리는 단계만 넣는다.**
+# PGC 2021 의 Weekly Finals 는 주차별로 wf1·wf2·wf3 가 있어 번호가 뜻을 갖지만,
+# Grand Finals 는 as-pgcgf4 하나뿐이라 "Grand Finals 4" 로 쓰면 결승이 네 번
+# 있었던 것처럼 읽힌다. 그런 코드는 숫자를 떼고 이름만 쓴다.
+NUMBERED_STAGES = {
+    "PGC": {"wf", "bm"},
+}
+
+_TRAILING_NUM = re.compile(r'^([a-z]+)(\d+)$')
+
+
+def stage_name(series, code):
+    """확인된 이름만 돌려준다. 모르면 None."""
+    if not code:
+        return None
+    table = STAGE_NAMES.get(series, {})
+    if code in table:
+        return table[code]
+    if code in STAGE_NAMES_ANY:
+        return STAGE_NAMES_ANY[code]
+
+    m = _TRAILING_NUM.match(code)
+    if not m:
+        return None
+    base, num = m.group(1), m.group(2)
+    name = table.get(base) or STAGE_NAMES_ANY.get(base)
+    if not name:
+        return None
+    return ("%s %s" % (name, num)
+            if base in NUMBERED_STAGES.get(series, set()) else name)
+
 
 # **미해결: PGS 의 회차 번호는 공식 브랜딩과 다르다.**
 # 리퀴피디아는 PGS 2026 을 "Circuit 1~4 x (Series 1 / Series 2 / Series Final)"
@@ -78,7 +131,7 @@ def parse_id(tournament_id, year=None):
     if yy and code and code.startswith(yy):
         code = code[2:] or None           # vn|26p2 -> p2
 
-    return series, edition, code, STAGE_NAMES.get(code)
+    return series, edition, code, stage_name(series, code)
 
 
 def is_qualifier(tournament_id):

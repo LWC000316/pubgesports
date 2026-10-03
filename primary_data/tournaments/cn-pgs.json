@@ -1,0 +1,74 @@
+{
+  "id": "cn-pgs",
+  "name": "PGS 2026",
+  "category": "global",
+  "series": "PGS",
+  "year": 2026,
+  "edition": null,
+  "stageCode": null,
+  "stage": null,
+  "startDate": "2026-08-04",
+  "source": "https://api.pubg.com/tournaments/cn-pgs",
+  "createdAt": null,
+  "matchCount": 2,
+  "maps": [
+    "Baltic_Main",
+    "Desert_Main"
+  ],
+  "scoring": {
+    "table": "PUBG 이스포츠 2026 표준",
+    "verifiedBy": "리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 (CC-BY-SA 3.0)"
+  },
+  "note": "순위 점수는 PUBG 이스포츠 2026 표준 배점으로 계산했다 (출처: 리퀴피디아 PCL 2026 Autumn Stage S · PVS 2026 Phase 1·2 (CC-BY-SA 3.0)).",
+  "standings": [
+    {
+      "team": "UNKNOWN",
+      "league": null,
+      "teamResolved": false,
+      "matches": 4,
+      "kills": 0,
+      "wwcd": 2,
+      "placementPoints": 32,
+      "killPoints": 0,
+      "totalPoints": 32,
+      "avgPoints": 8.0,
+      "bestRank": 1,
+      "avgRank": 1.5,
+      "rank": 1
+    }
+  ],
+  "players": [
+    {
+      "nickname": "111111",
+      "team": "UNKNOWN",
+      "league": null,
+      "matches": 2,
+      "overall": 7,
+      "kills": 0,
+      "knocks": 0,
+      "assists": 0,
+      "headshots": 0,
+      "revives": 0,
+      "damage": 0.0,
+      "avgDamage": 0.0,
+      "avgSurvival": 433,
+      "longestKill": 0.0
+    },
+    {
+      "nickname": "ZJSSSS",
+      "team": "UNKNOWN",
+      "league": null,
+      "matches": 2,
+      "overall": 7,
+      "kills": 0,
+      "knocks": 0,
+      "assists": 0,
+      "headshots": 0,
+      "revives": 0,
+      "damage": 0.0,
+      "avgDamage": 0.0,
+      "avgSurvival": 436,
+      "longestKill": 0.0
+    }
+  ]
+}
