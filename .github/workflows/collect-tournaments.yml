@@ -52,6 +52,27 @@ jobs:
           built=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
           echo "전체 $total 단계 · 이미 집계됨 $built · 이번에 받을 것 약 $((total-built))"
 
+      # 키가 왜 안 오는지 바로 알려 준다. **값은 절대 찍지 않는다** — 길이만 본다.
+      # Secrets 탭이 아니라 Variables 탭에 넣는 실수가 흔해서 둘 다 확인한다.
+      - name: 키 전달 확인
+        env:
+          FROM_SECRET: ${{ secrets.PUBG_API_KEY }}
+          FROM_VAR: ${{ vars.PUBG_API_KEY }}
+        run: |
+          echo "Secrets 탭에 PUBG_API_KEY : ${FROM_SECRET:+있음 (${#FROM_SECRET}자)}${FROM_SECRET:-없음}"
+          echo "Variables 탭에 PUBG_API_KEY: ${FROM_VAR:+있음 (${#FROM_VAR}자)}${FROM_VAR:-없음}"
+          if [ -z "$FROM_SECRET" ]; then
+            echo ""
+            echo "키가 Secrets 로 전달되지 않았습니다. 확인할 것:"
+            echo "  1) Settings -> Security -> Secrets and variables -> Actions"
+            echo "  2) 위쪽 탭이 'Secrets' 여야 합니다 ('Variables' 아님)"
+            echo "  3) 이름이 정확히 PUBG_API_KEY 인지 (앞뒤 공백·오타 확인)"
+            echo "  4) 'Repository secrets' 목록에 있어야 합니다"
+            echo "     (Environment secrets 에 넣으면 이 작업은 못 읽습니다)"
+            exit 1
+          fi
+          echo "키 전달 정상."
+
       - name: 공식 API 에서 받기
         env:
           PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
