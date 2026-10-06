@@ -235,6 +235,19 @@ def main():
 
     # 참가자 이름이 익명화된 대회가 있다 (EWC 2026 은 전원 `EWC-Player-23` 형태).
     # 선수도 팀도 알 수 없으니 그럴듯한 표를 만들지 않고 멈춘다.
+    # 공식 API 가 알려준 경기 수와 실제로 받은 수를 대조한다. 네트워크 오류로 몇
+    # 경기가 빠지면 순위표가 조용히 틀어지는데, 집계 결과가 한 번 생기면
+    # fetch_all.ps1 -SkipBuilt 가 그 단계를 영원히 건너뛰어 영영 드러나지 않는다.
+    listed = None
+    tfile = raw / "tournament.json"
+    if tfile.is_file():
+        try:
+            tdoc = json.loads(tfile.read_text(encoding="utf-8-sig"))
+            listed = len([m for m in tdoc.get("included", [])
+                          if m.get("type") == "match"])
+        except (ValueError, OSError):
+            listed = None
+
     first = json.loads(match_files[0].read_text(encoding="utf-8-sig"))
     sample = [p["attributes"]["stats"]["name"]
               for p in first.get("included", []) if p.get("type") == "participant"]
@@ -428,6 +441,11 @@ def main():
         # 팀마다 뛴 경기 수가 다르면 합계 점수로 줄 세우는 것이 뜻을 잃는다.
         # 여러 로비로 나뉘었거나 중간에 탈락이 있는 단계다 (수집한 61단계 중 15개).
         # 화면이 이 값을 보고 "이 단계는 팀마다 경기 수가 다르다"고 알린다.
+        # 공식 API 목록의 경기 수와, 중단돼 뺀 경기 수.
+        # listed - voided > matchCount 면 네트워크 오류로 덜 받은 것이다.
+        # 중단 경기를 뺀 것(voided)과 못 받은 것을 구별하려고 둘 다 담는다.
+        "matchesListed": listed,
+        "matchesVoided": len(voided),
         "matchesPerTeam": ({"min": min(match_counts), "max": max(match_counts)}
                            if match_counts and min(match_counts) != max(match_counts)
                            else None),
@@ -443,6 +461,11 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     out = OUT_DIR / ("%s.json" % args.tournament_id)
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    if listed is not None and listed - len(voided) > len(match_files) - len(voided):
+        print("경고: 공식 API 는 %d경기라는데 %d경기만 받았습니다 (%d경기 누락). "
+              "ingest/fetch_all.ps1 을 다시 돌리면 빠진 것만 받습니다."
+              % (listed, len(match_files), listed - len(match_files)))
 
     if voided:
         print("중단된 경기 %d개를 뺐습니다 (순위가 흩어지지 않음):" % len(voided))

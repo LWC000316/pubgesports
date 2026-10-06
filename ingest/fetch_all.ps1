@@ -44,7 +44,26 @@ foreach ($line in $lines) {
             Tee-Object -FilePath $prog -Append
         break
     }
-    if ($SkipBuilt -and (Test-Path (Join-Path $built "$tid.json"))) { continue }
+    # 집계 결과가 있어도 **덜 받은 단계는 다시 받는다.** 집계 결과에 공식 API 가
+    # 알려준 경기 수(matchesListed)와 실제 경기 수(matchCount)가 함께 들어 있어서,
+    # 그게 다르면 네트워크 오류로 몇 경기를 놓친 것이다. 그냥 건너뛰면 영영 메운다.
+    if ($SkipBuilt) {
+        $builtFile = Join-Path $built "$tid.json"
+        if (Test-Path $builtFile) {
+            $complete = $true
+            try {
+                $b = Get-Content $builtFile -Raw | ConvertFrom-Json
+                $voided = if ($null -ne $b.matchesVoided) { $b.matchesVoided } else { 0 }
+                if ($null -ne $b.matchesListed -and
+                        ($b.matchesListed - $voided) -gt $b.matchCount) {
+                    $complete = $false
+                }
+            } catch { $complete = $true }
+            if ($complete) { continue }
+            "[$n/$($lines.Count)] $tid 는 덜 받아서 다시 받습니다." |
+                Tee-Object -FilePath $prog -Append
+        }
+    }
 
     $dir = Join-Path $root "intermediate_results/tournaments/$tid"
     New-Item -ItemType Directory -Force -Path $dir | Out-Null
