@@ -1,0 +1,91 @@
+{
+  "id": "cn-pclt",
+  "name": "PCL 2025 (t)",
+  "category": "regional",
+  "series": "PCL",
+  "year": 2025,
+  "edition": null,
+  "stageCode": "t",
+  "stage": null,
+  "startDate": "2025-03-04",
+  "source": "https://api.pubg.com/tournaments/cn-pclt",
+  "createdAt": null,
+  "matchCount": 1,
+  "maps": [
+    "Baltic_Main"
+  ],
+  "scoring": {
+    "table": "PUBG 이스포츠 표준",
+    "verifiedBy": "리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 (CC-BY-SA 3.0, 28경기)"
+  },
+  "matchesListed": 1,
+  "matchesVoided": 0,
+  "matchesPerTeam": null,
+  "note": "순위 점수는 PUBG 이스포츠 표준 배점으로 계산했다 (출처: 리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 (CC-BY-SA 3.0, 28경기)).",
+  "standings": [
+    {
+      "team": "es",
+      "league": null,
+      "teamResolved": false,
+      "matches": 1,
+      "kills": 0,
+      "wwcd": 1,
+      "placementPoints": 10,
+      "killPoints": 0,
+      "totalPoints": 10,
+      "avgPoints": 10.0,
+      "bestRank": 1,
+      "avgRank": 1.0,
+      "rank": 1
+    },
+    {
+      "team": "JRY",
+      "league": null,
+      "teamResolved": false,
+      "matches": 1,
+      "kills": 0,
+      "wwcd": 0,
+      "placementPoints": 6,
+      "killPoints": 0,
+      "totalPoints": 6,
+      "avgPoints": 6.0,
+      "bestRank": 2,
+      "avgRank": 2.0,
+      "rank": 2
+    }
+  ],
+  "players": [
+    {
+      "nickname": "cn-001",
+      "team": "es",
+      "league": null,
+      "matches": 1,
+      "overall": 28,
+      "kills": 0,
+      "knocks": 0,
+      "assists": 0,
+      "headshots": 0,
+      "revives": 0,
+      "damage": 0.0,
+      "avgDamage": 0.0,
+      "avgSurvival": 1824,
+      "longestKill": 0.0
+    },
+    {
+      "nickname": "NN",
+      "team": "JRY",
+      "league": null,
+      "matches": 1,
+      "overall": 27,
+      "kills": 0,
+      "knocks": 0,
+      "assists": 0,
+      "headshots": 0,
+      "revives": 0,
+      "damage": 0.0,
+      "avgDamage": 0.0,
+      "avgSurvival": 1821,
+      "longestKill": 0.0
+    }
+  ]
+}
