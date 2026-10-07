@@ -102,7 +102,9 @@ export default function TournamentsTab() {
   const activeYear = years.includes(year) ? year : years[0];
   const events = byYear.get(activeYear) ?? new Map();
   const eventKeys = [...events.keys()];
-  const activeEvent = eventKeys.includes(eventKey) ? eventKey : eventKeys[0];
+  // 대회는 **고르기 전까지 아무것도 펼치지 않는다.** 칩 다섯 줄이 한 번에 쌓여
+  // 지저분하던 것을 고친 것이라, 기본으로 하나를 열어 두면 도로 그 꼴이 된다.
+  const activeEvent = eventKeys.includes(eventKey) ? eventKey : null;
   const stages = events.get(activeEvent) ?? [];
   const activeStage = stages.some(t => t.id === stageId) ? stageId : stages[0]?.id;
 
@@ -125,25 +127,25 @@ export default function TournamentsTab() {
     );
   }
 
+  const seriesCount = code => (list ?? []).filter(t => t.series === code).length;
+
   return (
     <div className="animate-fade-in" style={{ padding: '0 24px 40px' }}>
-      <ChipRow>
-        {CATEGORIES.map(c => (
-          <Chip key={c.id} active={category === c.id} onClick={() => setCategory(c.id)}
-                icon={c.icon} label={c.label} sub={c.desc} big />
-        ))}
-      </ChipRow>
+      {/* 1단 분류 — 가장 큰 결정이라 밑줄 탭으로. 아래와 모양이 달라야 위계가 생긴다 */}
+      <SegmentTabs items={CATEGORIES} active={category} onChange={setCategory} />
 
+      {/* 2단 시리즈 — 타일. 단계 수를 적어 데이터가 어디 있는지 한눈에 */}
       {SERIES[category].length > 0 && (
-        <ChipRow>
-          {SERIES[category].map(s => {
-            const count = (list ?? []).filter(t => t.series === s).length;
-            return (
-              <Chip key={s} active={series === s} onClick={() => setSeries(s)}
-                    label={s} sub={count > 0 ? `${count}` : '없음'} dim={count === 0} />
-            );
-          })}
-        </ChipRow>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(104px, 1fr))',
+          gap: '8px', marginBottom: '20px'
+        }}>
+          {SERIES[category].map(code => (
+            <SeriesTile key={code} code={code} count={seriesCount(code)}
+                        active={series === code} onClick={() => setSeries(code)} />
+          ))}
+        </div>
       )}
 
       {category === 'scrim' ? (
@@ -158,22 +160,21 @@ export default function TournamentsTab() {
         />
       ) : (
         <>
-          <ChipRow>
-            {years.map(y => (
-              <Chip key={y} active={activeYear === y} onClick={() => setYear(y)}
-                    label={y ? `${y}` : '연도 미상'}
-                    sub={`${byYear.get(y).size}`} />
-            ))}
-          </ChipRow>
+          {/* 3단 연도 — 얇은 막대 하나. 2018~2026 이 다 차도 한 줄을 넘지 않는다 */}
+          <YearBar years={years} active={activeYear} counts={byYear} onChange={setYear} />
 
-          <ChipRow>
+          {/* 4단 대회 — 칩이 아니라 카드. 실제로 고르는 곳이라 규모를 먼저 보여준다 */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))',
+            gap: '10px', marginBottom: activeEvent ? '24px' : 0
+          }}>
             {eventKeys.map(k => (
-              <Chip key={k} active={activeEvent === k} onClick={() => setEventKey(k)}
-                    label={k}
-                    sub={events.get(k).length > 1 ? `${events.get(k).length}단계` : null}
-                    subtle />
+              <EventCard key={k} name={k} stages={events.get(k)}
+                         active={activeEvent === k}
+                         onClick={() => setEventKey(activeEvent === k ? null : k)} />
             ))}
-          </ChipRow>
+          </div>
 
           {activeStage && (
             <TournamentDetail
@@ -186,6 +187,117 @@ export default function TournamentsTab() {
         </>
       )}
     </div>
+  );
+}
+
+/** 분류 — 밑줄 탭. 아래 단계도 칩으로 두면 무엇이 상위인지 구별이 안 된다. */
+function SegmentTabs({ items, active, onChange }) {
+  return (
+    <div style={{
+      display: 'flex', gap: '4px', marginBottom: '20px',
+      borderBottom: '1px solid var(--border-subtle)', overflowX: 'auto'
+    }}>
+      {items.map(({ id, label, desc, icon: Icon }) => {
+        const on = active === id;
+        return (
+          <button key={id} onClick={() => onChange(id)} style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            padding: '12px 18px', background: 'none', border: 'none',
+            borderBottom: `2px solid ${on ? 'var(--accent-gold)' : 'transparent'}`,
+            marginBottom: '-1px', cursor: 'pointer', whiteSpace: 'nowrap',
+            color: on ? '#fff' : 'var(--text-muted)',
+            fontWeight: on ? '900' : '700', fontSize: '0.95rem'
+          }}>
+            {Icon && <Icon size={17} color={on ? 'var(--accent-gold)' : 'currentColor'} />}
+            {label}
+            <span style={{ fontSize: '0.8rem', fontWeight: '600', opacity: 0.7 }}>{desc}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/** 시리즈 — 타일. 단계 수를 적어 "어디에 데이터가 있나"가 먼저 보이게 한다. */
+function SeriesTile({ code, count, active, onClick }) {
+  const empty = count === 0;
+  return (
+    <button onClick={empty ? undefined : onClick} disabled={empty} style={{
+      display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px',
+      padding: '12px 14px', borderRadius: 'var(--radius-sm)', textAlign: 'left',
+      background: active ? 'rgba(243,166,31,0.13)' : 'rgba(255,255,255,0.03)',
+      border: `1px solid ${active ? 'var(--accent-gold)' : 'var(--border-subtle)'}`,
+      cursor: empty ? 'default' : 'pointer', opacity: empty ? 0.35 : 1,
+      transition: 'all .15s ease'
+    }}>
+      <span style={{
+        fontSize: '1.05rem', fontWeight: '900', letterSpacing: '0.02em',
+        color: active ? 'var(--accent-gold)' : '#fff'
+      }}>{code}</span>
+      <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+        {empty ? '없음' : `단계 ${count}`}
+      </span>
+    </button>
+  );
+}
+
+/** 연도 — 한 줄짜리 막대. 칩을 또 쓰면 시리즈와 구별이 안 된다. */
+function YearBar({ years, active, counts, onChange }) {
+  return (
+    <div style={{
+      display: 'inline-flex', gap: '2px', marginBottom: '16px', padding: '3px',
+      borderRadius: 'var(--radius-sm)', maxWidth: '100%', overflowX: 'auto',
+      background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)'
+    }}>
+      {years.map(y => {
+        const on = active === y;
+        return (
+          <button key={y} onClick={() => onChange(y)} style={{
+            padding: '7px 18px', border: 'none',
+            borderRadius: 'calc(var(--radius-sm) - 2px)',
+            background: on ? 'var(--accent-gold)' : 'transparent',
+            color: on ? '#000' : 'var(--text-muted)',
+            fontWeight: on ? '900' : '700', fontSize: '0.85rem',
+            cursor: 'pointer', whiteSpace: 'nowrap'
+          }}>
+            {y || '연도 미상'}
+            <span style={{ marginLeft: '6px', fontSize: '0.74rem', opacity: 0.6 }}>
+              {counts.get(y).size}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/** 대회 — 카드. 고르기 전에 규모(단계·경기·기간)를 알 수 있어야 한다. */
+function EventCard({ name, stages, active, onClick }) {
+  const matches = stages.reduce((n, t) => n + (t.matchCount || 0), 0);
+  const from = stages[0]?.startDate;
+  const to = stages[stages.length - 1]?.startDate;
+  const short = d => (d ? d.slice(5).replace('-', '/') : '');
+  const span = from && to && from !== to ? `${short(from)} ~ ${short(to)}` : short(from);
+  return (
+    <button onClick={onClick} style={{
+      display: 'flex', flexDirection: 'column', gap: '8px',
+      padding: '14px 16px', borderRadius: 'var(--radius-sm)', textAlign: 'left',
+      background: active
+        ? 'linear-gradient(135deg, rgba(243,166,31,0.16) 0%, rgba(22,26,38,0.95) 100%)'
+        : 'rgba(255,255,255,0.03)',
+      border: `1px solid ${active ? 'var(--accent-gold)' : 'var(--border-subtle)'}`,
+      cursor: 'pointer', transition: 'all .15s ease'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Trophy size={15} color={active ? 'var(--accent-gold)' : 'var(--text-muted)'} />
+        <span style={{ fontWeight: '900', color: '#fff', fontSize: '0.98rem' }}>{name}</span>
+      </div>
+      {span && <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{span}</div>}
+      <div style={{ display: 'flex', gap: '12px', fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+        <span>단계 <b style={{ color: '#fff' }}>{stages.length}</b></span>
+        <span>경기 <b style={{ color: '#fff' }}>{matches}</b></span>
+      </div>
+    </button>
   );
 }
 
