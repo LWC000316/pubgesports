@@ -175,6 +175,16 @@ def parse_id(tournament_id, year=None):
     if yy and code and code.startswith(yy):
         code = code[2:] or None           # vn|26p2 -> p2
 
+    # PWS 2025 는 글자 없이 숫자만 셋 붙인다: pws<페이즈><주차><일차>.
+    # 그대로 두면 pws241 의 회차가 "241" 이 되어 **단계 하나가 대회 하나로**
+    # 쪼개진다 (2025년 PWS 가 PWS 141·211·…·243 처럼 15개 가짜 대회가 됐다).
+    #
+    # id 구조만으로 확인된다: 211·212·213 이 8/26·8/28·8/30 으로 2일 간격이고,
+    # 211 -> 221 -> 231 -> 241 이 8/26 -> 9/2 -> 9/9 -> 9/16 으로 정확히 7일
+    # 간격이다. 2026년은 같은 것을 pws2s23 처럼 s 를 넣어 쓴다.
+    if series == "PWS" and not code and edition and len(edition) == 3:
+        edition, code = edition[0], edition[1:]
+
     return series, edition, code, stage_name(series, code)
 
 

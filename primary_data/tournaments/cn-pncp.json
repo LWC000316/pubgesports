@@ -24,7 +24,7 @@
   "matchesListed": 45,
   "matchesVoided": 2,
   "matchesPerTeam": {
-    "min": 3,
+    "min": 1,
     "max": 36
   },
   "note": "순위 점수는 PUBG 이스포츠 표준 배점으로 계산했다 (출처: 리퀴피디아 PGC 2019·2021~2025 · PCL 2026 · PVS 2026 (CC-BY-SA 3.0, 28경기)).",
@@ -390,19 +390,34 @@
       "rank": 24
     },
     {
+      "team": "es",
+      "league": null,
+      "teamResolved": true,
+      "matches": 2,
+      "kills": 0,
+      "wwcd": 1,
+      "placementPoints": 16,
+      "killPoints": 0,
+      "totalPoints": 16,
+      "avgPoints": 8.0,
+      "bestRank": 1,
+      "avgRank": 1.5,
+      "rank": 25
+    },
+    {
       "team": "PNC",
       "league": null,
       "teamResolved": true,
-      "matches": 3,
+      "matches": 1,
       "kills": 2,
-      "wwcd": 1,
-      "placementPoints": 21,
+      "wwcd": 0,
+      "placementPoints": 5,
       "killPoints": 2,
-      "totalPoints": 23,
-      "avgPoints": 7.67,
-      "bestRank": 1,
-      "avgRank": 2.0,
-      "rank": 25
+      "totalPoints": 7,
+      "avgPoints": 7.0,
+      "bestRank": 3,
+      "avgRank": 3.0,
+      "rank": 26
     }
   ],
   "players": [
@@ -2280,7 +2295,7 @@
     },
     {
       "nickname": "OB04",
-      "team": "PNC",
+      "team": "es",
       "league": null,
       "matches": 1,
       "overall": 20,
@@ -2296,7 +2311,7 @@
     },
     {
       "nickname": "cn-pncp_01",
-      "team": "PNC",
+      "team": "es",
       "league": null,
       "matches": 1,
       "overall": 16,
@@ -2328,7 +2343,7 @@
     },
     {
       "nickname": "OB03",
-      "team": "PNC",
+      "team": "es",
       "league": null,
       "matches": 1,
       "overall": 10,
@@ -2344,7 +2359,7 @@
     },
     {
       "nickname": "test-pncp_01",
-      "team": "PNC",
+      "team": "es",
       "league": null,
       "matches": 1,
       "overall": 10,
