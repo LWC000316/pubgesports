@@ -34,7 +34,7 @@ def main():
             pass
 
     rows = [l.split("\t") for l in LIST.read_text(encoding="utf-8").splitlines() if l.strip()]
-    done = skipped = failed = 0
+    done = skipped = failed = refused = 0
     problems = []
     for date, series, tid in rows:
         if args.series and series != args.series:
@@ -49,7 +49,14 @@ def main():
         r = subprocess.run(
             [sys.executable, str(Path(__file__).with_name("build_tournament_seed.py")), tid],
             capture_output=True, text=True, encoding="utf-8", errors="replace")
-        if r.returncode == 0:
+        if r.returncode == 2:
+            # 의도된 거부(참가자 익명화 등). 오류가 아니므로 실패로 세지 않는다.
+            # 이걸 실패로 세면 거부 한 건에 일괄 집계 전체가 비정상 종료하고,
+            # CI 에서는 뒤따르는 커밋 단계가 통째로 날아간다.
+            refused += 1
+            tail = [l for l in r.stdout.splitlines() if l.strip()]
+            problems.append("%s: 거부 - %s" % (tid, tail[-1][:110] if tail else ""))
+        elif r.returncode == 0:
             done += 1
             head = [l for l in r.stdout.splitlines() if l.startswith("경기 ")]
             print("  %s %-6s %-14s %s" % (date, series, tid, head[0] if head else ""))

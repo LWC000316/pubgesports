@@ -253,10 +253,14 @@ def main():
               for p in first.get("included", []) if p.get("type") == "participant"]
     anon = [n for n in sample if re.fullmatch(r"[A-Za-z]+-Player-\d+", n or "")]
     if sample and len(anon) > len(sample) / 2:
-        raise SystemExit(
-            "참가자 이름이 익명화돼 있습니다 (%s 등 %d/%d명).\n"
-            "선수도 팀도 알 수 없어 순위표를 만들지 않습니다. 진행을 멈춥니다."
-            % (anon[0], len(anon), len(sample)))
+        # 종료코드 2 = **의도된 거부**. 오류가 아니다. build_all.py 가 이걸 보고
+        # "실패"가 아니라 "거부"로 센다 — 안 그러면 거부 한 건 때문에 일괄 집계
+        # 전체가 실패로 끝나고, CI 에서는 뒤따르는 커밋 단계가 통째로 날아간다.
+        # 2026-10-06 실행에서 EWC 거부 1건에 102단계·5시간치 수집이 날아갔다.
+        print("참가자 이름이 익명화돼 있습니다 (%s 등 %d/%d명). "
+              "선수도 팀도 알 수 없어 순위표를 만들지 않습니다."
+              % (anon[0], len(anon), len(sample)))
+        raise SystemExit(2)
 
     teams = defaultdict(lambda: {"matches": 0, "kills": 0, "wwcd": 0,
                                  "ranks": [], "league": None, "resolved": False})

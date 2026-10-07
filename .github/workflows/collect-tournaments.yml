@@ -82,10 +82,15 @@ jobs:
             -MaxMinutes ${{ github.event.inputs.max_minutes || 320 }} \
             -SkipBuilt
 
+      # 집계가 터져도 **받은 것은 반드시 커밋한다.** 받기에 5시간이 드는데
+      # 뒤 단계 하나가 실패해서 통째로 날아가면 그 5시간을 다시 써야 한다.
+      # 2026-10-06 실행이 정확히 그렇게 102단계를 잃었다 (EWC 거부 1건 때문).
       - name: 집계
+        continue-on-error: true
         run: python ingest/build_all.py
 
       - name: 결과 커밋
+        if: always()
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
