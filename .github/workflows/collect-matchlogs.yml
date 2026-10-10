@@ -1,0 +1,104 @@
+# 매치로그(선수 이동 경로)를 만든다.
+#
+# **왜 따로 두나**: 대회 수집 워크플로는 집계 결과만 커밋하고 경기 원본을 버린다.
+# 그런데 매치로그는 원본 안의 텔레메트리 URL 이 있어야 만들 수 있어서, 이미 집계가
+# 끝난 대회는 원본을 다시 받아야 한다. 그래서 -SkipBuilt 없이 대상 단계만 받는다.
+#
+# **왜 서버에서 하나**: 텔레메트리가 경기당 33MB 다. 25단계 370경기면 약 12GB 를
+# 내려받는데, 뽑고 나면 경기당 300KB 만 남는다(합쳐서 약 75MB). 내려받기는 서버가
+# 하고 결과만 커밋하면 집에서 12GB 를 받을 일이 없다.
+#
+# 기본 대상은 글로벌 4종(PGC·PGS·PNC·EWC)의 **결승 단계**다. 예선 경기의 선수
+# 동선을 들여다볼 일은 거의 없고, 전 단계로 넓히면 155GB 가 된다.
+
+name: 매치로그 수집
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_minutes:
+        description: '받기에 쓸 시간 한도(분). GitHub 작업 한도는 6시간'
+        required: false
+        default: '240'
+      delay_seconds:
+        description: 'API 호출 간격(초). 분당 10회 제한이라 6초 미만으로 줄이지 말 것'
+        required: false
+        default: '6'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-matchlogs
+  cancel-in-progress: false
+
+jobs:
+  matchlogs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 대상과 비용 확인
+        run: python ingest/build_match_logs_all.py --list
+
+      # 매치로그를 만들 단계의 **원본만** 받는다. 대회 수집과 달리 -SkipBuilt 를
+      # 쓰지 않는다 — 이미 집계된 단계라도 원본이 없으면 텔레메트리 URL 을 못 본다.
+      - name: 대상 단계 원본 받기
+        env:
+          PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
+        run: |
+          python - <<'PY' > /tmp/targets.txt
+          import importlib.util, sys
+          from pathlib import Path
+          spec = importlib.util.spec_from_file_location(
+              "m", "ingest/build_match_logs_all.py")
+          m = importlib.util.module_from_spec(spec)
+          sys.argv = ["x"]
+          spec.loader.exec_module(m)
+          class A: list=True; all_global=False; series=None
+          for date, series, tid, n, have in m.targets(A()):
+              print(tid)
+          PY
+          echo "대상 $(wc -l < /tmp/targets.txt) 단계"
+          while read -r tid; do
+            [ -z "$tid" ] && continue
+            pwsh -NoProfile -File ingest/fetch_tournament.ps1 \
+              -TournamentId "$tid" \
+              -DelaySeconds ${{ github.event.inputs.delay_seconds || 6 }} || true
+          done < /tmp/targets.txt
+
+      - name: 매치로그 뽑기
+        continue-on-error: true
+        run: python ingest/build_match_logs_all.py
+
+      # 받기에 몇 시간이 드는데 뒤 단계 하나가 실패해 전부 잃으면 안 된다.
+      - name: 결과 커밋
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add primary_data/matchlogs
+          if git diff --cached --quiet; then
+            echo "새로 만든 매치로그가 없습니다."
+            exit 0
+          fi
+          n=$(git diff --cached --name-only | wc -l)
+          git commit \
+            -m "data: 매치로그 $n 경기 추출 (자동 수집)" \
+            -m "텔레메트리에서 이동 경로·자기장·킬 지점만 뽑았다. 원본 33MB/경기는 버린다." \
+            -m "남은 대회는 다음 실행이 이어서 받는다 - 커밋된 로그가 진행 표시다."
+          git pull --rebase
+          git push
+
+      - name: 진행 상황
+        if: always()
+        run: |
+          n=$(find primary_data/matchlogs -name '*.json' 2>/dev/null | wc -l)
+          d=$(find primary_data/matchlogs -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)
+          echo "### 매치로그: $d 개 대회 · $n 경기" >> $GITHUB_STEP_SUMMARY

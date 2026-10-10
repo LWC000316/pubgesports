@@ -17,7 +17,11 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$key = [Environment]::GetEnvironmentVariable('PUBG_API_KEY', 'User')
+# 윈도우에서는 사용자 환경변수, CI 에서는 프로세스 환경변수로 들어온다.
+$key = $env:PUBG_API_KEY
+if (-not $key -and $IsWindows -ne $false) {
+    $key = [Environment]::GetEnvironmentVariable('PUBG_API_KEY', 'User')
+}
 if (-not $key) { Write-Output 'PUBG_API_KEY 가 없습니다.'; exit 1 }
 $headers = @{ Authorization = "Bearer $key"; Accept = 'application/vnd.api+json' }
 
