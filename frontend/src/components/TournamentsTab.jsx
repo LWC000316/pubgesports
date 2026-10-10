@@ -30,6 +30,9 @@ const SERIES_NOTE = {
 };
 
 const MAP_NAMES = {
+  // 2019~2020년 대회는 에란겔의 내부 이름이 Erangel_Main 이었다 (15개 단계).
+  // 지금은 Baltic_Main 이다. 같은 맵이라 화면에는 똑같이 Erangel 로 쓴다.
+  Erangel_Main: 'Erangel',
   Baltic_Main: 'Erangel', Desert_Main: 'Miramar', Savage_Main: 'Sanhok',
   DihorOtok_Main: 'Vikendi', Tiger_Main: 'Taego', Neon_Main: 'Rondo',
   Kiki_Main: 'Deston', Chimera_Main: 'Paramo', Summerland_Main: 'Karakin',

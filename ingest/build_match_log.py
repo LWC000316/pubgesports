@@ -39,6 +39,7 @@ OUT_DIR = PROJECT_ROOT / "primary_data" / "matchlogs"
 # 공식 문서와 커뮤니티에서 확인된 값이다.
 MAP_SIZE = {
     "Baltic_Main": 816000,      # Erangel 8km
+    "Erangel_Main": 816000,     # 2019~2020년 대회의 에란겔. 같은 8km 맵이다
     "Desert_Main": 816000,      # Miramar 8km
     "Tiger_Main": 816000,       # Taego 8km
     "Neon_Main": 816000,        # Rondo 8km
@@ -52,7 +53,7 @@ MAP_SIZE = {
 }
 
 MAP_LABEL = {
-    "Baltic_Main": "Erangel", "Desert_Main": "Miramar", "Tiger_Main": "Taego",
+    "Baltic_Main": "Erangel", "Erangel_Main": "Erangel", "Desert_Main": "Miramar", "Tiger_Main": "Taego",
     "Neon_Main": "Rondo", "Kiki_Main": "Deston", "DihorOtok_Main": "Vikendi",
     "Savage_Main": "Sanhok", "Summerland_Main": "Karakin",
     "Chimera_Main": "Paramo", "Heaven_Main": "Haven",
