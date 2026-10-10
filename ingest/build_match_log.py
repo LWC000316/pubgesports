@@ -25,9 +25,11 @@ import argparse
 import gzip
 import io
 import json
+import re
 import sys
 import urllib.request
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -117,6 +119,29 @@ def relabel(log, by_nickname):
     return changed
 
 
+def _parse_ts(stamp):
+    """텔레메트리의 ISO 시각. 끝의 Z 와 마이크로초 자릿수가 들쭉날쭉하다."""
+    if not stamp:
+        return None
+    text = stamp.replace("Z", "+00:00")
+    if "." in text:
+        head, rest = text.split(".", 1)
+        frac, _, tz = rest.partition("+")
+        text = "%s.%s+%s" % (head, frac[:6], tz) if tz else "%s.%s" % (head, frac[:6])
+    try:
+        return datetime.fromisoformat(text)
+    except ValueError:
+        return None
+
+
+def weapon_name(code):
+    """`WeapACE32_C` -> `ACE32`. 모르는 형태면 원본을 그대로 둔다."""
+    if not code:
+        return None
+    m = re.fullmatch(r"Weap(.+?)_C", code)
+    return m.group(1) if m else code
+
+
 def split_ingame_id(name):
     if "_" in name:
         prefix, rest = name.split("_", 1)
@@ -132,10 +157,23 @@ def build(events, match_id):
     circles = []
     kills = []
 
+    # 킬 이벤트에는 elapsedTime 이 없고 절대 시각(_D)만 있다. 경과 초를 쓰려면
+    # 경기 시작 시각이 필요하다 (LogMatchStart 의 _D).
+    start_ts = None
+
+    def seconds_since_start(stamp):
+        if not stamp or not start_ts:
+            return None
+        try:
+            return int((_parse_ts(stamp) - start_ts).total_seconds())
+        except (ValueError, TypeError):
+            return None
+
     for e in events:
         t = e.get("_T")
 
         if t == "LogMatchStart":
+            start_ts = _parse_ts(e.get("_D"))
             map_name = e.get("mapName")
             for c in e.get("characters", []):
                 ch = c.get("character", {})
@@ -177,11 +215,12 @@ def build(events, match_id):
             if "x" not in vloc:
                 continue
             kills.append({
-                "t": None,
+                "t": seconds_since_start(e.get("_D")),
                 "victim": victim.get("name"),
                 "killer": killer.get("name"),
                 "x": vloc["x"], "y": vloc["y"],
-                "weapon": (e.get("killerDamageInfo") or {}).get("damageCauserName"),
+                "weapon": weapon_name(
+                    (e.get("killerDamageInfo") or {}).get("damageCauserName")),
             })
 
     size = MAP_SIZE.get(map_name)
@@ -213,9 +252,10 @@ def build(events, match_id):
                     "r": round(c["r"] / size, 5), "alive": c["alive"],
                     "aliveTeams": c["aliveTeams"]} for c in circles]
 
-    out_kills = [{"victim": k["victim"], "killer": k["killer"],
+    out_kills = [{"t": k["t"], "victim": k["victim"], "killer": k["killer"],
                   "x": norm(k["x"]), "y": norm(k["y"]), "weapon": k["weapon"]}
                  for k in kills]
+    out_kills.sort(key=lambda k: (k["t"] if k["t"] is not None else 1 << 30))
 
     return {
         "matchId": match_id,
