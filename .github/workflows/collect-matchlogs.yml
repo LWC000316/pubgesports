@@ -99,8 +99,24 @@ jobs:
             -m "data: 매치로그 $n 경기 추출 (자동 수집)" \
             -m "텔레메트리에서 이동 경로·자기장·킬 지점만 뽑았다. 원본 33MB/경기는 버린다." \
             -m "남은 대회는 다음 실행이 이어서 받는다 - 커밋된 로그가 진행 표시다."
-          git pull --rebase
-          git push
+          # 푸시가 막히면 러너에만 남고 데이터가 날아간다. 받기에 50분이 드는
+          # 작업이라 그걸 되풀이할 수 없다. 세 번까지 다시 시도하고, 리베이스
+          # 충돌이 나면 **이번에 뽑은 쪽을 택한다** — --force 로 다시 뽑은 값이
+          # 최신이기 때문이다. (-X theirs 는 리베이스 중에는 "지금 얹는 커밋",
+          # 즉 러너가 방금 만든 쪽을 뜻한다.)
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase -X theirs origin/main || { git rebase --abort; true; }
+            if git push origin HEAD:main; then
+              echo "푸시 완료 (시도 $i)"
+              exit 0
+            fi
+            echo "푸시 실패, 다시 시도합니다 ($i/3)"
+            sleep 5
+          done
+          echo "세 번 모두 실패했습니다. 러너의 커밋을 패치로 남깁니다."
+          git format-patch -1 --stdout > /tmp/matchlogs.patch
+          exit 1
 
       - name: 진행 상황
         if: always()
