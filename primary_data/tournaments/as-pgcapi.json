@@ -1,6 +1,6 @@
 {
   "id": "as-pgcapi",
-  "name": "PGC 2025 (api)",
+  "name": "PUBG Global Championship 2025",
   "category": "global",
   "series": "PGC",
   "year": 2025,
@@ -2715,5 +2715,6 @@
       "avgSurvival": 174,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2025"
 }

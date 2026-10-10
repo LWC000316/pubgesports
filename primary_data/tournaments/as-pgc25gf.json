@@ -1,6 +1,6 @@
 {
   "id": "as-pgc25gf",
-  "name": "PGC 2025 Grand Finals",
+  "name": "PUBG Global Championship 2025 Grand Finals",
   "category": "global",
   "series": "PGC",
   "year": 2025,
@@ -1308,5 +1308,6 @@
       "avgSurvival": 1057,
       "longestKill": 247.7
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2025"
 }

@@ -1,6 +1,6 @@
 {
   "id": "sea-vnlpt",
-  "name": "PVS 2019 (lpt)",
+  "name": "PUBG Vietnam Series 2019",
   "category": "regional",
   "series": "PVS",
   "year": 2019,
@@ -2605,5 +2605,6 @@
       "avgSurvival": 0,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Vietnam Series/2019"
 }

@@ -1,6 +1,6 @@
 {
   "id": "as-pgs2gf",
-  "name": "PGS 2 Grand Finals",
+  "name": "PUBG Global Series 2023 2 Grand Finals",
   "category": "global",
   "series": "PGS",
   "year": 2023,
@@ -1307,5 +1307,6 @@
       "avgSurvival": 1336,
       "longestKill": 128.2
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2023/2"
 }

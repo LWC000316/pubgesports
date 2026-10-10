@@ -1,12 +1,12 @@
 {
   "id": "kr-pws2s22",
-  "name": "PWS 2 Weekly Stage 2-2",
+  "name": "PUBG WEEKLY SERIES 2026 Phase 2 Weekly Stage 2주차 2일차",
   "category": "regional",
   "series": "PWS",
   "year": 2026,
   "edition": "2",
   "stageCode": "s22",
-  "stage": "Weekly Stage 2-2",
+  "stage": "Weekly Stage 2주차 2일차",
   "startDate": "2026-09-17",
   "source": "https://api.pubg.com/tournaments/kr-pws2s22",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 999,
       "longestKill": 140.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 2"
 }

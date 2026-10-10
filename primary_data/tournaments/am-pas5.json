@@ -1,6 +1,6 @@
 {
   "id": "am-pas5",
-  "name": "AMER 5",
+  "name": "PUBG Americas Series 2025 5",
   "category": "regional",
   "series": "AMER",
   "year": 2025,
@@ -1959,5 +1959,6 @@
       "avgSurvival": 1112,
       "longestKill": 158.0
     }
-  ]
+  ],
+  "officialName": "PUBG Americas Series/2025/5"
 }

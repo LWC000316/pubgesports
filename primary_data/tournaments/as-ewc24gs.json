@@ -1,6 +1,6 @@
 {
   "id": "as-ewc24gs",
-  "name": "EWC 2024 (gs)",
+  "name": "Esports World Cup 2024",
   "category": "global",
   "series": "EWC",
   "year": 2024,
@@ -1924,5 +1924,6 @@
       "avgSurvival": 817,
       "longestKill": 118.9
     }
-  ]
+  ],
+  "officialName": "Esports World Cup/2024"
 }

@@ -1,6 +1,6 @@
 {
   "id": "na-pgcsf",
-  "name": "PGC 2019 (sf)",
+  "name": "PUBG Global Championship 2019",
   "category": "global",
   "series": "PGC",
   "year": 2019,
@@ -1923,5 +1923,6 @@
       "avgSurvival": 1002,
       "longestKill": 109.9
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2019"
 }

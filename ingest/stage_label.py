@@ -102,8 +102,10 @@ STAGE_PATTERNS = {
         (re.compile(r'^f\d*$'), "Finals"),
     ],
     "PWS": [
-        (re.compile(r'^s(\d)(\d)$'), "Weekly Stage %s-%s"),
-        (re.compile(r'^wf(\d+)$'), "Weekly Finals %s"),
+        # 숫자만 두면 "2-3" 이 무엇인지 읽히지 않는다. 주차·일차로 적는다.
+        (re.compile(r'^s(\d)(\d)$'), "Weekly Stage %s주차 %s일차"),
+        (re.compile(r'^(\d)(\d)$'), "Weekly Stage %s주차 %s일차"),
+        (re.compile(r'^wf(\d+)$'), "Weekly Finals %s주차"),
     ],
 }
 
@@ -184,6 +186,11 @@ def parse_id(tournament_id, year=None):
     # 간격이다. 2026년은 같은 것을 pws2s23 처럼 s 를 넣어 쓴다.
     if series == "PWS" and not code and edition and len(edition) == 3:
         edition, code = edition[0], edition[1:]
+
+    # AMER 은 회차 뒤에 두 자리 연도를 붙인다: am-pas126 = PAS 1 (2026).
+    # 앞에 붙는 경우(pgc23gf)는 위에서 처리했고, 이쪽은 뒤에 붙는다.
+    if yy and edition and len(edition) > 2 and edition.endswith(yy):
+        edition = edition[:-2] or None
 
     return series, edition, code, stage_name(series, code)
 

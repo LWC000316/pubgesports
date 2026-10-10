@@ -1,6 +1,6 @@
 {
   "id": "am-pas4",
-  "name": "AMER 4",
+  "name": "PUBG Americas Series 2024 4",
   "category": "regional",
   "series": "AMER",
   "year": 2024,
@@ -2055,5 +2055,6 @@
       "avgSurvival": 1084,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Americas Series/2024/4"
 }

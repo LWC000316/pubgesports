@@ -1,6 +1,6 @@
 {
   "id": "am-pas1f2",
-  "name": "AMER 1 Finals",
+  "name": "PUBG Americas Series 2026 1 Finals",
   "category": "regional",
   "series": "AMER",
   "year": 2026,
@@ -1342,5 +1342,6 @@
       "avgSurvival": 925,
       "longestKill": 71.0
     }
-  ]
+  ],
+  "officialName": "PUBG Americas Series/2026/1"
 }

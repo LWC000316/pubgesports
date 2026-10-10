@@ -1,10 +1,10 @@
 {
   "id": "am-pas126",
-  "name": "AMER 126",
+  "name": "PUBG Americas Series 2026 1",
   "category": "regional",
   "series": "AMER",
   "year": 2026,
-  "edition": "126",
+  "edition": "1",
   "stageCode": null,
   "stage": null,
   "startDate": "2026-04-27",
@@ -2338,5 +2338,6 @@
       "avgSurvival": 1060,
       "longestKill": 9.5
     }
-  ]
+  ],
+  "officialName": "PUBG Americas Series/2026/1"
 }

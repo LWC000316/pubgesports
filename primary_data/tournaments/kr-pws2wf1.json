@@ -1,12 +1,12 @@
 {
   "id": "kr-pws2wf1",
-  "name": "PWS 2 Weekly Finals 1",
+  "name": "PUBG WEEKLY SERIES 2026 Phase 2 Weekly Finals 1주차",
   "category": "regional",
   "series": "PWS",
   "year": 2026,
   "edition": "2",
   "stageCode": "wf1",
-  "stage": "Weekly Finals 1",
+  "stage": "Weekly Finals 1주차",
   "startDate": "2026-09-12",
   "source": "https://api.pubg.com/tournaments/kr-pws2wf1",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 1148,
       "longestKill": 200.9
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 2"
 }

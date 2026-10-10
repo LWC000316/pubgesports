@@ -1,6 +1,6 @@
 {
   "id": "kr-ipnc",
-  "name": "PNC 2022",
+  "name": "PUBG Nations Cup 2022",
   "category": "global",
   "series": "PNC",
   "year": 2022,
@@ -1913,5 +1913,6 @@
       "avgSurvival": 417,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Nations Cup/2022"
 }

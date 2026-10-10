@@ -1,6 +1,6 @@
 {
   "id": "as-pgclbp2",
-  "name": "PGC 2022 (lbp2)",
+  "name": "PUBG Global Championship 2022",
   "category": "global",
   "series": "PGC",
   "year": 2022,
@@ -1290,5 +1290,6 @@
       "avgSurvival": 1041,
       "longestKill": 134.2
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2022"
 }

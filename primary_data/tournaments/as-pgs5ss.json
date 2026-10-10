@@ -1,6 +1,6 @@
 {
   "id": "as-pgs5ss",
-  "name": "PGS 5 Survival Stage",
+  "name": "PUBG Global Series 2026 Circuit 2 Series 2 Survival Stage",
   "category": "global",
   "series": "PGS",
   "year": 2026,
@@ -1310,5 +1310,6 @@
       "avgSurvival": 993,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2026/Circuit 2/Series 2"
 }

@@ -1,12 +1,12 @@
 {
   "id": "kr-pws243",
-  "name": "PWS 2 (43)",
+  "name": "PUBG WEEKLY SERIES 2025 Phase 2 Weekly Stage 4주차 3일차",
   "category": "regional",
   "series": "PWS",
   "year": 2025,
   "edition": "2",
   "stageCode": "43",
-  "stage": null,
+  "stage": "Weekly Stage 4주차 3일차",
   "startDate": "2025-09-20",
   "source": "https://api.pubg.com/tournaments/kr-pws243",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 863,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2025/Phase 2"
 }

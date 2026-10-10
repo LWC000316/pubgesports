@@ -1,6 +1,6 @@
 {
   "id": "as-pgs10api",
-  "name": "PGS 10 (api)",
+  "name": "PUBG Global Series 2025 10",
   "category": "global",
   "series": "PGS",
   "year": 2025,
@@ -1324,5 +1324,6 @@
       "avgSurvival": 201,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2025/10"
 }

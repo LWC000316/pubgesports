@@ -1,6 +1,6 @@
 {
   "id": "as-pgcgsa",
-  "name": "PGC 2023 (gsa)",
+  "name": "PUBG Global Championship 2023",
   "category": "global",
   "series": "PGC",
   "year": 2023,
@@ -2260,5 +2260,6 @@
       "avgSurvival": 1102,
       "longestKill": 319.1
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2023"
 }

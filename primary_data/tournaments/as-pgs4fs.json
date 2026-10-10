@@ -1,6 +1,6 @@
 {
   "id": "as-pgs4fs",
-  "name": "PGS 4 Final Stage",
+  "name": "PUBG Global Series 2024 4 Final Stage",
   "category": "global",
   "series": "PGS",
   "year": 2024,
@@ -2164,5 +2164,6 @@
       "avgSurvival": 1084,
       "longestKill": 60.5
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2024/4"
 }

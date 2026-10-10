@@ -1,6 +1,6 @@
 {
   "id": "as-ewcapi",
-  "name": "EWC 2025 (api)",
+  "name": "Esports World Cup 2025",
   "category": "global",
   "series": "EWC",
   "year": 2025,
@@ -1991,5 +1991,6 @@
       "avgSurvival": 723,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "Esports World Cup/2025"
 }

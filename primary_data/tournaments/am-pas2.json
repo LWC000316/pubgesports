@@ -1,6 +1,6 @@
 {
   "id": "am-pas2",
-  "name": "AMER 2",
+  "name": "PUBG Americas Series 2023 Phase 2",
   "category": "regional",
   "series": "AMER",
   "year": 2023,
@@ -1324,5 +1324,6 @@
       "avgSurvival": 814,
       "longestKill": 19.8
     }
-  ]
+  ],
+  "officialName": "PUBG Americas Series/2023/Phase 2"
 }

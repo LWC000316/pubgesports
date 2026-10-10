@@ -1,6 +1,6 @@
 {
   "id": "cn-pncp",
-  "name": "PNC 2025 (p)",
+  "name": "PUBG Nations Cup 2025",
   "category": "global",
   "series": "PNC",
   "year": 2025,
@@ -2358,5 +2358,6 @@
       "avgSurvival": 542,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Nations Cup/2025"
 }

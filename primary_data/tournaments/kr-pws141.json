@@ -1,12 +1,12 @@
 {
   "id": "kr-pws141",
-  "name": "PWS 1 (41)",
+  "name": "PUBG WEEKLY SERIES 2025 Phase 1 Weekly Stage 4주차 1일차",
   "category": "regional",
   "series": "PWS",
   "year": 2025,
   "edition": "1",
   "stageCode": "41",
-  "stage": null,
+  "stage": "Weekly Stage 4주차 1일차",
   "startDate": "2025-03-25",
   "source": "https://api.pubg.com/tournaments/kr-pws141",
   "createdAt": null,
@@ -1290,5 +1290,6 @@
       "avgSurvival": 631,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2025/Phase 1"
 }

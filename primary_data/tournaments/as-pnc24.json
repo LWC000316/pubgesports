@@ -1,6 +1,6 @@
 {
   "id": "as-pnc24",
-  "name": "PNC 2024",
+  "name": "PUBG Nations Cup 2024",
   "category": "global",
   "series": "PNC",
   "year": 2024,
@@ -1308,5 +1308,6 @@
       "avgSurvival": 925,
       "longestKill": 321.4
     }
-  ]
+  ],
+  "officialName": "PUBG Nations Cup/2024"
 }

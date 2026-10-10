@@ -1,6 +1,6 @@
 {
   "id": "as-pgs7fs",
-  "name": "PGS 7 Final Stage",
+  "name": "PUBG Global Series 2025 7 Final Stage",
   "category": "global",
   "series": "PGS",
   "year": 2025,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 780,
       "longestKill": 363.2
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2025/7"
 }

@@ -1,6 +1,6 @@
 {
   "id": "as-pgs8gs",
-  "name": "PGS 8 Group Stage",
+  "name": "PUBG Global Series 2025 8 Group Stage",
   "category": "global",
   "series": "PGS",
   "year": 2025,
@@ -1924,5 +1924,6 @@
       "avgSurvival": 921,
       "longestKill": 241.9
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2025/8"
 }

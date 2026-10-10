@@ -1,6 +1,6 @@
 {
   "id": "kr-pws1lc",
-  "name": "PWS 1 (lc)",
+  "name": "PUBG WEEKLY SERIES 2025 Phase 1",
   "category": "regional",
   "series": "PWS",
   "year": 2025,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 845,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2025/Phase 1"
 }

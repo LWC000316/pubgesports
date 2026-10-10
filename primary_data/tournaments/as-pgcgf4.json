@@ -1,6 +1,6 @@
 {
   "id": "as-pgcgf4",
-  "name": "PGC 2021 Grand Finals",
+  "name": "PUBG Global Championship 2021 Grand Finals",
   "category": "global",
   "series": "PGC",
   "year": 2021,
@@ -1290,5 +1290,6 @@
       "avgSurvival": 786,
       "longestKill": 253.4
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2021"
 }

@@ -1,6 +1,6 @@
 {
   "id": "as-pgs3gs",
-  "name": "PGS 3 Group Stage",
+  "name": "PUBG Global Series 2024 3 Group Stage",
   "category": "global",
   "series": "PGS",
   "year": 2024,
@@ -1924,5 +1924,6 @@
       "avgSurvival": 1082,
       "longestKill": 54.8
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2024/3"
 }

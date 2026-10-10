@@ -1,6 +1,6 @@
 {
   "id": "as-pgs2lb",
-  "name": "PGS 2 (lb)",
+  "name": "PUBG Global Series 2023 2",
   "category": "global",
   "series": "PGS",
   "year": 2023,
@@ -1291,5 +1291,6 @@
       "avgSurvival": 964,
       "longestKill": 27.4
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2023/2"
 }

@@ -1,6 +1,6 @@
 {
   "id": "as-pgcwf3",
-  "name": "PGC 2021 Weekly Finals 3",
+  "name": "PUBG Global Championship 2021 Weekly Finals 3",
   "category": "global",
   "series": "PGC",
   "year": 2021,
@@ -1306,5 +1306,6 @@
       "avgSurvival": 1302,
       "longestKill": 180.5
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2021"
 }

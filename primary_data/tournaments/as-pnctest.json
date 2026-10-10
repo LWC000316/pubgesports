@@ -1,6 +1,6 @@
 {
   "id": "as-pnctest",
-  "name": "PNC 2019 (test)",
+  "name": "PUBG Nations Cup 2019",
   "category": "global",
   "series": "PNC",
   "year": 2019,
@@ -1293,5 +1293,6 @@
       "avgSurvival": 746,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Nations Cup/2019"
 }

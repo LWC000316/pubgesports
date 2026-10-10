@@ -1,6 +1,6 @@
 {
   "id": "as-pgcbm2",
-  "name": "PGC 2021 Bottom 16 2",
+  "name": "PUBG Global Championship 2021 Bottom 16 2",
   "category": "global",
   "series": "PGC",
   "year": 2021,
@@ -2004,5 +2004,6 @@
       "avgSurvival": 1013,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2021"
 }

@@ -1,6 +1,6 @@
 {
   "id": "as-pgcgf",
-  "name": "PGC 2022 Grand Finals",
+  "name": "PUBG Global Championship 2022 Grand Finals",
   "category": "global",
   "series": "PGC",
   "year": 2022,
@@ -1306,5 +1306,6 @@
       "avgSurvival": 1176,
       "longestKill": 283.7
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2022"
 }

@@ -1,6 +1,6 @@
 {
   "id": "as-pnc26gf",
-  "name": "PNC 2026 Grand Finals",
+  "name": "PUBG Nations Cup 2026 Grand Finals",
   "category": "global",
   "series": "PNC",
   "year": 2026,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 857,
       "longestKill": 176.5
     }
-  ]
+  ],
+  "officialName": "PUBG Nations Cup/2026"
 }

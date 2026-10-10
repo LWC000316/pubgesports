@@ -1,6 +1,6 @@
 {
   "id": "na-pgcgr3",
-  "name": "PGC 2019 (gr3)",
+  "name": "PUBG Global Championship 2019",
   "category": "global",
   "series": "PGC",
   "year": 2019,
@@ -1291,5 +1291,6 @@
       "avgSurvival": 963,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2019"
 }

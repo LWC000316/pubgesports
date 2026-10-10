@@ -1,6 +1,6 @@
 {
   "id": "sea-ewcroa",
-  "name": "EWC 2025 (roa)",
+  "name": "Esports World Cup 2025",
   "category": "global",
   "series": "EWC",
   "year": 2025,
@@ -1454,5 +1454,6 @@
       "avgSurvival": 630,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "Esports World Cup/2025"
 }

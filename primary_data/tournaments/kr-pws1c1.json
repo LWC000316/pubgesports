@@ -1,6 +1,6 @@
 {
   "id": "kr-pws1c1",
-  "name": "PWS 1 (c1)",
+  "name": "PUBG WEEKLY SERIES 2026 Phase 1",
   "category": "regional",
   "series": "PWS",
   "year": 2026,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 769,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1"
 }

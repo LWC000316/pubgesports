@@ -1,6 +1,6 @@
 {
   "id": "as-pgcrd",
-  "name": "PGC 2021 Rank Decision",
+  "name": "PUBG Global Championship 2021 Rank Decision",
   "category": "global",
   "series": "PGC",
   "year": 2021,
@@ -2570,5 +2570,6 @@
       "avgSurvival": 1258,
       "longestKill": 191.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2021"
 }

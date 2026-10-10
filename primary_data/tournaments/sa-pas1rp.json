@@ -1,6 +1,6 @@
 {
   "id": "sa-pas1rp",
-  "name": "AMER 1 (rp)",
+  "name": "PUBG Americas Series 2023 Phase 1",
   "category": "regional",
   "series": "AMER",
   "year": 2023,
@@ -1322,5 +1322,6 @@
       "avgSurvival": 756,
       "longestKill": 228.5
     }
-  ]
+  ],
+  "officialName": "PUBG Americas Series/2023/Phase 1"
 }

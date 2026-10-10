@@ -1,6 +1,6 @@
 {
   "id": "am-pgs2qpn",
-  "name": "PGS 2 (qpn)",
+  "name": "PUBG Global Series 2023 2",
   "category": "global",
   "series": "PGS",
   "year": 2023,
@@ -1339,5 +1339,6 @@
       "avgSurvival": 1107,
       "longestKill": 150.7
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2023/2"
 }

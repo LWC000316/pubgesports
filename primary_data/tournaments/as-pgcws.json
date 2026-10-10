@@ -1,6 +1,6 @@
 {
   "id": "as-pgcws",
-  "name": "PGC 2021 Weekly Survival",
+  "name": "PUBG Global Championship 2021 Weekly Survival",
   "category": "global",
   "series": "PGC",
   "year": 2021,
@@ -2589,5 +2589,6 @@
       "avgSurvival": 965,
       "longestKill": 31.3
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2021"
 }

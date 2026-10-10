@@ -1,12 +1,12 @@
 {
   "id": "kr-pws1s21",
-  "name": "PWS 1 Weekly Stage 2-1",
+  "name": "PUBG WEEKLY SERIES 2026 Phase 1 Weekly Stage 2주차 1일차",
   "category": "regional",
   "series": "PWS",
   "year": 2026,
   "edition": "1",
   "stageCode": "s21",
-  "stage": "Weekly Stage 2-1",
+  "stage": "Weekly Stage 2주차 1일차",
   "startDate": "2026-04-22",
   "source": "https://api.pubg.com/tournaments/kr-pws1s21",
   "createdAt": null,
@@ -1310,5 +1310,6 @@
       "avgSurvival": 1074,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1"
 }

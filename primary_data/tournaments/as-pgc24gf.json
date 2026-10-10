@@ -1,6 +1,6 @@
 {
   "id": "as-pgc24gf",
-  "name": "PGC 2024 Grand Finals",
+  "name": "PUBG Global Championship 2024 Grand Finals",
   "category": "global",
   "series": "PGC",
   "year": 2024,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 1034,
       "longestKill": 253.5
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2024"
 }

@@ -1,6 +1,6 @@
 {
   "id": "cn-pcls20",
-  "name": "PCL 2020 (s20)",
+  "name": "PUBG Champions League 2020 Spring",
   "category": "regional",
   "series": "PCL",
   "year": 2020,
@@ -4792,5 +4792,6 @@
       "avgSurvival": 1074,
       "longestKill": 55.7
     }
-  ]
+  ],
+  "officialName": "PUBG Champions League/2020/Spring"
 }

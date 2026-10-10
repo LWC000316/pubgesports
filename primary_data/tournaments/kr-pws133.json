@@ -1,12 +1,12 @@
 {
   "id": "kr-pws133",
-  "name": "PWS 133",
+  "name": "PUBG WEEKLY SERIES 2025 Phase 1 Weekly Stage 3주차 3일차",
   "category": "regional",
   "series": "PWS",
   "year": 2025,
-  "edition": "133",
-  "stageCode": null,
-  "stage": null,
+  "edition": "1",
+  "stageCode": "33",
+  "stage": "Weekly Stage 3주차 3일차",
   "startDate": "2025-03-22",
   "source": "https://api.pubg.com/tournaments/kr-pws133",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 617,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2025/Phase 1"
 }

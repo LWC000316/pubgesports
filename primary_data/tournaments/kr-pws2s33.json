@@ -1,12 +1,12 @@
 {
   "id": "kr-pws2s33",
-  "name": "PWS 2 Weekly Stage 3-3",
+  "name": "PUBG WEEKLY SERIES 2026 Phase 2 Weekly Stage 3주차 3일차",
   "category": "regional",
   "series": "PWS",
   "year": 2026,
   "edition": "2",
   "stageCode": "s33",
-  "stage": "Weekly Stage 3-3",
+  "stage": "Weekly Stage 3주차 3일차",
   "startDate": "2026-09-25",
   "source": "https://api.pubg.com/tournaments/kr-pws2s33",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 909,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 2"
 }

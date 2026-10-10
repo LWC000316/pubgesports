@@ -1,6 +1,6 @@
 {
   "id": "as-pgs3gf",
-  "name": "PGS 3 Grand Finals",
+  "name": "PUBG Global Series 2026 Circuit 1 Series Final Grand Finals",
   "category": "global",
   "series": "PGS",
   "year": 2026,
@@ -1310,5 +1310,6 @@
       "avgSurvival": 1194,
       "longestKill": 64.9
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2026/Circuit 1/Series Final"
 }

@@ -1,6 +1,6 @@
 {
   "id": "cn-pnccn26",
-  "name": "PNC 2026 (cn26)",
+  "name": "PUBG Nations Cup 2026",
   "category": "global",
   "series": "PNC",
   "year": 2026,
@@ -2501,5 +2501,6 @@
       "avgSurvival": 175,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Nations Cup/2026"
 }

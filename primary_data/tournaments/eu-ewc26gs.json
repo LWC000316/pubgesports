@@ -1,6 +1,6 @@
 {
   "id": "eu-ewc26gs",
-  "name": "EWC 2026 (gs)",
+  "name": "Esports World Cup 2026",
   "category": "global",
   "series": "EWC",
   "year": 2026,
@@ -1940,5 +1940,6 @@
       "avgSurvival": 1020,
       "longestKill": 23.9
     }
-  ]
+  ],
+  "officialName": "Esports World Cup/2026"
 }

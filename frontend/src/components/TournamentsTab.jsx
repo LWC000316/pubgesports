@@ -68,8 +68,11 @@ function groupByYear(list) {
   for (const t of list) {
     const y = t.year ?? 0;
     if (!years.has(y)) years.set(y, new Map());
-    // 회차가 없는 시리즈(PGC 2019 처럼)는 연도 자체가 한 대회다.
-    const key = t.edition ? `${t.series} ${t.edition}` : `${t.series} ${y}`;
+    // 공식 이름(리퀴피디아 문서 제목)이 있으면 그것으로 묶고 보여준다.
+    // 없을 때만 id 에서 뽑은 시리즈·회차로 대신한다.
+    const key = t.officialName
+      ? t.officialName.split('/').slice(1).join(' ')
+      : (t.edition ? `${t.series} ${t.edition}` : `${t.series} ${y}`);
     const events = years.get(y);
     if (!events.has(key)) events.set(key, []);
     events.get(key).push(t);

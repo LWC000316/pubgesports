@@ -1,6 +1,6 @@
 {
   "id": "as-pgc23lc",
-  "name": "PGC 2023 (lc)",
+  "name": "PUBG Global Championship 2023",
   "category": "global",
   "series": "PGC",
   "year": 2023,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 1287,
       "longestKill": 75.4
     }
-  ]
+  ],
+  "officialName": "PUBG Global Championship/2023"
 }

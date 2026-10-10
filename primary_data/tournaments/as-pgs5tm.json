@@ -1,6 +1,6 @@
 {
   "id": "as-pgs5tm",
-  "name": "PGS 5 (tm)",
+  "name": "PUBG Global Series 2024 5",
   "category": "global",
   "series": "PGS",
   "year": 2024,
@@ -1959,5 +1959,6 @@
       "avgSurvival": 86,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG Global Series/2024/5"
 }
