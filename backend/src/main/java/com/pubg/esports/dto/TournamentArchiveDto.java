@@ -76,7 +76,8 @@ public class TournamentArchiveDto {
         private String league;
         private int matches;
         /** 종합 점수 */
-        private int overall;
+        /** 0~100. 배틀로얄이 아닌 단계(TDM·아레나 등)는 null 이다 */
+        private Integer overall;
         private int kills;
         private int knocks;
         private int assists;
@@ -145,7 +146,8 @@ public class TournamentArchiveDto {
                     .team(text(p, "team"))
                     .league(text(p, "league"))
                     .matches(p.path("matches").asInt())
-                    .overall(p.path("overall").asInt())
+                    .overall(p.path("overall").isMissingNode() || p.path("overall").isNull()
+                            ? null : p.path("overall").asInt())
                     .kills(p.path("kills").asInt())
                     .knocks(p.path("knocks").asInt())
                     .assists(p.path("assists").asInt())

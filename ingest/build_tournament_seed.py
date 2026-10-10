@@ -91,22 +91,45 @@ def placement_table(year):
     return None
 
 
-def overall_score(kills, avg_damage, avg_survival_min, knocks):
-    """
-    선수 종합 점수.
+# OVERALL 환산 기준. 전 대회(배틀로얄만) 선수 26,624명의 원점수 분포에서
+# **상위 0.1% 지점이 약 165점**이었고, 그 수준을 100 으로 둔다. 다시 구하려면
+# 이 파일의 raw 식으로 전 대회를 돌려 99.9 분위를 보면 된다.
+OVERALL_REFERENCE = 165.0
 
-    공식 API 는 종합 점수를 주지 않는다. 이 계수는 wwcd.lol 이 공개한 PGS 9
-    Grand Final 통합 스탯의 OVERALL 값 28건에 최소제곱으로 맞춰 얻은 것이다
-    (최대오차 0.48 - OVERALL 이 정수 표시라 반올림 범위 안).
+# 배틀로얄이 아닌 단계는 OVERALL 을 매기지 않는다. 중앙 생존 시간으로 가른다 —
+# 배틀로얄은 1,000초대인데 TDM·아레나 같은 모드는 150~400초대다. 실제로
+# as-pgs5tm 은 중앙 데미지 4 · 생존 309초였고, 거기에 배틀로얄 계수를 쓰니
+# 한 선수가 918점이 나왔다.
+BR_MIN_MEDIAN_SURVIVAL = 600
 
-    주의: 표본이 전원 15경기라 **총합 기준인지 경기당 평균 기준인지 구분할 수
-    없었다.** 경기 수가 다른 대회에서는 어긋날 수 있다. 킬·기절은 총합,
-    데미지·생존은 경기당 평균으로 둔 것이 그 표본에 가장 잘 맞았다.
+
+def overall_raw(kills_per_match, avg_damage, avg_survival_min, knocks_per_match):
     """
-    return (kills * 1.5414
+    환산 전 원점수. **네 값이 모두 경기당**이다.
+
+    계수는 wwcd.lol 이 공개한 PGS 9 Grand Final 의 OVERALL 28건에 최소제곱으로
+    맞춰 얻었다(최대오차 0.48). 그 표본이 전원 15경기였던 탓에 킬·기절을 총합으로
+    두어도 맞아떨어졌는데, **그게 결함이었다** — 데미지·생존은 경기당인데 킬·기절만
+    총합이라 경기 수가 늘면 점수가 끝없이 커졌다. 275경기 단계에서 617점이 나왔다.
+    그래서 킬·기절도 경기당으로 바꾸고 15를 곱해 15경기 대회 기준으로 맞춘다.
+    PGS 9(15경기)에서는 고치기 전과 같은 값이 나온다.
+    """
+    return (kills_per_match * 15 * 1.5414
             + avg_damage * 0.0863
             + avg_survival_min * 0.9057
-            + knocks * 0.3157)
+            + knocks_per_match * 15 * 0.3157)
+
+
+def overall_score(raw, matches, median_matches):
+    """
+    0~100 점. 100 을 넘지 않는다.
+
+    표본이 적으면 경기당 수치를 그대로 믿을 수 없다 — 156경기 대회에서 1경기만
+    뛴 선수가 1위로 올라오던 일이 있었다. 그 단계의 중앙 출전 수에 못 미치는
+    만큼 깎는다. 다 뛴 선수는 그대로다.
+    """
+    shrunk = raw * min(1.0, matches / median_matches if median_matches else 1.0)
+    return min(100, round(shrunk / OVERALL_REFERENCE * 100))
 
 
 def load_our_players():
@@ -392,17 +415,30 @@ def main():
         row["rank"] = i
 
     player_rows = []
+    # 이 단계가 배틀로얄인지, 선수들이 보통 몇 경기를 뛰었는지 먼저 본다.
+    # 둘 다 OVERALL 을 매기는 데 필요하다.
+    survivals = sorted(v["survived"] / max(v["matches"], 1) for v in players.values())
+    played = sorted(v["matches"] for v in players.values())
+    median_survival = survivals[len(survivals) // 2] if survivals else 0
+    median_matches = played[len(played) // 2] if played else 1
+    is_br = median_survival >= BR_MIN_MEDIAN_SURVIVAL
+    if players and not is_br:
+        print("중앙 생존이 %d초라 배틀로얄로 보지 않습니다. OVERALL 을 비웁니다 "
+              "(TDM·아레나 등 다른 모드로 추정)." % median_survival)
+
     for n, v in players.items():
         m = max(v["matches"], 1)
         avg_damage = v["damage"] / m
         avg_survival_min = v["survived"] / m / 60
+        raw_score = overall_raw(v["kills"] / m, avg_damage,
+                                avg_survival_min, v["knocks"] / m)
         player_rows.append({
             "nickname": n,
             "team": v["team"],
             "league": v["league"],
             "matches": v["matches"],
-            "overall": round(overall_score(v["kills"], avg_damage,
-                                           avg_survival_min, v["knocks"])),
+            "overall": (overall_score(raw_score, v["matches"], median_matches)
+                        if is_br else None),
             "kills": v["kills"],
             "knocks": v["knocks"],
             "assists": v["assists"],
@@ -413,7 +449,8 @@ def main():
             "avgSurvival": round(v["survived"] / m),
             "longestKill": round(v["longestKill"], 1),
         })
-    player_rows.sort(key=lambda r: (-r["overall"], -r["kills"]))
+    # 배틀로얄이 아닌 단계는 overall 이 None 이다. 그럴 때는 킬로 세운다.
+    player_rows.sort(key=lambda r: (-(r["overall"] or 0), -r["kills"]))
 
     meta_file = raw / "tournament.json"
     created = None

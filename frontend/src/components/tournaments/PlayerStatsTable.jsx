@@ -19,28 +19,32 @@ const COLUMNS = [
 const GRID = COLUMNS.map(c => c.width).join(' ');
 
 export default function PlayerStatsTable({ rows }) {
-  const [sort, setSort] = useState({ key: 'overall', dir: 'desc' });
+  // 배틀로얄이 아닌 단계(TDM·아레나 등)는 OVERALL 이 전부 비어 있다. 그걸로
+  // 정렬하면 아무 순서도 나오지 않으므로 킬로 연다.
+  const hasOverall = (rows ?? []).some(r => r.overall !== null && r.overall !== undefined);
+  const [sort, setSort] = useState(null);
   const [expanded, setExpanded] = useState(false);
+  const active = sort ?? { key: hasOverall ? 'overall' : 'kills', dir: 'desc' };
 
   const sorted = useMemo(() => {
-    const col = COLUMNS.find(c => c.key === sort.key);
+    const col = COLUMNS.find(c => c.key === active.key);
     const out = [...(rows ?? [])];
     out.sort((a, b) => {
-      const av = a[sort.key], bv = b[sort.key];
+      const av = a[active.key], bv = b[active.key];
       let cmp;
       if (col?.text) cmp = String(av ?? '').localeCompare(String(bv ?? ''));
       else cmp = (av ?? 0) - (bv ?? 0);
-      return sort.dir === 'asc' ? cmp : -cmp;
+      return active.dir === 'asc' ? cmp : -cmp;
     });
     return out;
-  }, [rows, sort]);
+  }, [rows, active]);
 
   if (!rows || rows.length === 0) return null;
   const shown = expanded ? sorted : sorted.slice(0, 20);
 
-  const toggle = key => setSort(s =>
-    s.key === key
-      ? { key, dir: s.dir === 'desc' ? 'asc' : 'desc' }
+  const toggle = key => setSort(
+    active.key === key
+      ? { key, dir: active.dir === 'desc' ? 'asc' : 'desc' }
       // 이름·팀은 가나다순부터, 숫자는 큰 값부터 보는 게 자연스럽다.
       : { key, dir: COLUMNS.find(c => c.key === key)?.text ? 'asc' : 'desc' });
 
@@ -60,7 +64,7 @@ export default function PlayerStatsTable({ rows }) {
           }}>
             <span>#</span>
             {COLUMNS.map(c => {
-              const active = sort.key === c.key;
+              const on = active.key === c.key;
               return (
                 <button
                   key={c.key}
@@ -75,7 +79,7 @@ export default function PlayerStatsTable({ rows }) {
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
-                    color: active ? 'var(--accent-gold)' : 'var(--text-muted)',
+                    color: on ? 'var(--accent-gold)' : 'var(--text-muted)',
                     fontSize: '0.73rem',
                     fontWeight: '800',
                     textTransform: 'uppercase',
@@ -83,7 +87,7 @@ export default function PlayerStatsTable({ rows }) {
                   }}
                 >
                   {c.label}
-                  {active && (sort.dir === 'desc' ? <ChevronDown size={12} /> : <ChevronUp size={12} />)}
+                  {on && (active.dir === 'desc' ? <ChevronDown size={12} /> : <ChevronUp size={12} />)}
                 </button>
               );
             })}
