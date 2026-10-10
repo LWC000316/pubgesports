@@ -275,6 +275,8 @@ def main():
     ap.add_argument("tournament_id")
     ap.add_argument("--match", default=None, help="경기 하나만")
     ap.add_argument("--limit", type=int, default=None, help="앞에서 N경기만")
+    ap.add_argument("--force", action="store_true",
+                    help="이미 만든 매치로그도 다시 뽑는다. 추출 규칙을 고쳤을 때 쓴다")
     ap.add_argument("--relabel-only", action="store_true",
                     help="이미 뽑은 매치로그의 팀 이름만 다시 붙인다 (네트워크 없음)")
     ap.add_argument("--keep-telemetry", action="store_true",
@@ -322,7 +324,7 @@ def main():
     for f in files:
         match_id = f.stem.replace("match_", "")
         dest = out_dir / ("%s.json" % match_id)
-        if dest.exists():
+        if dest.exists() and not args.force:
             print("  이미 있음: %s" % match_id)
             continue
 

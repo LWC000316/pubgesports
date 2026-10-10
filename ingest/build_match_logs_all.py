@@ -66,6 +66,8 @@ def main():
     ap.add_argument("--all-global", action="store_true", help="글로벌의 모든 단계")
     ap.add_argument("--series", default=None, help="이 시리즈만 (단계를 가리지 않는다)")
     ap.add_argument("--keep-telemetry", action="store_true")
+    ap.add_argument("--force", action="store_true",
+                    help="이미 만든 매치로그도 다시 뽑는다")
     args = ap.parse_args()
     for s in (sys.stdout, sys.stderr):
         try:
@@ -74,8 +76,10 @@ def main():
             pass
 
     rows = targets(args)
-    todo = [r for r in rows if r[3] > r[4]]
-    pending = sum(r[3] - r[4] for r in rows)
+    todo = rows if args.force else [r for r in rows if r[3] > r[4]]
+    # --force 면 전부 다시 뽑으므로 이미 만든 것도 비용에 넣는다.
+    pending = (sum(r[3] for r in rows) if args.force
+               else sum(max(0, r[3] - r[4]) for r in rows))
     print("대상 %d단계 · 경기 %d개 (이미 만든 것 제외 %d개)"
           % (len(rows), sum(r[3] for r in rows), pending))
     print("예상 내려받기 약 %.1fGB · 저장소 증가 약 %dMB"
@@ -94,6 +98,8 @@ def main():
         cmd = [sys.executable, script, tid]
         if args.keep_telemetry:
             cmd.append("--keep-telemetry")
+        if args.force:
+            cmd.append("--force")
         print("\n=== %s %s (%d경기) ===" % (series, tid, n))
         r = subprocess.run(cmd)
         if r.returncode != 0:
