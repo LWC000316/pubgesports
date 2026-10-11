@@ -45,7 +45,9 @@ def targets(args):
     rows = [l.split("\t") for l in LIST.read_text(encoding="utf-8").splitlines() if l.strip()]
     out = []
     for date, series, tid in rows:
-        if args.series and series != args.series:
+        if getattr(args, "all", False):
+            pass                   # 전 단계. 비용이 크니 --list 로 먼저 볼 것
+        elif args.series and series != args.series:
             continue
         elif not args.series:
             if series not in GLOBAL:
@@ -64,6 +66,9 @@ def main():
     ap = argparse.ArgumentParser(description="매치로그 일괄 추출")
     ap.add_argument("--list", action="store_true", help="대상만 보여주고 끝낸다")
     ap.add_argument("--all-global", action="store_true", help="글로벌의 모든 단계")
+    ap.add_argument("--all", action="store_true",
+                    help="수집한 전 단계. 약 7,300경기 · 서버 내려받기 236GB · "
+                         "저장소 약 600MB 증가 (git 압축 후)")
     ap.add_argument("--series", default=None, help="이 시리즈만 (단계를 가리지 않는다)")
     ap.add_argument("--keep-telemetry", action="store_true")
     ap.add_argument("--force", action="store_true",

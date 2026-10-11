@@ -208,19 +208,23 @@ def build(events, match_id):
                     "aliveTeams": g.get("numAliveTeams"),
                 })
 
-        elif t == "LogPlayerKillV2":
+        # 2021년쯤 LogPlayerKill -> LogPlayerKillV2 로 바뀌었고 무기 필드 위치도
+        # 달라졌다. 구버전은 damageCauserName 이 최상위, 신버전은
+        # killerDamageInfo 안이다. 둘 다 받지 않으면 2019~2020년 대회의 킬이
+        # 통째로 빈다 (실제로 PGC 2019 12경기가 킬 0건이었다).
+        elif t in ("LogPlayerKillV2", "LogPlayerKill"):
             victim = e.get("victim") or {}
             killer = e.get("killer") or {}
             vloc = victim.get("location") or {}
             if "x" not in vloc:
                 continue
+            weapon = (e.get("killerDamageInfo") or {}).get("damageCauserName")                 or e.get("damageCauserName")
             kills.append({
                 "t": seconds_since_start(e.get("_D")),
                 "victim": victim.get("name"),
                 "killer": killer.get("name"),
                 "x": vloc["x"], "y": vloc["y"],
-                "weapon": weapon_name(
-                    (e.get("killerDamageInfo") or {}).get("damageCauserName")),
+                "weapon": weapon_name(weapon),
             })
 
     size = MAP_SIZE.get(map_name)
@@ -231,8 +235,10 @@ def build(events, match_id):
             % map_name)
 
     def norm(v):
-        # 0~1 비율. 소수 5자리면 8km 맵에서 8cm 해상도라 충분하다.
-        return round(max(0.0, min(1.0, v / size)), 5)
+        # 0~1 비율. **소수 3자리 = 8km 맵에서 8m 해상도**다. 화면이 1000픽셀이라
+        # 한 픽셀이 8m 이니 그보다 더 정밀해도 보이지 않는다. 5자리로 두면
+        # 파일이 15% 커지기만 한다 (7,000경기면 무시 못 할 차이다).
+        return round(max(0.0, min(1.0, v / size)), 3)
 
     out_tracks = []
     for name, pts in tracks.items():
