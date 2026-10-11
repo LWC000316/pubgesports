@@ -119,6 +119,38 @@ def relabel(log, by_nickname):
     return changed
 
 
+GAP = 15          # 이 초 안에 이어지면 한 교전으로 본다
+
+
+def merge_engagements(events):
+    """
+    피해 이벤트를 **교전 구간**으로 묶는다.
+
+    경기당 5,000건을 그대로 담으면 매치로그가 두 배가 되는데, 화면에 필요한 건
+    "누가 누구를 언제 어디서 얼마나 때렸나" 정도다. 같은 (가해자, 피해자) 쌍이
+    15초 안에 이어지면 한 교전으로 합치고 피해를 더한다. 위치는 **그 교전의 첫
+    지점**을 쓴다 — 교전이 시작된 자리가 전술적으로 의미 있는 값이다.
+    """
+    by_pair = {}
+    for d in sorted(events, key=lambda x: (x["a"], x["v"],
+                                           x["t"] if x["t"] is not None else 0)):
+        key = (d["a"], d["v"])
+        cur = by_pair.get(key)
+        t = d["t"] if d["t"] is not None else 0
+        if cur and t - cur[-1]["end"] <= GAP:
+            cur[-1]["end"] = t
+            cur[-1]["dmg"] += d["dmg"]
+        else:
+            by_pair.setdefault(key, []).append({
+                "t": t, "end": t, "a": d["a"], "v": d["v"],
+                "ax": d["ax"], "ay": d["ay"], "vx": d["vx"], "vy": d["vy"],
+                "dmg": d["dmg"],
+            })
+    out = [e for runs in by_pair.values() for e in runs]
+    out.sort(key=lambda e: e["t"])
+    return out
+
+
 def _parse_ts(stamp):
     """텔레메트리의 ISO 시각. 끝의 Z 와 마이크로초 자릿수가 들쭉날쭉하다."""
     if not stamp:
@@ -156,6 +188,9 @@ def build(events, match_id):
     tracks = defaultdict(list)
     circles = []
     kills = []
+    damage = []        # 선수가 선수를 때린 것만. 낙상·자기장은 뺀다
+    landings = []      # 낙하산 착지 지점
+    packages = []      # 보급 상자
 
     # 킬 이벤트에는 elapsedTime 이 없고 절대 시각(_D)만 있다. 경과 초를 쓰려면
     # 경기 시작 시각이 필요하다 (LogMatchStart 의 _D).
@@ -195,6 +230,39 @@ def build(events, match_id):
                 "v": 1 if ch.get("isInVehicle") else 0,
                 "d": 1 if ch.get("isDBNO") else 0,
             })
+
+        elif t == "LogPlayerTakeDamage":
+            # 경기당 5,000건이라 그대로 담으면 파일이 두 배가 된다. 여기서는
+            # 선수 대 선수만 모아 두고, 아래에서 교전 구간으로 묶는다.
+            atk = e.get("attacker") or {}
+            vic = e.get("victim") or {}
+            aloc = atk.get("location") or {}
+            vloc2 = vic.get("location") or {}
+            if (not atk.get("name") or not vic.get("name")
+                    or atk.get("name") == vic.get("name")
+                    or "x" not in aloc or "x" not in vloc2):
+                continue
+            damage.append({
+                "t": seconds_since_start(e.get("_D")),
+                "a": atk["name"], "v": vic["name"],
+                "ax": aloc["x"], "ay": aloc["y"],
+                "vx": vloc2["x"], "vy": vloc2["y"],
+                "dmg": e.get("damage") or 0,
+            })
+
+        elif t == "LogParachuteLanding":
+            ch = e.get("character") or {}
+            loc = ch.get("location") or {}
+            if ch.get("name") and "x" in loc:
+                landings.append({"name": ch["name"], "x": loc["x"], "y": loc["y"],
+                                 "t": seconds_since_start(e.get("_D"))})
+
+        elif t == "LogCarePackageLand":
+            pkg = (e.get("itemPackage") or {})
+            loc = pkg.get("location") or {}
+            if "x" in loc:
+                packages.append({"x": loc["x"], "y": loc["y"],
+                                 "t": seconds_since_start(e.get("_D"))})
 
         elif t == "LogGameStatePeriodic":
             g = e.get("gameState", {})
@@ -273,6 +341,17 @@ def build(events, match_id):
         "tracks": out_tracks,
         "circles": out_circles,
         "kills": out_kills,
+        # 교전선. [시작초, 끝초, 가해자, 피해자, 가해자x, y, 피해자x, y, 누적피해]
+        "engagements": [
+            {"t": e["t"], "end": e["end"], "a": e["a"], "v": e["v"],
+             "ax": norm(e["ax"]), "ay": norm(e["ay"]),
+             "vx": norm(e["vx"]), "vy": norm(e["vy"]),
+             "dmg": round(e["dmg"])}
+            for e in merge_engagements(damage)],
+        "landings": [{"name": l["name"], "t": l["t"],
+                      "x": norm(l["x"]), "y": norm(l["y"])} for l in landings],
+        "packages": [{"t": p["t"], "x": norm(p["x"]), "y": norm(p["y"])}
+                     for p in packages],
     }
 
 

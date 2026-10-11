@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Play, Pause, SkipBack, Users, Crosshair, Car, Skull, ZoomIn } from 'lucide-react';
+import { Play, Pause, SkipBack, Users, Crosshair, Car, Skull, ZoomIn, Swords } from 'lucide-react';
 
 /**
  * 매치로그. 실제 맵 이미지 위에 선수 이동 경로와 자기장을 그린다.
@@ -33,6 +33,7 @@ export default function MatchLogMap({ log }) {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showKills, setShowKills] = useState(true);
   const [showTrails, setShowTrails] = useState(true);
+  const [showFights, setShowFights] = useState(true);
   const [zoom, setZoom] = useState(1);
 
   const duration = log?.duration ?? 0;
@@ -54,6 +55,12 @@ export default function MatchLogMap({ log }) {
     return m;
   }, [teams]);
 
+  const landingOf = useMemo(() => {
+    const m = new Map();
+    for (const l of log?.landings ?? []) m.set(l.name, l);
+    return m;
+  }, [log]);
+
   // 선수가 언제 죽었는지. 킬 로그에 시각이 있으면 그걸 쓰고, 없으면 경로가
   // 끊긴 시점으로 본다. 둘 다 데이터에서 나온 값이라 지어내지 않는다.
   const deathAt = useMemo(() => {
@@ -67,6 +74,11 @@ export default function MatchLogMap({ log }) {
     }
     return m;
   }, [log]);
+
+  // 지금 벌어지고 있는 교전. 끝난 것은 그리지 않는다 — 쌓이면 지도가 덮인다.
+  const fightsNow = useMemo(
+    () => (log?.engagements ?? []).filter(e => e.t <= time && time <= e.end + 3),
+    [log, time]);
 
   // 지금 시각까지 일어난 킬. 오른쪽 킬 피드와 지도 표시에 함께 쓴다.
   const killsSoFar = useMemo(
@@ -136,9 +148,11 @@ export default function MatchLogMap({ log }) {
           ctx.stroke();
         }
 
-        // 낙하 지점 — 경로의 첫 점. 어디서 시작했는지가 전술을 읽는 출발점이다.
+        // 낙하 지점. 텔레메트리의 착지 기록이 있으면 그걸 쓰고, 없으면 경로의
+        // 첫 점으로 대신한다 (경로는 10초 간격이라 착지보다 뒤일 수 있다).
         if (focused) {
-          const first = pts[0];
+          const landed = landingOf.get(track.name);
+          const first = landed ? [0, landed.x, landed.y] : pts[0];
           ctx.globalAlpha = 0.8;
           ctx.strokeStyle = color;
           ctx.lineWidth = 1.5;
@@ -174,7 +188,37 @@ export default function MatchLogMap({ log }) {
     }
     ctx.globalAlpha = 1;
 
-    // 3. 킬 지점 — 지금까지 일어난 것만
+    // 3. 교전선 — 가해자에서 피해자로 선을 긋는다. 피해량이 클수록 굵다.
+    if (showFights) {
+      for (const f of fightsNow) {
+        if (selectedTeam || selectedPlayer) {
+          const names = [f.a, f.v];
+          const inFocus = names.some(n =>
+            (selectedPlayer && n === selectedPlayer) ||
+            (selectedTeam && (log.tracks ?? []).some(
+              t => t.name === n && (t.team || t.nickname) === selectedTeam)));
+          if (!inFocus) continue;
+        }
+        ctx.strokeStyle = 'rgba(255, 77, 109, 0.75)';
+        ctx.lineWidth = Math.min(4, 1 + f.dmg / 60);
+        ctx.beginPath();
+        ctx.moveTo(px(f.ax), px(f.ay));
+        ctx.lineTo(px(f.vx), px(f.vy));
+        ctx.stroke();
+      }
+    }
+
+    // 4. 보급 상자 — 떨어진 뒤로는 계속 보인다
+    for (const p of log.packages ?? []) {
+      if (p.t != null && p.t > time) continue;
+      ctx.fillStyle = 'rgba(243, 166, 31, 0.85)';
+      ctx.fillRect(px(p.x) - 4, px(p.y) - 4, 8, 8);
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(px(p.x) - 4, px(p.y) - 4, 8, 8);
+    }
+
+    // 5. 킬 지점 — 지금까지 일어난 것만
     if (showKills) {
       ctx.strokeStyle = '#ff4d6d';
       ctx.lineWidth = 1.8;
@@ -187,7 +231,7 @@ export default function MatchLogMap({ log }) {
       }
     }
   }, [log, time, teams, colorOf, selectedTeam, selectedPlayer, showKills,
-      showTrails, circle, killsSoFar, deathAt]);
+      showTrails, showFights, circle, killsSoFar, deathAt, fightsNow, landingOf]);
 
   if (!log) return null;
 
@@ -260,6 +304,7 @@ export default function MatchLogMap({ log }) {
           </span>
           <Toggle on={showKills} set={setShowKills} icon={Crosshair} label="킬 지점" />
           <Toggle on={showTrails} set={setShowTrails} icon={Car} label="이동 경로" />
+          <Toggle on={showFights} set={setShowFights} icon={Swords} label="교전" />
           <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <ZoomIn size={14} />
             <input type="range" min={1} max={3} step={0.5} value={zoom}
