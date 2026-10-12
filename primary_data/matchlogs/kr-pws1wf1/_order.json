@@ -1,0 +1,54 @@
+{
+  "matches": [
+    {
+      "id": "c1faf1e4-19d3-4b64-9c73-62b7eac75370",
+      "startedAt": "2026-04-18T09:55:36Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "b3b8d20e-5522-46bd-853c-be2cb30ecd66",
+      "startedAt": "2026-04-18T10:33:52Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "7f388870-b00e-461b-8337-7d7e819f1ab7",
+      "startedAt": "2026-04-18T11:22:20Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "5ea4d558-ed63-4157-8b93-abd5097e9982",
+      "startedAt": "2026-04-18T12:02:00Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "d6f5e009-c5a6-48ae-88b1-2c8c16bc64a3",
+      "startedAt": "2026-04-18T12:48:26Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "34f68d37-d912-4354-af6e-e6c1b3947827",
+      "startedAt": "2026-04-19T09:50:01Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "bcca6b2f-e775-43b8-9d9a-19a667d10632",
+      "startedAt": "2026-04-19T10:29:53Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "e0a20271-ac41-4b71-9067-5c84550713c1",
+      "startedAt": "2026-04-19T11:14:54Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "f72f08e1-df6a-4a8e-b55a-2f1dacf89991",
+      "startedAt": "2026-04-19T11:55:00Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "eb03ddb4-77cb-4ba0-b7fc-9072d432a58c",
+      "startedAt": "2026-04-19T12:38:20Z",
+      "map": "Desert_Main"
+    }
+  ]
+}

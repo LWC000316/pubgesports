@@ -1,5 +1,6 @@
 package com.pubg.esports.controller;
 
+import com.pubg.esports.dto.MatchSummaryDto;
 import com.pubg.esports.service.MatchLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -22,10 +23,10 @@ public class MatchLogController {
 
     private final MatchLogService matchLogService;
 
-    /** 그 대회에서 매치로그를 가진 경기 id 목록. */
+    /** 그 대회에서 매치로그를 가진 경기 목록. 경기 순서대로. */
     @GetMapping
-    public List<String> list(@PathVariable String tournamentId) {
-        return matchLogService.listMatchIds(tournamentId);
+    public List<MatchSummaryDto> list(@PathVariable String tournamentId) {
+        return matchLogService.listMatches(tournamentId);
     }
 
     @GetMapping(value = "/{matchId}", produces = MediaType.APPLICATION_JSON_VALUE)

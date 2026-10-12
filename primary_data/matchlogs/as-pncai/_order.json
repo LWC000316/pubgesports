@@ -1,0 +1,94 @@
+{
+  "matches": [
+    {
+      "id": "9a0cd5db-a31b-4a07-8f95-f00af0c719dc",
+      "startedAt": "2026-06-22T09:57:06Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "145c122a-7842-4d49-bae7-c8ffdddedd88",
+      "startedAt": "2026-06-22T10:31:59Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "2b2ba185-9493-49ff-856c-931a9f574dc1",
+      "startedAt": "2026-06-22T10:59:28Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "b98607a1-a25a-4eb6-8e02-65a1c7a29498",
+      "startedAt": "2026-06-22T11:35:10Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "2fe6764f-c870-4f83-935f-9fb6467928eb",
+      "startedAt": "2026-06-23T07:12:33Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "6e337ade-9ae4-4c35-9159-6800b7241d72",
+      "startedAt": "2026-06-23T07:26:43Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "0675f331-3523-4c71-9292-34217a486cf0",
+      "startedAt": "2026-06-24T07:13:05Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "26bc058b-f32c-4639-b62b-2474de8c12ee",
+      "startedAt": "2026-06-24T07:27:12Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "356c34e9-b154-468f-b16c-c39c5b25c6db",
+      "startedAt": "2026-06-25T09:12:32Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "d7f421e4-cae2-4349-b993-787aa7919544",
+      "startedAt": "2026-06-25T09:35:35Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "f8d3cc81-1a83-4101-8fa4-79d31b7c2b49",
+      "startedAt": "2026-06-25T10:00:38Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "771e5b42-b33d-4170-88cc-eba734442ca8",
+      "startedAt": "2026-06-25T10:33:33Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "9c09b65f-d50a-492b-81ab-7b7d8c0ad3de",
+      "startedAt": "2026-06-26T07:16:32Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "4cd38956-275c-4e2f-a009-f16412dfa349",
+      "startedAt": "2026-06-26T08:10:47Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "33198c46-8625-487a-99e1-fc47dffe78f7",
+      "startedAt": "2026-06-27T07:07:10Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "a83dd926-2303-4099-9795-4c629f220140",
+      "startedAt": "2026-06-27T07:22:50Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "aec1674b-9f25-4a02-a799-45052343a070",
+      "startedAt": "2026-06-28T07:14:37Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "d57c5929-a1f3-4543-b669-0d5595d9d9ff",
+      "startedAt": "2026-06-28T07:32:39Z",
+      "map": "Neon_Main"
+    }
+  ]
+}

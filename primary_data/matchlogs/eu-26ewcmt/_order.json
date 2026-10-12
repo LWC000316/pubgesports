@@ -1,0 +1,24 @@
+{
+  "matches": [
+    {
+      "id": "66e95f7e-d3c8-4841-bcae-e37dd048459a",
+      "startedAt": "2026-07-22T15:13:22Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "faff3fa6-36a8-413c-bdb0-0aea43613065",
+      "startedAt": "2026-07-22T15:32:57Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "73613dc9-ea93-437b-9569-e6c45ee9a00d",
+      "startedAt": "2026-07-24T07:56:37Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "20e4c670-3ccf-43f9-ad82-ef7f9cc78562",
+      "startedAt": "2026-07-24T08:46:37Z",
+      "map": "Baltic_Main"
+    }
+  ]
+}

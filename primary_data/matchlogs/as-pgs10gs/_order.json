@@ -1,0 +1,94 @@
+{
+  "matches": [
+    {
+      "id": "c4b54d49-af84-4a04-9c2a-84a095020369",
+      "startedAt": "2025-10-27T10:13:07Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "caeb879b-48f5-4cc6-afb5-9d0313e176ae",
+      "startedAt": "2025-10-27T10:48:20Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "e1c95fbd-6734-4ed6-93ca-11829bc848f8",
+      "startedAt": "2025-10-27T11:30:06Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "2554c434-a408-46b9-ac3b-15beb47afe95",
+      "startedAt": "2025-10-27T12:08:48Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "4d2f780b-05c3-4c2a-82ee-d3f179c5a83c",
+      "startedAt": "2025-10-27T12:53:19Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "5ee1aec9-80b5-427d-a6af-40ab1d954927",
+      "startedAt": "2025-10-27T13:27:57Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "208405cc-258a-4b51-a141-3e767ade0baa",
+      "startedAt": "2025-10-28T10:00:03Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "9463eae4-0201-4e1e-bd86-de85376a673f",
+      "startedAt": "2025-10-28T10:37:03Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "9708f5d8-928d-4029-a80b-5ce339f795e6",
+      "startedAt": "2025-10-28T11:21:43Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "131511f9-e2e5-4456-b6cc-a0c91bb35834",
+      "startedAt": "2025-10-28T11:58:38Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "fa48cb84-572a-48cb-9365-e2dcaeca09e8",
+      "startedAt": "2025-10-28T12:43:29Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "ee91d95a-9e3a-4e20-adc6-52c48c93b17f",
+      "startedAt": "2025-10-28T13:20:09Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "1556990c-011b-45c5-b854-f47b7836c024",
+      "startedAt": "2025-10-29T10:00:06Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "51c3d0cb-e2a1-44db-9dbf-3c505ccca346",
+      "startedAt": "2025-10-29T10:32:11Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "b71f68ff-4e85-4775-9f97-7f9a275fa999",
+      "startedAt": "2025-10-29T11:14:06Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "f24afca2-8709-4334-9013-fd948d416011",
+      "startedAt": "2025-10-29T11:51:38Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "fbeaf061-dc2e-460a-b7f3-5d3091f59814",
+      "startedAt": "2025-10-29T12:33:50Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "55bc447e-3394-466d-8231-6d99c0e661a0",
+      "startedAt": "2025-10-29T13:10:40Z",
+      "map": "Desert_Main"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Trophy, Globe, Shield, Swords, Crosshair, Map as MapIcon, Route, AlertTriangle } from 'lucide-react';
-import { fetchTournaments, fetchTournament, fetchMatchIds, fetchMatchLog } from '../api/tournaments';
+import { fetchTournaments, fetchTournament, fetchMatchList, fetchMatchLog } from '../api/tournaments';
 import { useApi } from '../hooks/useApi';
 import LoadingPanel from './common/LoadingPanel';
 import ErrorPanel from './common/ErrorPanel';
@@ -405,11 +405,11 @@ function TournamentDetail({ id, stages, onStage, stageLabel }) {
 }
 
 function MatchLogView({ tournamentId }) {
-  const idsFetcher = useCallback(() => fetchMatchIds(tournamentId), [tournamentId]);
-  const { data: ids, loading, error, reload } = useApi(idsFetcher, [tournamentId], EMPTY);
+  const listFetcher = useCallback(() => fetchMatchList(tournamentId), [tournamentId]);
+  const { data: matches, loading, error, reload } = useApi(listFetcher, [tournamentId], EMPTY);
   const [matchId, setMatchId] = useState(null);
 
-  useEffect(() => { setMatchId((ids ?? [])[0] ?? null); }, [ids]);
+  useEffect(() => { setMatchId((matches ?? [])[0]?.id ?? null); }, [matches]);
 
   const logFetcher = useCallback(
     () => (matchId ? fetchMatchLog(tournamentId, matchId) : Promise.resolve(null)),
@@ -419,7 +419,7 @@ function MatchLogView({ tournamentId }) {
   if (loading) return <LoadingPanel title="경기 목록을 불러오는 중입니다" detail="" />;
   if (error) return <ErrorPanel title="경기 목록을 불러오지 못했습니다" message={error} onRetry={reload} />;
 
-  if ((ids ?? []).length === 0) {
+  if ((matches ?? []).length === 0) {
     return (
       <EmptyPanel
         title="매치로그가 아직 없습니다"
@@ -428,21 +428,55 @@ function MatchLogView({ tournamentId }) {
     );
   }
 
+  // 경기 번호는 **시작 시각을 알 때만** 붙인다. 파일 이름이 UUID 라 순서를 모르는
+  // 단계에서 1,2,3 을 매기면 그 번호가 거짓이 된다 — 그럴 땐 맵 이름으로 고른다.
+  const ordered = matches.every(m => m.startedAt);
+  const current = matches.find(m => m.id === matchId);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <ChipRow>
-        {ids.map((id, i) => (
+        {matches.map((m, i) => (
           <Chip
-            key={id}
-            active={matchId === id}
-            onClick={() => setMatchId(id)}
-            label={`${i + 1}경기`}
+            key={m.id}
+            active={matchId === m.id}
+            onClick={() => setMatchId(m.id)}
+            label={ordered ? `${i + 1}경기` : (m.map ?? '경기')}
+            sub={ordered ? m.map : undefined}
             subtle
           />
         ))}
       </ChipRow>
+      {current && <MatchHeadline match={current} />}
       {logLoading ? <LoadingPanel title="매치로그를 불러오는 중입니다" detail="이동 경로와 자기장을 그립니다." />
         : <MatchLogMap log={log} />}
+    </div>
+  );
+}
+
+/** 고른 경기의 한 줄 요약. 값이 없는 것은 아예 빼고, 빈칸을 지어내지 않는다. */
+function MatchHeadline({ match }) {
+  const bits = [];
+  if (match.startedAt) {
+    bits.push(new Date(match.startedAt).toLocaleString('ko-KR', {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit'
+    }));
+  }
+  if (match.map) bits.push(match.map);
+  if (match.duration) bits.push(`${Math.round(match.duration / 60)}분`);
+  if (match.kills) bits.push(`킬 ${match.kills}`);
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap',
+                  fontSize: '0.84rem', color: 'var(--text-muted)' }}>
+      <span>{bits.join(' · ')}</span>
+      {match.winner && (
+        <span style={{ display: 'flex', alignItems: 'center', gap: '6px',
+                       color: 'var(--accent-gold)', fontWeight: '900' }}>
+          <Trophy size={14} /> {match.winner}
+        </span>
+      )}
     </div>
   );
 }

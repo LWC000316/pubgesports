@@ -1,0 +1,29 @@
+{
+  "matches": [
+    {
+      "id": "54e07889-f478-4814-966e-44a8dcef5576",
+      "startedAt": "2026-04-24T09:50:08Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "944c3a30-fac0-4d57-96e8-862c6bb40a2b",
+      "startedAt": "2026-04-24T10:26:30Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "c0b5b499-01bc-4de6-aed2-50a39030dc83",
+      "startedAt": "2026-04-24T11:11:07Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "32702777-b4f5-4e8c-908a-e324cd075cd4",
+      "startedAt": "2026-04-24T11:46:05Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "4a57347a-923b-4a92-b784-6fedba81f169",
+      "startedAt": "2026-04-24T12:32:40Z",
+      "map": "Baltic_Main"
+    }
+  ]
+}

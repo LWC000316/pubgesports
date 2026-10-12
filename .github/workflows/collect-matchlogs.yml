@@ -106,6 +106,12 @@ jobs:
         run: |
           python ingest/build_match_logs_all.py             ${{ github.event.inputs.scope == '전 단계' && '--all' || '' }}             ${{ github.event.inputs.force == 'true' && '--force' || '' }}
 
+      # 경기 순서는 원본의 createdAt 에만 있다. 원본은 이 작업이 끝나면 사라지니
+      # 여기서 적어 둔다 - 안 그러면 화면의 "1경기" 가 UUID 순이 되어 거짓이 된다.
+      - name: 경기 순서 적기
+        continue-on-error: true
+        run: python ingest/build_match_order.py
+
       # 받기에 몇 시간이 드는데 뒤 단계 하나가 실패해 전부 잃으면 안 된다.
       - name: 결과 커밋
         if: always()

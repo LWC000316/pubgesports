@@ -1,0 +1,274 @@
+{
+  "matches": [
+    {
+      "id": "968511b3-8157-4efa-9395-a086d802d035",
+      "startedAt": "2025-08-22T10:54:26Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "0e1ed087-05a4-4807-a393-bbfb3743ff4e",
+      "startedAt": "2025-08-22T11:49:16Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "d56e6dfa-8f8f-429e-abd3-dbfb61bac6da",
+      "startedAt": "2025-08-22T12:42:07Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "e05a607c-713b-4cec-9f2d-fe0e27d72d82",
+      "startedAt": "2025-08-22T14:14:22Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "543f5657-8019-4ded-927f-484658f51fff",
+      "startedAt": "2025-08-22T15:03:01Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "d4ca160d-2642-4964-88d6-520ef53c0164",
+      "startedAt": "2025-08-22T15:51:10Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "5e3e78ab-f4d1-4b89-8a6f-1c26f73e396d",
+      "startedAt": "2025-08-23T10:52:12Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "8bccbb46-93cb-4a7c-bd6a-0a8c99edf562",
+      "startedAt": "2025-08-23T11:48:44Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "7c4b21eb-d9d7-4736-9c81-a5f42e40018e",
+      "startedAt": "2025-08-23T12:40:57Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "ae1b6f2c-9d54-49cd-abf3-527c7b29f37d",
+      "startedAt": "2025-08-23T13:36:28Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "4d6502b4-0355-41e3-8bb0-5aaa59e946ce",
+      "startedAt": "2025-08-23T14:31:17Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "0401e268-3852-42fd-811f-117861ec3a70",
+      "startedAt": "2025-08-23T15:22:18Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "f503dc88-6482-4ffa-afc3-1f976ba08aee",
+      "startedAt": "2025-08-24T10:50:31Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "817a8a61-703b-4589-8b29-96d8d5190bdf",
+      "startedAt": "2025-08-24T11:44:33Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "f4200f2e-3477-4a64-8dba-01bb3044921d",
+      "startedAt": "2025-08-24T12:35:31Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "d4fa7bde-b10c-4565-ba80-8e91439f78c7",
+      "startedAt": "2025-08-24T13:29:19Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "93daacbb-531e-4f30-85b5-498c5d52e4fc",
+      "startedAt": "2025-08-24T14:14:46Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "6533654e-4d28-4590-9710-d84578eb3a49",
+      "startedAt": "2025-08-24T15:01:48Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "a7954175-8384-4c14-af0f-591b2ebbcaeb",
+      "startedAt": "2025-08-29T10:51:22Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "43e2ddd2-783a-41ae-8bd1-5c8cb59ffd0b",
+      "startedAt": "2025-08-29T11:44:20Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "eae51b42-fd03-430d-a7ab-df2353d474b6",
+      "startedAt": "2025-08-29T12:30:25Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "070149f0-e339-4cd5-ace0-d8716bf3aa49",
+      "startedAt": "2025-08-29T13:25:40Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "a68d54b1-df50-46c3-8e4f-530a90d0e093",
+      "startedAt": "2025-08-29T14:12:48Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "320d2e4c-c246-49d3-a3c0-a8e872c0b6fb",
+      "startedAt": "2025-08-29T14:59:46Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "acffb0be-ee09-4b87-be0d-47627a9b9fc0",
+      "startedAt": "2025-08-30T10:53:36Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "cc7c692a-4486-41eb-81f7-a9b39ac323b6",
+      "startedAt": "2025-08-30T11:45:35Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "13c13a55-9c86-467f-912a-dc536322f4c8",
+      "startedAt": "2025-08-30T12:35:50Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "ae75a103-6380-4423-9707-4bf8c98a8bae",
+      "startedAt": "2025-08-30T13:27:38Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "f523d96e-c3ee-4123-87e5-313f831d7830",
+      "startedAt": "2025-08-30T14:17:09Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "457fe054-fd9a-477a-8e61-6b5894a4ac5b",
+      "startedAt": "2025-08-30T15:08:32Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "ccd3c1db-1205-4b88-959a-286f5e6e22af",
+      "startedAt": "2025-08-31T10:52:51Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "4a6468f6-b057-4aa1-9bb6-7170a2b0546e",
+      "startedAt": "2025-08-31T11:45:23Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "3f67f108-888d-4772-aa3d-6a6ff12c59a6",
+      "startedAt": "2025-08-31T12:35:49Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "20e3399d-7d02-4498-93ac-694c7547e898",
+      "startedAt": "2025-08-31T13:26:54Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "b8886271-1b14-42bc-9f8d-c5ea3f744505",
+      "startedAt": "2025-08-31T14:16:37Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "f6bdfabb-0768-43cc-ba5d-451d923cf2ea",
+      "startedAt": "2025-08-31T15:04:30Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "edb16956-884d-444f-8eac-f5b4f2611b04",
+      "startedAt": "2025-09-05T10:51:23Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "0bbb0598-508c-4064-b6fe-0db6d4910135",
+      "startedAt": "2025-09-05T11:42:19Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "df2164ec-2fea-4f20-9711-265aed73943e",
+      "startedAt": "2025-09-05T12:32:16Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "b7a3d8d8-6c15-47be-a627-f94ed2baf4ea",
+      "startedAt": "2025-09-05T13:25:16Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "b7169b88-7764-4676-9ed5-a8da3388c05b",
+      "startedAt": "2025-09-05T14:12:04Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "37ccad26-1158-4433-99fe-1796bef27769",
+      "startedAt": "2025-09-05T15:03:22Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "0798acf4-6162-4223-86e7-671560b3b0b7",
+      "startedAt": "2025-09-06T10:52:55Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "76ec6a61-e8df-4387-8847-35070a8109fb",
+      "startedAt": "2025-09-06T11:43:37Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "80bc0f5f-1633-4290-999f-81bb020d901b",
+      "startedAt": "2025-09-06T12:32:39Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "0e80244a-00a6-4b80-aea0-58b5cbc0b978",
+      "startedAt": "2025-09-06T13:22:56Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "59301f44-b063-4427-963d-2f270831e8fa",
+      "startedAt": "2025-09-06T14:16:57Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "5b93cf3c-e175-4d96-9420-ec6377a8a077",
+      "startedAt": "2025-09-06T15:05:22Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "f6665d90-287a-4658-a82f-e9e54f439fa7",
+      "startedAt": "2025-09-07T10:58:40Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "76699d89-8cf5-4202-b946-cdc72ea35126",
+      "startedAt": "2025-09-07T11:49:04Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "63ace667-0593-48b7-a1b4-47504029e88e",
+      "startedAt": "2025-09-07T12:39:27Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "cdebb439-0f4e-4489-9151-703dccd8a885",
+      "startedAt": "2025-09-07T13:28:13Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "0e653931-b650-416e-9fc5-bdf4c5d1d7e6",
+      "startedAt": "2025-09-07T14:23:00Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "079e9e05-3688-4bb6-9517-b26e747fcde2",
+      "startedAt": "2025-09-07T15:10:30Z",
+      "map": "Baltic_Main"
+    }
+  ]
+}

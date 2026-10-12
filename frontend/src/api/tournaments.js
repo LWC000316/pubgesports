@@ -14,8 +14,11 @@ export function fetchTournament(id) {
   return apiGet(`/api/tournaments/archive/${encodeURIComponent(id)}`);
 }
 
-/** 그 대회에서 매치로그(이동 경로)를 가진 경기 id 목록. */
-export function fetchMatchIds(tournamentId) {
+/**
+ * 그 대회에서 매치로그를 가진 경기 목록 — {id, startedAt, map, duration, kills, winner}.
+ * 경기 순서대로 온다. startedAt 이 비면 그 단계는 순서를 모른다는 뜻이다.
+ */
+export function fetchMatchList(tournamentId) {
   return apiGet(`/api/tournaments/archive/${encodeURIComponent(tournamentId)}/matches`);
 }
 

@@ -1,0 +1,44 @@
+{
+  "matches": [
+    {
+      "id": "7403e3f1-f24f-4e6a-aa89-82167995fada",
+      "startedAt": "2025-07-06T09:48:06Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "0abd1a39-b366-46e9-b121-cd715f32bf9b",
+      "startedAt": "2025-07-06T10:21:06Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "025bbed5-72a6-45c5-aa2c-1dc09394122b",
+      "startedAt": "2025-07-06T11:03:11Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "f777ba6f-af91-41a8-8d0a-cc8f7f99aa82",
+      "startedAt": "2025-07-06T11:36:33Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "2f802178-689f-4d84-bb73-6c17c5145beb",
+      "startedAt": "2025-07-06T12:18:25Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "584866a1-d024-45dd-9c02-d3374c4c6b19",
+      "startedAt": "2025-07-06T12:57:24Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "30993ff6-3c30-4071-b2da-22a1cc2d16d8",
+      "startedAt": "2025-07-06T13:35:50Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "0c0f35d2-7c64-4ec3-8cb4-be53b93c4e15",
+      "startedAt": "2025-07-06T14:10:48Z",
+      "map": "Neon_Main"
+    }
+  ]
+}

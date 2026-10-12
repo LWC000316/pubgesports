@@ -333,6 +333,9 @@ def build(events, match_id):
 
     return {
         "matchId": match_id,
+        # 경기 시작 절대 시각. 파일 이름이 UUID 라 정렬해도 경기 순서가 아니다.
+        # 이것이 있어야 "몇 경기" 를 지어내지 않고 말할 수 있다.
+        "startedAt": start_ts.isoformat().replace("+00:00", "Z") if start_ts else None,
         "map": map_name,
         "mapLabel": MAP_LABEL.get(map_name, map_name),
         "mapSize": size,
