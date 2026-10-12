@@ -80,12 +80,26 @@ jobs:
               print(tid)
           PY
           echo "대상 $(wc -l < /tmp/targets.txt) 단계"
+          # **시간 예산을 반드시 지킨다.** 전 단계면 받기만 12시간인데 작업
+          # 한도는 5.5시간이다. 한도에 걸려 강제 취소되면 뒤따르는 집계·커밋이
+          # 통째로 날아간다 — 2026-10-11 에 실제로 5시간 30분치를 그렇게 잃었다.
+          # 예산이 끝나면 받던 것을 마치고 빠져나와 거기까지를 커밋한다.
+          BUDGET=$(( ${{ github.event.inputs.max_minutes || 240 }} * 60 ))
+          START=$(date +%s)
+          N=0
           while read -r tid; do
             [ -z "$tid" ] && continue
+            if [ $(( $(date +%s) - START )) -ge "$BUDGET" ]; then
+              echo "시간 예산을 다 썼습니다. $N 단계까지 받고 멈춥니다."
+              echo "남은 단계는 한 번 더 실행하면 이어서 받습니다."
+              break
+            fi
             pwsh -NoProfile -File ingest/fetch_tournament.ps1 \
               -TournamentId "$tid" \
               -DelaySeconds ${{ github.event.inputs.delay_seconds || 6 }} || true
+            N=$(( N + 1 ))
           done < /tmp/targets.txt
+          echo "받은 단계 $N 개 · 경과 $(( ($(date +%s) - START) / 60 ))분"
 
       - name: 매치로그 뽑기
         continue-on-error: true
