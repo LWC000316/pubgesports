@@ -1,11 +1,11 @@
 {
   "id": "eu-pecs23",
-  "name": "EMEA 2023 (s23)",
+  "name": "PUBG EMEA Championship 2023 Spring",
   "category": "regional",
   "series": "EMEA",
   "year": 2023,
-  "edition": null,
-  "stageCode": "s23",
+  "edition": "Spring",
+  "stageCode": null,
   "stage": null,
   "startDate": "2023-03-12",
   "source": "https://api.pubg.com/tournaments/eu-pecs23",
@@ -1973,5 +1973,6 @@
       "avgSurvival": 1011,
       "longestKill": 209.0
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2023/Spring"
 }

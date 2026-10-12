@@ -64,6 +64,9 @@ STAGE_NAMES_ANY = {
 # PGC 2021 의 Weekly Finals 는 주차별로 wf1·wf2·wf3 가 있어 번호가 뜻을 갖지만,
 # Grand Finals 는 as-pgcgf4 하나뿐이라 "Grand Finals 4" 로 쓰면 결승이 네 번
 # 있었던 것처럼 읽힌다. 그런 코드는 숫자를 떼고 이름만 쓴다.
+# EMEA 단계 코드의 앞글자 = 시즌. 날짜로 검증했다(위 parse_id 주석 참고).
+EMEA_SEASONS = {"f": "Fall", "s": "Spring"}
+
 NUMBERED_STAGES = {
     "PGC": {"wf", "bm"},
 }
@@ -83,18 +86,12 @@ STAGE_PATTERNS = {
     #   Cup       -> c1~c5 각 5경기
     #   Playoffs  -> "2 stages, each 3 days, 5 matches per day" = 15경기 -> p1·p2
     #   Finals    -> f1 (하나뿐이라 번호를 붙이지 않는다)
-    # EMEA 코드의 앞 f 는 시즌(Fall)이다. 문서가 2026/Fall 이고 코드가 전부 f 로
-    # 시작한다. Spring 쪽 글자는 확인하지 않아 넣지 않는다.
+    # EMEA 는 시즌이 회차로 올라갔으므로 여기서는 시즌 뒤의 글자만 본다
+    # (fc1 -> 회차 Fall · 코드 c1).
     "EMEA": [
-        (re.compile(r'^fc(\d+)$'), "Fall Cup %s"),
-        (re.compile(r'^fp(\d+)$'), "Fall Playoff %s"),
-        (re.compile(r'^ff\d*$'), "Fall Finals"),
-        # Spring 도 같은 구조다 ("PUBG EMEA Championship/2026/Spring" Format:
-        # Playoffs 2 stages x 3 days x 5 matches = 15경기). 우리 sp2 가 15경기
-        # 5/2 로 "May 1st-3rd" 와 맞고, sf2 가 15경기 5/8 로 그 뒤 Finals 다.
-        # Spring Cup 코드(sc*)는 데이터에 없어 넣지 않는다.
-        (re.compile(r'^sp(\d+)$'), "Spring Playoff %s"),
-        (re.compile(r'^sf\d*$'), "Spring Finals"),
+        (re.compile(r'^c(\d+)$'), "Cup %s"),
+        (re.compile(r'^p(\d+)$'), "Playoff %s"),
+        (re.compile(r'^f\d*$'), "Finals"),
     ],
     "AMER": [
         (re.compile(r'^c(\d+)$'), "Cup %s"),
@@ -186,6 +183,24 @@ def parse_id(tournament_id, year=None):
     # 간격이다. 2026년은 같은 것을 pws2s23 처럼 s 를 넣어 쓴다.
     if series == "PWS" and not code and edition and len(edition) == 3:
         edition, code = edition[0], edition[1:]
+
+    # EMEA 는 한 해에 Spring 과 Fall 을 치르는데 회차 번호가 없다. 그대로 두면
+    # 둘이 한 덩어리로 묶여 화면에서 구별되지 않고, 공식 이름도 못 붙는다
+    # (Spring 단계에 "Fall" 이 찍힐 위험 때문에 막아 뒀었다).
+    # **단계 코드 앞글자가 시즌**이라 그걸 회차로 올린다.
+    #
+    # 날짜로 검증했다 — 2023~2026년 17단계가 예외 없이 맞는다:
+    #   s* 는 전부 3~5월, f* 는 전부 8~10월.
+    # 리퀴피디아 EMEA 문서에도 시즌이 Fall·Spring 둘뿐이다.
+    #
+    # **PCL 은 하지 않는다.** 시즌이 Autumn·Fall·Spring·Summer 넷이라
+    # `s` 가 Spring 인지 Summer 인지 가릴 수 없다. 확인되면 그때 넣는다.
+    if series == "EMEA" and code and code[0] in EMEA_SEASONS:
+        edition = EMEA_SEASONS[code[0]]
+        code = code[1:] or None
+        # 시즌 뒤에 연도만 남는 형태가 있다 (eu-pecs26 -> s + 26).
+        if yy and code == yy:
+            code = None
 
     # AMER 은 회차 뒤에 두 자리 연도를 붙인다: am-pas126 = PAS 1 (2026).
     # 앞에 붙는 경우(pgc23gf)는 위에서 처리했고, 이쪽은 뒤에 붙는다.

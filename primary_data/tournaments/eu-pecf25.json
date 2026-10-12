@@ -1,11 +1,11 @@
 {
   "id": "eu-pecf25",
-  "name": "EMEA 2025 (f25)",
+  "name": "PUBG EMEA Championship 2025 Fall",
   "category": "regional",
   "series": "EMEA",
   "year": 2025,
-  "edition": null,
-  "stageCode": "f25",
+  "edition": "Fall",
+  "stageCode": null,
   "stage": null,
   "startDate": "2025-08-30",
   "source": "https://api.pubg.com/tournaments/eu-pecf25",
@@ -3809,5 +3809,6 @@
       "avgSurvival": 1214,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2025/Fall"
 }

@@ -1,12 +1,12 @@
 {
   "id": "eu-pecff1",
-  "name": "EMEA 2026 Fall Finals",
+  "name": "PUBG EMEA Championship 2026 Fall Finals",
   "category": "regional",
   "series": "EMEA",
   "year": 2026,
-  "edition": null,
-  "stageCode": "ff1",
-  "stage": "Fall Finals",
+  "edition": "Fall",
+  "stageCode": "f1",
+  "stage": "Finals",
   "startDate": "2026-09-19",
   "source": "https://api.pubg.com/tournaments/eu-pecff1",
   "createdAt": null,
@@ -1308,5 +1308,6 @@
       "avgSurvival": 1017,
       "longestKill": 171.8
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2026/Fall"
 }

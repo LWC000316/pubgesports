@@ -1,12 +1,12 @@
 {
   "id": "eu-pecsf2",
-  "name": "EMEA 2026 Spring Finals",
+  "name": "PUBG EMEA Championship 2026 Spring Finals",
   "category": "regional",
   "series": "EMEA",
   "year": 2026,
-  "edition": null,
-  "stageCode": "sf2",
-  "stage": "Spring Finals",
+  "edition": "Spring",
+  "stageCode": "f2",
+  "stage": "Finals",
   "startDate": "2026-05-08",
   "source": "https://api.pubg.com/tournaments/eu-pecsf2",
   "createdAt": null,
@@ -1327,5 +1327,6 @@
       "avgSurvival": 1286,
       "longestKill": 21.7
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2026/Spring"
 }

@@ -1,12 +1,12 @@
 {
   "id": "eu-pecfc4",
-  "name": "EMEA 2026 Fall Cup 4",
+  "name": "PUBG EMEA Championship 2026 Fall Cup 4",
   "category": "regional",
   "series": "EMEA",
   "year": 2026,
-  "edition": null,
-  "stageCode": "fc4",
-  "stage": "Fall Cup 4",
+  "edition": "Fall",
+  "stageCode": "c4",
+  "stage": "Cup 4",
   "startDate": "2026-08-22",
   "source": "https://api.pubg.com/tournaments/eu-pecfc4",
   "createdAt": null,
@@ -1276,5 +1276,6 @@
       "avgSurvival": 742,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2026/Fall"
 }

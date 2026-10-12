@@ -1,12 +1,12 @@
 {
   "id": "eu-pecfp2",
-  "name": "EMEA 2026 Fall Playoff 2",
+  "name": "PUBG EMEA Championship 2026 Fall Playoff 2",
   "category": "regional",
   "series": "EMEA",
   "year": 2026,
-  "edition": null,
-  "stageCode": "fp2",
-  "stage": "Fall Playoff 2",
+  "edition": "Fall",
+  "stageCode": "p2",
+  "stage": "Playoff 2",
   "startDate": "2026-09-27",
   "source": "https://api.pubg.com/tournaments/eu-pecfp2",
   "createdAt": null,
@@ -2354,5 +2354,6 @@
       "avgSurvival": 771,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2026/Fall"
 }

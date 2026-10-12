@@ -1,11 +1,11 @@
 {
   "id": "eu-pecf24",
-  "name": "EMEA 2024 (f24)",
+  "name": "PUBG EMEA Championship 2024 Fall",
   "category": "regional",
   "series": "EMEA",
   "year": 2024,
-  "edition": null,
-  "stageCode": "f24",
+  "edition": "Fall",
+  "stageCode": null,
   "stage": null,
   "startDate": "2024-09-29",
   "source": "https://api.pubg.com/tournaments/eu-pecf24",
@@ -3508,5 +3508,6 @@
       "avgSurvival": 1102,
       "longestKill": 21.6
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2024/Fall"
 }

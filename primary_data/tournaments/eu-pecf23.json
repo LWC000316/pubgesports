@@ -1,11 +1,11 @@
 {
   "id": "eu-pecf23",
-  "name": "EMEA 2023 (f23)",
+  "name": "PUBG EMEA Championship 2023 Fall",
   "category": "regional",
   "series": "EMEA",
   "year": 2023,
-  "edition": null,
-  "stageCode": "f23",
+  "edition": "Fall",
+  "stageCode": null,
   "stage": null,
   "startDate": "2023-10-07",
   "source": "https://api.pubg.com/tournaments/eu-pecf23",
@@ -3475,5 +3475,6 @@
       "avgSurvival": 992,
       "longestKill": 22.3
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2023/Fall"
 }

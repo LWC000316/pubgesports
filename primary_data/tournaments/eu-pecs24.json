@@ -1,11 +1,11 @@
 {
   "id": "eu-pecs24",
-  "name": "EMEA 2024 (s24)",
+  "name": "PUBG EMEA Championship 2024 Spring",
   "category": "regional",
   "series": "EMEA",
   "year": 2024,
-  "edition": null,
-  "stageCode": "s24",
+  "edition": "Spring",
+  "stageCode": null,
   "stage": null,
   "startDate": "2024-03-23",
   "source": "https://api.pubg.com/tournaments/eu-pecs24",
@@ -3553,5 +3553,6 @@
       "avgSurvival": 59,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2024/Spring"
 }

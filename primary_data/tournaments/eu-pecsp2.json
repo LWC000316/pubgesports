@@ -1,12 +1,12 @@
 {
   "id": "eu-pecsp2",
-  "name": "EMEA 2026 Spring Playoff 2",
+  "name": "PUBG EMEA Championship 2026 Spring Playoff 2",
   "category": "regional",
   "series": "EMEA",
   "year": 2026,
-  "edition": null,
-  "stageCode": "sp2",
-  "stage": "Spring Playoff 2",
+  "edition": "Spring",
+  "stageCode": "p2",
+  "stage": "Playoff 2",
   "startDate": "2026-05-02",
   "source": "https://api.pubg.com/tournaments/eu-pecsp2",
   "createdAt": null,
@@ -2355,5 +2355,6 @@
       "avgSurvival": 1530,
       "longestKill": 50.0
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2026/Spring"
 }

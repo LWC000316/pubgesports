@@ -1,11 +1,11 @@
 {
   "id": "eu-pecs25",
-  "name": "EMEA 2025 (s25)",
+  "name": "PUBG EMEA Championship 2025 Spring",
   "category": "regional",
   "series": "EMEA",
   "year": 2025,
-  "edition": null,
-  "stageCode": "s25",
+  "edition": "Spring",
+  "stageCode": null,
   "stage": null,
   "startDate": "2025-03-16",
   "source": "https://api.pubg.com/tournaments/eu-pecs25",
@@ -3444,5 +3444,6 @@
       "avgSurvival": 956,
       "longestKill": 67.9
     }
-  ]
+  ],
+  "officialName": "PUBG EMEA Championship/2025/Spring"
 }
