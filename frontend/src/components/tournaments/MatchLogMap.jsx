@@ -133,8 +133,13 @@ export default function MatchLogMap({ log }) {
       for (const track of members) {
         if (selectedPlayer && selectedPlayer !== track.name) continue;
         const focused = Boolean(selectedTeam || selectedPlayer);
-        const pts = track.points.filter(p => p[0] <= time);
-        if (!pts.length) continue;
+        const recorded = track.points.filter(p => p[0] <= time);
+        if (!recorded.length) continue;
+        // 경로 끝을 보간 지점까지 이어 둔다. 안 그러면 점만 앞서 나가고
+        // 선은 최대 10초 뒤에 머문다.
+        const here = interpolate(track.points, time);
+        const pts = here && here[0] > recorded[recorded.length - 1][0]
+          ? [...recorded, here] : recorded;
 
         if (showTrails && pts.length > 1) {
           ctx.strokeStyle = color;
@@ -161,7 +166,10 @@ export default function MatchLogMap({ log }) {
           ctx.stroke();
         }
 
-        // 현재 위치
+        // 현재 위치. 위치 기록이 **10초 간격**이라 그대로 찍으면 점이 뚝뚝
+        // 끊긴다. 다음 기록과 사이를 비례로 나눠 그 사이 지점을 그린다.
+        // 실제 경로가 직선이었다는 보장은 없지만, 10초 동안 400m 를 직선으로
+        // 잇는 것이 제자리에 멈춰 있다 튀는 것보다 실제에 가깝다.
         const last = pts[pts.length - 1];
         const dead = (deathAt.get(track.name) ?? Infinity) <= time;
         ctx.globalAlpha = dead ? 0.35 : 1;
@@ -406,6 +414,29 @@ export default function MatchLogMap({ log }) {
       </div>
     </div>
   );
+}
+
+/**
+ * 그 시각의 위치를 앞뒤 기록 사이에서 비례로 구한다.
+ *
+ * 텔레메트리의 위치 기록은 10초 간격이다 (PUBG 가 그렇게만 준다 — 우리가
+ * 줄인 것이 아니다). 보간하지 않으면 재생할 때 10초마다 한 번씩 순간이동한다.
+ */
+function interpolate(points, t) {
+  if (!points?.length) return null;
+  if (t <= points[0][0]) return points[0];
+  let lo = 0, hi = points.length - 1;
+  if (t >= points[hi][0]) return points[hi];
+  while (lo + 1 < hi) {                      // 이분 탐색 — 점이 180개라 선형도
+    const mid = (lo + hi) >> 1;              // 되지만 64명 x 매 프레임이라 아낀다
+    if (points[mid][0] <= t) lo = mid; else hi = mid;
+  }
+  const a = points[lo], b = points[hi];
+  const span = b[0] - a[0];
+  if (span <= 0) return a;
+  const r = (t - a[0]) / span;
+  // 차량·기절 여부는 섞지 않고 앞 기록의 값을 쓴다. 중간값이 없는 상태값이다.
+  return [t, a[1] + (b[1] - a[1]) * r, a[2] + (b[2] - a[2]) * r, a[3], a[4]];
 }
 
 /** 인게임 아이디에서 접두사를 떼어 닉네임만 보여준다. */
