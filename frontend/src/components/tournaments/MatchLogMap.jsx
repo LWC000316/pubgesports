@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Play, Pause, SkipBack, Users, Crosshair, Car, Skull, ZoomIn, Swords } from 'lucide-react';
+import { Play, Pause, SkipBack, Users, Crosshair, Car, Skull, ZoomIn, Swords, Package } from 'lucide-react';
 
 /**
  * 매치로그. 실제 맵 이미지 위에 선수 이동 경로와 자기장을 그린다.
@@ -34,6 +34,7 @@ export default function MatchLogMap({ log }) {
   const [showKills, setShowKills] = useState(true);
   const [showTrails, setShowTrails] = useState(true);
   const [showFights, setShowFights] = useState(true);
+  const [showDrops, setShowDrops] = useState(true);
   const [zoom, setZoom] = useState(1);
 
   const duration = log?.duration ?? 0;
@@ -141,12 +142,18 @@ export default function MatchLogMap({ log }) {
         const pts = here && here[0] > recorded[recorded.length - 1][0]
           ? [...recorded, here] : recorded;
 
-        if (showTrails && pts.length > 1) {
+        // 경로는 **착지한 뒤부터** 긋는다. 위치 기록은 비행기에 타고 있을 때부터
+        // 남으므로 그대로 이으면 64명분 항로가 지도를 가로지르는 평행선이 되어
+        // 정작 교전 지역을 덮어 버린다. 착지 기록이 없으면 (옛 대회) 종전대로.
+        const landedAt = landingOf.get(track.name)?.t;
+        const trail = landedAt == null ? pts : pts.filter(p => p[0] >= landedAt);
+
+        if (showTrails && trail.length > 1) {
           ctx.strokeStyle = color;
           ctx.globalAlpha = focused ? 0.9 : 0.45;
           ctx.lineWidth = focused ? 2.4 : 1.3;
           ctx.beginPath();
-          pts.forEach((p, i) => {
+          trail.forEach((p, i) => {
             const x = px(p[1]), y = px(p[2]);
             if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
           });
@@ -217,7 +224,7 @@ export default function MatchLogMap({ log }) {
     }
 
     // 4. 보급 상자 — 떨어진 뒤로는 계속 보인다
-    for (const p of log.packages ?? []) {
+    for (const p of (showDrops ? log.packages ?? [] : [])) {
       if (p.t != null && p.t > time) continue;
       ctx.fillStyle = 'rgba(243, 166, 31, 0.85)';
       ctx.fillRect(px(p.x) - 4, px(p.y) - 4, 8, 8);
@@ -239,7 +246,7 @@ export default function MatchLogMap({ log }) {
       }
     }
   }, [log, time, teams, colorOf, selectedTeam, selectedPlayer, showKills,
-      showTrails, showFights, circle, killsSoFar, deathAt, fightsNow, landingOf]);
+      showTrails, showFights, showDrops, circle, killsSoFar, deathAt, fightsNow, landingOf]);
 
   if (!log) return null;
 
@@ -313,6 +320,7 @@ export default function MatchLogMap({ log }) {
           <Toggle on={showKills} set={setShowKills} icon={Crosshair} label="킬 지점" />
           <Toggle on={showTrails} set={setShowTrails} icon={Car} label="이동 경로" />
           <Toggle on={showFights} set={setShowFights} icon={Swords} label="교전" />
+          <Toggle on={showDrops} set={setShowDrops} icon={Package} label="보급" />
           <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <ZoomIn size={14} />
             <input type="range" min={1} max={3} step={0.5} value={zoom}
