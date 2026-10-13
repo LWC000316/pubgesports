@@ -111,6 +111,42 @@ STAGE_NAMES_BY_YEAR = {
                     "c4": "Cup 4", "c5": "Cup 5", "f": "Finals"},
 }
 
+# **id 구조로는 풀 수 없는 것만** 손으로 적는다. (회차, 단계이름).
+# 근거는 전부 리퀴피디아 문서의 날짜이고, `_order.json` 의 실제 경기 날짜와
+# 맞춰 봤다 — 넘겨짚은 것은 하나도 없다.
+#
+# PCL 2026 — 한 해에 Spring 과 Autumn 이 있는데 id 에 시즌이 없다. 그대로 두면
+#   결승이 둘인 한 덩어리가 된다. 위키 "PUBG Champions League/2026/{Spring,Autumn}":
+#     Spring Grand Finals 5/8~10 · 15경기  = cn-pclf    5/8~10 · 15경기
+#     Autumn Stage B 8/26~30 + Stage A 8/31~9/4 = cn-pcl26ab 8/26~9/4 · 하루 5경기 50경기
+#     Autumn Stage S 9/11~21               = cn-pclas26 9/11~21 하루 5경기 (+9/25 1경기)
+#     Autumn Grand Finals 9/25~27 · 15경기  = cn-pclaf26 9/25~27 · 15경기
+#   cn-pcl26t 는 같은 날짜에 하루 2~3경기가 따로 있는 별개의 id 라 비워 둔다.
+#
+# PVS 2026 — 위키 "PUBG Vietnam Series/2026/Phase 1" 이 4/10~5/3 (4주),
+#   Phase 2 가 9/4~ 다. 우리 id 의 첫·끝 경기 날짜와 그대로 같다.
+#   sea-vnc262 (6/13~7/19, 5주) 는 Phase 2 앞의 Cup (위키 Phase 2/Cup/Week 1~5).
+#
+# PTS 2026 — Phase 1 이 4~5월, Phase 2 가 9월이다 (연기돼 10/1 까지).
+#   Phase 2 의 w1·w2·ws 는 어느 조각이 무엇인지 위키에 없어 단계 이름은 비운다.
+EXPLICIT = {
+    "cn-pclf":    ("Spring", "Grand Finals"),
+    "cn-pcl26ab": ("Autumn", "Stage B·A"),
+    "cn-pclas26": ("Autumn", "Stage S"),
+    "cn-pclaf26": ("Autumn", "Grand Finals"),
+    "cn-pcl26t":  ("Autumn", None),
+
+    "sea-vn26p1": ("Phase 1", None),
+    "sea-vnc262": ("Phase 2", "Cup"),
+    "sea-vn26p2": ("Phase 2", None),
+
+    "sea-ptsg1":  ("Phase 1", "Group Stage"),
+    "sea-ptsf1":  ("Phase 1", "Grand Finals"),
+    "sea-ptsw1":  ("Phase 2", None),
+    "sea-ptsw2":  ("Phase 2", None),
+    "sea-ptsws":  ("Phase 2", None),
+}
+
 # 어느 시리즈에서나 같은 뜻인 것만 둔다. 위에서 못 찾으면 여기를 본다.
 STAGE_NAMES_ANY = {
     "gf": "Grand Finals",
@@ -266,6 +302,10 @@ def parse_id(tournament_id, year=None):
     # 앞에 붙는 경우(pgc23gf)는 위에서 처리했고, 이쪽은 뒤에 붙는다.
     if yy and edition and len(edition) > 2 and edition.endswith(yy):
         edition = edition[:-2] or None
+
+    if tournament_id in EXPLICIT:
+        ed, st = EXPLICIT[tournament_id]
+        return series, ed, code, st
 
     return series, edition, code, stage_name(series, code, year)
 

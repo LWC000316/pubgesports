@@ -1,12 +1,12 @@
 {
   "id": "cn-pclf",
-  "name": "PCL 2026 (f)",
+  "name": "PUBG Champions League 2026 Spring Grand Finals",
   "category": "regional",
   "series": "PCL",
   "year": 2026,
-  "edition": null,
+  "edition": "Spring",
   "stageCode": "f",
-  "stage": null,
+  "stage": "Grand Finals",
   "startDate": "2026-05-08",
   "source": "https://api.pubg.com/tournaments/cn-pclf",
   "createdAt": null,
@@ -1293,5 +1293,6 @@
       "longestKill": 80.5
     }
   ],
-  "endDate": "2026-05-10"
+  "endDate": "2026-05-10",
+  "officialName": "PUBG Champions League/2026/Spring"
 }

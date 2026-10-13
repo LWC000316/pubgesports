@@ -1,10 +1,10 @@
 {
   "id": "sea-ptsw2",
-  "name": "PTS 2026 (w2)",
+  "name": "PUBG Thailand Series 2026 Phase 2",
   "category": "regional",
   "series": "PTS",
   "year": 2026,
-  "edition": null,
+  "edition": "Phase 2",
   "stageCode": "w2",
   "stage": null,
   "startDate": "2026-09-25",
@@ -1960,5 +1960,6 @@
       "longestKill": 0.0
     }
   ],
-  "endDate": "2026-09-28"
+  "endDate": "2026-09-28",
+  "officialName": "PUBG Thailand Series/2026/Phase 2"
 }

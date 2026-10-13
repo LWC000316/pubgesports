@@ -1,10 +1,10 @@
 {
   "id": "sea-ptsf1",
-  "name": "PTS 2026 Grand Finals",
+  "name": "PUBG Thailand Series 2026 Phase 1 Grand Finals",
   "category": "regional",
   "series": "PTS",
   "year": 2026,
-  "edition": null,
+  "edition": "Phase 1",
   "stageCode": "f1",
   "stage": "Grand Finals",
   "startDate": "2026-05-08",
@@ -1357,5 +1357,6 @@
       "longestKill": 0.0
     }
   ],
-  "endDate": "2026-05-12"
+  "endDate": "2026-05-12",
+  "officialName": "PUBG Thailand Series/2026/Phase 1"
 }

@@ -1,10 +1,10 @@
 {
   "id": "sea-vn26p2",
-  "name": "PVS 2026 (p2)",
+  "name": "PUBG Vietnam Series 2026 Phase 2",
   "category": "regional",
   "series": "PVS",
   "year": 2026,
-  "edition": null,
+  "edition": "Phase 2",
   "stageCode": "p2",
   "stage": null,
   "startDate": "2026-09-04",
@@ -1469,5 +1469,6 @@
       "longestKill": 0.0
     }
   ],
-  "endDate": "2026-09-13"
+  "endDate": "2026-09-13",
+  "officialName": "PUBG Vietnam Series/2026/Phase 2"
 }

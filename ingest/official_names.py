@@ -23,9 +23,15 @@
 """
 
 import argparse
+import importlib.util
 import json
 import sys
 from pathlib import Path
+
+_spec = importlib.util.spec_from_file_location(
+    "stage_label", Path(__file__).with_name("stage_label.py"))
+stage_label = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(stage_label)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = PROJECT_ROOT / "primary_data" / "tournaments"
@@ -46,7 +52,13 @@ BASE = {
 }
 
 # 단계 코드 앞글자로 시즌을 가르는 시리즈. EMEA 는 fp2=Fall, sp2=Spring 이다.
-SEASON_BY_PREFIX = {"f": "Fall", "s": "Spring", "a": "Autumn", "u": "Summer"}
+#
+# **EMEA 에만 쓴다.** 날짜로 검증한 것이 EMEA 뿐이기 때문이다 (s* 는 전부 3~5월,
+# f* 는 전부 8~10월, 2023~2026년 17단계가 예외 없이 맞는다). PCL 은 시즌이
+# Spring·Summer·Autumn 넷이라 `s` 가 Spring 인지 Summer 인지 가릴 수 없다.
+# 실제로 이 규칙을 PCL 에 쓰다가 **9월에 치른 cn-pclpo 가 "2022 Spring" 으로
+# 찍혀 있었다.** 2019·2020·2022 PCL 이 다 그랬다.
+SEASON_BY_SERIES = {"EMEA": {"f": "Fall", "s": "Spring"}}
 
 
 def candidates(series, year, edition, codes):
@@ -75,10 +87,14 @@ def candidates(series, year, edition, codes):
     # 로 묶는데 이 시리즈들은 회차가 없어서 Spring 과 Fall 이 한 덩어리가 된다.
     # 그대로 이름을 붙이면 Spring 단계에 "Fall" 이 찍힌다. 묶음을 시즌별로 가르는
     # 것이 제대로 된 해결이고, 그 전까지는 이름을 비워 둔다.
-    seasons = {SEASON_BY_PREFIX[c[0]] for c in codes
-               if c and c[0] in SEASON_BY_PREFIX}
-    if len(seasons) == 1:
-        out.append("%s/%d/%s" % (base, year, seasons.pop()))
+    by_prefix = SEASON_BY_SERIES.get(series)
+    if by_prefix:
+        # **모든 단계가 같은 시즌으로 읽힐 때만** 쓴다. 하나라도 읽히지 않으면
+        # 그 단계가 다른 시즌일 수 있다 — 예전에는 읽히지 않는 코드를 그냥
+        # 건너뛰어서, 한 단계만 s* 여도 묶음 전체에 Spring 이 찍혔다.
+        seasons = {by_prefix.get(c[0]) if c else None for c in codes}
+        if len(seasons) == 1 and None not in seasons:
+            out.append("%s/%d/%s" % (base, year, seasons.pop()))
 
     # 연도 하나가 곧 대회인 시리즈 (PGC·PNC·EWC)
     out.append("%s/%d" % (base, year))
@@ -137,11 +153,19 @@ def main():
     if args.check:
         return 0
 
-    changed = 0
+    changed = cleared = 0
     for f, d in docs:
         key = (d.get("series"), d.get("year"), d.get("edition"))
         title = resolved.get(key)
         if not title:
+            # 전에 붙였던 이름이 지금 규칙으로는 안 나오면 **지운다.**
+            # 그대로 두면 틀린 이름이 영원히 남는다 (PCL 의 가짜 "Spring").
+            if d.get("officialName"):
+                d.pop("officialName", None)
+                d["name"] = stage_label.display_name(d["id"], d.get("year"))
+                f.write_text(json.dumps(d, ensure_ascii=False, indent=2) + chr(10),
+                             encoding="utf-8")
+                cleared += 1
             continue
         name = official_name(title)
         # 단계 이름이 있으면 뒤에 붙인다: "... Circuit 3 Series 1 Final Stage"
@@ -153,7 +177,7 @@ def main():
             f.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n",
                          encoding="utf-8")
             changed += 1
-    print("\n이름을 바꾼 단계: %d" % changed)
+    print("\n이름을 바꾼 단계: %d · 틀린 이름을 지운 단계: %d" % (changed, cleared))
     return 0
 
 

@@ -1,6 +1,6 @@
 {
   "id": "cn-pcls22",
-  "name": "PUBG Champions League 2022 Spring",
+  "name": "PCL 2022 (s22)",
   "category": "regional",
   "series": "PCL",
   "year": 2022,
@@ -3351,6 +3351,5 @@
       "avgSurvival": 1007,
       "longestKill": 0.0
     }
-  ],
-  "officialName": "PUBG Champions League/2022/Spring"
+  ]
 }

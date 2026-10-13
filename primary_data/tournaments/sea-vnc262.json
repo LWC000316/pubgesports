@@ -1,12 +1,12 @@
 {
   "id": "sea-vnc262",
-  "name": "PVS 2026 (c262)",
+  "name": "PUBG Vietnam Series 2026 Phase 2 Cup",
   "category": "regional",
   "series": "PVS",
   "year": 2026,
-  "edition": null,
+  "edition": "Phase 2",
   "stageCode": "c262",
-  "stage": null,
+  "stage": "Cup",
   "startDate": "2026-06-13",
   "source": "https://api.pubg.com/tournaments/sea-vnc262",
   "createdAt": null,
@@ -3531,5 +3531,6 @@
       "longestKill": 0.0
     }
   ],
-  "endDate": "2026-07-19"
+  "endDate": "2026-07-19",
+  "officialName": "PUBG Vietnam Series/2026/Phase 2"
 }

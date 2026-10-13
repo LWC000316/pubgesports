@@ -1,12 +1,12 @@
 {
   "id": "cn-pclas26",
-  "name": "PCL 2026 (as26)",
+  "name": "PUBG Champions League 2026 Autumn Stage S",
   "category": "regional",
   "series": "PCL",
   "year": 2026,
-  "edition": null,
+  "edition": "Autumn",
   "stageCode": "as26",
-  "stage": null,
+  "stage": "Stage S",
   "startDate": "2026-09-11",
   "source": "https://api.pubg.com/tournaments/cn-pclas26",
   "createdAt": null,
@@ -2136,5 +2136,6 @@
       "longestKill": 0.0
     }
   ],
-  "endDate": "2026-09-25"
+  "endDate": "2026-09-25",
+  "officialName": "PUBG Champions League/2026/Autumn"
 }

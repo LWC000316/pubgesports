@@ -1,10 +1,10 @@
 {
   "id": "sea-ptsg1",
-  "name": "PTS 2026 Group Stage",
+  "name": "PUBG Thailand Series 2026 Phase 1 Group Stage",
   "category": "regional",
   "series": "PTS",
   "year": 2026,
-  "edition": null,
+  "edition": "Phase 1",
   "stageCode": "g1",
   "stage": "Group Stage",
   "startDate": "2026-04-27",
@@ -2485,5 +2485,6 @@
       "longestKill": 0.0
     }
   ],
-  "endDate": "2026-05-06"
+  "endDate": "2026-05-06",
+  "officialName": "PUBG Thailand Series/2026/Phase 1"
 }

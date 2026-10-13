@@ -1,6 +1,6 @@
 {
   "id": "cn-pcl",
-  "name": "PUBG Champions League 2019 Spring",
+  "name": "PCL 2019",
   "category": "regional",
   "series": "PCL",
   "year": 2019,
@@ -4349,6 +4349,5 @@
       "avgSurvival": 957,
       "longestKill": 0.0
     }
-  ],
-  "officialName": "PUBG Champions League/2019/Spring"
+  ]
 }
