@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "a25",
   "stage": null,
-  "startDate": "2025-09-27",
+  "startDate": "2025-09-02",
   "source": "https://api.pubg.com/tournaments/cn-pcla25",
   "createdAt": null,
   "matchCount": 104,
@@ -2166,5 +2166,6 @@
       "avgSurvival": 1028,
       "longestKill": 73.7
     }
-  ]
+  ],
+  "endDate": "2025-09-28"
 }

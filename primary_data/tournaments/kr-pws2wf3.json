@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "wf3",
   "stage": "Weekly Finals 3주차",
-  "startDate": "2026-09-27",
+  "startDate": "2026-09-26",
   "source": "https://api.pubg.com/tournaments/kr-pws2wf3",
   "createdAt": null,
   "matchCount": 10,
@@ -1341,5 +1341,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2026/Phase 2"
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 2",
+  "endDate": "2026-09-27"
 }

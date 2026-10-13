@@ -7,7 +7,7 @@
   "edition": "Spring",
   "stageCode": "p2",
   "stage": "Playoff 2",
-  "startDate": "2026-05-02",
+  "startDate": "2026-05-01",
   "source": "https://api.pubg.com/tournaments/eu-pecsp2",
   "createdAt": null,
   "matchCount": 15,
@@ -2356,5 +2356,6 @@
       "longestKill": 50.0
     }
   ],
-  "officialName": "PUBG EMEA Championship/2026/Spring"
+  "officialName": "PUBG EMEA Championship/2026/Spring",
+  "endDate": "2026-05-03"
 }

@@ -7,7 +7,7 @@
   "edition": "Fall",
   "stageCode": "p1",
   "stage": "Playoff 1",
-  "startDate": "2026-09-13",
+  "startDate": "2026-09-11",
   "source": "https://api.pubg.com/tournaments/eu-pecfp1",
   "createdAt": null,
   "matchCount": 15,
@@ -2323,5 +2323,6 @@
       "longestKill": 25.1
     }
   ],
-  "officialName": "PUBG EMEA Championship/2026/Fall"
+  "officialName": "PUBG EMEA Championship/2026/Fall",
+  "endDate": "2026-09-13"
 }

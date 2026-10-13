@@ -6,8 +6,8 @@
   "year": 2025,
   "edition": null,
   "stageCode": "ls",
-  "stage": null,
-  "startDate": "2025-12-07",
+  "stage": "Last Stage",
+  "startDate": "2025-12-05",
   "source": "https://api.pubg.com/tournaments/as-pgc25ls",
   "createdAt": null,
   "matchCount": 18,
@@ -1293,5 +1293,6 @@
       "longestKill": 29.7
     }
   ],
-  "officialName": "PUBG Global Championship/2025"
+  "officialName": "PUBG Global Championship/2025",
+  "endDate": "2025-12-07"
 }

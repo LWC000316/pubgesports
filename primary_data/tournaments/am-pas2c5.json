@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "c5",
   "stage": "Cup 5",
-  "startDate": "2026-08-30",
+  "startDate": "2026-08-29",
   "source": "https://api.pubg.com/tournaments/am-pas2c5",
   "createdAt": null,
   "matchCount": 5,
@@ -1293,5 +1293,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Americas Series/2026/2"
+  "officialName": "PUBG Americas Series/2026/2",
+  "endDate": "2026-08-30"
 }

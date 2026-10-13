@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "gf",
   "stage": "Grand Finals",
-  "startDate": "2025-12-14",
+  "startDate": "2025-12-12",
   "source": "https://api.pubg.com/tournaments/as-pgc25gf",
   "createdAt": null,
   "matchCount": 18,
@@ -1309,5 +1309,6 @@
       "longestKill": 247.7
     }
   ],
-  "officialName": "PUBG Global Championship/2025"
+  "officialName": "PUBG Global Championship/2025",
+  "endDate": "2025-12-14"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "ai",
   "stage": null,
-  "startDate": "2026-06-24",
+  "startDate": "2026-06-22",
   "source": "https://api.pubg.com/tournaments/as-pncai",
   "createdAt": null,
   "matchCount": 18,
@@ -1992,5 +1992,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Nations Cup/2026"
+  "officialName": "PUBG Nations Cup/2026",
+  "endDate": "2026-06-28"
 }

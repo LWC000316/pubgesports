@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "api2",
   "stage": null,
-  "startDate": "2026-08-08",
+  "startDate": "2026-08-02",
   "source": "https://api.pubg.com/tournaments/as-pgsapi2",
   "createdAt": null,
   "matchCount": 39,
@@ -2022,5 +2022,6 @@
       "avgSurvival": 488,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-08-23"
 }

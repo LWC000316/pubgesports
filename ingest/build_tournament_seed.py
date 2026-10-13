@@ -295,8 +295,20 @@ def main():
     voided = []
 
     # 이 대회가 우리 시드와 같은 시기인지. 팀 이름 해석을 믿어도 되는지를 가른다.
-    first = json.loads(match_files[0].read_text(encoding="utf-8-sig"))
-    first_date = (first.get("data", {}).get("attributes", {}).get("createdAt") or "")[:10]
+    #
+    # **경기 날짜 순으로 봐야 한다.** match_files 는 파일 이름(경기 UUID) 순이라
+    # 그 첫 번째는 아무 경기나 된다. 그대로 쓰면 대회 시작일이 엉뚱해진다 —
+    # PVS 2026 Phase 1 이 실제 4/10 시작인데 4/19 로 적혀 있었다.
+    def _created(path):
+        try:
+            d = json.loads(path.read_text(encoding="utf-8-sig"))
+            return (d.get("data", {}).get("attributes", {}).get("createdAt") or "")
+        except (ValueError, OSError):
+            return ""
+
+    dated = sorted(((_created(f), f) for f in match_files), key=lambda t: t[0] or "~")
+    first_date = (dated[0][0] or "")[:10]
+    last_date = (dated[-1][0] or "")[:10]
     event_year = first_date[:4]
     auto_series, auto_edition, auto_code, auto_stage = stage_label.parse_id(
         args.tournament_id, int(event_year) if event_year.isdigit() else None)
@@ -473,6 +485,7 @@ def main():
         "stageCode": auto_code,
         "stage": auto_stage,
         "startDate": first_date,
+        "endDate": last_date,
         "source": "https://api.pubg.com/tournaments/%s" % args.tournament_id,
         "createdAt": created,
         "matchCount": len(match_files) - len(voided),

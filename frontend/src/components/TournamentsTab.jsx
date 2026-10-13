@@ -281,7 +281,10 @@ function YearBar({ years, active, counts, onChange }) {
 function EventCard({ name, stages, active, onClick }) {
   const matches = stages.reduce((n, t) => n + (t.matchCount || 0), 0);
   const from = stages[0]?.startDate;
-  const to = stages[stages.length - 1]?.startDate;
+  // 마지막 단계의 **끝나는 날**이 대회가 끝난 날이다. 시작일을 쓰면 마지막
+  // 단계가 여러 날에 걸친 만큼 기간이 짧게 나온다.
+  const last = stages[stages.length - 1];
+  const to = last?.endDate ?? last?.startDate;
   const short = d => (d ? d.slice(5).replace('-', '/') : '');
   const span = from && to && from !== to ? `${short(from)} ~ ${short(to)}` : short(from);
   return (
@@ -353,7 +356,10 @@ function TournamentDetail({ id, stages, onStage, stageLabel }) {
             <Trophy size={20} color="var(--accent-gold)" />
             <span style={{ fontWeight: '900', color: '#fff', fontSize: '1.1rem' }}>{data.name}</span>
             {data.startDate && (
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{data.startDate}</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                {data.endDate && data.endDate !== data.startDate
+                  ? `${data.startDate} ~ ${data.endDate.slice(5)}` : data.startDate}
+              </span>
             )}
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>

@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "c3",
   "stage": "Cup 3",
-  "startDate": "2026-08-16",
+  "startDate": "2026-08-15",
   "source": "https://api.pubg.com/tournaments/am-pas2c3",
   "createdAt": null,
   "matchCount": 5,
@@ -1293,5 +1293,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Americas Series/2026/2"
+  "officialName": "PUBG Americas Series/2026/2",
+  "endDate": "2026-08-16"
 }

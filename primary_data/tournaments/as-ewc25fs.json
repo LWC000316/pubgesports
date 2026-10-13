@@ -6,8 +6,8 @@
   "year": 2025,
   "edition": null,
   "stageCode": "fs",
-  "stage": null,
-  "startDate": "2025-08-16",
+  "stage": "Grand Finals",
+  "startDate": "2025-08-15",
   "source": "https://api.pubg.com/tournaments/as-ewc25fs",
   "createdAt": null,
   "matchCount": 12,
@@ -1293,5 +1293,6 @@
       "longestKill": 42.0
     }
   ],
-  "officialName": "Esports World Cup/2025"
+  "officialName": "Esports World Cup/2025",
+  "endDate": "2025-08-16"
 }

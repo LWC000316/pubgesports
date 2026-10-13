@@ -7,7 +7,7 @@
   "edition": "8",
   "stageCode": "gs",
   "stage": "Group Stage",
-  "startDate": "2025-05-13",
+  "startDate": "2025-05-12",
   "source": "https://api.pubg.com/tournaments/as-pgs8gs",
   "createdAt": null,
   "matchCount": 18,
@@ -1925,5 +1925,6 @@
       "longestKill": 241.9
     }
   ],
-  "officialName": "PUBG Global Series/2025/8"
+  "officialName": "PUBG Global Series/2025/8",
+  "endDate": "2025-05-14"
 }

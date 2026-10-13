@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "d",
   "stage": null,
-  "startDate": "2025-07-05",
+  "startDate": "2025-07-01",
   "source": "https://api.pubg.com/tournaments/kr-pwsd",
   "createdAt": null,
   "matchCount": 5,
@@ -1940,5 +1940,6 @@
       "avgSurvival": 103,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2025-07-05"
 }

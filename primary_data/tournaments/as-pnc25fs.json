@@ -6,8 +6,8 @@
   "year": 2025,
   "edition": null,
   "stageCode": "fs",
-  "stage": null,
-  "startDate": "2025-07-26",
+  "stage": "Final Stage",
+  "startDate": "2025-07-25",
   "source": "https://api.pubg.com/tournaments/as-pnc25fs",
   "createdAt": null,
   "matchCount": 18,
@@ -1309,5 +1309,6 @@
       "longestKill": 200.1
     }
   ],
-  "officialName": "PUBG Nations Cup/2025"
+  "officialName": "PUBG Nations Cup/2025",
+  "endDate": "2025-07-27"
 }

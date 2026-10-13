@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": null,
   "stage": null,
-  "startDate": "2026-04-27",
+  "startDate": "2026-04-17",
   "source": "https://api.pubg.com/tournaments/am-pas126",
   "createdAt": null,
   "matchCount": 30,
@@ -2339,5 +2339,6 @@
       "longestKill": 9.5
     }
   ],
-  "officialName": "PUBG Americas Series/2026/1"
+  "officialName": "PUBG Americas Series/2026/1",
+  "endDate": "2026-04-27"
 }

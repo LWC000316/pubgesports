@@ -6,7 +6,7 @@
   "year": 2026,
   "edition": "1",
   "stageCode": "c5",
-  "stage": null,
+  "stage": "Cup 5",
   "startDate": "2026-03-14",
   "source": "https://api.pubg.com/tournaments/kr-pws1c5",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1"
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1",
+  "endDate": "2026-03-14"
 }

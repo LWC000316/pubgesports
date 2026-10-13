@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "cn26",
   "stage": null,
-  "startDate": "2026-06-14",
+  "startDate": "2026-06-09",
   "source": "https://api.pubg.com/tournaments/cn-pnccn26",
   "createdAt": null,
   "matchCount": 33,
@@ -2502,5 +2502,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Nations Cup/2026"
+  "officialName": "PUBG Nations Cup/2026",
+  "endDate": "2026-06-14"
 }

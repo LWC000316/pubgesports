@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "fs",
   "stage": "Final Stage",
-  "startDate": "2026-03-22",
+  "startDate": "2026-03-21",
   "source": "https://api.pubg.com/tournaments/as-pgs1fs",
   "createdAt": null,
   "matchCount": 10,
@@ -1293,5 +1293,6 @@
       "longestKill": 26.5
     }
   ],
-  "officialName": "PUBG Global Series/2026/Circuit 1/Series 1"
+  "officialName": "PUBG Global Series/2026/Circuit 1/Series 1",
+  "endDate": "2026-03-22"
 }

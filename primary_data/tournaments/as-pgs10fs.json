@@ -7,7 +7,7 @@
   "edition": "10",
   "stageCode": "fs",
   "stage": "Final Stage",
-  "startDate": "2025-11-02",
+  "startDate": "2025-10-31",
   "source": "https://api.pubg.com/tournaments/as-pgs10fs",
   "createdAt": null,
   "matchCount": 18,
@@ -1293,5 +1293,6 @@
       "longestKill": 60.0
     }
   ],
-  "officialName": "PUBG Global Series/2025/10"
+  "officialName": "PUBG Global Series/2025/10",
+  "endDate": "2025-11-02"
 }

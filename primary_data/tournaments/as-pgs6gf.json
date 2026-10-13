@@ -7,7 +7,7 @@
   "edition": "6",
   "stageCode": "gf",
   "stage": "Grand Finals",
-  "startDate": "2026-06-07",
+  "startDate": "2026-06-05",
   "source": "https://api.pubg.com/tournaments/as-pgs6gf",
   "createdAt": null,
   "matchCount": 15,
@@ -1311,5 +1311,6 @@
       "longestKill": 219.7
     }
   ],
-  "officialName": "PUBG Global Series/2026/Circuit 2/Series Final"
+  "officialName": "PUBG Global Series/2026/Circuit 2/Series Final",
+  "endDate": "2026-06-07"
 }

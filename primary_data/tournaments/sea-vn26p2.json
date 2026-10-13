@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p2",
   "stage": null,
-  "startDate": "2026-09-06",
+  "startDate": "2026-09-04",
   "source": "https://api.pubg.com/tournaments/sea-vn26p2",
   "createdAt": null,
   "matchCount": 30,
@@ -1468,5 +1468,6 @@
       "avgSurvival": 878,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-09-13"
 }

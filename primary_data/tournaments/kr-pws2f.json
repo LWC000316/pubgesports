@@ -6,8 +6,8 @@
   "year": 2025,
   "edition": "2",
   "stageCode": "f",
-  "stage": null,
-  "startDate": "2025-09-28",
+  "stage": "Grand Finals",
+  "startDate": "2025-09-27",
   "source": "https://api.pubg.com/tournaments/kr-pws2f",
   "createdAt": null,
   "matchCount": 12,
@@ -1293,5 +1293,6 @@
       "longestKill": 173.2
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2025/Phase 2"
+  "officialName": "PUBG WEEKLY SERIES/2025/Phase 2",
+  "endDate": "2025-09-28"
 }

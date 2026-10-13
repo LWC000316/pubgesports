@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "ab",
   "stage": null,
-  "startDate": "2026-09-03",
+  "startDate": "2026-08-26",
   "source": "https://api.pubg.com/tournaments/cn-pcl26ab",
   "createdAt": null,
   "matchCount": 50,
@@ -2719,5 +2719,6 @@
       "avgSurvival": 1235,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-09-04"
 }

@@ -6,7 +6,7 @@
   "year": 2025,
   "edition": "2",
   "stageCode": "lc",
-  "stage": null,
+  "stage": "Last Chance",
   "startDate": "2025-09-23",
   "source": "https://api.pubg.com/tournaments/kr-pws2lc",
   "createdAt": null,
@@ -1293,5 +1293,6 @@
       "longestKill": 18.8
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2025/Phase 2"
+  "officialName": "PUBG WEEKLY SERIES/2025/Phase 2",
+  "endDate": "2025-09-23"
 }

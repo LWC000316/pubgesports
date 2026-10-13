@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "api",
   "stage": null,
-  "startDate": "2025-11-26",
+  "startDate": "2025-11-25",
   "source": "https://api.pubg.com/tournaments/as-pgcapi",
   "createdAt": null,
   "matchCount": 67,
@@ -2716,5 +2716,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Global Championship/2025"
+  "officialName": "PUBG Global Championship/2025",
+  "endDate": "2025-12-14"
 }

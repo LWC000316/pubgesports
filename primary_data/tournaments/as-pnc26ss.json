@@ -6,7 +6,7 @@
   "year": 2026,
   "edition": null,
   "stageCode": "ss",
-  "stage": null,
+  "stage": "Survival Stage",
   "startDate": "2026-06-23",
   "source": "https://api.pubg.com/tournaments/as-pnc26ss",
   "createdAt": null,
@@ -1344,5 +1344,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Nations Cup/2026"
+  "officialName": "PUBG Nations Cup/2026",
+  "endDate": "2026-06-24"
 }

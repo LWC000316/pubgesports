@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "api",
   "stage": null,
-  "startDate": "2025-08-15",
+  "startDate": "2025-08-10",
   "source": "https://api.pubg.com/tournaments/as-ewcapi",
   "createdAt": null,
   "matchCount": 10,
@@ -1992,5 +1992,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "Esports World Cup/2025"
+  "officialName": "Esports World Cup/2025",
+  "endDate": "2025-08-16"
 }

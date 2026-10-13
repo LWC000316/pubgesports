@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "roa",
   "stage": null,
-  "startDate": "2025-06-08",
+  "startDate": "2025-06-05",
   "source": "https://api.pubg.com/tournaments/sea-ewcroa",
   "createdAt": null,
   "matchCount": 19,
@@ -1455,5 +1455,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "Esports World Cup/2025"
+  "officialName": "Esports World Cup/2025",
+  "endDate": "2025-06-08"
 }

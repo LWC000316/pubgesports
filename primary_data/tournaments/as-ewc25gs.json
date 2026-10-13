@@ -6,7 +6,7 @@
   "year": 2025,
   "edition": null,
   "stageCode": "gs",
-  "stage": null,
+  "stage": "Group Stage",
   "startDate": "2025-08-12",
   "source": "https://api.pubg.com/tournaments/as-ewc25gs",
   "createdAt": null,
@@ -1957,5 +1957,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "Esports World Cup/2025"
+  "officialName": "Esports World Cup/2025",
+  "endDate": "2025-08-14"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "af26",
   "stage": null,
-  "startDate": "2026-09-27",
+  "startDate": "2026-09-25",
   "source": "https://api.pubg.com/tournaments/cn-pclaf26",
   "createdAt": null,
   "matchCount": 15,
@@ -1308,5 +1308,6 @@
       "avgSurvival": 1264,
       "longestKill": 213.4
     }
-  ]
+  ],
+  "endDate": "2026-09-27"
 }

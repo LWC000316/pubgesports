@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "api",
   "stage": null,
-  "startDate": "2025-07-26",
+  "startDate": "2025-07-21",
   "source": "https://api.pubg.com/tournaments/as-pncapi",
   "createdAt": null,
   "matchCount": 20,
@@ -1960,5 +1960,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Nations Cup/2025"
+  "officialName": "PUBG Nations Cup/2025",
+  "endDate": "2025-07-27"
 }

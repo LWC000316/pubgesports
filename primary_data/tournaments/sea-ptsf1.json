@@ -1,13 +1,13 @@
 {
   "id": "sea-ptsf1",
-  "name": "PTS 2026 (f1)",
+  "name": "PTS 2026 Grand Finals",
   "category": "regional",
   "series": "PTS",
   "year": 2026,
   "edition": null,
   "stageCode": "f1",
-  "stage": null,
-  "startDate": "2026-05-10",
+  "stage": "Grand Finals",
+  "startDate": "2026-05-08",
   "source": "https://api.pubg.com/tournaments/sea-ptsf1",
   "createdAt": null,
   "matchCount": 31,
@@ -1356,5 +1356,6 @@
       "avgSurvival": 1085,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-05-12"
 }

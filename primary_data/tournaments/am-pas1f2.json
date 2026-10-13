@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "f2",
   "stage": "Finals",
-  "startDate": "2026-05-09",
+  "startDate": "2026-05-08",
   "source": "https://api.pubg.com/tournaments/am-pas1f2",
   "createdAt": null,
   "matchCount": 15,
@@ -1343,5 +1343,6 @@
       "longestKill": 71.0
     }
   ],
-  "officialName": "PUBG Americas Series/2026/1"
+  "officialName": "PUBG Americas Series/2026/1",
+  "endDate": "2026-05-11"
 }

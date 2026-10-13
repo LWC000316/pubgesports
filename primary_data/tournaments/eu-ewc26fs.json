@@ -6,8 +6,8 @@
   "year": 2026,
   "edition": null,
   "stageCode": "fs",
-  "stage": null,
-  "startDate": "2026-07-25",
+  "stage": "Grand Finals",
+  "startDate": "2026-07-24",
   "source": "https://api.pubg.com/tournaments/eu-ewc26fs",
   "createdAt": null,
   "matchCount": 18,
@@ -1293,5 +1293,6 @@
       "longestKill": 138.5
     }
   ],
-  "officialName": "Esports World Cup/2026"
+  "officialName": "Esports World Cup/2026",
+  "endDate": "2026-07-26"
 }

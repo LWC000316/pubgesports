@@ -6,8 +6,8 @@
   "year": 2025,
   "edition": null,
   "stageCode": "gs",
-  "stage": "Grand Survival",
-  "startDate": "2025-12-03",
+  "stage": "Group Stage",
+  "startDate": "2025-11-28",
   "source": "https://api.pubg.com/tournaments/as-pgc25gs",
   "createdAt": null,
   "matchCount": 36,
@@ -2573,5 +2573,6 @@
       "longestKill": 175.5
     }
   ],
-  "officialName": "PUBG Global Championship/2025"
+  "officialName": "PUBG Global Championship/2025",
+  "endDate": "2025-12-03"
 }

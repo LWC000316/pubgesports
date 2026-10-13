@@ -1,13 +1,13 @@
 {
   "id": "sea-ptsg1",
-  "name": "PTS 2026 (g1)",
+  "name": "PTS 2026 Group Stage",
   "category": "regional",
   "series": "PTS",
   "year": 2026,
   "edition": null,
   "stageCode": "g1",
-  "stage": null,
-  "startDate": "2026-04-30",
+  "stage": "Group Stage",
+  "startDate": "2026-04-27",
   "source": "https://api.pubg.com/tournaments/sea-ptsg1",
   "createdAt": null,
   "matchCount": 43,
@@ -2484,5 +2484,6 @@
       "avgSurvival": 86,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-05-06"
 }

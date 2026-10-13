@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "xapi",
   "stage": null,
-  "startDate": "2025-11-01",
+  "startDate": "2025-10-28",
   "source": "https://api.pubg.com/tournaments/as-pgsxapi",
   "createdAt": null,
   "matchCount": 10,
@@ -1925,5 +1925,6 @@
       "avgSurvival": 314,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2025-11-02"
 }

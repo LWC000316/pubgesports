@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "as26",
   "stage": null,
-  "startDate": "2026-09-13",
+  "startDate": "2026-09-11",
   "source": "https://api.pubg.com/tournaments/cn-pclas26",
   "createdAt": null,
   "matchCount": 56,
@@ -2135,5 +2135,6 @@
       "avgSurvival": 564,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-09-25"
 }

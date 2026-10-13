@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "f",
   "stage": null,
-  "startDate": "2026-05-10",
+  "startDate": "2026-05-08",
   "source": "https://api.pubg.com/tournaments/cn-pclf",
   "createdAt": null,
   "matchCount": 15,
@@ -1292,5 +1292,6 @@
       "avgSurvival": 1002,
       "longestKill": 80.5
     }
-  ]
+  ],
+  "endDate": "2026-05-10"
 }

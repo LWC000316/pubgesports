@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "p2",
   "stage": "Playoff 2",
-  "startDate": "2026-09-26",
+  "startDate": "2026-09-25",
   "source": "https://api.pubg.com/tournaments/am-pas2p2",
   "createdAt": null,
   "matchCount": 15,
@@ -2387,5 +2387,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Americas Series/2026/2"
+  "officialName": "PUBG Americas Series/2026/2",
+  "endDate": "2026-09-28"
 }

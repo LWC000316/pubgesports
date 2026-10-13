@@ -7,7 +7,7 @@
   "edition": "5",
   "stageCode": "fs5",
   "stage": "Final Stage",
-  "startDate": "2026-05-31",
+  "startDate": "2026-05-30",
   "source": "https://api.pubg.com/tournaments/as-pgs5fs5",
   "createdAt": null,
   "matchCount": 10,
@@ -1293,5 +1293,6 @@
       "longestKill": 17.8
     }
   ],
-  "officialName": "PUBG Global Series/2026/Circuit 2/Series 2"
+  "officialName": "PUBG Global Series/2026/Circuit 2/Series 2",
+  "endDate": "2026-05-31"
 }

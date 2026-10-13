@@ -28,6 +28,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOG_DIR = PROJECT_ROOT / "primary_data" / "matchlogs"
 RAW_DIR = PROJECT_ROOT / "intermediate_results" / "tournaments"
+AGG_DIR = PROJECT_ROOT / "primary_data" / "tournaments"
 
 
 def load(path):
@@ -57,6 +58,7 @@ def build(stage_dir):
         return 0, "원본에 경기 시각이 없음"
 
     rows.sort(key=lambda r: r["startedAt"])
+    fix_dates(stage_dir.name, rows)
     missing = have - {r["id"] for r in rows}
     out = {"matches": rows}
     if missing:
@@ -65,6 +67,29 @@ def build(stage_dir):
     (stage_dir / "_order.json").write_text(
         json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return len(rows), None
+
+
+def fix_dates(stage_id, rows):
+    """집계 파일의 대회 날짜를 **실제 첫·마지막 경기 날짜**로 맞춘다.
+
+    `build_tournament_seed.py` 가 오래도록 경기 파일을 **이름(UUID) 순**으로
+    정렬해 그 첫 번째의 날짜를 시작일로 썼다. 아무 경기나 된다는 뜻이다 —
+    PVS 2026 Phase 1 은 4/10 시작인데 4/19 로 적혀 있었다. 빌더는 고쳤지만
+    서버가 만든 집계는 원본이 없어 다시 만들 수 없으므로 여기서 고친다.
+    """
+    f = AGG_DIR / ("%s.json" % stage_id)
+    if not f.is_file():
+        return
+    d = json.loads(f.read_text(encoding="utf-8"))
+    start, end = rows[0]["startedAt"][:10], rows[-1]["startedAt"][:10]
+    # 매치로그가 그 단계의 일부만 있을 수 있다. 그때는 범위를 좁히지 않는다.
+    if len(rows) < (d.get("matchCount") or 0):
+        return
+    if d.get("startDate") == start and d.get("endDate") == end:
+        return
+    d["startDate"], d["endDate"] = start, end
+    f.write_text(json.dumps(d, ensure_ascii=False, indent=2) + chr(10),
+                 encoding="utf-8")
 
 
 def main():

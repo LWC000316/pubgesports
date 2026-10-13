@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "wf1",
   "stage": "Weekly Finals 1주차",
-  "startDate": "2026-04-19",
+  "startDate": "2026-04-18",
   "source": "https://api.pubg.com/tournaments/kr-pws1wf1",
   "createdAt": null,
   "matchCount": 10,
@@ -1293,5 +1293,6 @@
       "longestKill": 375.6
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1"
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1",
+  "endDate": "2026-04-19"
 }

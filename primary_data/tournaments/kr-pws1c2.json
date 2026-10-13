@@ -6,7 +6,7 @@
   "year": 2026,
   "edition": "1",
   "stageCode": "c2",
-  "stage": null,
+  "stage": "Cup 2",
   "startDate": "2026-02-21",
   "source": "https://api.pubg.com/tournaments/kr-pws1c2",
   "createdAt": null,
@@ -1292,5 +1292,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1"
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1",
+  "endDate": "2026-02-21"
 }

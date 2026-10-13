@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "ws",
   "stage": null,
-  "startDate": "2026-09-30",
+  "startDate": "2026-09-29",
   "source": "https://api.pubg.com/tournaments/sea-ptsws",
   "createdAt": null,
   "matchCount": 10,
@@ -1308,5 +1308,6 @@
       "avgSurvival": 842,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-09-30"
 }

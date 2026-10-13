@@ -52,7 +52,63 @@ STAGE_NAMES = {
         "wf": "Weekly Finals",
         "bm": "Bottom 16",
         "rd": "Rank Decision",
+        # 2019 위키 하위 문서에 Semifinals 가 있고, na-pgcsf 18경기가 조별
+        # 다음·결승 앞(11/17)이라 자리가 맞는다.
+        "sf": "Semifinals",
+        # 2022·2023 의 첫 본선 단계다. 두 해 위키 모두 Group Stage 를 갖고,
+        # 그 해 남은 단계는 전부 다른 id 로 잡혀 있다
+        # (2022: wb·lbp1·lbp2 = Bracket Stage, gs 4경기 = Grand Survival, gf).
+        "gsa": "Group Stage", "gsb": "Group Stage",
     },
+
+    "EWC": {
+        # 대회가 본선 단계 둘뿐이고(위키 하위 문서가 Group Stage·Grand Finals
+        # 둘뿐이다) 우리 id 도 gs·fs 둘뿐이며 날짜 순서가 맞는다.
+        # **fs 는 "Final Stage" 가 아니다** — 위키가 그 단계를 Grand Finals 로
+        # 부른다. 2024·2025·2026 셋 다 같은 구조다 (gs 18경기 -> fs 12~18경기).
+        "gs": "Group Stage",
+        "fs": "Grand Finals",
+    },
+    "PNC": {
+        # 2025 위키 하위 문서는 Final Stage·Survival Stage,
+        # 2026 은 Grand Finals·Survival Stage 다.
+        #   as-pnc25fs 7/26 18경기 -> Final Stage
+        #   as-pnc26ss 6/23 11경기 -> Survival Stage
+        # **2025 의 gs 는 비워 둔다.** 그 해 위키에 Group Stage 문서가 없고
+        # (남은 것은 Survival Stage 뿐인데) 머리글자도 맞지 않는다.
+        "fs": "Final Stage",
+        "ss": "Survival Stage",
+    },
+}
+
+# 같은 시리즈라도 **해마다 단계 이름이 다르다.** 그런 것만 여기 둔다.
+# 근거는 그해 리퀴피디아 문서에 실제로 있는 하위 문서 제목이다.
+#
+# PWS 2026 "PUBG WEEKLY SERIES: KOREA/2026/Phase 1" 하위 문서:
+#   Cup/1 ~ Cup/5 · Finals · Weekly Finals · Weekly Stage
+#   -> 우리 id 의 c1~c5 가 각 5경기, f 가 27경기로 맞는다.
+# PWS 2025 "…/2025/Phase 2" 하위 문서:
+#   Grand Finals · Last Chance · Weekly Stage · PGC Points
+#   -> f 는 2025 년엔 "Grand Finals" 다. 2025 의 Cup 문서에는 번호가 없으므로
+#      그해 c2~c7 에 "Cup 2" 같은 이름을 붙이지 않는다.
+STAGE_NAMES_BY_YEAR = {
+    # **gs 는 해마다 뜻이 다르다.** 2021·2022 의 gs 는 4경기짜리 Grand Survival
+    # 인데 2025 의 gs 는 36경기다. 2025 위키 하위 문서는 Grand Finals·Group
+    # Stage·Last Stage 셋이고 우리 id 도 gs·ls·gf 셋이라 자리가 하나씩 맞는다.
+    # Grand Survival 은 그해 위키에 아예 없다.
+    ("PGC", 2025): {"gs": "Group Stage", "ls": "Last Stage"},
+    # 2023 위키에만 Last Chance 문서가 있다 (11/27, 조별과 결승 사이).
+    ("PGC", 2023): {"lc": "Last Chance"},
+    # PTS 2026 Phase 1 — "PUBG Thailand Series/2026/Phase 1" 의 Format 과
+    # `_order.json` 의 경기 날짜를 맞춰 봤다.
+    #   Group Stage  4/28~30 & 5/4~6  -> sea-ptsg1 이 4/27~30 · 5/4~6
+    #   Grand Finals 5/8~12 · 30경기  -> sea-ptsf1 이 5/8~12 · 31경기 (날짜 일치)
+    # **Phase 2 의 w1·w2·ws 는 비워 둔다.** 그쪽은 연기돼 9/21~10/1 로 흩어졌고
+    # 위키에 주차별 문서가 없어 어느 조각이 무엇인지 확인되지 않는다.
+    ("PTS", 2026): {"g1": "Group Stage", "f1": "Grand Finals"},
+    ("PWS", 2025): {"lc": "Last Chance", "f": "Grand Finals"},
+    ("PWS", 2026): {"c1": "Cup 1", "c2": "Cup 2", "c3": "Cup 3",
+                    "c4": "Cup 4", "c5": "Cup 5", "f": "Finals"},
 }
 
 # 어느 시리즈에서나 같은 뜻인 것만 둔다. 위에서 못 찾으면 여기를 본다.
@@ -109,10 +165,14 @@ STAGE_PATTERNS = {
 _TRAILING_NUM = re.compile(r'^([a-z]+)(\d+)$')
 
 
-def stage_name(series, code):
+def stage_name(series, code, year=None):
     """확인된 이름만 돌려준다. 모르면 None."""
     if not code:
         return None
+    # 해마다 다른 것이 먼저다. 시리즈 공통 규칙이 그해를 덮어쓰면 안 된다.
+    by_year = STAGE_NAMES_BY_YEAR.get((series, year), {})
+    if code in by_year:
+        return by_year[code]
     for rx, fmt in STAGE_PATTERNS.get(series, ()):
         m = rx.match(code)
         if m:
@@ -207,7 +267,7 @@ def parse_id(tournament_id, year=None):
     if yy and edition and len(edition) > 2 and edition.endswith(yy):
         edition = edition[:-2] or None
 
-    return series, edition, code, stage_name(series, code)
+    return series, edition, code, stage_name(series, code, year)
 
 
 def is_qualifier(tournament_id):

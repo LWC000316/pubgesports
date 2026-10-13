@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "t",
   "stage": null,
-  "startDate": "2026-09-04",
+  "startDate": "2026-08-25",
   "source": "https://api.pubg.com/tournaments/cn-pcl26t",
   "createdAt": null,
   "matchCount": 36,
@@ -3066,5 +3066,6 @@
       "avgSurvival": 85,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-09-04"
 }
