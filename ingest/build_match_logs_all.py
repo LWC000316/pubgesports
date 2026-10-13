@@ -23,6 +23,7 @@ import argparse
 import importlib.util
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -57,7 +58,10 @@ def targets(args):
                 continue
         raw = RAW_DIR / tid
         n = len(list(raw.glob("match_*.json"))) if raw.is_dir() else 0
-        have = len(list((OUT_DIR / tid).glob("*.json"))) if (OUT_DIR / tid).is_dir() else 0
+        # `_order.json` 은 경기가 아니다. 세면 다 만든 것처럼 보인다.
+        done = OUT_DIR / tid
+        have = (len([f for f in done.glob("*.json") if not f.name.startswith("_")])
+                if done.is_dir() else 0)
         out.append((date, series, tid, n, have))
     return out
 
@@ -73,6 +77,9 @@ def main():
     ap.add_argument("--keep-telemetry", action="store_true")
     ap.add_argument("--force", action="store_true",
                     help="이미 만든 매치로그도 다시 뽑는다")
+    ap.add_argument("--max-minutes", type=float, default=None,
+                    help="이 시간을 넘기면 하던 단계까지만 하고 멈춘다. "
+                         "서버 작업 한도(6시간)에 걸려 통째로 취소되는 것을 막는다")
     args = ap.parse_args()
     for s in (sys.stdout, sys.stderr):
         try:
@@ -99,7 +106,17 @@ def main():
         return 0
 
     script = str(Path(__file__).with_name("build_match_log.py"))
+    # **시간 예산.** 텔레메트리 내려받기는 경기당 33MB 라 전 단계를 한 번에
+    # 끝낼 수 없다. 한도에 걸려 작업이 강제 취소되면 뒤따르는 커밋이 통째로
+    # 날아간다 — 2026-10-12 에 그렇게 취소됐다. 예산이 끝나면 거기까지 커밋한다.
+    start = time.time()
+    done_n = 0
     for date, series, tid, n, have in todo:
+        if args.max_minutes and (time.time() - start) / 60 >= args.max_minutes:
+            print("\n시간 예산(%g분)을 다 썼습니다. %d단계까지 뽑고 멈춥니다."
+                  % (args.max_minutes, done_n))
+            print("남은 단계는 한 번 더 실행하면 이어서 뽑습니다.")
+            break
         cmd = [sys.executable, script, tid]
         if args.keep_telemetry:
             cmd.append("--keep-telemetry")
@@ -109,6 +126,8 @@ def main():
         r = subprocess.run(cmd)
         if r.returncode != 0:
             print("  실패: %s" % tid)
+        done_n += 1
+    print("\n뽑은 단계 %d개 · 경과 %d분" % (done_n, (time.time() - start) / 60))
     return 0
 
 
