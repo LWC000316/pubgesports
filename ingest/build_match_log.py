@@ -122,6 +122,17 @@ def relabel(log, by_nickname):
 GAP = 15          # 이 초 안에 이어지면 한 교전으로 본다
 
 
+def dedupe_zones(rows):
+    """같은 구역이 수십 초 동안 그대로 보고된다. 바뀐 순간만 남긴다."""
+    out = []
+    for r in rows:
+        last = out[-1] if out else None
+        if last and (last["x"], last["y"], last["r"]) == (r["x"], r["y"], r["r"]):
+            continue
+        out.append(r)
+    return out
+
+
 def merge_engagements(events):
     """
     피해 이벤트를 **교전 구간**으로 묶는다.
@@ -187,6 +198,8 @@ def build(events, match_id):
     players = {}          # 이름 -> {team, nickname}
     tracks = defaultdict(list)
     circles = []
+    next_circles = []
+    red_zones = []
     kills = []
     damage = []        # 선수가 선수를 때린 것만. 낙상·자기장은 뺀다
     landings = []      # 낙하산 착지 지점
@@ -266,14 +279,30 @@ def build(events, match_id):
 
         elif t == "LogGameStatePeriodic":
             g = e.get("gameState", {})
+            sec = int(g.get("elapsedTime") or 0)
             pos = g.get("safetyZonePosition") or {}
             if g.get("safetyZoneRadius"):
                 circles.append({
-                    "t": int(g.get("elapsedTime") or 0),
+                    "t": sec,
                     "x": pos.get("x", 0), "y": pos.get("y", 0),
                     "r": g.get("safetyZoneRadius"),
                     "alive": g.get("numAlivePlayers"),
                     "aliveTeams": g.get("numAliveTeams"),
+                })
+            # **다음 자기장**(화면의 흰 원). 아직 줄어들기 전의 예고 구역이라
+            # "지금 어디로 뛰어야 하는가" 를 보려면 이것이 있어야 한다.
+            warn = g.get("poisonGasWarningPosition") or {}
+            if g.get("poisonGasWarningRadius"):
+                next_circles.append({
+                    "t": sec, "x": warn.get("x", 0), "y": warn.get("y", 0),
+                    "r": g.get("poisonGasWarningRadius"),
+                })
+            # 레드존. 없는 맵·규정도 있어서 값이 있을 때만 담는다.
+            red = g.get("redZonePosition") or {}
+            if g.get("redZoneRadius"):
+                red_zones.append({
+                    "t": sec, "x": red.get("x", 0), "y": red.get("y", 0),
+                    "r": g.get("redZoneRadius"),
                 })
 
         # 2021년쯤 LogPlayerKill -> LogPlayerKillV2 로 바뀌었고 무기 필드 위치도
@@ -343,6 +372,12 @@ def build(events, match_id):
         "duration": max((c["t"] for c in out_circles), default=0),
         "tracks": out_tracks,
         "circles": out_circles,
+        # 다음 자기장과 레드존. 2026-10-13 부터 뽑기 시작했으므로 그 전에 만든
+        # 로그에는 없다. 화면은 없으면 그냥 안 그린다.
+        "nextCircles": [{"t": c["t"], "x": norm(c["x"]), "y": norm(c["y"]),
+                         "r": round(c["r"] / size, 5)} for c in dedupe_zones(next_circles)],
+        "redZones": [{"t": c["t"], "x": norm(c["x"]), "y": norm(c["y"]),
+                      "r": round(c["r"] / size, 5)} for c in dedupe_zones(red_zones)],
         "kills": out_kills,
         # 교전선. [시작초, 끝초, 가해자, 피해자, 가해자x, y, 피해자x, y, 누적피해]
         "engagements": [

@@ -1,5 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Play, Pause, SkipBack, Users, Crosshair, Car, Skull, ZoomIn, Swords, Package } from 'lucide-react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Play, Pause, SkipBack, Users, Crosshair, Route, Skull, ZoomIn, Swords,
+  Package, Tag, Grid3x3, Plane, Ruler, Camera, Maximize2, MessageSquare, Target
+} from 'lucide-react';
 
 /**
  * 매치로그. 실제 맵 이미지 위에 선수 이동 경로와 자기장을 그린다.
@@ -9,6 +12,10 @@ import { Play, Pause, SkipBack, Users, Crosshair, Car, Skull, ZoomIn, Swords, Pa
  *
  * 맵 이미지는 PUBG 가 API 사용자용으로 공개한 공식 api-assets 저장소에서 받았다
  * (frontend/public/maps/).
+ *
+ * **화면에 나오는 것은 전부 텔레메트리에서 나온 값이다.** 유일한 예외가 비행
+ * 항로인데, 공식 텔레메트리에 비행기 경로 이벤트가 없어서 이륙 직후 선수들의
+ * 좌표로 직선을 맞춘 **추정값**이다. 그래서 화면에도 "추정"이라고 적는다.
  */
 const SIZE = 1000;
 
@@ -19,23 +26,38 @@ const TEAM_COLORS = [
   '#ffa94d', '#63e6be', '#e599f7', '#ff8787'
 ];
 
-const SPEEDS = [1, 2, 4, 8];
+const SPEEDS = [1, 2, 4, 8, 16];
 const TICK_MS = 100;
+// 경로를 "꼬리"로 그릴 때 남길 시간. 전체 경로는 지도를 덮어 버리고, 점만
+// 찍으면 어디서 왔는지 안 보인다. 그 사이를 60초로 잡았다.
+const TAIL_SECONDS = 60;
 
 const mmss = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.round(s) % 60).padStart(2, '0')}`;
 
-export default function MatchLogMap({ log }) {
+export default function MatchLogMap({ log, title }) {
   const canvasRef = useRef(null);
+  const boxRef = useRef(null);
   const [time, setTime] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [speed, setSpeed] = useState(2);
+  const [speed, setSpeed] = useState(4);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [showKills, setShowKills] = useState(true);
-  const [showTrails, setShowTrails] = useState(true);
-  const [showFights, setShowFights] = useState(true);
-  const [showDrops, setShowDrops] = useState(true);
   const [zoom, setZoom] = useState(1);
+  const [measure, setMeasure] = useState(null);   // {ax,ay,bx,by} | null
+
+  const [view, setView] = useState({
+    names: true,      // 닉네임
+    tags: false,      // 이름 앞 팀태그
+    centroid: false,  // 팀 무게중심 마커
+    grid: false,      // 격자
+    feed: true,       // 맵 위 킬 피드
+    flight: true,     // 비행 항로(추정)
+    trails: false,    // 이동 경로 — 고른 팀은 켜고 끄기와 무관하게 그린다
+    kills: true,      // 킬 지점
+    fights: true,     // 교전선
+    drops: true,      // 보급 상자
+  });
+  const toggle = k => setView(v => ({ ...v, [k]: !v[k] }));
 
   const duration = log?.duration ?? 0;
 
@@ -55,6 +77,12 @@ export default function MatchLogMap({ log }) {
     teams.forEach(([name], i) => m.set(name, TEAM_COLORS[i % TEAM_COLORS.length]));
     return m;
   }, [teams]);
+
+  const teamOf = useMemo(() => {
+    const m = new Map();
+    for (const t of log?.tracks ?? []) m.set(t.name, t.team || t.nickname);
+    return m;
+  }, [log]);
 
   const landingOf = useMemo(() => {
     const m = new Map();
@@ -76,6 +104,9 @@ export default function MatchLogMap({ log }) {
     return m;
   }, [log]);
 
+  const phases = useMemo(() => derivePhases(log?.circles), [log]);
+  const flight = useMemo(() => deriveFlightPath(log), [log]);
+
   // 지금 벌어지고 있는 교전. 끝난 것은 그리지 않는다 — 쌓이면 지도가 덮인다.
   const fightsNow = useMemo(
     () => (log?.engagements ?? []).filter(e => e.t <= time && time <= e.end + 3),
@@ -86,7 +117,41 @@ export default function MatchLogMap({ log }) {
     () => (log?.kills ?? []).filter(k => k.t == null || k.t <= time),
     [log, time]);
 
-  useEffect(() => { setTime(0); setPlaying(false); setSelectedPlayer(null); }, [log]);
+  const circle = useMemo(
+    () => [...(log?.circles ?? [])].reverse().find(c => c.t <= time),
+    [log, time]);
+
+  const phaseNo = useMemo(
+    () => phases.filter(p => p <= time).length, [phases, time]);
+
+  /**
+   * 그 시각의 순위표. **공식 점수가 아니다** — 매치로그에는 대회 규정이 없다.
+   * 살아 있는 팀을 킬 많은 순으로 먼저, 탈락한 팀을 나중에 죽은 순으로 뒤에
+   * 놓는다. 배틀로얄에서 순위가 정해지는 방식 그대로라 지어낸 값이 없다.
+   */
+  const standings = useMemo(() => {
+    const rows = teams.map(([name, members]) => {
+      const alive = members.filter(p => (deathAt.get(p.name) ?? Infinity) > time).length;
+      const out = alive === 0
+        ? Math.max(...members.map(p => deathAt.get(p.name) ?? 0)) : null;
+      return { name, members, alive, out, kills: 0 };
+    });
+    const byName = new Map(rows.map(r => [r.name, r]));
+    for (const k of killsSoFar) {
+      const t = teamOf.get(k.killer);
+      if (t && byName.has(t)) byName.get(t).kills += 1;
+    }
+    rows.sort((a, b) => {
+      if (!!a.alive !== !!b.alive) return a.alive ? -1 : 1;
+      if (a.alive && b.alive) return b.kills - a.kills || a.name.localeCompare(b.name);
+      return b.out - a.out;                       // 늦게 죽은 팀이 높은 순위
+    });
+    return rows;
+  }, [teams, deathAt, killsSoFar, teamOf, time]);
+
+  useEffect(() => {
+    setTime(0); setPlaying(false); setSelectedPlayer(null); setMeasure(null);
+  }, [log]);
 
   useEffect(() => {
     if (!playing) return;
@@ -100,21 +165,33 @@ export default function MatchLogMap({ log }) {
     return () => clearInterval(id);
   }, [playing, duration, speed]);
 
-  const circle = useMemo(
-    () => [...(log?.circles ?? [])].reverse().find(c => c.t <= time),
-    [log, time]);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !log) return;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, SIZE, SIZE);
     const px = v => v * SIZE;
+    const focusTeam = selectedTeam;
+    const focusPlayer = selectedPlayer;
+    const focused = Boolean(focusTeam || focusPlayer);
 
-    // 1. 자기장. 바깥을 어둡게 해서 안전 구역이 드러나게 한다.
+    // 1. 격자 — 1km 간격. mapSize 는 센티미터라 10만 = 1km 다.
+    if (view.grid && log.mapSize) {
+      const step = 100000 / log.mapSize;
+      ctx.strokeStyle = 'rgba(255,255,255,0.13)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let g = step; g < 1; g += step) {
+        ctx.moveTo(px(g), 0); ctx.lineTo(px(g), SIZE);
+        ctx.moveTo(0, px(g)); ctx.lineTo(SIZE, px(g));
+      }
+      ctx.stroke();
+    }
+
+    // 2. 자기장. 바깥을 어둡게 해서 안전 구역이 드러나게 한다.
     if (circle && circle.r > 0) {
       ctx.save();
-      ctx.fillStyle = 'rgba(0, 20, 40, 0.45)';
+      ctx.fillStyle = 'rgba(0, 32, 72, 0.5)';
       ctx.beginPath();
       ctx.rect(0, 0, SIZE, SIZE);
       ctx.arc(px(circle.x), px(circle.y), px(circle.r), 0, Math.PI * 2, true);
@@ -126,14 +203,48 @@ export default function MatchLogMap({ log }) {
       ctx.stroke();
       ctx.restore();
     }
+    // 다음 자기장(흰 원). 옛 로그에는 없는 필드라 있을 때만 그린다.
+    const next = [...(log.nextCircles ?? [])].reverse().find(c => c.t <= time);
+    if (next && next.r > 0) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+      ctx.lineWidth = 1.6;
+      ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      ctx.arc(px(next.x), px(next.y), px(next.r), 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    // 레드존. 옛 로그에는 없는 필드라 있을 때만 그린다.
+    const red = [...(log.redZones ?? [])].reverse().find(c => c.t <= time && c.t > time - 60);
+    if (red && red.r > 0) {
+      ctx.fillStyle = 'rgba(255, 60, 60, 0.18)';
+      ctx.beginPath();
+      ctx.arc(px(red.x), px(red.y), px(red.r), 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 80, 80, 0.7)';
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+    }
 
-    // 2. 이동 경로
+    // 3. 비행 항로(추정). 강하 전 좌표로 맞춘 직선이다.
+    if (view.flight && flight) {
+      ctx.strokeStyle = 'rgba(255, 90, 90, 0.75)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([10, 8]);
+      ctx.beginPath();
+      ctx.moveTo(px(flight.x1), px(flight.y1));
+      ctx.lineTo(px(flight.x2), px(flight.y2));
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // 4. 이동 경로와 선수
     for (const [teamName, members] of teams) {
-      if (selectedTeam && selectedTeam !== teamName) continue;
+      if (focusTeam && focusTeam !== teamName) continue;
       const color = colorOf.get(teamName);
+      const live = [];
       for (const track of members) {
-        if (selectedPlayer && selectedPlayer !== track.name) continue;
-        const focused = Boolean(selectedTeam || selectedPlayer);
+        if (focusPlayer && focusPlayer !== track.name) continue;
         const recorded = track.points.filter(p => p[0] <= time);
         if (!recorded.length) continue;
         // 경로 끝을 보간 지점까지 이어 둔다. 안 그러면 점만 앞서 나가고
@@ -146,12 +257,15 @@ export default function MatchLogMap({ log }) {
         // 남으므로 그대로 이으면 64명분 항로가 지도를 가로지르는 평행선이 되어
         // 정작 교전 지역을 덮어 버린다. 착지 기록이 없으면 (옛 대회) 종전대로.
         const landedAt = landingOf.get(track.name)?.t;
-        const trail = landedAt == null ? pts : pts.filter(p => p[0] >= landedAt);
+        let trail = landedAt == null ? pts : pts.filter(p => p[0] >= landedAt);
+        // 고른 팀은 전체 경로, 나머지는 최근 60초 꼬리만. 64명분 전체 경로는
+        // 지도를 덮어 아무것도 안 보인다.
+        if (!focused) trail = trail.filter(p => p[0] >= time - TAIL_SECONDS);
 
-        if (showTrails && trail.length > 1) {
+        if ((view.trails || focused) && trail.length > 1) {
           ctx.strokeStyle = color;
-          ctx.globalAlpha = focused ? 0.9 : 0.45;
-          ctx.lineWidth = focused ? 2.4 : 1.3;
+          ctx.globalAlpha = focused ? 0.9 : 0.5;
+          ctx.lineWidth = focused ? 2.4 : 1.4;
           ctx.beginPath();
           trail.forEach((p, i) => {
             const x = px(p[1]), y = px(p[2]);
@@ -175,43 +289,52 @@ export default function MatchLogMap({ log }) {
 
         // 현재 위치. 위치 기록이 **10초 간격**이라 그대로 찍으면 점이 뚝뚝
         // 끊긴다. 다음 기록과 사이를 비례로 나눠 그 사이 지점을 그린다.
-        // 실제 경로가 직선이었다는 보장은 없지만, 10초 동안 400m 를 직선으로
-        // 잇는 것이 제자리에 멈춰 있다 튀는 것보다 실제에 가깝다.
         const last = pts[pts.length - 1];
         const dead = (deathAt.get(track.name) ?? Infinity) <= time;
-        ctx.globalAlpha = dead ? 0.35 : 1;
+        if (!dead) live.push(last);
+        ctx.globalAlpha = dead ? 0.3 : 1;
         ctx.fillStyle = last[4] ? '#ff4d6d' : color;   // 기절 상태면 빨강
         ctx.beginPath();
-        ctx.arc(px(last[1]), px(last[2]), focused ? 6 : 3.6, 0, Math.PI * 2);
+        ctx.arc(px(last[1]), px(last[2]), focused ? 6 : 4, 0, Math.PI * 2);
         ctx.fill();
+        if (!dead) {
+          ctx.strokeStyle = 'rgba(0,0,0,0.65)';
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
 
         if (last[3]) {                                  // 차량 탑승 중이면 테두리
-          ctx.globalAlpha = dead ? 0.35 : 1;
+          ctx.globalAlpha = dead ? 0.3 : 1;
           ctx.strokeStyle = '#fff';
           ctx.lineWidth = 1.6;
           ctx.beginPath();
-          ctx.arc(px(last[1]), px(last[2]), focused ? 9 : 6, 0, Math.PI * 2);
+          ctx.arc(px(last[1]), px(last[2]), focused ? 9 : 7, 0, Math.PI * 2);
           ctx.stroke();
         }
-        if (focused) {
-          ctx.globalAlpha = 1;
-          ctx.fillStyle = dead ? 'rgba(255,255,255,0.45)' : '#fff';
-          ctx.font = '600 13px sans-serif';
-          ctx.fillText(track.nickname, px(last[1]) + 9, px(last[2]) + 4);
+
+        if (view.names && !dead) {
+          const label = (view.tags && track.tag ? `[${track.tag}] ` : '') + track.nickname;
+          drawLabel(ctx, label, px(last[1]) + 8, px(last[2]) + 4, color);
         }
+      }
+
+      // 팀 무게중심 — 팀이 지금 어디에 뭉쳐 있는지 한눈에 본다.
+      if (view.centroid && live.length) {
+        const cx = live.reduce((s, p) => s + p[1], 0) / live.length;
+        const cy = live.reduce((s, p) => s + p[2], 0) / live.length;
+        ctx.globalAlpha = 0.9;
+        drawLabel(ctx, members[0].tag || teamName, px(cx), px(cy) - 12, color, true);
       }
     }
     ctx.globalAlpha = 1;
 
-    // 3. 교전선 — 가해자에서 피해자로 선을 긋는다. 피해량이 클수록 굵다.
-    if (showFights) {
+    // 5. 교전선 — 가해자에서 피해자로 선을 긋는다. 피해량이 클수록 굵다.
+    if (view.fights) {
       for (const f of fightsNow) {
-        if (selectedTeam || selectedPlayer) {
-          const names = [f.a, f.v];
-          const inFocus = names.some(n =>
-            (selectedPlayer && n === selectedPlayer) ||
-            (selectedTeam && (log.tracks ?? []).some(
-              t => t.name === n && (t.team || t.nickname) === selectedTeam)));
+        if (focused) {
+          const inFocus = [f.a, f.v].some(n =>
+            (focusPlayer && n === focusPlayer) ||
+            (focusTeam && teamOf.get(n) === focusTeam));
           if (!inFocus) continue;
         }
         ctx.strokeStyle = 'rgba(255, 77, 109, 0.75)';
@@ -223,18 +346,18 @@ export default function MatchLogMap({ log }) {
       }
     }
 
-    // 4. 보급 상자 — 떨어진 뒤로는 계속 보인다
-    for (const p of (showDrops ? log.packages ?? [] : [])) {
+    // 6. 보급 상자 — 떨어진 뒤로는 계속 보인다
+    for (const p of (view.drops ? log.packages ?? [] : [])) {
       if (p.t != null && p.t > time) continue;
-      ctx.fillStyle = 'rgba(243, 166, 31, 0.85)';
+      ctx.fillStyle = 'rgba(243, 166, 31, 0.9)';
       ctx.fillRect(px(p.x) - 4, px(p.y) - 4, 8, 8);
       ctx.strokeStyle = '#000';
       ctx.lineWidth = 1;
       ctx.strokeRect(px(p.x) - 4, px(p.y) - 4, 8, 8);
     }
 
-    // 5. 킬 지점 — 지금까지 일어난 것만
-    if (showKills) {
+    // 7. 킬 지점 — 지금까지 일어난 것만
+    if (view.kills) {
       ctx.strokeStyle = '#ff4d6d';
       ctx.lineWidth = 1.8;
       for (const k of killsSoFar) {
@@ -245,39 +368,140 @@ export default function MatchLogMap({ log }) {
         ctx.stroke();
       }
     }
-  }, [log, time, teams, colorOf, selectedTeam, selectedPlayer, showKills,
-      showTrails, showFights, showDrops, circle, killsSoFar, deathAt, fightsNow, landingOf]);
+
+    // 8. 거리 측정
+    if (measure) {
+      const d = distanceMeters(measure, log.mapSize);
+      ctx.strokeStyle = '#ffd43b';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 4]);
+      ctx.beginPath();
+      ctx.moveTo(px(measure.ax), px(measure.ay));
+      ctx.lineTo(px(measure.bx), px(measure.by));
+      ctx.stroke();
+      ctx.setLineDash([]);
+      drawLabel(ctx, `${d}m`, px((measure.ax + measure.bx) / 2) + 8,
+                px((measure.ay + measure.by) / 2), '#ffd43b', true);
+    }
+  }, [log, time, teams, colorOf, teamOf, selectedTeam, selectedPlayer, view,
+      circle, killsSoFar, deathAt, fightsNow, landingOf, flight, measure]);
+
+  const onMapClick = useCallback(e => {
+    if (!measure) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    setMeasure(m => (m.bx == null || m.done)
+      ? { ax: x, ay: y, bx: x, by: y, done: false }
+      : { ...m, bx: x, by: y, done: true });
+  }, [measure]);
+
+  const onMapMove = useCallback(e => {
+    if (!measure || measure.done || measure.ax == null) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    setMeasure(m => ({ ...m, bx: (e.clientX - r.left) / r.width,
+                            by: (e.clientY - r.top) / r.height }));
+  }, [measure]);
+
+  const saveImage = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const out = document.createElement('canvas');
+    out.width = SIZE; out.height = SIZE;
+    const g = out.getContext('2d');
+    g.fillStyle = '#0a0e16';
+    g.fillRect(0, 0, SIZE, SIZE);
+    const img = boxRef.current?.querySelector('img');
+    // 맵 이미지는 같은 출처라 캔버스가 오염되지 않는다.
+    if (img && img.naturalWidth) g.drawImage(img, 0, 0, SIZE, SIZE);
+    g.drawImage(canvas, 0, 0);
+    const a = document.createElement('a');
+    a.download = `${log.map}_${Math.round(time)}s.jpg`;
+    a.href = out.toDataURL('image/jpeg', 0.92);
+    a.click();
+  }, [log, time]);
+
+  const goFullscreen = useCallback(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    if (document.fullscreenElement) document.exitFullscreen();
+    else el.requestFullscreen?.();
+  }, []);
 
   if (!log) return null;
 
   const aliveOf = track => (deathAt.get(track.name) ?? Infinity) > time;
+  const feedLines = view.feed ? killsSoFar.slice(-5).reverse() : [];
 
   return (
-    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
-      <div style={{ flex: '1 1 520px', minWidth: 0, maxWidth: SIZE }}>
-        <div style={{
+    <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+      <div style={{ flex: '1 1 600px', minWidth: 0, maxWidth: SIZE }}>
+        <div ref={boxRef} style={{
           position: 'relative', width: '100%', borderRadius: 'var(--radius-sm)',
           overflow: 'hidden', border: '1px solid var(--border-subtle)', background: '#0a0e16'
         }}>
           <div style={{
             width: '100%', aspectRatio: '1 / 1', overflow: zoom > 1 ? 'auto' : 'hidden'
           }}>
-            <div style={{
-              position: 'relative', width: `${zoom * 100}%`, aspectRatio: '1 / 1'
-            }}>
+            <div style={{ position: 'relative', width: `${zoom * 100}%`, aspectRatio: '1 / 1' }}>
               <img
                 src={`/maps/${log.map}.png`}
                 alt={log.mapLabel}
-                style={{ width: '100%', aspectRatio: '1 / 1', display: 'block', opacity: 0.85 }}
+                style={{ width: '100%', aspectRatio: '1 / 1', display: 'block', opacity: 0.9 }}
                 onError={e => { e.currentTarget.style.visibility = 'hidden'; }}
               />
               <canvas
                 ref={canvasRef}
                 width={SIZE}
                 height={SIZE}
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+                onClick={onMapClick}
+                onMouseMove={onMapMove}
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%',
+                         cursor: measure ? 'crosshair' : 'default' }}
               />
             </div>
+          </div>
+
+          {/* 지도 위 머리말 */}
+          <div style={{ position: 'absolute', top: 10, left: 10, display: 'flex',
+                        gap: '8px', alignItems: 'center', pointerEvents: 'none' }}>
+            <Badge accent>PHASE {phaseNo || 1}</Badge>
+            <Badge>{title ? `${title} · ` : ''}{log.mapLabel}</Badge>
+          </div>
+          <div style={{ position: 'absolute', top: 10, right: 10, pointerEvents: 'none' }}>
+            <Badge>생존 {circle?.alive ?? '-'}명 · {circle?.aliveTeams ?? '-'}팀</Badge>
+          </div>
+
+          {/* 지도 위 킬 피드 */}
+          {feedLines.length > 0 && (
+            <div style={{ position: 'absolute', top: 46, right: 10, display: 'flex',
+                          flexDirection: 'column', gap: '3px', pointerEvents: 'none',
+                          alignItems: 'flex-end' }}>
+              {feedLines.map((k, i) => (
+                <div key={i} style={{
+                  background: 'rgba(8,12,20,0.78)', borderRadius: '4px',
+                  padding: '3px 8px', fontSize: '0.72rem', color: 'var(--text-muted)',
+                  display: 'flex', gap: '6px', alignItems: 'center',
+                  opacity: 1 - i * 0.16
+                }}>
+                  <span style={{ color: '#fff', fontWeight: 700 }}>{short(k.killer)}</span>
+                  <Crosshair size={10} color="#ff4d6d" />
+                  <span>{short(k.victim)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* 보기 도구 — 지도 오른쪽에 붙인다 */}
+          <div style={{ position: 'absolute', bottom: 10, right: 10, display: 'flex',
+                        flexDirection: 'column', gap: '4px' }}>
+            <IconBtn on={view.names} onClick={() => toggle('names')} icon={Users} title="닉네임 표시" />
+            <IconBtn on={view.tags} onClick={() => toggle('tags')} icon={Tag} title="이름 앞 팀태그" />
+            <IconBtn on={view.centroid} onClick={() => toggle('centroid')} icon={Target} title="팀 무게중심" />
+            <IconBtn on={view.grid} onClick={() => toggle('grid')} icon={Grid3x3} title="격자 (1km)" />
+            <IconBtn on={view.feed} onClick={() => toggle('feed')} icon={MessageSquare} title="맵 위 킬 피드" />
+            <IconBtn on={view.flight} onClick={() => toggle('flight')} icon={Plane}
+                     title="비행 항로 (강하 전 좌표로 맞춘 추정값)" />
           </div>
         </div>
 
@@ -292,7 +516,7 @@ export default function MatchLogMap({ log }) {
           <div style={{ display: 'flex', gap: '2px' }}>
             {SPEEDS.map(s => (
               <button key={s} onClick={() => setSpeed(s)} style={{
-                ...ctrlBtn, padding: '7px 10px',
+                ...ctrlBtn, padding: '7px 9px',
                 background: speed === s ? 'var(--accent-gold)' : 'rgba(255,255,255,0.05)',
                 color: speed === s ? '#000' : '#fff', fontWeight: '800'
               }}>{s}x</button>
@@ -301,29 +525,44 @@ export default function MatchLogMap({ log }) {
           <span style={{ color: 'var(--accent-gold)', fontWeight: '900', fontVariantNumeric: 'tabular-nums' }}>
             {mmss(time)} / {mmss(duration)}
           </span>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: '4px' }}>
+            <IconBtn on={!!measure} onClick={() => setMeasure(m => (m ? null : {}))}
+                     icon={Ruler} title="거리 측정 — 두 점을 찍는다" />
+            <IconBtn onClick={saveImage} icon={Camera} title="현재 화면 저장 (JPG)" />
+            <IconBtn onClick={goFullscreen} icon={Maximize2} title="전체화면 (ESC 로 종료)" />
+          </div>
         </div>
 
-        <input
-          type="range" min={0} max={duration} value={Math.round(time)}
-          onChange={e => { setPlaying(false); setTime(Number(e.target.value)); }}
-          style={{ width: '100%', marginTop: '10px', accentColor: 'var(--accent-gold)' }}
-        />
+        {/* 진행 막대 — 자기장 페이즈가 어디서 시작하는지 눈금으로 보여준다 */}
+        <div style={{ position: 'relative', marginTop: '10px' }}>
+          <div style={{ position: 'relative', height: '12px' }}>
+            {phases.map((t, i) => (
+              <span key={i} title={`PHASE ${i + 1} · ${mmss(t)}`} style={{
+                position: 'absolute', left: `${(t / duration) * 100}%`, top: 0,
+                transform: 'translateX(-50%)', fontSize: '0.6rem',
+                color: 'var(--text-muted)', fontWeight: 800
+              }}>P{i + 1}</span>
+            ))}
+          </div>
+          <input
+            type="range" min={0} max={duration} value={Math.round(time)}
+            onChange={e => { setPlaying(false); setTime(Number(e.target.value)); }}
+            style={{ width: '100%', accentColor: 'var(--accent-gold)' }}
+          />
+        </div>
 
-        <div style={{ display: 'flex', gap: '14px', marginTop: '10px', fontSize: '0.8rem',
+        <div style={{ display: 'flex', gap: '14px', marginTop: '8px', fontSize: '0.8rem',
                       color: 'var(--text-muted)', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <Users size={14} /> 생존 {circle?.alive ?? '-'}명 / {circle?.aliveTeams ?? '-'}팀
-          </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <Skull size={14} /> 킬 {killsSoFar.length} / {log.kills?.length ?? 0}
           </span>
-          <Toggle on={showKills} set={setShowKills} icon={Crosshair} label="킬 지점" />
-          <Toggle on={showTrails} set={setShowTrails} icon={Car} label="이동 경로" />
-          <Toggle on={showFights} set={setShowFights} icon={Swords} label="교전" />
-          <Toggle on={showDrops} set={setShowDrops} icon={Package} label="보급" />
+          <Toggle on={view.trails} set={() => toggle('trails')} icon={Route} label="이동 경로" />
+          <Toggle on={view.kills} set={() => toggle('kills')} icon={Crosshair} label="킬 지점" />
+          <Toggle on={view.fights} set={() => toggle('fights')} icon={Swords} label="교전" />
+          <Toggle on={view.drops} set={() => toggle('drops')} icon={Package} label="보급" />
           <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <ZoomIn size={14} />
-            <input type="range" min={1} max={3} step={0.5} value={zoom}
+            <input type="range" min={1} max={4} step={0.5} value={zoom}
                    onChange={e => setZoom(Number(e.target.value))}
                    style={{ width: '70px', accentColor: 'var(--accent-gold)' }} />
             {zoom}x
@@ -331,42 +570,50 @@ export default function MatchLogMap({ log }) {
         </div>
       </div>
 
-      {/* 팀·선수 목록과 킬 피드 */}
-      <div style={{ flex: '1 1 260px', minWidth: '240px', display: 'flex',
+      {/* 순위·킬 로그 */}
+      <div style={{ flex: '1 1 270px', minWidth: '250px', display: 'flex',
                     flexDirection: 'column', gap: '12px' }}>
         <div>
-          <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '6px' }}>
-            팀을 누르면 그 팀만, 선수를 누르면 그 선수만 봅니다
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '6px' }}>
+            <span style={{ fontSize: '0.82rem', color: '#fff', fontWeight: 900 }}>순위</span>
+            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+              생존 팀이 먼저, 탈락 팀은 늦게 죽은 순 · 대회 점수는 아닙니다
+            </span>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px',
-                        maxHeight: '440px', overflowY: 'auto' }}>
-            {teams.map(([name, members]) => {
-              const on = selectedTeam === name;
-              const alive = members.filter(aliveOf).length;
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px',
+                        maxHeight: '460px', overflowY: 'auto' }}>
+            {standings.map((row, i) => {
+              const on = selectedTeam === row.name;
               return (
-                <div key={name}>
+                <div key={row.name}>
                   <button
-                    onClick={() => { setSelectedTeam(on ? null : name); setSelectedPlayer(null); }}
+                    onClick={() => { setSelectedTeam(on ? null : row.name); setSelectedPlayer(null); }}
                     style={{
                       display: 'flex', alignItems: 'center', gap: '8px', width: '100%',
-                      padding: '7px 10px', borderRadius: 'var(--radius-sm)',
+                      padding: '6px 9px', borderRadius: 'var(--radius-sm)',
                       background: on ? 'rgba(243,166,31,0.12)' : 'rgba(255,255,255,0.03)',
                       border: `1px solid ${on ? 'rgba(243,166,31,0.5)' : 'var(--border-subtle)'}`,
-                      color: alive ? '#fff' : 'var(--text-muted)',
-                      fontSize: '0.82rem', fontWeight: '700', cursor: 'pointer', textAlign: 'left'
+                      color: row.alive ? '#fff' : 'var(--text-muted)',
+                      fontSize: '0.8rem', fontWeight: '700', cursor: 'pointer', textAlign: 'left',
+                      opacity: row.alive ? 1 : 0.55
                     }}>
-                    <span style={{ width: '10px', height: '10px', borderRadius: '50%',
-                                   background: colorOf.get(name), flexShrink: 0,
-                                   opacity: alive ? 1 : 0.3 }} />
-                    {name}
-                    <span style={{ marginLeft: 'auto', fontSize: '0.74rem', opacity: 0.75 }}>
-                      {alive}/{members.length}
+                    <span style={{ width: '18px', textAlign: 'right', opacity: 0.7,
+                                   fontVariantNumeric: 'tabular-nums' }}>{i + 1}</span>
+                    <span style={{ width: '9px', height: '9px', borderRadius: '50%',
+                                   background: colorOf.get(row.name), flexShrink: 0 }} />
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis',
+                                   whiteSpace: 'nowrap' }}>{row.name}</span>
+                    <span style={{ marginLeft: 'auto', fontSize: '0.74rem',
+                                   color: row.alive ? 'var(--accent-gold)' : 'inherit' }}>
+                      {row.alive}/{row.members.length}
                     </span>
+                    <span style={{ width: '22px', textAlign: 'right', fontSize: '0.74rem',
+                                   fontVariantNumeric: 'tabular-nums' }}>{row.kills}</span>
                   </button>
                   {on && (
                     <div style={{ padding: '4px 0 4px 18px', display: 'flex',
                                   flexDirection: 'column', gap: '2px' }}>
-                      {members.map(p => {
+                      {row.members.map(p => {
                         const live = aliveOf(p);
                         const picked = selectedPlayer === p.name;
                         return (
@@ -425,6 +672,97 @@ export default function MatchLogMap({ log }) {
 }
 
 /**
+ * 자기장 페이즈가 시작하는 시각들.
+ *
+ * 공식 텔레메트리는 "지금 몇 페이즈"를 알려주지 않는다. 대신 안전 구역 반경이
+ * **줄어들다 멈추는 순간**이 다음 구역이 예고된 때다. 그 지점을 세면 P1~P8 이
+ * 나온다 (PGS 9 결승 1경기에서 9개, 위키의 페이즈 수와 같다).
+ */
+function derivePhases(circles) {
+  if (!circles?.length) return [];
+  const out = [circles[0].t];
+  let shrinking = false;
+  for (let i = 1; i < circles.length; i += 1) {
+    if (circles[i].r < circles[i - 1].r - 1e-9) shrinking = true;
+    else if (shrinking) { out.push(circles[i].t); shrinking = false; }
+  }
+  return out;
+}
+
+/**
+ * 비행 항로 — **추정값이다.**
+ *
+ * 공식 텔레메트리에 비행기 경로 이벤트가 없다. 대신 아무도 뛰어내리기 전
+ * (= 첫 착지 시각 이전) 선수 좌표는 전부 비행기 위에 있으므로 한 직선에
+ * 놓인다. 그 점들에 주성분으로 직선을 맞추고, 많이 벗어난 30%를 버린 뒤 한 번
+ * 더 맞춘다. 실측으로 중앙값 오차가 8km 맵에서 3~130m 였다.
+ *
+ * 착지 기록이 없는 옛 대회에서는 null 을 돌려주고 화면에도 그리지 않는다.
+ */
+function deriveFlightPath(log) {
+  const landings = log?.landings ?? [];
+  if (!landings.length || !log?.tracks?.length) return null;
+  const until = Math.min(...landings.map(l => l.t));
+  let pts = [];
+  for (const tr of log.tracks) {
+    for (const p of tr.points) {
+      if (p[0] >= 1 && p[0] <= until) pts.push([p[1], p[2]]);
+    }
+  }
+  if (pts.length < 20) return null;
+
+  let line = fitLine(pts);
+  if (!line) return null;
+  // 일찍 뛴 선수는 벌써 비행기에서 떨어져 나와 있다. 많이 벗어난 점을 버린다.
+  const scored = pts
+    .map(p => [Math.abs(-(p[0] - line.mx) * line.dy + (p[1] - line.my) * line.dx), p])
+    .sort((a, b) => a[0] - b[0]);
+  pts = scored.slice(0, Math.max(20, Math.floor(scored.length * 0.7))).map(s => s[1]);
+  line = fitLine(pts) || line;
+
+  // 맵 끝까지 늘인다. 비행기는 맵을 가로지른다.
+  const k = 2;
+  return {
+    x1: line.mx - line.dx * k, y1: line.my - line.dy * k,
+    x2: line.mx + line.dx * k, y2: line.my + line.dy * k,
+  };
+}
+
+function fitLine(pts) {
+  const n = pts.length;
+  if (!n) return null;
+  const mx = pts.reduce((s, p) => s + p[0], 0) / n;
+  const my = pts.reduce((s, p) => s + p[1], 0) / n;
+  let sxx = 0, syy = 0, sxy = 0;
+  for (const p of pts) {
+    sxx += (p[0] - mx) ** 2; syy += (p[1] - my) ** 2;
+    sxy += (p[0] - mx) * (p[1] - my);
+  }
+  const th = 0.5 * Math.atan2(2 * sxy / n, (sxx - syy) / n);
+  return { mx, my, dx: Math.cos(th), dy: Math.sin(th) };
+}
+
+/** 두 점 사이 거리(미터). mapSize 는 센티미터다. */
+function distanceMeters(m, mapSize) {
+  if (!mapSize || m.bx == null) return 0;
+  const dx = (m.bx - m.ax) * mapSize / 100;
+  const dy = (m.by - m.ay) * mapSize / 100;
+  return Math.round(Math.hypot(dx, dy));
+}
+
+/** 지도 위 글자는 배경 없이 두면 지형에 묻힌다. 테두리를 깔고 쓴다. */
+function drawLabel(ctx, text, x, y, color, center) {
+  ctx.font = '700 13px sans-serif';
+  ctx.textAlign = center ? 'center' : 'left';
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = 'rgba(0,0,0,0.85)';
+  ctx.strokeText(text, x, y);
+  ctx.fillStyle = color || '#fff';
+  ctx.fillText(text, x, y);
+  ctx.textAlign = 'left';
+}
+
+/**
  * 그 시각의 위치를 앞뒤 기록 사이에서 비례로 구한다.
  *
  * 텔레메트리의 위치 기록은 10초 간격이다 (PUBG 가 그렇게만 준다 — 우리가
@@ -452,6 +790,31 @@ function short(name) {
   if (!name) return '—';
   const i = name.indexOf('_');
   return i > 0 ? name.slice(i + 1) : name;
+}
+
+function Badge({ children, accent }) {
+  return (
+    <span style={{
+      background: accent ? 'rgba(243,166,31,0.9)' : 'rgba(8,12,20,0.8)',
+      color: accent ? '#000' : '#fff',
+      padding: '3px 9px', borderRadius: '4px',
+      fontSize: '0.72rem', fontWeight: 900, letterSpacing: '0.02em'
+    }}>{children}</span>
+  );
+}
+
+function IconBtn({ on, onClick, icon: Icon, title }) {
+  return (
+    <button onClick={onClick} title={title} style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      width: '30px', height: '30px', borderRadius: 'var(--radius-sm)',
+      background: on ? 'rgba(243,166,31,0.2)' : 'rgba(8,12,20,0.75)',
+      border: `1px solid ${on ? 'rgba(243,166,31,0.6)' : 'var(--border-subtle)'}`,
+      color: on ? 'var(--accent-gold)' : 'var(--text-muted)', cursor: 'pointer'
+    }}>
+      <Icon size={15} />
+    </button>
+  );
 }
 
 function Toggle({ on, set, icon: Icon, label }) {

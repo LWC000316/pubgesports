@@ -438,24 +438,44 @@ function MatchLogView({ tournamentId }) {
   // 단계에서 1,2,3 을 매기면 그 번호가 거짓이 된다 — 그럴 땐 맵 이름으로 고른다.
   const ordered = matches.every(m => m.startedAt);
   const current = matches.find(m => m.id === matchId);
+  const currentNo = ordered && current ? matches.indexOf(current) + 1 : null;
+
+  // 날짜별로 접어 둔다. 15경기가 한 줄로 늘어서면 어느 날 경기인지 안 보인다.
+  const days = [];
+  matches.forEach((m, i) => {
+    const d = m.startedAt ? m.startedAt.slice(0, 10) : '';
+    if (!days.length || days[days.length - 1].day !== d) days.push({ day: d, rows: [] });
+    days[days.length - 1].rows.push({ ...m, no: i + 1 });
+  });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <ChipRow>
-        {matches.map((m, i) => (
-          <Chip
-            key={m.id}
-            active={matchId === m.id}
-            onClick={() => setMatchId(m.id)}
-            label={ordered ? `${i + 1}경기` : (m.map ?? '경기')}
-            sub={ordered ? m.map : undefined}
-            subtle
-          />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {days.map(({ day, rows }) => (
+          <div key={day || 'x'} style={{ display: 'flex', alignItems: 'center',
+                                         gap: '8px', flexWrap: 'wrap' }}>
+            {day && (
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)',
+                             fontWeight: 900, minWidth: '46px' }}>
+                {day.slice(5).replace('-', '/')}
+              </span>
+            )}
+            {rows.map(m => (
+              <Chip
+                key={m.id}
+                active={matchId === m.id}
+                onClick={() => setMatchId(m.id)}
+                label={ordered ? `${m.no}경기` : (m.map ?? '경기')}
+                sub={ordered ? m.map : undefined}
+                subtle
+              />
+            ))}
+          </div>
         ))}
-      </ChipRow>
+      </div>
       {current && <MatchHeadline match={current} />}
       {logLoading ? <LoadingPanel title="매치로그를 불러오는 중입니다" detail="이동 경로와 자기장을 그립니다." />
-        : <MatchLogMap log={log} />}
+        : <MatchLogMap log={log} title={currentNo ? `매치 ${currentNo}` : undefined} />}
     </div>
   );
 }
