@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Play, Pause, SkipBack, Users, Crosshair, Route, Skull, ZoomIn, Swords,
-  Package, Tag, Grid3x3, Plane, Ruler, Camera, Maximize2, MessageSquare, Target
+  Package, Tag, Grid3x3, Plane, Ruler, Camera, Maximize2, MessageSquare, Target,
+  MousePointer2, Pencil, MoveUpRight, Pentagon, CircleDot, Eraser, Undo2, Redo2, Trash2
 } from 'lucide-react';
 
 /**
@@ -43,7 +44,13 @@ export default function MatchLogMap({ log, title }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [zoom, setZoom] = useState(1);
-  const [measure, setMeasure] = useState(null);   // {ax,ay,bx,by} | null
+  // 그리기 도구. wwcd 의 왼쪽 도구모음에 해당한다. 전부 화면에만 남고
+  // 데이터에는 손대지 않는다 — 작전 설명용이다.
+  const [tool, setTool] = useState(null);   // pen | arrow | poly | circle | erase | measure
+  const [shapes, setShapes] = useState([]);
+  const [undone, setUndone] = useState([]);
+  const [draft, setDraft] = useState(null); // 그리는 중인 것
+  const [phasePick, setPhasePick] = useState(2);   // 페이즈 원 크기
 
   const [view, setView] = useState({
     names: true,      // 닉네임
@@ -105,6 +112,12 @@ export default function MatchLogMap({ log, title }) {
   }, [log]);
 
   const phases = useMemo(() => derivePhases(log?.circles), [log]);
+  // 페이즈 n 의 자기장 크기. "여기가 다음 자기장이면" 을 그려 보기 위한 것으로,
+  // 지어낸 값이 아니라 그 경기에서 실제로 나온 반지름이다.
+  const phaseRadii = useMemo(() => phases.map(t => {
+    const c = [...(log?.circles ?? [])].reverse().find(x => x.t <= t);
+    return c?.r ?? 0.1;
+  }), [phases, log]);
   const flight = useMemo(() => deriveFlightPath(log), [log]);
 
   // 지금 벌어지고 있는 교전. 끝난 것은 그리지 않는다 — 쌓이면 지도가 덮인다.
@@ -150,7 +163,9 @@ export default function MatchLogMap({ log, title }) {
   }, [teams, deathAt, killsSoFar, teamOf, time]);
 
   useEffect(() => {
-    setTime(0); setPlaying(false); setSelectedPlayer(null); setMeasure(null);
+    // 경기를 바꾸면 그려 둔 것도 치운다. 다른 경기 지도에 남아 있으면 거짓이 된다.
+    setTime(0); setPlaying(false); setSelectedPlayer(null);
+    setShapes([]); setDraft(null); setUndone([]);
   }, [log]);
 
   useEffect(() => {
@@ -369,39 +384,88 @@ export default function MatchLogMap({ log, title }) {
       }
     }
 
-    // 8. 거리 측정
-    if (measure) {
-      const d = distanceMeters(measure, log.mapSize);
-      ctx.strokeStyle = '#ffd43b';
-      ctx.lineWidth = 2;
-      ctx.setLineDash([5, 4]);
-      ctx.beginPath();
-      ctx.moveTo(px(measure.ax), px(measure.ay));
-      ctx.lineTo(px(measure.bx), px(measure.by));
-      ctx.stroke();
-      ctx.setLineDash([]);
-      drawLabel(ctx, `${d}m`, px((measure.ax + measure.bx) / 2) + 8,
-                px((measure.ay + measure.by) / 2), '#ffd43b', true);
+    // 8. 그려 넣은 것들 — 가장 위에 올린다
+    for (const sh of draft ? [...shapes, draft] : shapes) {
+      drawShape(ctx, sh, px, log.mapSize);
     }
   }, [log, time, teams, colorOf, teamOf, selectedTeam, selectedPlayer, view,
-      circle, killsSoFar, deathAt, fightsNow, landingOf, flight, measure]);
+      circle, killsSoFar, deathAt, fightsNow, landingOf, flight, shapes, draft]);
 
-  const onMapClick = useCallback(e => {
-    if (!measure) return;
+  const at = e => {
     const r = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width;
-    const y = (e.clientY - r.top) / r.height;
-    setMeasure(m => (m.bx == null || m.done)
-      ? { ax: x, ay: y, bx: x, by: y, done: false }
-      : { ...m, bx: x, by: y, done: true });
-  }, [measure]);
+    return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
+  };
+  const push = sh => { setShapes(v => [...v, sh]); setUndone([]); };
 
-  const onMapMove = useCallback(e => {
-    if (!measure || measure.done || measure.ax == null) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    setMeasure(m => ({ ...m, bx: (e.clientX - r.left) / r.width,
-                            by: (e.clientY - r.top) / r.height }));
-  }, [measure]);
+  const onDown = useCallback(e => {
+    if (!tool) return;
+    const [x, y] = at(e);
+    if (tool === 'pen') { setDraft({ type: 'pen', pts: [[x, y]] }); return; }
+    if (tool === 'arrow' || tool === 'measure') {
+      setDraft({ type: tool, pts: [[x, y], [x, y]] }); return;
+    }
+    if (tool === 'circle') { push({ type: 'circle', pts: [[x, y]], r: phaseRadii[phasePick] ?? 0.1 }); return; }
+    if (tool === 'poly') {
+      // 점을 찍어 가며 만든다. 두 번 누르면 닫는다.
+      setDraft(d => (d && d.type === 'poly'
+        ? { ...d, pts: [...d.pts, [x, y]] } : { type: 'poly', pts: [[x, y]] }));
+      return;
+    }
+    if (tool === 'erase') {
+      setShapes(v => {
+        const i = nearestShape(v, x, y);
+        if (i < 0) return v;
+        const out = v.slice(); out.splice(i, 1); return out;
+      });
+    }
+  }, [tool, phasePick, phaseRadii]);
+
+  const onMove = useCallback(e => {
+    if (!draft) return;
+    const [x, y] = at(e);
+    if (draft.type === 'pen' && e.buttons) {
+      setDraft(d => ({ ...d, pts: [...d.pts, [x, y]] }));
+    } else if (draft.type === 'arrow' || draft.type === 'measure') {
+      setDraft(d => ({ ...d, pts: [d.pts[0], [x, y]] }));
+    }
+  }, [draft]);
+
+  const onUp = useCallback(() => {
+    if (!draft || draft.type === 'poly') return;
+    if (draft.pts.length > 1 || draft.type === 'pen') push(draft);
+    setDraft(null);
+  }, [draft]);
+
+  const closePoly = useCallback(() => {
+    if (draft?.type === 'poly' && draft.pts.length > 2) push({ ...draft, closed: true });
+    setDraft(null);
+  }, [draft]);
+
+  const undo = useCallback(() => {
+    setShapes(v => { if (!v.length) return v;
+      setUndone(u => [...u, v[v.length - 1]]); return v.slice(0, -1); });
+  }, []);
+  const redo = useCallback(() => {
+    setUndone(u => { if (!u.length) return u;
+      setShapes(v => [...v, u[u.length - 1]]); return u.slice(0, -1); });
+  }, []);
+
+  // 단축키. wwcd 와 같은 글자를 쓴다 — 손이 기억하는 쪽이 낫다.
+  useEffect(() => {
+    const onKey = e => {
+      if (e.target.tagName === 'INPUT') return;
+      if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); return; }
+      if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); return; }
+      if (e.shiftKey && e.key === 'Backspace') { setShapes([]); setDraft(null); return; }
+      if (e.key === 'Enter') { closePoly(); return; }
+      if (e.key === 'Escape') { setDraft(null); setTool(null); return; }
+      const k = { v: null, p: 'pen', a: 'arrow', c: 'circle', e: 'erase', m: 'measure' };
+      if (e.key.toLowerCase() in k) setTool(k[e.key.toLowerCase()]);
+      if (/^[1-9]$/.test(e.key)) setPhasePick(Number(e.key));
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [undo, redo, closePoly]);
 
   const saveImage = useCallback(() => {
     const canvas = canvasRef.current;
@@ -454,10 +518,12 @@ export default function MatchLogMap({ log, title }) {
                 ref={canvasRef}
                 width={SIZE}
                 height={SIZE}
-                onClick={onMapClick}
-                onMouseMove={onMapMove}
+                onMouseDown={onDown}
+                onMouseMove={onMove}
+                onMouseUp={onUp}
+                onDoubleClick={closePoly}
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%',
-                         cursor: measure ? 'crosshair' : 'default' }}
+                         cursor: tool ? 'crosshair' : 'default' }}
               />
             </div>
           </div>
@@ -526,8 +592,23 @@ export default function MatchLogMap({ log, title }) {
             {mmss(time)} / {mmss(duration)}
           </span>
           <div style={{ marginLeft: 'auto', display: 'flex', gap: '4px' }}>
-            <IconBtn on={!!measure} onClick={() => setMeasure(m => (m ? null : {}))}
-                     icon={Ruler} title="거리 측정 — 두 점을 찍는다" />
+            <IconBtn on={!tool} onClick={() => { setTool(null); setDraft(null); }}
+                     icon={MousePointer2} title="선택/이동 (V)" />
+            <IconBtn on={tool === 'pen'} onClick={() => setTool('pen')} icon={Pencil} title="펜 (P)" />
+            <IconBtn on={tool === 'arrow'} onClick={() => setTool('arrow')}
+                     icon={MoveUpRight} title="화살표 — 이동 경로를 그린다 (A)" />
+            <IconBtn on={tool === 'poly'} onClick={() => setTool('poly')}
+                     icon={Pentagon} title="영역 — 점을 찍고 Enter 나 더블클릭으로 닫는다" />
+            <IconBtn on={tool === 'circle'} onClick={() => setTool('circle')}
+                     icon={CircleDot} title={`페이즈 원 — 누른 곳에 P${phasePick} 크기 원 (C, 숫자로 페이즈 선택)`} />
+            <IconBtn on={tool === 'erase'} onClick={() => setTool('erase')}
+                     icon={Eraser} title="지우개 — 눌러서 지운다 (E)" />
+            <IconBtn on={tool === 'measure'} onClick={() => setTool('measure')}
+                     icon={Ruler} title="거리 측정 — 끌어서 잰다 (M)" />
+            <IconBtn onClick={undo} icon={Undo2} title="되돌리기 (Ctrl+Z)" />
+            <IconBtn onClick={redo} icon={Redo2} title="다시 실행 (Ctrl+Y)" />
+            <IconBtn onClick={() => { setShapes([]); setDraft(null); }}
+                     icon={Trash2} title="그림 전체 지우기 (Shift+Backspace)" />
             <IconBtn onClick={saveImage} icon={Camera} title="현재 화면 저장 (JPG)" />
             <IconBtn onClick={goFullscreen} icon={Maximize2} title="전체화면 (ESC 로 종료)" />
           </div>
@@ -740,6 +821,71 @@ function fitLine(pts) {
   }
   const th = 0.5 * Math.atan2(2 * sxy / n, (sxx - syy) / n);
   return { mx, my, dx: Math.cos(th), dy: Math.sin(th) };
+}
+
+/** 그려 넣은 도형 하나. 전부 화면에만 있고 데이터에는 안 들어간다. */
+function drawShape(ctx, sh, px, mapSize) {
+  const C = '#ffd43b';
+  ctx.strokeStyle = C;
+  ctx.fillStyle = 'rgba(255, 212, 59, 0.16)';
+  ctx.lineWidth = 2.5;
+  ctx.setLineDash([]);
+  const P = sh.pts;
+  if (sh.type === 'pen' || sh.type === 'poly') {
+    ctx.beginPath();
+    P.forEach(([x, y], i) => (i ? ctx.lineTo(px(x), px(y)) : ctx.moveTo(px(x), px(y))));
+    if (sh.closed) { ctx.closePath(); ctx.fill(); }
+    ctx.stroke();
+    if (sh.type === 'poly' && !sh.closed) {
+      for (const [x, y] of P) {
+        ctx.beginPath(); ctx.arc(px(x), px(y), 3, 0, Math.PI * 2); ctx.fillStyle = C; ctx.fill();
+      }
+    }
+    return;
+  }
+  if (sh.type === 'circle') {
+    ctx.beginPath();
+    ctx.arc(px(P[0][0]), px(P[0][1]), px(sh.r), 0, Math.PI * 2);
+    ctx.fill(); ctx.stroke();
+    return;
+  }
+  // 화살표와 자
+  const [a, b] = P;
+  ctx.beginPath();
+  if (sh.type === 'measure') ctx.setLineDash([6, 5]);
+  ctx.moveTo(px(a[0]), px(a[1]));
+  ctx.lineTo(px(b[0]), px(b[1]));
+  ctx.stroke();
+  ctx.setLineDash([]);
+  if (sh.type === 'arrow') {
+    const th = Math.atan2(b[1] - a[1], b[0] - a[0]);
+    const h = 14;
+    ctx.beginPath();
+    ctx.moveTo(px(b[0]), px(b[1]));
+    ctx.lineTo(px(b[0]) - h * Math.cos(th - 0.4), px(b[1]) - h * Math.sin(th - 0.4));
+    ctx.lineTo(px(b[0]) - h * Math.cos(th + 0.4), px(b[1]) - h * Math.sin(th + 0.4));
+    ctx.closePath(); ctx.fillStyle = C; ctx.fill();
+  } else {
+    const m = { ax: a[0], ay: a[1], bx: b[0], by: b[1] };
+    drawLabel(ctx, `${distanceMeters(m, mapSize)}m`,
+              px((a[0] + b[0]) / 2) + 8, px((a[1] + b[1]) / 2), C, true);
+  }
+}
+
+/** 누른 자리에 가장 가까운 도형. 지우개가 쓴다. 없으면 -1. */
+function nearestShape(shapes, x, y) {
+  let best = -1, bestD = 0.02;            // 맵 한 변의 2% 안쪽만 집는다
+  shapes.forEach((sh, i) => {
+    for (const [px_, py] of sh.pts) {
+      const d = Math.hypot(px_ - x, py - y);
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    if (sh.type === 'circle') {
+      const d = Math.abs(Math.hypot(sh.pts[0][0] - x, sh.pts[0][1] - y) - sh.r);
+      if (d < bestD) { bestD = d; best = i; }
+    }
+  });
+  return best;
 }
 
 /** 두 점 사이 거리(미터). mapSize 는 센티미터다. */
