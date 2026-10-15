@@ -58,10 +58,12 @@ jobs:
       - name: 대상과 비용 확인
         run: python ingest/build_match_logs_all.py --list
 
-      # **받기와 뽑기를 한 단계씩 번갈아 한다.** 예전에는 전부 받은 뒤에 전부
-      # 뽑았는데, 받기가 예산을 다 쓰면 뽑기가 작업 한도에 걸려 취소되고
-      # 받아 둔 원본이 통째로 버려졌다 (2026-10-12, 5시간 30분 중 185경기만
-      # 남았다). 한 단계씩 끝내면 예산이 끝나는 순간까지의 결과가 온전하다.
+      # **받기와 뽑기를 한 단계씩 번갈아 하고, 열 단계마다 커밋·푸시한다.**
+      #
+      # 예전에는 전부 받아 전부 뽑고 **마지막에 한 번** 커밋했다. 그 마지막
+      # 한 걸음이 세 번 다른 이유로 실패했고 그때마다 4~5시간치가 통째로
+      # 날아갔다 (집계 거부 / 작업 한도 초과 / 리베이스 거부). 중간에 저장하면
+      # 무엇이 터지든 잃는 것이 마지막 열 단계로 묶인다.
       #
       # 원본은 뽑고 나면 지운다. 러너 디스크가 14GB 뿐인데 경기당 33MB 다.
       - name: 원본 받아서 바로 매치로그 뽑기
@@ -69,6 +71,38 @@ jobs:
           PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
           SCOPE: ${{ github.event.inputs.scope }}
         run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 지금까지 만든 것을 저장한다. 어떤 이유로 실패해도 **작업을 죽이지
+          # 않는다** — 다음 묶음에서 다시 시도하면 되고, 여기서 죽으면 그게
+          # 바로 전부를 잃는 그 한 걸음이 된다.
+          save() {
+            set +e
+            # primary_data 전체를 담는다. 매치로그만 담았다가 경기 순서·날짜가
+            # 바뀐 primary_data/tournaments 가 남아 리베이스가 거부됐다.
+            git add -A primary_data
+            if git diff --cached --quiet; then
+              echo "::notice::저장할 새 결과가 없습니다."
+              set -e; return 0
+            fi
+            n=$(git diff --cached --name-only | wc -l)
+            git commit -q               -m "data: 매치로그 $n 파일 추출 (자동 수집)"               -m "텔레메트리에서 이동 경로·자기장·킬 지점만 뽑았다. 원본 33MB/경기는 버린다."               -m "남은 대회는 다음 실행이 이어서 받는다 - 커밋된 로그가 진행 표시다."
+            for i in 1 2 3; do
+              git fetch -q origin main
+              # 리베이스가 깨지면 되돌리고 다음 시도로 넘어간다. --abort 가
+              # 실패해도(진행 중인 리베이스가 없을 때) 무시한다.
+              git rebase -X theirs origin/main || git rebase --abort || true
+              if git push -q origin HEAD:main; then
+                echo "::notice::$n 파일 저장 (시도 $i)"
+                set -e; return 0
+              fi
+              sleep 5
+            done
+            echo "::warning::푸시를 세 번 다 실패했습니다. 다음 묶음에서 다시 시도합니다."
+            set -e; return 0
+          }
+
           python - <<'PY' > /tmp/targets.txt
           import importlib.util, sys
           spec = importlib.util.spec_from_file_location(
@@ -108,49 +142,11 @@ jobs:
             python ingest/build_match_order.py "$tid" || true
             rm -rf "intermediate_results/tournaments/$tid"
             echo "::endgroup::"
+            if [ $(( N % 10 )) -eq 0 ]; then save; fi
           done < /tmp/targets.txt
+
+          save
           echo "시도 $N 단계 · 성공 $OK · 경과 $(( ($(date +%s) - START) / 60 ))분"
-
-      # 경기 순서는 원본의 createdAt 에만 있다. 원본은 이 작업이 끝나면 사라지니
-      # 여기서 적어 둔다 - 안 그러면 화면의 "1경기" 가 UUID 순이 되어 거짓이 된다.
-      - name: 경기 순서·날짜 다시 맞추기
-        continue-on-error: true
-        run: python ingest/build_match_order.py
-
-      # 받기에 몇 시간이 드는데 뒤 단계 하나가 실패해 전부 잃으면 안 된다.
-      - name: 결과 커밋
-        if: always()
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add primary_data/matchlogs
-          if git diff --cached --quiet; then
-            echo "새로 만든 매치로그가 없습니다."
-            exit 0
-          fi
-          n=$(git diff --cached --name-only | wc -l)
-          git commit \
-            -m "data: 매치로그 $n 경기 추출 (자동 수집)" \
-            -m "텔레메트리에서 이동 경로·자기장·킬 지점만 뽑았다. 원본 33MB/경기는 버린다." \
-            -m "남은 대회는 다음 실행이 이어서 받는다 - 커밋된 로그가 진행 표시다."
-          # 푸시가 막히면 러너에만 남고 데이터가 날아간다. 받기에 50분이 드는
-          # 작업이라 그걸 되풀이할 수 없다. 세 번까지 다시 시도하고, 리베이스
-          # 충돌이 나면 **이번에 뽑은 쪽을 택한다** — --force 로 다시 뽑은 값이
-          # 최신이기 때문이다. (-X theirs 는 리베이스 중에는 "지금 얹는 커밋",
-          # 즉 러너가 방금 만든 쪽을 뜻한다.)
-          for i in 1 2 3; do
-            git fetch origin main
-            git rebase -X theirs origin/main || { git rebase --abort; true; }
-            if git push origin HEAD:main; then
-              echo "푸시 완료 (시도 $i)"
-              exit 0
-            fi
-            echo "푸시 실패, 다시 시도합니다 ($i/3)"
-            sleep 5
-          done
-          echo "세 번 모두 실패했습니다. 러너의 커밋을 패치로 남깁니다."
-          git format-patch -1 --stdout > /tmp/matchlogs.patch
-          exit 1
 
       - name: 진행 상황
         if: always()
