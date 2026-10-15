@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "b",
   "stage": null,
-  "startDate": "2021-08-21",
+  "startDate": "2021-07-20",
   "source": "https://api.pubg.com/tournaments/cn-pclb",
   "createdAt": null,
   "matchCount": 210,
@@ -4382,5 +4382,6 @@
       "avgSurvival": 339,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-04-12"
 }

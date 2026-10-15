@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "wf1",
   "stage": "Weekly Finals 1주차",
-  "startDate": "2021-07-25",
+  "startDate": "2021-07-24",
   "source": "https://api.pubg.com/tournaments/as-pws2wf1",
   "createdAt": null,
   "matchCount": 10,
@@ -1354,5 +1354,6 @@
       "avgSurvival": 1123,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-07-25"
 }

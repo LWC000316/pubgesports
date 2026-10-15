@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "wf5",
   "stage": "Weekly Finals 5주차",
-  "startDate": "2021-05-16",
+  "startDate": "2021-05-15",
   "source": "https://api.pubg.com/tournaments/as-pws1wf5",
   "createdAt": null,
   "matchCount": 10,
@@ -1354,5 +1354,6 @@
       "avgSurvival": 1071,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-05-16"
 }

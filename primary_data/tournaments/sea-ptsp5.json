@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p5",
   "stage": null,
-  "startDate": "2021-08-07",
+  "startDate": "2021-07-21",
   "source": "https://api.pubg.com/tournaments/sea-ptsp5",
   "createdAt": null,
   "matchCount": 60,
@@ -1434,5 +1434,6 @@
       "avgSurvival": 1014,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-08-08"
 }

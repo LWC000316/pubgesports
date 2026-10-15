@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "tw",
   "stage": null,
-  "startDate": "2021-06-11",
+  "startDate": "2021-06-08",
   "source": "https://api.pubg.com/tournaments/as-pws2tw",
   "createdAt": null,
   "matchCount": 20,
@@ -1482,5 +1482,6 @@
       "avgSurvival": 1030,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-06-11"
 }
