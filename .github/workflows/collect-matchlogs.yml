@@ -153,6 +153,10 @@ jobs:
             if [ $(( N % 10 )) -eq 0 ]; then save; fi
           done < /tmp/targets.txt
 
+          # 히트엔딩 집계는 매치로그만 보고 다시 만든다(네트워크 없음).
+          # 새 경기가 들어왔으니 같이 갱신해 커밋에 태운다.
+          python ingest/build_heat.py || true
+
           save
           echo "시도 $N 단계 · 성공 $OK · 경과 $(( ($(date +%s) - START) / 60 ))분"
 

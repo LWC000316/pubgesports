@@ -28,3 +28,13 @@ export function fetchMatchLog(tournamentId, matchId) {
     `/api/tournaments/archive/${encodeURIComponent(tournamentId)}/matches/${encodeURIComponent(matchId)}`
   );
 }
+
+/** 히트엔딩 — 집계된 맵 목록. */
+export function fetchHeatMaps() {
+  return apiGet('/api/heat');
+}
+
+/** 맵 하나의 히트 집계 (격자별 착지·사망·최종 자기장 횟수). */
+export function fetchHeat(map) {
+  return apiGet(`/api/heat/${encodeURIComponent(map)}`);
+}
