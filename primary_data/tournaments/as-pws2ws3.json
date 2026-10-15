@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "ws3",
   "stage": null,
-  "startDate": "2021-08-05",
+  "startDate": "2021-08-04",
   "source": "https://api.pubg.com/tournaments/as-pws2ws3",
   "createdAt": null,
   "matchCount": 12,
@@ -2210,5 +2210,6 @@
       "avgSurvival": 1272,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-08-05"
 }
