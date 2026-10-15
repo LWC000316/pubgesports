@@ -14,6 +14,12 @@
 name: 매치로그 수집
 
 on:
+  # **다섯 시간마다 저절로 돈다.** 남은 153단계가 약 27시간인데 작업 한도가
+  # 6시간이라 한 번에 못 끝낸다. 사람이 일곱 번 눌러 주는 대신 예약해 둔다.
+  # 한 번이 4시간 10분쯤 걸리고, concurrency 가 겹치기를 막으므로 늦어지면
+  # 다음 차례가 기다렸다 돈다. 받을 것이 없으면 몇 초 만에 끝난다.
+  schedule:
+    - cron: '0 */5 * * *'
   workflow_dispatch:
     inputs:
       max_minutes:
@@ -69,7 +75,9 @@ jobs:
       - name: 원본 받아서 바로 매치로그 뽑기
         env:
           PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
-          SCOPE: ${{ github.event.inputs.scope }}
+          # 예약 실행에는 inputs 가 없어 빈 문자열이 온다. 그대로 두면
+          # 글로벌 결승만 받아 예약이 아무 일도 안 하게 된다.
+          SCOPE: ${{ github.event.inputs.scope || '전 단계' }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
