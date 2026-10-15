@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "wf3",
   "stage": "Weekly Finals 3주차",
-  "startDate": "2021-05-02",
+  "startDate": "2021-05-01",
   "source": "https://api.pubg.com/tournaments/as-pws1wf3",
   "createdAt": null,
   "matchCount": 10,
@@ -1306,5 +1306,6 @@
       "avgSurvival": 1333,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-05-02"
 }
