@@ -7,7 +7,7 @@
   "edition": "Spring",
   "stageCode": null,
   "stage": null,
-  "startDate": "2025-03-16",
+  "startDate": "2025-03-08",
   "source": "https://api.pubg.com/tournaments/eu-pecs25",
   "createdAt": null,
   "matchCount": 74,
@@ -3445,5 +3445,6 @@
       "longestKill": 67.9
     }
   ],
-  "officialName": "PUBG EMEA Championship/2025/Spring"
+  "officialName": "PUBG EMEA Championship/2025/Spring",
+  "endDate": "2025-03-30"
 }

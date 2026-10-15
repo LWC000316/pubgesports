@@ -7,7 +7,7 @@
   "edition": "12",
   "stageCode": null,
   "stage": null,
-  "startDate": "2025-02-22",
+  "startDate": "2025-02-21",
   "source": "https://api.pubg.com/tournaments/sea-pts12",
   "createdAt": null,
   "matchCount": 54,
@@ -1372,5 +1372,6 @@
       "avgSurvival": 830,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2025-03-09"
 }
