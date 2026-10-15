@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": null,
   "stage": null,
-  "startDate": "2021-01-16",
+  "startDate": "2021-01-06",
   "source": "https://api.pubg.com/tournaments/as-pws",
   "createdAt": null,
   "matchCount": 50,
@@ -2053,5 +2053,6 @@
       "avgSurvival": 1276,
       "longestKill": 245.1
     }
-  ]
+  ],
+  "endDate": "2021-01-24"
 }

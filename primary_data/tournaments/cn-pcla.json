@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "a",
   "stage": null,
-  "startDate": "2021-05-08",
+  "startDate": "2021-04-13",
   "source": "https://api.pubg.com/tournaments/cn-pcla",
   "createdAt": null,
   "matchCount": 227,
@@ -5536,5 +5536,6 @@
       "avgSurvival": 841,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2026-04-19"
 }

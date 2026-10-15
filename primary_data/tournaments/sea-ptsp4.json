@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p4",
   "stage": null,
-  "startDate": "2021-05-01",
+  "startDate": "2021-04-16",
   "source": "https://api.pubg.com/tournaments/sea-ptsp4",
   "createdAt": null,
   "matchCount": 61,
@@ -1405,5 +1405,6 @@
       "avgSurvival": 1140,
       "longestKill": 71.0
     }
-  ]
+  ],
+  "endDate": "2021-05-05"
 }

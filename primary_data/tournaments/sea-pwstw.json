@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "tw",
   "stage": null,
-  "startDate": "2021-04-05",
+  "startDate": "2021-03-31",
   "source": "https://api.pubg.com/tournaments/sea-pwstw",
   "createdAt": null,
   "matchCount": 30,
@@ -1959,5 +1959,6 @@
       "avgSurvival": 769,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2021-04-05"
 }
