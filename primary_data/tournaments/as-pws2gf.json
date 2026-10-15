@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "gf",
   "stage": "Grand Finals",
-  "startDate": "2021-08-29",
+  "startDate": "2021-08-27",
   "source": "https://api.pubg.com/tournaments/as-pws2gf",
   "createdAt": null,
   "matchCount": 18,
@@ -1306,5 +1306,6 @@
       "avgSurvival": 1322,
       "longestKill": 34.7
     }
-  ]
+  ],
+  "endDate": "2021-08-29"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "pb",
   "stage": null,
-  "startDate": "2021-09-05",
+  "startDate": "2021-09-03",
   "source": "https://api.pubg.com/tournaments/cn-pclpb",
   "createdAt": null,
   "matchCount": 18,
@@ -1338,5 +1338,6 @@
       "avgSurvival": 1042,
       "longestKill": 282.3
     }
-  ]
+  ],
+  "endDate": "2021-09-05"
 }

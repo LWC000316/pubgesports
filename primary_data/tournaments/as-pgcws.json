@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "ws",
   "stage": "Weekly Survival",
-  "startDate": "2021-11-30",
+  "startDate": "2021-11-23",
   "source": "https://api.pubg.com/tournaments/as-pgcws",
   "createdAt": null,
   "matchCount": 48,
@@ -2590,5 +2590,6 @@
       "longestKill": 31.3
     }
   ],
-  "officialName": "PUBG Global Championship/2021"
+  "officialName": "PUBG Global Championship/2021",
+  "endDate": "2021-12-09"
 }

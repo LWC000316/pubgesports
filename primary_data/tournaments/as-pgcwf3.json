@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "wf3",
   "stage": "Weekly Finals 3",
-  "startDate": "2021-12-12",
+  "startDate": "2021-12-11",
   "source": "https://api.pubg.com/tournaments/as-pgcwf3",
   "createdAt": null,
   "matchCount": 9,
@@ -1307,5 +1307,6 @@
       "longestKill": 180.5
     }
   ],
-  "officialName": "PUBG Global Championship/2021"
+  "officialName": "PUBG Global Championship/2021",
+  "endDate": "2021-12-12"
 }
