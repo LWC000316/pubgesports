@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "lb",
   "stage": null,
-  "startDate": "2023-11-24",
+  "startDate": "2023-11-23",
   "source": "https://api.pubg.com/tournaments/as-pgc23lb",
   "createdAt": null,
   "matchCount": 12,
@@ -1293,5 +1293,6 @@
       "longestKill": 171.6
     }
   ],
-  "officialName": "PUBG Global Championship/2023"
+  "officialName": "PUBG Global Championship/2023",
+  "endDate": "2023-11-24"
 }

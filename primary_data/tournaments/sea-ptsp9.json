@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p9",
   "stage": null,
-  "startDate": "2023-10-29",
+  "startDate": "2023-10-10",
   "source": "https://api.pubg.com/tournaments/sea-ptsp9",
   "createdAt": null,
   "matchCount": 60,
@@ -1391,5 +1391,6 @@
       "avgSurvival": 1352,
       "longestKill": 136.4
     }
-  ]
+  ],
+  "endDate": "2023-10-29"
 }

@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": null,
   "stage": null,
-  "startDate": "2023-10-22",
+  "startDate": "2023-10-20",
   "source": "https://api.pubg.com/tournaments/am-pas2",
   "createdAt": null,
   "matchCount": 15,
@@ -1325,5 +1325,6 @@
       "longestKill": 19.8
     }
   ],
-  "officialName": "PUBG Americas Series/2023/Phase 2"
+  "officialName": "PUBG Americas Series/2023/Phase 2",
+  "endDate": "2023-10-23"
 }

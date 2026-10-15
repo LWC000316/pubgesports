@@ -7,7 +7,7 @@
   "edition": "Fall",
   "stageCode": null,
   "stage": null,
-  "startDate": "2023-10-07",
+  "startDate": "2023-10-01",
   "source": "https://api.pubg.com/tournaments/eu-pecf23",
   "createdAt": null,
   "matchCount": 58,
@@ -3476,5 +3476,6 @@
       "longestKill": 22.3
     }
   ],
-  "officialName": "PUBG EMEA Championship/2023/Fall"
+  "officialName": "PUBG EMEA Championship/2023/Fall",
+  "endDate": "2023-10-22"
 }
