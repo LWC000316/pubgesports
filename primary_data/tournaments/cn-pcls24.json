@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "s24",
   "stage": null,
-  "startDate": "2024-05-11",
+  "startDate": "2024-04-20",
   "source": "https://api.pubg.com/tournaments/cn-pcls24",
   "createdAt": null,
   "matchCount": 108,
@@ -2103,5 +2103,6 @@
       "avgSurvival": 1683,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2024-05-11"
 }

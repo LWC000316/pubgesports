@@ -7,7 +7,7 @@
   "edition": "Spring",
   "stageCode": null,
   "stage": null,
-  "startDate": "2024-03-23",
+  "startDate": "2024-03-11",
   "source": "https://api.pubg.com/tournaments/eu-pecs24",
   "createdAt": null,
   "matchCount": 73,
@@ -3554,5 +3554,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG EMEA Championship/2024/Spring"
+  "officialName": "PUBG EMEA Championship/2024/Spring",
+  "endDate": "2024-04-07"
 }

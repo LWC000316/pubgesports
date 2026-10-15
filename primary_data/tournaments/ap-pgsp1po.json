@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p1po",
   "stage": null,
-  "startDate": "2024-03-27",
+  "startDate": "2024-03-26",
   "source": "https://api.pubg.com/tournaments/ap-pgsp1po",
   "createdAt": null,
   "matchCount": 20,
@@ -1421,5 +1421,6 @@
       "avgSurvival": 146,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2024-03-28"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "cwlc",
   "stage": null,
-  "startDate": "2024-01-21",
+  "startDate": "2024-01-20",
   "source": "https://api.pubg.com/tournaments/ap-pascwlc",
   "createdAt": null,
   "matchCount": 12,
@@ -1356,5 +1356,6 @@
       "avgSurvival": 1614,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2024-01-21"
 }

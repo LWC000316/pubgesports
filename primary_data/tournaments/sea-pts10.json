@@ -7,7 +7,7 @@
   "edition": "10",
   "stageCode": null,
   "stage": null,
-  "startDate": "2024-03-03",
+  "startDate": "2024-03-01",
   "source": "https://api.pubg.com/tournaments/sea-pts10",
   "createdAt": null,
   "matchCount": 54,
@@ -1327,5 +1327,6 @@
       "avgSurvival": 1186,
       "longestKill": 296.3
     }
-  ]
+  ],
+  "endDate": "2024-03-17"
 }
