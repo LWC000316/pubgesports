@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "po",
   "stage": null,
-  "startDate": "2022-09-11",
+  "startDate": "2022-08-31",
   "source": "https://api.pubg.com/tournaments/cn-pclpo",
   "createdAt": null,
   "matchCount": 48,
@@ -2606,5 +2606,6 @@
       "avgSurvival": 888,
       "longestKill": 95.7
     }
-  ]
+  ],
+  "endDate": "2022-09-11"
 }

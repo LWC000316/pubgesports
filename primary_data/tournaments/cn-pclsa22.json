@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "sa22",
   "stage": null,
-  "startDate": "2022-08-03",
+  "startDate": "2022-07-30",
   "source": "https://api.pubg.com/tournaments/cn-pclsa22",
   "createdAt": null,
   "matchCount": 120,
@@ -2324,5 +2324,6 @@
       "avgSurvival": 778,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-08-21"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "gsa",
   "stage": "Group Stage",
-  "startDate": "2023-11-18",
+  "startDate": "2022-11-01",
   "source": "https://api.pubg.com/tournaments/as-pgcgsa",
   "createdAt": null,
   "matchCount": 27,
@@ -2261,5 +2261,6 @@
       "longestKill": 319.1
     }
   ],
-  "officialName": "PUBG Global Championship/2023"
+  "officialName": "PUBG Global Championship/2023",
+  "endDate": "2023-11-20"
 }

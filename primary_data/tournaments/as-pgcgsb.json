@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "gsb",
   "stage": "Group Stage",
-  "startDate": "2022-11-07",
+  "startDate": "2022-11-02",
   "source": "https://api.pubg.com/tournaments/as-pgcgsb",
   "createdAt": null,
   "matchCount": 27,
@@ -2355,5 +2355,6 @@
       "longestKill": 214.3
     }
   ],
-  "officialName": "PUBG Global Championship/2022"
+  "officialName": "PUBG Global Championship/2022",
+  "endDate": "2023-11-21"
 }

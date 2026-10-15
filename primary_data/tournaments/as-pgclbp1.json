@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "lbp1",
   "stage": null,
-  "startDate": "2022-11-11",
+  "startDate": "2022-11-10",
   "source": "https://api.pubg.com/tournaments/as-pgclbp1",
   "createdAt": null,
   "matchCount": 10,
@@ -1291,5 +1291,6 @@
       "longestKill": 98.9
     }
   ],
-  "officialName": "PUBG Global Championship/2022"
+  "officialName": "PUBG Global Championship/2022",
+  "endDate": "2022-11-11"
 }
