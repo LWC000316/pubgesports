@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p8",
   "stage": null,
-  "startDate": "2023-03-01",
+  "startDate": "2023-02-28",
   "source": "https://api.pubg.com/tournaments/sea-ptsp8",
   "createdAt": null,
   "matchCount": 60,
@@ -1450,5 +1450,6 @@
       "avgSurvival": 1406,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2023-03-19"
 }

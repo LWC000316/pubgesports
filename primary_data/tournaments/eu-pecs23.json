@@ -7,7 +7,7 @@
   "edition": "Spring",
   "stageCode": null,
   "stage": null,
-  "startDate": "2023-03-12",
+  "startDate": "2023-03-09",
   "source": "https://api.pubg.com/tournaments/eu-pecs23",
   "createdAt": null,
   "matchCount": 39,
@@ -1974,5 +1974,6 @@
       "longestKill": 209.0
     }
   ],
-  "officialName": "PUBG EMEA Championship/2023/Spring"
+  "officialName": "PUBG EMEA Championship/2023/Spring",
+  "endDate": "2023-03-26"
 }

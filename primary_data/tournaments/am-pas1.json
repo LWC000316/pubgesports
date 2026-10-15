@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": null,
   "stage": null,
-  "startDate": "2023-03-26",
+  "startDate": "2023-03-24",
   "source": "https://api.pubg.com/tournaments/am-pas1",
   "createdAt": null,
   "matchCount": 15,
@@ -1323,5 +1323,6 @@
       "longestKill": 53.6
     }
   ],
-  "officialName": "PUBG Americas Series/2023/Phase 1"
+  "officialName": "PUBG Americas Series/2023/Phase 1",
+  "endDate": "2023-03-27"
 }
