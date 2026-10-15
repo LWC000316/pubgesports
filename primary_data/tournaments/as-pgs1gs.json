@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "gs",
   "stage": "Group Stage",
-  "startDate": "2026-03-18",
+  "startDate": "2023-04-27",
   "source": "https://api.pubg.com/tournaments/as-pgs1gs",
   "createdAt": null,
   "matchCount": 27,
@@ -3365,5 +3365,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Global Series/2026/Circuit 1/Series 1"
+  "officialName": "PUBG Global Series/2026/Circuit 1/Series 1",
+  "endDate": "2026-03-18"
 }

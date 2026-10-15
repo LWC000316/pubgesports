@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "gs",
   "stage": "Group Stage",
-  "startDate": "2023-08-11",
+  "startDate": "2023-08-10",
   "source": "https://api.pubg.com/tournaments/as-pgs2gs",
   "createdAt": null,
   "matchCount": 19,
@@ -1927,5 +1927,6 @@
       "longestKill": 53.6
     }
   ],
-  "officialName": "PUBG Global Series/2023/2"
+  "officialName": "PUBG Global Series/2023/2",
+  "endDate": "2023-08-12"
 }

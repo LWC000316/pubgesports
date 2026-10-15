@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "lb",
   "stage": null,
-  "startDate": "2023-08-16",
+  "startDate": "2023-08-15",
   "source": "https://api.pubg.com/tournaments/as-pgs2lb",
   "createdAt": null,
   "matchCount": 12,
@@ -1292,5 +1292,6 @@
       "longestKill": 27.4
     }
   ],
-  "officialName": "PUBG Global Series/2023/2"
+  "officialName": "PUBG Global Series/2023/2",
+  "endDate": "2023-08-16"
 }

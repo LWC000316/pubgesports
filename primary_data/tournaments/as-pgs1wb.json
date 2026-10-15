@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "wb",
   "stage": null,
-  "startDate": "2023-05-01",
+  "startDate": "2023-04-30",
   "source": "https://api.pubg.com/tournaments/as-pgs1wb",
   "createdAt": null,
   "matchCount": 12,
@@ -1307,5 +1307,6 @@
       "longestKill": 158.4
     }
   ],
-  "officialName": "PUBG Global Series/2023/1"
+  "officialName": "PUBG Global Series/2023/1",
+  "endDate": "2023-05-01"
 }

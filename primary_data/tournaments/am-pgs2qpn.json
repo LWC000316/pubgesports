@@ -7,7 +7,7 @@
   "edition": "2",
   "stageCode": "qpn",
   "stage": null,
-  "startDate": "2023-06-26",
+  "startDate": "2023-06-24",
   "source": "https://api.pubg.com/tournaments/am-pgs2qpn",
   "createdAt": null,
   "matchCount": 12,
@@ -1340,5 +1340,6 @@
       "longestKill": 150.7
     }
   ],
-  "officialName": "PUBG Global Series/2023/2"
+  "officialName": "PUBG Global Series/2023/2",
+  "endDate": "2023-06-26"
 }
