@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p1",
   "stage": null,
-  "startDate": "2024-06-21",
+  "startDate": "2024-06-17",
   "source": "https://api.pubg.com/tournaments/cn-pclp1",
   "createdAt": null,
   "matchCount": 39,
@@ -1958,5 +1958,6 @@
       "avgSurvival": 772,
       "longestKill": 23.3
     }
-  ]
+  ],
+  "endDate": "2024-06-23"
 }

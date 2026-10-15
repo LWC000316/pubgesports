@@ -7,7 +7,7 @@
   "edition": "4",
   "stageCode": null,
   "stage": null,
-  "startDate": "2024-09-23",
+  "startDate": "2024-09-20",
   "source": "https://api.pubg.com/tournaments/am-pas4",
   "createdAt": null,
   "matchCount": 48,
@@ -2056,5 +2056,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Americas Series/2024/4"
+  "officialName": "PUBG Americas Series/2024/4",
+  "endDate": "2024-10-07"
 }

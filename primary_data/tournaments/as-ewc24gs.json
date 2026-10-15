@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "gs",
   "stage": "Group Stage",
-  "startDate": "2024-08-22",
+  "startDate": "2024-08-21",
   "source": "https://api.pubg.com/tournaments/as-ewc24gs",
   "createdAt": null,
   "matchCount": 18,
@@ -1925,5 +1925,6 @@
       "longestKill": 118.9
     }
   ],
-  "officialName": "Esports World Cup/2024"
+  "officialName": "Esports World Cup/2024",
+  "endDate": "2024-08-23"
 }

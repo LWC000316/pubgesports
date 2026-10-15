@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "a24",
   "stage": null,
-  "startDate": "2024-09-23",
+  "startDate": "2024-09-19",
   "source": "https://api.pubg.com/tournaments/cn-pcla24",
   "createdAt": null,
   "matchCount": 111,
@@ -2119,5 +2119,6 @@
       "avgSurvival": 892,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2024-10-13"
 }

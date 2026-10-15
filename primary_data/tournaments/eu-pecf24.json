@@ -7,7 +7,7 @@
   "edition": "Fall",
   "stageCode": null,
   "stage": null,
-  "startDate": "2024-09-29",
+  "startDate": "2024-09-16",
   "source": "https://api.pubg.com/tournaments/eu-pecf24",
   "createdAt": null,
   "matchCount": 72,
@@ -3509,5 +3509,6 @@
       "longestKill": 21.6
     }
   ],
-  "officialName": "PUBG EMEA Championship/2024/Fall"
+  "officialName": "PUBG EMEA Championship/2024/Fall",
+  "endDate": "2024-10-06"
 }

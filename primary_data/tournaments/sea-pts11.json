@@ -7,7 +7,7 @@
   "edition": "11",
   "stageCode": null,
   "stage": null,
-  "startDate": "2024-06-21",
+  "startDate": "2024-06-17",
   "source": "https://api.pubg.com/tournaments/sea-pts11",
   "createdAt": null,
   "matchCount": 55,
@@ -1421,5 +1421,6 @@
       "avgSurvival": 561,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2024-06-27"
 }
