@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "tw22",
   "stage": null,
-  "startDate": "2022-01-23",
+  "startDate": "2022-01-21",
   "source": "https://api.pubg.com/tournaments/as-pwstw22",
   "createdAt": null,
   "matchCount": 19,
@@ -1564,5 +1564,6 @@
       "avgSurvival": 366,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-02-18"
 }

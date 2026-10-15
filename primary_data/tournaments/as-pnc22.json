@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": null,
   "stage": null,
-  "startDate": "2022-06-19",
+  "startDate": "2022-06-16",
   "source": "https://api.pubg.com/tournaments/as-pnc22",
   "createdAt": null,
   "matchCount": 20,
@@ -1323,5 +1323,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Nations Cup/2022"
+  "officialName": "PUBG Nations Cup/2022",
+  "endDate": "2022-06-19"
 }

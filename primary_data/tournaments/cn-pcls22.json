@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "s22",
   "stage": null,
-  "startDate": "2022-03-22",
+  "startDate": "2022-03-12",
   "source": "https://api.pubg.com/tournaments/cn-pcls22",
   "createdAt": null,
   "matchCount": 132,
@@ -3351,5 +3351,6 @@
       "avgSurvival": 1007,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-04-17"
 }

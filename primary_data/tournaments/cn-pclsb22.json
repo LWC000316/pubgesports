@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "sb22",
   "stage": null,
-  "startDate": "2022-07-28",
+  "startDate": "2022-07-26",
   "source": "https://api.pubg.com/tournaments/cn-pclsb22",
   "createdAt": null,
   "matchCount": 25,
@@ -2020,5 +2020,6 @@
       "avgSurvival": 95,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-08-12"
 }

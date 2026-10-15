@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "jp22",
   "stage": null,
-  "startDate": "2022-02-11",
+  "startDate": "2022-01-24",
   "source": "https://api.pubg.com/tournaments/as-pwsjp22",
   "createdAt": null,
   "matchCount": 231,
@@ -4387,5 +4387,6 @@
       "avgSurvival": 266,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-07-17"
 }

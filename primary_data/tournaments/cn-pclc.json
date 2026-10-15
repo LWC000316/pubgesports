@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "c",
   "stage": null,
-  "startDate": "2022-03-04",
+  "startDate": "2022-03-01",
   "source": "https://api.pubg.com/tournaments/cn-pclc",
   "createdAt": null,
   "matchCount": 60,
@@ -2133,5 +2133,6 @@
       "avgSurvival": 803,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-03-11"
 }

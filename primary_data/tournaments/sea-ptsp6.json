@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p6",
   "stage": null,
-  "startDate": "2022-03-04",
+  "startDate": "2022-02-15",
   "source": "https://api.pubg.com/tournaments/sea-ptsp6",
   "createdAt": null,
   "matchCount": 60,
@@ -1421,5 +1421,6 @@
       "avgSurvival": 1184,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2022-03-06"
 }
