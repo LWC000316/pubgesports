@@ -7,7 +7,7 @@
   "edition": "6",
   "stageCode": "tm",
   "stage": null,
-  "startDate": "2024-11-03",
+  "startDate": "2024-11-02",
   "source": "https://api.pubg.com/tournaments/as-pgs6tm",
   "createdAt": null,
   "matchCount": 8,
@@ -1943,5 +1943,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Global Series/2024/6"
+  "officialName": "PUBG Global Series/2024/6",
+  "endDate": "2024-11-03"
 }

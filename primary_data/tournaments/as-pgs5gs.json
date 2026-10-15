@@ -7,7 +7,7 @@
   "edition": "5",
   "stageCode": "gs",
   "stage": "Group Stage",
-  "startDate": "2024-10-22",
+  "startDate": "2024-10-21",
   "source": "https://api.pubg.com/tournaments/as-pgs5gs",
   "createdAt": null,
   "matchCount": 18,
@@ -1925,5 +1925,6 @@
       "longestKill": 1.1
     }
   ],
-  "officialName": "PUBG Global Series/2024/5"
+  "officialName": "PUBG Global Series/2024/5",
+  "endDate": "2024-10-23"
 }

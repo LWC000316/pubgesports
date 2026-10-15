@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "c2",
   "stage": null,
-  "startDate": "2024-12-13",
+  "startDate": "2024-12-12",
   "source": "https://api.pubg.com/tournaments/as-pgc24c2",
   "createdAt": null,
   "matchCount": 12,
@@ -1612,5 +1612,6 @@
       "longestKill": 201.8
     }
   ],
-  "officialName": "PUBG Global Championship/2024"
+  "officialName": "PUBG Global Championship/2024",
+  "endDate": "2024-12-13"
 }
