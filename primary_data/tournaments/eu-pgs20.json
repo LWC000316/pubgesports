@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": null,
   "stage": null,
-  "startDate": "2020-03-07",
+  "startDate": "2020-03-06",
   "source": "https://api.pubg.com/tournaments/eu-pgs20",
   "createdAt": null,
   "matchCount": 18,
@@ -1923,5 +1923,6 @@
       "avgSurvival": 996,
       "longestKill": 154.1
     }
-  ]
+  ],
+  "endDate": "2020-03-08"
 }

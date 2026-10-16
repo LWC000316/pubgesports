@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "kr",
   "stage": null,
-  "startDate": "2020-04-16",
+  "startDate": "2020-04-15",
   "source": "https://api.pubg.com/tournaments/kr-pgskr",
   "createdAt": null,
   "matchCount": 45,
@@ -3138,5 +3138,6 @@
       "avgSurvival": 76,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2020-04-23"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "sf",
   "stage": "Semifinals",
-  "startDate": "2019-11-17",
+  "startDate": "2019-11-16",
   "source": "https://api.pubg.com/tournaments/na-pgcsf",
   "createdAt": null,
   "matchCount": 18,
@@ -1924,5 +1924,6 @@
       "longestKill": 109.9
     }
   ],
-  "officialName": "PUBG Global Championship/2019"
+  "officialName": "PUBG Global Championship/2019",
+  "endDate": "2019-11-18"
 }

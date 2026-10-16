@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": null,
   "stage": null,
-  "startDate": "2020-06-22",
+  "startDate": "2020-01-17",
   "source": "https://api.pubg.com/tournaments/sea-pts20",
   "createdAt": null,
   "matchCount": 126,
@@ -3302,5 +3302,6 @@
       "avgSurvival": 132,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2020-06-23"
 }

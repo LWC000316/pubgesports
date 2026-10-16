@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": null,
   "stage": null,
-  "startDate": "2020-02-28",
+  "startDate": "2020-02-27",
   "source": "https://api.pubg.com/tournaments/kr-pgs20",
   "createdAt": null,
   "matchCount": 40,
@@ -2022,5 +2022,6 @@
       "avgSurvival": 1119,
       "longestKill": 171.3
     }
-  ]
+  ],
+  "endDate": "2020-03-14"
 }

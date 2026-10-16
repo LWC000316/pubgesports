@@ -1,0 +1,94 @@
+{
+  "matches": [
+    {
+      "id": "fcbc05b4-892d-4e18-b18e-b596fe4edc2f",
+      "startedAt": "2019-11-16T01:07:18Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "94898bd5-8aa1-45a7-9a43-2667df48eaf1",
+      "startedAt": "2019-11-16T01:49:40Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "ba3619f8-a996-4ef1-9dd7-4a8d7edc073c",
+      "startedAt": "2019-11-16T02:35:43Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "4f7278b8-9596-4427-b5a0-a49fa82bfc64",
+      "startedAt": "2019-11-16T03:19:13Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "725655ab-a78d-457f-bf49-7b2f5b9e3b99",
+      "startedAt": "2019-11-16T03:57:36Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "d4227555-d9e4-4877-aacd-3c0e298ef8f3",
+      "startedAt": "2019-11-16T04:40:18Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "ee1cbb11-979a-418e-8280-342cb205b6f5",
+      "startedAt": "2019-11-17T01:00:15Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "d252b292-9f21-4335-86dd-48907ad7cd12",
+      "startedAt": "2019-11-17T01:44:54Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "7625fb81-5370-4bd6-bb94-611ef58be1b1",
+      "startedAt": "2019-11-17T02:38:26Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "eca991ab-feba-4d75-9b8d-f33a167d34bd",
+      "startedAt": "2019-11-17T03:21:28Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "1d741b79-eeb9-4ff4-9721-18d510f4c923",
+      "startedAt": "2019-11-17T04:06:19Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "6ef700e6-8b7d-42c1-b264-ef7315bb0205",
+      "startedAt": "2019-11-17T04:47:45Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "1d91b635-a557-4fea-bab3-31599decb44a",
+      "startedAt": "2019-11-18T01:00:11Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "9c491919-1d52-4823-9905-7d04e7768b4d",
+      "startedAt": "2019-11-18T01:39:58Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "4caf08d6-4a5e-429b-a3cb-9c563983856f",
+      "startedAt": "2019-11-18T02:26:37Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "deafbc32-740d-4c74-b704-8f682d6e63e8",
+      "startedAt": "2019-11-18T03:10:27Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "d10f4a03-fe4e-4fe1-a5c4-5b04a1848471",
+      "startedAt": "2019-11-18T03:51:52Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "4c1c043b-e4fb-4e39-807d-3ca7e3e60cc2",
+      "startedAt": "2019-11-18T04:36:40Z",
+      "map": "Desert_Main"
+    }
+  ]
+}

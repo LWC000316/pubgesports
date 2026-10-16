@@ -1,0 +1,34 @@
+{
+  "matches": [
+    {
+      "id": "f5b1d59c-a78a-4ce5-86f3-ae4a9b3f9e9a",
+      "startedAt": "2019-11-10T00:59:08Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "4eebaa59-90ab-4a80-aa63-527d2ab271ea",
+      "startedAt": "2019-11-10T01:39:17Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "512a527c-09a1-48c7-aa97-82d52c4b9f56",
+      "startedAt": "2019-11-10T02:23:03Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "46750096-1c56-4c36-9432-53c8b9a7af9a",
+      "startedAt": "2019-11-10T03:06:52Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "fc259c35-7bc3-4463-828e-341b87c39799",
+      "startedAt": "2019-11-10T03:47:10Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "e1f2fa9f-8416-415d-ab52-4b2e887895bd",
+      "startedAt": "2019-11-10T04:28:57Z",
+      "map": "Desert_Main"
+    }
+  ]
+}
