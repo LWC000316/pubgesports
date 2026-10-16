@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p3",
   "stage": null,
-  "startDate": "2020-07-18",
+  "startDate": "2020-07-17",
   "source": "https://api.pubg.com/tournaments/sea-ptsp3",
   "createdAt": null,
   "matchCount": 50,
@@ -1402,5 +1402,6 @@
       "avgSurvival": 1013,
       "longestKill": 69.9
     }
-  ]
+  ],
+  "endDate": "2020-08-02"
 }
