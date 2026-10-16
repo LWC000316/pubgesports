@@ -1,0 +1,44 @@
+{
+  "matches": [
+    {
+      "id": "09b92560-b63e-43f4-8b0f-c754619e13bb",
+      "startedAt": "2019-04-05T10:07:30Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "6dcaa890-569e-4f6f-ab74-82adf5799e9d",
+      "startedAt": "2019-04-05T10:13:37Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "9665c3a5-eed2-4787-b1cd-6ccfac9f956a",
+      "startedAt": "2019-04-06T12:51:45Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "0648236d-bc0b-480f-aa07-3d38b26f03d7",
+      "startedAt": "2019-04-07T02:57:01Z",
+      "map": "Erangel_Main"
+    },
+    {
+      "id": "84757a40-812c-4757-850d-a634488339c7",
+      "startedAt": "2019-04-07T04:11:06Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "d3fe4c88-2e54-4e0a-8cf2-09ac4aa6a98d",
+      "startedAt": "2019-04-07T06:45:37Z",
+      "map": "Savage_Main"
+    },
+    {
+      "id": "762f6085-ee31-4ea5-adf9-f882fbef5f4f",
+      "startedAt": "2019-04-07T08:12:05Z",
+      "map": "DihorOtok_Main"
+    },
+    {
+      "id": "0440413c-30bd-4621-a751-fc668d077bed",
+      "startedAt": "2019-04-07T10:06:07Z",
+      "map": "Savage_Main"
+    }
+  ]
+}

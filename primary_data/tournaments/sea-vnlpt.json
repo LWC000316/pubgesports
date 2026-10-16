@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "lpt",
   "stage": null,
-  "startDate": "2019-04-07",
+  "startDate": "2019-04-05",
   "source": "https://api.pubg.com/tournaments/sea-vnlpt",
   "createdAt": null,
   "matchCount": 8,
@@ -2606,5 +2606,6 @@
       "longestKill": 0.0
     }
   ],
-  "officialName": "PUBG Vietnam Series/2019"
+  "officialName": "PUBG Vietnam Series/2019",
+  "endDate": "2019-04-07"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "p",
   "stage": null,
-  "startDate": "2023-05-18",
+  "startDate": "2019-04-08",
   "source": "https://api.pubg.com/tournaments/cn-pclp",
   "createdAt": null,
   "matchCount": 98,
@@ -5201,5 +5201,6 @@
       "avgSurvival": 197,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2023-05-21"
 }

@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": null,
   "stage": null,
-  "startDate": "2019-05-25",
+  "startDate": "2019-04-29",
   "source": "https://api.pubg.com/tournaments/cn-pcl",
   "createdAt": null,
   "matchCount": 184,
@@ -4349,5 +4349,6 @@
       "avgSurvival": 957,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2019-07-09"
 }
