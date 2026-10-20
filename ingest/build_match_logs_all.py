@@ -21,6 +21,7 @@
 
 import argparse
 import importlib.util
+import json
 import subprocess
 import sys
 import time
@@ -40,6 +41,27 @@ GLOBAL = {"PGC", "PGS", "PNC", "EWC"}
 # 결승으로 볼 단계. stage_label 이 이름을 붙여 준 것만 쓴다 — 모르는 코드를
 # 결승으로 넘겨짚지 않는다.
 FINAL_STAGES = {"Grand Finals", "Final Stage"}
+
+
+def stage_lacks(tid, field):
+    """그 단계의 매치로그 중 하나라도 이 항목이 없으면 True.
+
+    추출기에 항목을 새로 넣으면 **그 전에 뽑아 둔 로그에는 없다.** 전부 다시
+    받으면 되지만 7,833경기면 42시간이라, 없는 단계만 고를 길이 필요하다.
+    (`nextCircles` 를 넣은 2026-10-15 기준으로 192단계가 해당했다.)
+    """
+    d = OUT_DIR / tid
+    if not d.is_dir():
+        return True
+    for f in d.glob("*.json"):
+        if f.name.startswith("_"):
+            continue
+        try:
+            if not json.loads(f.read_text(encoding="utf-8")).get(field):
+                return True
+        except (ValueError, OSError):
+            return True
+    return False
 
 
 def targets(args):
@@ -62,6 +84,8 @@ def targets(args):
         done = OUT_DIR / tid
         have = (len([f for f in done.glob("*.json") if not f.name.startswith("_")])
                 if done.is_dir() else 0)
+        if getattr(args, "missing", None) and not stage_lacks(tid, args.missing):
+            continue
         out.append((date, series, tid, n, have))
     return out
 
@@ -77,6 +101,9 @@ def main():
     ap.add_argument("--keep-telemetry", action="store_true")
     ap.add_argument("--force", action="store_true",
                     help="이미 만든 매치로그도 다시 뽑는다")
+    ap.add_argument("--missing", default=None,
+                    help="매치로그에 이 항목이 없는 단계만 고른다 (예: nextCircles). "
+                         "추출기에 항목을 새로 넣었을 때 쓴다")
     ap.add_argument("--max-minutes", type=float, default=None,
                     help="이 시간을 넘기면 하던 단계까지만 하고 멈춘다. "
                          "서버 작업 한도(6시간)에 걸려 통째로 취소되는 것을 막는다")
