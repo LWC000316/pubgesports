@@ -51,6 +51,7 @@ public class HeatService {
                 out.add(HeatMapSummaryDto.builder()
                         .map(root.path("map").asText())
                         .mapLabel(root.path("mapLabel").asText())
+                        .image(root.path("image").asText(root.path("map").asText()))
                         .matches(root.path("matches").asInt())
                         .stages(root.path("stages").asInt())
                         .build());

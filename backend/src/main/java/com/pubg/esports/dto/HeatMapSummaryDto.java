@@ -16,6 +16,8 @@ public class HeatMapSummaryDto {
 
     private String map;
     private String mapLabel;
+    /** 지도 그림 파일 이름. 옛 맵은 현재판 그림을 빌려 쓴다. */
+    private String image;
     /** 이 집계에 들어간 경기 수. */
     private int matches;
     /** 그 경기들이 나온 대회 단계 수. */

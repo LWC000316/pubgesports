@@ -112,6 +112,7 @@ export default function HitEndingTab() {
 
       <p style={{ color: 'var(--text-muted)', fontSize: '0.74rem', marginTop: '14px', lineHeight: 1.6 }}>
         <Info size={12} style={{ verticalAlign: '-2px' }} />{' '}
+        {heat?.mapNote ? heat.mapNote + ' ' : ''}
         {current?.matches.toLocaleString()}경기 · {current?.stages}개 대회 단계를 모은 값입니다.
         {' '}우리가 뽑아 둔 매치로그만 센 것이라 전체 프로 경기가 아닙니다.
         {' '}출처: <a href="https://developer.pubg.com" target="_blank" rel="noopener noreferrer"
@@ -221,7 +222,7 @@ function HeatView({ heat, layer, spec, showPoints }) {
         borderRadius: 'var(--radius-sm)', overflow: 'hidden',
         border: '1px solid var(--border-subtle)', background: '#0a0e16'
       }}>
-        <img src={`/maps/${heat.map}.png`} alt={heat.mapLabel}
+        <img src={`/maps/${heat.image || heat.map}.png`} alt={heat.mapLabel}
              style={{ width: '100%', aspectRatio: '1 / 1', display: 'block', opacity: 0.8 }}
              onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
         <canvas ref={canvasRef} width={SIZE} height={SIZE}

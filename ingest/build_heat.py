@@ -42,6 +42,17 @@ GRID = 50
 # 고 말할 수 없다.
 MIN_MATCHES = 20
 
+# 이름이 겹치거나 지도 그림이 없는 맵. (화면 이름, 쓸 그림, 덧붙일 말)
+#
+# `Erangel_Main` 은 2019~2020년 에란겔의 옛 내부 이름이고 지금은 `Baltic_Main`
+# 이다. 둘 다 "Erangel" 로 내보내면 화면에 같은 이름이 둘 나온다. **합치지는
+# 않는다** — 리마스터로 지형이 달라졌으니 한 덩어리로 세면 거짓이 된다.
+# 옛 맵 그림은 우리에게 없어서 현재판을 쓰되, 다르다는 것을 화면에 적는다.
+ALIASES = {
+    "Erangel_Main": ("Erangel (2019~2020)", "Baltic_Main",
+                     "리마스터 전 에란겔입니다. 지도 그림은 현재판이라 지형이 조금 다릅니다."),
+}
+
 
 def cell(v):
     return min(GRID - 1, max(0, int(v * GRID)))
@@ -103,9 +114,13 @@ def main():
 
         # 경기 수가 맵마다 다르므로 **경기당 값**도 같이 준다. 화면에서 맵을
         # 바꿔도 색이 같은 뜻을 갖게 하려는 것이다.
+        label, image, note = ALIASES.get(key, (m["label"], key, None))
         doc = {
             "map": key,
-            "mapLabel": m["label"],
+            "mapLabel": label,
+            # 그림 파일 이름. 보통 맵 이름과 같지만 옛 맵은 현재판을 빌려 쓴다.
+            "image": image,
+            "mapNote": note,
             "matches": m["matches"],
             "stages": len(m["stages"]),
             "grid": GRID,
@@ -114,13 +129,16 @@ def main():
                 name: {
                     "max": max(c.values()) if c else 0,
                     "total": sum(c.values()),
+                    # **동점끼리도 순서를 고정한다.** 안 그러면 돌릴 때마다
+                    # 파일이 달라져, 새 경기가 하나도 없는데도 다섯 시간마다
+                    # 커밋이 쌓인다 (실제로 그랬다).
                     "cells": [[i, j, n] for (i, j), n in
-                              sorted(c.items(), key=lambda kv: -kv[1])],
+                              sorted(c.items(), key=lambda kv: (-kv[1], kv[0]))],
                 } for name, c in (("ending", m["ending"]),
                                   ("landing", m["landing"]),
                                   ("death", m["death"]))
             },
-            "endPoints": m["endPoints"],
+            "endPoints": sorted(m["endPoints"]),
         }
         (OUT_DIR / ("%s.json" % key)).write_text(
             json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + chr(10),
