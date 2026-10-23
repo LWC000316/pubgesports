@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "f",
   "stage": "Finals",
-  "startDate": "2026-05-09",
+  "startDate": "2025-04-05",
   "source": "https://api.pubg.com/tournaments/kr-pws1f",
   "createdAt": null,
   "matchCount": 27,
@@ -1923,5 +1923,6 @@
       "longestKill": 96.3
     }
   ],
-  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1"
+  "officialName": "PUBG WEEKLY SERIES/2026/Phase 1",
+  "endDate": "2026-05-10"
 }

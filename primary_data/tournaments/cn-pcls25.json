@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "s25",
   "stage": null,
-  "startDate": "2025-04-13",
+  "startDate": "2025-03-19",
   "source": "https://api.pubg.com/tournaments/cn-pcls25",
   "createdAt": null,
   "matchCount": 108,
@@ -2135,5 +2135,6 @@
       "avgSurvival": 1034,
       "longestKill": 0.0
     }
-  ]
+  ],
+  "endDate": "2025-04-13"
 }
