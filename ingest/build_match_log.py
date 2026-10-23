@@ -25,6 +25,7 @@ import argparse
 import gzip
 import io
 import json
+import math
 import re
 import sys
 import urllib.request
@@ -122,6 +123,33 @@ def relabel(log, by_nickname):
 GAP = 15          # 이 초 안에 이어지면 한 교전으로 본다
 
 
+def flight_segment(points, size):
+    """비행기 좌표로 항로 선분을 구한다. 점이 모자라면 None.
+
+    좌표가 한 직선에 놓이므로(실측 오차 0.0m) 방향은 주성분으로 잡고, 그
+    방향으로 가장 먼 두 점을 끝으로 삼는다. **선을 임의로 늘이지 않는다** —
+    비행기가 실제로 지나간 구간만 그린다.
+    """
+    if len(points) < 10 or not size:
+        return None
+    n = len(points)
+    mx = sum(p[0] for p in points) / n
+    my = sum(p[1] for p in points) / n
+    sxx = sum((p[0] - mx) ** 2 for p in points) / n
+    syy = sum((p[1] - my) ** 2 for p in points) / n
+    sxy = sum((p[0] - mx) * (p[1] - my) for p in points) / n
+    th = 0.5 * math.atan2(2 * sxy, sxx - syy)
+    dx, dy = math.cos(th), math.sin(th)
+    ts = [(p[0] - mx) * dx + (p[1] - my) * dy for p in points]
+    lo, hi = min(ts), max(ts)
+    # `norm` 은 추출 함수 안의 지역 함수라 여기서는 못 쓴다. 같은 규칙을 쓴다.
+    r = lambda v: round(max(0.0, min(1.0, v / size)), 3)
+    return {
+        "x1": r(mx + dx * lo), "y1": r(my + dy * lo),
+        "x2": r(mx + dx * hi), "y2": r(my + dy * hi),
+    }
+
+
 def dedupe_zones(rows):
     """같은 구역이 수십 초 동안 그대로 보고된다. 바뀐 순간만 남긴다."""
     out = []
@@ -199,6 +227,7 @@ def build(events, match_id):
     tracks = defaultdict(list)
     circles = []
     next_circles = []
+    plane = []
     red_zones = []
     kills = []
     damage = []        # 선수가 선수를 때린 것만. 낙상·자기장은 뺀다
@@ -263,7 +292,19 @@ def build(events, match_id):
                 "dmg": e.get("damage") or 0,
             })
 
-        elif t == "LogParachuteLanding":
+        # **비행 항로.** 공식 텔레메트리에 "비행기 경로" 이벤트는 없지만, 선수가
+        # 비행기에 타고 있는 동안의 좌표가 곧 항로다. 실측으로 본 수송기 좌표
+        # 360여 개가 **오차 0.0m 로 한 직선**에 놓인다.
+        #
+        # **비행기가 둘일 수 있다.** 태고의 재투입기(RedeployAircraft_*)가 섞이면
+        # 선이 3km 까지 틀어진다. 본 수송기만 쓴다.
+        if (e.get("vehicle") or {}).get("vehicleType") == "TransportAircraft":
+            if (e["vehicle"].get("vehicleId") or "").startswith("DummyTransportAircraft"):
+                loc = (e.get("character") or {}).get("location") or {}
+                if "x" in loc:
+                    plane.append((loc["x"], loc["y"]))
+
+        if t == "LogParachuteLanding":
             ch = e.get("character") or {}
             loc = ch.get("location") or {}
             if ch.get("name") and "x" in loc:
@@ -309,7 +350,7 @@ def build(events, match_id):
         # 달라졌다. 구버전은 damageCauserName 이 최상위, 신버전은
         # killerDamageInfo 안이다. 둘 다 받지 않으면 2019~2020년 대회의 킬이
         # 통째로 빈다 (실제로 PGC 2019 12경기가 킬 0건이었다).
-        elif t in ("LogPlayerKillV2", "LogPlayerKill"):
+        if t in ("LogPlayerKillV2", "LogPlayerKill"):
             victim = e.get("victim") or {}
             killer = e.get("killer") or {}
             vloc = victim.get("location") or {}
@@ -386,6 +427,8 @@ def build(events, match_id):
              "vx": norm(e["vx"]), "vy": norm(e["vy"]),
              "dmg": round(e["dmg"])}
             for e in merge_engagements(damage)],
+        # 비행 항로. 비행기에 타고 있던 좌표로 구한 **실제 선분**이다.
+        "flightPath": flight_segment(plane, size),
         "landings": [{"name": l["name"], "t": l["t"],
                       "x": norm(l["x"]), "y": norm(l["y"])} for l in landings],
         "packages": [{"t": p["t"], "x": norm(p["x"]), "y": norm(p["y"])}

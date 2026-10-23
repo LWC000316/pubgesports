@@ -118,7 +118,12 @@ export default function MatchLogMap({ log, title }) {
     const c = [...(log?.circles ?? [])].reverse().find(x => x.t <= t);
     return c?.r ?? 0.1;
   }), [phases, log]);
-  const flight = useMemo(() => deriveFlightPath(log), [log]);
+  // 항로는 **실측이 있으면 실측**을 쓴다. 비행기에 타고 있던 좌표가 곧 항로이고
+  // 오차 0.0m 로 한 직선에 놓인다 (build_match_log.py 의 flight_segment).
+  // 그 항목이 없는 옛 로그에서만 좌표로 직선을 맞춘 추정값으로 돌아간다.
+  const flight = useMemo(
+    () => log?.flightPath ?? deriveFlightPath(log), [log]);
+  const flightMeasured = Boolean(log?.flightPath);
 
   // 지금 벌어지고 있는 교전. 끝난 것은 그리지 않는다 — 쌓이면 지도가 덮인다.
   const fightsNow = useMemo(
@@ -251,6 +256,14 @@ export default function MatchLogMap({ log, title }) {
       ctx.lineTo(px(flight.x2), px(flight.y2));
       ctx.stroke();
       ctx.setLineDash([]);
+      // 실측 항로는 비행기가 **실제로 지나간 구간**이라 양 끝이 뜻을 갖는다.
+      // 어느 쪽에서 들어왔는지 보이도록 시작점에 표시를 둔다.
+      if (flightMeasured) {
+        ctx.fillStyle = 'rgba(255, 90, 90, 0.9)';
+        ctx.beginPath();
+        ctx.arc(px(flight.x1), px(flight.y1), 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
     // 4. 이동 경로와 선수
@@ -389,7 +402,8 @@ export default function MatchLogMap({ log, title }) {
       drawShape(ctx, sh, px, log.mapSize);
     }
   }, [log, time, teams, colorOf, teamOf, selectedTeam, selectedPlayer, view,
-      circle, killsSoFar, deathAt, fightsNow, landingOf, flight, shapes, draft]);
+      circle, killsSoFar, deathAt, fightsNow, landingOf, flight, flightMeasured,
+      shapes, draft]);
 
   const at = e => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -567,7 +581,9 @@ export default function MatchLogMap({ log, title }) {
             <IconBtn on={view.grid} onClick={() => toggle('grid')} icon={Grid3x3} title="격자 (1km)" />
             <IconBtn on={view.feed} onClick={() => toggle('feed')} icon={MessageSquare} title="맵 위 킬 피드" />
             <IconBtn on={view.flight} onClick={() => toggle('flight')} icon={Plane}
-                     title="비행 항로 (강하 전 좌표로 맞춘 추정값)" />
+                     title={flightMeasured
+                       ? '비행 항로 — 비행기에 타고 있던 좌표로 구한 실제 항로'
+                       : '비행 항로 — 이 경기에는 비행기 기록이 없어 강하 전 좌표로 맞춘 추정값'} />
           </div>
         </div>
 
