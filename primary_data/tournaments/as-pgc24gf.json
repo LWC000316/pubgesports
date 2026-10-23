@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "gf",
   "stage": "Grand Finals",
-  "startDate": "2024-12-21",
+  "startDate": "2024-12-20",
   "source": "https://api.pubg.com/tournaments/as-pgc24gf",
   "createdAt": null,
   "matchCount": 18,
@@ -1293,5 +1293,6 @@
       "longestKill": 253.5
     }
   ],
-  "officialName": "PUBG Global Championship/2024"
+  "officialName": "PUBG Global Championship/2024",
+  "endDate": "2024-12-22"
 }

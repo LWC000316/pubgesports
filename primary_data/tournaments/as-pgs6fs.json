@@ -7,7 +7,7 @@
   "edition": "6",
   "stageCode": "fs",
   "stage": "Final Stage",
-  "startDate": "2024-11-09",
+  "startDate": "2024-11-08",
   "source": "https://api.pubg.com/tournaments/as-pgs6fs",
   "createdAt": null,
   "matchCount": 18,
@@ -1309,5 +1309,6 @@
       "longestKill": 37.6
     }
   ],
-  "officialName": "PUBG Global Series/2024/6"
+  "officialName": "PUBG Global Series/2024/6",
+  "endDate": "2024-11-10"
 }

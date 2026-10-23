@@ -7,7 +7,7 @@
   "edition": "5",
   "stageCode": null,
   "stage": null,
-  "startDate": "2025-03-22",
+  "startDate": "2025-03-14",
   "source": "https://api.pubg.com/tournaments/am-pas5",
   "createdAt": null,
   "matchCount": 48,
@@ -1960,5 +1960,6 @@
       "longestKill": 158.0
     }
   ],
-  "officialName": "PUBG Americas Series/2025/5"
+  "officialName": "PUBG Americas Series/2025/5",
+  "endDate": "2025-03-31"
 }
