@@ -1,0 +1,44 @@
+{
+  "matches": [
+    {
+      "id": "9470d330-29b0-453f-9d22-1a77b4d00e5e",
+      "startedAt": "2025-07-02T09:51:56Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "3e7486b1-2dcc-48a0-a576-188086200455",
+      "startedAt": "2025-07-02T10:30:14Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "0179b284-93f3-42c5-85e4-510c7b6ec831",
+      "startedAt": "2025-07-02T11:13:21Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "3510f133-a663-47e2-aed9-da7b6303ca68",
+      "startedAt": "2025-07-02T11:52:39Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "afe057c7-2705-4f26-a5a3-e56e4be6e7f0",
+      "startedAt": "2025-07-02T12:31:19Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "62c33cd2-a73f-4e76-beee-1baadce935f8",
+      "startedAt": "2025-07-02T13:16:30Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "c6581704-1f16-4060-899f-19dc0c9413b7",
+      "startedAt": "2025-07-02T14:01:22Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "97314876-99e0-43c0-86ce-6580487824a5",
+      "startedAt": "2025-07-02T14:37:05Z",
+      "map": "Neon_Main"
+    }
+  ]
+}
