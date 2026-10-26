@@ -7,7 +7,7 @@
   "edition": null,
   "stageCode": "gf4",
   "stage": "Grand Finals",
-  "startDate": "2021-12-18",
+  "startDate": "2021-12-17",
   "source": "https://api.pubg.com/tournaments/as-pgcgf4",
   "createdAt": null,
   "matchCount": 15,
@@ -1291,5 +1291,6 @@
       "longestKill": 253.4
     }
   ],
-  "officialName": "PUBG Global Championship/2021"
+  "officialName": "PUBG Global Championship/2021",
+  "endDate": "2021-12-19"
 }
