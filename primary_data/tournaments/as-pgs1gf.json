@@ -7,7 +7,7 @@
   "edition": "1",
   "stageCode": "gf",
   "stage": "Grand Finals",
-  "startDate": "2023-05-06",
+  "startDate": "2023-05-05",
   "source": "https://api.pubg.com/tournaments/as-pgs1gf",
   "createdAt": null,
   "matchCount": 18,
@@ -1307,5 +1307,6 @@
       "longestKill": 76.4
     }
   ],
-  "officialName": "PUBG Global Series/2023/1"
+  "officialName": "PUBG Global Series/2023/1",
+  "endDate": "2023-05-07"
 }
