@@ -41,7 +41,9 @@ pubg.com/ko/news/10280). 일반전은 다르다 — 일반전만 경고·축소 
 """
 
 import argparse
+import gzip
 import importlib.util
+import io
 import json
 import os
 import sys
@@ -113,6 +115,27 @@ def save_json(path, obj):
     path.write_text(
         json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + chr(10),
         encoding="utf-8")
+
+
+def fetch_telemetry(url):
+    """텔레메트리를 받아 그대로 돌려준다. **파일로 남기지 않는다.**
+
+    `build_match_log.fetch_telemetry` 는 캐시 파일을 쓰는데, 거기에
+    `os.devnull` 을 넘겼더니 그 경로가 "이미 있는 캐시"로 인식돼 빈 내용을
+    읽었다. 실측으로 55회 호출에 0건을 모았다. 여기서는 캐시가 필요 없다 —
+    자기장만 뽑고 버리기 때문이다.
+
+    약관상 gzip 을 받아야 한다. 33MB 가 약 3MB 로 줄어든다.
+    """
+    req = urllib.request.Request(url, headers={
+        "Accept-Encoding": "gzip",
+        "User-Agent": "PUBGProVault/1.0 (https://github.com/LWC000316/pubgesports)",
+    })
+    with urllib.request.urlopen(req, timeout=180) as resp:
+        raw = resp.read()
+        if resp.headers.get("Content-Encoding") == "gzip":
+            raw = gzip.GzipFile(fileobj=io.BytesIO(raw)).read()
+    return json.loads(raw.decode("utf-8"))
 
 
 def have_counts():
@@ -272,7 +295,7 @@ def main():
         if not url:
             continue
         try:
-            events = bml.fetch_telemetry(url, Path(os.devnull))
+            events = fetch_telemetry(url)
         except Exception as e:
             print("   텔레메트리 실패 %s: %s" % (mid[:8], e))
             continue
