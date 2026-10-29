@@ -16,6 +16,25 @@
 - `ending`  마지막 자기장의 중심. "이 맵은 어디서 끝나는가"
 - `landing` 착지 지점. "어디로 내리는가"
 - `death`   사망 지점. "어디서 죽는가"
+- `zones`   **페이즈마다 그 칸이 자기장 안에 든 경기 수.** 사용자가 처음
+            말한 "지형 중 어느 부분이 서클에 많이 걸치는가" 가 이것이다.
+            마지막 한 점만 보는 `ending` 과 다른 질문이고, 페이즈를 넘기면
+            그대로 서클이 줄어드는 모습이 된다.
+
+P1 은 지도 전체라 뜻이 없어 빼고 P2 부터 담는다. 경기마다 페이즈 수가
+달라서(보통 8~9) 페이즈별로 **몇 경기가 기여했는지**를 같이 적는다 —
+안 그러면 뒤쪽 페이즈가 표본이 적다는 것이 숨는다.
+
+## 언제 경기인지 반드시 가른다
+
+**섞으면 어느 쪽도 아닌 평균이 된다.** 우리 매치로그는 2019~2026 여덟 해에
+걸쳐 있는데 그 사이 자기장 규칙과 맵이 여러 번 바뀌었다. 8년치를 한 덩어리로
+세면 표본 수(2,978경기)만 커 보이고 뜻은 없다.
+
+그래서 **구간마다 따로 센다** (`PERIODS`). 기본은 최근 2년이고, 전체도 함께
+담아 화면에서 고르게 한다. 맵마다 구간별 경기 수를 적으므로, 그 구간에
+경기가 없는 맵(비켄디는 2024년이, 사녹은 2020년이 마지막이다)은 화면에서
+아예 빠진다.
 
 ## 지어내지 않는 것
 
@@ -29,6 +48,8 @@
 import argparse
 import json
 import sys
+
+import numpy as np
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -38,9 +59,24 @@ OUT_DIR = PROJECT_ROOT / "primary_data" / "heat"
 
 # 격자 한 변. 8km 맵이면 한 칸이 160m 로, 교전 한 판이 들어가는 크기다.
 GRID = 50
+
+# 자기장 층만 더 곱게 센다. 50칸으로는 가장자리가 계단처럼 보인다.
+# 희소 목록([i,j,n])이 아니라 **빽빽한 배열**로 담으므로 100칸이어도
+# 페이즈당 1만 개 정수면 된다 (맵당 8페이즈, 약 200KB).
+ZONE_GRID = 100
+
+# 집계 구간. (키, 화면 이름, 시작연도, 끝연도). None 이면 제한 없음.
+# **최근 2년이 기본**이다 — 지금 통하는 규칙이 그것이기 때문이다.
+PERIODS = [
+    ("recent", "2025~26", 2025, None),
+    ("all", "전체 (2019~)", None, None),
+]
 # 표본이 이보다 적은 맵은 내보내지 않는다. 몇 경기로 "이 맵은 여기서 끝난다"
 # 고 말할 수 없다.
 MIN_MATCHES = 20
+
+# 담을 페이즈 수. P1 은 지도 전체라 빼고, 뒤쪽은 표본이 급격히 준다.
+MAX_PHASE = 9
 
 # 이름이 겹치거나 지도 그림이 없는 맵. (화면 이름, 쓸 그림, 덧붙일 말)
 #
@@ -68,10 +104,17 @@ def main():
         except (AttributeError, OSError):
             pass
 
+    # 칸 중심 좌표. 자기장 안인지 한 번에 재려고 미리 만들어 둔다.
+    az = (np.arange(ZONE_GRID) + 0.5) / ZONE_GRID
+    gx, gy = np.meshgrid(az, az, indexing="ij")
+
     maps = defaultdict(lambda: {
         "label": None, "matches": 0, "stages": set(),
         "ending": Counter(), "landing": Counter(), "death": Counter(),
         "endPoints": [],
+        # 페이즈 -> (칸별 누적, 기여 경기 수)
+        "zones": defaultdict(
+            lambda: [np.zeros((ZONE_GRID, ZONE_GRID), dtype=np.int32), 0]),
     })
 
     files = [f for f in LOG_DIR.glob("*/*.json") if not f.name.startswith("_")]
@@ -94,6 +137,21 @@ def main():
             last = circles[-1]
             m["ending"][(cell(last["x"]), cell(last["y"]))] += 1
             m["endPoints"].append((round(last["x"], 4), round(last["y"], 4)))
+
+        # 페이즈마다 자기장 안에 든 칸을 센다. 페이즈는 반경이 줄다 멈추는
+        # 순간부터다 (`derivePhases` 와 같은 규칙).
+        phases, shrinking = [], False
+        for a, b in zip(circles, circles[1:]):
+            if b["r"] < a["r"] - 1e-9:
+                shrinking = True
+            elif shrinking:
+                phases.append(b)
+                shrinking = False
+        for k, c in enumerate(phases[:MAX_PHASE - 1], start=2):
+            inside = (gx - c["x"]) ** 2 + (gy - c["y"]) ** 2 <= c["r"] ** 2
+            z = m["zones"][k]
+            z[0] += inside
+            z[1] += 1
 
         for l in d.get("landings") or []:
             m["landing"][(cell(l["x"]), cell(l["y"]))] += 1
@@ -139,6 +197,25 @@ def main():
                                   ("death", m["death"]))
             },
             "endPoints": sorted(m["endPoints"]),
+            # 페이즈별 자기장 포함 빈도. 0 인 칸은 빼서 파일을 줄인다.
+            "zoneGrid": ZONE_GRID,
+            # **빽빽한 배열로 담는다.** [i,j,n] 세 쌍으로 담으면 값이 있는 칸이
+            # 1만 개에 가까워 파일이 세 배가 된다. 행 우선으로 편 정수 배열이면
+            # 그대로 격자가 되고 화면에서 바로 쓴다.
+            "zones": [
+                {
+                    "phase": k,
+                    "matches": m["zones"][k][1],
+                    "max": int(m["zones"][k][0].max()),
+                    # 가장 잦은 칸 다섯 — 화면 목록에 쓴다 (좌표로 동점 고정).
+                    "top": sorted(
+                        ([int(i), int(j), int(m["zones"][k][0][i, j])]
+                         for i, j in zip(*np.nonzero(m["zones"][k][0]))),
+                        key=lambda c: (-c[2], c[0], c[1]))[:200],
+                    "counts": m["zones"][k][0].ravel(order="C").tolist(),
+                }
+                for k in sorted(m["zones"])
+            ],
         }
         (OUT_DIR / ("%s.json" % key)).write_text(
             json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + chr(10),

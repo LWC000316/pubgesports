@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Crosshair, Plane, Skull, Target, Info } from 'lucide-react';
+import { Crosshair, Plane, Skull, Target, Info, CircleDashed, Play, Pause } from 'lucide-react';
 import { fetchHeatMaps, fetchHeat } from '../api/tournaments';
 import { useApi } from '../hooks/useApi';
 import LoadingPanel from './common/LoadingPanel';
@@ -28,15 +28,55 @@ const LAYERS = [
   { key: 'death', label: '사망', icon: Skull,
     hint: '죽은 자리. 어디서 싸우다 죽는가.',
     color: [255, 77, 109] },
+  // 처음 말한 "지형 중 어느 부분이 서클에 많이 걸치는가" 가 이것이다.
+  // 마지막 한 점만 보는 '엔딩' 과 다른 질문이고, 페이즈를 넘기면 그대로
+  // 서클이 줄어드는 모습이 된다.
+  { key: 'zone', label: '자기장', icon: CircleDashed,
+    hint: '그 칸이 자기장 안에 든 경기 비율. 페이즈를 넘기면 서클이 줄어드는 모습이 된다.',
+    color: [0, 229, 255] },
 ];
 
 const EMPTY = [];
 
+/**
+ * 무지개 색 띠. 보라 -> 파랑 -> 청록 -> 초록 -> 노랑 -> 빨강.
+ *
+ * **한 가지 색의 농도로는 3%와 30%가 구별되지 않는다.** 농도만 쓰면 눈이
+ * 네댓 단계밖에 못 가르는데, 색이 바뀌면 그보다 훨씬 잘게 읽힌다. 지도 위에
+ * 밀도를 얹는 자료가 대개 이 띠를 쓰는 이유다.
+ *
+ * 낮은 쪽은 투명에 가깝게 둬서 바닥이 통째로 덮이지 않게 한다.
+ */
+const RAMP = [
+  [0.00, [40, 0, 90, 0.00]],
+  [0.10, [90, 20, 160, 0.45]],
+  [0.28, [40, 70, 230, 0.70]],
+  [0.46, [0, 200, 220, 0.78]],
+  [0.62, [60, 230, 90, 0.82]],
+  [0.78, [240, 230, 40, 0.86]],
+  [1.00, [250, 50, 30, 0.90]],
+];
+
+function rampAt(v) {
+  const t = Math.max(0, Math.min(1, v));
+  for (let i = 1; i < RAMP.length; i += 1) {
+    if (t <= RAMP[i][0]) {
+      const [p0, c0] = RAMP[i - 1];
+      const [p1, c1] = RAMP[i];
+      const f = (t - p0) / Math.max(1e-9, p1 - p0);
+      return c0.map((c, k) => c + (c1[k] - c) * f);
+    }
+  }
+  return RAMP[RAMP.length - 1][1];
+}
+
 export default function HitEndingTab() {
   const { data: maps, loading, error, reload } = useApi(fetchHeatMaps, [], EMPTY);
   const [map, setMap] = useState(null);
-  const [layer, setLayer] = useState('ending');
+  const [layer, setLayer] = useState('zone');
   const [showPoints, setShowPoints] = useState(false);
+  const [phase, setPhase] = useState(2);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => { setMap(m => m ?? (maps ?? [])[0]?.map ?? null); }, [maps]);
 
@@ -101,6 +141,10 @@ export default function HitEndingTab() {
             경기마다 점으로
           </label>
         )}
+        {layer === 'zone' && (
+          <PhasePicker heat={heat} phase={phase} setPhase={setPhase}
+                       playing={playing} setPlaying={setPlaying} />
+        )}
       </div>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: '0 0 14px' }}>
         {spec.hint}
@@ -108,7 +152,8 @@ export default function HitEndingTab() {
 
       {heatLoading || !heat
         ? <LoadingPanel title="집계를 그리는 중입니다" detail="" />
-        : <HeatView heat={heat} layer={layer} spec={spec} showPoints={showPoints} />}
+        : <HeatView heat={heat} layer={layer} spec={spec} showPoints={showPoints}
+                    phase={phase} />}
 
       <p style={{ color: 'var(--text-muted)', fontSize: '0.74rem', marginTop: '14px', lineHeight: 1.6 }}>
         <Info size={12} style={{ verticalAlign: '-2px' }} />{' '}
@@ -124,22 +169,39 @@ export default function HitEndingTab() {
 }
 
 /** 맵 이미지 위에 격자 밀도를 덮는다. */
-function HeatView({ heat, layer, spec, showPoints }) {
+function HeatView({ heat, layer, spec, showPoints, phase }) {
   const canvasRef = useRef(null);
-  const L = heat.layers?.[layer];
+  // 자기장은 페이즈마다 따로 집계돼 있다. 나머지 셋은 한 장씩이다.
+  const L = useMemo(() => {
+    if (layer !== 'zone') return heat.layers?.[layer];
+    const z = (heat.zones ?? []).find(x => x.phase === phase);
+    // 목록·통계는 상위 칸만 쓰고, 그림은 counts 배열을 쓴다.
+    return z && { ...z, cells: z.top ?? z.cells ?? [] };
+  }, [heat, layer, phase]);
 
   const stats = useMemo(() => {
     if (!L?.cells?.length) return null;
     const g = heat.grid;
-    const top = L.cells.slice(0, 5).map(([i, j, n]) => ({
-      x: (i + 0.5) / g, y: (j + 0.5) / g, n,
-      share: (n / L.total) * 100,
-    }));
+    // 비율의 뜻이 층마다 다르다. 낙하·사망·엔딩은 "전체 중 이 칸의 몫"이고,
+    // 자기장은 "그 칸이 자기장 안에 든 경기 비율"이다. 분모를 가른다.
+    const sum = L.cells.reduce((a, c) => a + c[2], 0);
+    const denom = layer === 'zone' ? (L.matches || 1) : sum;
+    // **붙어 있는 칸은 같은 자리다.** 그냥 앞에서 다섯 개를 집으면
+    // "49%,37% · 47%,41% · 49%,39%" 처럼 한 덩어리가 다섯 줄로 나온다.
+    // 이미 집은 자리에서 다섯 칸 안쪽이면 건너뛴다.
+    const GAP = 5;
+    const top = [];
+    for (const [i, j, n] of L.cells) {
+      if (top.length >= 5) break;
+      if (top.some(t => Math.abs(t.i - i) < GAP && Math.abs(t.j - j) < GAP)) continue;
+      top.push({ i, j, x: (i + 0.5) / g, y: (j + 0.5) / g, n, share: (n / denom) * 100 });
+    }
     // 중심이 어디로 치우쳤는지. 치우치지 않았다는 것도 사실이라 그대로 적는다.
     let sx = 0, sy = 0;
     for (const [i, j, n] of L.cells) { sx += (i + 0.5) / g * n; sy += (j + 0.5) / g * n; }
-    return { top, cx: sx / L.total, cy: sy / L.total };
-  }, [L, heat.grid]);
+    const peak = L.cells.length ? L.cells[0][2] : 0;
+    return { top, cx: sx / sum, cy: sy / sum, peak, denom };
+  }, [L, heat.grid, layer]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -148,6 +210,29 @@ function HeatView({ heat, layer, spec, showPoints }) {
     ctx.clearRect(0, 0, SIZE, SIZE);
     const [r, g, b] = spec.color;
 
+    // 자기장은 빽빽한 배열로 와서 그대로 격자가 된다. 해상도가 높아
+    // 흐릴 필요도, 기준을 뽑을 필요도 없다 — 확률을 색 띠에 그대로 태운다.
+    if (layer === 'zone' && L.counts) {
+      const Z = heat.zoneGrid || heat.grid;
+      const denom = L.max || 1;
+      const small = document.createElement('canvas');
+      small.width = Z; small.height = Z;
+      const sctx = small.getContext('2d');
+      const img = sctx.createImageData(Z, Z);
+      for (let k = 0; k < L.counts.length; k += 1) {
+        const [r, g, b, a] = rampAt(L.counts[k] / denom);
+        img.data[k * 4] = r;
+        img.data[k * 4 + 1] = g;
+        img.data[k * 4 + 2] = b;
+        img.data[k * 4 + 3] = a * 255;
+      }
+      sctx.putImageData(img, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(small, 0, 0, SIZE, SIZE);
+      return;                       // 번호 표식은 얹지 않는다 — 지도가 어수선해진다
+    }
+
     // **칸마다 그대로 칠하면 안 읽힌다.** 엔딩은 1,196개 점이 2,500칸에
     // 흩어져 대부분이 1~2 라, 낮은 값을 들어 올리면 지도 전체가 덮이고
     // 안 들어 올리면 한 칸만 보인다. 그래서 주변으로 번지게 한 뒤(상자
@@ -155,15 +240,22 @@ function HeatView({ heat, layer, spec, showPoints }) {
     const G = heat.grid;
     let acc = new Float32Array(G * G);
     for (const [i, j, n] of L.cells) acc[j * G + i] = n;
-    acc = blur(blur(acc, G, 1), G, 1);
+    // 자기장은 원을 쌓은 값이라 이미 매끄럽다. 더 흐리면 가장자리만 뭉갠다.
+    if (layer !== 'zone') acc = blur(blur(acc, G, 1), G, 1);
 
-    // **자르는 기준을 층마다 분포에서 뽑는다.** 고정값을 쓰면 한쪽이 깨진다 —
-    // 엔딩은 1,196개가 흩어져 거의 안 보이고, 낙하는 82,177개라 섬 전체가
-    // 덮인다. 값이 있는 칸의 중앙값 언저리를 바닥으로 잡으면 둘 다 "몰린 데"
-    // 만 남는다.
+    // **자기장은 확률이라 절대값으로 칠한다.** "이 칸이 경기의 몇 %에서
+    // 자기장 안이었나" 가 그 자체로 뜻을 가지므로, 분포에서 기준을 뽑으면
+    // 오히려 맵마다 색이 다른 것을 뜻하게 된다. 0 을 투명, 최대를 가장
+    // 진하게 둔다.
+    //
+    // 나머지 셋은 횟수라 절대값이 뜻을 갖지 않는다. 그쪽은 **분포에서**
+    // 기준을 뽑는다 — 엔딩은 1,196개가 흩어져 거의 안 보이고 낙하는
+    // 82,177개라 섬 전체가 덮이는데, 값이 있는 칸의 중앙값 언저리를 바닥으로
+    // 잡으면 둘 다 "몰린 데"만 남는다.
     const nz = Array.from(acc).filter(v => v > 0).sort((a, b) => a - b);
     const max = nz.length ? nz[nz.length - 1] : 0;
-    const floor = nz.length ? nz[Math.floor(nz.length * 0.55)] : 0;
+    const floor = layer === 'zone'
+      ? 0 : (nz.length ? nz[Math.floor(nz.length * 0.55)] : 0);
     const span = Math.max(1e-9, max - floor);
 
     const small = document.createElement('canvas');
@@ -172,12 +264,12 @@ function HeatView({ heat, layer, spec, showPoints }) {
     const img = sctx.createImageData(G, G);
     for (let k = 0; k < acc.length; k += 1) {
       const v = Math.max(0, (acc[k] - floor) / span);
-      const a = v <= 0 ? 0 : Math.min(0.9, Math.pow(v, 0.65) * 0.9);
-      const w = Math.pow(v, 1.6) * 110;          // 가장 진한 쪽만 흰빛을 섞는다
-      img.data[k * 4] = Math.min(255, r + w);
-      img.data[k * 4 + 1] = Math.min(255, g + w);
-      img.data[k * 4 + 2] = Math.min(255, b + w);
-      img.data[k * 4 + 3] = a * 255;
+      const a = v <= 0 ? 0 : Math.min(0.9, Math.pow(v, layer === 'zone' ? 2.4 : 0.65) * 0.9);
+      const [cr, cg, cb, ca] = rampAt(v);
+      img.data[k * 4] = cr;
+      img.data[k * 4 + 1] = cg;
+      img.data[k * 4 + 2] = cb;
+      img.data[k * 4 + 3] = Math.min(ca, a) * 255;
     }
     sctx.putImageData(img, 0, 0);
     ctx.imageSmoothingEnabled = true;
@@ -260,11 +352,27 @@ function HeatView({ heat, layer, spec, showPoints }) {
                 </div>
               ))}
             </div>
+            {/* **색이 무엇을 뜻하는지 적는다.** 가장 진한 곳이 50%인지 3%인지
+                모르면 지도를 읽을 수가 없다. 층마다 단위가 다르다. */}
             <div style={{ marginTop: '12px', padding: '10px 12px',
                           borderRadius: 'var(--radius-sm)',
                           background: 'rgba(255,255,255,0.03)',
                           border: '1px solid var(--border-subtle)',
                           fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '8px',
+                             marginBottom: '8px' }}>
+                <span style={{ width: '84px', height: '10px', borderRadius: '3px',
+                               background: 'linear-gradient(90deg, rgba(90,20,160,.5),'
+                                 + ' rgba(40,70,230,.8), rgba(0,200,220,.85),'
+                                 + ' rgba(60,230,90,.9), rgba(240,230,40,.95), rgb(250,50,30))',
+                               flexShrink: 0 }} />
+                가장 진한 곳 ={' '}
+                <b style={{ color: '#fff' }}>
+                  {layer === 'zone'
+                    ? `경기의 ${((stats.peak / stats.denom) * 100).toFixed(1)}%`
+                    : `${stats.peak.toLocaleString()}회`}
+                </b>
+              </span>
               무게중심 <b style={{ color: '#fff' }}>
                 {Math.round(stats.cx * 100)}%, {Math.round(stats.cy * 100)}%
               </b>
@@ -278,6 +386,57 @@ function HeatView({ heat, layer, spec, showPoints }) {
           </>
         ) : <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>셀 데이터가 없습니다.</div>}
       </div>
+    </div>
+  );
+}
+
+/**
+ * 페이즈 고르개. 넘기면 그대로 **서클이 줄어드는 모습**이 된다.
+ *
+ * 페이즈마다 기여한 경기 수가 다르다 — 뒤로 갈수록 일찍 끝난 경기가 빠진다.
+ * 그 수를 같이 보여 주지 않으면 뒤쪽 페이즈가 표본이 적다는 것이 숨는다.
+ */
+function PhasePicker({ heat, phase, setPhase, playing, setPlaying }) {
+  const zones = heat?.zones ?? [];
+  useEffect(() => {
+    if (!playing || !zones.length) return;
+    const id = setInterval(() => {
+      setPhase(p => {
+        const i = zones.findIndex(z => z.phase === p);
+        const next = zones[(i + 1) % zones.length];
+        return next ? next.phase : p;
+      });
+    }, 900);
+    return () => clearInterval(id);
+  }, [playing, zones, setPhase]);
+
+  if (!zones.length) return null;
+  const cur = zones.find(z => z.phase === phase);
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+      <button onClick={() => setPlaying(p => !p)} title="페이즈를 넘기며 재생"
+        style={{ display: 'flex', alignItems: 'center', gap: '5px',
+                 padding: '6px 11px', borderRadius: 'var(--radius-sm)',
+                 background: 'rgba(255,255,255,0.05)', color: '#fff',
+                 border: '1px solid var(--border-subtle)', cursor: 'pointer',
+                 fontSize: '0.78rem', fontWeight: 800 }}>
+        {playing ? <Pause size={13} /> : <Play size={13} />}
+      </button>
+      {zones.map(z => (
+        <button key={z.phase} onClick={() => { setPlaying(false); setPhase(z.phase); }}
+          style={{
+            padding: '6px 10px', borderRadius: 'var(--radius-sm)',
+            background: z.phase === phase ? 'var(--accent-gold)' : 'rgba(255,255,255,0.04)',
+            color: z.phase === phase ? '#000' : 'var(--text-muted)',
+            border: `1px solid ${z.phase === phase ? 'var(--accent-gold)' : 'var(--border-subtle)'}`,
+            cursor: 'pointer', fontWeight: 900, fontSize: '0.76rem'
+          }}>P{z.phase}</button>
+      ))}
+      {cur && (
+        <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>
+          {cur.matches.toLocaleString()}경기
+        </span>
+      )}
     </div>
   );
 }

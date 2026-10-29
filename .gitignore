@@ -90,3 +90,6 @@ intermediate_results/telemetry/
 ingest/fetch_all.progress
 # 수집 전 확인용으로 받아 본 경기 원본. tournaments/ 와 같은 성격이다.
 intermediate_results/probe/
+
+# 경쟁전 자기장은 primary_data/ranked_zones 에 남긴다 (경기당 2KB).
+# 원본 텔레메트리는 뽑는 즉시 버리므로 따로 무시할 것이 없다.

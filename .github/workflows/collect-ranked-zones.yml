@@ -1,0 +1,118 @@
+# 경쟁전(랭크) 경기의 **자기장만** 모은다.
+#
+# **왜 필요한가**: 히트엔딩은 "자기장이 어디에 걸리는가"를 센다. 2026-06-17
+# 업데이트 42.1 에서 자기장이 개편돼(경쟁전·이스포츠의 "안전 구역 위치 보정
+# 강도 완화") 그 전후가 서로 다른 게임이 됐는데, 개편 뒤 이스포츠 경기는
+# 맵당 142~281 판뿐이다. 경쟁전은 이스포츠와 같은 설정이라 같이 쓸 수 있다.
+# **일반전은 안 된다** — 일반전만 따로 조정됐다.
+#
+# **왜 서버에서 하나**: 분당 10회 제한 때문에 맵당 1,000판을 채우려면 API 만
+# 일곱 시간쯤 걸린다. 집에서 켜 두고 기다릴 일이 아니다.
+#
+# **비용**: 공개 저장소라 Actions 는 무료다. PUBG API 도 요금제가 없다
+# (분당 10회를 넘기면 과금이 아니라 429 거절).
+
+name: 경쟁전 자기장 수집
+
+on:
+  # 다섯 시간마다. 맵마다 목표를 채우면 몇 초 만에 끝나고 커밋도 안 남긴다.
+  schedule:
+    - cron: '30 */5 * * *'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: '맵마다 모을 경기 수'
+        required: false
+        default: '1000'
+      max_minutes:
+        description: '이 시간을 넘기면 하던 것까지만 하고 멈춘다'
+        required: false
+        default: '240'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-ranked-zones
+  cancel-in-progress: false
+
+jobs:
+  zones:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 현황
+        run: python ingest/collect_ranked_zones.py --status
+
+      # **수집기가 스스로 장부를 적고, 이 단계가 주기적으로 커밋한다.**
+      #
+      # 이 저장소에서 "마지막에 한 번 저장"으로 네 번 데이터를 잃었다
+      # (집계 거부 / 작업 한도 초과 / 리베이스 거부 / 예약에 inputs 없음).
+      # 그래서 수집과 커밋을 **같은 단계 안에서 번갈아** 돌린다. 무엇이
+      # 터지든 잃는 것은 마지막 한 토막이다.
+      - name: 모으면서 커밋
+        env:
+          PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 저장은 **실패해도 작업을 죽이지 않는다.** 여기서 죽으면 그게 바로
+          # 전부를 잃는 그 한 걸음이 된다.
+          save() {
+            set +e
+            git add -A primary_data
+            if git diff --cached --quiet; then
+              set -e; return 0
+            fi
+            n=$(git diff --cached --name-only | wc -l)
+            git commit -q -m "data: 경쟁전 자기장 $n 파일 수집 (자동)" \
+              -m "matchType=competitive 만 받는다. 일반전은 자기장 설정이 다르다." \
+              -m "경기당 자기장 페이즈만 남긴다 (2KB). 원본 텔레메트리는 버린다."
+            for i in 1 2 3; do
+              git fetch -q origin main
+              git rebase -X theirs origin/main || git rebase --abort || true
+              if git push -q origin HEAD:main; then
+                echo "::notice::$n 파일 저장 (시도 $i)"
+                set -e; return 0
+              fi
+              sleep 5
+            done
+            echo "::warning::푸시를 세 번 다 실패했습니다. 다음 토막에서 다시 시도합니다."
+            set -e; return 0
+          }
+
+          TARGET=${{ github.event.inputs.target || 1000 }}
+          # 예약 실행에는 inputs 가 없어 빈 문자열이 온다. `||` 기본값이 받는다.
+          BUDGET=${{ github.event.inputs.max_minutes || 240 }}
+          # 한 토막을 25분으로 끊고 그때마다 커밋한다. 분당 10회라 한 토막에
+          # 250경기 남짓이다.
+          CHUNK=25
+          ELAPSED=0
+          while [ "$ELAPSED" -lt "$BUDGET" ]; do
+            python ingest/collect_ranked_zones.py \
+              --target "$TARGET" --max-minutes "$CHUNK" --save-every 25 || true
+            save
+            ELAPSED=$(( ELAPSED + CHUNK ))
+            # 다 채웠으면 더 돌 이유가 없다. 셈은 **파일 수**로 한다 —
+            # 출력 글자를 grep 하면 문구가 바뀔 때 조용히 깨진다.
+            DONE=$(python -c "import pathlib;d=pathlib.Path('primary_data/ranked_zones');m=['Baltic_Main','Desert_Main','Tiger_Main','Neon_Main'];print(min(len(list((d/x).glob('*.json'))) if (d/x).is_dir() else 0 for x in m))")
+            if [ "$DONE" -ge "$TARGET" ]; then
+              echo "모든 맵이 목표를 채웠습니다 (최소 $DONE)."
+              break
+            fi
+          done
+
+          save
+
+      - name: 진행 상황
+        if: always()
+        run: |
+          python ingest/collect_ranked_zones.py --status >> $GITHUB_STEP_SUMMARY
