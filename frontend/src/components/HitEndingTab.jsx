@@ -73,6 +73,7 @@ function rampAt(v) {
 export default function HitEndingTab() {
   const { data: maps, loading, error, reload } = useApi(fetchHeatMaps, [], EMPTY);
   const [map, setMap] = useState(null);
+  const [source, setSource] = useState('competitive');
   const [layer, setLayer] = useState('zone');
   const [showPoints, setShowPoints] = useState(false);
   const [phase, setPhase] = useState(2);
@@ -96,7 +97,14 @@ export default function HitEndingTab() {
   }
 
   const current = maps.find(m => m.map === map);
-  const spec = LAYERS.find(l => l.key === layer);
+  // 출처마다 담긴 층이 다르다. 경쟁전은 자기장만 뽑아 와서 낙하·사망이 없다.
+  const avail = heat?.sources ?? {};
+  const pick = avail[source] ? source : Object.keys(avail)[0];
+  const bucket = avail[pick];
+  const hasLayer = k => k === 'zone'
+    ? (bucket?.zones ?? []).length > 0
+    : Boolean(bucket?.layers?.[k]?.cells?.length);
+  const spec = LAYERS.find(l => l.key === layer) ?? LAYERS[0];
 
   return (
     <Pad>
@@ -119,9 +127,30 @@ export default function HitEndingTab() {
         ))}
       </div>
 
+      {/* 출처 — 이스포츠와 경쟁전은 자기장 설정이 같지만 섞어서 한 숫자로
+          보여주지 않는다. 출처가 다르면 갈라서 보여주는 것이 맞다. */}
+      {Object.keys(avail).length > 1 && (
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
+          {Object.entries(avail).map(([key, b]) => (
+            <button key={key} onClick={() => setSource(key)} style={{
+              padding: '7px 14px', borderRadius: 'var(--radius-sm)',
+              background: key === pick ? 'rgba(243,166,31,0.15)' : 'rgba(255,255,255,0.04)',
+              color: key === pick ? 'var(--accent-gold)' : 'var(--text-muted)',
+              border: `1px solid ${key === pick ? 'rgba(243,166,31,0.5)' : 'var(--border-subtle)'}`,
+              cursor: 'pointer', fontWeight: 800, fontSize: '0.82rem'
+            }}>
+              {key === 'esports' ? '이스포츠' : '경쟁전'}
+              <span style={{ opacity: 0.7, marginLeft: '6px', fontWeight: 700 }}>
+                {b.matches.toLocaleString()}경기
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* 무엇을 볼지 */}
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '6px' }}>
-        {LAYERS.map(({ key, label, icon: Icon }) => (
+        {LAYERS.filter(l => hasLayer(l.key)).map(({ key, label, icon: Icon }) => (
           <button key={key} onClick={() => setLayer(key)} style={{
             display: 'flex', alignItems: 'center', gap: '7px',
             padding: '8px 15px', borderRadius: 'var(--radius-sm)',
@@ -142,7 +171,7 @@ export default function HitEndingTab() {
           </label>
         )}
         {layer === 'zone' && (
-          <PhasePicker heat={heat} phase={phase} setPhase={setPhase}
+          <PhasePicker zones={bucket?.zones} phase={phase} setPhase={setPhase}
                        playing={playing} setPlaying={setPlaying} />
         )}
       </div>
@@ -152,8 +181,8 @@ export default function HitEndingTab() {
 
       {heatLoading || !heat
         ? <LoadingPanel title="집계를 그리는 중입니다" detail="" />
-        : <HeatView heat={heat} layer={layer} spec={spec} showPoints={showPoints}
-                    phase={phase} />}
+        : <HeatView heat={heat} bucket={bucket} layer={layer} spec={spec}
+                    showPoints={showPoints} phase={phase} />}
 
       <p style={{ color: 'var(--text-muted)', fontSize: '0.74rem', marginTop: '14px', lineHeight: 1.6 }}>
         <Info size={12} style={{ verticalAlign: '-2px' }} />{' '}
@@ -169,19 +198,21 @@ export default function HitEndingTab() {
 }
 
 /** 맵 이미지 위에 격자 밀도를 덮는다. */
-function HeatView({ heat, layer, spec, showPoints, phase }) {
+function HeatView({ heat, bucket, layer, spec, showPoints, phase }) {
   const canvasRef = useRef(null);
   // 자기장은 페이즈마다 따로 집계돼 있다. 나머지 셋은 한 장씩이다.
   const L = useMemo(() => {
-    if (layer !== 'zone') return heat.layers?.[layer];
-    const z = (heat.zones ?? []).find(x => x.phase === phase);
+    if (layer !== 'zone') return bucket?.layers?.[layer];
+    const z = (bucket?.zones ?? []).find(x => x.phase === phase);
     // 목록·통계는 상위 칸만 쓰고, 그림은 counts 배열을 쓴다.
     return z && { ...z, cells: z.top ?? z.cells ?? [] };
-  }, [heat, layer, phase]);
+  }, [bucket, layer, phase]);
 
   const stats = useMemo(() => {
     if (!L?.cells?.length) return null;
-    const g = heat.grid;
+    // **층마다 격자가 다르다.** 자기장은 100칸, 나머지는 50칸이다.
+    // 50 으로 나누면 좌표가 두 배로 나와 "1%, 1%" 같은 값이 찍힌다.
+    const g = layer === 'zone' ? (heat.zoneGrid || heat.grid) : heat.grid;
     // 비율의 뜻이 층마다 다르다. 낙하·사망·엔딩은 "전체 중 이 칸의 몫"이고,
     // 자기장은 "그 칸이 자기장 안에 든 경기 비율"이다. 분모를 가른다.
     const sum = L.cells.reduce((a, c) => a + c[2], 0);
@@ -189,7 +220,7 @@ function HeatView({ heat, layer, spec, showPoints, phase }) {
     // **붙어 있는 칸은 같은 자리다.** 그냥 앞에서 다섯 개를 집으면
     // "49%,37% · 47%,41% · 49%,39%" 처럼 한 덩어리가 다섯 줄로 나온다.
     // 이미 집은 자리에서 다섯 칸 안쪽이면 건너뛴다.
-    const GAP = 5;
+    const GAP = layer === 'zone' ? 10 : 5;
     const top = [];
     for (const [i, j, n] of L.cells) {
       if (top.length >= 5) break;
@@ -280,7 +311,7 @@ function HeatView({ heat, layer, spec, showPoints, phase }) {
     if (showPoints && layer === 'ending') {
       ctx.clearRect(0, 0, SIZE, SIZE);
       ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.55)`;
-      for (const [x, y] of heat.endPoints ?? []) {
+      for (const [x, y] of bucket?.endPoints ?? []) {
         ctx.beginPath();
         ctx.arc(x * SIZE, y * SIZE, 3.2, 0, Math.PI * 2);
         ctx.fill();
@@ -396,8 +427,8 @@ function HeatView({ heat, layer, spec, showPoints, phase }) {
  * 페이즈마다 기여한 경기 수가 다르다 — 뒤로 갈수록 일찍 끝난 경기가 빠진다.
  * 그 수를 같이 보여 주지 않으면 뒤쪽 페이즈가 표본이 적다는 것이 숨는다.
  */
-function PhasePicker({ heat, phase, setPhase, playing, setPlaying }) {
-  const zones = heat?.zones ?? [];
+function PhasePicker({ zones: z, phase, setPhase, playing, setPlaying }) {
+  const zones = z ?? [];
   useEffect(() => {
     if (!playing || !zones.length) return;
     const id = setInterval(() => {

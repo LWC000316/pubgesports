@@ -48,12 +48,25 @@ public class HeatService {
         for (File f : files) {
             try {
                 JsonNode root = mapper.readTree(f);
+                // 출처(이스포츠·경쟁전)마다 경기 수가 다르다. 목록에서도
+                // 합계가 아니라 **출처별로** 보여줘야 한다.
+                int total = 0;
+                java.util.Map<String, Integer> per = new java.util.LinkedHashMap<>();
+                JsonNode sources = root.path("sources");
+                java.util.Iterator<String> names = sources.fieldNames();
+                while (names.hasNext()) {
+                    String name = names.next();
+                    int n = sources.path(name).path("matches").asInt();
+                    per.put(name, n);
+                    total += n;
+                }
                 out.add(HeatMapSummaryDto.builder()
                         .map(root.path("map").asText())
                         .mapLabel(root.path("mapLabel").asText())
                         .image(root.path("image").asText(root.path("map").asText()))
-                        .matches(root.path("matches").asInt())
-                        .stages(root.path("stages").asInt())
+                        .matches(total)
+                        .bySource(per)
+                        .since(root.path("since").asText(null))
                         .build());
             } catch (Exception e) {
                 log.warn("히트 요약 읽기 실패 [{}]: {}", f.getName(), e.getMessage());

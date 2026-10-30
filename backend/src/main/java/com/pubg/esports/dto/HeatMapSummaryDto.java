@@ -18,8 +18,10 @@ public class HeatMapSummaryDto {
     private String mapLabel;
     /** 지도 그림 파일 이름. 옛 맵은 현재판 그림을 빌려 쓴다. */
     private String image;
-    /** 이 집계에 들어간 경기 수. */
+    /** 출처를 합친 경기 수. 화면에서는 보통 출처별로 보여준다. */
     private int matches;
-    /** 그 경기들이 나온 대회 단계 수. */
-    private int stages;
+    /** 출처별 경기 수 — esports / competitive. */
+    private java.util.Map<String, Integer> bySource;
+    /** 언제부터의 경기인가 (자기장 개편일). */
+    private String since;
 }
