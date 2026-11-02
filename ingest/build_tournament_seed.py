@@ -28,6 +28,7 @@
 import argparse
 import importlib.util
 import json
+import math
 import re
 import sys
 import unicodedata
@@ -91,10 +92,11 @@ def placement_table(year):
     return None
 
 
-# OVERALL 환산 기준. 전 대회(배틀로얄만) 선수 26,624명의 원점수 분포에서
-# **상위 0.1% 지점이 약 165점**이었고, 그 수준을 100 으로 둔다. 다시 구하려면
-# 이 파일의 raw 식으로 전 대회를 돌려 99.9 분위를 보면 된다.
-OVERALL_REFERENCE = 165.0
+# 90점을 넘으면 100 을 향해 완만해진다. **우리가 꾸민 곡선이 아니라 측정값이다**
+# — 원점수가 124 인 선수도 화면에는 98 로 찍히는 것을 세 단계에서 확인했다
+# (아래 overall_score 주석에 수치가 있다).
+OVERALL_KNEE = 90.0
+OVERALL_KNEE_SCALE = 16.0
 
 # 배틀로얄이 아닌 단계는 OVERALL 을 매기지 않는다. 중앙 생존 시간으로 가른다 —
 # 배틀로얄은 1,000초대인데 TDM·아레나 같은 모드는 150~400초대다. 실제로
@@ -105,31 +107,58 @@ BR_MIN_MEDIAN_SURVIVAL = 600
 
 def overall_raw(kills_per_match, avg_damage, avg_survival_min, knocks_per_match):
     """
-    환산 전 원점수. **네 값이 모두 경기당**이다.
+    OVERALL 원점수. **네 값이 모두 경기당**이다.
 
-    계수는 wwcd.lol 이 공개한 PGS 9 Grand Final 의 OVERALL 28건에 최소제곱으로
-    맞춰 얻었다(최대오차 0.48). 그 표본이 전원 15경기였던 탓에 킬·기절을 총합으로
-    두어도 맞아떨어졌는데, **그게 결함이었다** — 데미지·생존은 경기당인데 킬·기절만
-    총합이라 경기 수가 늘면 점수가 끝없이 커졌다. 275경기 단계에서 617점이 나왔다.
-    그래서 킬·기절도 경기당으로 바꾸고 15를 곱해 15경기 대회 기준으로 맞춘다.
-    PGS 9(15경기)에서는 고치기 전과 같은 값이 나온다.
+    계수는 공개된 OVERALL 표시값에 최소제곱으로 맞춰 **역산**했다. 표본은 세
+    단계 188명이고, 경기 수가 서로 다른 단계를 일부러 섞었다 — 5경기
+    (as-pgs9ss) · 10경기(as-pgs8fsg) · 15경기(as-pgs9gf).
+
+    **경기 수를 섞은 것이 핵심이다.** 예전 계수는 15경기 한 단계에만 맞춰
+    얻은 탓에 킬·기절이 총합인지 경기당인지 가릴 수 없었고, 그래서 "경기당에
+    15를 곱한다"는 보정이 붙어 있었다. 5경기 단계에서도 최고점이 98 로 같은
+    척도인 것을 확인해 **경기당이 맞다**고 정했다. 15를 곱하지 않는다.
+
+    맞춤 정확도 (90점 이하 구간, 계수를 다시 맞추지 않은 10경기 단계 포함):
+      as-pgs9gf 15경기 60명  ±1 이내 100%
+      as-pgs9ss  5경기 57명  ±1 이내 100%
+      as-pgs8fsg 10경기 60명  ±1 이내  98% (최대 2) — 검증용 표본
     """
-    return (kills_per_match * 15 * 1.5414
-            + avg_damage * 0.0863
-            + avg_survival_min * 0.9057
-            + knocks_per_match * 15 * 0.3157)
+    return (kills_per_match * 24.1084
+            + avg_damage * 0.0925
+            + avg_survival_min * 0.8476
+            + knocks_per_match * 6.008)
 
 
 def overall_score(raw, matches, median_matches):
     """
-    0~100 점. 100 을 넘지 않는다.
+    화면에 찍는 OVERALL. **원점수를 그대로 쓴다.**
+
+    예전에는 여기서 `raw / 165 * 100` 으로 다시 줄였다. 그래서 원점수 93 인
+    선수가 화면에 **56** 으로 찍혔다. 역산해 보니 원점수 자체가 이미 공개된
+    OVERALL 과 같은 척도였고(위 주석), 그 위에 환산을 한 번 더 씌운 것이
+    "점수가 너무 낮다"의 원인이었다. 환산을 걷어낸다.
+
+    **상위 구간은 100 을 향해 완만해진다.** 측정값이다 — 원점수와 표시값을
+    나란히 놓으면 90 까지는 1:1 인데 그 위로는 이렇게 눌린다:
+
+        원점수  91.3  95.3  97.7  104.2  106.3  123.0  123.7
+        표시값    91    93    94     96     96     98     98
+
+    그래서 90 위로는 100 을 점근선으로 하는 완만한 곡선을 쓴다. 단순히 100 에서
+    자르면 저 일곱 명이 전부 100 으로 뭉쳐 **순위가 사라진다**. 곡선은 단조라
+    순위는 그대로다. 위 11건이 ±1 안에 들어온다.
 
     표본이 적으면 경기당 수치를 그대로 믿을 수 없다 — 156경기 대회에서 1경기만
     뛴 선수가 1위로 올라오던 일이 있었다. 그 단계의 중앙 출전 수에 못 미치는
-    만큼 깎는다. 다 뛴 선수는 그대로다.
+    만큼 깎는다. 다 뛴 선수는 그대로다. (역산 표본은 전원 개근이라 이 보정이
+    꺼진 상태였고, 그래서 계수에 영향을 주지 않았다.)
     """
     shrunk = raw * min(1.0, matches / median_matches if median_matches else 1.0)
-    return min(100, round(shrunk / OVERALL_REFERENCE * 100))
+    if shrunk <= OVERALL_KNEE:
+        return round(shrunk)
+    eased = 100 - (100 - OVERALL_KNEE) * math.exp(
+        -(shrunk - OVERALL_KNEE) / OVERALL_KNEE_SCALE)
+    return min(100, round(eased))
 
 
 def load_our_players():

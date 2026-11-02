@@ -106,6 +106,8 @@ Served by `TournamentArchiveService`/`MatchLogService` straight from JSON files,
 
 **An official API tournament id is a stage, not a tournament.** PGS 7 is four ids (`as-pgs7gsg` 8/5, `as-pgs7ws` 8/6, `as-pgs7ss` 8/7, `as-pgs7fsg` 8/8). The archive groups them: category -> series -> year -> edition -> stage. Of the 1,194 ids the official API lists (2018 onward), 334 are main-event stages across the ten series, grouping into 123 tournaments; the rest are qualifiers, opens and clan matches. `ingest/stage_ids.txt` is that worklist, newest first.
 
+**The worklist must be refreshed or new tournaments never arrive.** It was a one-off 334-line file built from a tournament-list snapshot taken 2026-10-02, and every collector reads only what is in it — so PGS 10, 11 and 12, played through October, were invisible to the site for a month. That was not slow collection; it was a stale shopping list. `python ingest/refresh_stage_ids.py` re-fetches the list (**one API call**) and merges in anything new, reusing `parse_id`/`is_qualifier` from `stage_label.py` as the filter. Re-running it against the 10-02 snapshot reproduced the existing 334 lines exactly, which is why the merge is safe. **Ids that vanish from the official list are kept, not dropped** — we already hold their aggregates. The 대회 수집 workflow runs this first on every run and commits the result.
+
 Collection is three steps, split because only the first needs the network and the API key:
 ```
 powershell ingest/fetch_tournament_list.ps1    # 공식 API 의 전체 대회 목록 (1회 호출)
@@ -136,7 +138,13 @@ Liquipedia's `action=parse` needs a **30-second gap**, not the 2 seconds the res
 
 A match whose placements do not spread across the lobby is **dropped as a remake**: PVS 2026 Phase 2's `2be5c1e7` ended at 757 seconds with 18 kills (normal: ~1,700s, ~60 kills) and recorded one 1st place with fifteen 16ths. The builder reports what it dropped. The invariant that caught it is that each 16-team match distributes exactly 10+6+5+4+3+2+1+1 = 32 placement points, so `sum(placementPoints) == matchCount * 32` for every tournament.
 
-**The OVERALL column is a reconstruction, not an official number.** The official API gives no composite score; `overall_score()` in `build_tournament_seed.py` was fitted by least squares to 28 published values and matches 18 of 21 spot-checked players exactly (max diff 1). The coefficients are **not shown on screen** and should not be. The sample was all 15-match players, so whether the inputs are totals or per-match averages could not be distinguished — re-derive before trusting it on a short tournament.
+**The OVERALL column is a reconstruction, not an official number.** The official API gives no composite score; `overall_raw()` in `build_tournament_seed.py` is a least-squares fit to published OVERALL values. It was re-derived on 2026-11-02 against **188 players across three stages with deliberately different match counts** — `as-pgs9ss` (5), `as-pgs8fsg` (10, held out of the fit), `as-pgs9gf` (15) — giving 24.1084·(kills/match) + 0.0925·avgDamage + 0.8476·avgSurvivalMinutes + 6.008·(knocks/match). Below 90 points that reproduces the published value within ±1 for 99% of rows (100% on both fit stages, 98%/max 2 on the held-out one). The coefficients are **not shown on screen** and should not be.
+
+Two things that were wrong before and must not come back. (1) **`overall_score` rescaled the result** by `raw / 165 * 100`, so a player whose published OVERALL was 94 displayed as **56**. The raw score is already on the published scale; there is no second normalization. (2) The old fit used one 15-match stage only, so totals and per-match averages were indistinguishable and the formula carried a `* 15` correction on kills/knocks. A 5-match stage peaks at the same ~98, which settles it: **the inputs are per-match and nothing is multiplied by 15.**
+
+**Above 90 the published value compresses toward 100** (raw 91.3→91, 97.7→94, 104.2→96, 123.7→98). `overall_score` applies a 100-asymptote curve with `OVERALL_KNEE = 90` / `OVERALL_KNEE_SCALE = 16`, which keeps those eleven rows within ±1. Do not replace it with a hard `min(100, …)`: seven players in one stage then all read 100 and the ordering at the top disappears. The low-match shrink (`matches / median_matches`) is ours, not theirs — they filter with a minimum-match control instead — and it was inactive across the whole fit sample, so it did not bias the coefficients.
+
+`python ingest/rescore_overall.py` re-applies the formula to every built aggregate with no network, which is the only way to update stages the server built and whose raw data is gone. The tournament workflow runs it on every chunk.
 
 Two collection traps, both already hit: a nations cup resolves to club teams rather than countries (the builder now switches to prefix mode automatically when the series is PNC; `--team-from-prefix` forces it), and EWC 2026 comes back anonymized (`EWC-Player-23`), which the builder now refuses rather than ingesting. Match-log tracks carry the **resolved** team name (`team`) and keep the in-game prefix in `tag`; `load_team_names()` reuses the aggregation step's majority vote instead of guessing again.
 
@@ -152,6 +160,17 @@ Map images under `frontend/public/maps/` come from PUBG's official `api-assets` 
 `TournamentController` and `PubgTournamentController` both use the `/api/tournaments` prefix. This is not a runtime conflict — Spring matches the literal `/official` before the `/{id}` pattern — but keep new literal paths out of `{id}`'s way.
 
 `GET /api/tournaments/{id}` for a missing tournament returns 404 (it used to return 500). The tournament tables are still always empty, so every id hits that path.
+
+### 히트엔딩 tab data (`primary_data/heat/`, `primary_data/ranked_zones/`)
+`ingest/build_heat.py` aggregates many matches per map into `primary_data/heat/<map>.json`; `HeatService` streams that file as-is, so anything the builder writes reaches the UI without backend changes. No network.
+
+**Only matches after the 2026-06-17 zone rework (update 42.1) are counted.** That patch changed "안전 구역 위치 보정 강도" for ranked and esports, which is exactly what this screen measures, so mixing the eight years before it produced a large sample (2,978 matches) that meant nothing. `REWORK` is the cutoff.
+
+**Sources are kept apart and never summed into one number**: `esports` (our match logs, 142–281 matches per map after the cutoff) and `competitive` (public ranked, `ingest/collect_ranked_zones.py`). Ranked shares the esports zone settings (dev blog "블루존 개편", pubg.com/ko/news/10280); 일반전 does **not** — it was adjusted separately — so `matchType` must stay filtered to `competitive`.
+
+**Layers carry their own match count, and their own minimum.** The first 4,000 ranked matches recorded zones only; landings and deaths were added on 2026-11-02 (`EXTRACTOR = 2` in the collector, stamped as the first key of each file so counting does not have to parse 8,000 files). So the zone layer counts every file while landing/death count only extractor-2 files, and a layer below `MIN_MATCHES` is dropped rather than the whole source. **Do not delete the extractor-1 files** — their zone data is valid and the official API only keeps matches for 14 days, so they cannot be re-fetched.
+
+Two bugs that are easy to reintroduce: `phases[0]` is the whole-map circle at match start, so counting it as P2 turns the entire map red (`add_zones` starts at `phases[1:]`); and the zone layer uses `ZONE_GRID` (100) while the point layers use `GRID` (50), so dividing a zone cell by `grid` reports coordinates at double scale.
 
 ### Collecting a new league (`ingest/`)
 `ingest/` is the repeatable tooling, as opposed to `scripts/` which is a historical record. `build_league_seed.py` turns one Liquipedia tournament page into a seed draft, `verify_seed.py` checks the draft's shape offline (schema, placeholder detection, roster sizes, diff against the legacy file), and `liquipedia_client.py` handles LPDB v3 auth, the **60-requests-per-hour** limit, and response caching under `intermediate_results/liquipedia_cache/`. See `ingest/README.md` for the full procedure.
