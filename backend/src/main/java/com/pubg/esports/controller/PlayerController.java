@@ -27,12 +27,17 @@ public class PlayerController {
 
     @GetMapping("/players/{id}")
     public ResponseEntity<PlayerDetailResponseDto> getPlayerDetail(@PathVariable Long id) {
-        return ResponseEntity.ok(playerService.getPlayerDetail(id));
+        // **없는 선수는 404 다.** 예외를 그대로 올리면 500 이 나가는데, 그건
+        // 서버가 고장났다는 뜻이라 거짓이다. 방금 걷어낸 대회 엔드포인트가
+        // 똑같은 이유로 늘 500 을 내고 있었다.
+        PlayerDetailResponseDto found = playerService.getPlayerDetail(id);
+        return found == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(found);
     }
 
     @GetMapping("/players/nickname/{nickname}")
     public ResponseEntity<PlayerDetailResponseDto> getPlayerByNickname(@PathVariable String nickname) {
-        return ResponseEntity.ok(playerService.getPlayerByNickname(nickname));
+        PlayerDetailResponseDto found = playerService.getPlayerByNickname(nickname);
+        return found == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(found);
     }
 
     @GetMapping("/teams")

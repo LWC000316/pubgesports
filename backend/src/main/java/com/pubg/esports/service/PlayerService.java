@@ -43,16 +43,17 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
+    /** 없는 선수면 {@code null}. 컨트롤러가 404 로 바꾼다. */
     public PlayerDetailResponseDto getPlayerDetail(Long playerId) {
-        Player player = playerRepository.findById(playerId)
-                .orElseThrow(() -> new IllegalArgumentException("선수를 찾을 수 없습니다. ID: " + playerId));
-        return PlayerDetailResponseDto.from(player);
+        return playerRepository.findById(playerId)
+                .map(PlayerDetailResponseDto::from)
+                .orElse(null);
     }
 
     public PlayerDetailResponseDto getPlayerByNickname(String nickname) {
-        Player player = playerRepository.findByNicknameIgnoreCase(nickname)
-                .orElseThrow(() -> new IllegalArgumentException("선수를 찾을 수 없습니다. Nickname: " + nickname));
-        return PlayerDetailResponseDto.from(player);
+        return playerRepository.findByNicknameIgnoreCase(nickname)
+                .map(PlayerDetailResponseDto::from)
+                .orElse(null);
     }
 
     public List<TeamResponseDto> getAllTeams() {
