@@ -385,6 +385,29 @@ def build(events, match_id):
         # 파일이 15% 커지기만 한다 (7,000경기면 무시 못 할 차이다).
         return round(max(0.0, min(1.0, v / size)), 3)
 
+    def thin(points):
+        """가만히 있던 구간을 **처음과 끝만** 남긴다. 그림은 그대로다.
+
+        선수가 멈춰 있으면 10초마다 똑같은 좌표가 그대로 쌓인다. 실측으로
+        좌표점의 24%가 직전 점과 완전히 같았다.
+
+        **그냥 지우면 안 된다.** 화면(`MatchLogMap.interpolate`)이 점과 점
+        사이를 선형 보간하므로, 100초부터 300초까지 제자리였던 사람의 중간
+        점을 다 지우면 100초부터 서서히 움직인 것처럼 그려진다. 구간의 끝을
+        남겨 두면 보간 결과가 한 치도 달라지지 않는다.
+
+        같은 값인지는 좌표·차량·기절만 본다(시각은 당연히 다르다). 실측 효과는
+        점 -16% · 파일 -12% 로, 단순 제거(-19%)보다 작지만 그쪽은 틀린 그림을
+        만든다.
+        """
+        out = []
+        for pt in points:
+            if len(out) >= 2 and out[-1][1:] == pt[1:] and out[-2][1:] == pt[1:]:
+                out[-1] = pt          # 구간의 끝을 뒤로 민다
+                continue
+            out.append(pt)
+        return out
+
     out_tracks = []
     for name, pts in tracks.items():
         pts.sort(key=lambda p: p["t"])
@@ -394,7 +417,8 @@ def build(events, match_id):
             "nickname": meta.get("nickname") or name,
             "team": meta.get("team"),
             "teamId": meta.get("teamId"),
-            "points": [[p["t"], norm(p["x"]), norm(p["y"]), p["v"], p["d"]] for p in pts],
+            "points": thin([[p["t"], norm(p["x"]), norm(p["y"]), p["v"], p["d"]]
+                            for p in pts]),
         })
     out_tracks.sort(key=lambda r: (r["team"] or "", r["nickname"]))
 

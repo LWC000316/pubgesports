@@ -1,136 +1,145 @@
-﻿# 🎮 PUBG PRO VAULT (PUBG eSports Analytics & Player Gear Archive)
+# PUBG PRO VAULT
 
-> **배틀그라운드(PUBG) eSports 프로 선수 정보, 인게임 세팅(감도/해상도/FOV), 장비(기어) 아카이브 및 글로벌 대회 통계 분석 플랫폼**
+PUBG(배틀그라운드) eSports 아카이브. **프로 선수 프로필·인게임 세팅**과 **대회 기록·경기 복기·맵 집계**를 한 곳에서 본다.
 
----
+Spring Boot 3 REST API + React 18 SPA. 데이터는 **공식 PUBG API**(Krafton)와 **리퀴피디아**에서 받아 저장소에 적재한다.
 
-## 🌟 프로젝트 소개
-
-**PUBG PRO VAULT**는 PUBG eSports 프로 선수들의 상세 프로필, 인게임 감도 및 장비 세팅을 제공하고, **Twire.gg 스타일의 글로벌 대회 순위표(Leaderboard)와 선수 개인 스탯(Kills, Damage, Twire Rating 등)**을 한눈에 탐색하고 검색할 수 있는 풀스택 웹 애플리케이션입니다.
-
----
-
-## 🚀 주요 기능
-
-### 1. 🎯 PRO PLAYERS (선수 세팅 & 기어 아카이브)
-- **실시간 검색 & 필터**: 선수 닉네임, 본명, 마우스 모델명 및 소속 팀별 즉시 필터링
-- **선수 카드 그리드**: 팀 뱃지, 국적, 포지션, 주요 감도/DPI 스펙 및 마우스 정보 퀵 뷰
-- **상세 팝업 모달 (Player Detail Modal)**:
-  - 📊 **인게임 감도 뷰어**: DPI, 일반/조준/ADS 감도, 수직 배율, FOV, 해상도 및 **계산된 eDPI 게이지**
-  - 🎧 **기어 랙 (Gear Rack)**: 마우스, 마우스패드, 키보드, 헤드셋/이어폰, 모니터 등 사용 장비 정보
-  - 🎬 **하이라이트 영상 플레이어**: 유튜브 임베드 영상 즉시 재생
-  - 🔗 **방송 플랫폼 바로가기**: 치지직, SOOP(아프리카TV), 유튜브 채널 연동
-
-### 2. 🏆 TOURNAMENTS (Twire.gg 스타일 대회 순위표)
-- PGS 4 등 글로벌/지역 대회별 상금 규모, 개최지, 기간, 티어 정보 제공
-- **SUPER 룰셋 기준 그랜드 파이널 18개 매치 종합 리더보드**:
-  - Rank (1~3위 하이라이트), 팀명, 지역, 🍗 WWCD(치킨 수), 킬 포인트, 순위 포인트, 토탈 점수, 획득 상금
-
-### 3. 📊 STATS / LEADERBOARD (선수 개인 스탯 랭킹)
-- **MVP 하이라이트**: 대회 최다 킬/딜량 1위 Top Fragger 및 최고 Twire Rating 선수 하이라이트
-- **선수 개인 스탯 테이블**: Kills, Damage, Knocks, Assists, 헤드샷 비율(%), Twire Rating 랭킹
-
-### 4. 🔄 LIVE DATA CRAWLER ENGINE (실시간 웹 크롤러)
-- ProSettings 및 eSports Wiki 데이터 수집을 위한 Jsoup 기반 크롤링 엔진 내장
-- 전체 선수 일괄 최신화 및 개별 선수 크롤링 트리거
-- 터미널 스타일의 실시간 로그 뷰어 제공 및 매일 새벽 4시 자동 스케줄러 배치 동작
+> **이 문서의 규칙: 없는 기능을 적지 않는다.** 덜 된 것은 덜 됐다고 적는다.
+> 이 저장소는 "지어낸 값을 화면에 띄우지 않는다"를 가장 중요한 원칙으로 삼는다 —
+> 과거에 꾸며 낸 감도·장비·경기 서술을 전부 걷어낸 이력이 있고, 그래서 지금
+> 모르는 값은 빈칸이거나 `미등록`으로 나온다.
 
 ---
 
-## 🛠️ 기술 스택
+## 화면 네 개
 
-### Backend
-- **Language**: Java 17
-- **Framework**: Spring Boot 3.2.3 (Spring Web, Spring Data JPA)
-- **Database**: PostgreSQL 16 (Hibernate ORM)
-- **Web Crawler**: Jsoup 1.17.2
-- **Scheduling**: Spring @EnableScheduling (매일 새벽 4시 자동 크롤링)
+### 1. PE — 선수 세팅 & 기어
+여섯 리그(PWS 한국 · PCL 중국 · EMEA · AMER · PTS 태국 · PVS 베트남)의 **146팀 680명**.
+팀 카드에서 선수를 누르면 상세 모달이 열리고 감도 13항목과 장비 목록을 보여 준다.
 
-### Frontend
-- **Framework / Bundler**: React 18, Vite 5
-- **Icons**: lucide-react
-- **Styling**: Vanilla CSS (eSports Dark Neon & Cyberpunk Glassmorphism Design System)
-- **Proxy**: Vite Dev Server Proxy (/api -> http://localhost:8080)
+- 리그 시드는 **각 권역의 최신 대회 참가 명단**에서 가져온다. 화면 하단에 그 대회 페이지와 수집 날짜를 적는다 (CC-BY-SA)
+- **감도 162명(24%) · 장비 8명(1%).** 공식 API 에도 리퀴피디아에도 없는 값이라 **사람이 모아야 한다.** 없는 선수는 비워 둔다
 
-### Infra & DevOps
-- **Docker Compose**: PostgreSQL 16 컨테이너 구성
+### 2. HOT — 많이 본 선수
+`player_views` 를 ISO 주차별로 세어 정렬한다. 선수 데이터는 들고 있지 않고 **league + team + nickname** 으로 `players` 를 찾아 채운다.
 
----
+- 조회가 쌓이기 전에는 `hot_seeds`(2026 세계 대회 개인 킬·데미지 기준 손수 매긴 순서)가 자리를 채운다
+- **아직 실제 방문이 거의 없다.** 2026-W45 기준 조회 3건이라 지금 순위는 사실상 초기 순서다
 
-## 📂 프로젝트 구조
+### 3. 대회 — 아카이브
+분류(글로벌/지역/스크림) → 시리즈 → 연도 → 대회 → 단계로 좁혀 들어가고, 단계마다 **리더보드 / 플레이어 스탯 / 매치로그**를 본다.
 
-`	ext
-pubgesportsanti/
-├── docker-compose.yml            # PostgreSQL 컨테이너 구성
-├── .gitignore                    # Git 제외 파일 설정
-├── README.md                     # 프로젝트 문서
-├── backend/                      # Spring Boot 3 백엔드
-│   ├── build.gradle              # Gradle 빌드 설정
-│   └── src/main/java/com/pubg/esports/
-│       ├── domain/               # JPA 엔티티 (Player, Setting, Gear, Tournament 등)
-│       ├── repository/           # JPA 리포지토리
-│       ├── service/              # 비즈니스 로직 & 크롤러 서비스
-│       ├── controller/           # REST API 컨트롤러
-│       └── config/               # DB 시드 데이터 초기화(DataInitializer) & CORS
-└── frontend/                     # React 18 + Vite 프론트엔드
-    ├── package.json
-    ├── vite.config.js            # 개발 서버 프록시 설정
-    └── src/
-        ├── App.jsx               # 메인 레이아웃 및 탭 상태 관리
-        ├── index.css             # 게이밍 다크 네온 디자인 시스템
-        ├── data/mockData.js      # 폴백 모의 데이터
-        └── components/           # UI 컴포넌트
-            ├── Header.jsx        # 네비게이션 헤더
-            ├── PlayerView.jsx    # 선수 목록 & 검색
-            ├── PlayerDetailModal.jsx # 상세 모달
-            ├── TournamentView.jsx# 대회 순위표
-            ├── StatsView.jsx     # 개인 스탯 랭킹
-            └── CrawlerPanel.jsx  # 크롤러 관리 패널
-`
+- **공식 API 의 대회 id 하나는 "대회" 가 아니라 "단계"다.** PGS 7 은 네 개 id 다. 2018년부터 1,210개 id 중 **348개가 본선 단계**이고, 이를 묶으면 대회 123개가 된다
+- **매치로그는 경기 복기 화면**이다. 맵 그림 위에 자기장·다음 구역·레드존·팀별 이동 경로·교전선·착지 지점·보급·킬 지점·현재 위치를 그리고, 재생/탐색/팀 필터/거리측정/JPG 저장/전체화면을 지원한다. 전부 공식 텔레메트리에서 뽑은 값이고 **비행 항로 하나만 추정값**이다(텔레메트리에 비행기 경로 이벤트가 없다 — 화면에도 그렇게 적어 뒀다)
+- **단계 이름은 확인한 것만 붙인다.** 공식 API 는 id 와 날짜만 주므로, 리퀴피디아 하위 문서 제목과 맞는 코드에만 이름을 쓰고 나머지는 코드·날짜·경기 수로 구별한다 (현재 176/333)
+
+### 4. 히트엔딩 — 여러 경기를 모아 본 맵
+한 경기가 아니라 **맵마다 수백~수천 경기를 겹쳐 센 것**이다. 엔딩(마지막 자기장 중심) · 낙하 · 사망 · 자기장(페이즈별로 그 칸이 안전 구역에 든 경기 비율)을 격자에 쌓는다.
+
+- **2026-06-17 자기장 개편(업데이트 42.1) 이후 경기만 센다.** 그날 경쟁전·이스포츠의 "안전 구역 위치 보정 강도"가 바뀌었는데 그게 바로 이 화면이 재는 값이라, 그 전과 섞으면 어느 쪽도 아닌 평균이 된다
+- **출처를 갈라서 보여 준다**: `esports`(프로 대회 매치로그)와 `competitive`(공개 경쟁전). 자기장 설정이 같은 모드만 받고 **일반전은 받지 않는다**(일반전만 따로 조정됐다)
+- 층마다 표본 수를 따로 적고, 20경기에 못 미치는 층은 내보내지 않는다
 
 ---
 
-## ⚙️ 로컬 실행 방법
+## 기술 스택
 
-### 1. PostgreSQL 데이터베이스 실행 (Docker)
-`ash
+| | |
+|---|---|
+| Backend | Java 17 · Spring Boot 3.2.3 (Web, Data JPA) · PostgreSQL 16 · **Flyway** · Lombok · Gradle |
+| Frontend | React 18 · Vite 5 · lucide-react · 바닐라 CSS (상태 라이브러리 없음) |
+| Infra | Docker Compose (**PostgreSQL 만**. 앱은 호스트에서 돈다) |
+| 수집 | Python / PowerShell 스크립트 (`ingest/`) + GitHub Actions |
+
+스키마는 Flyway 가 관리하고 `spring.jpa.hibernate.ddl-auto` 는 `validate` 다. 엔티티는 여섯 개뿐이다 — `Team` · `Player` · `PlayerSetting` · `PlayerGear` · `PlayerView` · `HotSeed`.
+
+**대회·매치로그·히트 데이터는 DB 에 넣지 않는다.** `primary_data/` 아래 JSON 을 파일 그대로 서빙한다. 점수가 공식 API 가 주는 값이 아니라 재구성한 값이고, 대회 팀이 늘 `Team` 행과 대응되지도 않기 때문이다.
+
+---
+
+## 로컬 실행
+
+### 1. PostgreSQL
+```bash
 docker compose up -d
-`
-*(포트: 5432 / DB: pubg_esports / 계정: pubg_user / 비밀번호: pubg_password123!)*
+```
+포트 5432 · DB `pubg_esports` · 계정 `pubg_user`. 비밀값은 환경변수로 주입하고 추적되는 파일에 적지 않는다.
 
-### 2. 백엔드 (Spring Boot) 실행
-`ash
+### 2. 백엔드 (8080)
+```bash
 cd backend
-./gradlew bootRun
-# Windows: gradlew.bat bootRun
-`
-*(기동 시 DataInitializer에 의해 주요 프로팀 및 선수(Seoul, Salute, Inonix, Heaven, TGLTN) 시드 데이터가 자동 주입됩니다.)*
+./gradlew bootRun          # Windows: gradlew.bat bootRun
+```
+기동 시 `DataInitializer` 가 리그 시드를 적재한다. **시드 파일을 고쳤으면 `SEED_MODE=always` 로 한 번 기동**해야 이미 행이 있는 DB 에 반영된다.
 
-### 3. 프론트엔드 (React + Vite) 실행
-`ash
+### 3. 프론트엔드 (5173)
+```bash
 cd frontend
 npm install
 npm run dev
-`
-브라우저에서 http://localhost:5173으로 접속합니다.
+```
+http://localhost:5173 . Vite 개발 서버가 `/api/*` 를 8080 으로 프록시한다(`vite preview`·운영 빌드에서는 프록시되지 않는다).
+
+PE 탭과 대회·히트엔딩 탭은 **백엔드가 떠 있어야** 한다. 실패하면 한국어 오류 화면과 재시도 버튼이 뜬다 — 꾸며 낸 정적 대체 데이터는 두지 않았다.
 
 ---
 
-## 📡 주요 REST API 엔드포인트
+## 데이터 수집
 
-| Method | Endpoint | Description |
+공식 PUBG API 는 **분당 10회** 제한이라 전체 수집에 여섯 시간이 걸린다. 그래서 수집은 **GitHub Actions 가 혼자** 한다. 컴퓨터를 꺼도 진행된다.
+
+| 워크플로 | 주기 | 하는 일 |
 |---|---|---|
-| GET | /api/players | 선수 목록 조회 (팀별, 닉네임 검색 지원) |
-| GET | /api/players/{id} | 특정 선수 상세 정보 (세팅, 기어, 하이라이트 포함) |
-| GET | /api/teams | 전체 팀 목록 조회 |
-| GET | /api/tournaments | 대회 목록 조회 |
-| GET | /api/tournaments/{id}/leaderboard | 특정 대회 종합 순위표 조회 |
-| GET | /api/tournaments/{id}/stats | 특정 대회 선수 개인 스탯 랭킹 조회 |
-| POST | /api/crawler/trigger/all | 전체 선수 데이터 크롤링 최신화 트리거 |
-| POST | /api/crawler/trigger/player/{nickname} | 특정 선수 개별 크롤링 트리거 |
+| 대회 기록 수집 | 6시간 | 대회 목록 갱신 → 새 단계 받기 → 집계 → 커밋 |
+| 매치로그 수집 | 5시간 | 단계별 텔레메트리를 받아 경로·자기장·킬만 뽑고 원본은 버린다 |
+| 경쟁전 자기장·착지·사망 수집 | 5시간 | 공개 경쟁전에서 히트엔딩용 표본을 모은다 |
+
+**세 워크플로 모두 중간에 저장한다.** 예전에는 마지막에 한 번 커밋했는데 그 한 걸음이 세 번 다른 이유로 실패해 그때마다 네다섯 시간치를 잃었다. 지금은 10단계(또는 25~30분)마다 커밋하고, 저장이 실패해도 작업을 죽이지 않는다. **저장을 다시 끝으로 옮기지 말 것.**
+
+원본은 보관하지 않는다 — 텔레메트리는 경기당 33MB 인데 뽑고 나면 300KB 다.
+
+로컬 도구는 `ingest/` 에 있다. `ingest/README.md` 에 리그 하나를 새로 수집하는 절차가 있다. `scripts/` 는 **실행용이 아니라 감사 기록**이다(일부는 이미 사라진 파일을 참조한다).
+
+필요한 환경변수: `PUBG_API_KEY`(<https://developer.pubg.com>, 자가 발급·즉시), 리퀴피디아를 쓰면 `LIQUIPEDIA_CONTACT`. 저장소에는 **키를 적지 않는다.**
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License.
-PLAYERUNKNOWN'S BATTLEGROUNDS is a registered trademark of KRAFTON, Inc.
+## REST API
+
+| Method | Endpoint | 설명 |
+|---|---|---|
+| GET | `/api/teams/cards?league=PWS` | 리그의 팀 카드 + 로스터 (PE 탭) |
+| GET | `/api/players/{id}` | 선수 상세 — 감도 13항목과 장비 목록 |
+| GET | `/api/players/hot?limit=12` | 많이 본 선수 (HOT 탭) |
+| POST | `/api/players/{id}/view` | 조회 기록 |
+| GET | `/api/leagues/sources` | 리그별 출처 페이지와 수집 날짜 |
+| GET | `/api/tournaments/archive` | 대회 단계 목록 |
+| GET | `/api/tournaments/archive/{id}` | 단계 하나 — 리더보드·플레이어 스탯 |
+| GET | `/api/tournaments/archive/{id}/matches` | 그 단계의 경기 목록 |
+| GET | `/api/tournaments/archive/{id}/matches/{matchId}` | 매치로그 한 경기 |
+| GET | `/api/heat` · `/api/heat/{map}` | 히트엔딩 집계 |
+
+파일을 읽어 서빙하는 엔드포인트는 **요청마다 디렉터리가 바뀌었는지 보고 바뀌었을 때만 다시 읽는다.** 수집기가 새 파일을 커밋해도 앱을 재시작할 필요가 없다.
+
+---
+
+## 알려진 한계
+
+- **선수 장비 1% · 감도 24%.** 사람이 모아야 하는 값이고, 모르는 것은 비워 둔다
+- **리그 시드 네 개가 낡았다** (PWS·EMEA·AMER·PTS — 해당 대회가 2026-10 초에 끝났다). `python ingest/check_freshness.py` 가 아무것도 쓰지 않고 점검한다
+- **OVERALL 은 재구성한 값이다.** 공식 API 는 종합 점수를 주지 않는다. 공개된 값에 최소제곱으로 맞춰 얻었고 경기 수가 다른 세 단계 188명에서 ±1 안에 든다. 공식 숫자가 아니라는 뜻이다
+- **순위 포인트는 확인된 연도에만 적용한다.** 배점표를 확인하지 못한 대회는 `placementPoints`/`totalPoints` 가 비어 있고 화면은 킬·치킨·평균 순위로 떨어진다
+- **EWC 는 공식 API 에서 선수 이름이 익명화**돼(`EWC-Player-23`) 집계를 거부한다
+- `git pull` 은 수동이다. 수집·집계·커밋은 자동이지만 커밋을 앱이 도는 컴퓨터로 가져오는 것은 아니다
+- **테스트가 없다.** `backend/src/test` 가 비어 있어 `./gradlew test` 는 그냥 통과한다
+- 반응형 레이아웃과 에러 경계가 없다
+
+---
+
+## 라이선스와 출처
+
+코드는 MIT. PLAYERUNKNOWN'S BATTLEGROUNDS 는 KRAFTON, Inc. 의 등록 상표다.
+
+- 경기·대회 데이터: [PUBG 공식 API](https://developer.pubg.com)
+- 팀·로스터·대회 구조: [Liquipedia](https://liquipedia.net/pubg) (CC-BY-SA 3.0, 화면에 출처를 표기한다)
+- 맵 이미지: PUBG 공식 `api-assets` 저장소
