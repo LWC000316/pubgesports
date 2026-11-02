@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Crosshair, Plane, Skull, Target, Info, CircleDashed, Play, Pause } from 'lucide-react';
 import { fetchHeatMaps, fetchHeat } from '../api/tournaments';
 import { useApi } from '../hooks/useApi';
+import { useUrlState } from '../hooks/useUrlState';
 import LoadingPanel from './common/LoadingPanel';
 import ErrorPanel from './common/ErrorPanel';
 
@@ -72,11 +73,11 @@ function rampAt(v) {
 
 export default function HitEndingTab() {
   const { data: maps, loading, error, reload } = useApi(fetchHeatMaps, [], EMPTY);
-  const [map, setMap] = useState(null);
-  const [source, setSource] = useState('competitive');
-  const [layer, setLayer] = useState('zone');
+  const [map, setMap] = useUrlState('map', null);
+  const [source, setSource] = useUrlState('src', 'competitive');
+  const [layer, setLayer] = useUrlState('l', 'zone');
   const [showPoints, setShowPoints] = useState(false);
-  const [phase, setPhase] = useState(2);
+  const [phase, setPhase] = useUrlState('p', 2, { parse: Number });
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => { setMap(m => m ?? (maps ?? [])[0]?.map ?? null); }, [maps]);

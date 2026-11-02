@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useUrlState } from '../../hooks/useUrlState';
 import { Search, Flame } from 'lucide-react';
 import { TOURNAMENT_LOGOS } from '../../data/esportsData';
 import LeagueTeamGrid from './LeagueTeamGrid';
@@ -69,7 +70,7 @@ const LEAGUES = [
 const HOT_CHIP = { id: 'HOT', label: 'HOT', icon: Flame };
 
 export default function PlayersTab({ onSelectPlayer }) {
-  const [selectedTab, setSelectedTab] = useState('PWS');
+  const [selectedTab, setSelectedTab] = useUrlState('lg', 'PWS');
   const [searchQuery, setSearchQuery] = useState('');
 
   const chips = [HOT_CHIP, ...LEAGUES];

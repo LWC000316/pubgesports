@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useUrlState } from './hooks/useUrlState';
 import Header from './components/Header';
 import PlayersTab from './components/players/PlayersTab';
 import TournamentsTab from './components/TournamentsTab';
@@ -6,7 +7,8 @@ import HitEndingTab from './components/HitEndingTab';
 import PlayerDetailModal from './components/PlayerDetailModal';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('pe');
+  // 탭도 주소에 적는다. 링크를 받은 사람이 같은 탭에서 시작해야 한다.
+  const [activeTab, setActiveTab] = useUrlState('tab', 'pe');
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   return (

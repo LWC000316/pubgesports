@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Trophy, Globe, Shield, Swords, Crosshair, Map as MapIcon, Route, AlertTriangle } from 'lucide-react';
 import { fetchTournaments, fetchTournament, fetchMatchList, fetchMatchLog } from '../api/tournaments';
 import { useApi } from '../hooks/useApi';
+import { useUrlState } from '../hooks/useUrlState';
 import LoadingPanel from './common/LoadingPanel';
 import ErrorPanel from './common/ErrorPanel';
 import PlayerStatsTable from './tournaments/PlayerStatsTable';
@@ -93,11 +94,12 @@ function stageLabel(t) {
 }
 
 export default function TournamentsTab() {
-  const [category, setCategory] = useState('global');
-  const [series, setSeries] = useState('PGS');
-  const [year, setYear] = useState(null);
-  const [eventKey, setEventKey] = useState(null);
-  const [stageId, setStageId] = useState(null);
+  // 고른 것을 주소에 적는다 — 링크 하나로 같은 화면을 열 수 있어야 한다.
+  const [category, setCategoryRaw] = useUrlState('c', 'global');
+  const [series, setSeriesRaw] = useUrlState('s', 'PGS');
+  const [year, setYear] = useUrlState('y', null, { parse: Number });
+  const [eventKey, setEventKey] = useUrlState('e', null);
+  const [stageId, setStageId] = useUrlState('st', null);
 
   const listFetcher = useCallback(() => fetchTournaments(category), [category]);
   const { data: list, loading, error, reload } = useApi(listFetcher, [category], EMPTY);
@@ -114,10 +116,31 @@ export default function TournamentsTab() {
   const stages = events.get(activeEvent) ?? [];
   const activeStage = stages.some(t => t.id === stageId) ? stageId : stages[0]?.id;
 
-  useEffect(() => { setSeries(SERIES[category]?.[0] ?? null); }, [category]);
-  useEffect(() => { setYear(null); setEventKey(null); setStageId(null); }, [series]);
-  useEffect(() => { setEventKey(null); setStageId(null); }, [activeYear]);
-  useEffect(() => { setStageId(null); }, [activeEvent]);
+  // 위를 바꾸면 아래를 비운다. 시리즈를 바꿨는데 옛 대회가 남아 있으면 안 된다.
+  //
+  // **첫 그림에서는 비우지 않는다.** 주소로 들어온 사람은 이미 대회·단계를
+  // 들고 오는데, 이 초기화가 그걸 지워 버려 공유 링크가 첫 화면으로
+  // 떨어졌다. 사용자가 실제로 누른 뒤부터만 비운다.
+  // 사용자가 실제로 누른 적이 있는가. 주소로 들어온 첫 그림과 구분한다.
+  const touched = useRef(false);
+  const setCategory = v => { touched.current = true; setCategoryRaw(v); };
+  const setSeries = v => { touched.current = true; setSeriesRaw(v); };
+  useEffect(() => {
+    if (!touched.current) return;
+    setSeries(SERIES[category]?.[0] ?? null);
+  }, [category]);
+  useEffect(() => {
+    if (!touched.current) return;
+    setYear(null); setEventKey(null); setStageId(null);
+  }, [series]);
+  useEffect(() => {
+    if (!touched.current) return;
+    setEventKey(null); setStageId(null);
+  }, [activeYear]);
+  useEffect(() => {
+    if (!touched.current) return;
+    setStageId(null);
+  }, [activeEvent]);
 
   if (loading) {
     return <LoadingPanel title="대회 목록을 불러오는 중입니다" detail="백엔드 서버에서 가져오고 있습니다." />;
@@ -311,11 +334,20 @@ function EventCard({ name, stages, active, onClick }) {
 }
 
 function TournamentDetail({ id, stages, onStage, stageLabel }) {
-  const [view, setView] = useState('leaderboard');
+  const [view, setView] = useUrlState('v', 'leaderboard');
   const fetcher = useCallback(() => fetchTournament(id), [id]);
   const { data, loading, error, reload } = useApi(fetcher, [id], null);
 
-  useEffect(() => { setView('leaderboard'); }, [id]);
+  // 단계를 **바꿨을 때만** 리더보드로 돌아간다.
+  //
+  // "첫 실행만 건너뛰기"로는 모자랐다. id 가 undefined 에서 실제 값으로
+  // 채워질 때 한 번 더 돌아서, 주소로 들어온 사람의 보기(v=matchlog)를
+  // 지워 버렸다. 앞서 보던 단계가 실제로 있었을 때만 되돌린다.
+  const prevId = useRef(id);
+  useEffect(() => {
+    if (prevId.current && prevId.current !== id) setView('leaderboard');
+    prevId.current = id;
+  }, [id]);
 
   // 단계가 둘 이상일 때만 고를 줄을 낸다. 리더보드는 단계별로 봐야 맞다 —
   // 조별예선과 결승은 참가 팀도 경기 수도 달라 합치면 뜻이 없다.
@@ -413,9 +445,17 @@ function TournamentDetail({ id, stages, onStage, stageLabel }) {
 function MatchLogView({ tournamentId }) {
   const listFetcher = useCallback(() => fetchMatchList(tournamentId), [tournamentId]);
   const { data: matches, loading, error, reload } = useApi(listFetcher, [tournamentId], EMPTY);
-  const [matchId, setMatchId] = useState(null);
+  const [matchId, setMatchId] = useUrlState('m', null);
 
-  useEffect(() => { setMatchId((matches ?? [])[0]?.id ?? null); }, [matches]);
+  // 목록이 오면 첫 경기를 고른다. 다만 **주소로 받은 경기가 그 목록에 있으면
+  // 그것을 지킨다** — 안 그러면 공유 링크가 늘 1경기로 떨어진다.
+  useEffect(() => {
+    const list = matches ?? [];
+    // **목록이 비었을 때는 손대지 않는다.** 불러오기 전 한 순간이 있는데,
+    // 그때 선택을 지우면 주소로 받은 경기가 날아가고 1경기로 떨어진다.
+    if (!list.length) return;
+    setMatchId(cur => (cur && list.some(m => m.id === cur)) ? cur : list[0].id);
+  }, [matches]);
 
   const logFetcher = useCallback(
     () => (matchId ? fetchMatchLog(tournamentId, matchId) : Promise.resolve(null)),
