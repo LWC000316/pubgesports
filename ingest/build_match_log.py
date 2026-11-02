@@ -40,6 +40,9 @@ OUT_DIR = PROJECT_ROOT / "primary_data" / "matchlogs"
 
 # 맵 한 변의 길이(cm). 좌표를 0~1 로 정규화하는 데 쓴다.
 # 공식 문서와 커뮤니티에서 확인된 값이다.
+# 추출기 판. 뽑는 항목을 늘릴 때마다 올린다.
+EXTRACTOR = 3
+
 MAP_SIZE = {
     "Baltic_Main": 816000,      # Erangel 8km
     "Erangel_Main": 816000,     # 2019~2020년 대회의 에란겔. 같은 8km 맵이다
@@ -299,7 +302,11 @@ def build(events, match_id):
         # **비행기가 둘일 수 있다.** 태고의 재투입기(RedeployAircraft_*)가 섞이면
         # 선이 3km 까지 틀어진다. 본 수송기만 쓴다.
         if (e.get("vehicle") or {}).get("vehicleType") == "TransportAircraft":
-            if (e["vehicle"].get("vehicleId") or "").startswith("DummyTransportAircraft"):
+            # **이름으로 고르지 않고 재투입기만 뺀다.** 본 수송기의 id 가
+            # 시대마다 다르다 — 2026년은 `DummyTransportAircraft_C` 인데
+            # 그 이름만 받도록 했더니 2023년 경기에서 항로가 통째로 비었다.
+            # 빼야 할 것(재투입기)은 이름이 분명하니 그쪽을 거른다.
+            if "redeploy" not in (e["vehicle"].get("vehicleId") or "").lower():
                 loc = (e.get("character") or {}).get("location") or {}
                 if "x" in loc:
                     plane.append((loc["x"], loc["y"]))
@@ -403,6 +410,11 @@ def build(events, match_id):
 
     return {
         "matchId": match_id,
+        # **추출기 판 번호.** `--missing <항목>` 이 "비어 있으면 다시 받는다"
+        # 라서, 그 항목이 영영 안 나오는 경기(길이 0초짜리 비정상 경기 등)를
+        # 다섯 시간마다 영원히 다시 받았다. 이 번호로 "이미 지금 추출기로
+        # 뽑아 봤다"를 구분한다. 추출 항목을 늘릴 때마다 올린다.
+        "extractor": EXTRACTOR,
         # 경기 시작 절대 시각. 파일 이름이 UUID 라 정렬해도 경기 순서가 아니다.
         # 이것이 있어야 "몇 경기" 를 지어내지 않고 말할 수 있다.
         "startedAt": start_ts.isoformat().replace("+00:00", "Z") if start_ts else None,

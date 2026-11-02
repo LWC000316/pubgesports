@@ -37,6 +37,11 @@ _spec = importlib.util.spec_from_file_location(
 stage_label = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(stage_label)
 
+_bspec = importlib.util.spec_from_file_location(
+    "bml", Path(__file__).with_name("build_match_log.py"))
+bml = importlib.util.module_from_spec(_bspec)
+_bspec.loader.exec_module(bml)
+
 GLOBAL = {"PGC", "PGS", "PNC", "EWC"}
 # 결승으로 볼 단계. stage_label 이 이름을 붙여 준 것만 쓴다 — 모르는 코드를
 # 결승으로 넘겨짚지 않는다.
@@ -44,11 +49,16 @@ FINAL_STAGES = {"Grand Finals", "Final Stage"}
 
 
 def stage_lacks(tid, field):
-    """그 단계의 매치로그 중 하나라도 이 항목이 없으면 True.
+    """그 단계를 다시 뽑아야 하면 True.
 
     추출기에 항목을 새로 넣으면 **그 전에 뽑아 둔 로그에는 없다.** 전부 다시
     받으면 되지만 7,833경기면 42시간이라, 없는 단계만 고를 길이 필요하다.
-    (`nextCircles` 를 넣은 2026-10-15 기준으로 192단계가 해당했다.)
+
+    **다만 "비어 있다"만 보면 안 된다.** 항목이 영영 안 나오는 경기가 있다 —
+    길이 0초짜리 비정상 경기에는 비행기 기록이 없어 `flightPath` 가 끝내
+    비는데, 그걸 "아직 안 받았다"로 읽고 다섯 시간마다 영원히 다시 받았다
+    (실측으로 39단계가 열흘을 그렇게 돌았다). 그래서 **지금 추출기로 이미
+    뽑아 본 로그는 건너뛴다.**
     """
     d = OUT_DIR / tid
     if not d.is_dir():
@@ -57,9 +67,13 @@ def stage_lacks(tid, field):
         if f.name.startswith("_"):
             continue
         try:
-            if not json.loads(f.read_text(encoding="utf-8")).get(field):
-                return True
+            doc = json.loads(f.read_text(encoding="utf-8"))
         except (ValueError, OSError):
+            return True
+        if doc.get(field):
+            continue
+        # 비어 있다. 지금 추출기로 뽑은 것이면 더 해 볼 것이 없다.
+        if doc.get("extractor", 0) < bml.EXTRACTOR:
             return True
     return False
 
