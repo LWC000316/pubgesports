@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-경쟁전(랭크) 경기에서 **자기장만** 모은다.
+경쟁전(랭크) 경기에서 **자기장·착지·사망**을 모은다.
 
-  python ingest/collect_ranked_zones.py --target 1000 --max-minutes 200
+  python ingest/collect_ranked_zones.py --target 400 --max-minutes 200
   python ingest/collect_ranked_zones.py --status        # 받지 않고 현황만
+  python ingest/collect_ranked_zones.py --remaining     # 숫자 하나만 (자동화용)
 
 ## 왜 필요한가
 
@@ -28,8 +29,28 @@ pubg.com/ko/news/10280). 일반전은 다르다 — 일반전만 경고·축소 
 
 ## 남기는 것
 
-경기당 **자기장 페이즈만** 남긴다. 2KB 안쪽이다. 매치로그(300KB)처럼 동선과
-킬까지 담지 않는다 — 히트맵에 필요 없고, 맵당 1,000판이면 1.2GB가 된다.
+| 항목 | 무엇 |
+|---|---|
+| `phases` | 자기장 페이즈마다 중심·반지름 |
+| `landings` | 낙하산 착지 지점 |
+| `deaths` | 사망 지점 (블루존 사망 포함) |
+
+좌표는 전부 0~1 비율에 소수 3자리다 — **8km 맵에서 8m** 이고 화면 한 픽셀이
+그쯤이라 더 정밀해도 보이지 않는다. 이름은 남기지 않는다. 히트맵은 "어디"만
+세고 "누가"는 묻지 않기 때문이고, 공개 경쟁전 선수의 개별 기록을 쌓을 이유도
+없다. 경기당 10KB 안쪽이다 (매치로그는 300KB 다).
+
+## 왜 `extractor` 를 적나
+
+처음 4,000경기는 자기장만 뽑았다. 착지·사망을 더하면서 **파일만 봐서는
+"낡은 추출기로 받은 것"과 "그 경기엔 원래 없는 것"을 구별할 수 없게** 됐다.
+매치로그에서 똑같은 함정에 빠져 `--missing flightPath` 가 열흘 동안 같은
+단계를 되돌았다. 그래서 파일에 추출기 판번호를 박고, 목표는 **그 판번호 이상인
+파일 수**로 센다.
+
+**옛 파일은 지우지 않는다.** 자기장은 그대로 유효한 실측이고, 히트엔딩의
+자기장 층은 그 4,000경기를 계속 쓴다. 착지·사망 층만 새 파일로 센다.
+(공식 API 가 경기를 14일만 보관해서 옛 경기는 다시 받을 수도 없다.)
 
 ## 규칙
 
@@ -61,6 +82,11 @@ SHARD = "steam"
 API = "https://api.pubg.com/shards/%s" % SHARD
 # 분당 10회. 넘기면 429 가 돌아온다 — 돈이 드는 게 아니라 거절당한다.
 GAP = 6.2
+
+# 추출기 판번호. **올릴 때마다 위 표에 무엇이 늘었는지 적는다.**
+#   1 = 자기장만
+#   2 = 착지·사망 추가
+EXTRACTOR = 2
 
 _spec = importlib.util.spec_from_file_location(
     "bml", Path(__file__).with_name("build_match_log.py"))
@@ -123,7 +149,7 @@ def fetch_telemetry(url):
     `build_match_log.fetch_telemetry` 는 캐시 파일을 쓰는데, 거기에
     `os.devnull` 을 넘겼더니 그 경로가 "이미 있는 캐시"로 인식돼 빈 내용을
     읽었다. 실측으로 55회 호출에 0건을 모았다. 여기서는 캐시가 필요 없다 —
-    자기장만 뽑고 버리기 때문이다.
+    필요한 것만 뽑고 버리기 때문이다.
 
     약관상 gzip 을 받아야 한다. 33MB 가 약 3MB 로 줄어든다.
     """
@@ -138,11 +164,43 @@ def fetch_telemetry(url):
     return json.loads(raw.decode("utf-8"))
 
 
-def have_counts():
+def file_extractor(path):
+    """파일을 다 열지 않고 추출기 판번호만 읽는다.
+
+    한 줄짜리 JSON 이고 판번호를 맨 앞 열쇠로 넣어 두었다. 8,000 파일을
+    훑어도 1초가 안 걸린다.
+    """
+    try:
+        head = path.read_text(encoding="utf-8")[:120]
+    except OSError:
+        return 0
+    i = head.find('"extractor":')
+    if i < 0:
+        return 0
+    num = ""
+    for ch in head[i + 12:]:
+        if not ch.isdigit():
+            break
+        num += ch
+    return int(num) if num else 0
+
+
+def have_counts(min_extractor=0):
+    """맵 -> 조건을 채운 파일 수.
+
+    `min_extractor` 가 0 이면 그냥 파일 수다. 1 이상이면 그 판번호 이상으로
+    뽑은 파일만 센다.
+    """
     out = {}
     for m in TARGET_MAPS:
         d = OUT_DIR / m
-        out[m] = len(list(d.glob("*.json"))) if d.is_dir() else 0
+        if not d.is_dir():
+            out[m] = 0
+        elif not min_extractor:
+            out[m] = len(list(d.glob("*.json")))
+        else:
+            out[m] = sum(1 for f in d.glob("*.json")
+                         if file_extractor(f) >= min_extractor)
     return out
 
 
@@ -173,13 +231,39 @@ def phases_of(events):
     return out
 
 
+def spots_of(events):
+    """(착지 지점, 사망 지점). 둘 다 [(x, y), ...] 이고 원본 좌표다.
+
+    **사망은 킬 기록의 피해자 위치로 센다.** `LogPlayerKillV2` 는 블루존·추락
+    사망에도 남으므로(가해자 쪽만 비어 있다) 따로 모을 필요가 없다. 2021년쯤
+    `LogPlayerKill` 에서 이름이 바뀌었는데 경쟁전은 최근 14일치뿐이라 신버전만
+    오지만, 한 줄이면 되니 둘 다 받는다.
+    """
+    landings = []
+    deaths = []
+    for e in events:
+        t = e.get("_T")
+        if t == "LogParachuteLanding":
+            loc = ((e.get("character") or {}).get("location")) or {}
+            if "x" in loc:
+                landings.append((loc["x"], loc["y"]))
+        elif t in ("LogPlayerKillV2", "LogPlayerKill"):
+            loc = ((e.get("victim") or {}).get("location")) or {}
+            if "x" in loc:
+                deaths.append((loc["x"], loc["y"]))
+    return landings, deaths
+
+
 def main():
-    ap = argparse.ArgumentParser(description="경쟁전 자기장 수집")
-    ap.add_argument("--target", type=int, default=1000, help="맵마다 모을 경기 수")
+    ap = argparse.ArgumentParser(description="경쟁전 자기장·착지·사망 수집")
+    ap.add_argument("--target", type=int, default=400,
+                    help="맵마다 모을 경기 수 (추출기 %d 이상인 것만 센다)" % EXTRACTOR)
     ap.add_argument("--max-minutes", type=float, default=200.0)
     ap.add_argument("--save-every", type=int, default=25,
                     help="이만큼 모을 때마다 장부를 적는다")
     ap.add_argument("--status", action="store_true", help="받지 않고 현황만")
+    ap.add_argument("--remaining", action="store_true",
+                    help="가장 적은 맵의 경기 수만 숫자로 찍는다 (워크플로가 쓴다)")
     args = ap.parse_args()
     for s in (sys.stdout, sys.stderr):
         try:
@@ -188,10 +272,17 @@ def main():
             pass
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    counts = have_counts()
-    print("맵별 현황 (목표 %d)" % args.target)
-    for m, n in counts.items():
-        print("   %-14s %4d %s" % (m, n, "완료" if n >= args.target else ""))
+    counts = have_counts(EXTRACTOR)
+    if args.remaining:
+        # **글자를 grep 하지 않는다.** 문구가 바뀌면 조용히 깨진다.
+        print(min(counts.values()))
+        return 0
+
+    zone_only = have_counts()
+    print("맵별 현황 (목표 %d · 추출기 %d 기준)" % (args.target, EXTRACTOR))
+    for m in TARGET_MAPS:
+        print("   %-14s 착지·사망 %4d / %d   · 자기장만 %4d (옛 추출기, 그대로 둔다)"
+              % (m, counts[m], args.target, zone_only[m] - counts[m]))
     if args.status:
         return 0
 
@@ -304,11 +395,20 @@ def main():
         ph = phases_of(events)
         if not size or len(ph) < 3:
             continue
+        landings, deaths = spots_of(events)
 
         def ratio(v):
             return round(max(0.0, min(1.0, v / size)), 4)
 
+        def pts(seq):
+            # 자기장은 4자리, 점은 3자리다. 점은 50칸 격자로 세므로 그보다
+            # 고운 자리는 파일만 키운다.
+            return [[round(max(0.0, min(1.0, x / size)), 3),
+                     round(max(0.0, min(1.0, y / size)), 3)] for x, y in seq]
+
         doc = {
+            # **판번호를 맨 앞에 둔다.** file_extractor 가 앞 120 글자만 읽는다.
+            "extractor": EXTRACTOR,
             "matchId": mid,
             "map": mp,
             "mapLabel": bml.MAP_LABEL.get(mp, mp),
@@ -319,6 +419,8 @@ def main():
                         "x": ratio(c["x"]), "y": ratio(c["y"]),
                         "r": round(c["r"] / size, 5)}
                        for i, c in enumerate(ph)],
+            "landings": pts(landings),
+            "deaths": pts(deaths),
         }
         save_json(OUT_DIR / mp / ("%s.json" % mid), doc)
         counts[mp] += 1
@@ -332,7 +434,7 @@ def main():
     flush()
     print("\n새로 모은 경기 %d · API 호출 %d · 경과 %.0f분"
           % (added, api.calls, (time.time() - start) / 60))
-    for m, n in have_counts().items():
+    for m, n in have_counts(EXTRACTOR).items():
         print("   %-14s %4d / %d" % (m, n, args.target))
     return 0
 

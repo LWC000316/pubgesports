@@ -106,6 +106,12 @@ export default function HitEndingTab() {
     ? (bucket?.zones ?? []).length > 0
     : Boolean(bucket?.layers?.[k]?.cells?.length);
   const spec = LAYERS.find(l => l.key === layer) ?? LAYERS[0];
+  // **층마다 표본 수가 다르다.** 경쟁전은 처음 4,000판에서 자기장만 뽑았고
+  // 착지·사망은 나중에 붙였다. 출처 전체의 경기 수를 적어 두면 착지 층이
+  // 400판으로 그린 그림인데 1,400판처럼 읽힌다.
+  const layerMatches = layer === 'zone'
+    ? (bucket?.zones ?? []).find(z => z.phase === phase)?.matches
+    : bucket?.layers?.[layer]?.matches;
 
   return (
     <Pad>
@@ -188,8 +194,11 @@ export default function HitEndingTab() {
       <p style={{ color: 'var(--text-muted)', fontSize: '0.74rem', marginTop: '14px', lineHeight: 1.6 }}>
         <Info size={12} style={{ verticalAlign: '-2px' }} />{' '}
         {heat?.mapNote ? heat.mapNote + ' ' : ''}
-        {current?.matches.toLocaleString()}경기 · {current?.stages}개 대회 단계를 모은 값입니다.
-        {' '}우리가 뽑아 둔 매치로그만 센 것이라 전체 프로 경기가 아닙니다.
+        {(layerMatches ?? bucket?.matches ?? 0).toLocaleString()}경기를 모은 값입니다
+        {pick === 'esports' && bucket?.stages ? ` (${bucket.stages}개 대회 단계).` : '.'}
+        {' '}{pick === 'esports'
+          ? '우리가 뽑아 둔 매치로그만 센 것이라 전체 프로 경기가 아닙니다.'
+          : '공개 경쟁전에서 모은 것입니다. 이스포츠와 자기장 설정이 같은 모드만 받습니다.'}
         {' '}출처: <a href="https://developer.pubg.com" target="_blank" rel="noopener noreferrer"
                   style={{ color: 'var(--text-muted)', textDecoration: 'underline' }}>PUBG 공식 API</a>
         {' '}· 맵 이미지: PUBG 공식 api-assets

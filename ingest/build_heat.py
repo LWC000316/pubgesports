@@ -20,13 +20,16 @@
 | 출처 | 무엇 | 담는 층 |
 |---|---|---|
 | `esports` | 프로 대회 (우리 매치로그) | 엔딩·낙하·사망·자기장 |
-| `competitive` | 공개 경쟁전 (`ingest/collect_ranked_zones.py`) | 엔딩·자기장 |
+| `competitive` | 공개 경쟁전 (`ingest/collect_ranked_zones.py`) | 엔딩·낙하·사망·자기장 |
 
 **둘은 자기장 설정이 같다** (개발일지 "블루존 개편", pubg.com/ko/news/10280).
 그래도 **합쳐서 한 숫자로 보여주지 않는다** — 출처가 다르면 갈라서 보여주는
 것이 맞다. 일반전은 애초에 받지 않는다. 일반전만 따로 조정됐기 때문이다.
 
-경쟁전에는 낙하·사망이 없다. 자기장만 뽑아 왔기 때문이다(경기당 2KB).
+**층마다 표본 수가 다를 수 있다.** 경쟁전은 처음 4,000경기에서 자기장만
+뽑았고 착지·사망은 나중에 붙였다. 그래서 자기장 층은 전부를, 착지·사망 층은
+추출기 2로 받은 경기만 센다. 층마다 `matches` 를 따로 적는 이유가 이것이다 —
+"이 그림은 몇 판을 센 것인가"를 층을 바꿔도 알 수 있어야 한다.
 
 ## 무엇을 세나
 
@@ -41,7 +44,8 @@
 ## 지어내지 않는 것
 
 - 지명을 붙이지 않는다. 우리에게 지명 데이터가 없다
-- 출처마다 경기 수를 적는다. 표본이 20경기에 못 미치면 내보내지 않는다
+- 출처마다, 그리고 **층마다** 경기 수를 적는다. 20경기에 못 미치면 내보내지
+  않는다 — 출처 전체가 아니라 그 층만 빠진다
 - 페이즈마다 **몇 경기가 기여했는지**를 같이 적는다 — 뒤로 갈수록 일찍 끝난
   경기가 빠지는데, 그걸 안 보여주면 "P8 은 표본이 적다"는 것이 숨는다
 """
@@ -93,6 +97,8 @@ def new_bucket():
     return {
         "label": None, "matches": 0, "stages": set(),
         "ending": Counter(), "landing": Counter(), "death": Counter(),
+        # 층마다 몇 경기가 기여했는지. 출처에 따라 층별로 다르다.
+        "layerMatches": Counter(),
         "endPoints": [],
         "zones": defaultdict(lambda: [np.zeros((ZONE_GRID, ZONE_GRID), dtype=np.int32), 0]),
     }
@@ -180,10 +186,15 @@ def main():
             last = circles[-1]
             m["ending"][(cell(last["x"], GRID), cell(last["y"], GRID))] += 1
             m["endPoints"].append((round(last["x"], 4), round(last["y"], 4)))
+            m["layerMatches"]["ending"] += 1
         add_zones(m, phases_from(circles), gx, gy)
 
+        if d.get("landings"):
+            m["layerMatches"]["landing"] += 1
         for l in d.get("landings") or []:
             m["landing"][(cell(l["x"], GRID), cell(l["y"], GRID))] += 1
+        if d.get("kills"):
+            m["layerMatches"]["death"] += 1
         for k in d.get("kills") or []:
             if k.get("x") is not None:
                 m["death"][(cell(k["x"], GRID), cell(k["y"], GRID))] += 1
@@ -208,7 +219,19 @@ def main():
             last = ph[-1]
             m["ending"][(cell(last["x"], GRID), cell(last["y"], GRID))] += 1
             m["endPoints"].append((round(last["x"], 4), round(last["y"], 4)))
+            m["layerMatches"]["ending"] += 1
         add_zones(m, ph, gx, gy)
+
+        # 추출기 1 로 받은 옛 파일에는 이 둘이 없다. `or []` 로 조용히 지나가되
+        # **경기 수는 세지 않는다** — 안 그러면 4,000경기를 센 것처럼 보인다.
+        if d.get("landings"):
+            m["layerMatches"]["landing"] += 1
+            for x, y in d["landings"]:
+                m["landing"][(cell(x, GRID), cell(y, GRID))] += 1
+        if d.get("deaths"):
+            m["layerMatches"]["death"] += 1
+            for x, y in d["deaths"]:
+                m["death"][(cell(x, GRID), cell(y, GRID))] += 1
 
     print("개편(%s) 이전이라 건너뛴 이스포츠 경기: %d\n" % (REWORK, skipped_old))
 
@@ -232,13 +255,18 @@ def main():
                 "stages": len(b["stages"]),
                 "layers": {
                     lname: {
+                        "matches": b["layerMatches"][lname],
                         "max": max(c.values()) if c else 0,
                         "total": sum(c.values()),
                         "cells": [[i, j, v] for (i, j), v in
                                   sorted(c.items(), key=lambda kv: (-kv[1], kv[0]))],
                     } for lname, c in (("ending", b["ending"]),
                                        ("landing", b["landing"]),
-                                       ("death", b["death"])) if c
+                                       ("death", b["death"]))
+                    # **층마다 최소 표본을 따로 본다.** 출처 전체가 1,000판이어도
+                    # 착지·사망은 나중에 붙여 수십 판일 수 있다. 세 판으로 그린
+                    # 낙하 지도를 1,000판짜리 옆에 나란히 두면 거짓말이 된다.
+                    if c and b["layerMatches"][lname] >= MIN_MATCHES
                 },
                 "endPoints": sorted(b["endPoints"]),
                 "zones": [
