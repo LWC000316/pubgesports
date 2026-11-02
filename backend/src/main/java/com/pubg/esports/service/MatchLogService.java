@@ -37,10 +37,37 @@ public class MatchLogService {
 
     private final ObjectMapper mapper = new ObjectMapper();
     private final Map<String, List<MatchSummaryDto>> cache = new ConcurrentHashMap<>();
+    /** 캐시에 담을 때의 디렉터리 상태. 수집기가 로그를 더 넣으면 달라진다. */
+    private final Map<String, String> stamps = new ConcurrentHashMap<>();
 
     /** 그 대회에서 매치로그를 가진 경기들. 순서를 아는 단계는 경기 순서대로. */
     public List<MatchSummaryDto> listMatches(String tournamentId) {
-        return cache.computeIfAbsent(safe(tournamentId), this::buildList);
+        String id = safe(tournamentId);
+        // **수집기가 다섯 시간마다 로그를 더 넣는다.** 한 번 담은 목록을 그대로
+        // 들고 있으면 돌고 있는 앱에는 새 경기가 영영 안 보인다. 디렉터리
+        // 상태(파일 수 + 최근 수정 시각)가 달라졌을 때만 다시 만든다.
+        String now = stamp(resolve(DIR + "/" + id));
+        if (!now.equals(stamps.get(id))) {
+            cache.remove(id);
+            stamps.put(id, now);
+        }
+        return cache.computeIfAbsent(id, this::buildList);
+    }
+
+    /** 파일 수와 가장 최근 수정 시각. 내용까지 보지는 않는다. */
+    private String stamp(File dir) {
+        if (dir == null) {
+            return "";
+        }
+        File[] files = dir.listFiles((d, n) -> n.endsWith(".json"));
+        if (files == null) {
+            return "";
+        }
+        long newest = 0L;
+        for (File f : files) {
+            newest = Math.max(newest, f.lastModified());
+        }
+        return files.length + ":" + newest;
     }
 
     private List<MatchSummaryDto> buildList(String tournamentId) {

@@ -29,16 +29,21 @@ public class HeatService {
 
     private final ObjectMapper mapper = new ObjectMapper();
     private volatile List<HeatMapSummaryDto> summaries;
+    /** 목록을 만들 때의 디렉터리 상태. 집계를 다시 돌리면 달라진다. */
+    private volatile String stamp = "";
 
     /** 어떤 맵이 있는지. 경기가 많은 맵부터. */
     public List<HeatMapSummaryDto> listMaps() {
-        List<HeatMapSummaryDto> cached = summaries;
-        if (cached != null) {
-            return cached;
-        }
         File dir = resolve(DIR);
         if (dir == null) {
             return Collections.emptyList();
+        }
+        // 집계는 수집기가 돌 때마다 다시 만들어진다. 한 번 담은 목록을 그대로
+        // 들고 있으면 돌고 있는 앱에는 늘어난 경기 수가 안 보인다.
+        String now = stamp(dir);
+        List<HeatMapSummaryDto> cached = summaries;
+        if (cached != null && now.equals(stamp)) {
+            return cached;
         }
         File[] files = dir.listFiles((d, n) -> n.endsWith(".json"));
         if (files == null) {
@@ -74,7 +79,21 @@ public class HeatService {
         }
         out.sort(Comparator.comparingInt(HeatMapSummaryDto::getMatches).reversed());
         summaries = out;
+        stamp = stamp(dir);
         return out;
+    }
+
+    /** 파일 수와 가장 최근 수정 시각. 내용까지 보지는 않는다. */
+    private String stamp(File dir) {
+        File[] files = dir.listFiles((d, n) -> n.endsWith(".json"));
+        if (files == null) {
+            return "";
+        }
+        long newest = 0L;
+        for (File f : files) {
+            newest = Math.max(newest, f.lastModified());
+        }
+        return files.length + ":" + newest;
     }
 
     /** 맵 하나의 집계 전체. 그대로 흘려보낸다. */

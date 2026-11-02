@@ -29,7 +29,18 @@ public class TournamentArchiveService {
     private static final String DIR = "primary_data/tournaments";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private Map<String, TournamentArchiveDto> archives = Collections.emptyMap();
+    private volatile Map<String, TournamentArchiveDto> archives = Collections.emptyMap();
+
+    /**
+     * 적재했을 때의 디렉터리 상태 (파일 수 + 가장 최근 수정 시각).
+     *
+     * **수집기가 새 대회를 넣어도 화면에 안 나오던 이유가 여기였다.** 이
+     * 서비스는 기동 때 한 번만 읽었다. 그래서 10월에 치른 PGS 가 저장소에
+     * 들어온 뒤에도 돌고 있던 앱에는 영영 안 보였고, 사람이 서버를 껐다
+     * 켜야 했다. 요청마다 디렉터리 상태를 견주어 바뀌었으면 다시 읽는다.
+     * 파일 348개의 수정 시각을 보는 데 1밀리초가 안 걸린다.
+     */
+    private volatile String loadedStamp = "";
 
     @PostConstruct
     void load() {
@@ -58,11 +69,40 @@ public class TournamentArchiveService {
             }
         }
         archives = loaded;
+        loadedStamp = stamp(dir);
         log.info("=== 대회 아카이브 {}건 적재 ===", archives.size());
+    }
+
+    /** 디렉터리가 바뀌었으면 다시 읽는다. 안 바뀌었으면 아무것도 하지 않는다. */
+    private void reloadIfChanged() {
+        File dir = resolve(DIR);
+        if (dir == null) {
+            return;
+        }
+        String now = stamp(dir);
+        if (now.equals(loadedStamp)) {
+            return;
+        }
+        log.info("대회 파일이 바뀌어 다시 읽습니다 ({} -> {}).", loadedStamp, now);
+        load();
+    }
+
+    /** 파일 수와 가장 최근 수정 시각. 내용까지 보지는 않는다. */
+    private String stamp(File dir) {
+        File[] files = dir.listFiles((d, name) -> name.endsWith(".json"));
+        if (files == null) {
+            return "";
+        }
+        long newest = 0L;
+        for (File f : files) {
+            newest = Math.max(newest, f.lastModified());
+        }
+        return files.length + ":" + newest;
     }
 
     /** category 가 null 이면 전부. 최신(createdAt 내림차순)으로 준다. */
     public List<TournamentArchiveDto> list(String category) {
+        reloadIfChanged();
         List<TournamentArchiveDto> out = new ArrayList<>();
         for (TournamentArchiveDto dto : archives.values()) {
             if (category == null || category.equalsIgnoreCase(dto.getCategory())) {
@@ -76,6 +116,7 @@ public class TournamentArchiveService {
     }
 
     public TournamentArchiveDto get(String id) {
+        reloadIfChanged();
         return id == null ? null : archives.get(id);
     }
 
