@@ -1,0 +1,154 @@
+{
+  "matches": [
+    {
+      "id": "95eac433-07f1-459d-8932-c905fdbd868c",
+      "startedAt": "2026-10-03T10:54:52Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "30d7a18a-c862-4272-82e3-fc670c3ca4a5",
+      "startedAt": "2026-10-03T11:35:57Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "a9b579da-c1c3-4383-ac3e-ed24ceab10f1",
+      "startedAt": "2026-10-03T12:26:13Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "cc35c7af-359a-4a0d-b9d4-0625967e79b5",
+      "startedAt": "2026-10-03T13:02:05Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "2fe0ce23-f990-4c1c-954f-7b957bc43645",
+      "startedAt": "2026-10-03T13:38:54Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "96e3b503-1f6c-4901-b032-555b96b96366",
+      "startedAt": "2026-10-04T10:50:47Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "3d8be1c5-bdfc-460a-b271-6b0ee6f9404b",
+      "startedAt": "2026-10-04T11:28:38Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "3bfd63ab-db5d-46ba-ae0c-fe58ffb2b049",
+      "startedAt": "2026-10-04T12:16:19Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "199d17ca-cfef-48c4-85ce-00f2236f4d89",
+      "startedAt": "2026-10-04T12:54:36Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "829bbf0c-ce31-403f-b859-bfe5a62e6bcf",
+      "startedAt": "2026-10-04T13:32:32Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "4390992a-deba-449e-a116-e952d709d059",
+      "startedAt": "2026-10-05T10:51:25Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "a91fd9e5-1528-4bb2-9b31-f7cbb4cd98bc",
+      "startedAt": "2026-10-05T11:29:54Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "5c6e18f3-f2c8-47e4-89de-d2a17766dcf9",
+      "startedAt": "2026-10-05T12:19:57Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "57f8ff30-a330-4dca-b74a-e49b3054b858",
+      "startedAt": "2026-10-05T12:58:28Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "10ca7469-72b2-4bf0-9a08-b04a868fbc58",
+      "startedAt": "2026-10-05T13:37:41Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "233a06e1-c525-49d2-a55a-4be6388489df",
+      "startedAt": "2026-10-06T10:47:46Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "05265b20-89a7-4a2a-aeb7-38e2b4d982dc",
+      "startedAt": "2026-10-06T11:44:21Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "1ab4ff36-44e0-45eb-a077-8f568c53bfa8",
+      "startedAt": "2026-10-06T12:22:25Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "fc47be4f-32f0-4e2e-8a03-9f40d08fbea4",
+      "startedAt": "2026-10-06T13:01:27Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "17995797-b3bf-440c-9cc2-549158a7cb2d",
+      "startedAt": "2026-10-06T13:40:12Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "801f596e-be73-434a-8335-c65f584440af",
+      "startedAt": "2026-10-07T10:48:23Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "fe0c1840-1eec-4ef4-a6b4-aafaec6e7adb",
+      "startedAt": "2026-10-07T11:26:06Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "1a0d5b7a-1ea2-41cd-912d-efa2bc8139ca",
+      "startedAt": "2026-10-07T12:15:06Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "63e00cde-1aba-4329-adb5-3bf7bd7a8ba2",
+      "startedAt": "2026-10-07T12:57:57Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "1f13028d-f052-4ff1-bc19-d888eb02a986",
+      "startedAt": "2026-10-07T13:36:48Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "bce22a13-daad-4bfa-b400-e4e720773362",
+      "startedAt": "2026-10-08T11:01:00Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "ef4a02dd-bcac-4820-b1f3-813e93c798ae",
+      "startedAt": "2026-10-08T11:36:25Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "2f4acb00-2f7d-44f1-94b6-ee0cda1597bf",
+      "startedAt": "2026-10-08T12:24:37Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "dfa9d447-1047-4d0c-a97a-47140cc74e9b",
+      "startedAt": "2026-10-08T13:05:51Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "a32f05b3-1039-4bd5-8824-80aeb681290b",
+      "startedAt": "2026-10-08T13:44:06Z",
+      "map": "Neon_Main"
+    }
+  ]
+}
