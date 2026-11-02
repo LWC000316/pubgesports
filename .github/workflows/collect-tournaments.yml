@@ -9,18 +9,29 @@
 # **커밋된 primary_data/tournaments/*.json 이 곧 진행 표시**다 — 다음 실행은
 # 거기 없는 단계만 받는다. 여러 번 나눠 돌려도 이어진다.
 #
-# 쓰는 법: Actions 탭 -> 이 워크플로 -> Run workflow
-# 먼저 Settings -> Secrets and variables -> Actions 에 PUBG_API_KEY 를 넣어야 한다.
+# **왜 예약으로 도나 (2026-11-02)**: 10월에 치른 PGS 10·11·12 가 사이트에
+# 들어오지 않았다. 수집기가 느려서가 아니라 **받을 것의 목록이 늙어 있었기**
+# 때문이다. `ingest/stage_ids.txt` 는 2026-10-02 에 받은 대회 목록으로 한 번
+# 만든 334줄이었고, 그 뒤에 열린 대회는 목록에 없으니 영원히 들어올 수 없었다.
+# 게다가 이 워크플로는 사람이 눌러야만 돌았다. 그래서 둘 다 고친다 —
+# **매번 목록을 다시 받고**(API 1회), **여섯 시간마다 저절로 돈다.**
+#
+# 받을 것이 없으면 1~2분 만에 끝나고 커밋도 남기지 않는다.
 
 name: 대회 기록 수집
 
 on:
+  # 여섯 시간마다. 다른 두 수집기와 시각을 어긋나게 둔다
+  # (매치로그 0 */5, 경쟁전 자기장 30 */5) — 분당 10회 제한을 셋이 나눠 쓰기
+  # 때문에 같은 분에 겹치면 서로 429 를 맞는다.
+  schedule:
+    - cron: '15 */6 * * *'
   workflow_dispatch:
     inputs:
       max_minutes:
         description: '이 분을 넘기면 받던 것을 마치고 끝낸다 (GitHub 작업 한도는 6시간)'
         required: false
-        default: '320'
+        default: '300'
       delay_seconds:
         description: 'API 호출 간격(초). 분당 10회 제한이라 6초 미만으로 줄이지 말 것'
         required: false
@@ -46,12 +57,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 남은 단계 확인
-        run: |
-          total=$(grep -c . ingest/stage_ids.txt)
-          built=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
-          echo "전체 $total 단계 · 이미 집계됨 $built · 이번에 받을 것 약 $((total-built))"
-
       # 키가 왜 안 오는지 바로 알려 준다. **값은 절대 찍지 않는다** — 길이만 본다.
       # Secrets 탭이 아니라 Variables 탭에 넣는 실수가 흔해서 둘 다 확인한다.
       - name: 키 전달 확인
@@ -73,35 +78,108 @@ jobs:
           fi
           echo "키 전달 정상."
 
-      - name: 공식 API 에서 받기
+      # **새로 열린 대회를 작업 목록에 넣는다. API 1회.**
+      #
+      # 이것이 "왜 새 경기가 안 들어오나"의 답이었다. 아래 수집 단계는 목록에
+      # 적힌 것만 받으므로, 목록을 갱신하지 않으면 새 대회는 존재하지 않는 것과
+      # 같다. 목록을 커밋해 두는 이유는 다음 실행과 매치로그 워크플로가 같은
+      # 목록을 보게 하려는 것이다.
+      - name: 새 대회 찾기
         env:
           PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
         run: |
-          pwsh -NoProfile -File ingest/fetch_all.ps1 \
-            -DelaySeconds ${{ github.event.inputs.delay_seconds || 6 }} \
-            -MaxMinutes ${{ github.event.inputs.max_minutes || 320 }} \
-            -SkipBuilt
+          python ingest/refresh_stage_ids.py | tee /tmp/refresh.log
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A ingest/stage_ids.txt intermediate_results/all_tournaments.json
+          if git diff --cached --quiet; then
+            echo "작업 목록에 바뀐 것이 없습니다."
+          else
+            git commit -q -m "data: 공식 API 대회 목록 갱신 (자동)" \
+              -m "새로 열린 대회를 ingest/stage_ids.txt 에 넣는다. 아래 수집 단계가 이어서 받는다."
+            git fetch -q origin main
+            git rebase -X theirs origin/main || git rebase --abort || true
+            git push -q origin HEAD:main || echo "::warning::목록 푸시 실패. 수집은 그대로 진행합니다."
+          fi
+          sed -n '1,40p' /tmp/refresh.log >> $GITHUB_STEP_SUMMARY
 
-      # 집계가 터져도 **받은 것은 반드시 커밋한다.** 받기에 5시간이 드는데
-      # 뒤 단계 하나가 실패해서 통째로 날아가면 그 5시간을 다시 써야 한다.
-      # 2026-10-06 실행이 정확히 그렇게 102단계를 잃었다 (EWC 거부 1건 때문).
-      - name: 집계
-        continue-on-error: true
-        run: python ingest/build_all.py
+      - name: 남은 단계 확인
+        run: |
+          total=$(grep -c . ingest/stage_ids.txt)
+          built=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
+          echo "전체 $total 단계 · 이미 집계됨 $built · 이번에 받을 것 약 $((total-built))"
 
-      - name: 결과 커밋
-        if: always()
+      # **받기·집계·커밋을 토막내어 번갈아 돌린다.**
+      #
+      # 예전에는 전부 받고 마지막에 한 번 커밋했다. 그 마지막 커밋이 세 번
+      # 다른 이유로 실패했고(2026-10-06 의도적 거부가 오류로 집계 / 10-12 작업
+      # 시간 한도 / 10-13 스테이징 범위가 좁아 리베이스 거부) 그때마다 네다섯
+      # 시간어치 내려받기를 잃었다. 무엇이 터지든 잃는 것은 마지막 한 토막뿐이게 한다.
+      - name: 모으면서 커밋
+        env:
+          PUBG_API_KEY: ${{ secrets.PUBG_API_KEY }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add primary_data/tournaments
-          if git diff --cached --quiet; then
-            echo "새로 집계된 대회가 없습니다."
-            exit 0
-          fi
-          n=$(git diff --cached --name-only | wc -l)
-          git commit             -m "data: 대회 $n 단계 집계 (자동 수집)"             -m "공식 PUBG API 에서 받아 집계했다. 원본은 보관하지 않고 결과만 남긴다."             -m "남은 단계는 다음 실행이 이어서 받는다 - 커밋된 집계 결과가 진행 표시다."
-          git push
+
+          # 저장은 **실패해도 작업을 죽이지 않는다.** 여기서 죽으면 그게 바로
+          # 전부를 잃는 그 한 걸음이 된다.
+          save() {
+            set +e
+            git add -A primary_data
+            if git diff --cached --quiet; then
+              set -e; return 0
+            fi
+            n=$(git diff --cached --name-only | wc -l)
+            git commit -q -m "data: 대회 $n 단계 집계 (자동 수집)" \
+              -m "공식 PUBG API 에서 받아 집계했다. 원본은 보관하지 않고 결과만 남긴다." \
+              -m "남은 단계는 다음 실행이 이어서 받는다 - 커밋된 집계 결과가 진행 표시다."
+            for i in 1 2 3; do
+              git fetch -q origin main
+              git rebase -X theirs origin/main || git rebase --abort || true
+              if git push -q origin HEAD:main; then
+                echo "::notice::$n 파일 저장 (시도 $i)"
+                set -e; return 0
+              fi
+              sleep 5
+            done
+            echo "::warning::푸시를 세 번 다 실패했습니다. 다음 토막에서 다시 시도합니다."
+            set -e; return 0
+          }
+
+          # 예약 실행에는 inputs 가 없어 빈 문자열이 온다. `||` 기본값이 받는다.
+          BUDGET=${{ github.event.inputs.max_minutes || 300 }}
+          DELAY=${{ github.event.inputs.delay_seconds || 6 }}
+          CHUNK=30
+          ELAPSED=0
+          while [ "$ELAPSED" -lt "$BUDGET" ]; do
+            BEFORE=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
+
+            pwsh -NoProfile -File ingest/fetch_all.ps1 \
+              -DelaySeconds "$DELAY" -MaxMinutes "$CHUNK" -SkipBuilt || true
+
+            # 집계는 네트워크를 쓰지 않는다. 터져도 받은 원본은 다음 토막이 쓴다.
+            python ingest/build_all.py || true
+            # 경기 순서는 **원본이 아직 있을 때** 적어야 한다. 1경기·2경기 번호가
+            # 여기서 나온다 (파일 이름은 UUID 라 순서가 아니다).
+            python ingest/build_match_order.py || true
+            # OVERALL 은 집계 파일만 보고 다시 매길 수 있다. 계산식을 고친 뒤
+            # 서버가 만든 옛 단계가 옛 값으로 남는 것을 막는다.
+            python ingest/rescore_overall.py || true
+            save
+
+            AFTER=$(ls primary_data/tournaments/*.json 2>/dev/null | wc -l)
+            ELAPSED=$(( ELAPSED + CHUNK ))
+            if [ "$AFTER" -le "$BEFORE" ]; then
+              # 한 토막(30분, 약 30단계)을 돌았는데 새로 집계된 단계가 없다.
+              # 받을 것이 없거나, 남은 것이 집계되지 않는 단계뿐이다
+              # (EWC 는 선수 이름이 익명화돼 있어 빌더가 일부러 거부한다).
+              echo "새로 집계된 단계가 없어 여기서 멈춥니다."
+              break
+            fi
+          done
+
+          save
 
       - name: 진행 상황
         if: always()
@@ -111,7 +189,7 @@ jobs:
           echo "### 수집 진행: $built / $total 단계" >> $GITHUB_STEP_SUMMARY
           if [ "$built" -lt "$total" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "아직 남았습니다. 이 워크플로를 한 번 더 실행하면 이어서 받습니다." >> $GITHUB_STEP_SUMMARY
+            echo "아직 남았습니다. 여섯 시간 뒤 예약 실행이 이어서 받습니다." >> $GITHUB_STEP_SUMMARY
           else
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "전부 끝났습니다." >> $GITHUB_STEP_SUMMARY
