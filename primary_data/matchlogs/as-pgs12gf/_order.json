@@ -1,0 +1,79 @@
+{
+  "matches": [
+    {
+      "id": "5a336dc0-6060-4221-a8b5-c5ec74558c3c",
+      "startedAt": "2026-10-30T10:00:56Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "c0a4b2fb-c602-473b-9cf6-4852ae287660",
+      "startedAt": "2026-10-30T10:38:03Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "8a977d20-4064-48fe-a67e-0ea5752043ae",
+      "startedAt": "2026-10-30T11:19:47Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "15b5038f-ce3e-41fe-80f1-1de655ff02d5",
+      "startedAt": "2026-10-30T11:52:22Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "fec3cdba-8832-40b8-b507-20336afee36f",
+      "startedAt": "2026-10-30T12:33:52Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "660fb7a3-b79c-47dd-8a26-393363363674",
+      "startedAt": "2026-10-31T10:00:11Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "a18c568b-2027-4234-93a5-314cc987cc17",
+      "startedAt": "2026-10-31T10:32:17Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "69a8cf4b-754c-4ca5-bcd2-e102a96e8b61",
+      "startedAt": "2026-10-31T11:13:21Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "63e5a606-a46a-4403-9c54-e04aa243b8bf",
+      "startedAt": "2026-10-31T11:47:14Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "2a576653-894f-457f-82f4-ec2e0d21760a",
+      "startedAt": "2026-10-31T12:29:27Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "961035da-29f0-4191-afec-66144efb04ae",
+      "startedAt": "2026-11-01T10:00:19Z",
+      "map": "Baltic_Main"
+    },
+    {
+      "id": "016264b6-01a9-442f-932b-d333e15638c4",
+      "startedAt": "2026-11-01T10:32:55Z",
+      "map": "Desert_Main"
+    },
+    {
+      "id": "5b83980a-3461-4884-b692-9b4d43f08180",
+      "startedAt": "2026-11-01T11:14:05Z",
+      "map": "Tiger_Main"
+    },
+    {
+      "id": "51fed7d9-60e7-4c76-a364-627060d02e6b",
+      "startedAt": "2026-11-01T11:48:55Z",
+      "map": "Neon_Main"
+    },
+    {
+      "id": "93697901-740f-4670-82a5-f7d400305181",
+      "startedAt": "2026-11-01T12:31:39Z",
+      "map": "Baltic_Main"
+    }
+  ]
+}
