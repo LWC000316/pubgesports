@@ -4,10 +4,10 @@
     "name": "Team Falcons",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/team_falcons.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Shrimzy",
@@ -37,10 +37,10 @@
     "name": "55 e-Sports",
     "tag": "55",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/55.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "gabriehw",
@@ -70,10 +70,10 @@
     "name": "Copenhagen Wolves",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/copenhagen_wolves.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Snakers",
@@ -108,10 +108,10 @@
     "name": "ROC Esports",
     "tag": "ROC",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/roc.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "rbN",
@@ -141,10 +141,10 @@
     "name": "Team Liquid",
     "tag": "TL",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/tl.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "PurdyKurty",
@@ -174,10 +174,10 @@
     "name": "TOYO Esports",
     "tag": "TOYO",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/toyo.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "emikxz",
@@ -207,10 +207,10 @@
     "name": "GodLike Esports",
     "tag": "GODLIKE",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "pro",
+    "seedType": null,
     "logoUrl": "/logos/teams/godlike.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Haven",
@@ -240,10 +240,10 @@
     "name": "Circle Nine",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/circle_nine.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "bielmtcalmo",
@@ -278,10 +278,10 @@
     "name": "No Org",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/no_org.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "guizeraa",
@@ -311,10 +311,10 @@
     "name": "Per Diem Withholders",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/per_diem_withholders.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Bizzler",
@@ -354,10 +354,10 @@
     "name": "DUEL",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/duel.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Woo1y",
@@ -392,10 +392,10 @@
     "name": "SHHHHHHHH",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/shhhhhhhh.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "JimmyGuzman",
@@ -430,10 +430,10 @@
     "name": "Team FATE",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/team_fate.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Tater",
@@ -463,10 +463,10 @@
     "name": "BILU",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/bilu.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "OhNytavoN",
@@ -496,10 +496,10 @@
     "name": "Gosu Intl Gaming Alliance",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/gosu_intl_gaming_alliance.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "SneakAttack",
@@ -534,10 +534,10 @@
     "name": "Pest Control",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/pest_control.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "JoShY",
@@ -577,10 +577,10 @@
     "name": "No Way",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/no_way.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "ZxLopes",
@@ -615,10 +615,10 @@
     "name": "ARC e-Sports",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/arc_e_sports.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "LiiPeeXx",
@@ -653,10 +653,10 @@
     "name": "Taesan",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/taesan.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "zZRISE",
@@ -686,10 +686,10 @@
     "name": "For Nothing",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/for_nothing.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "gmoo",
@@ -719,10 +719,10 @@
     "name": "Me anoto mi tio",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/me_anoto_mi_tio.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "danitw",
@@ -752,10 +752,10 @@
     "name": "Chupinsky's",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/chupinsky_s.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "0racle",
@@ -790,10 +790,10 @@
     "name": "Earthworms",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/earthworms.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "HUGHLIGAN",
@@ -833,10 +833,10 @@
     "name": "Newgen Allstars",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/newgen_allstars.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Shinboi",
@@ -866,10 +866,10 @@
     "name": "Boundary Esports",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/boundary_esports.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Penry24",
@@ -904,10 +904,10 @@
     "name": "Keep Out",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/keep_out.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "RADS",
@@ -937,10 +937,10 @@
     "name": "OVERP0WERED",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/overp0wered.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "RepoLiN",
@@ -975,10 +975,10 @@
     "name": "Antarctic Fox",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/antarctic_fox.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "Plushiee",
@@ -1013,10 +1013,10 @@
     "name": "Last Minute Roster",
     "tag": "",
     "tagSource": "liquipedia-opponent-code",
-    "seedType": "amateur",
+    "seedType": null,
     "logoUrl": "/logos/teams/last_minute_roster.png",
     "league": "AMER",
-    "region": "AMER",
+    "region": "AM",
     "players": [
       {
         "nickname": "abdou",

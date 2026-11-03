@@ -1,0 +1,799 @@
+[
+  {
+    "id": "soopers",
+    "name": "SOOPers",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/soopers.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "DIEL",
+        "realName": "DIEL",
+        "role": "Player"
+      },
+      {
+        "nickname": "Gyumin",
+        "realName": "Gyumin",
+        "role": "Player"
+      },
+      {
+        "nickname": "Heaven",
+        "realName": "Heaven",
+        "role": "Player"
+      },
+      {
+        "nickname": "Rex",
+        "realName": "Rex",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "SOOPers"
+  },
+  {
+    "id": "gen_g_esports",
+    "name": "Gen.G Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/gen_g_esports.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "BeaN",
+        "realName": "BeaN",
+        "role": "Player"
+      },
+      {
+        "nickname": "taemin",
+        "realName": "taemin",
+        "role": "Player"
+      },
+      {
+        "nickname": "Salute",
+        "realName": "Salute",
+        "role": "Player"
+      },
+      {
+        "nickname": "seoul",
+        "realName": "seoul",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Gen.G_Esports"
+  },
+  {
+    "id": "t1",
+    "name": "T1",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/t1.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "EEND",
+        "realName": "EEND",
+        "role": "Player"
+      },
+      {
+        "nickname": "Heather",
+        "realName": "Heather",
+        "role": "Player"
+      },
+      {
+        "nickname": "Rain1ng",
+        "realName": "Rain1ng",
+        "role": "Player"
+      },
+      {
+        "nickname": "Type",
+        "realName": "Type",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "T1"
+  },
+  {
+    "id": "baegopa",
+    "name": "Baegopa",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/baegopa.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Pio",
+        "realName": "Pio",
+        "role": "Player"
+      },
+      {
+        "nickname": "Inonix",
+        "realName": "Inonix",
+        "role": "Player"
+      },
+      {
+        "nickname": "blackwalk",
+        "realName": "blackwalk",
+        "role": "Player"
+      },
+      {
+        "nickname": "yugee",
+        "realName": "yugee",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Baegopa"
+  },
+  {
+    "id": "fn_esports",
+    "name": "FN Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/fn_esports.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "BreaKers",
+        "realName": "BreaKers",
+        "role": "Player"
+      },
+      {
+        "nickname": "Hush",
+        "realName": "Hush",
+        "role": "Player"
+      },
+      {
+        "nickname": "kkachi",
+        "realName": "kkachi",
+        "role": "Player"
+      },
+      {
+        "nickname": "Starlord",
+        "realName": "Starlord",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "FN_Esports"
+  },
+  {
+    "id": "pentagram",
+    "name": "PENTAGRAM",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/pentagram.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "F1ame",
+        "realName": "F1ame",
+        "role": "Player"
+      },
+      {
+        "nickname": "HAMMER",
+        "realName": "HAMMER",
+        "role": "Player"
+      },
+      {
+        "nickname": "Orca",
+        "realName": "Orca",
+        "role": "Player"
+      },
+      {
+        "nickname": "redzone",
+        "realName": "redzone",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "PENTAGRAM"
+  },
+  {
+    "id": "divine",
+    "name": "Divine",
+    "tag": "DIVINE (KOREAN TEAM)",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/divine_korean_team.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Barpo",
+        "realName": "Barpo",
+        "role": "Player"
+      },
+      {
+        "nickname": "Stella",
+        "realName": "Stella",
+        "role": "Player"
+      },
+      {
+        "nickname": "Tosi",
+        "realName": "Tosi",
+        "role": "Player"
+      },
+      {
+        "nickname": "wonderful",
+        "realName": "wonderful",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Divine_(Korean_team)"
+  },
+  {
+    "id": "phantom_hearts",
+    "name": "PHANTOM HEARTS",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/phantom_hearts.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "DAEVA",
+        "realName": "DAEVA",
+        "role": "Player"
+      },
+      {
+        "nickname": "King",
+        "realName": "King",
+        "role": "Player"
+      },
+      {
+        "nickname": "GimJun",
+        "realName": "GimJun",
+        "role": "Player"
+      },
+      {
+        "nickname": "ZeniTh",
+        "realName": "ZeniTh",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "PHANTOM_HEARTS"
+  },
+  {
+    "id": "game_pt",
+    "name": "GAME PT",
+    "tag": "GAMEPT",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/gamept.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "fizzy",
+        "realName": "fizzy",
+        "role": "Player"
+      },
+      {
+        "nickname": "instinct",
+        "realName": "instinct",
+        "role": "Player"
+      },
+      {
+        "nickname": "PolarBear",
+        "realName": "PolarBear",
+        "role": "Player"
+      },
+      {
+        "nickname": "Search",
+        "realName": "Search",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "GAME_PT"
+  },
+  {
+    "id": "sentinel",
+    "name": "Sentinel",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/sentinel.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Rascal",
+        "realName": "Rascal",
+        "role": "Player"
+      },
+      {
+        "nickname": "heyden",
+        "realName": "heyden",
+        "role": "Player"
+      },
+      {
+        "nickname": "HyukSung",
+        "realName": "HyukSung",
+        "role": "Player"
+      },
+      {
+        "nickname": "VenTus",
+        "realName": "VenTus",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Sentinel"
+  },
+  {
+    "id": "superfect_academy",
+    "name": "SUPERFECT Academy",
+    "tag": "SPF",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/spf.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Acid",
+        "realName": "Acid",
+        "role": "Player"
+      },
+      {
+        "nickname": "TheMinos",
+        "realName": "TheMinos",
+        "role": "Player"
+      },
+      {
+        "nickname": "Karwn",
+        "realName": "Karwn",
+        "role": "Player"
+      },
+      {
+        "nickname": "Todol",
+        "realName": "Todol",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "SUPERFECT_Academy"
+  },
+  {
+    "id": "vex_e_sports",
+    "name": "Vex E-Sports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/vex_e_sports.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Forward",
+        "realName": "Forward",
+        "role": "Player"
+      },
+      {
+        "nickname": "Solution",
+        "realName": "Solution",
+        "role": "Player"
+      },
+      {
+        "nickname": "Lure",
+        "realName": "Lure",
+        "role": "Player"
+      },
+      {
+        "nickname": "Nyeong",
+        "realName": "Nyeong",
+        "role": "Player"
+      },
+      {
+        "nickname": "ROY",
+        "realName": "ROY",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Vex_E-Sports"
+  },
+  {
+    "id": "geekay_esports",
+    "name": "Geekay Esports",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/geekay_esports.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Parkpro",
+        "realName": "Parkpro",
+        "role": "Player"
+      },
+      {
+        "nickname": "EJ",
+        "realName": "EJ",
+        "role": "Player"
+      },
+      {
+        "nickname": "Seongjang",
+        "realName": "Seongjang",
+        "role": "Player"
+      },
+      {
+        "nickname": "AKaN",
+        "realName": "AKaN",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Geekay_Esports"
+  },
+  {
+    "id": "eagle_owls",
+    "name": "Eagle Owls",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/eagle_owls.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "DK",
+        "realName": "DK",
+        "role": "Player"
+      },
+      {
+        "nickname": "SINGAM",
+        "realName": "SINGAM",
+        "role": "Player"
+      },
+      {
+        "nickname": "Right",
+        "realName": "Right",
+        "role": "Player"
+      },
+      {
+        "nickname": "Jaechan",
+        "realName": "Jaechan",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Eagle_Owls"
+  },
+  {
+    "id": "squad_x_academy",
+    "name": "SQUAD X ACADEMY",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/squad_x_academy.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "KAL",
+        "realName": "KAL",
+        "role": "Player"
+      },
+      {
+        "nickname": "BBANG",
+        "realName": "BBANG",
+        "role": "Player"
+      },
+      {
+        "nickname": "HELLPER",
+        "realName": "HELLPER",
+        "role": "Player"
+      },
+      {
+        "nickname": "Sunday",
+        "realName": "Sunday",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "SQUAD_X_ACADEMY"
+  },
+  {
+    "id": "crazy_raccoon",
+    "name": "Crazy Raccoon",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/crazy_raccoon.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Ayoh",
+        "realName": "Ayoh",
+        "role": "Player"
+      },
+      {
+        "nickname": "GGoBuGi",
+        "realName": "GGoBuGi",
+        "role": "Player"
+      },
+      {
+        "nickname": "Glaz",
+        "realName": "Glaz",
+        "role": "Player"
+      },
+      {
+        "nickname": "Gyuyeon",
+        "realName": "Gyuyeon",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Crazy_Raccoon"
+  },
+  {
+    "id": "slash_doom_lab",
+    "name": "SLASH DOOM LAB",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/slash_doom_lab.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Morek",
+        "realName": "Morek",
+        "role": "Player"
+      },
+      {
+        "nickname": "Freaky",
+        "realName": "Freaky",
+        "role": "Player"
+      },
+      {
+        "nickname": "vilo",
+        "realName": "vilo",
+        "role": "Player"
+      },
+      {
+        "nickname": "muel",
+        "realName": "muel",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "SLASH_DOOM_LAB"
+  },
+  {
+    "id": "iskra",
+    "name": "ISKRA",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/iskra.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "ParkChaN",
+        "realName": "ParkChaN",
+        "role": "Player"
+      },
+      {
+        "nickname": "Genom",
+        "realName": "Genom",
+        "role": "Player"
+      },
+      {
+        "nickname": "Yong",
+        "realName": "Yong",
+        "role": "Player"
+      },
+      {
+        "nickname": "Primmie",
+        "realName": "Primmie",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "ISKRA"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/the_crown.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "2cut",
+        "realName": "2cut",
+        "role": "Player"
+      },
+      {
+        "nickname": "2heart",
+        "realName": "2heart",
+        "role": "Player"
+      },
+      {
+        "nickname": "CxldMxn",
+        "realName": "CxldMxn",
+        "role": "Player"
+      },
+      {
+        "nickname": "HanlNu",
+        "realName": "HanlNu",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "The_Crown"
+  },
+  {
+    "id": "samgukzee",
+    "name": "Samgukzee",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/samgukzee.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "GuanYu",
+        "realName": "GuanYu",
+        "role": "Player"
+      },
+      {
+        "nickname": "ZhaoYun",
+        "realName": "ZhaoYun",
+        "role": "Player"
+      },
+      {
+        "nickname": "Yubi",
+        "realName": "Yubi",
+        "role": "Player"
+      },
+      {
+        "nickname": "YeoPo",
+        "realName": "YeoPo",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Samgukzee"
+  },
+  {
+    "id": "hesedian",
+    "name": "HESEDIAN",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/hesedian.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "LOV3",
+        "realName": "LOV3",
+        "role": "Player"
+      },
+      {
+        "nickname": "Glance",
+        "realName": "Glance",
+        "role": "Player"
+      },
+      {
+        "nickname": "Hyuk",
+        "realName": "Hyuk",
+        "role": "Player"
+      },
+      {
+        "nickname": "youth",
+        "realName": "youth",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "HESEDIAN"
+  },
+  {
+    "id": "cfive",
+    "name": "CFiVE",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/cfive.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Archi",
+        "realName": "Archi",
+        "role": "Player"
+      },
+      {
+        "nickname": "Malik",
+        "realName": "Malik",
+        "role": "Player"
+      },
+      {
+        "nickname": "Gray",
+        "realName": "Gray",
+        "role": "Player"
+      },
+      {
+        "nickname": "Krbyz",
+        "realName": "Krbyz",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "CFiVE"
+  },
+  {
+    "id": "ggwp",
+    "name": "GGWP",
+    "tag": "GGWP (KOREAN TEAM)",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/ggwp_korean_team.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "sony",
+        "realName": "sony",
+        "role": "Player"
+      },
+      {
+        "nickname": "Geunwon",
+        "realName": "Geunwon",
+        "role": "Player"
+      },
+      {
+        "nickname": "naheesoo",
+        "realName": "naheesoo",
+        "role": "Player"
+      },
+      {
+        "nickname": "Wanted",
+        "realName": "Wanted",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "GGWP_(Korean_team)"
+  },
+  {
+    "id": "overwhelm",
+    "name": "Overwhelm",
+    "tag": "",
+    "tagSource": "liquipedia-opponent-code",
+    "seedType": null,
+    "logoUrl": "/logos/teams/overwhelm.png",
+    "league": "PWS",
+    "region": "KR",
+    "players": [
+      {
+        "nickname": "Woong",
+        "realName": "Woong",
+        "role": "Player"
+      },
+      {
+        "nickname": "night",
+        "realName": "night",
+        "role": "Player"
+      },
+      {
+        "nickname": "Fairy",
+        "realName": "Fairy",
+        "role": "Player"
+      },
+      {
+        "nickname": "FoxVer",
+        "realName": "FoxVer",
+        "role": "Player"
+      }
+    ],
+    "_liquipediaPage": "Overwhelm"
+  }
+]
