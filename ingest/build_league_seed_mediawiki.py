@@ -151,7 +151,7 @@ def _full_size_image(src):
     return "https://liquipedia.net" + src if src.startswith("/") else src
 
 
-def fetch_team_display(client, page):
+def fetch_team_display(client, page, refresh=False):
     """
     렌더된 HTML 의 Participants 영역에서 (정식 팀명, 로고 URL) 을 등장 순서대로 뽑는다.
     위키 원문은 내부 코드만 주므로 정식명은 여기서만 얻을 수 있다.
@@ -160,7 +160,8 @@ def fetch_team_display(client, page):
     HTML 엔티티가 섞여 있어(`&#95;` = `_`) 먼저 언이스케이프한다.
     """
     doc = html_mod.unescape(
-        client.get({"action": "parse", "page": page, "prop": "text"})["parse"]["text"]["*"])
+        client.get({"action": "parse", "page": page, "prop": "text"},
+                   refresh=refresh)["parse"]["text"]["*"])
 
     m = re.search(r'id="Participants".*?(?=<h2)', doc, re.S)
     scope = m.group(0) if m else doc
@@ -191,7 +192,7 @@ SUB_TAB_LABELS = {"subs", "sub", "substitutes"}
 STAFF_ROLE_WORDS = ("coach", "analyst", "manager")
 
 
-def parse_participants_html(client, page, include_subs):
+def parse_participants_html(client, page, include_subs, refresh=False):
     """
     렌더된 HTML 에서 팀별 로스터를 뽑는다.
 
@@ -210,7 +211,8 @@ def parse_participants_html(client, page, include_subs):
     탭이 아예 없는 팀은 영역 전체가 주전 명단이다.
     """
     doc = html_mod.unescape(
-        client.get({"action": "parse", "page": page, "prop": "text"})["parse"]["text"]["*"])
+        client.get({"action": "parse", "page": page, "prop": "text"},
+                   refresh=refresh)["parse"]["text"]["*"])
     m = re.search(r'id="Participants".*?(?=<h2)', doc, re.S)
     scope = m.group(0) if m else doc
 
@@ -307,13 +309,18 @@ def main():
     ap.add_argument("--download-logos", action="store_true")
     ap.add_argument("--out", default=None)
     ap.add_argument("--offline", action="store_true")
+    # **재수집에는 이것이 반드시 필요하다.** 응답 캐시(약관상 보관한다)가
+    # 그대로 읽히면 리그를 다시 수집해도 옛 명단이 나온다. 실제로 2026-11-02
+    # 재수집에서 이 플래그가 없어 걸렸다.
+    ap.add_argument("--refresh", action="store_true",
+                    help="캐시를 무시하고 위키를 다시 읽는다 (재수집할 때 쓴다)")
     args = ap.parse_args()
 
     client = MediaWikiClient(offline=args.offline)
 
-    wt = client.wikitext(args.page)
+    wt = client.wikitext(args.page, refresh=args.refresh)
     entries = parse_participants(wt, args.include_subs)
-    displays = fetch_team_display(client, args.page)
+    displays = fetch_team_display(client, args.page, refresh=args.refresh)
 
     print("위키 원문 Opponent %d개 / 렌더 HTML 팀 %d개" % (len(entries), len(displays)))
     if len(entries) != len(displays):
@@ -337,7 +344,8 @@ def main():
         e.update(d)
 
     if args.rosters_from_html:
-        html_rosters = parse_participants_html(client, args.page, args.include_subs)
+        html_rosters = parse_participants_html(client, args.page, args.include_subs,
+                                               refresh=args.refresh)
         if len(html_rosters) != len(entries):
             raise SystemExit(
                 "렌더 HTML 로스터 카드 %d개가 원문 Opponent %d개와 다릅니다. 진행을 멈춥니다."

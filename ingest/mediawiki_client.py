@@ -174,22 +174,28 @@ def main():
     ap.add_argument("--chars", type=int, default=6000, help="wikitext 출력 길이")
     ap.add_argument("--offset", type=int, default=0)
     ap.add_argument("--offline", action="store_true")
+    # 캐시는 약관상 필요하지만, **재수집 때는 캐시가 적이다.** 이 플래그가
+    # 없어서 "리그를 다시 수집" 해도 몇 주 전 응답을 그대로 읽고 아무것도
+    # 바뀌지 않았다 (check_freshness 가 재수집하라고 알려 주는데 정작 수집
+    # 도구에 다시 받을 수단이 없었다).
+    ap.add_argument("--refresh", action="store_true",
+                    help="캐시를 무시하고 다시 받는다 (재수집할 때 쓴다)")
     args = ap.parse_args()
 
     client = MediaWikiClient(offline=args.offline)
 
     if args.what == "wikitext":
-        text = client.wikitext(args.page)
+        text = client.wikitext(args.page, refresh=args.refresh)
         print("=== 전체 %d자 / %d~%d 구간 ===" %
               (len(text), args.offset, args.offset + args.chars))
         print(text[args.offset:args.offset + args.chars])
     elif args.what == "images":
-        images = client.page_images(args.page)
+        images = client.page_images(args.page, refresh=args.refresh)
         print("=== File %d개 ===" % len(images))
         for f in images:
             print(" ", f)
     else:
-        for title in client.search(args.page):
+        for title in client.search(args.page, refresh=args.refresh):
             print(" ", title)
 
 

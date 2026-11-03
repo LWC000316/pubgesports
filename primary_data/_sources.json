@@ -5,7 +5,7 @@
       "page": "PUBG_WEEKLY_SERIES/2026/Phase_2",
       "seriesPrefix": "PUBG WEEKLY SERIES",
       "seedFile": "primary_data/pws2_teams_verified.json",
-      "collectedAt": "2026-09-18",
+      "collectedAt": "2026-11-02",
       "tournamentStart": "2026-09-09",
       "tournamentEnd": "2026-10-04",
       "rostersFromHtml": false,
@@ -17,7 +17,8 @@
         "SUPERFECT": "SUPERFECT Academy",
         "samgukzee": "Samgukzee"
       },
-      "note": "시드 표기가 위키와 다른 팀이 6개 있다. scripts/59 경로로 수집한 옛 데이터라 스폰서 접두사와 대소문자가 다르다. 로스터가 완전히 일치해 같은 팀임을 확인했고 teamAliases 로 대응시킨다."
+      "note": "시드 표기가 위키와 다른 팀이 6개 있다. scripts/59 경로로 수집한 옛 데이터라 스폰서 접두사와 대소문자가 다르다. 로스터가 완전히 일치해 같은 팀임을 확인했고 teamAliases 로 대응시킨다. / 대회가 끝난 뒤 최종 명단으로 재수집했다 (2026-11-02). 수집기에 --refresh 가 없어 캐시된 옛 응답을 읽던 것을 고친 뒤 받았다.",
+      "recollectedAfterEnd": true
     },
     "PCL": {
       "page": "PUBG_Champions_League/2026/Autumn",
@@ -34,28 +35,34 @@
       "page": "PUBG_EMEA_Championship/2026/Fall",
       "seriesPrefix": "PUBG EMEA Championship",
       "seedFile": "primary_data/emea_teams_verified.json",
-      "collectedAt": "2026-09-29",
+      "collectedAt": "2026-11-02",
       "tournamentStart": "2026-09-11",
       "tournamentEnd": "2026-10-04",
-      "rostersFromHtml": false
+      "rostersFromHtml": false,
+      "recollectedAfterEnd": true,
+      "note": "대회가 끝난 뒤 최종 명단으로 재수집했다 (2026-11-02). 수집기에 --refresh 가 없어 캐시된 옛 응답을 읽던 것을 고친 뒤 받았다."
     },
     "AMER": {
       "page": "PUBG_Americas_Series/2026/2",
       "seriesPrefix": "PUBG Americas Series",
       "seedFile": "primary_data/amer_teams_verified.json",
-      "collectedAt": "2026-09-29",
+      "collectedAt": "2026-11-02",
       "tournamentStart": "2026-09-11",
       "tournamentEnd": "2026-10-04",
-      "rostersFromHtml": false
+      "rostersFromHtml": false,
+      "recollectedAfterEnd": true,
+      "note": "대회가 끝난 뒤 최종 명단으로 재수집했다 (2026-11-02). 수집기에 --refresh 가 없어 캐시된 옛 응답을 읽던 것을 고친 뒤 받았다."
     },
     "PTS": {
       "page": "PUBG_Thailand_Series/2026/Phase_2",
       "seriesPrefix": "PUBG Thailand Series",
       "seedFile": "primary_data/pts_teams_verified.json",
-      "collectedAt": "2026-09-29",
+      "collectedAt": "2026-11-02",
       "tournamentStart": "2026-09-21",
       "tournamentEnd": "2026-10-08",
-      "rostersFromHtml": true
+      "rostersFromHtml": true,
+      "recollectedAfterEnd": true,
+      "note": "대회가 끝난 뒤 최종 명단으로 재수집했다 (2026-11-02). 수집기에 --refresh 가 없어 캐시된 옛 응답을 읽던 것을 고친 뒤 받았다."
     },
     "PVS": {
       "page": "PUBG_Vietnam_Series/2026/Phase_2",

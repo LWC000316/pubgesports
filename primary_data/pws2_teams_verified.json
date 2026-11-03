@@ -9,19 +9,19 @@
     "region": "KR",
     "players": [
       {
-        "nickname": "Rex",
-        "realName": "Rex",
+        "nickname": "DIEL",
+        "realName": "DIEL",
         "role": "Player",
         "setting": {
           "mouseDpi": 400,
-          "generalSens": 42.0,
-          "verticalMultiplier": 1.2,
-          "adsSens": 32.0,
-          "scope2xSens": 42.0,
-          "scope3xSens": 42.0,
-          "scope4xSens": 42.0,
-          "scope6xSens": 42.0,
-          "scope8xSens": 42.0,
+          "generalSens": 45.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 35.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
           "resolution": "1728x1080"
         }
       },
@@ -175,19 +175,19 @@
         ]
       },
       {
-        "nickname": "DIEL",
-        "realName": "DIEL",
+        "nickname": "Rex",
+        "realName": "Rex",
         "role": "Player",
         "setting": {
           "mouseDpi": 400,
-          "generalSens": 45.0,
-          "verticalMultiplier": 1.0,
-          "adsSens": 35.0,
-          "scope2xSens": 40.0,
-          "scope3xSens": 40.0,
-          "scope4xSens": 40.0,
-          "scope6xSens": 40.0,
-          "scope8xSens": 40.0,
+          "generalSens": 42.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 32.0,
+          "scope2xSens": 42.0,
+          "scope3xSens": 42.0,
+          "scope4xSens": 42.0,
+          "scope6xSens": 42.0,
+          "scope8xSens": 42.0,
           "resolution": "1728x1080"
         }
       }
@@ -202,102 +202,6 @@
     "league": "PWS",
     "region": "KR",
     "players": [
-      {
-        "nickname": "seoul",
-        "realName": "seoul",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 1600,
-          "generalSens": 30.0,
-          "verticalMultiplier": 1.0,
-          "adsSens": 18.0,
-          "scope2xSens": 20.0,
-          "scope3xSens": 21.0,
-          "scope4xSens": 20.0,
-          "scope6xSens": 21.0,
-          "scope8xSens": 20.0,
-          "resolution": "1920x1080"
-        },
-        "streams": {
-          "soop": "https://ch.sooplive.co.kr/ac9639"
-        }
-      },
-      {
-        "nickname": "Salute",
-        "realName": "Salute",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 40.0,
-          "verticalMultiplier": 1.0,
-          "adsSens": 35.0,
-          "scope2xSens": 40.0,
-          "scope3xSens": 40.0,
-          "scope4xSens": 40.0,
-          "scope6xSens": 40.0,
-          "scope8xSens": 40.0,
-          "resolution": "1728x1080"
-        },
-        "streams": {
-          "youtube": "https://youtube.com/@SALUTE_PUBG",
-          "soop": "https://ch.sooplive.co.kr/woojaehyun02"
-        },
-        "gears": [
-          {
-            "category": "MOUSE",
-            "name": "DEX / 탈론게임즈 유리피트, 소라 V2",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          },
-          {
-            "category": "MOUSEPAD",
-            "name": "로지텍 신제품 패드",
-            "brand": "Logitech",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          },
-          {
-            "category": "KEYBOARD",
-            "name": "VENOM 87HE",
-            "brand": "Venom",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          },
-          {
-            "category": "HEADSET",
-            "name": "Logitech G PRO X v2",
-            "brand": "Logitech",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          },
-          {
-            "category": "EARPHONE",
-            "name": "Bose QC20",
-            "brand": "Bose",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          },
-          {
-            "category": "MONITOR",
-            "name": "BenQ ZOWIE XL2546K",
-            "brand": "BenQ",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          },
-          {
-            "category": "DAC",
-            "name": "Sound Blaster G5",
-            "brand": "Creative",
-            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
-            "collectedAt": "2026-09-23"
-          }
-        ]
-      },
-      {
-        "nickname": "taemin",
-        "realName": "taemin",
-        "role": "Player"
-      },
       {
         "nickname": "BeaN",
         "realName": "BeaN",
@@ -389,6 +293,102 @@
             "collectedAt": "2026-08-27"
           }
         ]
+      },
+      {
+        "nickname": "taemin",
+        "realName": "taemin",
+        "role": "Player"
+      },
+      {
+        "nickname": "Salute",
+        "realName": "Salute",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 40.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 35.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/@SALUTE_PUBG",
+          "soop": "https://ch.sooplive.co.kr/woojaehyun02"
+        },
+        "gears": [
+          {
+            "category": "MOUSE",
+            "name": "DEX / 탈론게임즈 유리피트, 소라 V2",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "MOUSEPAD",
+            "name": "로지텍 신제품 패드",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "KEYBOARD",
+            "name": "VENOM 87HE",
+            "brand": "Venom",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "HEADSET",
+            "name": "Logitech G PRO X v2",
+            "brand": "Logitech",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "EARPHONE",
+            "name": "Bose QC20",
+            "brand": "Bose",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "MONITOR",
+            "name": "BenQ ZOWIE XL2546K",
+            "brand": "BenQ",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          },
+          {
+            "category": "DAC",
+            "name": "Sound Blaster G5",
+            "brand": "Creative",
+            "sourceUrl": "https://www.sooplive.com/station/woojaehyun02/post/96791113",
+            "collectedAt": "2026-09-23"
+          }
+        ]
+      },
+      {
+        "nickname": "seoul",
+        "realName": "seoul",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 1600,
+          "generalSens": 30.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 18.0,
+          "scope2xSens": 20.0,
+          "scope3xSens": 21.0,
+          "scope4xSens": 20.0,
+          "scope6xSens": 21.0,
+          "scope8xSens": 20.0,
+          "resolution": "1920x1080"
+        },
+        "streams": {
+          "soop": "https://ch.sooplive.co.kr/ac9639"
+        }
       }
     ]
   },
@@ -401,23 +401,6 @@
     "league": "PWS",
     "region": "KR",
     "players": [
-      {
-        "nickname": "Rain1ng",
-        "realName": "Rain1ng",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 50.0,
-          "verticalMultiplier": 1.1,
-          "adsSens": 36.0,
-          "scope2xSens": 41.0,
-          "scope3xSens": 43.0,
-          "scope4xSens": 41.0,
-          "scope6xSens": 41.0,
-          "scope8xSens": 41.0,
-          "resolution": "1728x1080"
-        }
-      },
       {
         "nickname": "EEND",
         "realName": "EEND",
@@ -568,6 +551,23 @@
         ]
       },
       {
+        "nickname": "Rain1ng",
+        "realName": "Rain1ng",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 50.0,
+          "verticalMultiplier": 1.1,
+          "adsSens": 36.0,
+          "scope2xSens": 41.0,
+          "scope3xSens": 43.0,
+          "scope4xSens": 41.0,
+          "scope6xSens": 41.0,
+          "scope8xSens": 41.0,
+          "resolution": "1728x1080"
+        }
+      },
+      {
         "nickname": "Type",
         "realName": "Type",
         "role": "Player",
@@ -663,43 +663,6 @@
     "region": "KR",
     "players": [
       {
-        "nickname": "Starlord",
-        "realName": "Starlord",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 1000,
-          "generalSens": 27.0,
-          "verticalMultiplier": 0.7,
-          "adsSens": 17.0,
-          "scope2xSens": 17.0,
-          "scope3xSens": 18.0,
-          "scope4xSens": 18.0,
-          "scope6xSens": 18.0,
-          "scope8xSens": 18.0,
-          "resolution": "1728x1080"
-        },
-        "streams": {
-          "youtube": "https://youtube.com/channel/UCCcXJ262HqswS0g5KUrCx3g"
-        }
-      },
-      {
-        "nickname": "kkachi",
-        "realName": "kkachi",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 50.0,
-          "verticalMultiplier": 1.0,
-          "adsSens": 35.0,
-          "scope2xSens": 40.0,
-          "scope3xSens": 40.0,
-          "scope4xSens": 40.0,
-          "scope6xSens": 40.0,
-          "scope8xSens": 40.0,
-          "resolution": "1728x1080"
-        }
-      },
-      {
         "nickname": "BreaKers",
         "realName": "BreaKers",
         "role": "Player",
@@ -731,6 +694,43 @@
           "scope6xSens": 35.0,
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
+        }
+      },
+      {
+        "nickname": "kkachi",
+        "realName": "kkachi",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 50.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 35.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
+      },
+      {
+        "nickname": "Starlord",
+        "realName": "Starlord",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 1000,
+          "generalSens": 27.0,
+          "verticalMultiplier": 0.7,
+          "adsSens": 17.0,
+          "scope2xSens": 17.0,
+          "scope3xSens": 18.0,
+          "scope4xSens": 18.0,
+          "scope6xSens": 18.0,
+          "scope8xSens": 18.0,
+          "resolution": "1728x1080"
+        },
+        "streams": {
+          "youtube": "https://youtube.com/channel/UCCcXJ262HqswS0g5KUrCx3g"
         }
       }
     ]
@@ -875,8 +875,8 @@
         }
       },
       {
-        "nickname": "Daejang",
-        "realName": "Daejang",
+        "nickname": "wonderful",
+        "realName": "wonderful",
         "role": "Player"
       }
     ]
@@ -1107,6 +1107,28 @@
     "region": "KR",
     "players": [
       {
+        "nickname": "Forward",
+        "realName": "Forward",
+        "role": "Player"
+      },
+      {
+        "nickname": "Solution",
+        "realName": "Solution",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 50.0,
+          "verticalMultiplier": 1.2,
+          "adsSens": 32.0,
+          "scope2xSens": 40.0,
+          "scope3xSens": 40.0,
+          "scope4xSens": 40.0,
+          "scope6xSens": 40.0,
+          "scope8xSens": 40.0,
+          "resolution": "1728x1080"
+        }
+      },
+      {
         "nickname": "Lure",
         "realName": "Lure",
         "role": "Player",
@@ -1156,23 +1178,6 @@
           "scope8xSens": 37.0,
           "resolution": "1728x1080"
         }
-      },
-      {
-        "nickname": "Solution",
-        "realName": "Solution",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 50.0,
-          "verticalMultiplier": 1.2,
-          "adsSens": 32.0,
-          "scope2xSens": 40.0,
-          "scope3xSens": 40.0,
-          "scope4xSens": 40.0,
-          "scope6xSens": 40.0,
-          "scope8xSens": 40.0,
-          "resolution": "1728x1080"
-        }
       }
     ]
   },
@@ -1185,26 +1190,6 @@
     "league": "PWS",
     "region": "KR",
     "players": [
-      {
-        "nickname": "AKaN",
-        "realName": "AKaN",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 1100,
-          "generalSens": 50.0,
-          "verticalMultiplier": 0.8,
-          "adsSens": 50.0,
-          "scope2xSens": 50.0,
-          "scope3xSens": 50.0,
-          "scope4xSens": 50.0,
-          "scope6xSens": 50.0,
-          "scope8xSens": 50.0,
-          "resolution": "1920x1080"
-        },
-        "streams": {
-          "soop": "https://ch.sooplive.co.kr/kmo7895"
-        }
-      },
       {
         "nickname": "Parkpro",
         "realName": "Parkpro",
@@ -1220,23 +1205,6 @@
           "scope6xSens": 43.0,
           "scope8xSens": 43.0,
           "resolution": "1728x1080"
-        }
-      },
-      {
-        "nickname": "Seongjang",
-        "realName": "Seongjang",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 46.0,
-          "verticalMultiplier": 1.0,
-          "adsSens": 41.0,
-          "scope2xSens": 41.0,
-          "scope3xSens": 39.0,
-          "scope4xSens": 39.0,
-          "scope6xSens": 39.0,
-          "scope8xSens": 39.0,
-          "resolution": "1920x1080"
         }
       },
       {
@@ -1294,6 +1262,43 @@
             "collectedAt": "2026-06-15"
           }
         ]
+      },
+      {
+        "nickname": "Seongjang",
+        "realName": "Seongjang",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 46.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 41.0,
+          "scope2xSens": 41.0,
+          "scope3xSens": 39.0,
+          "scope4xSens": 39.0,
+          "scope6xSens": 39.0,
+          "scope8xSens": 39.0,
+          "resolution": "1920x1080"
+        }
+      },
+      {
+        "nickname": "AKaN",
+        "realName": "AKaN",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 1100,
+          "generalSens": 50.0,
+          "verticalMultiplier": 0.8,
+          "adsSens": 50.0,
+          "scope2xSens": 50.0,
+          "scope3xSens": 50.0,
+          "scope4xSens": 50.0,
+          "scope6xSens": 50.0,
+          "scope8xSens": 50.0,
+          "resolution": "1920x1080"
+        },
+        "streams": {
+          "soop": "https://ch.sooplive.co.kr/kmo7895"
+        }
       }
     ]
   },
@@ -1306,6 +1311,11 @@
     "league": "PWS",
     "region": "KR",
     "players": [
+      {
+        "nickname": "DK",
+        "realName": "DK",
+        "role": "Player"
+      },
       {
         "nickname": "SINGAM",
         "realName": "SINGAM",
@@ -1322,11 +1332,6 @@
           "scope8xSens": 48.0,
           "resolution": "1728x1080"
         }
-      },
-      {
-        "nickname": "DK",
-        "realName": "DK",
-        "role": "Player"
       },
       {
         "nickname": "Right",
@@ -1350,8 +1355,18 @@
     "region": "KR",
     "players": [
       {
+        "nickname": "KAL",
+        "realName": "KAL",
+        "role": "Player"
+      },
+      {
         "nickname": "BBANG",
         "realName": "BBANG",
+        "role": "Player"
+      },
+      {
+        "nickname": "HELLPER",
+        "realName": "HELLPER",
         "role": "Player"
       },
       {
@@ -1370,16 +1385,6 @@
           "scope8xSens": 30.0,
           "resolution": "1728x1080"
         }
-      },
-      {
-        "nickname": "HELLPER",
-        "realName": "HELLPER",
-        "role": "Player"
-      },
-      {
-        "nickname": "KAL",
-        "realName": "KAL",
-        "role": "Player"
       }
     ]
   },
@@ -1392,40 +1397,6 @@
     "league": "PWS",
     "region": "KR",
     "players": [
-      {
-        "nickname": "Glaz",
-        "realName": "Glaz",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 40.0,
-          "verticalMultiplier": 0.85,
-          "adsSens": 36.0,
-          "scope2xSens": 35.0,
-          "scope3xSens": 35.0,
-          "scope4xSens": 33.0,
-          "scope6xSens": 37.0,
-          "scope8xSens": 37.0,
-          "resolution": "1728x1080"
-        }
-      },
-      {
-        "nickname": "Gyuyeon",
-        "realName": "Gyuyeon",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 40.0,
-          "verticalMultiplier": 1.0,
-          "adsSens": 33.0,
-          "scope2xSens": 39.0,
-          "scope3xSens": 39.0,
-          "scope4xSens": 34.0,
-          "scope6xSens": 34.0,
-          "scope8xSens": 34.0,
-          "resolution": "1728x1080"
-        }
-      },
       {
         "nickname": "Ayoh",
         "realName": "Ayoh",
@@ -1459,6 +1430,40 @@
           "scope8xSens": 32.0,
           "resolution": "1728x1080"
         }
+      },
+      {
+        "nickname": "Glaz",
+        "realName": "Glaz",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 40.0,
+          "verticalMultiplier": 0.85,
+          "adsSens": 36.0,
+          "scope2xSens": 35.0,
+          "scope3xSens": 35.0,
+          "scope4xSens": 33.0,
+          "scope6xSens": 37.0,
+          "scope8xSens": 37.0,
+          "resolution": "1728x1080"
+        }
+      },
+      {
+        "nickname": "Gyuyeon",
+        "realName": "Gyuyeon",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 40.0,
+          "verticalMultiplier": 1.0,
+          "adsSens": 33.0,
+          "scope2xSens": 39.0,
+          "scope3xSens": 39.0,
+          "scope4xSens": 34.0,
+          "scope6xSens": 34.0,
+          "scope8xSens": 34.0,
+          "resolution": "1728x1080"
+        }
       }
     ]
   },
@@ -1471,23 +1476,6 @@
     "league": "PWS",
     "region": "KR",
     "players": [
-      {
-        "nickname": "Freaky",
-        "realName": "Freaky",
-        "role": "Player",
-        "setting": {
-          "mouseDpi": 400,
-          "generalSens": 65.0,
-          "verticalMultiplier": 1.15,
-          "adsSens": 64.0,
-          "scope2xSens": 63.0,
-          "scope3xSens": 63.0,
-          "scope4xSens": 62.0,
-          "scope6xSens": 62.0,
-          "scope8xSens": 61.0,
-          "resolution": "1728x1080"
-        }
-      },
       {
         "nickname": "Morek",
         "realName": "Morek",
@@ -1506,9 +1494,21 @@
         }
       },
       {
-        "nickname": "muel",
-        "realName": "muel",
-        "role": "Player"
+        "nickname": "Freaky",
+        "realName": "Freaky",
+        "role": "Player",
+        "setting": {
+          "mouseDpi": 400,
+          "generalSens": 65.0,
+          "verticalMultiplier": 1.15,
+          "adsSens": 64.0,
+          "scope2xSens": 63.0,
+          "scope3xSens": 63.0,
+          "scope4xSens": 62.0,
+          "scope6xSens": 62.0,
+          "scope8xSens": 61.0,
+          "resolution": "1728x1080"
+        }
       },
       {
         "nickname": "vilo",
@@ -1526,6 +1526,11 @@
           "scope8xSens": 35.0,
           "resolution": "1728x1080"
         }
+      },
+      {
+        "nickname": "muel",
+        "realName": "muel",
+        "role": "Player"
       }
     ]
   },
@@ -1582,16 +1587,6 @@
     "region": "KR",
     "players": [
       {
-        "nickname": "CxldMxn",
-        "realName": "CxldMxn",
-        "role": "Player"
-      },
-      {
-        "nickname": "HanlNu",
-        "realName": "HanlNu",
-        "role": "Player"
-      },
-      {
         "nickname": "2cut",
         "realName": "2cut",
         "role": "Player"
@@ -1612,6 +1607,16 @@
           "scope8xSens": 30.0,
           "resolution": "1920x1080"
         }
+      },
+      {
+        "nickname": "CxldMxn",
+        "realName": "CxldMxn",
+        "role": "Player"
+      },
+      {
+        "nickname": "HanlNu",
+        "realName": "HanlNu",
+        "role": "Player"
       }
     ]
   },

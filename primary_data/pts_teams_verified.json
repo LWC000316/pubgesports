@@ -660,6 +660,11 @@
         "nickname": "Estherline",
         "realName": "Estherline",
         "role": "Player"
+      },
+      {
+        "nickname": "Bay",
+        "realName": "Bay",
+        "role": "Sub"
       }
     ]
   },
@@ -689,8 +694,8 @@
         "role": "Player"
       },
       {
-        "nickname": "FORLAFIRST",
-        "realName": "FORLAFIRST",
+        "nickname": "F0RLAFIRST",
+        "realName": "F0RLAFIRST",
         "role": "Player"
       }
     ]
@@ -870,6 +875,11 @@
         "nickname": "Champtinho",
         "realName": "Champtinho",
         "role": "Player"
+      },
+      {
+        "nickname": "babynorth",
+        "realName": "babynorth",
+        "role": "Sub"
       }
     ]
   },
