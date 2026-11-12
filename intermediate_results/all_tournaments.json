@@ -2,6 +2,20 @@
  "data": [
   {
    "type": "tournament",
+   "id": "sea-paci26",
+   "attributes": {
+    "createdAt": "2026-11-12T08:10:08Z"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "sea-picq26",
+   "attributes": {
+    "createdAt": "2026-11-12T07:21:15Z"
+   }
+  },
+  {
+   "type": "tournament",
    "id": "eu-estv",
    "attributes": {
     "createdAt": "2026-10-30T15:10:52Z"
