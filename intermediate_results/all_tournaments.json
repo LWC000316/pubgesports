@@ -2,6 +2,13 @@
  "data": [
   {
    "type": "tournament",
+   "id": "sea-pacp26",
+   "attributes": {
+    "createdAt": "2026-11-13T09:44:20Z"
+   }
+  },
+  {
+   "type": "tournament",
    "id": "sea-paci26",
    "attributes": {
     "createdAt": "2026-11-12T08:10:08Z"
